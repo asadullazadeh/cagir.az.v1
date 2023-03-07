@@ -72,6 +72,7 @@ export const Navbar1 = () => {
               <li>
                 <p className="text-gray-500 hover:text-black ">Dil Secimi</p>
               </li>
+              
             </ul>
           </div>
         </div>
