@@ -14,15 +14,12 @@ export const Navbar1 = () => {
     <header>
       <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900 ">
         <div className="container flex flex-wrap items-center justify-between mx-auto ">
-          <Link href="https://cagir.az" className="flex items-center">
-            <Image
-              src={logo}
-              className="h-6 mr-3 sm:h-9 bg-black"
-              alt="Cagir.az logo"
-            />
-            {/* <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              Cagir.az
-            </span> */}
+          <Link href="/">
+          <Image
+            src={logo}
+            className="h-6 mr-3 sm:h-9 bg-black"
+            alt="Cagir.az logo"
+          />
           </Link>
           <button
             data-collapse-toggle="navbar-default"
@@ -49,30 +46,34 @@ export const Navbar1 = () => {
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-6 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
-                <FontAwesomeIcon
-                  icon={faSearch}
-                  className="text-gray-500 hover:text-black "
-                />
+                <Link href="/search">
+                  <FontAwesomeIcon
+                    icon={faSearch}
+                    className="text-gray-500 hover:text-black "
+                  />
+                </Link>
               </li>
 
               <li>
-                <FontAwesomeIcon
-                  icon={faWallet}
-                  className="text-gray-500 hover:text-black"
-                />
+                <Link href="/payment">
+                  <FontAwesomeIcon
+                    icon={faWallet}
+                    className="text-gray-500 hover:text-black"
+                  />
+                </Link>
               </li>
 
               <li>
-                <FontAwesomeIcon
-                  icon={faUser}
-                  className="text-gray-500 hover:text-black "
-                />
+                <Link href="/profil">
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    className="text-gray-500 hover:text-black "
+                  />
+                </Link>
               </li>
-
               <li>
                 <p className="text-gray-500 hover:text-black ">Dil Secimi</p>
               </li>
-              
             </ul>
           </div>
         </div>

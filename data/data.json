@@ -1,0 +1,129 @@
+{
+  "xidmet_kateqoriyasi": [
+    {
+      "id": "temizlik-xidmeti",
+      "title": "Temizlik Xidmeti",
+      "description": "Eger siz de Temizlik sirketi axtarirsinizsa bize muraciet ederek uygun qiymete xidmeti elde ede bilersiniz. Ev temizliyi ve diger temizlik xidmetleri üçün cagir.az-ın temizlik xidmeti bas xidmetinden yararlana bilersiniz. ",
+      "image": "https://images.unsplash.com/photo-1563453392212-326f5e854473?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+    },
+    {
+      "id": "usta",
+      "title": "Usta",
+      "description": "Bu xidmətdən istifadə etməklə siz peşəkar ustalarımızın keyfiyyətli işlərindən yararlanacaqsınız. Şəhərin hər bir nöqtəsindən sifariş etdikdən sonra ustalarımız ünvanınıza yaxınlaşaraq kondisioner, kombi xidməti, elektrik, santexnik xidməti, soyuducu, paltaryuyan, kompüter və s. avadanlıqların təmir və quraşdırılma prosesini həyata kecirəcək",
+      "image": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80"
+    },
+    {
+      "id": "masaj",
+      "title": "Masaj Xidmeti",
+      "description": "Masaj nəticəsində orqanizmdə oksidləşmə prosesi güclənir, daxili üzvlərin funksional qabiliyyəti artır, dəridə hissi sinirlərin oyanması zəifləyir və bir sıra xəstəliklərdə ağrıların azalmasına və təmamilə yox olmasına səbəb olur, stress hormonlarının sayı və depresya azalır, özünə inamı artırır.",
+      "image": "https://images.unsplash.com/photo-1591343395082-e120087004b4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+    }
+  ],
+  "butunXidmetler": [
+    {
+      "id": "ev-temizleme",
+      "title": "Ev temizleme",
+      "altxidmet": "temizlik-xidmeti",
+      "description": "Ev temizleme xidmətinə 3 əsas xidmət növü daxildir: Sadə təmizlik Dərin təmizlik Təmirdən sonra təmizlik.",
+      "image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      "id": "obyekt-temizliyi",
+      "title": "Obyekt temizliyi",
+      "altxidmet": "temizlik-xidmeti",
+      "description": "Cagir.az komandası tərəfindən Bakıda obyekt və ofis təmizliyi, biznes məkanlarının səliqəyə salınması peşəkarlıqla həyata keçirilir. Ofis və obyekt təmizliyi üçün nəzərdə tutulmuş xidmətlərimiz əsasən 3 istiqamətdədir: Ofisin (obyektin) sadə təmizliyi Ofisin (Obyektin) dərin təmizliyi Ofisin (Obyektin) təmirdən sonra təmizliyi.",
+      "image": "https://images.unsplash.com/photo-1580256081112-e49377338b7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+    },
+    {
+      "id": "dezinfeksiya-temizliyi",
+      "title": "Dezinfeksiya temizliyi",
+      "altxidmet": "temizlik-xidmeti",
+      "description": "Bakteriya və mikroblarla mübarizə aparmaq uzunmüddəti və çətin prosesdir. İş, ev, bağ və bir çox məkanlarda virus təmizləmə - dezinfeksiya işi ciddi yanaşma tələb edir. Zamanınızı keçirdiyiniz hər bir məkan dezinfeksiya tələbini yerinə yetirməli və virus təmizləmə yüksək dəqiqliklə həyata keçirilməlidir. Dezinfeksiya xidməti sizin üçün bu tələbi daha qısa zamanda və həssaslıqla yerinə yetirəcək..",
+      "image": "https://images.unsplash.com/photo-1601160463734-d4006a0960e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      "id": "pencere-temizliyi",
+      "title": "Pencere temizleme",
+      "altxidmet": "temizlik-xidmeti",
+      "description": "Hər zaman ətraf mühitlə təmasda olduğu üçün plastik pencere uzun müddətli təmizliyi əldə etmək mümkün deyil. Bu hal bəzən çətin gedən və ya getməyən plastik pencere üzərində ləkələrin yaranmasına səbəb olur.",
+      "image": "https://plus.unsplash.com/premium_photo-1676810459656-ce0b050e9ccd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      "id": "divan-kreslo-temizliyi",
+      "title": "Divan-kreslo",
+      "altxidmet": "temizlik-xidmeti",
+      "description": "Evdə ən çox istifadə olunan əşyalardan biri də divan-kreslodur. Divan temizleme xidmətimizdən istənilən məkan üçün (ev, ofis, restoran və s.) yararlana bilərsiniz. Ev və ofislərdə divan temizleme xidmətindən daha çox istifadə olunduğu üçün mütəmadi olaraq bu xidmətlərdə endirim kampaniyaları keçirilir",
+      "image": "https://images.unsplash.com/photo-1484101403633-562f891dc89a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80"
+    },
+    {
+      "id": "xadime",
+      "title": "Xadime",
+      "altxidmet": "temizlik-xidmeti",
+      "description": "Günlük xadimə tələb olunur, xadime teleb olunur, klinikaya xadime teleb olunur və ya gunluk xadime teleb olunur deyirsinizsə doğru ünvandasız! Xadimə tələb olunur və siz tapa bilmirsiniz, elə isə elə indi bizim xadimə xidmətimizdən sifariş edərək olduğunuz ünvanda xidmətdən yararlanın.",
+      "image": "https://images.unsplash.com/photo-1517837817850-607cd9ff1015?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      "id": "elektrik-ustasi",
+      "title": "Elektrik ustasi",
+      "altxidmet": "usta",
+      "description": "Təcrübəli Elektrik ustaları tərəfindən kulçater , razetka və avtomatın quraşdırılması-dəyişdirilməsi, lüysturların quraşdırılması və təmiri, həmçinin plafon, spot ,led işıqların quraşdırılması -dəyişdirilməsi və domofon və gizli kameraların quraşdırılması yerinə yetiriləcəkdir..",
+      "image": "https://images.unsplash.com/photo-1555963966-b7ae5404b6ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      "id": "soyuducu-ustasi",
+      "title": "Soyuducu ustasi",
+      "altxidmet": "usta",
+      "description": "Soyuducu temiri etmək ümumiyyətlə asan iş deyil, hansı ki,müəyyən bilik və bacarıqlar tələb edir. Cagir.az əməkdaşları soyuducu temiri və soyuducu ustasi işində bütün növ soyuducu markalarının fərqləndirici xüsusiyyətlərini bilir və baza nasazlıqlarını müəyyən edə bilir.",
+      "image": "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=426&q=80"
+    },
+    {
+      "id": "paltaryuyan-ustasi",
+      "title": "Paltaryuyan ustasi",
+      "altxidmet": "usta",
+      "description": "Cagir.az-ın paltaryuyan təmiri xidmətində siz, ilk olaraq problemin nədən yarandığını bilmirsinizsə o zaman paltaryuyan texniki baxış alt xidmətinə müraciət etməli olacaqsınız. Çünki, hər bir paltaryuyan ustası paltaryuyan təmiri xidməti etməzdən öncə problemin nədən qaynaqlandığını bilməlidir.Bundan sonra artıq paltaryuyan ustası səbəbini təyin edir və gərəkli paltaryuyan təmiri xidmətlərindən istifadə edəcəkdir.",
+      "image": "https://images.unsplash.com/photo-1626806819282-2c1dc01a5e0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGF1bmRyeSUyMG1hY2hpbmV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": "qaz-ustasi",
+      "title": "Qaz ustasi",
+      "altxidmet": "usta",
+      "description": "Qaz ustasi xidmətindən günün istənilən saatında, istənilən məkana sifariş edə bilərsiniz. Qaz peci ustasi, qaz sobasi ustasi üçün sifariş prosesi 2 üsulla aparılır. Zəng və ya saytdan sifariş etməklə. Saytla sifariş üçün uyğun xidmətə keçid edib, meyarlara nəzər salmağınız kifayətdir..",
+      "image": "https://images.unsplash.com/photo-1608454770647-01dc0f7dd97d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      "id": "concert-christian-löffler-+-detect-ensemble",
+      "title": "Skolioz masaj",
+      "altxidmet": "masaj",
+      "description": "Bütün bədənin başdan başa ən azı saat yarım masaj edilməsi insanın immunitetini artırır, ürək qan damar sisteminin işini rahatlaşdırır, qaraciyərin filtr funksiyasını yaxşılaşdırır. Dərinin təravətli olmasına səbəb olur..",
+      "image": "https://images.unsplash.com/photo-1478147427282-58a87a120781?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      "id": "the-halloween-house-party",
+      "title": "Kifoz masaj",
+      "altxidmet": "masaj",
+      "description": "Kifoz - onurğanın gözlə görülə bilinəcək qədər önə doğru əyilməsidir. Onurğanın önə doğru əyilməsi qozbellik şəklində özünü biruzə verir. Buna görə də el arasında kifoz xəstələrinə qozbel deyilir. Xəstəlik zamanı onurğanın üst hissəsi xaricə doğru əyilir, alt hissəsi isə içəriyə doğru əyilir.",
+      "image": "https://images.unsplash.com/photo-1587407627257-27b7127c868c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    },
+    {
+      "id": "international-conference-on-industrial-design",
+      "title": "Relax masaji",
+      "altxidmet": "masaj",
+      "description": "Evdə masaj xidməti, stres və yorğunluq səbəbiylə yüngül ağrılar üçün yaxşı təsir göstərir. Baldır, ayaq və boyun nahiyyələri üçün mütləq diqqətli olmaq və işi peşəkar masajistlərə əmanət etmək lazımdır. Ürək, qan təzyiqi və qan dövranı pozğunluqlarınız varsa, relax masajın riskli təsirlərindən qaçınmaq üçün mütləq öz masajistinizlə məsləhətləşməlisiniz..",
+      "image": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      "id": "world-congress-2022---barcelona",
+      "title": "Usaq masaji",
+      "altxidmet": "masaj",
+      "description": "Masaj vasitəsilə bir-sıra xəstəliklərdən qurtulmaq mümkündür.Böyüklərlə yanaşı uşaqlara da masaj yaxşı təsir göstərir.Bəzi problemlər vardır ki, onların müalicəsinin yalnız çarəsi masaj olunmaqdadır.Onurğa problemi zamanı, ayaqlarda eyrilik olarsa, dincəlmək məqsədilə bu xidmətdən istifadə edilir.Mütəmadi olaraq masaj edilməsi uşaqlarda bir sıra xəstəliklərin qarşısını alır.",
+      "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      "id": "riskminds-international",
+      "title": "Hicama",
+      "altxidmet": "masaj",
+      "description": "İmmunitet sistemini qüvvətləndirir, bədənin müqavimətini artıraraq xəstəliklərdən qoruyur. Qanda yığılmış ağır metal və toksinlərin atılmasını təmin edir. Qan dövranı ilə lazımlı orqanları xəbərdar edir, qan dövranını və maddələr mübadiləsini tənzimləyir. Ağrıların aradan qaldırılması və şişə qarşı təsirlidir.",
+      "image": "https://images.unsplash.com/photo-1591115765373-5207764f72e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    }
+  ]
+}

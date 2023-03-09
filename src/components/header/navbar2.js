@@ -1,72 +1,73 @@
+import Link from "next/link";
 export const Navbar2 = () => {
   return (
     <header>
-      <nav class="bg-gray-50 dark:bg-gray-700">
-        <div class=" px-4 py-3 mx-auto md:px-6">
-          <div class="flex justify-between">
-            <ul class="flex flex-row mt-0 mr-6 space-x-8 text-sm font-medium">
+      <nav className="bg-gray-50 dark:bg-gray-700">
+        <div className=" px-4 py-3 mx-auto md:px-6">
+          <div className="flex justify-between">
+            <ul className="flex flex-row mt-0 mr-6 space-x-8 text-sm font-medium">
               <li>
-                <a
-                  href="#"
-                  class="text-gray-900 dark:text-white hover:underline"
+                <Link
+                  href="/temizlik-xidmeti"
+                  className="text-gray-900 dark:text-white hover:underline"
                   aria-current="page"
                 >
                   Təmizlik Xidməti
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  class="text-gray-900 dark:text-white hover:underline"
+                <Link
+                  href="/usta/kombi-ustasi"
+                  className="text-gray-900 dark:text-white hover:underline"
                 >
                   Kombi ustası
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  class="text-gray-900 dark:text-white hover:underline"
+                <Link
+                  href="/usta/santexnk-ustasi"
+                  className="text-gray-900 dark:text-white hover:underline"
                 >
                   Santexnik ustası
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  class="text-gray-900 dark:text-white hover:underline"
+                <Link
+                  href="/kondisioner-ustasi"
+                  className="text-gray-900 dark:text-white hover:underline"
                 >
                   Kondisioner ustası
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  class="text-gray-900 dark:text-white hover:underline"
+                <Link
+                  href="/paltaryuyan-ustasi"
+                  className="text-gray-900 dark:text-white hover:underline"
                 >
                   Paltaryuyan ustası
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  class="text-gray-900 dark:text-white hover:underline"
+                <Link
+                  href="/usta/elektrik-ustasi"
+                  className="text-gray-900 dark:text-white hover:underline"
                 >
                   Elektrik ustası
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  class="text-gray-900 dark:text-white hover:underline"
+                <Link
+                  href="/xidmetler"
+                  className="text-gray-900 dark:text-white hover:underline"
                 >
                   Digər xidmətlər
-                </a>
+                </Link>
               </li>
             </ul>
 
-            <div class="ml-auto">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-              Qeydiyyat
+            <div className="ml-auto">
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                Qeydiyyat
               </button>
             </div>
           </div>
