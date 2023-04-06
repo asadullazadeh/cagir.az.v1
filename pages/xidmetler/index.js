@@ -8,7 +8,11 @@ const Xidmetler = ({ data }) => {
       <br></br>
       <div>
         {data.map((xidmet) => (
-          <Link key={xidmet.id} href={`/${xidmet.id}`} passHref>
+          <Link
+            key={xidmet.id}
+            href="https://images.unsplash.com/photo-1563453392212-326f5e854473?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+            passHref
+          >
             <h2>{xidmet.title}</h2>
             <Image
               src={xidmet.image}

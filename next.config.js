@@ -8,6 +8,8 @@ const nextConfig = {
       "wembleypark.com",
       "hydeparkwinterwonderland.com",
       "plus.unsplash.com",
+      "via.placeholder.com",
+      "tailwindui.com",
     ],
   },
 };
