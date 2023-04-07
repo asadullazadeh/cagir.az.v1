@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 import { Navbar1 } from "@/src/components/header/navbar";
 import { Karusel } from "@/src/components/karusel/karusel";
+import { Xidmetler } from "@/src/components/xidmetler/xidmetler"
 
 import Image from "next/image";
 
@@ -19,6 +20,7 @@ export default function Home() {
       <main>
         <Karusel />
         <br></br>
+        < Xidmetler/>
       </main>
     </div>
   );

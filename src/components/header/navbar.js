@@ -3,9 +3,9 @@ import Link from "next/link";
 import logo from "@/public/logo_cagiraz.png";
 import { useState } from "react";
 
-import icon_az from "@/icons/icon_az.png";
-import icon_en from "@/icons/icon_en.png";
-import icon_ru from "@/icons/icon_ru.png";
+import icon_az from "@/icons/icon_az.svg";
+import icon_en from "@/icons/icon_en.svg";
+import icon_ru from "@/icons/icon_ru.svg";
 
 export const Navbar = () => {
   const options = [
