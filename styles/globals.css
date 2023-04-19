@@ -1,9 +1,103 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-@import url("http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
 .dropdown:hover .dropdown-menu {
   display: block;
 }
+
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+/*carousel*/
+.slide-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: opacity 1000ms, transform 1000ms;
+}
+
+.slide-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.slide-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 200ms, transform 2500ms;
+}
+  
+
+
+/* h1 default classes*/
+.h1-styles {  
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700; /*bold*/
+  font-size: 60px;
+  line-height: 74px;
+  color:#202020;
+}
+
+/* h2 default classes*/
+.h2-styles {  
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700; /*bold*/
+  font-size: 36px;
+  line-height: 54px;
+  color:#202020;
+}
+
+/* h3 default classes*/
+.h3-styles {  
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700; /*bold*/
+  font-size: 32px;
+  line-height: 48px;
+  color:#202020;
+}
+
+/* h4 default classes*/
+.h4-styles {  
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700; /*bold*/
+  font-size: 28px;
+  line-height: 42px;
+  color:#202020;
+}
+
+/* h5 default classes*/
+.h5-styles {  
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700; /*bold*/
+  font-size: 20px;
+  line-height: 30px;
+  color:#202020;
+}
+
+
+/* h6 default classes*/
+.h6-styles {  
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700; /*bold*/
+  font-size: 14px;
+  line-height: 21px;
+  color:#202020;
+}
+
+
+
+
+
+
+
+
+

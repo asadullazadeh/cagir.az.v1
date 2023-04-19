@@ -10,6 +10,10 @@ const nextConfig = {
       "plus.unsplash.com",
       "via.placeholder.com",
       "tailwindui.com",
+      "lh3.googleusercontent.com",
+      "talpa.az",
+      "www.facebook.com",
+      "www.itchf.org"
     ],
   },
 };

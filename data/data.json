@@ -1,4 +1,305 @@
 {
+  "ustalar": [
+    {
+      "photo": "https://images.unsplash.com/photo-1563453392212-326f5e854473?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "title": "Təmizlik xidməti",
+      "price": "35 manatdan başlayan qiymətlər"
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
+      "title": "Usta xidməti",
+      "price": "15 manatdan başlayan qiymətlər"
+    },
+    {
+      "photo": "https://plus.unsplash.com/premium_photo-1661284919440-09addf263c28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
+      "title": "Masaj xidməti",
+      "price": "40 manatdan başlayan qiymətlər"
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
+      "title": "Gözəllik xidməti",
+      "price": "10 manatdan başlayan qiymətlər"
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1220&q=80",
+      "title": "Yoqa – Meditasiya",
+      "price": "15 manatdan başlayan qiymətlər"
+    },
+    {
+      "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
+      "title": "Əyləncə",
+      "price": "25 manatdan başlayan qiymətlər"
+    },
+    {
+      "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
+      "title": "Əyləncə",
+      "price": "25 manatdan başlayan qiymətlər"
+    },
+    {
+      "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
+      "title": "Əyləncə",
+      "price": "25 manatdan başlayan qiymətlər"
+    },
+    {
+      "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
+      "title": "Əyləncə",
+      "price": "25 manatdan başlayan qiymətlər"
+    }
+  ],
+  "partnyorlar": [
+    {
+      "name": "Kapital",
+
+      "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
+    },
+    {
+      "name": "Hesab.az",
+
+      "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
+    },
+    {
+      "name": "bakcell",
+
+      "logo": "https://bakcell.com/data/red-logo.svg"
+    },
+    {
+      "name": "vizam.az",
+
+      "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
+    },
+    {
+      "name": "talpa",
+
+      "logo": "https://talpa.az/assets/images/logo.png"
+    },
+    {
+      "name": "TKTA",
+
+      "logo": "https://www.tkta.edu.az/assets/images/logo_with_text.svg"
+    },
+
+    {
+      "name": "PashaBank",
+
+      "logo": "https://www.pashabank.az/templates/images/pashabank-logo-en.svg"
+    },
+    {
+      "name": "Agro Dairy",
+
+      "logo": "https://www.agrodairy.az/assets/images/logotype.svg"
+    },
+    {
+      "name": "UNDP",
+
+      "logo": "https://www.agrodairy.az/assets/images/logotype.svg"
+    },
+    {
+      "name": "ArchiCo",
+
+      "logo": "https://www.agrodairy.az/assets/images/logotype.svg"
+    },
+    {
+      "name": "Beynelxalq Turk Medeniyyet ve Irsi Fondu",
+
+      "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
+    },
+    {
+      "name": "expressbank",
+
+      "logo": "https://www.expressbank.az/assets/img/logo.e9fd180b.svg"
+    }
+  ],
+  "carouselPhotos1": [
+    {
+      "number": "1",
+      "src": "https://lh3.googleusercontent.com/3pHZ8DMnHqODt9XG9eMpFFo4quvd0AFEnJzME_MXBVklsHnzFnZnHemgwdIBgYZeu0Dja_I7ZJFQAfLBOVRRmVclu-LaEAdPdSeWWr8J1facPb65-RIqPG1DBsq7zsn0-pgHj2Z1yAWanSroWFexUdtvEXYxj7TW_ZznbuwOiU2nWAn2ui37tI1H658InCCSK4mhCnS9Tkny_K8PSB3kEQYmK6xccA2x7JZ20n7Tk0OlrRra2H0KSfjsTH4p4lnwW_QPod2Y_opfGKX99OV0tedtrbY-mOk1Y2h8tgHPdRf8cyNZ6A5jax9bX-U3tQPr4gPWvjP11BManyCLgGbb5CP86yoQr2eetuuWVlzUj-2JkVR8F0XRMND0R7uCygk8qklcemMXl-tjrQX4-NNbwagOaJldFMZjYwQHvfbi9oxrnYtj-2Yf4WQ3LqhkLlYvZL6uwHkFK1a43cSHE9ZzwaiS2E3FZGNNZIncVXYXXV1TiiXQzR4BCeR0sYfAhA3_nu46rremaQwxiv2WqOzlLmJOowOEC7SU3XImtxehi1aT3du3ASqCPscAyZGaVPeYh4eb-uqZ7INnPBeIRMk2PPWS4lKWjY0Mq94IIY6uW9skYeXvmVuQkH191ej_JmZrz1ovLCyi4J2X9IMTJSemIK4vxGJJ4p0aYMv5yCVZ5wg3Sr9nlG83ZKjzf3XH5jzUQvNpszvh0DDouQGNOlzDHOC-iCbjRS6mcpm479H8MLp4dtIkk3JtC4EP4eE8Wt_4At69HpbMIz6tzNiaRCugsKA82ieEYdZ9fyUONHOm0PPMNrqAarpwndco55gt3b0gLU878YRVASNx694hsqk2aWx3P6jPL5jCTK9at1m12Iw0Ssyul-m8_bd7CptjgTUMtE87WKSepyrht5E05Eyq1VM82R-0rx6-IkGM-atUY1D9=w821-h438-s-no?authuser=0",
+      "alt": "Slide 1"
+    },
+    {
+      "number": "2",
+      "src": "https://lh3.googleusercontent.com/weAtumMAyEx7EL3mbFOSK8qPeKjznGxABwZb7-UwS4s6D-lqcs5veRfZYtz7tnHfPUNe7_LDFS_BXtg-eaRCcyngxf9Oa9WQwYV38NCVauFeLu0szgPsCPF9kTQFFW55-Xw_Gcul5hSSdddasziLXbZEXu8tjDmRf5vID7gU9Yp0HLP87szygXF5bh79LX-j91fs0A7MQTueHgHDYTZl7hHTEtJa_QkxHp2IZyhRss7LsR1M35Pxdgi2PhFoMNeLaRbPOSi_f9fNGsoN15RPmTOH3IpUNLdH3VJhWBY8_QIaqi0exhQYbBRfA8m6nXNYkgr0mubs1Xhv16SILQhSTituNYEDxk-vWlyTFOZcK0BaE0fH78yB7pXWPVm8By5RrLXoXGP3wmBWiQBBD4Vm5LBe75WQRVGey9pHkQShPev0RXF17l4bewTwBIzBK-LvcwJQ5LjU1ihZbMBM4lcZgbUjgygLwrjZgZ2ELWlja3Hn-ByjHa9uuu7SwUUYH-ZKRv-p1zY0oX0BHqE_iBckHsPqDJvlldwvRZJ7Bwi1Tig98kxoSRIhq0dulPTR9Q0FJdtKpfag_rsP90GPbN3cnnf3L2sjxQDZDNpY5I4IgwMstauOltWLhOgubTPPlWIp7GlVhjjYDX2aB3VArNShhYnPvox8EY3bfWBDjLCa1-r36ReVVyYH8_5sL2LXUor2XCnir7TlAfRmGlFvz4YOgjaKqj2xnFRA1MGD3qMXCaspWnYsrQMEK1pEk5n9rNHybrvI5b9RXmb6cXbHvnQm_WCKQMW4omAxWhDggDFCQnECB2qsxtMKnONDHZxAL0X1UypEY3QrWX0JW-mkAC1B3FFvNQgKL0tSuDNnnaUZc2ufYVBdblDIIcoQ_aK69LZh2Bpm0NPAc7XU0zWYquYiN3Vka4lQz1XtkiEAlDggDZT1=w821-h438-s-no?authuser=0",
+      "alt": "Slide 2"
+    },
+    {
+      "number": "3",
+      "src": "https://lh3.googleusercontent.com/8hVvx9kP8taNvvxLoiNnKatztXBo5-sOSrW1Fbdh-C-l9EMJwCrk5YLWBfVgIj7dMHeJVe9jB8SnojOa4L5jtpqu7F2Lrvi40CeWurpmeaJWfuv4VDk15l84VnshsmAz0lm_ZH-4t_7DsD1DvV4iHH3AgR2PWx5qRKS-qTbulJLlUN4X2Cgrmfltw0u69bc2wJ95QPn7CVRha82x4fl8lPcBxnKO5OMlsm2Jq31gkL2-9EXb0CRggz78Vt4C2NL6onNUbyERy6Wn4R-LhHU6o-vsp6alv1K4nZKlIgQutzV3OJfVErXHK0qJiTFCZlKzwJslcilPdXXXcYyLg0JBoKLoVgHeEYObRmqqIgPQwc29nLODREoacK1SUICPrku4XXs4tEhopBeztFcDA0oy6IBAYeE8rjA6UvNfPSweN2wSkpFi_PezpTuwvGEzT0ab1c8HgI8N4J5GoYBsQBJPtmHlIPTdvqNz85SJ-LtKRsKtwjMjEWZLMX2BuMY4YrMdtB227TOkJuyXCzGf4sXierC0iSnsf9G5oJQNiXIEfjYBCo9pBAfOiKrV3QUE3UdQ3sdkxh8rcCneOrSriuKXlcMCHGRktA5Hnqh2dtyEibco1kyVx70jv_WSNYOV13Clyxu3V8rImB1jpsAUkgwa9vDKhkjltkEqO22JurWB-nwqVMaa83MNfADHjoCmGgBlpLatMO3KOelovVLbLahMUlNvcdM1AZNtGjiYXTJieXBjTkCSd9GSgTWUuOda65fhV-MOXpA3ajrOXtKwf5nm3_DaISJijZSQJOkrUiFvs6puUxqj-FfxLZDEV7y_INLk1JoqD7n11_itCPSqnc9g5OP5yORsBL7B0s0PnXW0xP2UvUttM5XdKgDxwMXA_ehCSoayPMwgNwpW9c79mgS6wo29maVMm7ZAIMt1MOK4BqR5=w821-h438-s-no?authuser=0",
+      "alt": "Slide 3"
+    }
+  ],
+  "bloqlar": [
+    {
+      "photo": "https://plus.unsplash.com/premium_photo-1661274145140-5f04566233c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "date": "4 mart, 2023",
+      "title": "Masaj nə üçün hər kəs üçün olduqca vacibdir?",
+      "comment": "Sağlamlaşdırıcı masaj tibb üçün çox vacib prosedurdur. Bu yolla bir sıra xəstəliklərdən yaxa qurtarmaq və ya ən profilaktik tədbir görmək olar.",
+      "orderNum": "459",
+      "link": "az"
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      "date": "4 aprel, 2023",
+      "title": "Video oyunlar yoxsa masaüstü oyunlar?",
+      "comment": "Uşaqların tərbiyə və dünyagörüşünün formalaşmasında oyunların böyük rolu var. Müasir uşaqları oyuncaqlar maraqlandırmır.",
+      "orderNum": "982",
+      "link": "az"
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1565895405139-e188df996e0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=850&q=80",
+      "date": "4 yanvar, 2023",
+      "title": "Sağlam qidalanma nədir və necə olmalıdır?",
+      "comment": "Gün ərzində yediyimiz qidalar orqanizmin gündəlik ehtiyacı olduğu vitamin və mineralları ödəməlidir.",
+      "orderNum": "1256",
+      "link": "az"
+    }
+  ],
+  "suallar": [
+    {
+      "question": "Təmizlik xidmətinə təmizlik vasitələri və avadanlıq daxildir?",
+      "answer": "Lorem ipsum dolor sit amet consectetur. Sed vitae cursus vitae felis dictum praesent nunc. In at elit lorem vitae sed in eget non cursus. Arcu suscipit lacus in tristique. Ut porttitor tellus lacinia purus egestas egestas posuere quis donec. Sit pellentesque felis tristique quisque purus. Duis"
+    },
+    {
+      "question": "Gündəlik təmizliyə pəncərələrin yuyulması daxildir?",
+      "answer": "Lorem ipsum dolor sit amet consectetur. Sed vitae cursus vitae felis dictum praesent nunc. In at elit lorem vitae sed in eget non cursus. Arcu suscipit lacus in tristique. Ut porttitor tellus lacinia purus egestas egestas posuere quis donec. Sit pellentesque felis tristique quisque purus. Duis"
+    },
+    {
+      "question": "Cagir.az-ın digər təmizlik şirkətlərindən fərqləndirən əsas xüsusiyyətləri nədir?",
+      "answer": "Lorem ipsum dolor sit amet consectetur. Sed vitae cursus vitae felis dictum praesent nunc. In at elit lorem vitae sed in eget non cursus. Arcu suscipit lacus in tristique. Ut porttitor tellus lacinia purus egestas egestas posuere quis donec. Sit pellentesque felis tristique quisque purus. Duis"
+    },
+    {
+      "question": "Cagir.az-ın digər təmizlik şirkətlərindən fərqləndirən əsas xüsusiyyətləri nədir?",
+      "answer": "Lorem ipsum dolor sit amet consectetur. Sed vitae cursus vitae felis dictum praesent nunc. In at elit lorem vitae sed in eget non cursus. Arcu suscipit lacus in tristique. Ut porttitor tellus lacinia purus egestas egestas posuere quis donec. Sit pellentesque felis tristique quisque purus. Duis"
+    }
+  ],
+
+  "xidmetler": [
+    {
+      "photo": "https://images.unsplash.com/photo-1563453392212-326f5e854473?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "title": "Təmizlik xidməti",
+      "price": "35 manatdan başlayan qiymətlər"
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
+      "title": "Usta xidməti",
+      "price": "15 manatdan başlayan qiymətlər"
+    },
+    {
+      "photo": "https://plus.unsplash.com/premium_photo-1661284919440-09addf263c28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
+      "title": "Masaj xidməti",
+      "price": "40 manatdan başlayan qiymətlər"
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
+      "title": "Gözəllik xidməti",
+      "price": "10 manatdan başlayan qiymətlər"
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1220&q=80",
+      "title": "Yoqa – Meditasiya",
+      "price": "15 manatdan başlayan qiymətlər"
+    },
+    {
+      "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
+      "title": "Əyləncə",
+      "price": "25 manatdan başlayan qiymətlər"
+    }
+  ],
+
+  "icracilar": [
+    {
+      "photo": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "name": "Famil Mahmudov",
+      "job": "Elektrik ustası",
+      "title": "Mən, Mahmudov Famil cagir.az -da elektrik ustası ve baş usta olaraq çalışıram. Bütün növ elektrik işlərinin  görülməsi, xəttlərin çəkilməsi və ağıllı ev sistemlərinin qurulması ilə məşğulam."
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+      "name": "Turgut Mahmudov",
+      "job": "Kombi ustası",
+      "title": "Mən, Mahmudov Famil cagir.az -da elektrik ustası ve baş usta olaraq çalışıram. Bütün növ elektrik işlərinin görülməsi, xəttlərin çəkilməsi və ağıllı ev sistemlərinin qurulması ilə məşğulam."
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80",
+      "name": "Sabuhi Mahmudov",
+      "job": "Santexnik",
+      "title": "Mən, Mahmudov Famil cagir.az -da elektrik ustası ve baş usta olaraq çalışıram. Bütün növ elektrik işlərinin  görülməsi, xəttlərin çəkilməsi və ağıllı ev sistemlərinin qurulması ilə məşğulam."
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      "name": "Kalil Mahmudov",
+      "job": "Qapı-pəncərə ustası",
+      "title": "Mən, Mahmudov Famil cagir.az -da elektrik ustası ve baş usta olaraq çalışıram. Bütün növ elektrik işlərinin  görülməsi, xəttlərin çəkilməsi və ağıllı ev sistemlərinin qurulması ilə məşğulam."
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+      "name": "Turgut Mahmudov",
+      "job": "Kombi ustası",
+      "title": "Mən, Mahmudov Famil cagir.az -da elektrik ustası ve baş usta olaraq çalışıram. Bütün növ elektrik işlərinin görülməsi, xəttlərin çəkilməsi və ağıllı ev sistemlərinin qurulması ilə məşğulam."
+    }
+  ],
+
+  "reyler": [
+    {
+      "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "name": "Natavan Həsənova",
+      "rey": "Bu cür saytın olması yaxşıdır. Xidmətdən faydalanmışam və bəyənmişəm.",
+      "stars": "4",
+      "jobs": [
+        "Leke temizleme",
+        "Xadime",
+        "Obyekt temizleme",
+        "Pencere temizleme"
+      ]
+    },
+    {
+      "photo": "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "name": "Altun Əliyev",
+      "rey": "Çox xoşuma gəldi. cagir.az-ı bəyənirəm. Xidmətdən olduqca çox razı qaldım.",
+      "stars": "5",
+      "jobs": [
+        "Leke temizleme",
+        "Xadime",
+        "Obyekt temizleme",
+        "Pencere temizleme"
+      ]
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
+      "name": "Fidan Əhmədova",
+      "rey": "Usta çağırdım, gecikmədən gəldi. Xidmətdən razı qaldım.",
+      "stars": "4",
+      "jobs": [
+        "Leke temizleme",
+        "Xadime",
+        "Obyekt temizleme",
+        "Pencere temizleme"
+      ]
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=399&q=80",
+      "name": "Nurlan Quliyev",
+      "rey": "Nəhayət ki, bu cür sayt tapdım. Təşəkkürlər cagir.az",
+      "stars": "3",
+      "jobs": [
+        "Leke temizleme",
+        "Xadime",
+        "Obyekt temizleme",
+        "Pencere temizleme"
+      ]
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+      "name": "Altun Əliyev",
+      "rey": "Çox xoşuma gəldi. cagir.az-ı bəyənirəm. Xidmətdən olduqca çox razı qaldım.",
+      "stars": "5",
+      "jobs": [
+        "Leke temizleme",
+        "Xadime",
+        "Obyekt temizleme",
+        "Pencere temizleme"
+      ]
+    }
+  ],
+
   "xidmet_kateqoriyasi": [
     {
       "id": "temizlik-xidmeti",

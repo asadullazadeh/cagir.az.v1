@@ -7,23 +7,24 @@ import icon_az from "@/icons/icon_az.svg";
 import icon_en from "@/icons/icon_en.svg";
 import icon_ru from "@/icons/icon_ru.svg";
 
-export const Navbar = () => {
+// export const Navbar = () => {
+export default function Navbar() {
   const options = [
     {
       value: "1",
       label: (
-        <Image src={icon_az} alt="Azerbaijan flag" width="19" height="19" />
+        <Image src={icon_az} alt="Azerbaijan flag" width="20" height="20" />
       ),
     },
     {
       value: "2",
       label: (
-        <Image src={icon_en} alt="United Kingdom flag" width="19" height="19" />
+        <Image src={icon_en} alt="United Kingdom flag" width="20" height="20" />
       ),
     },
     {
       value: "3",
-      label: <Image src={icon_ru} alt="Russia flag" width="19" height="19" />,
+      label: <Image src={icon_ru} alt="Russia flag" width="20" height="20" />,
     },
   ];
 
@@ -37,18 +38,17 @@ export const Navbar = () => {
 
   return (
     <header>
-      <nav className="px-[60px]">
-        <div className="relative z-50 flex flex-wrap justify-between w-[1392px] h-[51px]">
+      <nav className="w-[1392px]">
+        <div className="relative z-50 flex items-center justify-between h-[51px]">
           {/* Logo */}
-          <Link href="/" className="py-[12px] w-[105px] h-[26px]">
+          <Link href="/" className="w-[105px] h-[26px]">
             <Image src={logo} alt="Cagir.az logo" />
           </Link>
           {/* Icons on the right side */}
           <ul className="flex flex-row justify-center items-center space-x-[30px]">
-          
             {/* search icon */}
             <li>
-              <Link class="group flex relative" href="/">
+              <Link className="group flex relative" href="/">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,7 @@ export const Navbar = () => {
 
             {/* wallet icon */}
             <li>
-              <Link class="group flex relative" href="/">
+              <Link className="group flex relative" href="/">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@ export const Navbar = () => {
             </li>
             {/* Profile icon */}
             <li>
-              <Link class="group flex relative" href="/">
+              <Link className="group flex relative" href="/">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -121,34 +121,37 @@ export const Navbar = () => {
             </li>
             {/* Language choice section */}
             <li>
-              <div>
-                <div className="dropdown inline-block item-center">
-                  <button
-                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="inline-flex items-center"
-                  >
-                    <span>{selectedOption.label}</span>
-                  </button>
-                  <ul
-                    className={`dropdown-menu absolute mt-[-6px] ${
-                      isDropdownOpen ? "block" : "hidden"
-                    }`}
-                  >
-                    {options
-                      .filter((option) => option.value !== selectedOption.value)
-                      .map((option) => (
-                        <li key={option.value}>
-                          <button
-                            onClick={() => handleOptionClick(option)}
-                            className="block mt-[5px] hover:border-solid hover:border-gray-300 hover:border-[1px] 
-                          hover:rounded-full"
-                          >
-                            {option.label}
-                          </button>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
+              <div className="dropdown inline-block item-center">
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="inline-flex items-center pt-[5.33px]"
+                >
+                  <span>{selectedOption.label}</span>
+                </button>
+                <ul
+                  className={`dropdown-menu absolute mt-[-6px] ml-[-2px] ${
+                    isDropdownOpen ? "block" : "hidden"
+                  }`}
+                >
+                  {options
+                    .filter((option) => option.value !== selectedOption.value)
+                    .map((option) => (
+                      <li
+                        key={option.value}
+                        className=" bg-transparent rounded-full hover:bg-gray500
+                      mt-[5px] w-[24px] h-[24px]"
+                      >
+                        <button
+                          onClick={() => handleOptionClick(option)}
+                          className="mt-[2px] ml-[2px]"
+                        >
+                          {option.label}
+                          {/* block mt-[5px] hover:border-solid hover:border-gray-300 hover:border-[2px] 
+                          hover:rounded-full */}
+                        </button>
+                      </li>
+                    ))}
+                </ul>
               </div>
             </li>
           </ul>
@@ -158,49 +161,49 @@ export const Navbar = () => {
         <div className="relative border-b-[1px] border-solid border-white200 z-40 w-[1392px] h-[57px]">
           <div className="flex justify-between">
             <ul className="flex flex-row justify-center items-center font-poppins not-italic font-semibold text-sm leading-[21px] text-gray500 space-x-[40px]">
-              <li >
+              <li>
                 <Link href="/usta/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Təmizlik xidməti
                   </p>
                 </Link>
               </li>
-              <li >
+              <li>
                 <Link href="/usta/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Kombi ustası
                   </p>
                 </Link>
               </li>
-              <li >
+              <li>
                 <Link href="/usta/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Santexnik ustasi
                   </p>
                 </Link>
               </li>
-              <li >
+              <li>
                 <Link href="/usta/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Kondisioner ustası
                   </p>
                 </Link>
               </li>
-              <li >
+              <li>
                 <Link href="/usta/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Paltaryuyan ustası
                   </p>
                 </Link>
               </li>
-              <li >
+              <li>
                 <Link href="/usta/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Elektrik ustası
                   </p>
                 </Link>
               </li>
-              <li >
+              <li>
                 <Link href="/usta/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Digər xidmətlər
@@ -208,17 +211,19 @@ export const Navbar = () => {
                 </Link>
               </li>
             </ul>
-
-            <div className="pt-[7px] pb-[9px]">
-              <Link href="/profil">
-                <button className="text-white bg-cagiraz font-bold transition duration-400 rounded-full transform hover:-translate-y-1">
-                  <p className="py-[10px] px-[26px]">Qeydiyyat</p>
-                </button>
-              </Link>
+            {/* Qeydiyyat button */}
+            <div className="mt-[5px] ">
+              <button
+                className="w-[133px] h-[41px] bg-cagiraz rounded-[30px] py-[10px] px-[26px] 
+              font-poppins font-extrabold text-white text-[14px] leading-[21px] transition duration-400 transform hover:-translate-y-1
+              shadow-btnShdw"
+              >
+                Qeydiyyat
+              </button>
             </div>
           </div>
         </div>
       </nav>
     </header>
   );
-};
+}

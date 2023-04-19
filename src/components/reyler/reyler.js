@@ -1,242 +1,124 @@
-// import Image from "next/image";
-// import Link from "next/link";
-// import logo from "@/public/logo_cagiraz.png";
-// import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import arrow from "@/icons/arrow.svg";
 
-// import icon_az from "@/icons/icon_az.png";
-// import icon_en from "@/icons/icon_en.png";
-// import icon_ru from "@/icons/icon_ru.png";
+const Reyler = ({ reyler }) => (
+  <>
+    <div className="h-[434px]">
+      <div className="absolute ml-[1353px] mt-[54px]">
+        <Image src={arrow} alt="arrow_icon" />
+      </div>
+      <h2 className="text-center mb-[93px] h2-styles">Müştəri rəyləri</h2>
 
-// export const Navbar = () => {
+      <div className="overflow-x-scroll overflow-hidden">
+        <div className="flex gap-x-[60px]">
+          {reyler?.map((rey) => (
+            <div key={rey.id}>
+              <div className="relative w-[302px] h-[274px] rounded-[20px] flex flex-col">
+                <div className="p-[30px] space-y-[15px]">
+                  {/* photo, name */}
+                  <div className="flex gap-x-[15px]">
+                    <Image
+                      width={65}
+                      height={65}
+                      src={rey.photo}
+                      alt="Profile picture"
+                      className="z-50 rounded-full w-[65px] h-[65px] ml-[7px] mt-[7px]"
+                    />
+                    <div className="absolute z-40">
+                      <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[65px] h-[65px] mt-0 ml-0"></div>
+                      <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[65px] h-[65px] mt-[7px] ml-[14px]"></div>
+                      <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[65px] h-[65px] ml-[2px] mt-[14px]"></div>
+                    </div>
 
-//   const options = [
-//     { value: "1", label: <Image src={icon_az} alt="Azerbaijan flag" width="16" height="16" /> },
-//     { value: "2", label: <Image src={icon_en} alt="United Kingdom flag" width="16" height="16" /> },
-//     { value: "3", label: <Image src={icon_ru} alt="Russia flag" width="16" height="16" /> },
-//   ];
-  
-//   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-//   const [selectedOption, setSelectedOption] = useState(options[0]);
+                    <h6 className="w-[72px] h-[42px] mt-[18px] h6-styles">
+                      {rey.name}
+                    </h6>
+                  </div>
 
-//   const handleOptionClick = (option) => {
-//     setSelectedOption(option);
-//     setIsDropdownOpen(false);
-//   };
+                  {/* rey */}
+                  <div className="w-[242px] h-[54px] ">
+                    <p className="font-poppins font-semibold italic text-[12px] leading-[18px] text-black100">
+                      {rey.rey}
+                    </p>
+                  </div>
 
+                  {/* review stars */}
+                  <div className="flex items-center mt-[15px]">
+                    <svg
+                      aria-hidden="true"
+                      className="w-[14px] h-[13px] text-yellow-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title>First star</title>
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="w-[14px] h-[13px] text-yellow-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title>Second star</title>
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="w-[14px] h-[13px] text-yellow-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title>Third star</title>
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="w-[14px] h-[13px] text-yellow-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title>Fourth star</title>
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="w-[14px] h-[13px] text-yellow-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title>Fiveth star</title>
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                  </div>
 
-//   return (
-//     <header>
-//       <nav className="px-[60px]">
-//         <div className="relative z-50 flex flex-wrap justify-between w-[1392px] h-[51px]">
-//           {/* Logo */}
-//           <Link href="/" className="py-[12px] w-[105px] h-[26px]">
-//             <Image src={logo}  alt="Cagir.az logo" />
-//           </Link>
-//           {/* Icons on the right side */}
-//           <ul className="flex flex-row items-center space-x-[30px]">
-//             {/* search icon */}
+                  {/* scroll section for services  */}
+                  <div className=" overflow-x-scroll overflow-hidden">
+                    <div className="flex gap-x-[4px]">
+                      {rey.jobs?.map((job) => (
+                        <div key={job.name}>
+                          <div className="border rounded-lg border-cagiraz">
+                            <p class="font-poppins non-italic font-semibold text-[10px] leading-[15px] px-[10px] py-[4px] text-cagiraz whitespace-nowrap">
+                              {job}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </>
+);
 
-//             <li>
-//               <Link class="group flex relative" href="/">
-//                 <span>
-//                   <svg
-//                     xmlns="http://www.w3.org/2000/svg"
-//                     width="16"
-//                     height="16"
-//                     fill="currentColor"
-//                     className="bi bi-search text-gray900 hover:text-black500"
-//                     viewBox="0 0 16 16"
-//                   >
-//                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-//                   </svg>
-//                 </span>
-//                 <span
-//                   className="w-[47px] h-[23px] mt-[9px] rounded-[5px] py-[4px] px-[6px] font-poppins font-medium 
-//                   text-[10px] leading-[15px] bg-black500 text-white group-hover:opacity-100 transition-opacity absolute left-1/2 
-//                   -translate-x-1/2 translate-y-full opacity-0"
-//                 >
-//                   Axtarış
-//                 </span>
-//               </Link>
-//             </li>
-
-//             {/* wallet icon */}
-//             <li>
-//               <Link class="group flex relative" href="/">
-//                 <span>
-//                   <svg
-//                     xmlns="http://www.w3.org/2000/svg"
-//                     width="16"
-//                     height="16"
-//                     fill="currentColor"
-//                     className="bi bi-wallet2 text-gray900 hover:text-black500"
-//                     viewBox="0 0 16 16"
-//                   >
-//                     <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z" />
-//                   </svg>
-//                 </span>
-//                 <span
-//                   className="w-[47px] h-[23px] mt-[9px] rounded-[5px] py-[4px] px-[6px] font-poppins font-medium 
-//                   text-[10px] leading-[15px] bg-black500 text-white group-hover:opacity-100 transition-opacity absolute left-1/2 
-//                   -translate-x-1/2 translate-y-full opacity-0"
-//                 >
-//                   Ödəniş
-//                 </span>
-//               </Link>
-//             </li>
-//             {/* Profile icon */}
-//             <li>
-//               <Link class="group flex relative" href="/">
-//                 <span>
-//                   <svg
-//                     xmlns="http://www.w3.org/2000/svg"
-//                     width="16"
-//                     height="16"
-//                     fill="currentColor"
-//                     className="bi bi-person text-gray900 hover:text-black500"
-//                     viewBox="0 0 16 16"
-//                   >
-//                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-//                   </svg>
-//                 </span>
-//                 <span
-//                   className="w-[47px] h-[23px] mt-[9px] rounded-[5px] py-[4px] px-[6px] font-poppins font-medium 
-//                   text-[10px] leading-[15px] bg-black500 text-white group-hover:opacity-100 transition-opacity absolute left-1/2 
-//                   -translate-x-1/2 translate-y-full opacity-0"
-//                 >
-//                   Giriş et
-//                 </span>
-//               </Link>
-//             </li>
-
-
-
-
-//             {/* Language choice section */}
-//             <li> 
-
-
-
-
-
-
-
-
-
-
-//             <div className="">
-//               <div className="dropdown inline-block relative">
-//                 <button
-//                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-//                   className="bg-gray-300 w-[19px] h-[19px] font-semibold py-1 px-1 rounded-full inline-flex items-center focus:outline-none"
-//                 >
-//                   <span className="mr-1">{selectedOption.label}</span>
-                  
-//                 </button>
-//                 <ul
-//                   className={`dropdown-menu absolute ${
-//                     isDropdownOpen ? "block" : "hidden"
-//                   } text-gray-700 pt-1`}
-//                 >
-//                   {options
-//                     .filter((option) => option.value !== selectedOption.value)
-//                     .map((option) => (
-//                       <li key={option.value}>
-//                         <button
-//                           onClick={() => handleOptionClick(option)}
-//                           className="rounded-full bg-gray-200 hover:bg-gray-400 py-1 px-1 block whitespace-no-wrap w-full"
-//                         >
-//                           {option.label}
-//                         </button>
-//                       </li>
-//                     ))}
-//                 </ul>
-//               </div>
-//             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//             </li>
-//           </ul>
-//         </div>
-
-//         <div className="relative z-40 w-[1392px] h-[57px] border-b-[1px] border-solid border-white200">
-//           <div className="flex justify-between">
-//             <ul className="flex flex-row font-poppins not-italic font-semibold text-sm leading-[21px] text-gray500 space-x-[40px]">
-//               <li className="w-[117px] h-[21px] pt-[13px] pb-[22px]">
-//                 <Link href="/usta/kombi-ustasi">
-//                   <p className="transition duration-300 hover:text-black">
-//                     Təmizlik xidməti
-//                   </p>
-//                 </Link>
-//               </li>
-//               <li className="w-[94px] h-[21px] pt-[13px] pb-[22px]">
-//                 <Link href="/usta/kombi-ustasi">
-//                   <p className="transition duration-300 hover:text-black">
-//                     Kombi ustası
-//                   </p>
-//                 </Link>
-//               </li>
-//               <li className="w-[118px] h-[21px] pt-[13px] pb-[22px]">
-//                 <Link href="/usta/kombi-ustasi">
-//                   <p className="transition duration-300 hover:text-black">
-//                     Santexnik ustasi
-//                   </p>
-//                 </Link>
-//               </li>
-//               <li className="w-[132px] h-[21px] pt-[13px] pb-[22px]">
-//                 <Link href="/usta/kombi-ustasi">
-//                   <p className="transition duration-300 hover:text-black">
-//                     Kondisioner ustası
-//                   </p>
-//                 </Link>
-//               </li>
-//               <li className="w-[135px] h-[21px] pt-[13px] pb-[22px]">
-//                 <Link href="/usta/kombi-ustasi">
-//                   <p className="transition duration-300 hover:text-black">
-//                     Paltaryuyan ustası
-//                   </p>
-//                 </Link>
-//               </li>
-//               <li className="w-[99px] h-[21px] pt-[13px] pb-[22px]">
-//                 <Link href="/usta/kombi-ustasi">
-//                   <p className="transition duration-300 hover:text-black">
-//                     Elektrik ustası
-//                   </p>
-//                 </Link>
-//               </li>
-//               <li className="w-[109px] h-[21px] pt-[13px] pb-[22px]">
-//                 <Link href="/usta/kombi-ustasi">
-//                   <p className="transition duration-300 hover:text-black">
-//                     Digər xidmətlər
-//                   </p>
-//                 </Link>
-//               </li>
-//             </ul>
-
-//             <div className="pt-[7px] pb-[9px]">
-//               <Link href="/profil">
-//                 <button className="bg-blue-500 text-white hover:text-white font-bold py-2 px-6 rounded transition duration-400 rounded-full transform hover:-translate-y-1 shadow-md hover:shadow-lg focus:shadow-lg">
-//                   Qeydiyyat
-//                 </button>
-//               </Link>
-//             </div>
-//           </div>
-//         </div>
-//       </nav>
-//     </header>
-//   );
-// };
+export default Reyler;
