@@ -4,34 +4,49 @@ import arrow from "@/icons/arrow.svg";
 
 const Xidmetler = ({ xidmetler }) => (
   <>
-    <div className="h-[962px]">
-      <h2 className="relative text-center h2-styles">Xidmətlər</h2>
-      <div className="grid grid-cols-3 mt-[30px] gap-x-[60px] gap-y-[60px]">
-        {xidmetler?.map((xidmet) => (
+    <div className="grid place-items-center">
+      <h2 
+        className="relative text-center font-semibold text-[24px] leading-[36px] text-black500
+      desktop:bold desktop:text-[36px] desktop:leading-[54px]"
+      >
+        Xidmətlər
+      </h2>
+      <div className="grid grid-cols-2 desktop:grid-cols-3 mt-[5px] desktop:mt-[10px] desktop:mt-[30px] gap-[15px] desktop:gap-[60px] px-[10px] desktop:px-[60px]">
+        {xidmetler?.slice(0, 6).map((xidmet) => (
           <div key={xidmet.id}>
             <Link
               href="#"
-              className="block w-[429px] h-[409px] rounded-[25px] hover:drop-shadow-card transition duration-300 bg-white pl-[26px] pt-[28px] pr-[28px] group"
+              className="block rounded-[10px] desktop:rounded-[25px] bg-white px-[11px] desktop:pl-[26px] pt-[10px] desktop:pt-[28px] desktop:pr-[28px] group
+              hover:drop-shadow-card transition duration-300 "
             >
-              <div className="relative w-[367px] h-[283px] mb-[14px]">
+              <div className="relative mb-[5px] desktop:mb-[15px]">
                 <Image
                   width={367}
                   height={283}
                   src={xidmet.photo}
                   alt="Image description"
-                  className="rounded-[20px] h-full w-full object-cover object-center"
+                  className="rounded-[20px] w-full aspect-[123/96] object-cover object-center"
                 />
               </div>
 
-              <div className="hidden absolute transition duration-300 mt-[19px] ml-[341px] group-hover:block transition duration-300">
-                <Image src={arrow} alt="arrow_icon"/>
+              <div class=" grid grid-rows-2 grid-cols-8 grid-flow-col">
+                <div class="row-span-1 col-span-7">
+                  <h5 class="font-semibold text-[12px] leading-[18px] desktop:font-bold desktop:text-[20px] desktop:leading-[30px]">
+                    {xidmet.title}
+                  </h5>
+                </div>
+                <div class="row-span-1 col-span-7">
+                  <p class="font-poppins font-semibold text-[10px] desktop:text-[14px] leading-[15px] desktop:leading-[21px] text-gray900">
+                    {xidmet.price}
+                  </p>
+                </div>
+                <div class="row-span-2 col-span-1 flex justify-end items-center">
+                  <div class="hidden absolute transition duration-300 group-hover:block transition duration-300">
+                    <Image src={arrow} alt="arrow_icon" />
+                  </div>
+                </div>
               </div>
-              <div>
-                <h5 className="h-[31px] h5-styles">{xidmet.title}</h5>
-                <p className="font-poppins font-semibold text-[14px] leading-[21px] text-gray900">
-                  {xidmet.price}
-                </p>
-              </div>
+
             </Link>
           </div>
         ))}

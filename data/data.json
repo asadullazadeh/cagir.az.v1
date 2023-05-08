@@ -3,47 +3,47 @@
     {
       "photo": "https://images.unsplash.com/photo-1563453392212-326f5e854473?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       "title": "Təmizlik xidməti",
-      "price": "35 manatdan başlayan qiymətlər"
+      "price": "35"
     },
     {
       "photo": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Usta xidməti",
-      "price": "15 manatdan başlayan qiymətlər"
+      "price": "15"
     },
     {
       "photo": "https://plus.unsplash.com/premium_photo-1661284919440-09addf263c28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Masaj xidməti",
-      "price": "40 manatdan başlayan qiymətlər"
+      "price": "40"
     },
     {
       "photo": "https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Gözəllik xidməti",
-      "price": "10 manatdan başlayan qiymətlər"
+      "price": "10"
     },
     {
       "photo": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1220&q=80",
       "title": "Yoqa – Meditasiya",
-      "price": "15 manatdan başlayan qiymətlər"
+      "price": "15"
     },
     {
       "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
       "title": "Əyləncə",
-      "price": "25 manatdan başlayan qiymətlər"
+      "price": "25"
     },
     {
       "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
       "title": "Əyləncə",
-      "price": "25 manatdan başlayan qiymətlər"
+      "price": "25"
     },
     {
       "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
       "title": "Əyləncə",
-      "price": "25 manatdan başlayan qiymətlər"
+      "price": "25"
     },
     {
       "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
       "title": "Əyləncə",
-      "price": "25 manatdan başlayan qiymətlər"
+      "price": "25"
     }
   ],
   "partnyorlar": [
@@ -175,32 +175,42 @@
     {
       "photo": "https://images.unsplash.com/photo-1563453392212-326f5e854473?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       "title": "Təmizlik xidməti",
-      "price": "35 manatdan başlayan qiymətlər"
+      "price": "35"
     },
     {
       "photo": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Usta xidməti",
-      "price": "15 manatdan başlayan qiymətlər"
+      "price": "15"
     },
     {
       "photo": "https://plus.unsplash.com/premium_photo-1661284919440-09addf263c28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Masaj xidməti",
-      "price": "40 manatdan başlayan qiymətlər"
+      "price": "40"
     },
     {
       "photo": "https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Gözəllik xidməti",
-      "price": "10 manatdan başlayan qiymətlər"
+      "price": "10"
     },
     {
       "photo": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1220&q=80",
       "title": "Yoqa – Meditasiya",
-      "price": "15 manatdan başlayan qiymətlər"
+      "price": "15"
     },
     {
       "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
       "title": "Əyləncə",
-      "price": "25 manatdan başlayan qiymətlər"
+      "price": "25"
+    },
+    {
+      "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
+      "title": "Əyləncə",
+      "price": "25"
+    },
+    {
+      "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
+      "title": "Əyləncə",
+      "price": "25"
     }
   ],
 

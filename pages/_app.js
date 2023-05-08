@@ -7,8 +7,10 @@ config.autoAddCss = false
 
 export default function MyApp({ Component, pageProps }) {
   return (
+    <div className="font-poppins">
     <Layout>
       <Component {...pageProps} />
     </Layout>
+    </div>
   );
 }

@@ -36,7 +36,7 @@ const Bloq = ({ bloqlar }) => (
               {bloq.comment}
             </p>
 
-            <div className=" flex justify-between mt-[15px]">
+            <div className="flex justify-between mt-[15px]">
               <div className="flex flew-row justify-center items-center space-x-[5px] font-poppins non-italic text-[14px] leading-[21px] text-cagiraz">
                 <Image
                   className="w-[22px] h-[15px]"
@@ -58,6 +58,7 @@ const Bloq = ({ bloqlar }) => (
                 </Link>
               </div>
             </div>
+            
           </div>
         </div>
       ))}
