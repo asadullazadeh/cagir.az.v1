@@ -11,33 +11,33 @@ const PaymentMethod = () => {
         Ödəniş üsulunu seçin
       </p>
       <div className="flex flex-row px-[16px] h-[40px] space-x-[45px] border border-gray-300 rounded-full ">
-        <div class="flex space-x-[10px] items-center">
+        <div className="flex space-x-[10px] items-center">
           <input
             id="default-radio-1"
             type="radio"
             value=""
             name="default-radio"
-            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300  "
+            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300  "
           />
           <label
             for="default-radio-1"
-            class="text-sm font-medium text-gray-900"
+            className="text-sm font-medium text-gray-900"
           >
             Nağd ödəniş
           </label>
         </div>
-        <div class="flex space-x-[10px] items-center">
+        <div className="flex space-x-[10px] items-center">
           <input
             checked
             id="default-radio-2"
             type="radio"
             value=""
             name="default-radio"
-            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300  "
+            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300  "
           />
           <label
             for="default-radio-2"
-            class=" text-sm font-medium text-gray-900 "
+            className=" text-sm font-medium text-gray-900 "
           >
             Kart ilə ödəniş
           </label>

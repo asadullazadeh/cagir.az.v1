@@ -1,5 +1,15 @@
-// import Image from "next/image";
-// import Link from "next/link";
+import React from 'react';
+import Image from "next/image";
+import Link from "next/link";
+function Xidmetler() {
+    return (
+      <div>
+        This is the Xidmetler page.
+      </div>
+    );
+  }
+  
+  export default Xidmetler;
 
 // const Xidmetler = ({ data }) => {
 //   return (

@@ -66,7 +66,7 @@ export default function Navbar() {
                   <li>
                     <Link className="group flex relative" href="/">
                       <span>
-                        <div class="relative group">
+                        <div className="relative group">
                           <Image
                             src={search}
                             alt="search_alt"
@@ -93,7 +93,7 @@ export default function Navbar() {
                   <li>
                     <Link className="group flex relative" href="/">
                       <span>
-                        <div class="relative group">
+                        <div className="relative group">
                           <Image
                             src={wallet}
                             alt="wallet_alt"
@@ -119,7 +119,7 @@ export default function Navbar() {
                   <li>
                     <Link className="group flex relative" href="/">
                       <span>
-                        <div class="relative group">
+                        <div className="relative group">
                           <Image
                             src={profile}
                             alt="profile_alt"
@@ -209,7 +209,7 @@ export default function Navbar() {
               </li>
 
               {/* second part */}
-              <li className="flex justify-between mobile:h-[30px] items-center overflow-hidden	">
+              <li  className="flex justify-between mobile:h-[30px] items-center overflow-hidden	">
                 <Link href="/usta/kombi-ustasi" className="desktop:hidden">
                   <p className="transition duration-300 hover:text-black">
                     Axtar

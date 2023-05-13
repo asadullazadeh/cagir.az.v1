@@ -4,23 +4,33 @@ import arrow from "@/icons/arrow.svg";
 
 const Butun_xidmetler = ({ xidmetler }) => (
   <>
-    <div className="h-[356px]">
-      <h2 className="relative text-center h2-styles">Bütün xidmətlər</h2>
-      <div className="grid grid-cols-4 mt-[60px] gap-x-[60px] gap-y-[60px]">
+    <div className="">
+    <h2
+        className="font-semibold lg:font-bold text-[16px] lg:text-[36px] 
+    leading-[24px] lg:leading-[54px] text-black500 mb-0 lg:mb-[15px] text-center"
+      >
+        Bütün xidmətlər
+      </h2>
+     
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-[15px] sm:mt-[60px] gap-y-[15px] sm:gap-x-[60px] sm:gap-y-[60px]">
         {xidmetler?.map((xidmet) => (
           <div key={xidmet.id}>
             <Link
               href="#"
-              className="block w-[302px] h-[91px] rounded-[25px] hover:drop-shadow-card transition duration-300 bg-white pl-[30px] py-[15px] group"
+              className="flex items-center justify-between w-full aspect-[15/3] sm:aspect-[302/91] rounded-[25px]  hover:drop-shadow-card transition duration-300 bg-white px-[15px] sm:px-[30px] py-[9.5px] sm:py-[15px] group"
             >
-              <div className="hidden absolute transition duration-300 mt-[26.5px] ml-[203px] group-hover:block">
-                <Image src={arrow} alt="arrow_icon" />
-              </div>
               <div>
-                <h5 className="h-[31px] h5-styles">{xidmet.title}</h5>
-                <p className="font-poppins font-semibold text-[12px] w-[140px] leading-[18px] text-gray900 mt-[2px]">
-                  {xidmet.price}
-                </p>
+                      <h5
+                className="relative font-semibold lg:font-bold text-[16px]	lg:text-[20px] leading-[24px] lg:leading-[30px] text-black500"
+              >
+                {xidmet.title}
+              </h5>
+                        <p className="font-medium sm:font-semibold text-[12px] leading-[18px] text-gray900 mt-0 sm:mt-[2px]">
+                          {xidmet.price}
+                        </p>
+              </div>
+              <div className="hidden transition duration-300 sm:group-hover:block">
+                <Image src={arrow} alt="arrow_icon" />
               </div>
             </Link>
           </div>

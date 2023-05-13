@@ -9,10 +9,19 @@ const XidmetCatPage = ({ data, pageName }) => {
       <h1> Xidmet in {pageName} </h1>
       <br></br>
       <div>
-        {data.map((altxidmet) => (  
-          <Link key={altxidmet.id} href={`/${altxidmet.altxidmet}/${altxidmet.id}`} passHref>
+        {data.map((altxidmet) => (
+          <Link
+            key={altxidmet.id}
+            href={`/${altxidmet.altxidmet}/${altxidmet.id}`}
+            passHref
+          >
             <h2>{altxidmet.title}</h2>
-            <Image width={300} height={300} alt={altxidmet.title} src={altxidmet.image} />
+            <Image
+              width={300}
+              height={300}
+              alt={altxidmet.title}
+              src={altxidmet.image}
+            />
             <p>{altxidmet.description}</p>
             <br></br>
           </Link>

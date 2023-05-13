@@ -4,56 +4,56 @@ import arrow from "@/icons/arrow.svg";
 
 const Reyler = ({ reyler }) => (
   <>
-    <div className="px-[10px] desktop:px-[60px]">
+    <div className="">
       <h2
-        className="text-center font-semibold text-[24px] leading-[36px] 
-      desktop:font-semibold desktop:text-[36px] desktop:leading-[54px] mb-[15px] desktop:mb-[90px] text-black500"
+        className="my-h2 mb-0 lg:mb-[15px] text-center"
       >
         Müştəri rəyləri
       </h2>
       <div className="grid place-items-end">
         <Image
-          className="w-[22px] desktop:w-[28px] h-[14px] h-[24px]"
+          className="w-[22px] lg:w-[28px] h-[14px] lg:h-[24px]"
           src={arrow}
           alt="arrow_icon"
         />
       </div>
 
       <div className="overflow-x-scroll overflow-hidden">
-        <div className="flex gap-x-[15px] desktop:gap-x-[60px]">
+        <div className="flex gap-x-[15px] lg:gap-x-[60px]">
           {reyler?.map((rey) => (
             <div key={rey.id}>
-              <div className="relative rounded-[10px] desktop:rounded-[20px] flex flex-col ">
-                <div className="p-[10px] desktop:p-[30px] space-y-[10px] desktop:space-y-[15px]">
+              <div className="w-full aspect-[1/1] lg:aspect-[302/274] relative
+              rounded-[10px] lg:rounded-[20px] flex flex-col">
+                <div className="p-[10px] lg:p-[30px] space-y-[10px] lg:space-y-[15px]">
                   {/* photo, name */}
-                  <div className="flex gap-x-[10px] desktop:gap-x-[15px]">
+                  <div className="flex gap-x-[10px] lg:gap-x-[15px]">
                     <Image
                       width={65}
                       height={65}
                       src={rey.photo}
                       alt="Profile picture"
-                      className="z-50 rounded-full w-[33px] desktop:w-[65px] h-[33px] desktop:h-[65px] ml-[3.5px] desktop:ml-[7px] mt-[3.5px] desktop:mt-[7px] object-cover object-center"
+                      className="z-50 rounded-full w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] ml-[3.5px] lg:ml-[7px] mt-[3.5px] lg:mt-[7px] object-cover object-center"
                     />
                     <div className="absolute z-40">
-                      <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[33px] desktop:w-[65px] h-[33px] desktop:h-[65px] mt-0 ml-0"></div>
-                      <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[33px] desktop:w-[65px] h-[33px] desktop:h-[65px] mt-[3.5px] desktop:mt-[7px] ml-[7px] desktop:ml-[14px]"></div>
-                      <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[33px] desktop:w-[65px] h-[33px] desktop:h-[65px] ml-[1px] desktop:ml-[2px] mt-[7px] desktop:desktop:mt-[14px]"></div>
+                      <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] mt-0 ml-0"></div>
+                      <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] mt-[3.5px] lg:mt-[7px] ml-[7px] lg:ml-[14px]"></div>
+                      <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] ml-[1px] lg:ml-[2px] mt-[7px] lg:lg:mt-[14px]"></div>
                     </div>
 
                     <h6
                       className="w-[80px]
-                    font-semibold desktop:font-bold text-[12px] desktop:text-[14px] leading-[18px] 
-                    desktop:leading-[21px] text-black500 mt-[2px] desktop:mt-[18px]"
+                    font-semibold lg:font-bold text-[12px] lg:text-[14px] leading-[18px]
+                    lg:leading-[21px] text-black500 mt-[2px] lg:mt-[18px]"
                     >
                       <span>{rey.name}</span>
                     </h6>
                   </div>
 
                   {/* rey */}
-                  <div className="w-[140px] desktop:w-[222px] h-[36px] desktop:h-[54px] ">
+                  <div className="overflow-hidden">
                     <p
-                      className="desktop:font-semibold italic text-[8px] desktop:text-[12px] 
-                    text-[12px] desktop:leading-[18px] text-black100"
+                      className="italic font-semibold text-[8px] lg:text-[12px]
+                      leading-[12px] lg:leading-[18px] text-black100"
                     >
                       {rey.rey}
                     </p>
@@ -114,12 +114,12 @@ const Reyler = ({ reyler }) => (
                   </div>
 
                   {/* scroll section for services  */}
-                  <div className=" overflow-x-scroll overflow-hidden w-[140px] desktop:w-[270px]">
+                  <div className=" overflow-x-scroll overflow-hidden w-[140px] lg:w-[270px]">
                     <div className="flex gap-x-[4px]">
                       {rey.jobs?.map((job) => (
                         <div key={job.name}>
                           <div className="border rounded-lg border-cagiraz">
-                            <p class="font-semibold text-[10px] leading-[15px] px-[10px] py-[4px] text-cagiraz whitespace-nowrap">
+                            <p className="font-semibold text-[10px] leading-[15px] px-[10px] py-[4px] text-cagiraz whitespace-nowrap">
                               {job}
                             </p>
                           </div>

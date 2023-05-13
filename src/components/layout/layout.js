@@ -9,7 +9,7 @@ export default function Layout({ children }) {
   return (
     <>
     <div className="">
-      <div className="">
+      <div className="px-[10px] lg:px-[60px]">
         {/* <Navbar /> */}
         <main>{children}</main>
       </div>

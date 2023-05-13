@@ -3,109 +3,109 @@
     {
       "photo": "https://images.unsplash.com/photo-1563453392212-326f5e854473?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       "title": "Təmizlik xidməti",
-      "price": "35"
+      "price": "35 manatdan baslayan"
     },
     {
       "photo": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Usta xidməti",
-      "price": "15"
+      "price": "15 manatdan baslayan"
     },
     {
       "photo": "https://plus.unsplash.com/premium_photo-1661284919440-09addf263c28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Masaj xidməti",
-      "price": "40"
+      "price": "40 manatdan baslayan"
     },
     {
       "photo": "https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Gözəllik xidməti",
-      "price": "10"
+      "price": "10 manatdan baslayan"
     },
     {
       "photo": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1220&q=80",
       "title": "Yoqa – Meditasiya",
-      "price": "15"
+      "price": "15 manatdan baslayan"
     },
     {
-      "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
+      "photo": "https://plus.unsplash.com/premium_photo-1661284919440-09addf263c28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Əyləncə",
-      "price": "25"
+      "price": "25 manatdan baslayan"
     },
     {
-      "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
+      "photo": "https://plus.unsplash.com/premium_photo-1661284919440-09addf263c28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Əyləncə",
-      "price": "25"
+      "price": "25 manatdan baslayan"
     },
     {
-      "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
+      "photo": "https://plus.unsplash.com/premium_photo-1661284919440-09addf263c28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Əyləncə",
-      "price": "25"
+      "price": "25 manatdan baslayan"
     },
     {
-      "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
+      "photo": "https://plus.unsplash.com/premium_photo-1661284919440-09addf263c28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Əyləncə",
-      "price": "25"
+      "price": "25 manatdan baslayan"
     }
   ],
   "partnyorlar": [
     {
       "name": "Kapital",
-
+      "id": "kapital",
       "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
     },
     {
       "name": "Hesab.az",
-
+      "id": "hesabaz",
       "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
     },
     {
       "name": "bakcell",
-
+      "id": "bakcell",
       "logo": "https://bakcell.com/data/red-logo.svg"
     },
     {
       "name": "vizam.az",
-
+      "id": "vizamaz",
       "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
     },
     {
       "name": "talpa",
-
+      "id": "talpa",
       "logo": "https://talpa.az/assets/images/logo.png"
     },
     {
       "name": "TKTA",
-
+      "id": "tkta",
       "logo": "https://www.tkta.edu.az/assets/images/logo_with_text.svg"
     },
 
     {
       "name": "PashaBank",
-
+      "id": "pashabank",
       "logo": "https://www.pashabank.az/templates/images/pashabank-logo-en.svg"
     },
     {
       "name": "Agro Dairy",
-
+      "id": "kapital",
       "logo": "https://www.agrodairy.az/assets/images/logotype.svg"
     },
     {
       "name": "UNDP",
-
+      "id": "kapital",
       "logo": "https://www.agrodairy.az/assets/images/logotype.svg"
     },
     {
       "name": "ArchiCo",
-
+      "id": "kapital",
       "logo": "https://www.agrodairy.az/assets/images/logotype.svg"
     },
     {
       "name": "Beynelxalq Turk Medeniyyet ve Irsi Fondu",
-
+      "id": "kapital",
       "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
     },
     {
       "name": "expressbank",
-
+      "id": "kapital",
       "logo": "https://www.expressbank.az/assets/img/logo.e9fd180b.svg"
     }
   ],
@@ -175,42 +175,50 @@
     {
       "photo": "https://images.unsplash.com/photo-1563453392212-326f5e854473?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       "title": "Təmizlik xidməti",
-      "price": "35"
+      "id": "idd",
+      "price": "35 manatdan baslayan"
     },
     {
       "photo": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Usta xidməti",
-      "price": "15"
+      "id": "idd",
+      "price": "15 manatdan baslayan"
     },
     {
       "photo": "https://plus.unsplash.com/premium_photo-1661284919440-09addf263c28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Masaj xidməti",
-      "price": "40"
+      "id": "idd",
+      "price": "40 manatdan baslayan"
     },
     {
       "photo": "https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
       "title": "Gözəllik xidməti",
-      "price": "10"
+      "id": "idd",
+      "price": "10 manatdan baslayan"
     },
     {
       "photo": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1220&q=80",
       "title": "Yoqa – Meditasiya",
-      "price": "15"
+      "id": "idd",
+      "price": "15 manatdan baslayan"
     },
     {
       "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
       "title": "Əyləncə",
-      "price": "25"
+      "id": "idd",
+      "price": "25 manatdan baslayan"
     },
     {
       "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
       "title": "Əyləncə",
-      "price": "25"
+      "id": "idd",
+      "price": "25 manatdan baslayan"
     },
     {
       "photo": "https://plus.unsplash.com/premium_photo-1664391892863-155a57b0bdfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=450&q=80",
       "title": "Əyləncə",
-      "price": "25"
+      "id": "idd",
+      "price": "25 manatdan baslayan"
     }
   ],
 

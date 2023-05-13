@@ -47,27 +47,27 @@ export default function Carousel1({ carouselPhotos1 }) {
             </div>
 
             {/* search button */}
-            <div class="mt-[15px] mx-[10px] desktop:hidden border border-gray100 border-[1px] rounded-[10px]">
-              <div class="relative flex items-center w-full h-[35px] rounded-lg focus-within:shadow-lg bg-white overflow-hidden">
-                <div class="grid place-items-center h-full w-12 text-gray-300">
+            <div className="mt-[15px] mx-[10px] desktop:hidden border-gray100 border-[1px] rounded-[10px]">
+              <div className="relative flex items-center w-full h-[35px] rounded-lg focus-within:shadow-lg bg-white overflow-hidden">
+                <div className="grid place-items-center h-full w-12 text-gray-300">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
+                    className="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                     />
                   </svg>
                 </div>
 
                 <input
-                  class="peer h-full w-full outline-none text-sm text-gray-700 pr-2"
+                  className="peer h-full w-full outline-none text-sm text-gray-700 pr-2"
                   type="text"
                   id="search"
                   placeholder="Axtar"
@@ -77,7 +77,7 @@ export default function Carousel1({ carouselPhotos1 }) {
 
             <br></br>
             {/* carousel for mobile */}
-            <div className=" w-full mr-0 px-0 desktop:hidden aspect-[32/17]">
+            <div className="w-full mr-0 px-0 desktop:hidden aspect-[32/17]">
               <div
                 id="default-carousel"
                 className="relative overflow-hidden rounded-lg w-full h-full"
@@ -114,15 +114,15 @@ export default function Carousel1({ carouselPhotos1 }) {
             {/* Sosial sebekeler insta, fb, linkedin */}
             <div className="flex justify-start space-x-[20px]">
               {/* Insta icon */}
-              <div class="relative w-[22px] h-[22px]">
+              <div className="relative w-[22px] h-[22px]">
                 {/* before hover */}
-                <div class="transition-opacity duration-300 hover:opacity-0">
+                <div className="transition-opacity duration-300 hover:opacity-0">
                   <Link href="#">
                     <Image src={insta} alt="insta_icon" />
                   </Link>
                 </div>
                 {/* after hover */}
-                <div class="absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-300">
                   <Link href="#">
                     <Image src={insta1} alt="insta_icon" />
                   </Link>
@@ -130,15 +130,15 @@ export default function Carousel1({ carouselPhotos1 }) {
               </div>
 
               {/* Facebook icon */}
-              <div class="relative w-[23px] h-[23px]">
+              <div className="relative w-[23px] h-[23px]">
                 {/* before hover */}
-                <div class="transition-opacity duration-300 hover:opacity-0">
+                <div className="transition-opacity duration-300 hover:opacity-0">
                   <Link href="#">
                     <Image src={fb} alt="fb_icon" />
                   </Link>
                 </div>
                 {/* after hover */}
-                <div class="absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-300">
                   <Link href="#">
                     <Image src={fb1} alt="fb_icon" />
                   </Link>
@@ -146,15 +146,15 @@ export default function Carousel1({ carouselPhotos1 }) {
               </div>
 
               {/* Linkedin icon */}
-              <div class="relative w-[21px] h-[21px]">
+              <div className="relative w-[21px] h-[21px]">
                 {/* before hover */}
-                <div class="transition-opacity duration-300 hover:opacity-0">
+                <div className="transition-opacity duration-300 hover:opacity-0">
                   <Link href="#">
                     <Image src={linkedin} alt="fb_icon" />
                   </Link>
                 </div>
                 {/* after hover */}
-                <div class="absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-300">
                   <Link href="">
                     <Image src={linkedin1} alt="linkedin_icon" />
                   </Link>
@@ -169,7 +169,7 @@ export default function Carousel1({ carouselPhotos1 }) {
       <div className="h-[438px] w-[821px] mr-0 mobile:hidden">
         <div
           id="default-carousel"
-          className="relative h-56 overflow-hidden rounded-lg w-full h-full"
+          className="relative overflow-hidden rounded-lg w-full h-full"
           data-carousel="slide"
         >
           {carouselPhotos1.map((slide, index) => (

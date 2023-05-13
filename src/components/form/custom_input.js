@@ -16,21 +16,21 @@ const CustomInput = () => {
   };
 
   return (
-    <div class="inline-flex items-center border border-black rounded-full pl-[15px] pr-[5px] h-[40px]">
-      <label class="text-gray-600 pr-[8px]">Label</label>
+    <div className="inline-flex items-center border border-black rounded-full pl-[15px] pr-[5px] h-[40px]">
+      <label className="text-gray-600 pr-[8px]">Label</label>
       <button
-        class="bg-cagiraz rounded-full w-[30px] h-[30px] flex justify-center focus:outline-none"
+        className="bg-cagiraz rounded-full w-[30px] h-[30px] flex justify-center focus:outline-none"
         onClick={handleDecrease}
       >
         <Image src={minus} alt="minus_logo" className="self-center" />
       </button>
       <input
-        class="min-w-[8px] max-w-[30px] text-center mx-[8px] focus:outline-none	"
+        className="min-w-[8px] max-w-[30px] text-center mx-[8px] focus:outline-none	"
         type=""
         value={value}
       />
       <button
-        class="bg-cagiraz rounded-full w-[30px] h-[30px] flex justify-center focus:outline-none"
+        className="bg-cagiraz rounded-full w-[30px] h-[30px] flex justify-center focus:outline-none"
         onClick={handleIncrease}
       >
         <Image src={plus} alt="plus_logo" className="self-center" />

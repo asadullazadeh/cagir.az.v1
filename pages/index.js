@@ -8,6 +8,7 @@ import Suallar from "@/src/components/suallar/suallar";
 import Deyerler from "@/src/components/deyerler/deyerler";
 import Bloq from "@/src/components/bloq/bloq";
 import Partnyorlar from "@/src/components/partnyorlar/partnyorlar";
+import Kampaniyalar from "@/src/components/kampaniya/kampaniya";
 import TabBar from "@/src/components/mobile/tab_bar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -60,11 +61,17 @@ export default function Home(props) {
         <Xidmetler {...{ xidmetler }} />
         <Reyler {...{ reyler }} />
         <Icracilar {...{ icracilar }} />
-        {/*<Partnyorlar {...{ partnyorlar }} />
+        <Partnyorlar {...{ partnyorlar }} />
         <Suallar {...{ suallar }} />
+        <Kampaniyalar />
         <Deyerler />
-        <Bloq {...{ bloqlar }} /> */}
-        <TabBar />
+        <Bloq {...{ bloqlar }} />
+        {/*<TabBar />*/}
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
       </main>
     </div>
   );
