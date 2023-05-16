@@ -42,7 +42,6 @@
 
 
 .h1-styles {  
-  font-family: 'Poppins', sans-serif;
   font-weight: 700; /*bold*/
   font-size: 60px;
   line-height: 74px;
@@ -50,7 +49,6 @@
 }
 
 .h1m-styles {  
-  font-family: 'Poppins', sans-serif;
   font-weight: 600; 
   font-size: 28px;
   line-height: 38px;
@@ -70,7 +68,6 @@
 
 /* h3 default classes*/
 .h3-styles {  
-  font-family: 'Poppins', sans-serif;
   font-weight: 700; /*bold*/
   font-size: 32px;
   line-height: 48px;
@@ -79,7 +76,6 @@
 
 /* h4 default classes*/
 .h4-styles {  
-  font-family: 'Poppins', sans-serif;
   font-weight: 700; /*bold*/
   font-size: 28px;
   line-height: 42px;
@@ -88,7 +84,6 @@
 
 
 .h5-styles {  
-  font-family: 'Poppins', sans-serif;
   font-weight: 700; /*bold*/
   font-size: 20px;
   line-height: 30px;
@@ -98,7 +93,6 @@
 
 /* h6 default classes*/
 .h6-styles {  
-  font-family: 'Poppins', sans-serif;
   font-weight: 700; /*bold*/
   font-size: 14px;
   line-height: 21px;

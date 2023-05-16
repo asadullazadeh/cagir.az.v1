@@ -23,10 +23,7 @@ const Promocode = () => {
     };
   
     return (
-      <div className="inline-flex flex-col">
-        <p className="font-poppins font-semibold text-[12px] leading-[18px] text-black500">
-          Promokod
-        </p>
+      <div className="inline-flex flex-col w-full">
         <div className="flex flex-row items-center h-[40px] px-[15px] space-x-[15px] border border-gray-300 rounded-full">
           <input
             type="text"
@@ -44,7 +41,7 @@ const Promocode = () => {
           />
         </div>
         <p
-          className={`ml-auto font-semibold text-[10px] leading-[15px] text-black500 text-danger opacity-${errorMsgOpacity}`}
+          className={`ml-auto font-semibold text-[10px] leading-[15px] text-gray900 lg:text-black500 text-danger opacity-${errorMsgOpacity}`}
         >
           Promokod səhvdir
         </p>

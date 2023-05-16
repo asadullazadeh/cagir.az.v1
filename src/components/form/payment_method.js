@@ -6,18 +6,15 @@ import validation from "@/icons/form/validation.svg";
 
 const PaymentMethod = () => {
   return (
-    <div className="inline-flex flex-col">
-      <p className="font-poppins font-semibold text-[12px] leading-[18px] text-black500">
-        Ödəniş üsulunu seçin
-      </p>
-      <div className="flex flex-row px-[16px] h-[40px] space-x-[45px] border border-gray-300 rounded-full ">
+    <div className="inline-flex flex-col w-full">
+      <div className="flex flex-row justify-between px-[16px] h-[40px] space-x-[45px] border border-gray-300 rounded-full ">
         <div className="flex space-x-[10px] items-center">
           <input
             id="default-radio-1"
             type="radio"
             value=""
             name="default-radio"
-            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300  "
+            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
           />
           <label
             for="default-radio-1"

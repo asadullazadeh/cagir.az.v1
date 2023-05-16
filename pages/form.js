@@ -25,7 +25,7 @@ const Form = () => {
         <br></br>
         {/* Toggle part */}
         <div>
-          {/* <Toggle /> */}
+          <Toggle />
         </div>
         <br></br>
         {/* Xidmeti sec button */}
