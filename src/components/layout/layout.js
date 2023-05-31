@@ -13,7 +13,7 @@ export default function Layout({ children }) {
             <NavbarMobile />
           </div>
 
-          <main className="px-[10px] lg:px-[60px] pt-[40px] lg:pt-0">
+          <main className="px-[10px] lg:px-[60px] ">
             {/* Content */}
             {children}
           </main>

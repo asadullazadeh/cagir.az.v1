@@ -20,11 +20,11 @@ const Partnyorlar = ({ partnyorlar }) => (
         {partnyorlar?.map((partnyor) => (
           <li key={partnyor.id}>
             <Image
-              className="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="#" alt={partnyor.id} 
+              className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
               width={100}
               height={100}
               src={partnyor.logo}
-              alt="logos"
+              alt={partnyor.id}
             />
           </li>
         ))}

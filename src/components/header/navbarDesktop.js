@@ -17,7 +17,7 @@ export default function NavbarDesktop() {
   return (
     <>
       <header className="hidden lg:block">
-        <nav className="relative w-full bg-white top-0 left-0 right-0 ">
+        <nav className="relative w-full bg-white top-0 left-0 right-0">
           {/* 1st navbar */}
           <div className="py-[12px] justify-between mx-auto items-center flex relative">
             {/* 1st navbar-left side-LOGO */}

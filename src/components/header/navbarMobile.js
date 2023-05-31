@@ -18,7 +18,7 @@ export default function NavbarMobile() {
 
   return (
     <>
-      <header className="absolute h-[40px] block lg:hidden">
+      <header className=" h-[40px] block lg:hidden">
         <nav className="w-full bg-white fixed top-0 left-0 right-0 px-[10px] lg:px-[60px]">
           {/* 1st navbar */}
           <div className="justify-between mx-auto ">

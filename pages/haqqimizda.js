@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import phone from "@/icons/phone.svg";
-import envelope from "@/icons/envelope.svg";
-import SocialNetworks from "@/src/components/social_ntwrks";
-import SifarishBtn from "@/src/components/buttons/sifarish_btn";
+
 import video from "@/public/video_about.jpg"
 import Banner from "@/src/components/banner/banner";
 import Deyerler from "@/src/components/deyerler/deyerler";
