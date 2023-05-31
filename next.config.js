@@ -13,7 +13,9 @@ const nextConfig = {
       "lh3.googleusercontent.com",
       "talpa.az",
       "www.facebook.com",
-      "www.itchf.org"
+      "www.itchf.org",
+      "cdn.pixabay.com",
+      "www.kapitalbank.az",
     ],
   },
 };

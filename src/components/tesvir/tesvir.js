@@ -2,13 +2,12 @@ const Tesvir = () => (
   <>
     <div className="">
       <h2
-        className="font-semibold lg:font-bold text-[16px] lg:text-[36px] 
-    leading-[24px] lg:leading-[54px] text-black500 mb-[15px] text-center"
+        className="my-h2 mb-[15px] text-center"
       >
         Təsvir
       </h2>
       <div>
-        <p className="font-normal text-[10px] sm:text-[12px] lg:text-[16px] leading-[18px] sm:leading-[24px] lg:leading-[34px] text-gray900 mt-[15px]">
+        <p className="font-normal lg:font-medium text-[10px] sm:text-[11px] md:text-[12px] lg:text-[13px] xl:text-[14px] 2xl:text-[16px] leading-[18px] sm:leading-[19px] md:leading-[20px] lg:leading-[21px] xl:leading-[22px] 2xl:leading-[24px] lg:leading-[34px] text-gray900 mt-[15px]">
           {" "}
           Əgər siz də temizlik sirketi axtarirsinizsa bize muraciet ederek uygun
           qiymete xidmeti elde ede bilersiniz. Ev temizliyi ve diger temizlik

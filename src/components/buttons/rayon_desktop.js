@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import info_btn from "@/icons/form/info_btn.svg";
 
-const Dropdown = () => {
+const RayonDesktop = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Təmizlik xidməti");
 
@@ -16,9 +16,9 @@ const Dropdown = () => {
       <div className="">
         <div className="flex flex-row justify-between pb-[5px]">
           <label for="button" className="font-semibold text-[12px] leading-[18px] text-black500">Xidməti seç</label>
-          <button>
+          {/* <button>
             <Image src={info_btn} alt="info_btn" />
-          </button>
+          </button> */}
         </div>
 
         <button
@@ -42,51 +42,9 @@ const Dropdown = () => {
             <path d="M10 16a1 1 0 01-.7-.3l-5-5a1 1 0 011.4-1.4L10 13.6l4.3-4.3a1 1 0 011.4 1.4l-5 5a1 1 0 01-.7.3z" />
           </svg>
         </button>
-        <ul
-          className={`${
-            isOpen ? "block" : "hidden"
-          } absolute z-10 w-full mt-[10px] rounded-[10px] border-[1px] border-solid	
-         border-cagiraz bg-white`}
-        >
-          <li
-            className="px-[15px] py-[5px] hover:bg-gray-100"
-            onClick={() => handleOptionClick("Təmizlik xidməti")}
-          >
-            Təmizlik xidməti
-          </li>
-          <li
-            className="px-[15px] py-[5px] hover:bg-gray-100"
-            onClick={() => handleOptionClick("Usta xidməti")}
-          >
-            Usta xidməti
-          </li>
-          <li
-            className="px-[15px] py-[5px] hover:bg-gray-100"
-            onClick={() => handleOptionClick("Masaj xidməti")}
-          >
-            Masaj xidməti
-          </li>
-          <li
-            className="px-[15px] py-[5px] hover:bg-gray-100"
-            onClick={() => handleOptionClick("Gözəllik xidməti")}
-          >
-            Gözəllik xidməti
-          </li>
-          <li
-            className="px-[15px] py-[5px] hover:bg-gray-100"
-            onClick={() => handleOptionClick("Yoqa, Meditasiya")}
-          >
-            Yoqa, Meditasiya
-          </li>
-          <li
-            className="px-[15px] py-[5px] hover:bg-gray-100"
-            onClick={() => handleOptionClick("Əyləncə")}
-          >
-            Əyləncə
-          </li>
-        </ul>
+        
       </div>
     </div>
   );
 };
-export default Dropdown;
+export default RayonDesktop;

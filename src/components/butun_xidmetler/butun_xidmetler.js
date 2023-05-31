@@ -6,8 +6,7 @@ const Butun_xidmetler = ({ xidmetler }) => (
   <>
     <div className="">
     <h2
-        className="font-semibold lg:font-bold text-[16px] lg:text-[36px] 
-    leading-[24px] lg:leading-[54px] text-black500 mb-0 lg:mb-[15px] text-center"
+        className="my-h2 mb-0 lg:mb-[15px] text-center"
       >
         Bütün xidmətlər
       </h2>
@@ -17,7 +16,7 @@ const Butun_xidmetler = ({ xidmetler }) => (
           <div key={xidmet.id}>
             <Link
               href="#"
-              className="flex items-center justify-between w-full aspect-[15/3] sm:aspect-[302/91] rounded-[25px]  hover:drop-shadow-card transition duration-300 bg-white px-[15px] sm:px-[30px] py-[9.5px] sm:py-[15px] group"
+              className="flex items-center justify-between w-full aspect-[15/3] sm:aspect-[302/91] rounded-[25px] drop-shadow-cardAlt lg:drop-shadow-none lg:hover:drop-shadow-cardAlt transition duration-300 bg-white px-[15px] sm:px-[30px] py-[9.5px] sm:py-[15px] group"
             >
               <div>
                       <h5

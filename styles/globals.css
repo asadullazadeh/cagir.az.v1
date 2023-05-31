@@ -55,14 +55,25 @@
   color:#202020;
 }
 
+
+/* h1 default classes*/
+.my-h1 {
+  @apply font-semibold lg:font-bold text-[28px] sm:text-[40px] md:text-[50px] lg:text-[60px] leading-[38px] sm:leading-[50px] md:leading-[62px] lg:leading-[74px];
+}
+
 /* h2 default classes*/
 .my-h2 {
-  @apply font-semibold lg:font-bold text-[16px] sm:text-[24px] md:text-[30px] lg:text-[36px] leading-[24px] sm:leading-[34px] md:leading-[44px] lg:leading-[54px] text-black500 ;
+  @apply font-semibold lg:font-bold text-[16px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] leading-[24px] sm:leading-[30px] md:leading-[36px] lg:leading-[42px] xl:leading-[48px] 2xl:leading-[54px] text-black500 ;
+}
+
+/* h2 default classes*/
+.my-h4 {
+  @apply font-semibold lg:font-bold text-[16px] lg:text-[24px] leading-[24px] lg:leading-[42px] text-black500;
 }
 
 /* h5 default classes*/
 .my-h5 {
-  @apply font-semibold lg:font-bold text-[12px] sm:text-[14px] md:text-[18px] lg:text-[20px] leading-[18px] sm:leading-[22px] md:leading-[26px] lg:leading-[30px] text-black500;
+  @apply font-semibold lg:font-bold text-[12px] sm:text-[14px] md:text-[18px] lg:text-[20px] leading-[18px] sm:leading-[22px] md:leading-[26px] lg:leading-[30px] ;
 }
 
 
@@ -105,3 +116,5 @@
   max-width:min(90%, 1392px);
   margin-inline:auto  ;
 }
+
+

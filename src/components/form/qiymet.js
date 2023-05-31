@@ -13,9 +13,9 @@ const Qiymet = () => {
 
   return (
     <>
-      <div>
+      
         {/* qiymet part */}
-        <div>
+        <div className="rounded-[10px]">
           <div className="flex justify-between items-center ">
             <p className="font-semibold text-[16px] leading-[24px] text-gray900 ">
               Məbləğ
@@ -43,7 +43,7 @@ const Qiymet = () => {
             </p>
           </div>
         </div>
-      </div>
+      
     </>
   );
 };

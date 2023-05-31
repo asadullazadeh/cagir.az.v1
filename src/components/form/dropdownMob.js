@@ -12,17 +12,16 @@ const Dropdown = () => {
     setIsOpen(false);
   };
   return (
-    <div className="hidden lg:block relative">
-      <div className="">
-        <div className="flex flex-row justify-between pb-[5px]">
-          <label for="button" className="font-semibold text-[12px] leading-[18px] text-black500">Xidməti seç</label>
-          <button>
-            <Image src={info_btn} alt="info_btn" />
-          </button>
-        </div>
+    <div className="block lg:hidden relative">
+      <div className="relative">
+        
+        <label for="button" className={`absolute px-[5px] ml-[10px] mt-[-6px] z-10 bg-white 
+        
+           font-medium text-[8px] leading-[12px] text-cagiraz ${isOpen ? "block" : "hidden"}`}>on border</label>
+        
 
         <button
-          className="flex items-center justify-between w-full px-[15px] py-[5px] text-[12px] leading-[18px] font-medium
+          className="relative flex items-center justify-between w-full px-[15px] py-[5px] text-[10px] leading-[15px] font-medium
          text-gray900 bg-white rounded-[10px] focus:outline-none focus:border-cagiraz
          border-[1px] border-solid border-gray900"
           type="button"
@@ -30,7 +29,8 @@ const Dropdown = () => {
           aria-expanded={isOpen ? "true" : "false"}
           onClick={() => setIsOpen(!isOpen)}
         >
-          {selectedOption}
+            <p className={`${isOpen ? "opacity-0" : "opacity-100"}`}>{selectedOption}</p>
+          
           <svg
             className={`w-5 h-5 ml-2 transform transition-transform duration-300 ${
               isOpen ? "rotate-180" : ""
@@ -49,37 +49,37 @@ const Dropdown = () => {
          border-cagiraz bg-white`}
         >
           <li
-            className="px-[15px] py-[5px] hover:bg-gray-100"
+            className="px-[15px] py-[5px] font-medium text-[12px] leading-[18px] text-gray900"
             onClick={() => handleOptionClick("Təmizlik xidməti")}
           >
             Təmizlik xidməti
           </li>
           <li
-            className="px-[15px] py-[5px] hover:bg-gray-100"
+            className="px-[15px] py-[5px] font-medium text-[12px] leading-[18px] text-gray900"
             onClick={() => handleOptionClick("Usta xidməti")}
           >
             Usta xidməti
           </li>
           <li
-            className="px-[15px] py-[5px] hover:bg-gray-100"
+            className="px-[15px] py-[5px] font-medium text-[12px] leading-[18px] text-gray900"
             onClick={() => handleOptionClick("Masaj xidməti")}
           >
             Masaj xidməti
           </li>
           <li
-            className="px-[15px] py-[5px] hover:bg-gray-100"
+            className="px-[15px] py-[5px] font-medium text-[12px] leading-[18px] text-gray900"
             onClick={() => handleOptionClick("Gözəllik xidməti")}
           >
             Gözəllik xidməti
           </li>
           <li
-            className="px-[15px] py-[5px] hover:bg-gray-100"
+            className="px-[15px] py-[5px] font-medium text-[12px] leading-[18px] text-gray900"
             onClick={() => handleOptionClick("Yoqa, Meditasiya")}
           >
             Yoqa, Meditasiya
           </li>
           <li
-            className="px-[15px] py-[5px] hover:bg-gray-100"
+            className="px-[15px] py-[5px] font-medium text-[12px] leading-[18px] text-gray900"
             onClick={() => handleOptionClick("Əyləncə")}
           >
             Əyləncə

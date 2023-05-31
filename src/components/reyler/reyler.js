@@ -32,9 +32,9 @@ const Reyler = ({ reyler }) => (
                       height={65}
                       src={rey.photo}
                       alt="Profile picture"
-                      className="z-50 rounded-full w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] ml-[3.5px] lg:ml-[7px] mt-[3.5px] lg:mt-[7px] object-cover object-center"
+                      className="z-8 rounded-full w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] ml-[3.5px] lg:ml-[7px] mt-[3.5px] lg:mt-[7px] object-cover object-center"
                     />
-                    <div className="absolute z-40">
+                    <div className="absolute z-[-5]">
                       <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] mt-0 ml-0"></div>
                       <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] mt-[3.5px] lg:mt-[7px] ml-[7px] lg:ml-[14px]"></div>
                       <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] ml-[1px] lg:ml-[2px] mt-[7px] lg:lg:mt-[14px]"></div>
@@ -50,7 +50,7 @@ const Reyler = ({ reyler }) => (
                   </div>
 
                   {/* rey */}
-                  <div className="overflow-hidden">
+                  <div className="overflow-hidden min-h-[40px]">
                     <p
                       className="italic font-semibold text-[8px] lg:text-[12px]
                       leading-[12px] lg:leading-[18px] text-black100"

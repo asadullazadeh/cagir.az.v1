@@ -6,8 +6,7 @@ const Icracilar = ({ icracilar }) => (
   <>
     <div className="">
       <h2
-        className="font-semibold lg:font-bold text-[16px] lg:text-[36px]
-        leading-[24px] lg:leading-[54px] text-black500 mb-0 lg:mb-[15px] text-center"
+        className="my-h2 mb-0 lg:mb-[15px] text-center"
       >
         İcraçı profilləri
       </h2>

@@ -8,8 +8,9 @@ import qenaet from "@/icons/deyerler/qenaet.svg";
 
 const Deyerler = () => (
   <div className="">
-    <h2 className="mb-[15px] lg:mb-[60px] my-h2 text-center">Dəyərlər</h2>
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-[10px] sm:gap-x-[45px] md:gap-x-[80px] lg:gap-x-[100px] gap-y-[15px]">
+    <h2 className="my-h2 mb-[15px] lg:mb-[60px] text-center">Dəyərlər</h2>
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-[10px] sm:gap-x-[40px] md:gap-x-[70px] lg:gap-x-[100px] xl:gap-x-[130px] 2xl:gap-x-[156px] 
+    gap-y-[15px]">
       <div className="flex flex-col">
         <div className="flex justify-center items-center w-[30px] lg:w-[60px] h-[30px] lg:h-[60px] mb-[15px] lg:mb-[30px]">
           <Image
@@ -50,7 +51,8 @@ const Deyerler = () => (
         <h5 className="mb-[5px] my-h5">Zamana qənaət</h5>
 
         <p className="font-medium lg:font-semibold text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] leading-[12px] sm:leading-[15px] md:leading-[18px] lg:leading-[21px] text-gray900">
-        Cagir.az-dan istifadə edərək vaxtınıza 100% qənaət edin Bizim xidmətlərimizlə 24 saat artıq sizə az gəlməyəcək.
+          Cagir.az-dan istifadə edərək vaxtınıza 100% qənaət edin Bizim
+          xidmətlərimizlə 24 saat artıq sizə az gəlməyəcək.
         </p>
       </div>
 
@@ -68,11 +70,11 @@ const Deyerler = () => (
           />
         </div>
 
-        <h5 className="mb-[5px] my-h5">Məmnuniyyət
-</h5>
+        <h5 className="mb-[5px] my-h5">Məmnuniyyət</h5>
 
         <p className="font-medium lg:font-semibold text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] leading-[12px] sm:leading-[15px] md:leading-[18px] lg:leading-[21px] text-gray900">
-        Sırada üçüncü olsa da, bizim üçün hər zaman birincidir. Xidmətdən razı qalmağınız üçün ən yaxşısını etməyə daim hazırıq.
+          Sırada üçüncü olsa da, bizim üçün hər zaman birincidir. Xidmətdən razı
+          qalmağınız üçün ən yaxşısını etməyə daim hazırıq.
         </p>
       </div>
 
@@ -93,7 +95,8 @@ const Deyerler = () => (
         <h5 className="mb-[5px] my-h5">Keyfiyyət</h5>
 
         <p className="font-medium lg:font-semibold text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] leading-[12px] sm:leading-[15px] md:leading-[18px] lg:leading-[21px] text-gray900">
-        Yüz dəfə eşitməkdənsə, bir dəfə görmək yaxşıdır. Göstərdiyimiz xidmətlərin keyfiyyətini bir kliklə görə bilərsiniz.
+          Yüz dəfə eşitməkdənsə, bir dəfə görmək yaxşıdır. Göstərdiyimiz
+          xidmətlərin keyfiyyətini bir kliklə görə bilərsiniz.
         </p>
       </div>
     </div>

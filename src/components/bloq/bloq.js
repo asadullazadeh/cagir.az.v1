@@ -2,16 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 
 import views from "@/icons/bloq/views.svg";
+import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn"
 
 const Bloq = ({ bloqlar }) => (
   <div className="">
-    <h2 className="mb-[15px] lg:mb-[30px] my-h2 text-center">Bloq</h2>
+    <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Bloq</h2>
 
     <div className="grid grid-row lg:grid-cols-3 gap-y-[15px] lg:gap-x-[60px]">
       {bloqlar?.map((bloq) => (
         <div key={bloq.name}>
           <div
-            className="p-[15px] lg:p-[30px] rounded-[20px] lg:rounded-[25px] 
+            className="p-[15px] sm:p-[18px] md:p-[21px] lg:p-[24px] lx:p-[27px] 2xl:p-[30px] rounded-[20px] 2xl:rounded-[25px] 
           shadow-rectangle4 lg:shadow-none lg:hover:shadow-rectangle4 transition duration-300"
           >
             <Image
@@ -72,13 +73,8 @@ const Bloq = ({ bloqlar }) => (
       ))}
     </div>
 
-    <div className="flex items-center justify-center max-w-[155px] mx-auto border-2 border-cagiraz rounded-[25px] mt-[15px] lg:mt-[30px]">
-      <Link
-        href="#"
-        className="font-extrabold text-[14px] leading-[21px] px-[26px] py-[9.5px] text-cagiraz"
-      >
-        Hamısına bax
-      </Link>
+    <div className="flex items-center justify-center max-w-[155px] mx-auto rounded-[25px] mt-[15px] lg:mt-[30px]">
+      < PrimaryOutlineSmBtn btnName="Hamısına bax" />
     </div>
   </div>
 );

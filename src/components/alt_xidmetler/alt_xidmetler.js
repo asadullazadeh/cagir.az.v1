@@ -5,24 +5,22 @@ import arrow from "@/icons/arrow.svg";
 const Ustalar = ({ ustalar }) => (
   <>
     <div className="">
-      <h2
-        className="font-semibold lg:font-bold text-[16px] lg:text-[36px] 
-    leading-[24px] lg:leading-[54px] text-black500 mb-0 lg:mb-[15px] text-center"
-      >
-        Usta xidmeti
-      </h2>
+      <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">Usta xidməti</h2>
       <h5
-        className="relative text-center font-semibold lg:font-bold text-[12px]	lg:text-[28px] 
-      leading-[18px] lg:leading-[42px] mb-[15px] lg:mb-[30px] text-gray900"
+        className="relative text-center font-semibold lg:font-bold text-[12px] sm:text-[15px] md:text-[18px] lg:text-[21px] xl:text-[24px] 2xl:text-[28px] 
+      leading-[18px] sm:leading-[22px] md:leading-[27px] lg:leading-[32px] xl:leading-[37px] 2xl:leading-[42px] mb-[15px] lg:mb-[30px] text-gray900"
       >
         Ən çox axtarılan xidmətlər
       </h5>
 
-      <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-[15px] lg:gap-[60px]">
+      <ul
+        className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-[15px] sm:gap-y-[24px] md:gap-y-[33px] lg:gap-y-[42px]
+       xl:gap-y-[51px] 2xl:gap-[60px]"
+      >
         {ustalar?.map((usta) => (
           <li
             key={usta.title}
-            className="rounded-[10px] desktop:rounded-[25px] hover:drop-shadow-card transition duration-300 bg-white"
+            className="rounded-[10px] lg:rounded-[25px] drop-shadow-cardAlt lg:drop-shadow-none lg:hover:drop-shadow-cardAlt transition duration-300 bg-white"
           >
             <Link
               href="#"
@@ -64,62 +62,3 @@ const Ustalar = ({ ustalar }) => (
 );
 
 export default Ustalar;
-
-{
-  /* import Image from "next/image";
-import Link from "next/link";
-import arrow from "@/icons/arrow.svg";
-
-const Ustalar = ({ ustalar }) => (
-  <>
-    <div className="px-[10px] desktop:px-[60px]">
-      <h2
-        className="font-semibold desktop:font-bold text-[16px] desktop:text-[36px] 
-    leading-[24px] desktop:leading-[54px] text-black500 mb-0 desktop:mb-[15px] text-center"
-      >
-        Usta xidmeti
-      </h2>
-      <h5
-        className="relative text-center font-semibold desktop:font-bold text-[12px]	desktop:text-[28px] 
-      leading-[18px] desktop:leading-[42px] mb-[15px] desktop:mb-[30px] text-gray900"
-      >
-        Ən çox axtarılan xidmətlər
-      </h5>
-      <div className="grid sm:grid-cols-2  desktop:grid-cols-4 desktop:gap-[60px]">
-        {ustalar?.map((usta) => (
-          <div key={usta.id} className="flex justify-center">
-            <Link
-              href="#"
-              className="inline-flex desktop:block rounded-[10px] desktop:rounded-[25px] hover:drop-shadow-card 
-              transition duration-300 bg-white p-[10px] desktop:p-[20px] min-w-[300px]  group"
-            >
-              <div className="relative desktop:mb-[15px]">
-                <Image
-                  width={367}
-          
-                  height={283}
-                  src={usta.photo}
-                  alt="Image description"
-                  className="rounded-[5px] desktop:rounded-[20px] w-[70px]  h-[60px] desktop:w-[272px] desktop:h-[205px] mobile:mr-[15px] object-cover object-center"
-                />
-              </div>
-
-            
-              <div className="flex flex-col justify-center">
-                <h5 className="font-bold text-[20px] leading-[30px] text-black500">
-                  {usta.title}
-                </h5>
-                <p className="font-medium desktop:font-semibold text-[12px] desktop:text-[14px] leading-[18px] desktop:leading-[21px] text-gray900 mt-0 desktop:mt-[4px]">
-                  {usta.price}
-                </p>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
-    </div>
-  </>
-);
-
-export default Ustalar;*/
-}

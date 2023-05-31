@@ -12,6 +12,7 @@ import Butun_xidmetler from "@/src/components/butun_xidmetler/butun_xidmetler";
 import Tesvir from "@/src/components/tesvir/tesvir";
 import Banner from "@/src/components/banner/banner";
 import Badge from "@/src/components/badge/badge";
+import Reels from "@/src/components/reels/reels"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,6 +40,7 @@ export default function Usta(props) {
         < Badge />
         < Ustalar {...{ ustalar }} />
         < Butun_xidmetler {...{xidmetler}} /> 
+        < Reels />
         < Banner />
        
         < Reyler {...{reyler}} />

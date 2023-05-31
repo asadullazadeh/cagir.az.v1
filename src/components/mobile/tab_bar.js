@@ -7,7 +7,7 @@ import client from "@/public/client.jpg";
 
 const TabBar = () => (
   <>
-    <div className="h-[55px] desktop:hidden fixed bottom-0 left-0 z-50 w-full bg-white border-t border-gray-200">
+    <div className="h-[55px] block lg:hidden fixed bottom-0 left-0 z-50 w-full bg-white border-t border-gray-200">
       <div className="grid h-full w-inline-block grid-cols-4 mx-auto font-medium">
         <button
           type="button"
