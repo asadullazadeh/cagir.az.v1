@@ -4,7 +4,7 @@ import Link from "next/link";
 import minus from "@/icons/form/minus.svg";
 import plus from "@/icons/form/plus.svg";
 
-const CustomInput = () => {
+const CustomInput = ({name}) => {
   const [value, setValue] = useState(0);
 
   const handleIncrease = () => {
@@ -22,7 +22,7 @@ const CustomInput = () => {
     lg:pl-[15px] pr-[5px] lg:h-[40px]"
     >
       <label className="text-gray-600 pr-[8px] font-semibold text-[10px] leading-[15px] ">
-        <p>Custom input</p>
+        <p>{name}</p>
       </label>
       <div className="flex flex-row">
         <button

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const InputCustomized = () => {
+const InputCustomized = ({label}) => {
   const inputRef = useRef(null);
   const [isClicked, setIsClicked] = useState(false);
 
@@ -25,7 +25,7 @@ const InputCustomized = () => {
   return (
     <div className="flex flex-col gap-y-[5px]">
       <p className="hidden lg:block font-semibold text-[12px] leading-[18px] text-black500">
-        Label
+        {label}
       </p>
       <div className="inline-flex flex-col w-full">
         <div
@@ -39,17 +39,26 @@ const InputCustomized = () => {
               htmlFor="inpt"
               className="block lg:hidden absolute mt-[-45px] px-[10px] z-10 bg-white font-medium text-[8px] leading-[12px] text-cagiraz"
             >
-              Label
+              {label}
             </label>
           )}
           <input
             type="text"
             id="inpt"
             name="inpt"
-            className="block w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0"
-            placeholder={isClicked ? "" : "Label"}
+            className="hidden lg:block  w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0"
+            placeholder={isClicked ? "" : ""}
             onClick={handleClick}
           />
+          <input
+            type="text"
+            id="inpt"
+            name="inpt"
+            className="block lg:hidden w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0"
+            placeholder={isClicked ? "" : label}
+            onClick={handleClick}
+          />
+          
         </div>
       </div>
     </div>

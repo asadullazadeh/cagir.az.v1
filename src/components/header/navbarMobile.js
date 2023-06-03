@@ -8,7 +8,7 @@ import LangSection from "@/src/components/lang_section";
 import search1 from "@/icons/header/search1.svg";
 
 export default function NavbarMobile() {
-  const [navbar, setNavbar] = useState(true);
+  const [navbar, setNavbar] = useState(false);
 
   const [showSecondImage, setShowSecondImage] = useState(false);
 

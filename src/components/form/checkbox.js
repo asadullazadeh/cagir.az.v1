@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const Checkbox = () => {
+const Checkbox = ({name}) => {
   // Checkbox click
   const [isCheckedReact, setIsCheckedReact] = useState(false);
   const handleCheckboxChange = (event, checkboxName) => {
@@ -37,7 +37,7 @@ const Checkbox = () => {
                 }`}
               >
                 <div className="block">
-                  <div className="w-full">Checkmark</div>
+                  <div className="w-full">{name}</div>
                 </div>
               </label>
             </div>

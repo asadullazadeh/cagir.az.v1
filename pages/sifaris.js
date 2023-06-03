@@ -12,15 +12,15 @@ import Textarea from "@/src/components/form/textarea";
 import Download_image from "@/src/components/form/download_image";
 import Promocode from "@/src/components/form/promocode";
 import PaymentMethod from "@/src/components/form/payment_method";
-import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn"
-import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn"
-import LinkSmBtn from "@/src/components/buttons/link_sm_btn"
+import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
+import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
+import LinkSmBtn from "@/src/components/buttons/link_sm_btn";
 
 import info_btn from "@/icons/form/info_btn.svg";
 import Map_Image from "@/public/Map_Image.png";
 import RayonDesktop from "@/src/components/buttons/rayon_desktop";
-import InputCustomized from "@/src/components/buttons/input"
-import MapBtn from "@/src/components/buttons/map_btn"
+import InputCustomized from "@/src/components/buttons/input";
+import MapBtn from "@/src/components/buttons/map_btn";
 
 function Sifaris() {
   const [showSecondChild, setShowSecondChild] = useState(false);
@@ -40,7 +40,7 @@ function Sifaris() {
       {/* sticky element-info button for mobile */}
       <div className="block lg:hidden fixed top-1/2 right-0 pr-[10px] ">
         {/* Content of the sticky element */}
-        <Image src={info_btn} alt="info_btn"  className="w-[25px] h-[25px]" />
+        <Image src={info_btn} alt="info_btn" className="w-[25px] h-[25px]" />
       </div>
       {/* Left side of first part in Sifaris */}
       <div className="lg:col-span-1 min-w-[204px] lg:gap-y-[25px] space-y-[25px]">
@@ -84,15 +84,10 @@ function Sifaris() {
             </p>
           </div>
           <div className="flex flex-wrap gap-[15px] py-0 lg:py-[5px]  lg:order-1">
-            <Checkbox />
-            <Checkbox />
-            <Checkbox />
-            <Checkbox />
-            <Checkbox />
-            <Checkbox />
-            <Checkbox />
-            <Checkbox />
-            <Checkbox />
+            <Checkbox name="50 kv. metrə qədər" />
+            <Checkbox name="50-101 kv. metrə qədər" />
+            <Checkbox name="101-150 kv. metr" />
+            <Checkbox name="150 kv. metrdən çox" />
           </div>
         </div>
         {/* Checkmark and custom input */}
@@ -111,11 +106,12 @@ function Sifaris() {
           </div>
           <div className="flex flex-wrap pb-[15px] gap-y-[15px] py-0 lg:py-[5px] lg:order-1">
             <div className="flex flex-wrap gap-x-[15px] gap-y-[15px]">
-              <Checkbox />
-              <Checkbox />
-              <Checkbox />
-              <Checkbox />
-              <Checkbox />
+              <Checkbox name="Nərdivan" />
+              <Checkbox name="Ütüləmə" />
+              <Checkbox name="Qabları yuma" />
+              <Checkbox name="Pərdələrin yuyulması + ütü" />
+              <Checkbox name="Əlavə hamam / tualet var" />
+              <Checkbox name="Mebelin daxildən təmizlənməsi" />
               <button
                 className=" font-medium lg:font-extrabold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] text-cagiraz "
                 onClick={toggleSecondChild}
@@ -129,10 +125,17 @@ function Sifaris() {
                 showSecondChild ? "block" : "hidden"
               } flex flex-wrap w-full lg:gap-x-[15px] gap-y-[15px] lg:pr-[15px]`}
             >
-              <CustomInput />
-              <CustomInput />
-              <CustomInput />
-              <CustomInput />
+              <CustomInput name="Pəncərə (təmir sonrası (2 metrdən böyük)" />
+              <CustomInput name="Şüşə təmizliyi (alpinist - sadə təmizləmə) kv.m" />
+              <CustomInput name="Şüşə təmizliyi (təmir sonrası) kv.m" />
+              <CustomInput name="Şüşə təmizliyi (sadə təmizləmə) kv.m" />
+
+              <CustomInput name="Şüşə təmizliyi (alpinist-təmir) kv.m" />
+              <CustomInput name="Şüşə təmizliyi (alpinist - sadə təmizləmə) kv.m" />
+              <CustomInput name="Şüşə təmizliyi (təmir sonrası) kv.m" />
+              <CustomInput name="Divan təmizliyi (1 oturacaq)" />
+              <CustomInput name="Şüşə təmizliyi (təmir sonrası) kv.m" />
+              <CustomInput name="Pəncərə (2 metrdən böyük)" />
               <button
                 className="mx-auto lg:m-0  font-medium lg:font-extrabold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] text-cagiraz "
                 onClick={toggleSecondChild}
@@ -149,11 +152,9 @@ function Sifaris() {
           </h5>
           <div className="flex flex-wrap pb-[15px] gap-y-[15px] lg:order-1">
             <div className="flex flex-wrap gap-x-[15px] gap-y-[15px]">
-              <Checkbox />
-              <Checkbox />
-              <Checkbox />
-              <Checkbox />
-              <Checkbox />
+              <Checkbox name="Ev əşyalıdır" />
+              <Checkbox name="Hamam / tualetin kimyəvi dərmanlara qarşı həssaslığı" />
+              <Checkbox name="Oboyun suya qarşı həssaslığı" />
               {/* for textarea/Diger button */}
               <button
                 className="font-medium lg:font-extrabold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] text-cagiraz "
@@ -192,27 +193,25 @@ function Sifaris() {
           <div className="lg:grid lg:grid-cols-10 gap-x-[40px] ">
             <div className="col-span-3 ">
               <div className="flex flex-col h-full justify-between gap-y-[15px] lg:gap-y-0">
-              
-              <InputCustomized />
-              {/* Tarixi sec */}
-              <InputCustomized />
-              {/* map section for mobile */}
-              <div className="flex flex-col blcok lg:hidden space-y-[5px]">
-                <MapBtn />
-                <Image
-                  src={Map_Image}
-                  alt="map_image"
-                  className="w-full aspect-[666/365]"
-                />
-              </div>
-              <Download_image />
-              <Promocode />
-              
-                
+                <InputCustomized />
+                {/* Tarixi sec */}
+                <InputCustomized />
+                {/* map section for mobile */}
+                <div className="flex flex-col blcok lg:hidden space-y-[5px]">
+                  <MapBtn />
+                  <Image
+                    src={Map_Image}
+                    alt="map_image"
+                    className="w-full aspect-[666/365]"
+                  />
+                </div>
+                <Download_image />
+                <Promocode />
+
                 <PaymentMethod />
               </div>
             </div>
-            
+
             <div className="col-span-7 ">
               {/* map section for desktop */}
               <div className="flex flex-col hidden lg:block space-y-[5px]">
@@ -226,7 +225,10 @@ function Sifaris() {
             </div>
             <div className="col-span-3 flex flex-row justify-between pt-[25px] lg:pt-[35px]">
               <LinkSmBtn btnName="Geri" classNames="hidden lg:block" />
-              <PrimaryOutlineSmBtn btnName="Sıfırla" classNames="hidden lg:block" />
+              <PrimaryOutlineSmBtn
+                btnName="Sıfırla"
+                classNames="hidden lg:block"
+              />
               <PrimarySmBtn btnName="Təsdiqlə" />
             </div>
           </div>
