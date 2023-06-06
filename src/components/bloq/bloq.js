@@ -9,7 +9,7 @@ const Bloq = ({ bloqlar }) => (
     <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Bloq</h2>
 
     <div className="grid grid-row lg:grid-cols-3 gap-y-[15px] lg:gap-x-[60px]">
-      {bloqlar?.map((bloq) => (
+      {bloqlar?.slice(0,3).map((bloq) => (
         <div key={bloq.name}>
           <div
             className="p-[15px] sm:p-[18px] md:p-[21px] lg:p-[24px] lx:p-[27px] 2xl:p-[30px] rounded-[20px] 2xl:rounded-[25px] 
@@ -74,7 +74,10 @@ const Bloq = ({ bloqlar }) => (
     </div>
 
     <div className="flex items-center justify-center max-w-[155px] mx-auto rounded-[25px] mt-[15px] lg:mt-[30px]">
-      < PrimaryOutlineSmBtn btnName="Hamısına bax" />
+      <Link href="http://localhost:3000/blog">
+        < PrimaryOutlineSmBtn btnName="Hamısına bax" />
+      </Link>
+      
     </div>
   </div>
 );

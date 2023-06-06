@@ -7,7 +7,7 @@ import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn"
 
 function IsAxtariram() {
   return (
-    <div className="flex flex-col pt-[30px] pb-[50px] lg:pb-[90px]">
+    <div className="flex flex-col pt-[30px] pb-[50px]  md:pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px]">
         <div className="">
             < Image src={WorkWithUsDesktop} alt="WorkWithUsDesktop" className="hidden lg:block w-full aspect-[1392/450]"/>
             < Image src={WorkWithUsMobile} alt="WorkWithUsMobile" className="block lg:hidden w-full aspect-[292/164]" />
@@ -17,8 +17,8 @@ function IsAxtariram() {
         {/* desktop version */}
         <p className="hidden lg:flex flex-col font-normal lg:font-medium text-[12px] lg:text-[16px] leading-[22px] lg:leading-[34px]
         pt-[5px] lg:pb-[15px] " >
-            <span className="mx-auto">Cagir.az müxtəlif sahələr üzrə vakansiya elan edir. Sən də &quot iş axtarıram &quot, &quot maaş </span> 
-            <span className="mx-auto">qane eləmir &quot deyirsənsə bizə qoşul, daha çox müştəriyə çat! Aşağıdakı anketi </span> 
+            <span className="mx-auto">Cagir.az müxtəlif sahələr üzrə vakansiya elan edir. Sən də iş axtarıram, maaş </span> 
+            <span className="mx-auto">qane eləmir deyirsənsə bizə qoşul, daha çox müştəriyə çat! Aşağıdakı anketi </span> 
             <span className="mx-auto">doldur, elə sabahdan işə başla! </span>
             <span className="mx-auto"> İşə müraciət anketi: </span>
         </p>
@@ -26,7 +26,7 @@ function IsAxtariram() {
         <p className=" lg:hidden flex flex-col font-normal lg:font-medium text-[12px] lg:text-[16px] leading-[22px] lg:leading-[34px]
         pt-[5px] lg:pb-[15px] text-gray900" >
             <span className="mx-auto">Cagir.az müxtəlif sahələr üzrə vakansiya elan edir.  </span> 
-            <span className="mx-auto">Sən də &quot iş axtarıram &quot, &quot maaş qane eləmir &quot  </span> 
+            <span className="mx-auto">Sən də iş axtarıram, maaş qane eləmir  </span> 
             <span className="mx-auto">deyirsənsə bizə qoşul, daha çox müştəriyə çat!  </span>
             <span className="mx-auto">Aşağıdakı anketi doldur, elə sabahdan işə başla!  </span>
             <span className="mx-auto pt-[40px]">İşə müraciət anketi:</span>

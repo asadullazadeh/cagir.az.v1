@@ -8,7 +8,7 @@ import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 
 function Elaqe() {
   return (
-    <div className="flex items-center justify-center pt-[30px] lg:pt-[90px]">
+    <div className="flex items-start justify-center  ">
       <div className="flex flex-col items-center">
         <h4 className="my-h4 pb-[30px] lg:pb-[60px]">Bizimlə əlaqə</h4>
         <p className="flex flex-col font-medium lg:font-semibold text-[12px] lg:text-[18px] leading-[18px] lg:leading-[34px] pb-[60px]">

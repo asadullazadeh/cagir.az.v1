@@ -29,7 +29,7 @@ function Sifaris() {
     setShowSecondChild(!showSecondChild);
   };
 
-  const [showTextarea, setshowTextarea] = useState(true);
+  const [showTextarea, setshowTextarea] = useState(false);
 
   const toggleTextarea = () => {
     setshowTextarea(!showTextarea);
@@ -38,7 +38,7 @@ function Sifaris() {
   return (
     <div className="lg:grid lg:grid-cols-4 lg:space-x-[60px]">
       {/* sticky element-info button for mobile */}
-      <div className="block lg:hidden fixed top-1/2 right-0 pr-[10px] ">
+      <div className="block lg:hidden fixed top-3/4 right-0 pr-[10px] ">
         {/* Content of the sticky element */}
         <Image src={info_btn} alt="info_btn" className="w-[25px] h-[25px]" />
       </div>
@@ -155,18 +155,13 @@ function Sifaris() {
               <Checkbox name="Ev əşyalıdır" />
               <Checkbox name="Hamam / tualetin kimyəvi dərmanlara qarşı həssaslığı" />
               <Checkbox name="Oboyun suya qarşı həssaslığı" />
-              {/* for textarea/Diger button */}
-              <button
-                className="font-medium lg:font-extrabold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] text-cagiraz "
-                onClick={toggleTextarea}
-              >
-                {showTextarea ? "" : "Digər"}
-              </button>
             </div>
           </div>
         </div>
         {/* more info section */}
-        <div>
+        <div className="flex flex-col">
+          {}
+
           <div
             className={`${
               showTextarea ? "block" : "hidden"
@@ -174,11 +169,19 @@ function Sifaris() {
           >
             <Textarea />
             {/* for textarea/bagla button */}
+
             <button
               className="mx-auto font-medium lg:font-extrabold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] text-cagiraz "
               onClick={toggleTextarea}
             >
               {showTextarea ? "Bagla" : ""}
+            </button>
+            {/* for textarea/Diger button */}
+            <button
+              className="font-medium lg:font-extrabold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] text-cagiraz "
+              onClick={toggleTextarea}
+            >
+              {showTextarea ? "" : "Digər"}
             </button>
           </div>
         </div>

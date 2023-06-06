@@ -5,11 +5,7 @@ import arrow from "@/icons/arrow.svg";
 const Icracilar = ({ icracilar }) => (
   <>
     <div className="">
-      <h2
-        className="my-h2 mb-0 lg:mb-[15px] text-center"
-      >
-        İcraçı profilləri
-      </h2>
+      <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">İcraçı profilləri</h2>
       <div className="grid place-items-end">
         <Image
           className="w-[22px] lg:w-[28px] h-[14px] lg:h-[24px]"
@@ -18,12 +14,17 @@ const Icracilar = ({ icracilar }) => (
         />
       </div>
 
-      <div className="overflow-x-scroll overflow-hidden">
-        <div className="flex gap-x-[15px] lg:gap-x-[60px]">
+      <div className="overflow-x-scroll overflow-y-hidden ">
+        <div
+          className="flex gap-x-[15px] sm:gap-x-[24px] md:gap-x-[31px] lg:gap-x-[40px] xl:gap-x-[50px] 2xl:gap-x-[60px] 
+        lg:w-[302px] lg:h-[277px] "
+        >
           {icracilar?.map((icraci) => (
             <div key={icraci.id}>
-              <div className="w-full aspect-[195/150] lg:aspect-[302/277] relative
-              rounded-[10px] lg:rounded-[20px] flex flex-col">
+              <div
+                className="w-full h-full 
+              rounded-[10px] lg:rounded-[20px] flex flex-col"
+              >
                 <div className="p-[10px] lg:p-[30px] space-y-[10px] lg:space-y-[15px]">
                   {/* photo, name */}
                   <div className="flex gap-x-[10px] lg:gap-x-[15px] items-center">
@@ -34,7 +35,7 @@ const Icracilar = ({ icracilar }) => (
                       alt="Profile picture"
                       className="rounded-full w-[65px] lg:w-[112px] h-[65px] lg:h-[112px] object-cover object-center"
                     />
-                    <div className="flex-col">
+                    <div className="flex flex-col">
                       <h6
                         className="
                         font-semibold lg:font-bold text-[12px] lg:text-[14px] leading-[18px] 
@@ -44,7 +45,7 @@ const Icracilar = ({ icracilar }) => (
                       </h6>
 
                       <p
-                        className="lg:font-semibold italic text-[8px] lg:text-[12px] 
+                        className="lg:font-semibold italic text-[8px] lg:text-[12px]  
                         lg:leading-[18px] text-black100"
                       >
                         {icraci.job}
@@ -53,10 +54,10 @@ const Icracilar = ({ icracilar }) => (
                   </div>
 
                   {/* icraci */}
-                  <div className="w-[140px] lg:w-[222px] h-auto lg:h-auto ">
+                  <div className="w-[175px] lg:w-[265px] h-full">
                     <p
-                      className="lg:font-semibold italic text-[8px] lg:text-[12px] 
-                    text-[12px] lg:leading-[18px] text-black100"
+                      className="lg:font-semibold italic lg:text-[12px] 
+                    text-[12px] lg:leading-[18px] text-black100 w-full aspect-[175/60]"
                     >
                       {icraci.title}
                     </p>

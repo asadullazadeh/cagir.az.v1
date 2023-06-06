@@ -11,7 +11,7 @@ const Butun_xidmetler = ({ xidmetler }) => (
         Bütün xidmətlər
       </h2>
      
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-[15px] sm:mt-[60px] gap-y-[15px] sm:gap-x-[60px] sm:gap-y-[60px]">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-[15px] sm:mt-[60px] gap-[15px] sm:gap-[40px] md:gap-[45px] lg:gap-[50px] xl:gap-[55px] 2xl:gap-[60px]">
         {xidmetler?.map((xidmet) => (
           <div key={xidmet.id}>
             <Link

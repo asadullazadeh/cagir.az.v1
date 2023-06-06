@@ -8,10 +8,10 @@ import SocialNetworks from "@/src/components/social_ntwrks";
 
 const Footer = () => (
   <>
-    <footer className="lg:px-[60px] pt-[15px] lg:pt-[80px] pb-[60px] lg:pb-[90px] bg-white200">
-      <div className="grid list-none grid-cols-1 lg:grid-cols-4 gap-y-[40px] lg:gap-y-0">
+    <footer className="lg:px-[60px] pt-[15px] lg:pt-[80px] pb-[115px] lg:pb-[90px] bg-white200">
+      <div className="grid grid-cols-1 lg:grid-cols-4 justify-between gap-y-[40px] lg:gap-y-0">
         {/* 1st column-Cagir.az */}
-        <div className="justify-center lg:justify-start order-2 mx-auto lg:mx-0">
+        <div className="justify-center lg:justify-start order-4 lg:order-1 mx-auto lg:mx-0">
           {/* 1st column:1st element */}
           <div className="flex mb-[20px] lg:mb-[30px] justify-center lg:justify-start">
             <Link href="/">
@@ -146,12 +146,12 @@ const Footer = () => (
         {/* 4th column-Yeniliklerden xeberdar ol */}
         <div className="justify-center lg:justify-start order-3 lg:order-4 mx-auto lg:mx-0">
           {/* 4th column:title */}
-          <h2 class="mb-[10px] lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500 text-center lg:text-left">
+          <h2 class="mb-[10px] lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500 text-left">
             Yeniliklərdən xəbərdar ol
           </h2>
-          <ul className="space-y-[10px] lg:space-y-[15px] font-semibold text-[14px] leading-[21px] text-gray900">
+          <ul className="space-y-[10px] lg:space-y-[15px] font-semibold text-[14px] leading-[21px] text-black500">
             {/* 4th column:1st */}
-            <li className="mb-[5px] flex ">
+            <li className="mb-[5px]  ">
               <div href="#" className="">
                 Email yaz
               </div>

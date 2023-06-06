@@ -18,63 +18,53 @@ export default function NavbarMobile() {
 
   return (
     <>
-      <header className=" h-[40px] block lg:hidden">
+      <header className="block lg:hidden">
         <nav className="w-full bg-white fixed top-0 left-0 right-0 px-[10px] lg:px-[60px]">
           {/* 1st navbar */}
-          <div className="justify-between mx-auto ">
-            <div className="flex items-center justify-between lg:block">
-              {/* LOGO */}
-              <Link href="/" className="">
-                <Image
-                  src={logo}
-                  alt="Cagir.az logo"
-                  className="w-[77px] h-[20px]"
-                />
-              </Link>
-              {/* HAMBURGER BUTTON FOR MOBILE */}
-              <div className="flex flex-row items-center">
-                {/* search button */}
-                <div>
-                  {" "}
-                  <Image src={search1} alt="search_alt_1" className=" " />
-                </div>
-                {/* language section */}
-                <div className="pl-[15px]">
-                  {" "}
-                  <LangSection />{" "}
-                </div>
-                <button
-                  className="p-2 text-gray-700 outline-none pl-[20px]"
-                  onClick={() => setNavbar(!navbar)}
-                >
-                  {navbar ? (
-                    <Image
-                      src={close}
-                      width={30}
-                      height={30}
-                      alt="logo"
-                      className="w-[13.75px] h-[11.25px]"
-                    />
-                  ) : (
-                    <Image
-                      src={burger_menu}
-                      width={30}
-                      height={30}
-                      alt="logo"
-                      className="w-[13.75px] h-[11.25px] focus:border-none active:border-none object-cover object-center"
-                    />
-                  )}
-                </button>
+          <div className="flex items-center justify-between lg:block h-[40px] mx-auto">
+            {/* LOGO */}
+            <Link href="/" className="">
+              <Image
+                src={logo}
+                alt="Cagir.az logo"
+                className="w-[77px] h-[20px]"
+              />
+            </Link>
+            {/* HAMBURGER BUTTON FOR MOBILE */}
+            <div className="flex flex-row items-center">
+              {/* search button */}
+              <div>
+                {" "}
+                <Image src={search1} alt="search_alt_1" className=" " />
               </div>
+              {/* language section */}
+              <div className="pl-[15px]">
+                {" "}
+                <LangSection />{" "}
+              </div>
+              <button
+                className="p-2 text-gray-700 outline-none pl-[20px]"
+                onClick={() => setNavbar(!navbar)}
+              >
+                <Image
+                  src={navbar ? close : burger_menu}
+                  width={13.75}
+                  height={11.25}
+                  alt="logo"
+                  className={`w-[13.75px] h-[11.25px] ${
+                    navbar
+                      ? ""
+                      : "focus:border-none active:border-none object-cover object-center"
+                  }`}
+                />
+              </button>
             </div>
           </div>
 
           {/* 2nd navbar */}
-          <div className={` ${navbar ? "" : "hidden"}`}>
-            <ul
-              className="flex flex-col justify-between font-medium text-[12px] leading-[18px] text-gray900 pt-[20px] text-center min-h-[431px]
-               "
-            >
+          <div className={` ${navbar ? "h-screen flex flex-col  " : "hidden"}`}>
+            <ul className="flex flex-col justify-between font-medium h-4/5 mt-[17.5px] text-[12px] xs:text-[14px] sm:text-[16px] md:text-[18px] leading-[18px] xs:leading-[21px]
+            sm:leading-[24px] leading-[27px] text-gray900 text-center ">
               <li>
                 <Link href="/usta/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black">
@@ -118,14 +108,15 @@ export default function NavbarMobile() {
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi" className="pb-[17.5px]">
-                  <p className="transition duration-300 hover:text-black">
+                <Link href="/usta/kombi-ustasi">
+                  <p className="transition duration-300 hover:text-black pb-[17.5px] border-b border-[#EAEAEA]">
                     Digər xidmətlər
                   </p>
                 </Link>
               </li>
 
               {/* second part */}
+
               <li>
                 <Link href="/usta/kombi-ustasi" className="">
                   <p className="transition duration-300 hover:text-black">

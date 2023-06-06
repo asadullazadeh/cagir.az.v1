@@ -6,9 +6,9 @@ import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 
 function Payment() {
   return (
-    <div className="flex flex-col lg:items-center">
+    <div className="flex flex-col md:items-center pt-[50px] ">
       <h2 className="my-h2 text-center pb-[15px]">Ödəniş</h2>
-      <div className="flex flex-col w-full lg:w-1/2 gap-y-[15px]">
+      <div className="flex flex-col w-full md:w-2/3 gap-y-[15px]">
         <InputCustomized label="Ad və soyad" />
         <InputCustomized label="Telefon nömrəsi" />
         <InputCustomized label="Məbləğ" />

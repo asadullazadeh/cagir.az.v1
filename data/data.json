@@ -46,7 +46,7 @@
       "price": "25 manatdan baslayan"
     }
   ],
-  "partnyorlar": [
+  "musteriler": [
     {
       "name": "Kapital",
       "id": "kapital",
@@ -75,7 +75,7 @@
     {
       "name": "TKTA",
       "id": "tkta",
-      "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
+      "logo": "https://www.pashabank.az/templates/images/pashabank-logo-en.svg"
     },
 
     {

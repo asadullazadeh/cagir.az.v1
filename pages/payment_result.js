@@ -9,7 +9,7 @@ import signature from "@/public/signature.jpg";
 
 function Payment() {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center pt-[30px] lg:pt-[60px] pb-[60px]">
       <h2 className="my-h2 text-center pb-[5px] lg:pb-[15px]">
         Ödənişin uğurla tamamlandı
       </h2>
@@ -24,9 +24,10 @@ function Payment() {
       <div className="flex flex-col w-full sm:w-1/2">
       {/* card->button */}
       {/* card */}
-      <div className="flex flex-col  p-[15px] lg:py-[20px] lg:px-[30px] xl:py-[25px] xl:px-[40px] 2xl:py-[30px] 2xl:px-[50px] border rounded-[20px] shadow-[0_4px_16px_rgba(32, 32, 32, 0.15)]">
+      <div className="flex flex-col p-[15px] lg:py-[20px] lg:px-[30px] xl:py-[25px] xl:px-[40px] 2xl:py-[30px] 2xl:px-[50px] 
+       rounded-[20px] shadow-[0_4px_16px_rgba(32, 32, 32, 15%)]">
         {/* logo,qebz */}
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between shadow-[0_4px_16px_rgba(32, 32, 32, 15%)]">
           <div className="">
             <Image src={logo2} alt="logo2" className="w-[56px] h-[40px] " />
           </div>

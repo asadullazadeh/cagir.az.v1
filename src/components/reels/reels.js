@@ -12,12 +12,12 @@ const Reels = () => (
 
     <div>
         <h2
-        className="block lg:hidden my-h2 mb-0 lg:mb-[15px] pb-[15px] lg:pb-[30px] text-center"
+        className="block lg:hidden my-h2 pb-[15px] sm:pb-[20px] md:pb-[25px] text-center"
       >
         Bizi Instagram-da izlə
       </h2>
       <h2
-        className="hidden lg:block my-h2 mb-0 lg:mb-[15px] text-center"
+        className="hidden lg:block my-h2 mb-[30px] text-center"
       >
         Instagram-da bizi izlə!
       </h2>

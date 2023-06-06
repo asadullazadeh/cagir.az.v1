@@ -3,12 +3,17 @@ import Image from "next/image";
 import Link from "next/link";
 import blogData from "@/data/data.json";
 import SocialNetworks from "@/src/components/social_ntwrks";
+import img_banner_blog from "@/public/img_banner_blog.png"
 
 export default function Blog({ bloqlar }) {
+  const [showAllBlogs, setShowAllBlogs] = useState(false);
   const firstBlog = bloqlar[0]; // Accessing the first element
   const allBlogs = bloqlar; // Accessing the all elements
   return (
-    <div className="flex flex-col lg:gap-x-[40px] xl:gap-x-[50px] 2xl:gap-x-[60px] lg:flex-row">
+    <div
+      className="flex flex-col lg:gap-x-[40px] xl:gap-x-[50px] 2xl:gap-x-[60px] lg:flex-row
+    pb-[60px] lg:pb-[90px]"
+    >
       {/* a blog the most readen */}
       <div className="w-full lg:w-2/3 pb-[30px] lg:pb-0">
         <SocialNetworks classNames="hidden lg:flex flex-row gap-x-[20px] pb-[30px]" />
@@ -45,7 +50,7 @@ export default function Blog({ bloqlar }) {
       <SocialNetworks classNames="flex lg:hidden flex-row gap-x-[20px] pb-[30px]" />
 
       {/* on desktop/left section. All blogs, tags, categories */}
-      <div classNames="w-full lg:w-1/3 ">
+      <div classNames="flex flex-col justify-between  w-full lg:w-1/3 ">
         <h4
           className="font-semibold lg:font-bold text-[16px] lg:text-[20px] lg:leading-[30px] leading-[24px] pb-[15px] pt-[30px] lg:pt-0 text-center lg:text-start
         border-t border-[#EAEAEA] lg:border-none"
@@ -53,9 +58,12 @@ export default function Blog({ bloqlar }) {
           Oxşar yazılar
         </h4>
 
-        <div className="flex flex-col gap-y-[15px] max-h-[320px] overflow-y-scroll">
-          {allBlogs.map((blog) => (
-            <div key={blog.id}>
+        <div className="flex flex-col gap-y-[15px] overflow-y-scroll">
+          {allBlogs.map((blog, index) => (
+            <div
+              key={blog.id}
+              className={showAllBlogs || index < 3 ? "" : "hidden"}
+            >
               <div className="flex flex-row gap-x-[10px] lg:gap-x-[20px] p-[10px] rounded-[10px]  shadow-rectangle4 lg:shadow-none">
                 <Image
                   src={blog.photo}
@@ -77,7 +85,7 @@ export default function Blog({ bloqlar }) {
                     >
                       Təmizlik
                     </p>
-                    <p className=" lg:order-1 font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px] text-gray900">
+                    <p className="lg:order-1 font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px] text-gray900">
                       {blog.date}
                     </p>
                   </div>
@@ -88,15 +96,29 @@ export default function Blog({ bloqlar }) {
         </div>
         {/* button daha cox gor */}
         <div className="flex justify-center pt-[30px] lg:pt-[15px]">
+          {/* Daha cox gor button */}
           <button
-            className="lg:py-[10px] lg:px-[26px]
-                      font-medium lg:font-extrabold text-cagiraz text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px]
-                     "
+            className={`lg:py-[10px] lg:px-[26px]
+          font-medium lg:font-extrabold text-cagiraz text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] ${
+            showAllBlogs ? "hidden" : ""
+          }`}
+            onClick={() => setShowAllBlogs(true)}
           >
             Daha çox gör
           </button>
+
+          {/* Bagla button */}
+          <button
+            className={`lg:py-[10px] lg:px-[26px]
+          font-medium lg:font-extrabold text-cagiraz text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] ${
+            showAllBlogs ? "" : "hidden"
+          }`}
+            onClick={() => setShowAllBlogs(false)}
+          >
+            Bağla
+          </button>
         </div>
-        {/* teqler ve kqteqoriyalar bolmesi */}
+        {/* teqler ve kqteqoriyalar bolmesi ve banner */}
         <div className="flex flex-col pt-[60px] gap-y-[60px] lg:border-t border-[#EAEAEA]">
           {/* teqler */}
           <div className="lg:order-2">
@@ -204,12 +226,13 @@ export default function Blog({ bloqlar }) {
               </p>
             </div>
           </div>
+          
         </div>
+        <div className="hidden lg:block pt-[60px]">
+        <Image src= {img_banner_blog} alt="img_banner_blog" />
+        </div>
+        
       </div>
-
-      {/* {bloqlar.map((blog) => (
-        <div key={blog.id}></div>
-      ))} */}
     </div>
   );
 }
