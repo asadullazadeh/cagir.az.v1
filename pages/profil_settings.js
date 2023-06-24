@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import InputCustomized from "@/src/components/buttons/input";
-import InputNumber from "@/src/components/buttons/input_number";
-import InputPassword from "@/src/components/buttons/input_password";
+import InputCustomized from "@/src/components/input/input";
+import InputNumber from "@/src/components/input/input_number";
+import InputPassword from "@/src/components/input/input_password";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
 import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
@@ -48,7 +48,7 @@ function Profil_settings() {
         </div>
         <div className="flex flex-col gap-y-[20px] lg:gap-y-[15px] justify-between lg:w-3/5">
           <InputCustomized label="Ad və soyad" />
-          
+
           <InputNumber label="Nömrə" />
           <InputPassword label="Parol" />
           <div className="flex lg:justify-end py-[30px]">

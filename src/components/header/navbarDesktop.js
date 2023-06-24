@@ -7,7 +7,7 @@ import profile from "@/icons/header/profile.svg";
 import profile1 from "@/icons/header/profile1.svg";
 import wallet from "@/icons/header/wallet.svg";
 import wallet1 from "@/icons/header/wallet1.svg";
-import LangSection from "@/src/components/lang_section";
+import LangSection from "@/src/components/others/lang_section";
 import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
 
 export default function NavbarDesktop() {

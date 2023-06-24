@@ -2,8 +2,27 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import blogData from "@/data/data.json";
-import SocialNetworks from "@/src/components/social_ntwrks";
-import img_banner_blog from "@/public/img_banner_blog.png"
+import SocialNetworks from "@/src/components/others/social_ntwrks";
+import img_banner_blog from "@/public/img_banner_blog.png";
+const kateqoriyalar = [
+  "Heyvan baxımı",
+  "Yoqa, Meditasiya",
+  "Faydalı məlumatlar",
+  "Yeni xəbərlər",
+  "Heyvan baxımı",
+  "Heyvan baxımı",
+  "Heyvan baxımı",
+];
+
+const teqler = [
+  "Heyvan baxımı",
+  "Dərin təmizlik",
+  "Gözəllik",
+  "Psixoloq",
+  "Bərbər",
+  "Biznes",
+  "Texnologiya",
+];
 
 export default function Blog({ bloqlar }) {
   const [showAllBlogs, setShowAllBlogs] = useState(false);
@@ -15,7 +34,8 @@ export default function Blog({ bloqlar }) {
     pb-[60px] lg:pb-[90px]"
     >
       {/* a blog the most readen */}
-      <div className="w-full lg:w-2/3 pb-[30px] lg:pb-0">
+      <div className="w-full lg:w-2/3 pb-[30px] lg:pb-0 
+      drop-shadow-card lg:drop-shadow-none lg:hover:drop-shadow-card transition duration-300">
         <SocialNetworks classNames="hidden lg:flex flex-row gap-x-[20px] pb-[30px]" />
         <Image
           width={300}
@@ -129,48 +149,16 @@ export default function Blog({ bloqlar }) {
               Təqlər
             </h4>
             <div className="flex flex-row flex-wrap gap-[10px] lg:gap-[15px]">
-              <p
-                className="font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px]
+              {teqler.map((teq) => (
+                <div key={teq.id}>
+                  <p
+                    className="font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px]
                   border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz"
-              >
-                Heyvan baxımı
-              </p>
-              <p
-                className="font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px]
-                  border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz"
-              >
-                Dərin təmizlik
-              </p>
-              <p
-                className="font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px]
-                  border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz"
-              >
-                Gözəllik
-              </p>
-              <p
-                className="font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px]
-                  border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz"
-              >
-                Psixoloq
-              </p>
-              <p
-                className="font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px]
-                  border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz"
-              >
-                Bərbər
-              </p>
-              <p
-                className="font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px]
-                  border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz"
-              >
-                Biznes
-              </p>
-              <p
-                className="font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px]
-                  border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz"
-              >
-                Texnologiya
-              </p>
+                  >
+                    {teq}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
           {/* Kateqoriyalar */}
@@ -181,57 +169,24 @@ export default function Blog({ bloqlar }) {
             >
               Kateqoriyalar
             </h4>
+
             <div className="grid grid-cols-2  gap-[10px] lg:gap-[15px]">
-              <p
-                className="font-semibold text-[14px] lg:text-[18px] leading-[21px] lg:leading-[27px]
+              {kateqoriyalar.map((kateqoriya) => (
+                <div key={kateqoriya.id}>
+                  <p
+                    className="font-semibold text-[14px] lg:text-[18px] leading-[21px] lg:leading-[27px]
                   text-cagiraz"
-              >
-                Heyvan baxımı
-              </p>
-              <p
-                className="font-semibold text-[14px] lg:text-[18px] leading-[21px] lg:leading-[27px]
-                  text-cagiraz"
-              >
-                Yoqa, Meditasiya
-              </p>
-              <p
-                className="font-semibold text-[14px] lg:text-[18px] leading-[21px] lg:leading-[27px]
-                  text-cagiraz"
-              >
-                Faydalı məlumatlar
-              </p>
-              <p
-                className="font-semibold text-[14px] lg:text-[18px] leading-[21px] lg:leading-[27px]
-                  text-cagiraz"
-              >
-                Yeni xəbərlər
-              </p>
-              <p
-                className="font-semibold text-[14px] lg:text-[18px] leading-[21px] lg:leading-[27px]
-                  text-cagiraz"
-              >
-                Heyvan baxımı
-              </p>
-              <p
-                className="font-semibold text-[14px] lg:text-[18px] leading-[21px] lg:leading-[27px]
-                  text-cagiraz"
-              >
-                Heyvan baxımı
-              </p>
-              <p
-                className="font-semibold text-[14px] lg:text-[18px] leading-[21px] lg:leading-[27px]
-                  text-cagiraz"
-              >
-                Heyvan baxımı
-              </p>
+                  >
+                    {kateqoriya}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
-          
         </div>
         <div className="hidden lg:block pt-[60px]">
-        <Image src= {img_banner_blog} alt="img_banner_blog" />
+          <Image src={img_banner_blog} alt="img_banner_blog" />
         </div>
-        
       </div>
     </div>
   );

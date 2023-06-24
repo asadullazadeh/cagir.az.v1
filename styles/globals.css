@@ -113,9 +113,57 @@
 
 
 
-.container {
+/* .container {
   max-width:min(90%, 1392px);
   margin-inline:auto  ;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.my-selected:not([disabled]) { 
+  /* font-size:12px;
+  line-height:18px; */
+  font-weight: 800;
+  border: 2px solid currentColor;
+  background-color:rgba(53, 152, 234, 1);
+  color:white;
 }
-
-
+.my-selected:hover:not([disabled]) { 
+  /* font-size:12px;
+  line-height:18px; */
+  font-weight: 800;
+  border-color: rgba(53, 152, 234, 1);
+  color: rgba(53, 152, 234, 1);
+  
+}
+.my-today { 
+  /* font-size:12px;
+  line-height:18px; */
+  font-weight: 800;
+  font-size: 140%; 
+  border-color: rgba(53, 152, 234, 0.15);
+  color:rgba(53, 152, 234, 1);
+}

@@ -3,10 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import video from "@/public/video_about.jpg";
-import Banner from "@/src/components/banner/banner";
-import Deyerler from "@/src/components/deyerler/deyerler";
-import Musteriler from "@/src/components/musteriler/musteriler";
-import Statistika from "@/src/components/statistika/statistika";
+import Banner from "@/src/components/main/banner";
+import Deyerler from "@/src/components/main/deyerler";
+import Musteriler from "@/src/components/main/musteriler";
+import Statistika from "@/src/components/main/statistika";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 export async function getServerSideProps() {
   const data = await import("/data/data.json");
@@ -70,9 +70,8 @@ export default function Haqqimizda(props) {
       </div>
       <div className="hidden lg:flex justify-center pt-[65px]">
         <Link href="http://localhost:3000/sifaris">
-          <PrimaryMdBtn btnName="İndi sifariş yarat"  />
+          <PrimaryMdBtn btnName="İndi sifariş yarat" />
         </Link>
-        
       </div>
     </div>
   );

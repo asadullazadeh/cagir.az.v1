@@ -48,62 +48,74 @@
   ],
   "musteriler": [
     {
+      "index":1,
       "name": "Kapital",
       "id": "kapital",
       "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
     },
     {
+      "index":2,
       "name": "Hesab.az",
       "id": "hesabaz",
       "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
     },
     {
+      "index":3,
       "name": "bakcell",
       "id": "bakcell",
       "logo": "https://bakcell.com/data/red-logo.svg"
     },
     {
+      "index":4,
       "name": "vizam.az",
       "id": "vizamaz",
       "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
     },
     {
+      "index":5,
       "name": "talpa",
       "id": "talpa",
       "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
     },
     {
+      "index":6,
       "name": "TKTA",
       "id": "tkta",
       "logo": "https://www.pashabank.az/templates/images/pashabank-logo-en.svg"
     },
 
     {
+      "index":7,
       "name": "PashaBank",
       "id": "pashabank",
       "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
     },
     {
+      "index":8,
       "name": "Agro Dairy",
       "id": "kapital",
       "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
     },
     {
+      "index":9,
       "name": "UNDP",
       "id": "kapital",
       "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
     },
     {
+      "index":10,
       "name": "ArchiCo",
       "id": "kapital",
       "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
     },
     {
+      "index":11,
       "name": "Beynelxalq Turk Medeniyyet ve Irsi Fondu",
       "id": "kapital",
       "logo": "https://www.kapitalbank.az/assets/static/img/content/elements/svg/Logo--main.svg"
     },
     {
+      "index":12,
       "name": "expressbank",
       "id": "kapital",
       "logo": "https://www.expressbank.az/assets/img/logo.e9fd180b.svg"
@@ -239,6 +251,18 @@
   ],
 
   "icracilar": [
+    {
+      "photo": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "name": "Famil Mahmudov",
+      "job": "Elektrik ustası",
+      "title": "Mən, Mahmudov Famil cagir.az -da elektrik ustası ve baş usta olaraq çalışıram. Bütün növ elektrik işlərinin  görülməsi, xəttlərin çəkilməsi və ağıllı ev sistemlərinin qurulması ilə məşğulam."
+    },
+    {
+      "photo": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "name": "Famil Mahmudov",
+      "job": "Elektrik ustası",
+      "title": "Mən, Mahmudov Famil cagir.az -da elektrik ustası ve baş usta olaraq çalışıram. Bütün növ elektrik işlərinin  görülməsi, xəttlərin çəkilməsi və ağıllı ev sistemlərinin qurulması ilə məşğulam."
+    },
     {
       "photo": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       "name": "Famil Mahmudov",

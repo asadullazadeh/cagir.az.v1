@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [
+      "api.cagir.az",
       "images.unsplash.com",
       "wembleypark.com",
       "hydeparkwinterwonderland.com",
@@ -16,6 +17,8 @@ const nextConfig = {
       "www.itchf.org",
       "cdn.pixabay.com",
       "www.kapitalbank.az",
+      "i.imgur.com",
+      "bakcell.com",
     ],
   },
 };

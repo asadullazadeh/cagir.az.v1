@@ -1,7 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
-
-const LinkSmBtn = ({ btnName, classNames }) => (
+const linkSmBtn = ({ btnName, classNames }) => (
     <>
     <button
                 className= {` py-[10px] px-[26px]
@@ -12,4 +9,4 @@ const LinkSmBtn = ({ btnName, classNames }) => (
               </button>
             </>
 )
-export default LinkSmBtn;
+export default linkSmBtn;

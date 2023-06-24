@@ -8,7 +8,7 @@ const PaymentMethod = () => {
   return (
     <div className="flex flex-col gap-y-[5px] px-[15px] lg:px-0 py-[15px] lg:py-0 border border-[1px] border-gray900 rounded-[10px] lg:border-none">
       <p className="font-semibold text-[12px] leading-[18px] text-gray900 lg:text-black500">Ödəniş üsulunu seçin</p>
-    <div className="inline-flex flex-col w-full border-none lg:border lg:border-solid lg:border-[1px] lg:border-gray900 lg:rounded-full">
+    <div className="inline-flex flex-col w-full border-none lg:border-solid lg:border-[1px] lg:border-gray900 lg:rounded-full">
       <div className="flex flex-row justify-between px-[15px] py-[10px] border-none lg:border lg:border-gray-300 rounded-full">
         <div className="flex gap-x-[10px] items-center">
           <input

@@ -4,7 +4,7 @@ import logo from "@/public/logo_cagiraz.png";
 import { useState } from "react";
 import burger_menu from "@/icons/header/burger_menu.svg";
 import close from "@/icons/header/close.svg";
-import LangSection from "@/src/components/lang_section";
+import LangSection from "@/src/components/others/lang_section";
 import search1 from "@/icons/header/search1.svg";
 
 export default function NavbarMobile() {
@@ -63,8 +63,10 @@ export default function NavbarMobile() {
 
           {/* 2nd navbar */}
           <div className={` ${navbar ? "h-screen flex flex-col  " : "hidden"}`}>
-            <ul className="flex flex-col justify-between font-medium h-4/5 mt-[17.5px] text-[12px] xs:text-[14px] sm:text-[16px] md:text-[18px] leading-[18px] xs:leading-[21px]
-            sm:leading-[24px] leading-[27px] text-gray900 text-center ">
+            <ul
+              className="flex flex-col justify-between font-medium h-4/5 mt-[17.5px] text-[12px] xs:text-[14px] sm:text-[16px] md:text-[18px] leading-[18px] xs:leading-[21px]
+            sm:leading-[24px] leading-[27px] text-gray900 text-center "
+            >
               <li>
                 <Link href="/usta/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black">
@@ -107,12 +109,41 @@ export default function NavbarMobile() {
                   </p>
                 </Link>
               </li>
+
               <li>
-                <Link href="/usta/kombi-ustasi">
+              <details class="dropdown dropdown-top">
+                <summary class="transition duration-300 hover:text-black pb-[17.5px] border-b border-[#EAEAEA]">Digər xidmətlər</summary>
+                <ul class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
+                  <li><Link href="/usta/kombi-ustasi">
+                  <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
+                  Paltaryuyan ustası
+                  </p>
+                </Link></li>
+                <li><Link href="/usta/kombi-ustasi">
+                  <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
+                  Paltaryuyan ustası
+                  </p>
+                </Link></li>
+                <li><Link href="/usta/kombi-ustasi">
+                  <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
+                  Paltaryuyan ustası
+                  </p>
+                </Link></li>
+                <li><Link href="/usta/kombi-ustasi">
+                  <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
+                  Paltaryuyan ustası
+                  </p>
+                </Link></li>
+                </ul>
+              </details>
+
+
+
+                {/* <Link href="/usta/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black pb-[17.5px] border-b border-[#EAEAEA]">
                     Digər xidmətlər
                   </p>
-                </Link>
+                </Link> */}
               </li>
 
               {/* second part */}

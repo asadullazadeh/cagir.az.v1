@@ -1,0 +1,424 @@
+{
+    "isSuccess": true,
+    "errorMessages": null,
+    "result": [
+        {
+            "serviceName": null,
+            "serviceCriteria": {
+                "parentId": 0,
+                "orderIndex": 1,
+                "isTooltip": false,
+                "isRequired": true,
+                "price": 0.00,
+                "discount": 0.0,
+                "isDiscount": false,
+                "isPercent": false,
+                "calculateType": 0,
+                "filterType": 4,
+                "isOther": false,
+                "service": null,
+                "serviceId": 1200,
+                "serviceCriteriaNames": [
+                    {
+                        "name": "Neçə kvadrat metr təmizlənək?",
+                        "text": "<p><strong>Qiymətə daxildir:</strong></p><ul><li>Otaq, dəhliz və salon təmizlənməsi;</li><li>Mətbəx (mebelin üzəri) təmizlənməsi;</li><li>Hamam otağı təmizlənməsi;</li><li>Sanitar qovşaq təmizlənməsi.</li></ul><p><strong>Qiymətə daxil deyil:</strong></p><ul><li>Pəncərələr</li><li>Mebellərin içi </li><li>Təmizlik vasitələri </li><li>Yumuşaq mebel (divan, kreslo, stullar)</li><li>Matras, yorğan, döşək yuyulması</li></ul><p><strong>Qeyd: Qiyməti görmək üçün aşağıdakı sizə uyğun seçimə klikləyin.</strong></p><p><br></p><p><br></p>",
+                        "language": 1,
+                        "serviceCriteria": null,
+                        "serviceCriteriaId": 5087,
+                        "id": 15222,
+                        "insertDate": "2023-02-03T12:47:50.0390001",
+                        "updateDate": "0001-01-01T00:00:00",
+                        "isActive": true,
+                        "isDeleted": false
+                    }
+                ],
+                "id": 5087,
+                "insertDate": "2023-06-13T22:16:50.7912382+04:00",
+                "updateDate": "0001-01-01T00:00:00",
+                "isActive": true,
+                "isDeleted": false
+            },
+            "serviceCriteries": [
+                {
+                    "parentId": 5087,
+                    "orderIndex": 1,
+                    "isTooltip": false,
+                    "isRequired": true,
+                    "price": 35.00,
+                    "discount": 0.0,
+                    "isDiscount": false,
+                    "isPercent": false,
+                    "calculateType": 0,
+                    "filterType": 4,
+                    "isOther": false,
+                    "service": null,
+                    "serviceId": 1200,
+                    "serviceCriteriaNames": [
+                        {
+                            "name": "50 kvadrat metrə qədər",
+                            "text": null,
+                            "language": 1,
+                            "serviceCriteria": null,
+                            "serviceCriteriaId": 5224,
+                            "id": 15633,
+                            "insertDate": "2023-02-16T13:51:05.393084",
+                            "updateDate": "0001-01-01T00:00:00",
+                            "isActive": true,
+                            "isDeleted": false
+                        }
+                    ],
+                    "id": 5224,
+                    "insertDate": "2023-06-13T22:16:50.7962665+04:00",
+                    "updateDate": "0001-01-01T00:00:00",
+                    "isActive": true,
+                    "isDeleted": false
+                },
+                {
+                    "parentId": 5087,
+                    "orderIndex": 2,
+                    "isTooltip": false,
+                    "isRequired": true,
+                    "price": 55.00,
+                    "discount": 0.0,
+                    "isDiscount": false,
+                    "isPercent": false,
+                    "calculateType": 0,
+                    "filterType": 4,
+                    "isOther": false,
+                    "service": null,
+                    "serviceId": 1200,
+                    "serviceCriteriaNames": [
+                        {
+                            "name": "50-100 kvadrat metr",
+                            "text": null,
+                            "language": 1,
+                            "serviceCriteria": null,
+                            "serviceCriteriaId": 5225,
+                            "id": 15636,
+                            "insertDate": "2023-02-16T13:51:53.9232337",
+                            "updateDate": "0001-01-01T00:00:00",
+                            "isActive": true,
+                            "isDeleted": false
+                        }
+                    ],
+                    "id": 5225,
+                    "insertDate": "2023-06-13T22:16:50.7963197+04:00",
+                    "updateDate": "0001-01-01T00:00:00",
+                    "isActive": true,
+                    "isDeleted": false
+                },
+                {
+                    "parentId": 5087,
+                    "orderIndex": 3,
+                    "isTooltip": false,
+                    "isRequired": true,
+                    "price": 85.00,
+                    "discount": 0.0,
+                    "isDiscount": false,
+                    "isPercent": false,
+                    "calculateType": 0,
+                    "filterType": 4,
+                    "isOther": false,
+                    "service": null,
+                    "serviceId": 1200,
+                    "serviceCriteriaNames": [
+                        {
+                            "name": "100-200 kvadrat metrə qədər",
+                            "text": null,
+                            "language": 1,
+                            "serviceCriteria": null,
+                            "serviceCriteriaId": 5226,
+                            "id": 15639,
+                            "insertDate": "2023-02-16T13:53:06.8113911",
+                            "updateDate": "0001-01-01T00:00:00",
+                            "isActive": true,
+                            "isDeleted": false
+                        }
+                    ],
+                    "id": 5226,
+                    "insertDate": "2023-06-13T22:16:50.7963428+04:00",
+                    "updateDate": "0001-01-01T00:00:00",
+                    "isActive": true,
+                    "isDeleted": false
+                },
+                {
+                    "parentId": 5087,
+                    "orderIndex": 4,
+                    "isTooltip": false,
+                    "isRequired": true,
+                    "price": 100.00,
+                    "discount": 0.0,
+                    "isDiscount": false,
+                    "isPercent": false,
+                    "calculateType": 0,
+                    "filterType": 4,
+                    "isOther": false,
+                    "service": null,
+                    "serviceId": 1200,
+                    "serviceCriteriaNames": [
+                        {
+                            "name": "200-300 kvadrat metr",
+                            "text": null,
+                            "language": 1,
+                            "serviceCriteria": null,
+                            "serviceCriteriaId": 6351,
+                            "id": 17014,
+                            "insertDate": "2023-05-15T13:12:17.0701839",
+                            "updateDate": "0001-01-01T00:00:00",
+                            "isActive": true,
+                            "isDeleted": false
+                        }
+                    ],
+                    "id": 6351,
+                    "insertDate": "2023-06-13T22:16:50.7963598+04:00",
+                    "updateDate": "0001-01-01T00:00:00",
+                    "isActive": true,
+                    "isDeleted": false
+                }
+            ]
+        },
+        {
+            "serviceName": null,
+            "serviceCriteria": {
+                "parentId": 0,
+                "orderIndex": 2,
+                "isTooltip": false,
+                "isRequired": false,
+                "price": 0.00,
+                "discount": 0.0,
+                "isDiscount": false,
+                "isPercent": false,
+                "calculateType": 0,
+                "filterType": 0,
+                "isOther": false,
+                "service": null,
+                "serviceId": 1200,
+                "serviceCriteriaNames": [
+                    {
+                        "name": "Əlavə istək",
+                        "text": "<p><strong>Qeyd: Qiymətə yalnız 4 standart pəncərə daxildir. Ölçüyə uyğun əlavə pəncərə sayını aşağıda seçimlərdə qeyd edin.</strong></p>",
+                        "language": 1,
+                        "serviceCriteria": null,
+                        "serviceCriteriaId": 5089,
+                        "id": 15228,
+                        "insertDate": "2023-02-03T12:49:35.8707691",
+                        "updateDate": "0001-01-01T00:00:00",
+                        "isActive": true,
+                        "isDeleted": false
+                    }
+                ],
+                "id": 5089,
+                "insertDate": "2023-06-13T22:16:50.7964002+04:00",
+                "updateDate": "0001-01-01T00:00:00",
+                "isActive": true,
+                "isDeleted": false
+            },
+            "serviceCriteries": [
+                {
+                    "parentId": 5089,
+                    "orderIndex": 1,
+                    "isTooltip": false,
+                    "isRequired": false,
+                    "price": 10.00,
+                    "discount": 0.0,
+                    "isDiscount": false,
+                    "isPercent": false,
+                    "calculateType": 0,
+                    "filterType": 3,
+                    "isOther": false,
+                    "service": null,
+                    "serviceId": 1200,
+                    "serviceCriteriaNames": [
+                        {
+                            "name": "Təmizlik vasitələrinə ehtiyac var",
+                            "text": null,
+                            "language": 1,
+                            "serviceCriteria": null,
+                            "serviceCriteriaId": 5090,
+                            "id": 15231,
+                            "insertDate": "2023-02-03T12:50:49.4237263",
+                            "updateDate": "0001-01-01T00:00:00",
+                            "isActive": true,
+                            "isDeleted": false
+                        }
+                    ],
+                    "id": 5090,
+                    "insertDate": "2023-06-13T22:16:50.7992861+04:00",
+                    "updateDate": "0001-01-01T00:00:00",
+                    "isActive": true,
+                    "isDeleted": false
+                },
+                {
+                    "parentId": 5089,
+                    "orderIndex": 2,
+                    "isTooltip": false,
+                    "isRequired": false,
+                    "price": 5.00,
+                    "discount": 0.0,
+                    "isDiscount": false,
+                    "isPercent": false,
+                    "calculateType": 0,
+                    "filterType": 3,
+                    "isOther": false,
+                    "service": null,
+                    "serviceId": 1200,
+                    "serviceCriteriaNames": [
+                        {
+                            "name": "Paltarlar ütülənsin",
+                            "text": null,
+                            "language": 1,
+                            "serviceCriteria": null,
+                            "serviceCriteriaId": 6306,
+                            "id": 16879,
+                            "insertDate": "2023-04-03T09:01:19.2802684",
+                            "updateDate": "0001-01-01T00:00:00",
+                            "isActive": true,
+                            "isDeleted": false
+                        }
+                    ],
+                    "id": 6306,
+                    "insertDate": "2023-06-13T22:16:50.7993435+04:00",
+                    "updateDate": "0001-01-01T00:00:00",
+                    "isActive": true,
+                    "isDeleted": false
+                },
+                {
+                    "parentId": 5089,
+                    "orderIndex": 3,
+                    "isTooltip": false,
+                    "isRequired": false,
+                    "price": 15.00,
+                    "discount": 0.0,
+                    "isDiscount": false,
+                    "isPercent": false,
+                    "calculateType": 0,
+                    "filterType": 5,
+                    "isOther": false,
+                    "service": null,
+                    "serviceId": 1200,
+                    "serviceCriteriaNames": [
+                        {
+                            "name": "Pəncərə (2 metrə qədər)",
+                            "text": null,
+                            "language": 1,
+                            "serviceCriteria": null,
+                            "serviceCriteriaId": 6301,
+                            "id": 16864,
+                            "insertDate": "2023-04-03T08:34:55.8496994",
+                            "updateDate": "0001-01-01T00:00:00",
+                            "isActive": true,
+                            "isDeleted": false
+                        }
+                    ],
+                    "id": 6301,
+                    "insertDate": "2023-06-13T22:16:50.7993659+04:00",
+                    "updateDate": "0001-01-01T00:00:00",
+                    "isActive": true,
+                    "isDeleted": false
+                },
+                {
+                    "parentId": 5089,
+                    "orderIndex": 4,
+                    "isTooltip": false,
+                    "isRequired": false,
+                    "price": 20.00,
+                    "discount": 0.0,
+                    "isDiscount": false,
+                    "isPercent": false,
+                    "calculateType": 0,
+                    "filterType": 5,
+                    "isOther": false,
+                    "service": null,
+                    "serviceId": 1200,
+                    "serviceCriteriaNames": [
+                        {
+                            "name": "Pəncərə (2 metr-dən çox)",
+                            "text": null,
+                            "language": 1,
+                            "serviceCriteria": null,
+                            "serviceCriteriaId": 6302,
+                            "id": 16867,
+                            "insertDate": "2023-04-03T08:35:59.1369224",
+                            "updateDate": "0001-01-01T00:00:00",
+                            "isActive": true,
+                            "isDeleted": false
+                        }
+                    ],
+                    "id": 6302,
+                    "insertDate": "2023-06-13T22:16:50.7993856+04:00",
+                    "updateDate": "0001-01-01T00:00:00",
+                    "isActive": true,
+                    "isDeleted": false
+                },
+                {
+                    "parentId": 5089,
+                    "orderIndex": 5,
+                    "isTooltip": false,
+                    "isRequired": false,
+                    "price": 10.00,
+                    "discount": 0.0,
+                    "isDiscount": false,
+                    "isPercent": false,
+                    "calculateType": 0,
+                    "filterType": 3,
+                    "isOther": false,
+                    "service": null,
+                    "serviceId": 1200,
+                    "serviceCriteriaNames": [
+                        {
+                            "name": "Mebellərin içi yığışdırılsın ",
+                            "text": null,
+                            "language": 1,
+                            "serviceCriteria": null,
+                            "serviceCriteriaId": 6303,
+                            "id": 16870,
+                            "insertDate": "2023-04-03T08:40:18.9769311",
+                            "updateDate": "0001-01-01T00:00:00",
+                            "isActive": true,
+                            "isDeleted": false
+                        }
+                    ],
+                    "id": 6303,
+                    "insertDate": "2023-06-13T22:16:50.7994256+04:00",
+                    "updateDate": "0001-01-01T00:00:00",
+                    "isActive": true,
+                    "isDeleted": false
+                },
+                {
+                    "parentId": 5089,
+                    "orderIndex": 6,
+                    "isTooltip": false,
+                    "isRequired": false,
+                    "price": 30.00,
+                    "discount": 0.0,
+                    "isDiscount": false,
+                    "isPercent": false,
+                    "calculateType": 0,
+                    "filterType": 3,
+                    "isOther": false,
+                    "service": null,
+                    "serviceId": 1200,
+                    "serviceCriteriaNames": [
+                        {
+                            "name": "Divan, stol-stullar təmizlənsin",
+                            "text": null,
+                            "language": 1,
+                            "serviceCriteria": null,
+                            "serviceCriteriaId": 6304,
+                            "id": 16873,
+                            "insertDate": "2023-04-03T08:54:53.1931712",
+                            "updateDate": "0001-01-01T00:00:00",
+                            "isActive": true,
+                            "isDeleted": false
+                        }
+                    ],
+                    "id": 6304,
+                    "insertDate": "2023-06-13T22:16:50.7994476+04:00",
+                    "updateDate": "0001-01-01T00:00:00",
+                    "isActive": true,
+                    "isDeleted": false
+                }
+            ]
+        }
+    ]
+}

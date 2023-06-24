@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import InputCustomized from "@/src/components/buttons/input";
+import InputCustomized from "@/src/components/input/input";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 
 function Payment() {
@@ -30,8 +30,8 @@ function Payment() {
             placeholder="Qeydlərinizi edin..."
           ></textarea>
         </div>
-        <div className="flex lg:justify-end pt-[20px]">
-          <Link href="/payment_result">
+        <div className="w-full pt-[20px]">
+          <Link className="flex justify-center lg:justify-end" href="/payment_result">
             <PrimaryMdBtn btnName="Ödəniş et" classNames="w-full lg:w-auto" />
           </Link>
         </div>

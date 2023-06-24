@@ -5,27 +5,23 @@ import up from "@/icons/form/up.svg";
 import down from "@/icons/form/down.svg";
 
 const Form = () => {
-  const [isHidden, setIsHidden] = useState(true);
+  const [isHidden, setIsHidden] = useState(false);
   const toggleHidden = () => {
     setIsHidden(!isHidden);
   };
 
   return (
     <>
-      <div>
         {/* Toggle part */}
-        <div className="">
-          
+        <div className=""> 
           <button
             id="clickMe"
             onClick={toggleHidden}
-            className="flex justify-between items-center w-full border-b-2 border-cagiraz"
-          >
-            <div>
-              <h6 className="font-bold text-[14px] leading-[21px] text-cagiraz">
+            className="flex justify-between items-center w-full"
+          >  
+              <h6 className="font-bold text-[14px] leading-[21px] text-black">
                 Ev təmizləmə haqda təsvir
               </h6>
-            </div>
             <div>
               <Image
                 src={isHidden ? up : down}
@@ -36,18 +32,19 @@ const Form = () => {
 
           <div
             id="hiddenText"
-            className={`relative absolute over bg-white py-2 rounded mt-2 ${
+            className={`relative  over bg-white py-2 rounded mt-2 ${
               isHidden ? "hidden" : ""
             }`}
           >
-            <div className="">
-              Ev təmizləmə xidmətinə 3 əsas xidmət növü daxildir:
-              <ul className="list-disc ml-[30px]">
+            <div className="font-semibold text-[12px] leading-[18px] text-gray900">
+              <h4 className="">Ev təmizləmə xidmətinə 3 əsas xidmət növü daxildir:</h4>
+              
+              <ul className="list-disc ml-[30px] ">
                 <li>Sadə təmizlik</li>
                 <li>Dərin təmizlik</li>
                 <li>Təmirdən sonra təmizlik</li>
               </ul>
-              <p className="mt-[20px] text-[12px] ">
+              <p className="mt-[20px] ">
                 Sadə təmizlik xidməti - evi gündəlik tozdan təmizləmək,
                 əşyaların tozlarının təmizlənməsi, evin səliqəyə salınması,
                 sanitar qovşaqların təmizlənməsi nəzərdə tutulur. Dərin təmizlik
@@ -66,7 +63,7 @@ const Form = () => {
             </div>
           </div>
         </div>
-      </div>
+      
     </>
   );
 };

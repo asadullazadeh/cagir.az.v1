@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import InputCustomized from "@/src/components/buttons/input";
+import InputCustomized from "@/src/components/input/input";
 import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
 
 function PulQazan() {

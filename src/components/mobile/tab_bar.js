@@ -4,11 +4,13 @@ import Link from "next/link";
 import phone from "@/icons/tab_bar/phone.svg";
 import whatsapp from "@/icons/tab_bar/whatsapp.svg";
 import client from "@/public/client.jpg";
+import phone_red from "@/icons/tab_bar/phone_red.svg";
 
 const TabBar = () => (
   <>
     <div className="h-[55px] block lg:hidden fixed bottom-0 left-0 z-50 w-full bg-white border-t border-gray-200">
       <div className="grid h-full w-inline-block grid-cols-4 mx-auto font-medium">
+        {/* Call icon */}
         <button
           type="button"
           className="inline-flex flex-col items-center justify-center"
@@ -16,13 +18,15 @@ const TabBar = () => (
           <Image src={phone} alt="phone_icon" />
           <span className="text-[10px] leading-[15px] text-cagiraz">Zəng</span>
         </button>
+        {/* Geri zeng icons */}
         <button
           type="button"
           className="inline-flex flex-col items-center justify-center"
         >
-          <Image src={whatsapp} alt="whatsapp_icon" />
+          <Image src={phone_red} alt="whatsapp_icon" />
           <span className="text-[10px] leading-[15px] text-danger">Geri Zəng</span>
         </button>
+        {/* Whatsapp */}
         <button
           type="button"
           className="inline-flex flex-col items-center justify-center"
@@ -30,6 +34,7 @@ const TabBar = () => (
           <Image src={whatsapp} alt="whatsapp_icon" />
           <span className="text-[10px] leading-[15px] text-sucess">Whatsapp</span>
         </button>
+        {/* Chat */}
         <button
           type="button"
           className="inline-flex flex-col items-center justify-center"
