@@ -37,7 +37,7 @@ export default function Layout({ children }) {
         </div>
       )}
 
-      <div class="hidden lg:flex justify-center items-center ">
+      <div className="hidden lg:flex justify-center items-center ">
         <div className="bottom-[80px] fixed"><CallIncmngWp /></div>
           
           </div>

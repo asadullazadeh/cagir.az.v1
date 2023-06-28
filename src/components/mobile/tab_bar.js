@@ -4,7 +4,7 @@ import Link from "next/link";
 import phone from "@/icons/tab_bar/phone.svg";
 import whatsapp from "@/icons/tab_bar/whatsapp.svg";
 import client from "@/public/client.jpg";
-import phone_red from "@/icons/tab_bar/phone_red.svg";
+import call_back from "@/icons/tab_bar/call_back.svg";
 
 const TabBar = () => (
   <>
@@ -23,7 +23,7 @@ const TabBar = () => (
           type="button"
           className="inline-flex flex-col items-center justify-center"
         >
-          <Image src={phone_red} alt="whatsapp_icon" />
+          <Image src={call_back} alt="whatsapp_icon" />
           <span className="text-[10px] leading-[15px] text-danger">Geri Zəng</span>
         </button>
         {/* Whatsapp */}

@@ -9,7 +9,7 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
           rel="stylesheet"
         />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css"  rel="stylesheet" />
+        {/* <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css"  rel="stylesheet" /> */}
 
 
 
@@ -18,8 +18,8 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <Script src="@/node_modules/flowbite/dist/flowbite.min.js"></Script>
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></Script>
+        {/* <Script src="@/node_modules/flowbite/dist/flowbite.min.js"></Script>
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></Script> */}
 
 
       </body>

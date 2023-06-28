@@ -3,7 +3,7 @@ export const content = [
   "./src/**/*.{html,js}",
   "./pages/**/*.{html,js}",
   "./public/**/*.html",
-  "./node_modules/flowbite/**/*.js"
+  // "./node_modules/flowbite/**/*.js"
 ];
 export const theme = {
   extend: {
@@ -72,7 +72,7 @@ export const plugins = [
   "@tailwindcss/aspect-ratio",
   "require('@tailwindcss/forms')",
   require("@tailwindcss/aspect-ratio"),
-  require("flowbite/plugin"),
+  // require("flowbite/plugin"),
   require("daisyui"),
 ];
 export const images = {

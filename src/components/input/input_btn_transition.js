@@ -19,13 +19,13 @@ const InputBtnTransition = ({ name }) => {
   return (
     <div>
       <ul className="space-y-[10px] lg:space-y-[15px] font-semibold text-[14px] leading-[21px] text-black500">
-        <li className="mb-[5px]  ">
+        <li className="mb-[5px] ">
           <div href="#" className="">
             {name}
           </div>
         </li>
-        <li className="w-[235px] h-[58px] bg-white rounded-full  flex items-center">
-          <form className="">
+        <li className="w-[235px] h-[58px] bg-white rounded-full flex items-center">
+          
             <div className="flex items-center h-[46px] gap-x-[6px]">
               <input
                 className="appearance-none bg-transparent border-none text-black focus:outline-none text-[14px] 
@@ -59,7 +59,7 @@ const InputBtnTransition = ({ name }) => {
                 </Transition>
               </button>
             </div>
-          </form>
+       
         </li>
       </ul>
     </div>
@@ -67,52 +67,3 @@ const InputBtnTransition = ({ name }) => {
 };
 
 export default InputBtnTransition;
-
-// import React, { useState } from "react";
-// import Image from "next/image";
-// import Link from "next/link";
-// import paper_plane from "@/icons/footer/paper_plane.svg";
-
-// const InputBtnTransition = ({name}) => {
-
-//   return (
-//       <div>
-//         <ul className="space-y-[10px] lg:space-y-[15px] font-semibold text-[14px] leading-[21px] text-black500">
-//             <li className="mb-[5px]  ">
-//               <div href="#" className="">
-//                 {name}
-//               </div>
-//             </li>
-//             <li className="w-[235px] h-[58px] bg-white rounded-full  flex items-center">
-//               <form className="">
-//                 <div className="flex items-center h-[46px] gap-x-[6px]">
-//                   <input
-//                     className="appearance-none bg-transparent border-none text-black focus:outline-none text-[14px]
-//                     pl-[20px]
-//                     leading-[21px] w-[181px]"
-//                     type="text"
-//                     placeholder=""
-//                     aria-label="Full name"
-//                   />
-//                   <button
-//                     id="myButton"
-//                     className="flex w-[46px] h-[46px] rounded-full bg-gradient-to-r from-[#3598EA] to-[#3D55DF]"
-//                     type="button"
-//                   >
-//                     <Image
-//                       id="myImage"
-//                       className="mt-[14px] ml-[13px] w-[20px] h-[17.44] "
-//                       src={paper_plane}
-//                       alt="paper plane icon"
-//                     />
-//                   </button>
-//                 </div>
-//               </form>
-//             </li>
-
-//           </ul>
-//       </div>
-//   );
-// };
-
-// export default InputBtnTransition;

@@ -111,9 +111,9 @@ export default function NavbarMobile() {
               </li>
 
               <li>
-              <details class="dropdown dropdown-top">
-                <summary class="transition duration-300 hover:text-black pb-[17.5px] border-b border-[#EAEAEA]">Digər xidmətlər</summary>
-                <ul class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
+              <details className="dropdown dropdown-top">
+                <summary className="transition duration-300 hover:text-black pb-[17.5px] border-b border-[#EAEAEA]">Digər xidmətlər</summary>
+                <ul className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
                   <li><Link href="/usta/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                   Paltaryuyan ustası

@@ -81,8 +81,18 @@ function Sifaris() {
 
   const [isOpen, setIsOpen] = useState(false);
 
+
+
+
   const handleToggle = () => {
     setIsOpen(!isOpen);
+  };
+
+  
+  // description open/close for mobile version.
+  const [descIsOpen, setdescIsOpen] = useState(false);
+  const handleToggleDesc = () => {
+    setdescIsOpen(!descIsOpen);
   };
 
   return (
@@ -106,29 +116,7 @@ function Sifaris() {
         </div>
         <div className="z-10 hidden lg:block sticky ">
           <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
-          <Toggle />
+          
         </div>
       </div>
 
@@ -142,8 +130,46 @@ function Sifaris() {
         </h4>
 
         <div className="grid lg:grid-cols-3 justify-items-stretch lg:gap-x-[40px] gap-y-[15px]">
+
+          <div className="flex lg:hidden flex-col gap-y-[10px]">
+            <DropdownMob serviceNames={mainServices} />
+            <div className="flex flex-row gap-x-[10px]">
+              <Image className="self-start w-[20px] h-[20px]" src={info_btn} alt="info_icon" />
+              <p className="	">
+              Sadə təmizlik xidməti - evi gündəlik tozdan təmizləmək,
+                əşyaların tozlarının təmizlənməsi, evin səliqəyə salınması,
+                sanitar qovşaqların təmizlənməsi nəzərdə tutulur. 
+        {descIsOpen ? (
+          <>
+            Dərin təmizlik
+                xidməti - evin tozlardan təmizlənməsi, mətbəx, sanitar
+                qovşaqların təmizliyi, çilçıraq, kafel, metlax təmizliyi, güzgü
+                və şüşələrin.Sadə təmizlik xidməti - evi gündəlik tozdan təmizləmək,
+                əşyaların tozlarının təmizlənməsi, evin səliqəyə salınması,
+                sanitar qovşaqların təmizlənməsi nəzərdə tutulur.
+            <button
+              className="font-semibold block text-cagiraz"
+              onClick={handleToggleDesc}
+            >
+              Bağla
+            </button>
+          </>
+        ) : (
+          <button
+            className="font-semibold block text-cagiraz"
+            onClick={handleToggleDesc}
+          >
+            Ətraflı oxu
+          </button>
+        )}
+      </p>
+
+              </div>
+            
+            </div>
+
           <Dropdown serviceNames={mainServices} />
-          <DropdownMob serviceNames={mainServices} />
+          
           <Dropdown serviceNames={mainServices} />
           <DropdownMob serviceNames={mainServices} />
           <Dropdown serviceNames={mainServices} />
