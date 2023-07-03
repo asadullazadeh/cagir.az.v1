@@ -1,17 +1,60 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import arrow from "@/icons/arrow.svg";
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
 import star from "@/icons/deyerler/Star.svg";
 import memnuniyyet from "@/icons/deyerler/memnuniyyet.svg";
 import kefiyyet from "@/icons/deyerler/kefiyyet.svg";
 import pesekar from "@/icons/deyerler/pesekar.svg";
 import qenaet from "@/icons/deyerler/qenaet.svg";
+function Deyerler() {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const config = {
+    headers: {
+      "Accept-Language": "az",
+    },
+  };
 
-const Deyerler = () => (
-  <div className="">
-    <h2 className="my-h2 mb-[15px] lg:mb-[60px] text-center">Dəyərlər</h2>
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-[10px] sm:gap-x-[40px] md:gap-x-[70px] lg:gap-x-[100px] xl:gap-x-[130px] 2xl:gap-x-[156px] 
-    gap-y-[15px]">
-      <div className="flex flex-col">
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.cagir.az/api/adminDictionary/getAll?dictionaryType=2", config
+        );
+        const resultArrays = response.data.result; // Assuming the response structure has a "data" object containing a "result" object with arrays
+        // console.log(resultArrays);
+        const formattedData = resultArrays.map((result) => ({
+          id:result.id,
+          image:result.imageUrl,
+          text:result.text,
+          title:result.title
+        }));
+        
+
+        setData(formattedData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [config]);
+
+  return (
+    <div>
+      <h2 className="my-h2 mb-[15px] lg:mb-[60px] text-center">Dəyərlər</h2>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-[10px] sm:gap-x-[40px] md:gap-x-[70px] lg:gap-x-[100px] xl:gap-x-[130px] 2xl:gap-x-[156px] 
+            gap-y-[15px]">
+      {data.map(({index,title,text,imageUrl})  => (
+        <div key={index}>
+          
+            
+          <div className="flex flex-col">
+            {/* <Image width={100} height={100} src={`https://api.cagir.az${imageUrl}`} alt="icon" /> */}
         <div className="flex justify-center items-center w-[30px] lg:w-[60px] h-[30px] lg:h-[60px] mb-[15px] lg:mb-[30px]">
           <Image
             src={star}
@@ -21,86 +64,22 @@ const Deyerler = () => (
           <Image
             src={pesekar}
             alt="Image 2"
-            className="absolute  z-10 w-[12px] lg:w-[24px] h-[12px] lg:h-[24px]"
+            className="absolute z-10 w-[12px] lg:w-[24px] h-[12px] lg:h-[24px]"
           />
         </div>
 
-        <h5 className="mb-[5px] my-h5">Peşəkar icraçı</h5>
+        <h5 className="mb-[5px] my-h5">{title}</h5>
 
         <p className="font-medium lg:font-semibold text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] leading-[12px] sm:leading-[15px] md:leading-[18px] lg:leading-[21px] text-gray900">
-          Usta, təmizlik, bərbər, masaj və digər xidmətlərimiz üzrə olan
-          icraçılar platformamıza daxil olmazdan əvvəl təcrübələrinə əsasən
-          yoxlanır və təsdiqlənir
+          {text}
         </p>
       </div>
-
-      <div className="flex flex-col">
-        <div className="flex justify-center items-center w-[30px] lg:w-[60px] h-[30px] lg:h-[60px] mb-[15px] lg:mb-[30px]">
-          <Image
-            src={star}
-            alt="Image 1"
-            className=" w-[27px] lg:w-[54px] h-[27px] lg:h-[54px]"
-          />
-          <Image
-            src={qenaet}
-            alt="Image 2"
-            className="absolute  z-10 w-[12px] lg:w-[24px] h-[12px] lg:h-[24px]"
-          />
         </div>
-
-        <h5 className="mb-[5px] my-h5">Zamana qənaət</h5>
-
-        <p className="font-medium lg:font-semibold text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] leading-[12px] sm:leading-[15px] md:leading-[18px] lg:leading-[21px] text-gray900">
-          Cagir.az-dan istifadə edərək vaxtınıza 100% qənaət edin Bizim
-          xidmətlərimizlə 24 saat artıq sizə az gəlməyəcək.
-        </p>
+      ))}
       </div>
-
-      <div className="flex flex-col">
-        <div className="flex justify-center items-center w-[30px] lg:w-[60px] h-[30px] lg:h-[60px] mb-[15px] lg:mb-[30px]">
-          <Image
-            src={star}
-            alt="Image 1"
-            className=" w-[27px] lg:w-[54px] h-[27px] lg:h-[54px]"
-          />
-          <Image
-            src={memnuniyyet}
-            alt="Image 2"
-            className="absolute  z-10 w-[12px] lg:w-[24px] h-[12px] lg:h-[24px]"
-          />
-        </div>
-
-        <h5 className="mb-[5px] my-h5">Məmnuniyyət</h5>
-
-        <p className="font-medium lg:font-semibold text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] leading-[12px] sm:leading-[15px] md:leading-[18px] lg:leading-[21px] text-gray900">
-          Sırada üçüncü olsa da, bizim üçün hər zaman birincidir. Xidmətdən razı
-          qalmağınız üçün ən yaxşısını etməyə daim hazırıq.
-        </p>
-      </div>
-
-      <div className="flex flex-col">
-        <div className="flex justify-center items-center w-[30px] lg:w-[60px] h-[30px] lg:h-[60px] mb-[15px] lg:mb-[30px]">
-          <Image
-            src={star}
-            alt="Image 1"
-            className=" w-[27px] lg:w-[54px] h-[27px] lg:h-[54px]"
-          />
-          <Image
-            src={kefiyyet}
-            alt="Image 2"
-            className="absolute  z-10 w-[12px] lg:w-[24px] h-[12px] lg:h-[24px]"
-          />
-        </div>
-
-        <h5 className="mb-[5px] my-h5">Keyfiyyət</h5>
-
-        <p className="font-medium lg:font-semibold text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] leading-[12px] sm:leading-[15px] md:leading-[18px] lg:leading-[21px] text-gray900">
-          Yüz dəfə eşitməkdənsə, bir dəfə görmək yaxşıdır. Göstərdiyimiz
-          xidmətlərin keyfiyyətini bir kliklə görə bilərsiniz.
-        </p>
-      </div>
+      
     </div>
-  </div>
-);
+  );
+}
 
 export default Deyerler;

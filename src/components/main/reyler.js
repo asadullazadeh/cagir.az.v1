@@ -5,6 +5,8 @@ import Link from "next/link";
 import arrow from "@/icons/arrow.svg";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
+import ModalStandart from "@/src/components/modal/modal_stand"
+import exit_modal from "@/icons/exit_modal.svg";
 
 const responsive = {
   0: { items: 2 },
@@ -12,8 +14,13 @@ const responsive = {
   1024: { items: 4 },
 };
 
-function Reyler({parentId}) {
+function Reyler({ parentId }) {
   const [data, setData] = useState([]);
+  const [expanded, setExpanded] = useState(false);
+  const handleToggle = () => {
+    setExpanded(!expanded);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,7 +28,7 @@ function Reyler({parentId}) {
           `https://api.cagir.az/api/providerFeed/getAllByServiceId?serviceId=${parentId}`
         );
         const resultArrays = response.data.result; // Assuming the response structure has a "data" object containing a "result" object with arrays
-
+        // console.log(resultArrays);
         const formattedData = resultArrays.map((result) => ({
           name: result.providerName,
           star: result.star,
@@ -36,7 +43,9 @@ function Reyler({parentId}) {
 
     fetchData();
   }, [parentId]);
-
+  if (data.length === 0) {
+    return null; // Don't render anything if the data array is empty
+  }
   const childDataArray = Object.values(data).map((child) => ({
     jsxElement: (
       <div>
@@ -63,7 +72,8 @@ function Reyler({parentId}) {
 
                 <h6
                   className="w-[80px]
-                    font-semibold text-[12px] leading-[18px] 
+                    font-semibold text-[8px] lg:text-[12px] leading-[12px] 
+                   lg:leading-[18px]
                     text-black500 mt-[2px] lg:mt-[18px]"
                 >
                   <span>{child.name}</span>
@@ -72,12 +82,13 @@ function Reyler({parentId}) {
 
               {/* rey */}
               <div className="overflow-hidden ">
-                <p
-                  className="italic font-semibold lg:font-bold text-[8px] lg:text-[14px] leading-[12px]
+                <div
+                  className="italic font-semibold lg:font-bold text-[12px] lg:text-[14px] leading-[18px]
                       lg:leading-[21px] text-black100"
                 >
-                  {child.description}
-                </p>
+                  {child.description.slice(0,100)}
+                  
+                </div>
               </div>
 
               {/* review stars */}
@@ -112,6 +123,7 @@ function Reyler({parentId}) {
       </div>
     ),
   }));
+
 
   return (
     <div>

@@ -17,14 +17,14 @@ const InputBtnTransition = ({ name }) => {
   };
 
   return (
-    <div>
-      <ul className="space-y-[10px] lg:space-y-[15px] font-semibold text-[14px] leading-[21px] text-black500">
+    <div className="flex justify-center">
+      <ul className="  space-y-[10px] lg:space-y-[15px] font-semibold text-[14px] leading-[21px] text-black500">
         <li className="mb-[5px] ">
           <div href="#" className="">
             {name}
           </div>
         </li>
-        <li className="w-[235px] h-[58px] bg-white rounded-full flex items-center">
+        <li className="w-[235px] h-[58px] bg-white rounded-full flex items-center border ">
           
             <div className="flex items-center h-[46px] gap-x-[6px]">
               <input

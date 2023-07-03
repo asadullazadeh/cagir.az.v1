@@ -27,6 +27,7 @@ const PaymentMethod = () => {
         </div>
         <div className="flex gap-x-[10px] items-center">
           <input
+            readOnly
             checked
             id="default-radio-2"
             type="radio"

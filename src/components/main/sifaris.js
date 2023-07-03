@@ -20,7 +20,7 @@ import Map_Image from "@/public/Map_Image.png";
 import RayonDesktop from "@/src/components/buttons/rayon_desktop";
 import InputCustomized from "@/src/components/input/input";
 import MapBtn from "@/src/components/buttons/map_btn";
-// import Calendar from "@/src/components/form/datepicker";
+import Calendar from "@/src/components/form/datepicker";
 import ModalStandart from "@/src/components/modal/modal_stand";
 import TogglePart from "@/src/components/others/togglePart";
 
@@ -65,6 +65,16 @@ const infosToKnow = [
   "Oboyun suya qarşı həssaslığı",
 ];
 
+
+const serviceDescription = `Sadə təmizlik xidməti - evi gündəlik tozdan təmizləmək,
+əşyaların tozlarının təmizlənməsi, evin səliqəyə salınması,
+sanitar qovşaqların təmizlənməsi nəzərdə tutulur.Dərin təmizlik
+xidməti - evin tozlardan təmizlənməsi, mətbəx, sanitar
+qovşaqların təmizliyi, çilçıraq, kafel, metlax təmizliyi, güzgü
+və şüşələrin.Sadə təmizlik xidməti - evi gündəlik tozdan təmizləmək,
+əşyaların tozlarının təmizlənməsi, evin səliqəyə salınması,
+sanitar qovşaqların təmizlənməsi nəzərdə tutulur.`;
+
 function Sifaris() {
   const [showSecondChild, setShowSecondChild] = useState(false);
   const [selectedDay, setSelectedDay] = useState(new Date());
@@ -81,14 +91,10 @@ function Sifaris() {
 
   const [isOpen, setIsOpen] = useState(false);
 
-
-
-
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
 
-  
   // description open/close for mobile version.
   const [descIsOpen, setdescIsOpen] = useState(false);
   const handleToggleDesc = () => {
@@ -114,9 +120,9 @@ function Sifaris() {
         <div className="z-20 sticky top-[0px] bg-white py-[10px] px-[15px] mt-[10px] mb-[20px] lg:m-0 lg:p-0 shadow-dropblack25 lg:shadow-none rounded-[10px]">
           <Qiymet />
         </div>
+        {/* Toggle part is only desktop */}
         <div className="z-10 hidden lg:block sticky ">
-          <Toggle />
-          
+          <Toggle serviceDescription={serviceDescription} />
         </div>
       </div>
 
@@ -129,24 +135,18 @@ function Sifaris() {
           Sifarişi yarat
         </h4>
 
+        {/* Dropdowns for services */}
         <div className="grid lg:grid-cols-3 justify-items-stretch lg:gap-x-[40px] gap-y-[15px]">
-
           <div className="flex lg:hidden flex-col gap-y-[10px]">
             <DropdownMob serviceNames={mainServices} />
             <div className="flex flex-row gap-x-[10px]">
               <Image className="self-start w-[20px] h-[20px]" src={info_btn} alt="info_icon" />
               <p className="	">
-              Sadə təmizlik xidməti - evi gündəlik tozdan təmizləmək,
-                əşyaların tozlarının təmizlənməsi, evin səliqəyə salınması,
-                sanitar qovşaqların təmizlənməsi nəzərdə tutulur. 
+                {serviceDescription.slice(0,100)}
+              
         {descIsOpen ? (
           <>
-            Dərin təmizlik
-                xidməti - evin tozlardan təmizlənməsi, mətbəx, sanitar
-                qovşaqların təmizliyi, çilçıraq, kafel, metlax təmizliyi, güzgü
-                və şüşələrin.Sadə təmizlik xidməti - evi gündəlik tozdan təmizləmək,
-                əşyaların tozlarının təmizlənməsi, evin səliqəyə salınması,
-                sanitar qovşaqların təmizlənməsi nəzərdə tutulur.
+            {serviceDescription.slice(100,)}
             <button
               className="font-semibold block text-cagiraz"
               onClick={handleToggleDesc}
@@ -163,20 +163,20 @@ function Sifaris() {
           </button>
         )}
       </p>
-
-              </div>
-            
+              </div> 
             </div>
 
+
+          <DropdownMob serviceNames={mainServices} />
+          <DropdownMob serviceNames={mainServices} />
+          <Dropdown serviceNames={mainServices} />
+          <Dropdown serviceNames={mainServices} />
           <Dropdown serviceNames={mainServices} />
           
-          <Dropdown serviceNames={mainServices} />
-          <DropdownMob serviceNames={mainServices} />
-          <Dropdown serviceNames={mainServices} />
-          <DropdownMob serviceNames={mainServices} />
         </div>
+        
         {/* Checmark */}
-        {/* ex:Neçə kv.m sahə təmizlənəcək? */}
+        {/* ex:Neçə kv.m sahə təmizlənəcək?-First choices */}
         <div className="flex flex-col pt-[30px]">
           <h5 className="font-semibold text-[12px] leading-[18px] text-black500">
             Neçə kv.m sahə təmizlənəcək?
@@ -197,8 +197,8 @@ function Sifaris() {
             ))}
           </div>
         </div>
-        {/* Checkmark and custom input */}
-        {/* ex:Əlavə istəklərinizi seçin*/}
+
+        {/* Əlavə istəklərinizi seçin-Second choices */}
         <div className="flex flex-col pt-[30px]">
           <h5 className="font-semibold text-[12px] leading-[18px] text-black500">
             Əlavə istəklərinizi seçin
@@ -246,7 +246,7 @@ function Sifaris() {
             </div>
           </div>
         </div>
-        {/* ex:Bilməli olduğumuz detallar */}
+        {/* ex:Bilməli olduğumuz detallar-Third choices */}
         <div className="flex flex-col pt-[50px] lg:pt-[30px]">
           <h5 className="font-semibold text-[12px] leading-[18px] pb-[15px] lg:pb-[5px] text-black500">
             Bilməli olduğumuz detallar
@@ -261,7 +261,7 @@ function Sifaris() {
             </div>
           </div>
         </div>
-        {/* more info section */}
+        {/* ex:Bilməli olduğumuz detallar-Third choices/more info section */}
         <div className="flex flex-col lg:flex-row ">
           {isOpen && <Textarea />}
           <button
@@ -273,37 +273,25 @@ function Sifaris() {
           </button>
         </div>
         {/* second part of sifaris section-Sifarisi tamamla */}
-        <div className="">
+        
+        {/* Sifarisi tamamla */}
           <h4
             className="font-semibold lg:font-bold text-[16px] lg:text-[20px] leading-[14px] lg:leading-[30px] 
         text-black500 pb-[20px] lg:pb-[30px] pt-[30px]"
           >
             Sifarişi tamamla
           </h4>
-        </div>
 
+          
         <div className="flex flex-col">
           {/* inputs and map part */}
           <div className="flex flex-col xl:flex-row lg:gap-x-[30px] xl:gap-x-[30px] 2xl:gap-x-[40px] w-full">
             {/* inputs and map for mobile */}
             <div className="flex flex-col gap-y-[15px] xl:gap-y-0 lg:justify-between w-full xl:w-1/2">
-              {/* <Calendar /> */}
-              <InputCustomized />
+           
+              <Calendar />
               <InputCustomized />
               {/* Calendar,data picker */}
-              {/* <button onClick={() => window.my_modal_4.showModal()}>
-        <InputCustomized label="Tarixi qeyd et" value={selectedDay} />
-      </button> */}
-
-              <dialog
-                id="my_modal_4"
-                className="modal absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2   w-[400px]"
-              >
-                <form method="dialog" className="modal-box">
-                  <div className="flex justify-end"></div>
-                  {/* <Calendar selectedDay={selectedDay} setSelectedDay={setSelectedDay} /> */}
-                </form>
-              </dialog>
               <div className="flex flex-col blcok lg:hidden space-y-[5px]">
                 <MapBtn />
                 <Image
@@ -315,6 +303,7 @@ function Sifaris() {
               <Download_image />
               <Promocode />
               <PaymentMethod />
+              
             </div>
             {/* map section for desktop */}
             <div className="hidden lg:flex flex-col space-y-[5px] w-full aspect-[666/365]">

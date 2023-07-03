@@ -51,6 +51,7 @@ const CallIncmngWp = () => (
       </span>
     </Link>
       <ModalStandart dialogId="my_modal_2" content={<InputBtnTransition name="Nömrə" />} />
+      
 
     <Link
       className="group flex relative items-center justify-center w-[58px] h-[58px] bg-[#202020] bg-opacity-5 hover:bg-opacity-30 rounded-full"

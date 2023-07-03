@@ -30,7 +30,7 @@ export default function NavbarDesktop() {
             <ul className="flex flex-row justify-center items-center space-x-[30px] h-full z-10">
               {/* search icon */}
               <li>
-                <Link className="group flex relative" href="/">
+                <Link className="group flex relative" href="/search">
                   <span>
                     <div className="relative group">
                       <Image
@@ -57,7 +57,7 @@ export default function NavbarDesktop() {
 
               {/* wallet icon */}
               <li>
-                <Link className="group flex relative" href="/">
+                <Link className="group flex relative" href="/payment">
                   <span>
                     <div className="relative group">
                       <Image
@@ -83,7 +83,7 @@ export default function NavbarDesktop() {
               </li>
               {/* Profile icon */}
               <li>
-                <Link className="group flex relative" href="/">
+                <Link className="group flex relative" href="/profil_settings">
                   <span>
                     <div className="relative group">
                       <Image

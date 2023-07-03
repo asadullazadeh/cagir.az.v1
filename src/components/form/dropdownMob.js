@@ -16,7 +16,7 @@ const Dropdown = ({ serviceNames }) => {
     <div className="block lg:hidden relative">
       <div className="relative">
         <label
-          for="button"
+          htmlfor="button"
           className={`absolute px-[5px] ml-[10px] mt-[-6px] z-10 bg-white 
         
            font-medium text-[8px] leading-[12px] text-cagiraz ${

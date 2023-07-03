@@ -1,14 +1,12 @@
-
-
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import Carousel1 from "@/src/components/main/carousel1";
-import Xidmetler from "@/src/components/main/xidmetler";
+import Xidmetler from "@/src/components/main/mainServices";
 import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
 import Suallar from "@/src/components/main/suallar";
 import Deyerler from "@/src/components/main/deyerler";
-import Bloq from "@/src/components/main/bloqlar";
+import Bloq from "@/src/components/main/LastPostedBlogs";
 import Musteriler from "@/src/components/main/musteriler";
 import Kampaniyalar from "@/src/components/kampaniya/kampaniya";
 import TabBar from "@/src/components/mobile/tab_bar";
@@ -69,13 +67,12 @@ export default function Home(props) {
         <Carousel1 {...{ carouselPhotos1 }} />
         <Xidmetler {...{ xidmetler }} />
         <Reyler {...{ reyler }} />
-        <Icracilar {...{icracilar}} />
+        <Icracilar {...{ icracilar }} />
         <Musteriler {...{ musteriler }} />
         <Suallar {...{ suallar }} />
         <Reels />
         <Deyerler />
         <Bloq bloqlar={bloqlar} />
-        
       </div>
     </>
   );

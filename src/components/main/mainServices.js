@@ -4,8 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import arrow from "@/icons/arrow.svg";
 import arrow_mobile from "@/icons/arrow_mobile.svg";
-import { data } from "autoprefixer";
-
+import OrderCardPrimary from "@/src/components/cards/order_card_primary";
 function Xidmetler() {
   
   const [responseData, setResponseData] = useState([]);
@@ -15,11 +14,7 @@ function Xidmetler() {
       .get("https://api.cagir.az/api/service/getAllForFront", {
         headers: {
           "Accept-Language": "az",
-        },
-        params: {
-          param1: "value1",
-          param2: "value2",
-        },
+        }
       })
       .then((response) => {
         // Handle the response data
@@ -35,8 +30,9 @@ function Xidmetler() {
   return (
     <div className="">
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Xidmətlər</h2>
+      {/* <OrderCardPrimary /> */}
       <ul className="grid grid-cols-2 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
-        {responseData?.map(({ id, imageUrl, nameUrl, serviceNames }) => (
+        {responseData?.slice(0,6).map(({ id, imageUrl, nameUrl, serviceNames }) => (
           <li key={id}>
             <Link
               href={nameUrl}
@@ -90,54 +86,3 @@ function Xidmetler() {
 }
 
 export default Xidmetler;
-
-// import Image from "next/image";
-// import Link from "next/link";
-// import arrow from "@/icons/arrow.svg";
-// import arrow_mobile from "@/icons/arrow_mobile.svg";
-
-// const Xidmetler = ({ xidmetler }) => (
-//   <>
-//     <div className="">
-//       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Xidmətlər</h2>
-//       <ul className="grid grid-cols-2 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
-//         {xidmetler?.slice(0, 6).map((xidmet) => (
-//           <li key={xidmet.id}>
-//             <Link
-//               href="#"
-//               className="block rounded-[10px] lg:rounded-[25px] bg-white p-[11px] lg:p-[26px]  group
-//               hover:drop-shadow-card transition duration-300 "
-//             >
-//               <div className="relative mb-[5px] lg:mb-[15px]">
-//                 <Image
-//                   width={367}
-//                   height={283}
-//                   src={xidmet.photo}
-//                   alt="Image description"
-//                   className="rounded-[5px] sm:rounded-[20px] w-full aspect-[123/96] object-cover object-center"
-//                 />
-//               </div>
-
-//               <div className=" flex flex-row items-center justify-between">
-//                 <div className="">
-//                   <h5 className="font-bold text-[14px] lg:text-[20px] leading-[21px] lg:leading-[30px] text-black500">
-//                     {xidmet.title}
-//                   </h5>
-//                 </div>
-
-//                 <div className="">
-//                   <div className=" hidden group-hover:block transition duration-300">
-//                     <Image src={arrow} alt="arrow_icon" className="hidden lg:block" />
-//                     <Image src={arrow_mobile} alt="arrow_mobile_icon" className="block lg:hidden" />
-//                   </div>
-//                 </div>
-//               </div>
-//             </Link>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   </>
-// );
-
-// export default Xidmetler;

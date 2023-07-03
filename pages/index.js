@@ -1,14 +1,12 @@
-
-
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import Carousel1 from "@/src/components/main/carousel1";
-import Xidmetler from "@/src/components/main/xidmetler";
+import MainServices from "@/src/components/main/mainServices";
 import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
 import Suallar from "@/src/components/main/suallar";
 import Deyerler from "@/src/components/main/deyerler";
-import Bloq from "@/src/components/main/bloqlar";
+import LastPostedBlogs from "@/src/components/main/LastPostedBlogs";
 import Musteriler from "@/src/components/main/musteriler";
 import Kampaniyalar from "@/src/components/kampaniya/kampaniya";
 import TabBar from "@/src/components/mobile/tab_bar";
@@ -67,15 +65,14 @@ export default function Home(props) {
       pb-[60px] sm:pb-[75px] md:pb-[90px] lg:pb-[105px] xl:pb-[120px] 2xl:pb-[135px]"
       >
         <Carousel1 {...{ carouselPhotos1 }} />
-        <Xidmetler {...{ xidmetler }} />
-        <Reyler {...{ reyler }} />
-        <Icracilar {...{icracilar}} />
-        <Musteriler {...{ musteriler }} />
-        <Suallar {...{ suallar }} />
+        <MainServices  />
+        <Reyler parentId={1} />
+        <Icracilar parentId={1} />
+        <Musteriler />
+        <Suallar  />
         <Reels />
         <Deyerler />
-        <Bloq bloqlar={bloqlar} />
-        
+        <LastPostedBlogs />
       </div>
     </>
   );

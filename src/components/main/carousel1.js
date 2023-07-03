@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import SifarishBtn from "../buttons/sifarish_btn";
+import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import SearchInput from "@/src/components/input/input_search";
 

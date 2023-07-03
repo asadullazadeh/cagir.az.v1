@@ -21,7 +21,7 @@ function Icraci({ parentId }) {
           `https://api.cagir.az/api/executer/getAll?serviceId=${parentId}`
         );
         const resultArrays = response.data.result; // Assuming the response structure has a "data" object containing a "result" object with arrays
-
+        console.log(resultArrays);
         const formattedData = resultArrays.map((result) => ({
           name: result.name,
           title: result.title,
@@ -63,15 +63,15 @@ function Icraci({ parentId }) {
                 <div className="flex flex-col">
                   <h6
                     className="
-                        font-semibold lg:font-bold text-[12px] lg:text-[14px] leading-[18px] 
-                        lg:leading-[21px] text-black500"
+                        font-semibold lg:font-bold text-[8px] lg:text-[12px] leading-[12px] 
+                        lg:leading-[18px] text-black500"
                   >
                     {child.name}
                   </h6>
 
                   <p
-                    className="lg:font-semibold italic text-[8px] lg:text-[12px]  
-                        lg:leading-[18px] text-[#959595]"
+                    className="lg:font-semibold italic text-[12px] lg:text-[14px] leading-[18px]
+                    lg:leading-[21px] text-[#959595]"
                   >
                     {child.title}
                   </p>
