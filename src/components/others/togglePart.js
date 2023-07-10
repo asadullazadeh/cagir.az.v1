@@ -3,7 +3,6 @@ import Link from "next/link";
 
 
 const TogglePart = () => (
-    
           <div className="pt-[10px]">
             <h4 className="font-semibold text-[16px] leading-[24px]">Ev təmizləmə xidmətinə 3 əsas xidmət növü daxildir:</h4>
             <ul className="list-disc font-medium text-[12px] leading-[18px] ml-[30px] ">

@@ -18,7 +18,6 @@ function AltXidmet() {
   const previousPath = router.asPath;
   const segments = previousPath.split("/"); // Split the path by "/"
   const desiredSegment = segments[2]; // Assuming the desired segment is the second one
-  console.log(desiredSegment);
   const [mainServiceData, setMainServiceData] = useState({});
   const [subServices, setSubServices] = useState([]);
   const [parentId, setParentId] = useState(null);
@@ -35,7 +34,6 @@ function AltXidmet() {
 
         const newParentId = response.data.result.id;
         setParentId(newParentId);
-        // console.log(newParentId);
 
         const subService = await axios.get(
           `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${newParentId}`,
@@ -52,28 +50,9 @@ function AltXidmet() {
       fetchData();
     }
   }, [config, desiredSegment, parentId]);
-  //   const { iconUrl,price, serviceNames } = subServices;
-  //     console.log(subServices);
 
   return (
     <div className="flex flex-row">
-      {/* {subServices.map(({ index, iconUrl, price, serviceNames }) => (
-        <div className="w-full" key={index}>
-          {iconUrl}
-          {price}
-
-          {serviceNames.map(({ description, id, name, text }) => (
-            <div className="w-full" key={id}>
-              <div className="flex items-center justify-between w-full pt-[5px] sm:pt-[10px] lg:pt-[15px]">
-                {description}
-                {name}
-                {id}
-                {text}
-              </div>
-            </div>
-          ))}
-        </div>
-      ))} */}
       <Sifaris />
     </div>
   );

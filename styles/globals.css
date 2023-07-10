@@ -1,17 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
 
 .dropdown:hover .dropdown-menu {
   display: block;
 }
 
-
 ::-webkit-scrollbar {
   display: none;
 }
-
 
 /*carousel*/
 .slide-enter {
@@ -35,26 +33,22 @@
   transform: translateX(-100%);
   transition: opacity 200ms, transform 2500ms;
 }
-  
-
 
 /* h1 default classes*/
 
-
-.h1-styles {  
+.h1-styles {
   font-weight: 700; /*bold*/
   font-size: 60px;
   line-height: 74px;
-  color:#202020;
+  color: #202020;
 }
 
-.h1m-styles {  
-  font-weight: 600; 
+.h1m-styles {
+  font-weight: 600;
   font-size: 28px;
   line-height: 38px;
-  color:#202020;
+  color: #202020;
 }
-
 
 /* h1 default classes*/
 .my-h1 {
@@ -64,7 +58,7 @@
 
 /* h2 default classes*/
 .my-h2 {
-  @apply font-semibold lg:font-bold text-[16px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] leading-[24px] sm:leading-[30px] md:leading-[36px] lg:leading-[42px] xl:leading-[48px] 2xl:leading-[54px] text-black500 ;
+  @apply font-semibold lg:font-bold text-[16px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] leading-[24px] sm:leading-[30px] md:leading-[36px] lg:leading-[42px] xl:leading-[48px] 2xl:leading-[54px] text-black500;
 }
 
 /* h2 default classes*/
@@ -74,120 +68,60 @@
 
 /* h5 default classes*/
 .my-h5 {
-  @apply font-semibold lg:font-bold text-[12px] sm:text-[14px] md:text-[18px] lg:text-[20px] leading-[18px] sm:leading-[22px] md:leading-[26px] lg:leading-[30px] ;
+  @apply font-semibold lg:font-bold text-[12px] sm:text-[14px] md:text-[18px] lg:text-[20px] leading-[18px] sm:leading-[22px] md:leading-[26px] lg:leading-[30px];
 }
 
-
 /* h3 default classes*/
-.h3-styles {  
+.h3-styles {
   font-weight: 700; /*bold*/
   font-size: 32px;
   line-height: 48px;
-  color:#202020;
+  color: #202020;
 }
 
 /* h4 default classes*/
-.h4-styles {  
+.h4-styles {
   font-weight: 700; /*bold*/
   font-size: 28px;
   line-height: 42px;
-  color:#202020;
+  color: #202020;
 }
 
-
-.h5-styles {  
+.h5-styles {
   font-weight: 700; /*bold*/
   font-size: 20px;
   line-height: 30px;
-  color:#202020;
+  color: #202020;
 }
 
-
 /* h6 default classes*/
-.h6-styles {  
+.h6-styles {
   font-weight: 700; /*bold*/
   font-size: 14px;
   line-height: 21px;
-  color:#202020;
+  color: #202020;
 }
 
-
-
-/* .container {
-  max-width:min(90%, 1392px);
-  margin-inline:auto  ;
-} */
-
-/* dangerouslySetInnerHTML/Tesvir */
-.my-custom-class p {
-  font-size: 14.5px;
-  line-height:1.8;
-  
-}
-
-.my-custom-class ul {
-  display:block;
-  list-style-type: disc;
-  margin-block-start:1em;
-  margin-block-end:1em;
-  margin-inline-start:0px;
-  margin-inline-end:1em;
-  padding-inline-start:40px;
-  font-weight: 300;
-  text-align: justify;
-  font-size: 20px;
-}
-
-.my-custom-class li {
-  list-style-type: circle;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.my-selected:not([disabled]) { 
+.my-selected:not([disabled]) {
   /* font-size:12px;
   line-height:18px; */
   font-weight: 800;
   border: 2px solid currentColor;
-  background-color:rgba(53, 152, 234, 1);
-  color:white;
+  background-color: rgba(53, 152, 234, 1);
+  color: white;
 }
-.my-selected:hover:not([disabled]) { 
+.my-selected:hover:not([disabled]) {
   /* font-size:12px;
   line-height:18px; */
   font-weight: 800;
   border-color: rgba(53, 152, 234, 1);
   color: rgba(53, 152, 234, 1);
-  
 }
-.my-today { 
+.my-today {
   /* font-size:12px;
   line-height:18px; */
   font-weight: 800;
-  font-size: 140%; 
+  font-size: 140%;
   border-color: rgba(53, 152, 234, 0.15);
-  color:rgba(53, 152, 234, 1);
+  color: rgba(53, 152, 234, 1);
 }

@@ -5,7 +5,7 @@ import incoming from "@/icons/call_incmng_wp/incoming.svg";
 import whatsapp from "@/icons/call_incmng_wp/whatsapp.svg";
 import ModalStandart from "@/src/components/modal/modal_stand";
 import SifarisLegv from "@/src/components/others/tracking/sifaris_legv";
-import InputBtnTransition from "@/src/components/input/input_btn_transition";
+import InputBtnNbTransition from "@/src/components/input/input_btn_nb_transition";
 
 const CallIncmngWp = () => (
   <div className="flex flex-row rounded-[30px] bg-[#202020] bg-opacity-30 p-[2px] gap-x-[2px]">
@@ -31,9 +31,9 @@ const CallIncmngWp = () => (
       </span>
     </Link>
 
-    <Link
+    <button
       className="group flex  items-center justify-center w-[58px] h-[58px] bg-[#202020] bg-opacity-5 hover:bg-opacity-30 rounded-full"
-      href="/"  onClick={() => window.my_modal_2.showModal()}
+      onClick={() => window.my_modal_2.showModal()}
     >
       <span>
         <Image
@@ -49,9 +49,8 @@ const CallIncmngWp = () => (
       >
         Geri Zəng
       </span>
-    </Link>
-      <ModalStandart dialogId="my_modal_2" content={<InputBtnTransition name="Nömrə" />} />
-      
+    </button>
+    <ModalStandart dialogId="my_modal_2" content={<InputBtnNbTransition name="Sürətli sifariş" />} />
 
     <Link
       className="group flex relative items-center justify-center w-[58px] h-[58px] bg-[#202020] bg-opacity-5 hover:bg-opacity-30 rounded-full"

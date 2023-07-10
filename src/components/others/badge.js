@@ -7,8 +7,6 @@ import Badge_mobile1 from "@/public/badge/Badge_mobile1.png";
 import Badge_mobile2 from "@/public/badge/Badge_mobile2.png";
 import Badge_mobile3 from "@/public/badge/Badge_mobile3.png";
 
-
-
 const Badge = () => (
     <div>
         <div className="hidden lg:flex lg:gap-x-[137px] xl:gap-x-[164px] 2xl:gap-x-[190px] justify-center pt-[20px]">

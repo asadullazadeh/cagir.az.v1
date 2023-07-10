@@ -5,13 +5,14 @@ import Link from "next/link";
 import arrow from "@/icons/arrow.svg";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import ModalStandart from "@/src/components/modal/modal_stand"
+import ModalStandart from "@/src/components/modal/modal_stand";
 import exit_modal from "@/icons/exit_modal.svg";
 
 const responsive = {
   0: { items: 2 },
   568: { items: 3 },
-  1024: { items: 4 },
+  // 1024: { items: 4 },
+  1300: { items: 4 },
 };
 
 function Reyler({ parentId }) {
@@ -46,12 +47,13 @@ function Reyler({ parentId }) {
   if (data.length === 0) {
     return null; // Don't render anything if the data array is empty
   }
+  const sliderCount =
+    data.length < 2 ? 0 : data.length >= 2 && data.length <= 4 ? 2 : 3;
   const childDataArray = Object.values(data).map((child) => ({
     jsxElement: (
-      <div>
         <div key={child.name[0]}>
           <div
-            className="flex flex-col  relative
+            className="flex flex-col relative
               rounded-[10px] lg:rounded-[20px]"
           >
             <div className="p-[10px] lg:p-[30px] space-y-[10px] lg:space-y-[15px]">
@@ -83,11 +85,10 @@ function Reyler({ parentId }) {
               {/* rey */}
               <div className="overflow-hidden ">
                 <div
-                  className="italic font-semibold lg:font-bold text-[12px] lg:text-[14px] leading-[18px]
-                      lg:leading-[21px] text-black100"
+                  className="w-full italic font-semibold lg:font-bold text-[10px] sm:text-[12px] lg:text-[14px] leading-[18px]
+                  sm:leading-[19px] lg:leading-[21px] text-black100"
                 >
-                  {child.description.slice(0,100)}
-                  
+                  {child.description}
                 </div>
               </div>
 
@@ -120,10 +121,8 @@ function Reyler({ parentId }) {
             </div>
           </div>
         </div>
-      </div>
     ),
   }));
-
 
   return (
     <div>
@@ -144,13 +143,14 @@ function Reyler({ parentId }) {
         //autoWidth={true}
         // autoPlayControls
         autoPlayInterval={1300}
+        disableDotsControls
         autoPlay
         autoPlayStrategy="action"
         controlsStrategy="alternate"
         infinite
         mouseTracking
         items={childDataArray.map((child, index) => (
-          <div key={index} className="pr-[15px] lg:pr-[60px]">
+          <div key={index} className="pr-[15px] 2xl:pr-[60px]">
             {child.jsxElement}
           </div>
         ))}
@@ -164,6 +164,18 @@ function Reyler({ parentId }) {
         touchTracking={true}
         touchMoveDefaultEvents={false}
       />
+
+      {/* <div className="flex flex-row gap-x-[20px] justify-center text-[50px]">
+      {".".repeat(sliderCount)}
+      </div> */}
+      <div className="flex flex-row gap-x-[20px] justify-center text-[50px]">
+        {Array.from({ length: sliderCount }, (_, index) => (
+          <React.Fragment key={index}>
+            .
+            <span className="ml-2" /> {/* Add a margin-left of 2px */}
+          </React.Fragment>
+        ))}
+      </div>
     </div>
   );
 }

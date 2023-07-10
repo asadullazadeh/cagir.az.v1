@@ -13,7 +13,6 @@ const RayonDesktop = () => {
   };
   return (
     <div className="hidden lg:block relative">
-      <div className="">
         <div className="flex flex-row justify-between pb-[5px]">
           <label for="button" className="font-semibold text-[12px] leading-[18px] text-black500">Xidməti seç</label>
           {/* <button>
@@ -42,8 +41,6 @@ const RayonDesktop = () => {
             <path d="M10 16a1 1 0 01-.7-.3l-5-5a1 1 0 011.4-1.4L10 13.6l4.3-4.3a1 1 0 011.4 1.4l-5 5a1 1 0 01-.7.3z" />
           </svg>
         </button>
-        
-      </div>
     </div>
   );
 };

@@ -20,7 +20,7 @@ function LastPostedBlogs() {
       .then((response) => {
         // Handle the response data
         setResponseData(response.data.result);
-        console.log(response.data.result);
+        // console.log(response.data.result);
       })
       .catch((error) => {
         // Handle any errors

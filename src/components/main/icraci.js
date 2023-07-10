@@ -9,7 +9,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 const responsive = {
   0: { items: 2 },
   568: { items: 3 },
-  1024: { items: 4 },
+  1300: { items: 4 },
 };
 
 function Icraci({ parentId }) {
@@ -21,7 +21,6 @@ function Icraci({ parentId }) {
           `https://api.cagir.az/api/executer/getAll?serviceId=${parentId}`
         );
         const resultArrays = response.data.result; // Assuming the response structure has a "data" object containing a "result" object with arrays
-        console.log(resultArrays);
         const formattedData = resultArrays.map((result) => ({
           name: result.name,
           title: result.title,
@@ -41,52 +40,52 @@ function Icraci({ parentId }) {
   if (data.length === 0) {
     return null; // Don't render anything if the data array is empty
   }
+  const sliderCount =
+    data.length < 2 ? 0 : data.length >= 2 && data.length <= 4 ? 2 : 3;
 
   const childDataArray = Object.values(data).map((child) => ({
     jsxElement: (
-      <div>
-        <div key={child.name[0]}>
-          <div
-            className="w-full h-full 
+      <div key={child.name[0]}>
+        <div
+          className="w-full h-full 
               rounded-[10px] lg:rounded-[20px] flex flex-col"
-          >
-            <div className="w-full h-full p-[10px] lg:p-[30px] space-y-[10px] lg:space-y-[15px]">
-              {/* photo, name */}
-              <div className="flex gap-x-[10px] lg:gap-x-[15px] items-center">
-                <Image
-                  width={200}
-                  height={200}
-                  src={`https://api.cagir.az/${child.image}`}
-                  alt="Profile picture"
-                  className="rounded-full w-[65px] lg:w-[112px] h-[65px] lg:h-[112px] object-cover object-center"
-                />
-                <div className="flex flex-col">
-                  <h6
-                    className="
+        >
+          <div className="w-full h-full p-[10px] lg:p-[30px] space-y-[10px] lg:space-y-[15px]">
+            {/* photo, name */}
+            <div className="flex gap-x-[10px] lg:gap-x-[15px] items-center">
+              <Image
+                width={200}
+                height={200}
+                src={`https://api.cagir.az/${child.image}`}
+                alt="Profile picture"
+                className="rounded-full w-[65px] lg:w-[112px] h-[65px] lg:h-[112px] object-cover object-center"
+              />
+              <div className="flex flex-col">
+                <h6
+                  className="
                         font-semibold lg:font-bold text-[8px] lg:text-[12px] leading-[12px] 
                         lg:leading-[18px] text-black500"
-                  >
-                    {child.name}
-                  </h6>
-
-                  <p
-                    className="lg:font-semibold italic text-[12px] lg:text-[14px] leading-[18px]
-                    lg:leading-[21px] text-[#959595]"
-                  >
-                    {child.title}
-                  </p>
-                </div>
-              </div>
-
-              {/* icraci */}
-              <div className="w-[175px] lg:w-[265px] h-full">
-                <p
-                  className="lg:font-semibold italic lg:text-[12px] 
-                    text-[12px] lg:leading-[18px] text-black100 w-full aspect-[175/60]"
                 >
-                  {child.description}
+                  {child.name}
+                </h6>
+
+                <p
+                  className="lg:font-semibold italic text-[12px] lg:text-[14px] leading-[18px]
+                    lg:leading-[21px] text-[#959595]"
+                >
+                  {child.title}
                 </p>
               </div>
+            </div>
+
+            {/* icraci */}
+            <div className="w-[175px] lg:w-[265px] h-full">
+              <p
+                className="w-4/5 sm:w-full italic font-semibold lg:font-bold text-[10px] sm:text-[12px] lg:text-[14px] leading-[18px]
+                  sm:leading-[19px] lg:leading-[21px] text-black100"
+              >
+                {child.description}
+              </p>
             </div>
           </div>
         </div>
@@ -125,6 +124,7 @@ function Icraci({ parentId }) {
           </div>
         ))}
         // disableSlideInfo={false}
+        disableDotsControls
         animationEasingFunction="ease"
         disableButtonsControls
         paddingLeft={0}
@@ -133,6 +133,14 @@ function Icraci({ parentId }) {
         touchTracking={true}
         touchMoveDefaultEvents={false}
       />
+      <div className="flex flex-row gap-x-[20px] justify-center text-[50px]">
+        {Array.from({ length: sliderCount }, (_, index) => (
+          <React.Fragment key={index}>
+            .
+            <span className="ml-2" /> {/* Add a margin-left of 2px */}
+          </React.Fragment>
+        ))}
+      </div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ const Statistika = () => (
       {/* 1st */}
       <div className="flex flex-col gap-y-0 lg:gap-y-[15px]">
         <h5 className="my-h5 text-gray900">Partnyor</h5>
-        <h1 className="font-medium text-[40px] lg:text-[82px] leading-[80px] leading-[123px]">
+        <h1 className="font-medium text-[40px] lg:text-[82px] leading-[80px] lg:leading-[123px]">
           50+
         </h1>
       </div>

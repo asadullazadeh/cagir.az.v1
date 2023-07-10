@@ -7,7 +7,7 @@ import client from "@/public/client.jpg";
 
 const ModalStandart = ({ dialogId, content }) => (
   <dialog id={dialogId} className="modal">
-    <form method="dialog" className="modal-box">
+    <form method="dialog" className="bg-white modal-middle w-auto h-auto rounded-[20px] px-[5px] py-[10px]">
       <div className="flex justify-end">
         {/* if there is a button in form, it will close the modal */}
         <button className="modal-action mt-0">

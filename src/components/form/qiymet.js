@@ -13,7 +13,6 @@ const Qiymet = () => {
 
   return (
     <>
-      
         {/* qiymet part */}
         <div className="rounded-[10px]">
           <div className="flex justify-between items-center ">
@@ -43,7 +42,6 @@ const Qiymet = () => {
             </p>
           </div>
         </div>
-      
     </>
   );
 };

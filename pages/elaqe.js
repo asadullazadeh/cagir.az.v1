@@ -15,7 +15,8 @@ function Elaqe() {
           <span className="mx-auto">Hər hansı çətinliyiniz var?</span>
           <span className="mx-auto">
             O zaman{" "}
-            <span className="text-cagiraz"> Tez-tez verilən suallar </span>
+            <span className="text-cagiraz">
+              <Link href="/faq">Tez-tez verilən suallar</Link>  </span>
             bölməsinə keçin{" "}
           </span>
           <span className="mx-auto">
@@ -51,10 +52,12 @@ function Elaqe() {
               <Image src={phone} alt="phone_icon" />
             </div>
             <div className="row-span-2 col-span-1">
+              <Link href="tel:994703482606">
               <p className="font-semibold text-[14px] leading-[21px]">
                 {" "}
                 +994 70 348 26 06{" "}
               </p>
+              </Link>
             </div>
           </div>
           {/* Sosial sebekeler insta, fb, linkedin */}
@@ -66,8 +69,6 @@ function Elaqe() {
           </div>
         </div>
       </div>
-
-      
     </div>
   );
 }

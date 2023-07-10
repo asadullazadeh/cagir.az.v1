@@ -139,11 +139,6 @@ export default function NavbarMobile() {
 
 
 
-                {/* <Link href="/usta/kombi-ustasi">
-                  <p className="transition duration-300 hover:text-black pb-[17.5px] border-b border-[#EAEAEA]">
-                    Digər xidmətlər
-                  </p>
-                </Link> */}
               </li>
 
               {/* second part */}

@@ -21,25 +21,26 @@ function Musteriler() {
         headers: {
           "Accept-Language": "az",
         },
-        params: {
-          param1: "value1",
-          param2: "value2",
-        },
       })
       .then((response) => {
         // Handle the response data
         setResponseData(response.data.result);
-        console.log(response.data.result);
       })
       .catch((error) => {
         // Handle any errors
         console.error(error);
       });
   }, []);
+  const sliderCount =
+    responseData.length < 2
+      ? 0
+      : responseData.length >= 2 && responseData.length <= 4
+      ? 2
+      : 3;
 
   return (
     <div>
-            <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">Müştərilər</h2>
+      <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">Müştərilər</h2>
 
       <AliceCarousel
         // activeIndex = {1}
@@ -61,9 +62,9 @@ function Musteriler() {
                 <Image
                   alt={title}
                   src={`https://api.cagir.az/${imageUrl}`}
-                  width={500}
-                  height={500}
-                  className="place-self-center my-0 pr-[50px]"
+                  width={400}
+                  height={400}
+                  className="place-self-center pr-[50px]"
                 />
               </Link>
             )}
@@ -73,12 +74,21 @@ function Musteriler() {
         // disableSlideInfo={false}
         animationEasingFunction="ease"
         disableButtonsControls
+        disableDotsControls
         paddingLeft={0}
         paddingRight={0}
         keyboardNavigation
         touchTracking={true}
         touchMoveDefaultEvents={false}
       />
+      <div className="flex flex-row gap-x-[20px] justify-center text-[50px]">
+        {Array.from({ length: sliderCount }, (_, index) => (
+          <React.Fragment key={index}>
+            .
+            <span className="ml-2" /> {/* Add a margin-left of 2px */}
+          </React.Fragment>
+        ))}
+      </div>
     </div>
   );
 }

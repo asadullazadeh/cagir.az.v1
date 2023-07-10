@@ -54,10 +54,19 @@ function Butun_xidmetler() {
     serviceNames && serviceNames.length > 0 ? serviceNames[0].name : "";
   const textService =
     serviceNames && serviceNames.length > 0 ? serviceNames[0].text : "";
+
+
+    //this is a boolean variable.True if there is any trend service
+  const isServiceTrends = Object.values(subServices).some(
+    (childObj) => childObj.isServiceTrend
+  );
+
   return (
     <div>
       {/* title */}
-      <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">Bütün xidmətlər</h2>
+      {isServiceTrends ? (
+        <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">Bütün xidmətlər</h2>
+      ) : null}
 
       {mainServiceData && (
         <div
@@ -66,7 +75,6 @@ function Butun_xidmetler() {
          pt-[30px] sm:pt-[36px] md:pt-[42px] lg:pt-[48px] xl:pt-[54px] 2xl:pt-[60px] 
          pb-[60px] sm:pb-[75px] md:pb-[90px] lg:pb-[105px] xl:pb-[120px] 2xl:pb-[135px]"
         >
-          <div>
             <ul
               className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-[15px] sm:gap-[20px] md:gap-[25px] lg:gap-[35px]
           xl:gap-y-[51px] 2xl:gap-[60px] "
@@ -85,7 +93,7 @@ function Butun_xidmetler() {
                       <li className="" key={id}>
                         <Link
                           href={`${mainService}/${nameUrl}`}
-                          className="flex items-center justify-between w-full aspect-[15/3] sm:aspect-[302/91] rounded-[10px] drop-shadow-cardAlt lg:drop-shadow-none lg:hover:drop-shadow-cardAlt transition duration-300 bg-white px-[15px] sm:px-[30px] py-[9.5px] sm:py-[15px] group"
+                          className="flex items-center justify-between w-full aspect-[15/3] sm:aspect-[302/91] rounded-[20px] drop-shadow-cardAlt lg:drop-shadow-none lg:hover:drop-shadow-cardAlt transition duration-300 bg-white px-[15px] sm:px-[30px] py-[9.5px] sm:py-[15px] group"
                         >
                           <div>
                             <h5 className="relative font-semibold lg:font-bold text-[16px]	lg:text-[20px] leading-[24px] lg:leading-[30px] text-black500">
@@ -106,7 +114,6 @@ function Butun_xidmetler() {
                 }
               )}
             </ul>
-          </div>
         </div>
       )}
     </div>

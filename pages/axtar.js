@@ -28,7 +28,7 @@ import Carousel1 from "@/src/components/main/carousel1";
 import Ustalar from "@/src/components/main/subServices";
 import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
-import SearchInput from "@/src/components/input/input_search";
+import SearchInput from "@/src/components/input/input_search_sm";
 import Suallar from "@/src/components/main/suallar";
 import Deyerler from "@/src/components/main/deyerler";
 // import Bloq from "@/src/components/bloq/bloq";

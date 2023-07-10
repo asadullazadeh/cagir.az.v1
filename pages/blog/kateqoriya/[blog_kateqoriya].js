@@ -2,18 +2,26 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import arrow from "@/icons/arrow.svg";
+import arrow_mobile from "@/icons/arrow_mobile.svg";
 import views from "@/icons/bloq/views.svg";
 import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
+import SearchInput from "@/src/components/input/input_search_sm";
 import SearchInputMd from "@/src/components/input/input_search_md";
-import Router from "next/router";
+import { useRouter } from "next/router";
 
-function Blogs() {
+function Categories() {
+  const router = useRouter();
+  const { categoryName } = router.query;
+  const { pathname } = router;
+  const { blog_kateqoriya } = router.query;
+
   const [size, setSize] = useState(0);
   const [responseData, setResponseData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`https://api.cagir.az/api/post/getAll?size=${size}`, {
+      .get(`https://api.cagir.az/api/category/getAll`, {
         headers: {
           "Accept-Language": "az",
         },
@@ -27,7 +35,7 @@ function Blogs() {
         // Handle any errors
         console.error(error);
       });
-  }, [size]);
+  }, [size, router, categoryName, pathname]);
 
   const handleClick = () => {
     setSize((prevSize) => prevSize + 1);
@@ -37,13 +45,14 @@ function Blogs() {
 
   return (
     <div className="">
+      {blog_kateqoriya}
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Bloq</h2>
       <div className="flex justify-center">
         <SearchInputMd />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
-        {Object.keys(responseData).map((childObjectName, index) => {
+        {/* {Object.keys(responseData).map((childObjectName, index) => {
           const { shortDescription, postId, title } =
             responseData[childObjectName].postNames[0];
           const {
@@ -57,14 +66,14 @@ function Blogs() {
           } = responseData[childObjectName];
 
           return (
-            <div key={index}>
+            <div classNames="" key={index}>
               <div className="drop-shadow-card lg:drop-shadow-none hover:drop-shadow-card transition duration-300 bg-white p-[15px] sm:p-[18px] md:p-[21px] lg:p-[24px] lx:p-[27px] 2xl:p-[30px] rounded-[20px] 2xl:rounded-[25px]">
                 <Link href={`/blog/${titleUrl}/${id}`}>
                   <Image
                     width={360}
                     height={257}
                     src={`https://api.cagir.az${imageUrl}`}
-                    alt={nameUrl}
+                    alt={title}
                     className="rounded-[10px] lg:rounded-[20px] w-full aspect-[360/257]"
                   />
                 </Link>
@@ -77,7 +86,6 @@ function Blogs() {
                     {insertDate.slice(0, 10)}
                   </p>
                   <div className="ml-auto border border-cagiraz rounded-lg">
-                    {/* what to add for this part? */}
                     <p className="font-semibold	text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px] ">
                       Mövzu
                     </p>
@@ -119,7 +127,7 @@ function Blogs() {
               </div>
             </div>
           );
-        })}
+        })} */}
       </div>
 
       <div
@@ -132,4 +140,4 @@ function Blogs() {
   );
 }
 
-export default Blogs;
+export default Categories;

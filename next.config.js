@@ -6,6 +6,9 @@ const nextConfig = {
     domains: [
       "api.cagir.az",
       "api.cagir.aznull",
+      "api.cagir.azundefined",
+      "api.cagir.aznull",
+      "photos.google.com",
       "images.unsplash.com",
       "wembleypark.com",
       "hydeparkwinterwonderland.com",

@@ -8,7 +8,6 @@ import Suallar from "@/src/components/main/suallar";
 import Deyerler from "@/src/components/main/deyerler";
 import Bloq from "@/src/components/main/LastPostedBlogs";
 import Musteriler from "@/src/components/main/musteriler";
-import Kampaniyalar from "@/src/components/kampaniya/kampaniya";
 import TabBar from "@/src/components/mobile/tab_bar";
 import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 import Reels from "@/src/components/main/reels";

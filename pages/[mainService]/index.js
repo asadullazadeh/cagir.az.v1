@@ -11,7 +11,6 @@ import Reels from "@/src/components/main/reels";
 import Banner from "@/src/components/main/banner";
 import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
-import Tesvir from "@/src/components/main/tesvir";
 import SubService from "@/src/components/main/subServices";
 function Page() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -64,7 +63,6 @@ function Page() {
     serviceNames && serviceNames.length > 0 ? serviceNames[0].name : "";
   const textService =
     serviceNames && serviceNames.length > 0 ? serviceNames[0].text : "";
-  console.log(textService);
   return (
     <div>
       {/* badge */}
@@ -89,7 +87,7 @@ function Page() {
           <h2 className="my-h2 mb-[15px] text-center">Təsvir</h2>
           <div
             dangerouslySetInnerHTML={{ __html: textService }}
-            className="prose my-custom-class"
+            
           />
         </div>
       </div>

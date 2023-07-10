@@ -1,12 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const SifarishBtn = ({classNames}) => (
+const SifarishBtn = ({ classNames }) => (
   <>
-    <Link
-      href="/profil"
-      className={classNames}
-    >
+    <Link href="/profil" className={classNames}>
       <button
         className="
               font-extraBold text-[14px] lg:text-[18px] leading-[22px] lg:leading-[27px]

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
-import SearchInput from "@/src/components/input/input_search";
+import SearchInput from "@/src/components/input/input_search_sm";
 
 export default function Carousel1({ carouselPhotos1 }) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -37,7 +37,6 @@ export default function Carousel1({ carouselPhotos1 }) {
         <div className="block lg:hidden">
           <SearchInput />
         </div>
-        
 
         {/* sifaris button-for desktop */}
         <SifarishBtn classNames="hidden lg:block" />
@@ -52,7 +51,7 @@ export default function Carousel1({ carouselPhotos1 }) {
       </div>
 
       {/* carousel part */}
-      <div className=" w-full h-full">
+      <div className="w-full h-full">
         <div
           id="default-carousel"
           className="relative overflow-hidden rounded-lg w-full aspect-[821/438]"

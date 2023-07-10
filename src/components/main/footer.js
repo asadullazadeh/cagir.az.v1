@@ -10,11 +10,20 @@ import InputBtnTransition from "@/src/components/input/input_btn_transition";
 const Footer = () => (
   <>
     <footer className="lg:px-[60px] pt-[15px] lg:pt-[80px] pb-[115px] lg:pb-[90px] bg-white200">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-between gap-y-[40px] lg:gap-y-0">
+      <div className="flex lg:hidden mb-[40px] lg:mb-[30px] justify-center lg:justify-start">
+        <Link href="/">
+          <Image
+            src={logo}
+            className="h-[27px] w-[106px]"
+            alt="Cagir.az logo"
+          />
+        </Link>
+      </div>
+      <div className="grid grid-cols-2 lg:grid-cols-4 justify-between gap-y-[40px] lg:gap-y-0">
         {/* 1st column-Cagir.az */}
-        <div className="justify-center md:col-span-1 lg:col-auto lg:justify-start order-4 sm:order-3 lg:order-1 mx-auto lg:mx-0">
+        <div className="justify-center col-span-2 lg:col-auto lg:justify-start order-4  lg:order-1 mx-auto lg:mx-0">
           {/* 1st column:1st element */}
-          <div className="flex mb-[20px] lg:mb-[30px] justify-center lg:justify-start">
+          <div className="hidden lg:flex mb-[20px] lg:mb-[30px] justify-center lg:justify-start">
             <Link href="/">
               <Image
                 src={logo}
@@ -51,7 +60,7 @@ const Footer = () => (
             <li className="flex justify-center lg:justify-start">
               <Link
                 href="#"
-                className="hover:text-black transition duration-300 inline-block min-w-max"
+                className="text-cagiraz font-extrabold lg:text-gray900 lg:font-semibold lg:hover:text-black transition duration-300 inline-block min-w-max"
               >
                 Razılaşma müqaviləsi
               </Link>
@@ -77,80 +86,94 @@ const Footer = () => (
         </div>
 
         {/* Faydali kecidler */}
-        <div className="justify-center lg:justify-start order-2 mx-auto lg:mx-0">
+        <div className="flex justify-start order-2 ">
           {/* <!-- 3rd column:title --> */}
-          <h2 className="mb-[10px] lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500 text-center lg:text-left">
-            Faydalı keçidlər
-          </h2>
-          <ul className="space-y-[10px] lg:space-y-[15px] font-semibold text-[14px] leading-[21px]  text-gray900">
+
+          <ul className="flex flex-col mx-auto justify-center space-y-[10px] lg:space-y-[15px] font-semibold text-[14px] leading-[21px]  text-gray900">
             {/* <!-- 2nd column:1st --> */}
             <li className="hover:text-black transition duration-300 flex justify-center lg:justify-start">
+              <h2 className="lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500 text-center lg:text-left">
+                Faydalı keçidlər
+              </h2>
+            </li>
+            <li className="hover:text-black transition duration-300 ">
               <Link href="#">Haqqımızda</Link>
             </li>
             {/* <!-- 2nd column:2nd --> */}
-            <li className="hover:text-black transition duration-300 flex justify-center lg:justify-start">
+            <li className="hover:text-black transition duration-300 ">
               <Link href="#">Suallar</Link>
             </li>
             {/* <!-- 2nd column:3rd --> */}
-            <li className="hover:text-black transition duration-300 flex justify-center lg:justify-start">
+            <li className="hover:text-black transition duration-300 ">
               <Link href="#">Əlaqə</Link>
             </li>
             {/* <!-- 2nd column:4th --> */}
-            <li className="hover:text-black transition duration-300 flex justify-center lg:justify-start">
+            <li className="hover:text-black transition duration-300 ">
               <Link href="#">Bloq</Link>
             </li>
             {/* <!-- 2nd column:5th --> */}
-            <li className="hover:text-black transition duration-300 flex justify-center lg:justify-start">
+            <li className="hover:text-black transition duration-300 ">
               <Link href="#">Media</Link>
             </li>
             {/* <!-- 2nd column:6th --> */}
-            <li className="hover:text-black transition duration-300 flex justify-center lg:justify-start">
+            <li className="hover:text-black transition duration-300 ">
               <Link href="#">Xidmətlər</Link>
             </li>
           </ul>
         </div>
 
         {/* 3rd column-Xidmetler */}
-        <div className="justify-center lg:justify-start order-1 lg:order-3 mx-auto lg:mx-0">
+        <div className="flex flex-col mx-auto justify-start  order-1 lg:order-3 ">
           {/* <!-- 3rd column:title --> */}
-          <h2 className="mb-[10px] lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500 text-center lg:text-left">
-            Xidmətlər
-          </h2>
+
           <ul className="space-y-[10px] lg:space-y-[15px] font-semibold text-[14px] leading-[21px]  min-w-max text-gray900">
             {/* <!-- 2nd column:1st --> */}
-            <li className="hover:text-black transition duration-300 flex justify-center lg:justify-start">
+            <li className="hover:text-black transition duration-300 ">
+              <h2 className="mb-[10px] lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500">
+                Xidmətlər
+              </h2>
+            </li>
+            <li className="hover:text-black transition duration-300 ">
               <Link href="#">Təmizlik xidməti</Link>
             </li>
             {/* <!-- 2nd column:2nd --> */}
-            <li className="hover:text-black transition duration-300 flex justify-center lg:justify-start">
+            <li className="hover:text-black transition duration-300 ">
               <Link href="#">Usta</Link>
             </li>
             {/* <!-- 2nd column:3rd --> */}
-            <li className="hover:text-black transition duration-300 flex justify-center lg:justify-start">
+            <li className="hover:text-black transition duration-300 ">
               <Link href="#">Masaj xidməti</Link>
             </li>
             {/* <!-- 2nd column:4th --> */}
-            <li className="hover:text-black transition duration-300 flex justify-center lg:justify-start">
+            <li className="hover:text-black transition duration-300 ">
               <Link href="#">Hamısı</Link>
             </li>
             {/* <!-- 2nd column:5th --> */}
-            <li className="hover:text-black transition duration-300 flex justify-center lg:justify-start">
+            <li className="hover:text-black transition duration-300 ">
               <Link href="#">PulQazan</Link>
             </li>
             {/* <!-- 2nd column:6th --> */}
-            <li className="hover:text-black transition duration-300 flex justify-center lg:justify-start">
+            <li className="hover:text-black transition duration-300 ">
               <Link href="#">Bizimlə işlə</Link>
             </li>
           </ul>
         </div>
 
         {/* 4th column-Yeniliklerden xeberdar ol */}
-        <div className="justify-center lg:justify-start order-3 lg:order-4 mx-auto lg:mx-0">
+        <div className="flex flex-col col-span-2 lg:col-span-1 justify-center lg:justify-start order-3 lg:order-4 mx-auto lg:mx-0">
           {/* 4th column:title */}
-          <h2 className="mb-[10px] lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500 text-left">
+
+          <h2 className="lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500 text-left">
             Yeniliklərdən xəbərdar ol
           </h2>
-          <InputBtnTransition name="Emaili yaz" />
+          <div>
+            <div className="hidden lg:flex">
+              <InputBtnTransition name="Emaili yaz" />
+            </div>
+            <div className="flex lg:hidden">
+              <InputBtnTransition placeholder="Emaili yaz" />
+            </div>
+          </div>
         </div>
       </div>
     </footer>

@@ -9,7 +9,6 @@ const Form = ({serviceDescription}) => {
   const toggleHidden = () => {
     setIsHidden(!isHidden);
   };
-
   return (
     <>
         {/* Toggle part */}

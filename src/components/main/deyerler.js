@@ -23,17 +23,17 @@ function Deyerler() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://api.cagir.az/api/adminDictionary/getAll?dictionaryType=2", config
+          "https://api.cagir.az/api/adminDictionary/getAll?dictionaryType=2",
+          config
         );
         const resultArrays = response.data.result; // Assuming the response structure has a "data" object containing a "result" object with arrays
         // console.log(resultArrays);
         const formattedData = resultArrays.map((result) => ({
-          id:result.id,
-          image:result.imageUrl,
-          text:result.text,
-          title:result.title
+          id: result.id,
+          image: result.imageUrl,
+          text: result.text,
+          title: result.title,
         }));
-        
 
         setData(formattedData);
       } catch (error) {
@@ -47,37 +47,36 @@ function Deyerler() {
   return (
     <div>
       <h2 className="my-h2 mb-[15px] lg:mb-[60px] text-center">Dəyərlər</h2>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-[10px] sm:gap-x-[40px] md:gap-x-[70px] lg:gap-x-[100px] xl:gap-x-[130px] 2xl:gap-x-[156px] 
-            gap-y-[15px]">
-      {data.map(({index,title,text,imageUrl})  => (
-        <div key={index}>
-          
-            
-          <div className="flex flex-col">
-            {/* <Image width={100} height={100} src={`https://api.cagir.az${imageUrl}`} alt="icon" /> */}
-        <div className="flex justify-center items-center w-[30px] lg:w-[60px] h-[30px] lg:h-[60px] mb-[15px] lg:mb-[30px]">
-          <Image
-            src={star}
-            alt="Image 1"
-            className=" w-[27px] lg:w-[54px] h-[27px] lg:h-[54px]"
-          />
-          <Image
-            src={pesekar}
-            alt="Image 2"
-            className="absolute z-10 w-[12px] lg:w-[24px] h-[12px] lg:h-[24px]"
-          />
-        </div>
+      <div
+        className="grid grid-cols-2 lg:grid-cols-4 gap-x-[10px] sm:gap-x-[40px] md:gap-x-[70px] lg:gap-x-[100px] xl:gap-x-[130px] 2xl:gap-x-[156px] 
+            gap-y-[15px]"
+      >
+        {data.map(({ index, title, text, imageUrl }) => (
+          <div key={index}>
+            <div className="flex flex-col">
+              {/* <Image width={100} height={100} src={`https://api.cagir.az${imageUrl}`} alt="icon" /> */}
+              <div className="flex justify-center items-center w-[30px] lg:w-[60px] h-[30px] lg:h-[60px] mb-[15px] lg:mb-[30px]">
+                <Image
+                  src={star}
+                  alt="Image 1"
+                  className=" w-[27px] lg:w-[54px] h-[27px] lg:h-[54px]"
+                />
+                <Image
+                  src={pesekar}
+                  alt="Image 2"
+                  className="absolute z-10 w-[12px] lg:w-[24px] h-[12px] lg:h-[24px]"
+                />
+              </div>
 
-        <h5 className="mb-[5px] my-h5">{title}</h5>
+              <h5 className="mb-[5px] my-h5">{title}</h5>
 
-        <p className="font-medium lg:font-semibold text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] leading-[12px] sm:leading-[15px] md:leading-[18px] lg:leading-[21px] text-gray900">
-          {text}
-        </p>
+              <p className="font-medium lg:font-semibold text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] leading-[12px] sm:leading-[15px] md:leading-[18px] lg:leading-[21px] text-gray900">
+                {text}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
-        </div>
-      ))}
-      </div>
-      
     </div>
   );
 }

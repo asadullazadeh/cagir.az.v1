@@ -5,16 +5,17 @@ import info_btn from "@/icons/form/info_btn.svg";
 
 const Dropdown = ({ serviceNames }) => {
   const [isOpen, setIsOpen] = useState(false);
-  
-  const [selectedOption, setSelectedOption] = useState(`${serviceNames}`.split(",")[0]);
+
+  const [selectedOption, setSelectedOption] = useState(
+    `${serviceNames}`.split(",")[0]
+  );
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
   };
   return (
-    <div className="block lg:hidden relative">
-      <div className="relative">
+    <div className="block relative lg:hidden">
         <label
           htmlfor="button"
           className={`absolute px-[5px] ml-[10px] mt-[-6px] z-10 bg-white 
@@ -69,7 +70,6 @@ const Dropdown = ({ serviceNames }) => {
             ))}
           </ul>
         )}
-      </div>
     </div>
   );
 };

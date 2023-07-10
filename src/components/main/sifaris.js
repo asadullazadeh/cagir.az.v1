@@ -65,7 +65,6 @@ const infosToKnow = [
   "Oboyun suya qarşı həssaslığı",
 ];
 
-
 const serviceDescription = `Sadə təmizlik xidməti - evi gündəlik tozdan təmizləmək,
 əşyaların tozlarının təmizlənməsi, evin səliqəyə salınması,
 sanitar qovşaqların təmizlənməsi nəzərdə tutulur.Dərin təmizlik
@@ -140,41 +139,43 @@ function Sifaris() {
           <div className="flex lg:hidden flex-col gap-y-[10px]">
             <DropdownMob serviceNames={mainServices} />
             <div className="flex flex-row gap-x-[10px]">
-              <Image className="self-start w-[20px] h-[20px]" src={info_btn} alt="info_icon" />
-              <p className="	">
-                {serviceDescription.slice(0,100)}
-              
-        {descIsOpen ? (
-          <>
-            {serviceDescription.slice(100,)}
-            <button
-              className="font-semibold block text-cagiraz"
-              onClick={handleToggleDesc}
-            >
-              Bağla
-            </button>
-          </>
-        ) : (
-          <button
-            className="font-semibold block text-cagiraz"
-            onClick={handleToggleDesc}
-          >
-            Ətraflı oxu
-          </button>
-        )}
-      </p>
-              </div> 
+              <Image
+                className="self-start w-[20px] h-[20px]"
+                src={info_btn}
+                alt="info_icon"
+              />
+              <p className="font-medium text-[10px] leading-[15px] text-gray900">
+                {serviceDescription.slice(0, 100)}
+
+                {descIsOpen ? (
+                  <>
+                    {serviceDescription.slice(100)}
+                    <button
+                      className="font-semibold block text-cagiraz"
+                      onClick={handleToggleDesc}
+                    >
+                      Bağla
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    className="font-semibold block text-cagiraz"
+                    onClick={handleToggleDesc}
+                  >
+                    Ətraflı oxu
+                  </button>
+                )}
+              </p>
             </div>
-
+          </div>
 
           <DropdownMob serviceNames={mainServices} />
           <DropdownMob serviceNames={mainServices} />
           <Dropdown serviceNames={mainServices} />
           <Dropdown serviceNames={mainServices} />
           <Dropdown serviceNames={mainServices} />
-          
         </div>
-        
+
         {/* Checmark */}
         {/* ex:Neçə kv.m sahə təmizlənəcək?-First choices */}
         <div className="flex flex-col pt-[30px]">
@@ -273,22 +274,20 @@ function Sifaris() {
           </button>
         </div>
         {/* second part of sifaris section-Sifarisi tamamla */}
-        
-        {/* Sifarisi tamamla */}
-          <h4
-            className="font-semibold lg:font-bold text-[16px] lg:text-[20px] leading-[14px] lg:leading-[30px] 
-        text-black500 pb-[20px] lg:pb-[30px] pt-[30px]"
-          >
-            Sifarişi tamamla
-          </h4>
 
-          
+        {/* Sifarisi tamamla */}
+        <h4
+          className="font-semibold lg:font-bold text-[16px] lg:text-[20px] leading-[14px] lg:leading-[30px] 
+        text-black500 pb-[20px] lg:pb-[30px] pt-[30px]"
+        >
+          Sifarişi tamamla
+        </h4>
+
         <div className="flex flex-col">
           {/* inputs and map part */}
           <div className="flex flex-col xl:flex-row lg:gap-x-[30px] xl:gap-x-[30px] 2xl:gap-x-[40px] w-full">
             {/* inputs and map for mobile */}
             <div className="flex flex-col gap-y-[15px] xl:gap-y-0 lg:justify-between w-full xl:w-1/2">
-           
               <Calendar />
               <InputCustomized />
               {/* Calendar,data picker */}
@@ -303,7 +302,6 @@ function Sifaris() {
               <Download_image />
               <Promocode />
               <PaymentMethod />
-              
             </div>
             {/* map section for desktop */}
             <div className="hidden lg:flex flex-col space-y-[5px] w-full aspect-[666/365]">
