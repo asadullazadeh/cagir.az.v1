@@ -15,7 +15,8 @@ function BlogPost() {
   const router = useRouter();
   const { query } = router;
   const { blogId } = query;
-  // console.log(blogId);
+  // console.log(blogId);  service/getAllForFront
+
   useEffect(() => {
     axios
       .get(`https://api.cagir.az/api/post/detail?id=${blogId}`, {

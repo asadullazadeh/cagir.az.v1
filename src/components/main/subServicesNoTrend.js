@@ -6,7 +6,7 @@ import Image from "next/image";
 import arrow_right from "@/icons/arrow_right.svg";
 import arrow from "@/icons/arrow.svg";
 
-function Butun_xidmetler() {
+function SubServiceNoTrend() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const config = {
     headers: {
@@ -92,7 +92,7 @@ function Butun_xidmetler() {
                     return (
                       <li className="" key={id}>
                         <Link
-                          href={`${mainService}/${nameUrl}`}
+                          href={`sifaris/${mainService}/${nameUrl}`}
                           className="flex items-center justify-between w-full aspect-[15/3] sm:aspect-[302/91] rounded-[20px] drop-shadow-cardAlt lg:drop-shadow-none lg:hover:drop-shadow-cardAlt transition duration-300 bg-white px-[15px] sm:px-[30px] py-[9.5px] sm:py-[15px] group"
                         >
                           <div>
@@ -120,4 +120,4 @@ function Butun_xidmetler() {
   );
 }
 
-export default Butun_xidmetler;
+export default SubServiceNoTrend;

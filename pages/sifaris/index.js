@@ -5,8 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Toggle from "@/src/components/form/toggle";
 import Qiymet from "@/src/components/form/qiymet";
-import Dropdown from "@/src/components/form/dropdown1";
-import DropdownMob from "@/src/components/form/dropdownMob";
+import Dropdown1 from "@/src/components/form/dropdown1";
+import Dropdown2 from "@/src/components/form/dropdown2";
+import Dropdown3 from "@/src/components/form/dropdown3";
 import CheckBox from "@/src/components/buttons/checkbox";
 import CustomInput from "@/src/components/input/custom_input";
 import Textarea from "@/src/components/input/textarea";
@@ -18,13 +19,10 @@ import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn
 import LinkSmBtn from "@/src/components/buttons/link_sm_btn";
 import info_btn from "@/icons/form/info_btn.svg";
 import Map_Image from "@/public/Map_Image.png";
-// import Map from "@/src/components/form/map";
-import RayonDesktop from "@/src/components/buttons/rayon_desktop";
 import InputCustomized from "@/src/components/input/input";
 import MapBtn from "@/src/components/buttons/map_btn";
 import Calendar from "@/src/components/form/datepicker";
 import ModalStandart from "@/src/components/modal/modal_stand";
-import TogglePart from "@/src/components/others/togglePart";
 
 const firstChoices = [
   "50 kv. metrə qədər",
@@ -32,7 +30,6 @@ const firstChoices = [
   "101-150 kv. metr",
   "150 kv. metrdən çox",
 ];
-
 const secondChoices = {
   checkmarks: [
     "Nərdivan",
@@ -51,7 +48,6 @@ const secondChoices = {
     "Mebelin daxildən təmizlənməsi",
   ],
 };
-
 const infosToKnow = [
   "Ev əşyalıdır",
   "Hamam / tualetin kimyəvi dərmanlara qarşı həssaslığı",
@@ -60,12 +56,13 @@ const infosToKnow = [
 
 function Sifaris() {
   //
-  // const router = useRouter();
-  // const { query } = router;
-  // const { blogId } = query;
-  //
-  const [responseData, setResponseData] = useState([]);
+  const router = useRouter();
+  const { query } = router;
+  const mainServiceUrlName = query.mainService;
+  const subServiceName = query.subService;
 
+  // mainServices functionality starts here
+  const [getMainServices, setgetMainServices] = useState([]);
   useEffect(() => {
     axios
       .get("https://api.cagir.az/api/service/getAllForFront", {
@@ -75,24 +72,111 @@ function Sifaris() {
       })
       .then((response) => {
         // Handle the response data
-        setResponseData(response.data.result);
+        setgetMainServices(response.data.result);
       })
       .catch((error) => {
         // Handle any errors
         console.error(error);
       });
   }, []);
+  // console.log(getMainServices);
 
-  const mainServices = Object.values(responseData).map(
-    (child) => child.serviceNames[0].name
-  );
+  const findIdByUrlName = (getMainServices, nameUrl) =>
+    getMainServices.find((obj) => obj.nameUrl === nameUrl)?.id || null;
+  const serviceId = findIdByUrlName(getMainServices, mainServiceUrlName);
 
-  const serviceDescription = Object.values(responseData).map((child) => (
+  const findNameByUrlName = (getMainServices, name) =>
+    getMainServices.find((obj) => obj.nameUrl === name)?.serviceNames[0].name ||
+    null;
+  const serviceName = findNameByUrlName(getMainServices, mainServiceUrlName);
+  console.log(serviceName);
+  const serviceDescription = Object.values(getMainServices).map((child) => (
     <div dangerouslySetInnerHTML={{ __html: child.serviceNames[0].text }} />
   ));
+  // console.log(serviceId);
+  const mainServicesInfos = Object.values(getMainServices).map((child) => ({
+    mainId: child.serviceNames[0].id,
+    mainName: child.serviceNames[0].name,
+    mainText: child.serviceNames[0].text,
+  }));
+  // mainServices functionality finishes here
 
-  console.log(responseData);
-  //
+  // subServices functionality starts here
+  const [getSubServices, setGetSubServices] = useState([]);
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${serviceId}`,
+        {
+          headers: {
+            "Accept-Language": "az",
+          },
+        }
+      )
+      .then((response) => {
+        // Handle the response data
+        setGetSubServices(response.data.result);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  }, [serviceId]);
+
+  const findSubNameById = (getSubServices, nameUrl) =>
+    getSubServices.find((obj) => obj.nameUrl === nameUrl)?.id || null;
+  const subServiceId = findSubNameById(getSubServices, subServiceName);
+  // console.log(getSubServices);
+  const subServicesInfos = Object.values(getSubServices).map((child) => ({
+    subId: child.serviceNames[0].id,
+    subDescription: child.serviceNames[0].description
+      ? child.serviceNames[0].description
+      : null,
+    subName: child.serviceNames[0].name ? child.serviceNames[0].name : null,
+    subText: child.serviceNames[0].text ? child.serviceNames[0].text : 0,
+    subTitleUrl: child.serviceNames[0].titleUrl
+      ? child.serviceNames[0].titleUrl
+      : 0,
+  }));
+  // subServices functionality finishes here
+
+  //  sub2Services functionality starts here
+  const [getSub2Services, setGetSub2Services] = useState([]);
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${subServiceId}`,
+        {
+          headers: {
+            "Accept-Language": "az",
+          },
+        }
+      )
+      .then((response) => {
+        // Handle the response data
+        setGetSub2Services(response.data.result);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  }, [subServiceId]);
+  // console.log(getSub2Services);
+
+  const sub2ServicesInfos = Object.values(getSub2Services).map((child) => ({
+    sub2Id: child.serviceNames[0].id,
+    sub2Description: child.serviceNames[0].description
+      ? child.serviceNames[0].description
+      : null,
+    sub2Name: child.serviceNames[0].name ? child.serviceNames[0].name : null,
+    sub2Text: child.serviceNames[0].text ? child.serviceNames[0].text : 0,
+    sub2TitleUrl: child.serviceNames[0].titleUrl
+      ? child.serviceNames[0].titleUrl
+      : 0,
+  }));
+  // console.log(sub2ServicesInfos);
+  //  sub2Services functionality finishes here
+
   // subject is the category name
   const [showSecondChild, setShowSecondChild] = useState(false);
   const toggleSecondChild = () => {
@@ -112,8 +196,6 @@ function Sifaris() {
     setdescIsOpen(!descIsOpen);
   };
 
-  // console.log(serviceDescription);
-
   return (
     <div
       className="flex flex-col lg:flex-row lg:gap-x-[30px] xl:gap-x-[40px] 2xl:gap-x-[60px]
@@ -126,7 +208,10 @@ function Sifaris() {
         </div>
         {/* Toggle part is only desktop */}
         <div className="z-10 hidden lg:block sticky ">
-          <Toggle serviceDescription={serviceDescription} />
+          <Toggle
+            serviceId={serviceId}
+            serviceDescription={serviceDescription}
+          />
         </div>
       </div>
 
@@ -141,17 +226,18 @@ function Sifaris() {
 
         {/* Dropdowns for services */}
         <div className="grid lg:grid-cols-3 justify-items-stretch lg:gap-x-[40px] gap-y-[15px]">
-          <Dropdown
-            serviceNames={mainServices}
-            serviceDescription={serviceDescription}
+          <Dropdown1
+            mainServiceName={serviceName}
+            serviceId={serviceId}
+            mainServicesInfos={mainServicesInfos}
           />
-          <Dropdown
-            serviceNames={mainServices}
-            serviceDescription={serviceDescription}
+          <Dropdown2
+            subServiceId={subServiceId}
+            subServicesInfos={subServicesInfos}
           />
-          <Dropdown
-            serviceNames={mainServices}
-            serviceDescription={serviceDescription}
+          <Dropdown3
+            subServiceId={subServiceId}
+            sub2ServicesInfos={sub2ServicesInfos}
           />
         </div>
 
@@ -310,3 +396,22 @@ function Sifaris() {
 }
 
 export default Sifaris;
+
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import Image from "next/image";
+// import Link from "next/link";
+// import icraciSvg from "@/icons/faq/icraci.svg";
+// import musteriSvg from "@/icons/faq/musteri.svg";
+// import sifarisSvg from "@/icons/faq/sifaris.svg";
+
+// function Example() {
+
+//   return (
+//     <div className="">
+//         This page will be sifaris.
+//     </div>
+//   );
+// }
+
+// export default Example;

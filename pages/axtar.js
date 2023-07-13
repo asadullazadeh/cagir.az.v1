@@ -25,7 +25,7 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import Carousel1 from "@/src/components/main/carousel1";
-import Ustalar from "@/src/components/main/subServices";
+import Ustalar from "@/src/components/main/subServicesTrend";
 import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
 import SearchInput from "@/src/components/input/input_search_sm";
