@@ -14,12 +14,12 @@ const PaymentMethod = () => {
           <input
             id="default-radio-1"
             type="radio"
-            value=""
+            // value=""
             name="default-radio"
             className="w-[20px] h-[20px] text-cagiraz  border-cagiraz"
           />
           <label
-            for="default-radio-1"
+            htmlFor="default-radio-1"
             className="font-semibold text-[12px] leading-[18px] text-black500"
           >
             <p>Nağd ödəniş</p>
@@ -31,12 +31,12 @@ const PaymentMethod = () => {
             checked
             id="default-radio-2"
             type="radio"
-            value=""
+            // value=""
             name="default-radio"
             className="w-[20px] h-[20px] text-cagiraz  border-cagiraz"
           />
           <label
-            for="default-radio-2"
+            htmlFor="default-radio-2"
             className="font-semibold text-[12px] leading-[18px] text-black500"
           >
             <p>Kart ilə ödəniş</p>

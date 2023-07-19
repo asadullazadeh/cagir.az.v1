@@ -28,7 +28,7 @@ function CategoriesBlog({ categoryId, id }) {
   }, []);
 
   //
-  // console.log(categoriesData);
+  console.log(categoriesData);
 
   return (
     <div className="">

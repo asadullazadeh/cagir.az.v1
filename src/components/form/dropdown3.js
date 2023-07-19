@@ -88,7 +88,7 @@ const serviceDesc = findDescById(sub2ServicesInfos, selectedSub2Service);
         {/* dropdown */}
         <div>
           <label
-            htmlfor="button"
+            htmlFor="button"
             className={`absolute px-[5px] ml-[10px] mt-[-6px] z-10 bg-white 
         
            font-medium text-[8px] leading-[12px] text-cagiraz ${

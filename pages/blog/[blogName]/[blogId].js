@@ -52,6 +52,7 @@ function BlogPost() {
 
   // subject is the category name
   const subject = category?.categoryNames?.[0]?.name ?? "Default Value";
+  // console.log(responseData);
   return (
     <div
       className="flex flex-col lg:flex-row lg:gap-x-[40px] xl:gap-x-[50px] 2xl:gap-x-[60px] 

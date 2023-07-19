@@ -1,30 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import info_btn from "@/icons/form/info_btn.svg";
 
-const Dropdown2 = ({subServicesInfos, subServiceId }) => {
+const Dropdown1 = ({ getMainServices, passData }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedSubService, setselectedSubService] = useState(`zqezq`);
-const handleOptionClick = (option) => {
-  setselectedSubService(option);
-  setIsOpen(false);
-};
+  const [selectedService, setselectedService] = useState("");
+
+  const handleOptionClick = (option) => {
+    setselectedService(option);
+    setIsOpen(false);
+  };
 
   const [descIsOpen, setdescIsOpen] = useState(false);
   const handleToggleDesc = () => {
     setdescIsOpen(!descIsOpen);
   };
-//   console.log(subServicesInfos);
-const findNameById = (subServicesInfos, id) =>
-  (subServicesInfos.find(obj => obj.subId === id) || {}).subName || null;
-const subServiceName = findNameById(subServicesInfos, selectedSubService);  
-// console.log(subServiceName);
-//find Description by knowing id
-const findDescById = (subServicesInfos, id) =>
-  (subServicesInfos.find(obj => obj.subId === id) || {}).subText || null;
-const serviceDesc = findDescById(subServicesInfos, selectedSubService);  
-// console.log(serviceDesc);
+
+  // it takes id,name,text,titleUrl from each child objects and name it
+  const mainServicesInfos = Object.values(getMainServices).map(
+    ({ serviceNames: [{ id, name, text, titleUrl }] }) => ({
+      mainId: id,
+      mainName: name,
+      mainText: text,
+      mainTitleUrl: titleUrl,
+    })
+  );
+
+  // it gets description of the service by using Id
+  const findDescById = (mainServicesInfos, name) =>
+    mainServicesInfos.find((obj) => obj.mainName === name)?.mainText ?? null;
+  const serviceDesc = findDescById(mainServicesInfos, selectedService);
+
+  //
+  //
+
+  const handleClick = () => {
+    const myData = selectedService;
+    passData(myData);
+  };
+  //
+  // console.log(selectedService);
+  // console.log(getMainServices);
 
   return (
     <div>
@@ -37,7 +55,6 @@ const serviceDesc = findDescById(subServicesInfos, selectedSubService);
           >
             Xidməti seç
           </label>
-          
           <button>
             <Image src={info_btn} alt="info_btn" />
           </button>
@@ -47,14 +64,17 @@ const serviceDesc = findDescById(subServicesInfos, selectedSubService);
           text-gray900 bg-white rounded-[10px] focus:outline-none focus:border-cagiraz
           border-[1px] border-solid border-gray900"
           type="button"
-          aria-haspopup="true"
-          aria-expanded={isOpen ? "true" : "false"}
+          // aria-haspopup="true"
+          // aria-expanded={isOpen ? "true" : "false"}
           onClick={() => setIsOpen(!isOpen)}
         >
-          {subServiceName}
-          {/* {selectedSubService} */}
+          {selectedService ? (
+            selectedService
+          ) : (
+            <div className="opacity-0">Xidməti seçin</div>
+          )}
           <svg
-            className={`w-5 h-5 ml-2 transform transition-transform duration-300 ${
+            className={`w-5 h-5 ml-2  transform transition-transform duration-300 ${
               isOpen ? "rotate-180" : ""
             }`}
             fill="currentColor"
@@ -65,18 +85,22 @@ const serviceDesc = findDescById(subServicesInfos, selectedSubService);
           </svg>
         </button>
         <ul
-          className={`${
+          className={`
+          
+          ${
             isOpen ? "block" : "hidden"
           } absolute z-10 w-full mt-[10px] rounded-[10px] border-[1px] border-solid border-cagiraz bg-white`}
         >
-          {subServicesInfos &&
-            subServicesInfos.map((item, index) => (
+          {mainServicesInfos &&
+            mainServicesInfos.map((item, index) => (
               <div key={index}>
                 <li
                   className="px-[15px] py-[5px] hover:bg-gray-100"
-                  onClick={() => handleOptionClick(item.subId,item.subDescription,item.subTitleUrl, item.subName)}
+                  onClick={() => {
+                    handleOptionClick(item.mainName);
+                  }}
                 >
-                  {item.subName}
+                  {item.mainName}
                 </li>
               </div>
             ))}
@@ -88,14 +112,14 @@ const serviceDesc = findDescById(subServicesInfos, selectedSubService);
         {/* dropdown */}
         <div>
           <label
-            htmlfor="button"
+            htmlFor="button"
             className={`absolute px-[5px] ml-[10px] mt-[-6px] z-10 bg-white 
         
            font-medium text-[8px] leading-[12px] text-cagiraz ${
              isOpen ? "block" : "hidden"
            }`}
           >
-            {subServiceName}
+            {selectedService}
           </label>
 
           <button
@@ -103,13 +127,12 @@ const serviceDesc = findDescById(subServicesInfos, selectedSubService);
          text-gray900 bg-white rounded-[10px] focus:outline-none focus:border-cagiraz
          border-[1px] border-solid border-gray900"
             type="button"
-            aria-haspopup="true"
-            aria-expanded={isOpen ? "true" : "false"}
+            // aria-haspopup="true"
+            // aria-expanded={isOpen ? "true" : "false"}
             onClick={() => setIsOpen(!isOpen)}
           >
-            {/* onClick={() => handleOptionClick(item.id,item.name)} */}
-            <p className={`${isOpen ? "opacity-0" : "opacity-100"}`}>
-              {subServiceName}
+            <p className={`${isOpen ? "hidden" : "block"}`}>
+              {selectedService}
             </p>
 
             <svg
@@ -123,68 +146,62 @@ const serviceDesc = findDescById(subServicesInfos, selectedSubService);
               <path d="M10 16a1 1 0 01-.7-.3l-5-5a1 1 0 011.4-1.4L10 13.6l4.3-4.3a1 1 0 011.4 1.4l-5 5a1 1 0 01-.7.3z" />
             </svg>
           </button>
-          {subServicesInfos && (
-            <ul
-              className={`${
-                isOpen ? "block" : "hidden"
-              } absolute z-10 w-full mt-[10px] rounded-[10px] border-[1px] border-solid	
+
+          <ul
+            className={`${
+              isOpen ? "block" : "hidden"
+            } absolute z-10 w-full mt-[10px] rounded-[10px] border-[1px] border-solid	
           border-cagiraz bg-white`}
-            >
-              {subServicesInfos &&
-                subServicesInfos.map((item, index) => (
-                  <div key={index}>
-                    <li
-                      className="px-[15px] py-[5px] font-medium text-[12px] leading-[18px] text-gray900"
-                      onClick={() => handleOptionClick(item.subId,item.subDescription,item.subTitleUrl, item.subName)}
-                    >
-                      {item.subName}
-                    </li>
-                  </div>
-                ))}
-            </ul>
-          )}
+          >
+            {mainServicesInfos &&
+              mainServicesInfos.map((item, index) => (
+                <div key={index}>
+                  <li
+                    className="px-[15px] py-[5px] font-medium text-[12px] leading-[18px] text-gray900"
+                    onClick={() => {
+                      handleOptionClick(item.mainName);
+                      handleClick();
+                      // handleClick(selectedService)
+                    }}
+                  >
+                    {item.mainName}
+                  </li>
+                </div>
+              ))}
+          </ul>
         </div>
         {/* info part */}
         {serviceDesc && (
+          <div className="flex lg:hidden flex-row gap-x-[10px]">
+            <Image
+              className="self-start w-[20px] h-[20px]"
+              src={info_btn}
+              alt="info_icon"
+            />
 
-        
-        <div className="flex lg:hidden flex-row gap-x-[10px]">
-          <Image
-            className="self-start w-[20px] h-[20px]"
-            src={info_btn}
-            alt="info_icon"
-          />
-          <div className="font-medium text-[10px] leading-[15px] text-gray900">
-            
-            <div dangerouslySetInnerHTML={{ __html: serviceDesc }} />
+            <div className="flex flex-col font-medium text-[10px] leading-[15px] text-gray900">
+              <div classNames="flex flex-row">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: descIsOpen
+                      ? `${serviceDesc}`
+                      : `${serviceDesc.slice(0, 200)}...`,
+                  }}
+                />
 
-            {"descIsOpen" ? (
-              <>
-                <div dangerouslySetInnerHTML={{ __html: serviceDesc }} />
                 <button
                   className="font-semibold block text-cagiraz"
                   onClick={handleToggleDesc}
                 >
-                  Bağla
+                  {descIsOpen ? "Bağla" : "Ətraflı oxu"}
                 </button>
-              </>
-            ) : (
-              <button
-                className="font-semibold block text-cagiraz"
-                onClick={handleToggleDesc}
-              >
-                Ətraflı oxu
-              </button>
-            )}
+              </div>
+            </div>
           </div>
-        </div>
-        ) }
-        {/*  */}
-
-     
+        )}
       </div>
     </div>
   );
 };
 
-export default Dropdown2;
+export default Dropdown1;

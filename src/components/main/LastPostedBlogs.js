@@ -27,7 +27,7 @@ function LastPostedBlogs() {
         console.error(error);
       });
   }, []);
-
+  console.log(responseData);
   return (
     <div className="">
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Bloq</h2>

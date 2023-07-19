@@ -13,7 +13,7 @@ const Download_image = () => {
 
       <div className="inline-flex flex-col w-full">
         <label
-          for="dropzone-file"
+          htmlFor="dropzone-file"
           className="flex flex-row justify-between items-center border-2 h-[40px] space-x-[16px] border-cagiraz border-dashed rounded-[10px] lg:rounded-full cursor-pointer px-[16px] "
         >
           <Image src={download} alt="download_icon" />

@@ -54,8 +54,10 @@ function Blogs() {
             titleUrl,
             viewCount,
             insertDate,
+            categoryName,
+            category
           } = responseData[childObjectName];
-
+          // console.log(category);
           return (
             <div key={index}>
               <div className="drop-shadow-card lg:drop-shadow-none hover:drop-shadow-card transition duration-300 bg-white p-[15px] sm:p-[18px] md:p-[21px] lg:p-[24px] lx:p-[27px] 2xl:p-[30px] rounded-[20px] 2xl:rounded-[25px]">
@@ -77,10 +79,11 @@ function Blogs() {
                     {insertDate.slice(0, 10)}
                   </p>
                   <div className="ml-auto border border-cagiraz rounded-lg">
-                    {/* what to add for this part? */}
+                    <Link href={`blog/kateqoriya/${category.titleUrl}`}>
                     <p className="font-semibold	text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px] ">
-                      Mövzu
-                    </p>
+                      {categoryName}
+                    </p></Link>
+                    
                   </div>
                 </div>
                 <Link href={`blog/${titleUrl}`}>

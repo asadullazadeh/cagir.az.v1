@@ -14,7 +14,7 @@ const RayonDesktop = () => {
   return (
     <div className="hidden lg:block relative">
         <div className="flex flex-row justify-between pb-[5px]">
-          <label for="button" className="font-semibold text-[12px] leading-[18px] text-black500">Xidməti seç</label>
+          <label htmlFor="button" className="font-semibold text-[12px] leading-[18px] text-black500">Xidməti seç</label>
           {/* <button>
             <Image src={info_btn} alt="info_btn" />
           </button> */}

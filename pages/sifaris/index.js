@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -56,6 +56,18 @@ const infosToKnow = [
 
 function Sifaris() {
   //
+  const handleSelectOption = (option) => {
+    console.log('Selected option:', option);
+    // Do something with the selected option data
+  };
+  // 
+  const [receivedData, setReceivedData] = useState('');
+  const handleDataFromComponent = (data) => {
+    setReceivedData(data);
+  };
+
+  
+  // trying to pass data from dropdown1 component to main page
   const router = useRouter();
   const { query } = router;
   const mainServiceUrlName = query.mainService;
@@ -63,42 +75,43 @@ function Sifaris() {
 
   // mainServices functionality starts here
   const [getMainServices, setgetMainServices] = useState([]);
+  const isInitialMount = useRef(true);
   useEffect(() => {
-    axios
-      .get("https://api.cagir.az/api/service/getAllForFront", {
-        headers: {
-          "Accept-Language": "az",
-        },
-      })
-      .then((response) => {
-        // Handle the response data
-        setgetMainServices(response.data.result);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
+    // if (isInitialMount.current) {
+    //   isInitialMount.current = false;
+    // } else {
+      // Your useEffect code here to be run on update
+      axios
+        .get("https://api.cagir.az/api/service/getAllForFront", {
+          headers: {
+            "Accept-Language": "az",
+          },
+        })
+        .then((response) => {
+          // Handle the response data
+          setgetMainServices(response.data.result);
+        })
+        .catch((error) => {
+          // Handle any errors
+          console.error(error);
+        });
+    // }
   }, []);
-  // console.log(getMainServices);
+  console.log(getMainServices);
+  
 
-  const findIdByUrlName = (getMainServices, nameUrl) =>
-    getMainServices.find((obj) => obj.nameUrl === nameUrl)?.id || null;
-  const serviceId = findIdByUrlName(getMainServices, mainServiceUrlName);
+  // const findIdByUrlName = (getMainServices, nameUrl) =>
+  //   getMainServices.find((obj) => obj.nameUrl === nameUrl)?.id || null;
+  // const serviceId = findIdByUrlName(getMainServices, mainServiceUrlName);
 
-  const findNameByUrlName = (getMainServices, name) =>
-    getMainServices.find((obj) => obj.nameUrl === name)?.serviceNames[0].name ||
-    null;
-  const serviceName = findNameByUrlName(getMainServices, mainServiceUrlName);
-  console.log(serviceName);
-  const serviceDescription = Object.values(getMainServices).map((child) => (
-    <div dangerouslySetInnerHTML={{ __html: child.serviceNames[0].text }} />
-  ));
-  // console.log(serviceId);
-  const mainServicesInfos = Object.values(getMainServices).map((child) => ({
-    mainId: child.serviceNames[0].id,
-    mainName: child.serviceNames[0].name,
-    mainText: child.serviceNames[0].text,
-  }));
+  // const findNameByUrlName = (getMainServices, name) =>
+  //   getMainServices.find((obj) => obj.nameUrl === name)?.serviceNames[0].name ||
+  //   null;
+  // const serviceName = findNameByUrlName(getMainServices, mainServiceUrlName);
+  // const serviceDescription = Object.values(getMainServices).map((child) => (
+  //   <div dangerouslySetInnerHTML={{ __html: child.serviceNames[0].text }} />
+  // ));
+
   // mainServices functionality finishes here
 
   // subServices functionality starts here
@@ -106,7 +119,7 @@ function Sifaris() {
   useEffect(() => {
     axios
       .get(
-        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${serviceId}`,
+        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${1}`,
         {
           headers: {
             "Accept-Language": "az",
@@ -121,12 +134,12 @@ function Sifaris() {
         // Handle any errors
         console.error(error);
       });
-  }, [serviceId]);
+  }, []);
 
   const findSubNameById = (getSubServices, nameUrl) =>
     getSubServices.find((obj) => obj.nameUrl === nameUrl)?.id || null;
   const subServiceId = findSubNameById(getSubServices, subServiceName);
-  // console.log(getSubServices);
+
   const subServicesInfos = Object.values(getSubServices).map((child) => ({
     subId: child.serviceNames[0].id,
     subDescription: child.serviceNames[0].description
@@ -145,7 +158,7 @@ function Sifaris() {
   useEffect(() => {
     axios
       .get(
-        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${subServiceId}`,
+        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${1}`,
         {
           headers: {
             "Accept-Language": "az",
@@ -160,8 +173,7 @@ function Sifaris() {
         // Handle any errors
         console.error(error);
       });
-  }, [subServiceId]);
-  // console.log(getSub2Services);
+  }, []);
 
   const sub2ServicesInfos = Object.values(getSub2Services).map((child) => ({
     sub2Id: child.serviceNames[0].id,
@@ -174,7 +186,6 @@ function Sifaris() {
       ? child.serviceNames[0].titleUrl
       : 0,
   }));
-  // console.log(sub2ServicesInfos);
   //  sub2Services functionality finishes here
 
   // subject is the category name
@@ -190,12 +201,7 @@ function Sifaris() {
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
-  // description open/close for mobile version.
-  const [descIsOpen, setdescIsOpen] = useState(false);
-  const handleToggleDesc = () => {
-    setdescIsOpen(!descIsOpen);
-  };
-
+  // console.log(data);
   return (
     <div
       className="flex flex-col lg:flex-row lg:gap-x-[30px] xl:gap-x-[40px] 2xl:gap-x-[60px]
@@ -209,8 +215,8 @@ function Sifaris() {
         {/* Toggle part is only desktop */}
         <div className="z-10 hidden lg:block sticky ">
           <Toggle
-            serviceId={serviceId}
-            serviceDescription={serviceDescription}
+            // serviceId={serviceId}
+            // serviceDescription={serviceDescription}
           />
         </div>
       </div>
@@ -223,24 +229,23 @@ function Sifaris() {
         >
           Sifarişi yarat
         </h4>
-
         {/* Dropdowns for services */}
         <div className="grid lg:grid-cols-3 justify-items-stretch lg:gap-x-[40px] gap-y-[15px]">
-          <Dropdown1
-            mainServiceName={serviceName}
-            serviceId={serviceId}
-            mainServicesInfos={mainServicesInfos}
-          />
-          <Dropdown2
+          {receivedData}
+          <Dropdown1  
+          onSelectOption={handleSelectOption}
+          getMainServices={getMainServices}
+          passData={handleDataFromComponent}   />
+
+          {/* <Dropdown2
             subServiceId={subServiceId}
             subServicesInfos={subServicesInfos}
           />
           <Dropdown3
             subServiceId={subServiceId}
             sub2ServicesInfos={sub2ServicesInfos}
-          />
+          /> */}
         </div>
-
         {/* Checmark */}
         {/* ex:Neçə kv.m sahə təmizlənəcək?-First choices */}
         <div className="flex flex-col pt-[30px]">
@@ -382,10 +387,12 @@ function Sifaris() {
 
           {/* tesdiqle part */}
           <div className="flex flex-row w-full justify-between xl:w-1/3 pt-[20px]">
-            <LinkSmBtn btnName="Geri" classNames="hidden lg:block" />
+            <LinkSmBtn btnName="Geri" 
+            // classNames="hidden lg:block" 
+            />
             <PrimaryOutlineSmBtn
               btnName="Sıfırla"
-              classNames="hidden lg:block"
+              // classNames="hidden lg:block"
             />
             <PrimarySmBtn btnName="Təsdiqlə" classNames="w-full" />
           </div>
@@ -396,22 +403,3 @@ function Sifaris() {
 }
 
 export default Sifaris;
-
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-// import Image from "next/image";
-// import Link from "next/link";
-// import icraciSvg from "@/icons/faq/icraci.svg";
-// import musteriSvg from "@/icons/faq/musteri.svg";
-// import sifarisSvg from "@/icons/faq/sifaris.svg";
-
-// function Example() {
-
-//   return (
-//     <div className="">
-//         This page will be sifaris.
-//     </div>
-//   );
-// }
-
-// export default Example;
