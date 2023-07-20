@@ -1,33 +1,32 @@
 // components/CustomDropdown.js
+import React, { useEffect, useState, useRef } from "react";
+import axios from "axios";
 
-import { useState } from 'react';
 
 const CustomDropdown = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('');
+  const [getMainServices, setgetMainServices] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://api.cagir.az/api/service/getAllForFront", {
+        headers: {
+          "Accept-Language": "az",
+        },
+      })
+      .then((response) => {
+        // Handle the response data
+        setgetMainServices(response.data.result);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  }, []);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-    setIsOpen(false);
-    console.log(option, "clicked");
-  };
+  // console.log(getMainServices);
 
   return (
     <div className="custom-dropdown">
-      <button className="dropdown-button" onClick={toggleDropdown}>
-        {selectedOption ? selectedOption : 'Xidməti seç'}
-      </button>
-      {isOpen && (
-        <ul className="dropdown-options">
-          <li onClick={() => handleOptionClick('Option 1')}>Option 1</li>
-          <li onClick={() => handleOptionClick('Option 2')}>Option 2</li>
-          <li onClick={() => handleOptionClick('Option 3')}>Option 3</li>
-        </ul>
-      )}
+    
     </div>
   );
 };

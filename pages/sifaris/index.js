@@ -55,71 +55,47 @@ const infosToKnow = [
 ];
 
 function Sifaris() {
-  //
-  const handleSelectOption = (option) => {
-    console.log('Selected option:', option);
-    // Do something with the selected option data
-  };
-  // 
-  const [receivedData, setReceivedData] = useState('');
-  const handleDataFromComponent = (data) => {
-    setReceivedData(data);
-  };
-
-  
-  // trying to pass data from dropdown1 component to main page
-  const router = useRouter();
-  const { query } = router;
-  const mainServiceUrlName = query.mainService;
-  const subServiceName = query.subService;
-
   // mainServices functionality starts here
+  const [selectedMain, setSelectedMain] = useState("");
+  const handleMainSelect = (mainService) => {
+    setSelectedMain(mainService);
+  };
   const [getMainServices, setgetMainServices] = useState([]);
-  const isInitialMount = useRef(true);
   useEffect(() => {
-    // if (isInitialMount.current) {
-    //   isInitialMount.current = false;
-    // } else {
-      // Your useEffect code here to be run on update
-      axios
-        .get("https://api.cagir.az/api/service/getAllForFront", {
-          headers: {
-            "Accept-Language": "az",
-          },
-        })
-        .then((response) => {
-          // Handle the response data
-          setgetMainServices(response.data.result);
-        })
-        .catch((error) => {
-          // Handle any errors
-          console.error(error);
-        });
-    // }
+    axios
+      .get("https://api.cagir.az/api/service/getAllForFront", {
+        headers: {
+          "Accept-Language": "az",
+        },
+      })
+      .then((response) => {
+        // Handle the response data
+        setgetMainServices(response.data.result);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
   }, []);
-  console.log(getMainServices);
-  
-
-  // const findIdByUrlName = (getMainServices, nameUrl) =>
-  //   getMainServices.find((obj) => obj.nameUrl === nameUrl)?.id || null;
-  // const serviceId = findIdByUrlName(getMainServices, mainServiceUrlName);
-
-  // const findNameByUrlName = (getMainServices, name) =>
-  //   getMainServices.find((obj) => obj.nameUrl === name)?.serviceNames[0].name ||
-  //   null;
-  // const serviceName = findNameByUrlName(getMainServices, mainServiceUrlName);
-  // const serviceDescription = Object.values(getMainServices).map((child) => (
-  //   <div dangerouslySetInnerHTML={{ __html: child.serviceNames[0].text }} />
-  // ));
-
+  // console.log(getMainServices);
+  const findIdByName = (mainService, name) =>
+    (getMainServices.find((obj) => obj.serviceNames[0].name === name) || {})
+      .id || null;
+  const chosenMainServiceId = findIdByName(getMainServices, selectedMain);
+  // console.log(chosenMainServiceId);
   // mainServices functionality finishes here
 
   // subServices functionality starts here
-  const [getSubServices, setGetSubServices] = useState([]);
+  const [selectedSub, setSelectedSub] = useState("");
+  const handleSubSelect = (subService) => {
+    setSelectedSub(subService);
+  };
+  const [getSubServices, setgetSubServices] = useState([]);
+
   useEffect(() => {
     axios
       .get(
-        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${1}`,
+        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${chosenMainServiceId}`,
         {
           headers: {
             "Accept-Language": "az",
@@ -128,37 +104,32 @@ function Sifaris() {
       )
       .then((response) => {
         // Handle the response data
-        setGetSubServices(response.data.result);
+        setgetSubServices(response.data.result);
       })
       .catch((error) => {
         // Handle any errors
         console.error(error);
       });
-  }, []);
-
-  const findSubNameById = (getSubServices, nameUrl) =>
-    getSubServices.find((obj) => obj.nameUrl === nameUrl)?.id || null;
-  const subServiceId = findSubNameById(getSubServices, subServiceName);
-
-  const subServicesInfos = Object.values(getSubServices).map((child) => ({
-    subId: child.serviceNames[0].id,
-    subDescription: child.serviceNames[0].description
-      ? child.serviceNames[0].description
-      : null,
-    subName: child.serviceNames[0].name ? child.serviceNames[0].name : null,
-    subText: child.serviceNames[0].text ? child.serviceNames[0].text : 0,
-    subTitleUrl: child.serviceNames[0].titleUrl
-      ? child.serviceNames[0].titleUrl
-      : 0,
-  }));
+  }, [chosenMainServiceId]);
+  // console.log(getSubServices);
+  const findSubIdByName = (subService, name) =>
+    (getSubServices.find((obj) => obj.serviceNames[0].name === name) || {})
+      .id || null;
+  const chosenSubServiceId = findSubIdByName(getSubServices, selectedSub);
+  // console.log(chosenSubServiceId);
   // subServices functionality finishes here
 
-  //  sub2Services functionality starts here
-  const [getSub2Services, setGetSub2Services] = useState([]);
+  // sub2Services functionality starts here
+  const [selectedSub2, setSelectedSub2] = useState("");
+  const [getSub2Services, setgetSub2Services] = useState([]);
+  const handleSub2Select = (sub2Service) => {
+    setSelectedSub2(sub2Service);
+  };
+
   useEffect(() => {
     axios
       .get(
-        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${1}`,
+        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${chosenSubServiceId}`,
         {
           headers: {
             "Accept-Language": "az",
@@ -167,41 +138,34 @@ function Sifaris() {
       )
       .then((response) => {
         // Handle the response data
-        setGetSub2Services(response.data.result);
+        setgetSub2Services(response.data.result);
       })
       .catch((error) => {
         // Handle any errors
         console.error(error);
       });
-  }, []);
+  }, [chosenSubServiceId]);
+  // console.log(getSub2Services);
+  // sub2Services functionality finishes here
 
-  const sub2ServicesInfos = Object.values(getSub2Services).map((child) => ({
-    sub2Id: child.serviceNames[0].id,
-    sub2Description: child.serviceNames[0].description
-      ? child.serviceNames[0].description
-      : null,
-    sub2Name: child.serviceNames[0].name ? child.serviceNames[0].name : null,
-    sub2Text: child.serviceNames[0].text ? child.serviceNames[0].text : 0,
-    sub2TitleUrl: child.serviceNames[0].titleUrl
-      ? child.serviceNames[0].titleUrl
-      : 0,
-  }));
-  //  sub2Services functionality finishes here
-
-  // subject is the category name
+  // checkmarks, to see more info-customized inputs in form section
   const [showSecondChild, setShowSecondChild] = useState(false);
   const toggleSecondChild = () => {
     setShowSecondChild(!showSecondChild);
   };
+
+  // Textarea
   const [showTextarea, setshowTextarea] = useState(true);
   const toggleTextarea = () => {
     setshowTextarea(!showTextarea);
   };
+
+  // Toggle part
   const [isOpen, setIsOpen] = useState(false);
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
-  // console.log(data);
+
   return (
     <div
       className="flex flex-col lg:flex-row lg:gap-x-[30px] xl:gap-x-[40px] 2xl:gap-x-[60px]
@@ -214,10 +178,7 @@ function Sifaris() {
         </div>
         {/* Toggle part is only desktop */}
         <div className="z-10 hidden lg:block sticky ">
-          <Toggle
-            // serviceId={serviceId}
-            // serviceDescription={serviceDescription}
-          />
+          <Toggle />
         </div>
       </div>
 
@@ -231,20 +192,19 @@ function Sifaris() {
         </h4>
         {/* Dropdowns for services */}
         <div className="grid lg:grid-cols-3 justify-items-stretch lg:gap-x-[40px] gap-y-[15px]">
-          {receivedData}
-          <Dropdown1  
-          onSelectOption={handleSelectOption}
-          getMainServices={getMainServices}
-          passData={handleDataFromComponent}   />
+          <Dropdown1
+            onSelectMainService={handleMainSelect}
+            getMainServices={getMainServices}
+          />
 
-          {/* <Dropdown2
-            subServiceId={subServiceId}
-            subServicesInfos={subServicesInfos}
+          <Dropdown2
+            onSelectSubService={handleSubSelect}
+            getSubServices={getSubServices}
           />
           <Dropdown3
-            subServiceId={subServiceId}
-            sub2ServicesInfos={sub2ServicesInfos}
-          /> */}
+            onSelectSub2Service={handleSub2Select}
+            getSub2Services={getSub2Services}
+          />
         </div>
         {/* Checmark */}
         {/* ex:Neçə kv.m sahə təmizlənəcək?-First choices */}
@@ -387,8 +347,9 @@ function Sifaris() {
 
           {/* tesdiqle part */}
           <div className="flex flex-row w-full justify-between xl:w-1/3 pt-[20px]">
-            <LinkSmBtn btnName="Geri" 
-            // classNames="hidden lg:block" 
+            <LinkSmBtn
+              btnName="Geri"
+              // classNames="hidden lg:block"
             />
             <PrimaryOutlineSmBtn
               btnName="Sıfırla"

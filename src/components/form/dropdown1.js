@@ -5,67 +5,87 @@ import Image from "next/image";
 import Link from "next/link";
 import info_btn from "@/icons/form/info_btn.svg";
 
-const Dropdown1 = ({ getMainServices, onSelectOption  }) => {
+const Dropdown1 = ({ getMainServices, onSelectMainService }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
+  const [mainServiceName, setMainServiceName] = useState("");
 
+  // if "isOpen" is true, toggleDropdown works
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-    setIsOpen(false);
-    console.log(option, "clicked");
-    onSelectOption(option); // Call the callback function with the selected option
-  };
 
+  // description for mobile version
   const [descIsOpen, setdescIsOpen] = useState(false);
   const handleToggleDesc = () => {
     setdescIsOpen(!descIsOpen);
   };
 
-  //
-  const mainServicesInfos = Object.values(getMainServices).map(
-    ({ serviceNames: [{ id, name, text, titleUrl }] }) => ({
-      mainId: id,
-      mainName: name,
-      mainText: text,
-      mainTitleUrl: titleUrl,
-    })
-  );
+  //getting data for Main Services
+  const mainServicesInfos = Object.values(getMainServices).map((child) => ({
+    mainId: child.id,
+    mainName: child.serviceNames[0].name,
+    mainText: child.serviceNames[0].text,
+  }));
+  // console.log(mainServicesInfos);
 
+  //finding Description by using Id
   const findDescById = (mainServicesInfos, name) =>
     mainServicesInfos.find((obj) => obj.mainName === name)?.mainText ?? null;
-  const serviceDesc = findDescById(mainServicesInfos, selectedOption);
-  //
-  const handleClick = () => {
-    // const data = selectedOption;
-    onDataReceived(selectedOption);
+  const serviceDesc = findDescById(mainServicesInfos, mainServiceName);
+
+  //selected main service
+  const handleOptionClick = (mainService) => {
+    setMainServiceName(mainService);
+    setIsOpen(false);
+    onSelectMainService(mainService);
+    // console.log(mainService);
+    // onSelectMainService({mainServiceId});
   };
-  //
+
+  //selected Main service infos
+  // const [selectedMain, setselectedMain] = useState("");
+  // const handleClick = (mainServiceId) => {
+  //   onSelectMainService({ mainServiceId });
+  //   console.log(mainServiceId);
+  // };
 
   return (
-    // mobile dropdown
-    <div className="flex flex-col gap-y-[10px] relative lg:hidden">
+    <div className="flex flex-col gap-y-[10px] lg:gap-y-0 relative ">
+      <div className="hidden lg:flex flex-row justify-between pb-[5px]">
+        <label
+          htmlFor="button"
+          className="font-semibold text-[12px] leading-[18px] text-black500"
+        >
+          Xidməti seç
+        </label>
+        <button>
+          <Image src={info_btn} alt="info_btn" />
+        </button>
+      </div>
+
       <div>
         <label
           htmlFor="button"
-          className={`absolute px-[5px] ml-[10px] mt-[-6px] z-10 bg-white 
+          className={`lg:hidden absolute px-[5px] ml-[10px] mt-[-6px] z-10 bg-white 
         
            font-medium text-[8px] leading-[12px] text-cagiraz ${
              isOpen ? "block" : "hidden"
            }`}
         >
-          {selectedOption}
+          {mainServiceName}
         </label>
         <button
-          className="dropdown-button relative flex items-center justify-between w-full px-[15px] py-[5px] text-[10px] leading-[15px] font-medium
-         text-gray900 bg-white rounded-[10px] focus:outline-none focus:border-cagiraz
+          className="dropdown-button relative flex items-center justify-between w-full px-[15px] py-[5px] lg:py-[10px] text-[10px] lg:text-[12px] leading-[15px] lg:leading-[12px] font-medium lg:font-semibold
+         text-gray900  bg-white rounded-[10px] lg:rounded-[50px] focus:outline-none focus:border-cagiraz
          border-[1px] border-solid border-gray900"
           onClick={toggleDropdown}
         >
-          <p className={`${isOpen ? "opacity-0" : "opacity-100"}`}>
-            {selectedOption ? selectedOption : "Xidməti seç"}
+          <p
+            className={`lg:text-black500 ${
+              isOpen ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            {mainServiceName ? mainServiceName : "Xidməti seç"}
           </p>
 
           <svg
@@ -90,9 +110,10 @@ const Dropdown1 = ({ getMainServices, onSelectOption  }) => {
               mainServicesInfos.map((item, index) => (
                 <div key={index}>
                   <li
-                    className="px-[15px] py-[5px] font-medium text-[12px] leading-[18px] text-gray900"
+                    className="px-[15px] py-[5px] font-medium lg:font-semibold text-[12px] leading-[18px] text-gray900 lg:text-black500"
                     onClick={() => {
                       handleOptionClick(item.mainName);
+                      // handleClick(item.mainId);
                     }}
                   >
                     {item.mainName}
