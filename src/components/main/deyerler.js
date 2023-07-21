@@ -42,7 +42,7 @@ function Deyerler() {
     };
 
     fetchData();
-  }, [config]);
+  }, []);
 
   return (
     <div>

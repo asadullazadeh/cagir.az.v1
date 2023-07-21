@@ -1,12 +1,12 @@
 // components/CustomDropdown.js
 import { useState } from "react";
-import axios from "axios";
 import Image from "next/image";
-import Link from "next/link";
 import info_btn from "@/icons/form/info_btn.svg";
 
 const Dropdown1 = ({ getMainServices, onSelectMainService }) => {
+  // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
+  // mainServiceName is set to false as default.
   const [mainServiceName, setMainServiceName] = useState("");
 
   // if "isOpen" is true, toggleDropdown works
@@ -26,28 +26,18 @@ const Dropdown1 = ({ getMainServices, onSelectMainService }) => {
     mainName: child.serviceNames[0].name,
     mainText: child.serviceNames[0].text,
   }));
-  // console.log(mainServicesInfos);
 
-  //finding Description by using Id
-  const findDescById = (mainServicesInfos, name) =>
+  //finding main service Description by using Id
+  const findMainDescById = (mainServicesInfos, name) =>
     mainServicesInfos.find((obj) => obj.mainName === name)?.mainText ?? null;
-  const serviceDesc = findDescById(mainServicesInfos, mainServiceName);
+  const serviceMainDesc = findMainDescById(mainServicesInfos, mainServiceName);
 
   //selected main service
   const handleOptionClick = (mainService) => {
     setMainServiceName(mainService);
     setIsOpen(false);
     onSelectMainService(mainService);
-    // console.log(mainService);
-    // onSelectMainService({mainServiceId});
   };
-
-  //selected Main service infos
-  // const [selectedMain, setselectedMain] = useState("");
-  // const handleClick = (mainServiceId) => {
-  //   onSelectMainService({ mainServiceId });
-  //   console.log(mainServiceId);
-  // };
 
   return (
     <div className="flex flex-col gap-y-[10px] lg:gap-y-0 relative ">
@@ -113,7 +103,6 @@ const Dropdown1 = ({ getMainServices, onSelectMainService }) => {
                     className="px-[15px] py-[5px] font-medium lg:font-semibold text-[12px] leading-[18px] text-gray900 lg:text-black500"
                     onClick={() => {
                       handleOptionClick(item.mainName);
-                      // handleClick(item.mainId);
                     }}
                   >
                     {item.mainName}
@@ -124,7 +113,7 @@ const Dropdown1 = ({ getMainServices, onSelectMainService }) => {
         )}
       </div>
       {/* info part */}
-      {serviceDesc && (
+      {serviceMainDesc && (
         <div className="flex lg:hidden flex-row gap-x-[10px]">
           <Image
             className="self-start w-[20px] h-[20px]"
@@ -137,8 +126,8 @@ const Dropdown1 = ({ getMainServices, onSelectMainService }) => {
               <div
                 dangerouslySetInnerHTML={{
                   __html: descIsOpen
-                    ? `${serviceDesc}`
-                    : `${serviceDesc.slice(0, 200)}...`,
+                    ? `${serviceMainDesc}`
+                    : `${serviceMainDesc.slice(0, 200)}...`,
                 }}
               />
 

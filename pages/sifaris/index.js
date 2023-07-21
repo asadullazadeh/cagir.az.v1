@@ -82,7 +82,13 @@ function Sifaris() {
     (getMainServices.find((obj) => obj.serviceNames[0].name === name) || {})
       .id || null;
   const chosenMainServiceId = findIdByName(getMainServices, selectedMain);
-  // console.log(chosenMainServiceId);
+
+  const findTextByName = (mainService, name) =>
+    getMainServices.find((obj) => obj.serviceNames?.[0]?.name === name)
+      ?.serviceNames?.[0]?.text || null;
+  const chosenMainServiceText = findTextByName(getMainServices, selectedMain);
+
+  // console.log(chosenMainServiceText);
   // mainServices functionality finishes here
 
   // subServices functionality starts here
@@ -116,7 +122,12 @@ function Sifaris() {
     (getSubServices.find((obj) => obj.serviceNames[0].name === name) || {})
       .id || null;
   const chosenSubServiceId = findSubIdByName(getSubServices, selectedSub);
-  // console.log(chosenSubServiceId);
+
+  const findSubTextByName = (subService, name) =>
+    getSubServices.find((obj) => obj.serviceNames?.[0]?.name === name)
+      ?.serviceNames?.[0]?.text || null;
+  const chosenSubServiceText = findSubTextByName(getSubServices, selectedSub);
+  console.log(chosenSubServiceText);
   // subServices functionality finishes here
 
   // sub2Services functionality starts here
@@ -145,7 +156,15 @@ function Sifaris() {
         console.error(error);
       });
   }, [chosenSubServiceId]);
-  // console.log(getSub2Services);
+
+  const findSub2TextByName = (sub2Service, name) =>
+    getSub2Services.find((obj) => obj.serviceNames?.[0]?.name === name)
+      ?.serviceNames?.[0]?.text || null;
+  const chosenSub2ServiceText = findSub2TextByName(
+    getSub2Services,
+    selectedSub2
+  );
+  console.log(chosenSub2ServiceText);
   // sub2Services functionality finishes here
 
   // checkmarks, to see more info-customized inputs in form section
@@ -165,7 +184,7 @@ function Sifaris() {
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
-
+  console.log(chosenMainServiceText);
   return (
     <div
       className="flex flex-col lg:flex-row lg:gap-x-[30px] xl:gap-x-[40px] 2xl:gap-x-[60px]
@@ -176,10 +195,21 @@ function Sifaris() {
         <div className="z-20 sticky top-[0px] bg-white py-[10px] px-[15px] mt-[10px] mb-[20px] lg:m-0 lg:p-0 shadow-dropblack25 lg:shadow-none rounded-[10px]">
           <Qiymet />
         </div>
-        {/* Toggle part is only desktop */}
-        <div className="z-10 hidden lg:block sticky ">
-          <Toggle />
-        </div>
+        {/* Toggle part is only  desktop */}
+        {chosenMainServiceText ? (
+          <div className="z-10 hidden lg:block sticky ">
+            <Toggle
+              selectedMain={selectedMain}
+              descMain={chosenMainServiceText}
+              selectedSub={selectedSub}
+              descSub={chosenSubServiceText}
+              selectedSub2={selectedSub2}
+              descSub2={chosenSub2ServiceText}
+            />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
 
       {/* Right side of first part in Sifaris */}

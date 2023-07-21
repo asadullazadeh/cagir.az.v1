@@ -6,7 +6,9 @@ import Link from "next/link";
 import info_btn from "@/icons/form/info_btn.svg";
 
 const Dropdown3 = ({ getSub2Services, onSelectSub2Service }) => {
+      // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
+      // sub2ServiceName is set to false as default.
   const [sub2ServiceName, setSub2ServiceName] = useState("");
 
   // if "isOpen" is true, toggleDropdown works
@@ -20,7 +22,7 @@ const Dropdown3 = ({ getSub2Services, onSelectSub2Service }) => {
     setdescIsOpen(!descIsOpen);
   };
 
-  //getting data for Sub Services
+  //getting data for Sub2 Services
   const sub2ServicesInfos = Object.values(getSub2Services).map((child) => ({
     sub2Id: child.id,
     sub2Name: child.serviceNames[0].name,
@@ -28,9 +30,9 @@ const Dropdown3 = ({ getSub2Services, onSelectSub2Service }) => {
   }));
 
   //finding Description by using Id
-  const findDescById = (sub2ServicesInfos, name) =>
+  const findSub2DescById = (sub2ServicesInfos, name) =>
     sub2ServicesInfos.find((obj) => obj.sub2Name === name)?.sub2Text ?? null;
-  const serviceDesc = findDescById(sub2ServicesInfos, sub2ServiceName);
+  const serviceSub2Desc = findSub2DescById(sub2ServicesInfos, sub2ServiceName);
 
   //selected sub service
   const handleOptionClick = (sub2Service) => {
@@ -114,7 +116,7 @@ const Dropdown3 = ({ getSub2Services, onSelectSub2Service }) => {
         )}
       </div>
       {/* info part */}
-      {serviceDesc && (
+      {serviceSub2Desc && (
         <div className="flex lg:hidden flex-row gap-x-[10px]">
           <Image
             className="self-start w-[20px] h-[20px]"
@@ -127,8 +129,8 @@ const Dropdown3 = ({ getSub2Services, onSelectSub2Service }) => {
               <div
                 dangerouslySetInnerHTML={{
                   __html: descIsOpen
-                    ? `${serviceDesc}`
-                    : `${serviceDesc.slice(0, 200)}...`,
+                    ? `${serviceSub2Desc}`
+                    : `${serviceSub2Desc.slice(0, 200)}...`,
                 }}
               />
 

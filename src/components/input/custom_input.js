@@ -35,6 +35,7 @@ const CustomInput = ({name}) => {
           className="min-w-[8px] max-w-[30px] text-center mx-[5px] lg:mx-[8px] focus:outline-none"
           type=""
           value={value}
+          onChange={(e) => setValue(e.target.value)}
         />
         <button
           className="bg-cagiraz rounded-[5px] lg:rounded-full w-[25px] h-[25px] lg:w-[30px] lg:h-[30px] flex justify-center focus:outline-none"

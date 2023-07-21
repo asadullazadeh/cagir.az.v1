@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import LinkSmBtn from "@/src/components/buttons/link_sm_btn"
 
 const MapBtn = () => {
   const inputRef = useRef(null);

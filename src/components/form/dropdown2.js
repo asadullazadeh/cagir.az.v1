@@ -6,9 +6,11 @@ import Link from "next/link";
 import info_btn from "@/icons/form/info_btn.svg";
 
 const Dropdown2 = ({ getSubServices, onSelectSubService }) => {
+    // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
+    // subServiceName is set to false as default.
   const [subServiceName, setSubServiceName] = useState("");
-  // console.log(getSubServices);
+
   // if "isOpen" is true, toggleDropdown works
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -19,15 +21,8 @@ const Dropdown2 = ({ getSubServices, onSelectSubService }) => {
   const handleToggleDesc = () => {
     setdescIsOpen(!descIsOpen);
   };
+
   //getting data for Sub Services
-  // const subServicesInfos = Object.values(getSubServices).map(
-  //   ({ serviceNames: [{ id, name, text, titleUrl }] }) => ({
-  //     subId: id,
-  //     subName: name,
-  //     subText: text,
-  //     subTitleUrl: titleUrl,
-  //   })
-  // );
   const subServicesInfos = Object.values(getSubServices).map((child) => ({
     subId: child.id,
     subName: child.serviceNames[0].name,
@@ -35,10 +30,10 @@ const Dropdown2 = ({ getSubServices, onSelectSubService }) => {
   }));
   // console.log(getSubServices);
 
-  //finding Description by using Id
-  const findDescById = (subServicesInfos, name) =>
+  //finding subservice description by using Id
+  const findSubDescById = (subServicesInfos, name) =>
     subServicesInfos.find((obj) => obj.subName === name)?.subText ?? null;
-  const serviceDesc = findDescById(subServicesInfos, subServiceName);
+  const serviceSubDesc = findSubDescById(subServicesInfos, subServiceName);
 
   //selected sub service
   const handleOptionClick = (subService) => {
@@ -122,7 +117,7 @@ const Dropdown2 = ({ getSubServices, onSelectSubService }) => {
         )}
       </div>
       {/* info part */}
-      {serviceDesc && (
+      {serviceSubDesc && (
         <div className="flex lg:hidden flex-row gap-x-[10px]">
           <Image
             className="self-start w-[20px] h-[20px]"
@@ -135,8 +130,8 @@ const Dropdown2 = ({ getSubServices, onSelectSubService }) => {
               <div
                 dangerouslySetInnerHTML={{
                   __html: descIsOpen
-                    ? `${serviceDesc}`
-                    : `${serviceDesc.slice(0, 200)}...`,
+                    ? `${serviceSubDesc}`
+                    : `${serviceSubDesc.slice(0, 200)}...`,
                 }}
               />
 
