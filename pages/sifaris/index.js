@@ -5,9 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Toggle from "@/src/components/form/toggle";
 import Qiymet from "@/src/components/form/qiymet";
-import Dropdown1 from "@/src/components/form/dropdown1";
-import Dropdown2 from "@/src/components/form/dropdown2";
-import Dropdown3 from "@/src/components/form/dropdown3";
+import Dropdown from "@/src/components/form/dropdown";
 import CheckBox from "@/src/components/buttons/checkbox";
 import CustomInput from "@/src/components/input/custom_input";
 import Textarea from "@/src/components/input/textarea";
@@ -184,7 +182,27 @@ function Sifaris() {
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
-  // console.log(chosenMainServiceText);
+
+  // toggleProps.Selected Services and description for each category
+  const toggleProps = {
+    selectedMain,
+    descMain: chosenMainServiceText,
+    selectedSub,
+    descSub: chosenSubServiceText,
+    selectedSub2,
+    descSub2: chosenSub2ServiceText,
+  };
+
+  // dropdownProps.to pass data from one dropdown to other one and selected service
+  const dropdownProps = {
+    onSelectMainService:handleMainSelect,
+    getMainServices:getMainServices,
+    onSelectSubService:handleSubSelect,
+    getSubServices:getSubServices,
+    onSelectSub2Service:handleSub2Select,
+    getSub2Services:getSub2Services
+  }
+
   return (
     <div
       className="flex flex-col lg:flex-row lg:gap-x-[30px] xl:gap-x-[40px] 2xl:gap-x-[60px]
@@ -198,14 +216,7 @@ function Sifaris() {
         {/* Toggle part is only  desktop */}
         {chosenMainServiceText ? (
           <div className="z-10 hidden lg:block sticky ">
-            <Toggle
-              selectedMain={selectedMain}
-              descMain={chosenMainServiceText}
-              selectedSub={selectedSub}
-              descSub={chosenSubServiceText}
-              selectedSub2={selectedSub2}
-              descSub2={chosenSub2ServiceText}
-            />
+            <Toggle {...toggleProps} />
           </div>
         ) : (
           ""
@@ -222,23 +233,9 @@ function Sifaris() {
         </h4>
         {/* Dropdowns for services */}
         <div className="">
-          <Dropdown1
-            onSelectMainService={handleMainSelect}
-            getMainServices={getMainServices}
-            onSelectSubService={handleSubSelect}
-            getSubServices={getSubServices}
-            onSelectSub2Service={handleSub2Select}
-            getSub2Services={getSub2Services}
+          <Dropdown
+            {...dropdownProps}
           />
-
-          {/* <Dropdown2
-            onSelectSubService={handleSubSelect}
-            getSubServices={getSubServices}
-          />
-          <Dropdown3
-            onSelectSub2Service={handleSub2Select}
-            getSub2Services={getSub2Services}
-          /> */}
         </div>
         {/* Checmark */}
         {/* ex:Neçə kv.m sahə təmizlənəcək?-First choices */}

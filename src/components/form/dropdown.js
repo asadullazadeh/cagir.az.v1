@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import info_btn from "@/icons/form/info_btn.svg";
 
-const Dropdown1 = ({
+const Dropdown = ({
   getMainServices,
   onSelectMainService,
   onSelectSubService,
@@ -211,4 +211,4 @@ const Dropdown1 = ({
   );
 };
 
-export default Dropdown1;
+export default Dropdown;

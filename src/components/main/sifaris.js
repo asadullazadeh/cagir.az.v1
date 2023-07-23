@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Toggle from "@/src/components/form/toggle";
 import Qiymet from "@/src/components/form/qiymet";
-import Dropdown from "@/src/components/form/dropdown1";
+import Dropdown from "@/src/components/form/dropdown";
 import DropdownMob from "@/src/components/form/dropdownMob";
 import CheckBox from "@/src/components/buttons/checkbox";
 import CustomInput from "@/src/components/input/custom_input";
