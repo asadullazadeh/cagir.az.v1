@@ -36,6 +36,8 @@ const Toggle = ({
       [index]: !prevState[index],
     }));
   };
+  // isHidden[index] ? "hidden" : ""
+  // 
 
   return (
     <div>
@@ -53,11 +55,12 @@ const Toggle = ({
             <button
               id="clickMe"
               onClick={() => toggleHidden(index)}
-              className="flex justify-between items-center w-full"
+              className="flex flex-row justify-between items-center w-full"
             >
               <h6 className="font-bold text-[14px] leading-[21px] text-black">
                 {serviceName} haqda təsvir
               </h6>
+              
               <div>
                 <Image
                   src={isHidden[index] ? up : down}

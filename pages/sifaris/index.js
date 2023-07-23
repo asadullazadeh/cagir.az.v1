@@ -127,7 +127,7 @@ function Sifaris() {
     getSubServices.find((obj) => obj.serviceNames?.[0]?.name === name)
       ?.serviceNames?.[0]?.text || null;
   const chosenSubServiceText = findSubTextByName(getSubServices, selectedSub);
-  console.log(chosenSubServiceText);
+  // console.log(chosenSubServiceText);
   // subServices functionality finishes here
 
   // sub2Services functionality starts here
@@ -164,7 +164,7 @@ function Sifaris() {
     getSub2Services,
     selectedSub2
   );
-  console.log(chosenSub2ServiceText);
+  // console.log(chosenSub2ServiceText);
   // sub2Services functionality finishes here
 
   // checkmarks, to see more info-customized inputs in form section
@@ -184,7 +184,7 @@ function Sifaris() {
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
-  console.log(chosenMainServiceText);
+  // console.log(chosenMainServiceText);
   return (
     <div
       className="flex flex-col lg:flex-row lg:gap-x-[30px] xl:gap-x-[40px] 2xl:gap-x-[60px]
@@ -221,20 +221,24 @@ function Sifaris() {
           Sifarişi yarat
         </h4>
         {/* Dropdowns for services */}
-        <div className="grid lg:grid-cols-3 justify-items-stretch lg:gap-x-[40px] gap-y-[15px]">
+        <div className="">
           <Dropdown1
             onSelectMainService={handleMainSelect}
             getMainServices={getMainServices}
+            onSelectSubService={handleSubSelect}
+            getSubServices={getSubServices}
+            onSelectSub2Service={handleSub2Select}
+            getSub2Services={getSub2Services}
           />
 
-          <Dropdown2
+          {/* <Dropdown2
             onSelectSubService={handleSubSelect}
             getSubServices={getSubServices}
           />
           <Dropdown3
             onSelectSub2Service={handleSub2Select}
             getSub2Services={getSub2Services}
-          />
+          /> */}
         </div>
         {/* Checmark */}
         {/* ex:Neçə kv.m sahə təmizlənəcək?-First choices */}
