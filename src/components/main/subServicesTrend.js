@@ -47,7 +47,7 @@ function SubService() {
       fetchData();
     }
   }, [config, mainService, parentId]);
-
+console.log(mainServiceData);
   const { id, someProperty, serviceNames } = mainServiceData;
   const serviceName =
     serviceNames && serviceNames.length > 0 ? serviceNames[0].name : "";

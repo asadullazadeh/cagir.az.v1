@@ -70,7 +70,7 @@ const Dropdown = ({
       onSelectSub2Service(serviceName);
     }
     setIsOpen(false);
-    console.log(serviceName);
+    // console.log(serviceName);
     console.log(
       mainIndex == 0
         ? "Main service clicked"
@@ -87,14 +87,14 @@ const Dropdown = ({
           ? dropdownInfos[index].serviceInfos
           : "";
         const onSelectService = dropdownInfos[index].onSelectService;
-        console.log(dropdownInfos);
+        // console.log(dropdownInfos);
 
 
         // 0-main,1-sub,2-sub2
         const mainIndex = index;
 
 
-        console.log(serviceInfos);
+        // console.log(serviceInfos);
 
         return (
           <div key={index} className="">

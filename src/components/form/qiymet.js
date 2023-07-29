@@ -4,7 +4,7 @@ import Link from "next/link";
 
 
 
-const Qiymet = () => {
+const Qiymet = ({price}) => {
   // this it for
   const [isHidden, setIsHidden] = useState(true);
   const toggleHidden = () => {
@@ -20,7 +20,7 @@ const Qiymet = () => {
               Məbləğ
             </p>
             <p className="font-semibold text-[18px] leading-[27px] text-black500">
-              100 AZN
+              {price} AZN
             </p>
           </div>
 
@@ -38,7 +38,7 @@ const Qiymet = () => {
               Yekun
             </p>
             <p className="font-bold text-[26px] leading-[39px] text-cagiraz">
-              80 AZN
+              {price>20 ? price-20 : 0} AZN
             </p>
           </div>
         </div>

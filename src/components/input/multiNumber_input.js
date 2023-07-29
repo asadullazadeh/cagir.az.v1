@@ -8,7 +8,7 @@ import plus from "@/icons/form/plus.svg";
 // updateCriteriaValue-it takes updated value from component to the main page
 // criteriaId-from the main page
 // updateCriteriaId-from component to the main page
-const CustomInput = ({updateCriteriaValue,criteriaId,updateCriteriaId}) => {
+const CustomInput = ({name,updateCriteriaValue,criteriaId,updateCriteriaId}) => {
   // value takes Service Criteria ID each time a new input is clicked
   const [value, setValue] = useState(0);
   // newId takes Service Criteria name each time a new input is clicked
@@ -36,11 +36,11 @@ const CustomInput = ({updateCriteriaValue,criteriaId,updateCriteriaId}) => {
     <div
       className="inline-flex items-center justify-between border-none lg:border lg:border-solid lg:border-gray900 rounded-full 
     w-full lg:w-auto
-    lg:px-[5px] lg:h-[40px]"
+    lg:pl-[15px] pr-[5px] lg:h-[40px]"
     >
-      {/* <label className="text-gray-600 pr-[8px] font-semibold text-[10px] leading-[15px] ">
+      <label className="text-gray-600 pr-[8px] font-semibold text-[10px] leading-[15px] ">
         <p>{name}</p>
-      </label> */}
+      </label>
       <div className="flex flex-row">
         <button
           className="bg-cagiraz rounded-[5px] lg:rounded-full w-[25px] h-[25px] lg:w-[30px] lg:h-[30px] flex justify-center focus:outline-none"
