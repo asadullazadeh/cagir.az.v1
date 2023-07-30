@@ -68,11 +68,10 @@ function Sifaris() {
   };
   const [getSubServices, setgetSubServices] = useState([]);
 
-
   // When there is a change in first dropdown, it makes third dropdown elements as default
-  useEffect(() =>{
+  useEffect(() => {
     setgetSub2Services([]);
-  },[selectedMain])
+  }, [selectedMain]);
 
   useEffect(() => {
     axios
@@ -149,7 +148,7 @@ function Sifaris() {
   const chosenSub2ServiceId = findSub2IdByName(getSub2Services, selectedSub2);
   // console.log(chosenSub2ServiceId);
   // sub2Services functionality finishes here
-  // select criterias starts here
+  // select criterias starts here 
   const [getServiceCriterias, setgetServiceCriterias] = useState([]);
   useEffect(() => {
     axios
@@ -178,7 +177,7 @@ function Sifaris() {
   const [multiNumberValue, setMultiNumberValue] = useState(0);
   const [multiNumberId, setMultiNumberId] = useState("");
   const [multiNumberArray, setMultiNumberArray] = useState([]);
-// console.log(multiNumberArray);
+  // console.log(multiNumberArray);
   const handleDataUpdate = (value) => {
     setMultiNumberValue(value);
   };
@@ -214,21 +213,35 @@ function Sifaris() {
     }
   }, [multiNumberId, multiNumberValue]);
 
-
   //radio button functionality
   const [selectedRadioName, setSelectedRadioName] = useState(null);
   const [selectedRadioId, setSelectedRadioId] = useState("");
+  const [radioBtnObject, setRadioBtnObject] = useState({}); // Define it in the component's scope
+
   const handleChange = (value, criteriaId) => {
     setSelectedRadioName(value);
     setSelectedRadioId(criteriaId);
   };
   // console.log(selectedRadioName,selectedRadioId);
   // detting data from radio button to calculate the price
-  const radioBtnObject = selectedRadioId
-    ? { serviceCriteriaId: selectedRadioId, count: 1 }
-    : {};
-    
-  // console.log(radioBtnObject);
+  useEffect(() => {
+    // Move the 'radioBtnObject' conditional inside the useEffect callback
+    const radioBtnObject = selectedRadioId
+      ? { serviceCriteriaId: selectedRadioId, count: 1 }
+      : {};
+
+      setRadioBtnObject(radioBtnObject); // Update the radioBtnObject state with the new value
+    // Your other useEffect logic here that depends on 'radioBtnObject'
+    // ...
+
+    // Clean-up function (if needed)
+    return () => {
+      // Clean-up logic here
+      // ...
+    };
+  }, [selectedRadioId]); // Add any other dependencies if necessary
+
+  console.log(radioBtnObject);
   // select criterias finishes here
 
   // checkmarks, to see more info-customized inputs in form section
@@ -267,8 +280,6 @@ function Sifaris() {
   // Calculate Price
   // console.log(calculatePrice);
   const [getPrice, setGetPrice] = useState(0);
- 
-   
 
   // Log the current value of getPrice
   // console.log(getPrice);
@@ -297,7 +308,14 @@ function Sifaris() {
         console.error(error);
       });
   }, [checkedCheckboxArray, multiNumberArray, radioBtnObject]); // Add 'calculatePrice' as a dependency
-
+  
+  // when selectMain is updated,elements which go to calculate price become empty
+  useEffect(() => {
+    setCheckedCheckboxArray([])
+    setMultiNumberArray([])
+    setRadioBtnObject([])
+    setGetPrice(0); // Set getPrice to 0 when selectMain is updated
+  }, [selectedMain]);
   // console.log(getPrice);
 
   // Textarea
@@ -422,18 +440,18 @@ function Sifaris() {
           )}
         </div>
 
-        
         <div className="flex flex-col lg:flex-row ">
           {isOpen && <Textarea />}
           <button
             className={`pl-[10px] mx-auto lg:m-0 font-medium lg:font-extrabold text-[12px] lg:text-[14px] 
-            leading-[18px] lg:leading-[21px] text-cagiraz ${isOpen ? "hidden" : ""}`}
+            leading-[18px] lg:leading-[21px] text-cagiraz ${
+              isOpen ? "hidden" : ""
+            }`}
             onClick={handleToggle}
           >
             {isOpen ? "" : "Əlavə qeydlər"}
           </button>
         </div>
-
 
         {/* Sifarisi tamamla */}
         <h4
@@ -488,7 +506,6 @@ function Sifaris() {
             <PrimarySmBtn btnName="Təsdiqlə" classNames="w-full" />
           </div>
         </div>
-
       </div>
     </div>
   );
