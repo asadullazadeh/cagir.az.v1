@@ -26,11 +26,11 @@ const Dropdown = ({
     },
   };
   console.log(dropdownInfos);
-  
+
   // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
-   // if "isOpen" is true, toggleDropdown works
-   const toggleDropdown = (index) => {
+  // if "isOpen" is true, toggleDropdown works
+  const toggleDropdown = (index) => {
     setIsOpen((prevState) => ({
       ...prevState,
       [index]: !isOpen[index],
@@ -52,10 +52,6 @@ const Dropdown = ({
   useEffect(() => {
     setSub2ServiceName("");
   }, [subServiceName]);
-
-
-
-
 
   // description for mobile version
   const [descIsOpen, setdescIsOpen] = useState(false);
@@ -103,10 +99,8 @@ const Dropdown = ({
         const onSelectService = dropdownInfos[index].onSelectService;
         // console.log(dropdownInfos);
 
-
         // 0-main,1-sub,2-sub2
         const mainIndex = index;
-
 
         // console.log(serviceInfos);
 

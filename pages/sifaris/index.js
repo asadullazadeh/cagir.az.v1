@@ -47,7 +47,7 @@ function Sifaris() {
         console.error(error);
       });
   }, []);
-  // console.log(getMainServices);
+  console.log(selectedMain);
   const findIdByName = (mainService, name) =>
     (getMainServices.find((obj) => obj.serviceNames[0].name === name) || {})
       .id || null;
@@ -67,6 +67,12 @@ function Sifaris() {
     setSelectedSub(subService);
   };
   const [getSubServices, setgetSubServices] = useState([]);
+
+
+  // When there is a change in first dropdown, it makes third dropdown elements as default
+  useEffect(() =>{
+    setgetSub2Services([]);
+  },[selectedMain])
 
   useEffect(() => {
     axios
@@ -143,7 +149,6 @@ function Sifaris() {
   const chosenSub2ServiceId = findSub2IdByName(getSub2Services, selectedSub2);
   // console.log(chosenSub2ServiceId);
   // sub2Services functionality finishes here
-
   // select criterias starts here
   const [getServiceCriterias, setgetServiceCriterias] = useState([]);
   useEffect(() => {
@@ -166,14 +171,14 @@ function Sifaris() {
         console.error(error);
       });
   }, [chosenSub2ServiceId]);
-  console.log(getServiceCriterias);
+  // console.log(getServiceCriterias);
 
   // getting custom input-multinumber-FilterType=5 value for service criteria
   // multiNumberArray takes all the information of multi number input for pricing
   const [multiNumberValue, setMultiNumberValue] = useState(0);
   const [multiNumberId, setMultiNumberId] = useState("");
   const [multiNumberArray, setMultiNumberArray] = useState([]);
-
+// console.log(multiNumberArray);
   const handleDataUpdate = (value) => {
     setMultiNumberValue(value);
   };
@@ -208,7 +213,7 @@ function Sifaris() {
       }
     }
   }, [multiNumberId, multiNumberValue]);
-  // console.log(multiNumberArray);
+
 
   //radio button functionality
   const [selectedRadioName, setSelectedRadioName] = useState(null);
@@ -222,6 +227,7 @@ function Sifaris() {
   const radioBtnObject = selectedRadioId
     ? { serviceCriteriaId: selectedRadioId, count: 1 }
     : {};
+    
   // console.log(radioBtnObject);
   // select criterias finishes here
 
@@ -259,11 +265,13 @@ function Sifaris() {
   // console.log(checkedCheckboxArray);
 
   // Calculate Price
-
   // console.log(calculatePrice);
+  const [getPrice, setGetPrice] = useState(0);
+ 
+   
 
-  const [getPrice, setGetPrice] = useState([]);
-
+  // Log the current value of getPrice
+  // console.log(getPrice);
   useEffect(() => {
     const calculatePrice = [
       radioBtnObject,
@@ -290,7 +298,7 @@ function Sifaris() {
       });
   }, [checkedCheckboxArray, multiNumberArray, radioBtnObject]); // Add 'calculatePrice' as a dependency
 
-  console.log(getPrice);
+  // console.log(getPrice);
 
   // Textarea
   const [showTextarea, setshowTextarea] = useState(true);
@@ -414,6 +422,19 @@ function Sifaris() {
           )}
         </div>
 
+        
+        <div className="flex flex-col lg:flex-row ">
+          {isOpen && <Textarea />}
+          <button
+            className={`pl-[10px] mx-auto lg:m-0 font-medium lg:font-extrabold text-[12px] lg:text-[14px] 
+            leading-[18px] lg:leading-[21px] text-cagiraz ${isOpen ? "hidden" : ""}`}
+            onClick={handleToggle}
+          >
+            {isOpen ? "" : "Əlavə qeydlər"}
+          </button>
+        </div>
+
+
         {/* Sifarisi tamamla */}
         <h4
           className="font-semibold lg:font-bold text-[16px] lg:text-[20px] leading-[14px] lg:leading-[30px] 
@@ -467,6 +488,7 @@ function Sifaris() {
             <PrimarySmBtn btnName="Təsdiqlə" classNames="w-full" />
           </div>
         </div>
+
       </div>
     </div>
   );
