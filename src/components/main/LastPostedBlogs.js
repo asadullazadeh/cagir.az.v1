@@ -92,7 +92,7 @@ function LastPostedBlogs() {
                   <div className="ml-auto">
                     <Link
                       className="font-extrabold	text-[14px] leading-[21px]"
-                      href="#"
+                      href={`blog/${titleUrl}/${id}`}
                     >
                       Ətrafli oxu
                     </Link>
