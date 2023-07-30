@@ -93,7 +93,7 @@ function RelatedBlogs({ blogId, categoryId, subject }) {
 
       <div className="flex justify-center pt-[30px] lg:pt-[15px]">
         <Link
-          href="/"
+          href="/blog"
           className="lg:py-[10px] lg:px-[26px]
           font-medium lg:font-extrabold text-cagiraz text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px]"
         >

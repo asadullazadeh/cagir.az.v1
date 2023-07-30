@@ -113,7 +113,7 @@ function Blogs() {
                   <div className="ml-auto">
                     <Link
                       className="font-extrabold text-[14px] leading-[21px]"
-                      href={`blog/${titleUrl}`}
+                      href={`blog/${titleUrl}/${id}`}
                     >
                       Ətrafli oxu
                     </Link>
@@ -129,7 +129,7 @@ function Blogs() {
         onClick={handleClick}
         className="flex items-center justify-center max-w-[155px] mx-auto rounded-[25px] mt-[15px] lg:mt-[30px]"
       >
-        <PrimaryOutlineSmBtn btnName="Daha çox gör" />
+          <PrimaryOutlineSmBtn btnName="Daha çox gör" />
       </div>
     </div>
   );

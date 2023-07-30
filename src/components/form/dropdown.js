@@ -1,5 +1,5 @@
 // components/CustomDropdown.js
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import info_btn from "@/icons/form/info_btn.svg";
 
@@ -25,7 +25,8 @@ const Dropdown = ({
       onSelectService: onSelectSub2Service,
     },
   };
-
+  console.log(dropdownInfos);
+  
   // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
    // if "isOpen" is true, toggleDropdown works
@@ -41,6 +42,19 @@ const Dropdown = ({
   const [subServiceName, setSubServiceName] = useState("");
   const [sub2ServiceName, setSub2ServiceName] = useState("");
   const serviceNames = [mainServiceName, subServiceName, sub2ServiceName];
+  // Update subServiceName and sub2ServiceName when mainServiceName changes
+  useEffect(() => {
+    setSubServiceName("");
+    setSub2ServiceName("");
+  }, [mainServiceName]);
+
+  // Update sub2ServiceName when subServiceName changes
+  useEffect(() => {
+    setSub2ServiceName("");
+  }, [subServiceName]);
+
+
+
 
 
   // description for mobile version
@@ -126,7 +140,6 @@ const Dropdown = ({
                   className="dropdown-button relative flex items-center justify-between w-full px-[15px] py-[5px] lg:py-[10px] text-[10px] lg:text-[12px] leading-[15px] lg:leading-[12px] font-medium lg:font-semibold
          text-gray900  bg-white rounded-[10px] lg:rounded-[50px] focus:outline-none focus:border-cagiraz
          border-[1px] border-solid border-gray900"
-                  // onClick={toggleDropdown}
                   onClick={() => toggleDropdown(index)}
                 >
                   <p
@@ -134,7 +147,6 @@ const Dropdown = ({
                       isOpen[index] ? "opacity-0" : "opacity-100"
                     }`}
                   >
-                    {/* {mainServiceName ? mainServiceName : "Xidməti seç"} */}
                     {serviceNames[mainIndex] || ""}
                   </p>
 

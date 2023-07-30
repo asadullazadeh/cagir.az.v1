@@ -104,7 +104,7 @@ function LastPostedBlogs() {
         )}
       </ul>
       <div className="flex items-center justify-center max-w-[155px] mx-auto rounded-[25px] mt-[15px] lg:mt-[30px]">
-        <Link href="http://localhost:3000/blog">
+        <Link href="/blog">
           <PrimaryOutlineSmBtn btnName="Hamısına bax" />
         </Link>
       </div>

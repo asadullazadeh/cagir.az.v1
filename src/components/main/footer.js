@@ -46,7 +46,7 @@ const Footer = () => (
               <div>
                 <Link
                   className="font-semibold text-[14px] leading-[21px] text-gray900 hover:text-black transition duration-300"
-                  href="#"
+                  href="tel:994703482606"
                 >
                   +994 70 348 26 06
                 </Link>
@@ -59,7 +59,7 @@ const Footer = () => (
             {/* 1st column:4th element */}
             <li className="flex justify-center lg:justify-start">
               <Link
-                href="#"
+                href="/haqqimizda/terms"
                 className="text-cagiraz font-extrabold lg:text-gray900 lg:font-semibold lg:hover:text-black transition duration-300 inline-block min-w-max"
               >
                 Razılaşma müqaviləsi
@@ -97,23 +97,23 @@ const Footer = () => (
               </h2>
             </li>
             <li className="hover:text-black transition duration-300 ">
-              <Link href="#">Haqqımızda</Link>
+              <Link href="/haqqimizda">Haqqımızda</Link>
             </li>
             {/* <!-- 2nd column:2nd --> */}
             <li className="hover:text-black transition duration-300 ">
-              <Link href="#">Suallar</Link>
+              <Link href="/faq">Suallar</Link>
             </li>
             {/* <!-- 2nd column:3rd --> */}
             <li className="hover:text-black transition duration-300 ">
-              <Link href="#">Əlaqə</Link>
+              <Link href="/elaqe">Əlaqə</Link>
             </li>
             {/* <!-- 2nd column:4th --> */}
             <li className="hover:text-black transition duration-300 ">
-              <Link href="#">Bloq</Link>
+              <Link href="/blog">Bloq</Link>
             </li>
             {/* <!-- 2nd column:5th --> */}
             <li className="hover:text-black transition duration-300 ">
-              <Link href="#">Media</Link>
+              <Link href="/media">Media</Link>
             </li>
             {/* <!-- 2nd column:6th --> */}
             <li className="hover:text-black transition duration-300 ">
@@ -134,15 +134,15 @@ const Footer = () => (
               </h2>
             </li>
             <li className="hover:text-black transition duration-300 ">
-              <Link href="#">Təmizlik xidməti</Link>
+              <Link href="/temizlik-xidmeti">Təmizlik xidməti</Link>
             </li>
             {/* <!-- 2nd column:2nd --> */}
             <li className="hover:text-black transition duration-300 ">
-              <Link href="#">Usta</Link>
+              <Link href="/usta">Usta</Link>
             </li>
             {/* <!-- 2nd column:3rd --> */}
             <li className="hover:text-black transition duration-300 ">
-              <Link href="#">Masaj xidməti</Link>
+              <Link href="/masaj-xidmeti">Masaj xidməti</Link>
             </li>
             {/* <!-- 2nd column:4th --> */}
             <li className="hover:text-black transition duration-300 ">
@@ -154,7 +154,7 @@ const Footer = () => (
             </li>
             {/* <!-- 2nd column:6th --> */}
             <li className="hover:text-black transition duration-300 ">
-              <Link href="#">Bizimlə işlə</Link>
+              <Link href="/is-axtariram">Bizimlə işlə</Link>
             </li>
           </ul>
         </div>

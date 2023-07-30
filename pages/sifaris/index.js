@@ -19,7 +19,7 @@ import info_btn from "@/icons/form/info_btn.svg";
 import Map_Image from "@/public/Map_Image.png";
 import InputCustomized from "@/src/components/input/input";
 import RadioButton from "@/src/components/buttons/radio_button";
-import InputPlusMinus from "@/src/components/input/input_plus_minus"
+import InputPlusMinus from "@/src/components/input/input_plus_minus";
 import MapBtn from "@/src/components/buttons/map_btn";
 import Calendar from "@/src/components/form/datepicker";
 import ModalStandart from "@/src/components/modal/modal_stand";
@@ -166,7 +166,7 @@ function Sifaris() {
         console.error(error);
       });
   }, [chosenSub2ServiceId]);
-  // console.log(getServiceCriterias);
+  console.log(getServiceCriterias);
 
   // getting custom input-multinumber-FilterType=5 value for service criteria
   // multiNumberArray takes all the information of multi number input for pricing
@@ -219,8 +219,10 @@ function Sifaris() {
   };
   // console.log(selectedRadioName,selectedRadioId);
   // detting data from radio button to calculate the price
-  const radioBtnObject = selectedRadioId ? {serviceCriteriaId : selectedRadioId ,count: 1 } : {};
-  console.log(radioBtnObject);
+  const radioBtnObject = selectedRadioId
+    ? { serviceCriteriaId: selectedRadioId, count: 1 }
+    : {};
+  // console.log(radioBtnObject);
   // select criterias finishes here
 
   // checkmarks, to see more info-customized inputs in form section
@@ -256,39 +258,39 @@ function Sifaris() {
   }, [checkboxIsChecked, checkboxId]);
   // console.log(checkedCheckboxArray);
 
-
-
   // Calculate Price
-const calculatePrice = [radioBtnObject, ...checkedCheckboxArray, ...multiNumberArray];
 
-console.log(calculatePrice);
+  // console.log(calculatePrice);
 
-const [getPrice, setGetPrice] = useState([]);
+  const [getPrice, setGetPrice] = useState([]);
 
-useEffect(() => {
-  axios
-    .post(
-      "https://api.cagir.az/api/serviceCriteria/calculate",
-      [...calculatePrice],
-      {
-        headers: {
-          "Accept-Language": "az",
-        },
-      }
-    )
-    .then((response) => {
-      // Handle the response data
-      setGetPrice(response.data.result.amount);
-    })
-    .catch((error) => {
-      // Handle any errors
-      console.error(error);
-    });
-}, [calculatePrice]); // Add 'calculatePrice' as a dependency
+  useEffect(() => {
+    const calculatePrice = [
+      radioBtnObject,
+      ...checkedCheckboxArray,
+      ...multiNumberArray,
+    ];
+    axios
+      .post(
+        "https://api.cagir.az/api/serviceCriteria/calculate",
+        [...calculatePrice],
+        {
+          headers: {
+            "Accept-Language": "az",
+          },
+        }
+      )
+      .then((response) => {
+        // Handle the response data
+        setGetPrice(response.data.result.amount);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  }, [checkedCheckboxArray, multiNumberArray, radioBtnObject]); // Add 'calculatePrice' as a dependency
 
-console.log(getPrice);
-
-
+  console.log(getPrice);
 
   // Textarea
   const [showTextarea, setshowTextarea] = useState(true);

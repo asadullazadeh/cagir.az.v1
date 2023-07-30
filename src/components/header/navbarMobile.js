@@ -68,7 +68,7 @@ export default function NavbarMobile() {
             sm:leading-[24px] leading-[27px] text-gray900 text-center "
             >
               <li>
-                <Link href="/usta/kombi-ustasi">
+                <Link href="/temizlik-xidmeti">
                   <p className="transition duration-300 hover:text-black">
                     Təmizlik xidməti
                   </p>

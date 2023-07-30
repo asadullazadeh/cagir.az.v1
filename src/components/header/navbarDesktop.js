@@ -122,7 +122,7 @@ export default function NavbarDesktop() {
            items-center font-semibold text-[10px] xl:text-[12px] 2xl:text-[14px] leading-[21px] text-gray500 space-x-[35px] xl:space-x-[40px]"
             >
               <li>
-                <Link href="/usta/kombi-ustasi">
+                <Link href="/temiwlik-xidmeti">
                   <p className="transition duration-300 hover:text-black">
                     Təmizlik xidməti
                   </p>
