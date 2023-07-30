@@ -25,7 +25,7 @@ const Dropdown = ({
       onSelectService: onSelectSub2Service,
     },
   };
-  console.log(dropdownInfos);
+  // console.log(dropdownInfos);
 
   // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
@@ -81,13 +81,7 @@ const Dropdown = ({
     }
     setIsOpen(false);
     // console.log(serviceName);
-    console.log(
-      mainIndex == 0
-        ? "Main service clicked"
-        : mainIndex == 1
-        ? "Sub service clicked"
-        : "Sub2 service clicked"
-    );
+
   };
 
   return (

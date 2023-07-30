@@ -47,7 +47,7 @@ function Sifaris() {
         console.error(error);
       });
   }, []);
-  console.log(selectedMain);
+  // console.log(selectedMain);
   const findIdByName = (mainService, name) =>
     (getMainServices.find((obj) => obj.serviceNames[0].name === name) || {})
       .id || null;
@@ -241,7 +241,7 @@ function Sifaris() {
     };
   }, [selectedRadioId]); // Add any other dependencies if necessary
 
-  console.log(radioBtnObject);
+  // console.log(radioBtnObject);
   // select criterias finishes here
 
   // checkmarks, to see more info-customized inputs in form section
@@ -275,12 +275,11 @@ function Sifaris() {
       );
     }
   }, [checkboxIsChecked, checkboxId]);
-  // console.log(checkedCheckboxArray);
+  console.log(checkedCheckboxArray);
 
   // Calculate Price
   // console.log(calculatePrice);
   const [getPrice, setGetPrice] = useState(0);
-
   // Log the current value of getPrice
   // console.log(getPrice);
   useEffect(() => {
@@ -289,10 +288,15 @@ function Sifaris() {
       ...checkedCheckboxArray,
       ...multiNumberArray,
     ];
+
+    // it gets rid of an element which its length is 0
+    const filteredCalculatePrice = calculatePrice.filter(item => Object.keys(item).length !== 0);
+    console.log(filteredCalculatePrice);
+
     axios
       .post(
         "https://api.cagir.az/api/serviceCriteria/calculate",
-        [...calculatePrice],
+        [...filteredCalculatePrice],
         {
           headers: {
             "Accept-Language": "az",
@@ -308,7 +312,7 @@ function Sifaris() {
         console.error(error);
       });
   }, [checkedCheckboxArray, multiNumberArray, radioBtnObject]); // Add 'calculatePrice' as a dependency
-  
+
   // when selectMain is updated,elements which go to calculate price become empty
   useEffect(() => {
     setCheckedCheckboxArray([])
