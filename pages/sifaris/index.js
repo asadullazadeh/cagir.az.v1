@@ -170,7 +170,7 @@ function Sifaris() {
         console.error(error);
       });
   }, [chosenSub2ServiceId]);
-  // console.log(getServiceCriterias);
+  console.log(getServiceCriterias);
 
   // getting custom input-multinumber-FilterType=5 value for service criteria
   // multiNumberArray takes all the information of multi number input for pricing
@@ -275,7 +275,7 @@ function Sifaris() {
       );
     }
   }, [checkboxIsChecked, checkboxId]);
-  console.log(checkedCheckboxArray);
+  // console.log(checkedCheckboxArray);
 
   // Calculate Price
   // console.log(calculatePrice);
@@ -482,7 +482,7 @@ function Sifaris() {
                 />
               </div>
               <Download_image />
-              <Promocode onPromoCodeValidityChange={handlePromoCodeValidity} />
+              <Promocode />
               <PaymentMethod />
             </div>
             {/* map section for desktop */}

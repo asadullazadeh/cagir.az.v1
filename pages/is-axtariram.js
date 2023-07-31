@@ -32,7 +32,10 @@ function IsAxtariram() {
             <span className="mx-auto pt-[40px]">İşə müraciət anketi:</span>
         </p>
         <div className="flex justify-center pt-[10px] lg:pt-[20px]">
+            <Link href="https://docs.google.com/forms/d/e/1FAIpQLSctA5o8rgT8juQdBROPT7QAHX8J84bo5ViG8d3hidBqzr5ahg/viewform">
             <PrimaryMdBtn btnName="İşə müraciət anketini doldur" classNames="w-full lg:w-auto" />
+            </Link>
+
         </div>
     </div>
   );

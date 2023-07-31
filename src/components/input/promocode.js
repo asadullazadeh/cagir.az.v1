@@ -8,12 +8,11 @@ const Promocode = () => {
   const [isInputClicked, setIsInputClicked] = useState(false);
   const prevPromoCodeRef = useRef("");
 
-
-  const promocodes = ["Cagiraz", "Turgut", "Alpay", "Orxan"]
+  const promocodes = ["Cagiraz", "Turgut", "Alpay", "Orxan"];
   const [promoCode, setPromoCode] = useState("");
   const isPromoCodeValid = promocodes.includes(promoCode);
   console.log(isPromoCodeValid);
-  
+
   const handlePromoCodeChange = (e) => {
     setPromoCode(e.target.value);
   };
