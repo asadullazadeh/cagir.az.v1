@@ -6,12 +6,12 @@ import Image from "next/image";
 import arrow_right from "@/icons/arrow_right.svg";
 import Head from "next/head";
 import Badge from "@/src/components/others/badge";
-import SubServiceTrend from "@/src/components/main/subServicesTrend";
+import SubServiceTrend from "@/src/components/service/subServicesTrend";
 import Reels from "@/src/components/main/reels";
 import Banner from "@/src/components/main/banner";
 import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
-import SubServiceNoTrend from "@/src/components/main/subServicesNoTrend";
+import SubServiceNoTrend from "@/src/components/service/subServicesNoTrend";
 function Page() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const config = {
@@ -27,14 +27,13 @@ function Page() {
   // subServices for an individual main service.
 
   //
-  
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.post(
           "https://api.cagir.az/api/post/getAll?size=0",
-          {"categoryName": "Psixoloq"},
+          { categoryName: "Psixoloq" },
           config
         );
         setMainServiceData(response.data.result);
@@ -42,7 +41,6 @@ function Page() {
         const newParentId = response.data.result.id;
         newParentId(newParentId);
 
-        
         setSubServices(subService.data.result);
       } catch (error) {
         console.error(error);
@@ -55,11 +53,7 @@ function Page() {
     }
   }, [config, mainService]);
   console.log(mainServiceData);
-  return (
-    <div>
-    
-    </div>
-  );
+  return <div></div>;
 }
 
 export default Page;

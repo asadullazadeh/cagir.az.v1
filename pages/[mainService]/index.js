@@ -6,12 +6,12 @@ import Image from "next/image";
 import arrow_right from "@/icons/arrow_right.svg";
 import Head from "next/head";
 import Badge from "@/src/components/others/badge";
-import SubServiceTrend from "@/src/components/main/subServicesTrend";
+import SubServiceTrend from "@/src/components/service/subServicesTrend";
 import Reels from "@/src/components/main/reels";
 import Banner from "@/src/components/main/banner";
 import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
-import SubServiceNoTrend from "@/src/components/main/subServicesNoTrend";
+import SubServiceNoTrend from "@/src/components/service/subServicesNoTrend";
 function Page() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const config = {
@@ -28,7 +28,6 @@ function Page() {
   const [subServices, setSubServices] = useState([]);
   //
   const [parentId, setParentId] = useState(null);
-  
 
   useEffect(() => {
     const fetchData = async () => {

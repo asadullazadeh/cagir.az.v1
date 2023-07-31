@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import arrow from "@/icons/arrow.svg";
 import arrow_mobile from "@/icons/arrow_mobile.svg";
-import OrderCardPrimary from "@/src/components/cards/order_card_primary";
+
 function Xidmetler() {
   const [responseData, setResponseData] = useState([]);
 

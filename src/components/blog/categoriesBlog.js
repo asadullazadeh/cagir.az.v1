@@ -3,7 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import RelatedBlogs from "@/src/components/main/relatedBlogs";
+import RelatedBlogs from "@/src/components/blog/relatedBlogs";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import img_banner_blog from "@/public/img_banner_blog.png";
 

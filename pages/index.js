@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import Carousel1 from "@/src/components/main/carousel1";
-import MainServices from "@/src/components/main/mainServices";
+import MainServices from "@/src/components/service/mainServices";
 import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
 import Suallar from "@/src/components/main/suallar";
 import Deyerler from "@/src/components/main/deyerler";
-import LastPostedBlogs from "@/src/components/main/LastPostedBlogs";
+import LastPostedBlogs from "@/src/components/blog/LastPostedBlogs";
 import Musteriler from "@/src/components/main/musteriler";
 import Reels from "@/src/components/main/reels";
 
