@@ -2,10 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import arrow from "@/icons/arrow.svg";
-import AliceCarousel from "react-alice-carousel";
-import "react-alice-carousel/lib/alice-carousel.css";
-import star from "@/icons/deyerler/Star.svg";
 import memnuniyyet from "@/icons/deyerler/memnuniyyet.svg";
 import kefiyyet from "@/icons/deyerler/kefiyyet.svg";
 import pesekar from "@/icons/deyerler/pesekar.svg";
@@ -30,7 +26,6 @@ function Deyerler() {
         // console.log(resultArrays);
         const formattedData = resultArrays.map((result) => ({
           id: result.id,
-          image: result.imageUrl,
           text: result.text,
           title: result.title,
         }));
@@ -42,7 +37,8 @@ function Deyerler() {
     };
 
     fetchData();
-  }, [config]);
+  }, []);
+  console.log(data);
 
   return (
     <div>
@@ -51,20 +47,16 @@ function Deyerler() {
         className="grid grid-cols-2 lg:grid-cols-4 gap-x-[10px] sm:gap-x-[40px] md:gap-x-[70px] lg:gap-x-[100px] xl:gap-x-[130px] 2xl:gap-x-[156px] 
             gap-y-[15px]"
       >
-        {data.map(({ index, title, text, imageUrl }) => (
+        {data.map(({ index, title, text, imageUrl,id }) => (
           <div key={index}>
             <div className="flex flex-col">
-              {/* <Image width={100} height={100} src={`https://api.cagir.az${imageUrl}`} alt="icon" /> */}
               <div className="flex justify-center items-center w-[30px] lg:w-[60px] h-[30px] lg:h-[60px] mb-[15px] lg:mb-[30px]">
                 <Image
-                  src={star}
-                  alt="Image 1"
-                  className=" w-[27px] lg:w-[54px] h-[27px] lg:h-[54px]"
-                />
-                <Image
-                  src={pesekar}
-                  alt="Image 2"
-                  className="absolute z-10 w-[12px] lg:w-[24px] h-[12px] lg:h-[24px]"
+                  src={id===37 ? pesekar : id===31 ? qenaet : id===34 ? memnuniyyet : kefiyyet}
+                  alt={title}
+                  className=""
+                  width={200}
+                  height={200}
                 />
               </div>
 

@@ -50,7 +50,10 @@ const CallIncmngWp = () => (
         Geri Zəng
       </span>
     </button>
-    <ModalStandart dialogId="my_modal_2" content={<InputBtnNbTransition name="Sürətli sifariş" />} />
+    <ModalStandart
+      dialogId="my_modal_2"
+      content={<InputBtnNbTransition name="Sürətli sifariş" />}
+    />
 
     <Link
       className="group flex relative items-center justify-center w-[58px] h-[58px] bg-[#202020] bg-opacity-5 hover:bg-opacity-30 rounded-full"
