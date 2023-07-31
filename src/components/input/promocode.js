@@ -8,8 +8,12 @@ const Promocode = () => {
   const [isInputClicked, setIsInputClicked] = useState(false);
   const prevPromoCodeRef = useRef("");
 
-  const promocode = "Cagiraz";
+
+  const promocodes = ["Cagiraz", "Turgut", "Alpay", "Orxan"]
   const [promoCode, setPromoCode] = useState("");
+  const isPromoCodeValid = promocodes.includes(promoCode);
+  console.log(isPromoCodeValid);
+  
   const handlePromoCodeChange = (e) => {
     setPromoCode(e.target.value);
   };
@@ -29,13 +33,6 @@ const Promocode = () => {
       setIsInputClicked(false);
     }
   };
-
-  useEffect(() => {
-    document.addEventListener("click", handleOutsideClick);
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
 
   return (
     <div className="flex flex-col gap-y-[5px]">
@@ -70,23 +67,23 @@ const Promocode = () => {
           <Image
             src={validation}
             alt="validation_icon"
-            className={`opacity-${promoCode === "Cagir2023" ? "100" : "0"}`}
+            className={`opacity-${isPromoCodeValid ? "100" : "0"}`}
           />
         </div>
-        {promoCode !== promocode && (
+        {/* {!isPromoCodeValid && (
           <p
             className={`hidden lg:block ml-auto font-semibold text-[10px] leading-[15px] text-danger `}
           >
             Promokod səhvdir
           </p>
         )}
-        {promoCode !== promocode && (
+        {!isPromoCodeValid && (
           <p
             className={`block lg:hidden ml-auto font-semibold text-[10px] leading-[15px] text-danger `}
           >
             Xəta baş verdi
           </p>
-        )}
+        )} */}
       </div>
     </div>
   );

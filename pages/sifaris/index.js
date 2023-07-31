@@ -482,7 +482,7 @@ function Sifaris() {
                 />
               </div>
               <Download_image />
-              <Promocode />
+              <Promocode onPromoCodeValidityChange={handlePromoCodeValidity} />
               <PaymentMethod />
             </div>
             {/* map section for desktop */}

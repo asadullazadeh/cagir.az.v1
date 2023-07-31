@@ -47,12 +47,20 @@ function Deyerler() {
         className="grid grid-cols-2 lg:grid-cols-4 gap-x-[10px] sm:gap-x-[40px] md:gap-x-[70px] lg:gap-x-[100px] xl:gap-x-[130px] 2xl:gap-x-[156px] 
             gap-y-[15px]"
       >
-        {data.map(({ index, title, text, imageUrl,id }) => (
+        {data.map(({ index, title, text, imageUrl, id }) => (
           <div key={index}>
             <div className="flex flex-col">
               <div className="flex justify-center items-center w-[30px] lg:w-[60px] h-[30px] lg:h-[60px] mb-[15px] lg:mb-[30px]">
                 <Image
-                  src={id===37 ? pesekar : id===31 ? qenaet : id===34 ? memnuniyyet : kefiyyet}
+                  src={
+                    id === 37
+                      ? pesekar
+                      : id === 31
+                      ? qenaet
+                      : id === 34
+                      ? memnuniyyet
+                      : kefiyyet
+                  }
                   alt={title}
                   className=""
                   width={200}
