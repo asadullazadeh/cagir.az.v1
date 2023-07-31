@@ -36,7 +36,7 @@ function Blogs() {
   console.log(responseData);
 
   return (
-    <div className="">
+    <div className="py-[15px] lg:py-[30px]">
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Bloq</h2>
       <div className="flex justify-center">
         <SearchInputMd />
@@ -55,7 +55,7 @@ function Blogs() {
             viewCount,
             insertDate,
             categoryName,
-            category
+            category,
           } = responseData[childObjectName];
           // console.log(category);
           return (
@@ -80,10 +80,10 @@ function Blogs() {
                   </p>
                   <div className="ml-auto border border-cagiraz rounded-lg">
                     <Link href={`blog/kateqoriya/${category.titleUrl}`}>
-                    <p className="font-semibold	text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px] ">
-                      {categoryName}
-                    </p></Link>
-                    
+                      <p className="font-semibold	text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px] ">
+                        {categoryName}
+                      </p>
+                    </Link>
                   </div>
                 </div>
                 <Link href={`blog/${titleUrl}`}>
@@ -129,7 +129,7 @@ function Blogs() {
         onClick={handleClick}
         className="flex items-center justify-center max-w-[155px] mx-auto rounded-[25px] mt-[15px] lg:mt-[30px]"
       >
-          <PrimaryOutlineSmBtn btnName="Daha çox gör" />
+        <PrimaryOutlineSmBtn btnName="Daha çox gör" />
       </div>
     </div>
   );
