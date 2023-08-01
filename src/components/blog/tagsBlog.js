@@ -28,7 +28,7 @@ function TagsBlog({ blogId }) {
   }, [blogId]);
   const { id, imageUrl, viewCount, insertDate, postNames, tags, categoryId } =
     responseData;
-  // console.log(tags);
+  console.log(tags);
 
   return (
     <div className="">
@@ -42,12 +42,14 @@ function TagsBlog({ blogId }) {
         <div className="flex flex-row flex-wrap gap-[10px] lg:gap-[15px]">
           {tags.map(({ name, index }) => (
             <div key={index}>
-              <p
-                className="font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px]
+              <Link href={`/blog/tag/${name}`}>
+                <p
+                  className="font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px]
                   border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz"
-              >
-                {name}
-              </p>
+                >
+                  {name}
+                </p>
+              </Link>
             </div>
           ))}
         </div>

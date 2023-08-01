@@ -5,7 +5,6 @@ import Link from "next/link";
 import views from "@/icons/bloq/views.svg";
 import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
 import SearchInputMd from "@/src/components/input/input_search_md";
-import Router from "next/router";
 
 function Blogs() {
   const [size, setSize] = useState(0);

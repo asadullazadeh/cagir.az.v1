@@ -13,18 +13,20 @@ function BlogCategory() {
 
   const router = useRouter();
   const { query } = router;
-  const { blog_kateqoriya } = query;
-  console.log(blog_kateqoriya,size);
-
-  
+  const { blog_tag } = query;
+  //   console.log(blog_tag,size);
 
   useEffect(() => {
     axios
-      .get(`https://api.cagir.az/api/post/getAll?size=${size}&categoryName=${blog_kateqoriya}`, {
-        headers: {
-          "Accept-Language": "az",
-        },
-      })
+      .get(
+        `
+      https://api.cagir.az/api/post/getAll?size=${size}&tagName=${blog_tag}`,
+        {
+          headers: {
+            "Accept-Language": "az",
+          },
+        }
+      )
       .then((response) => {
         // Handle the response data
         const newData = response.data.result;
@@ -34,7 +36,7 @@ function BlogCategory() {
         // Handle any errors
         console.error(error);
       });
-  }, [size,blog_kateqoriya]);
+  }, [size, blog_tag]);
 
   const handleClick = () => {
     setSize((prevSize) => prevSize + 1);
@@ -86,9 +88,9 @@ function BlogCategory() {
                     {insertDate.slice(0, 10)}
                   </p>
                   <div className="ml-auto border border-cagiraz rounded-lg">
-                      <p className="font-semibold	text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px] ">
-                        {categoryName}
-                      </p>
+                    <p className="font-semibold	text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px] ">
+                      {categoryName}
+                    </p>
                   </div>
                 </div>
                 <Link href={`/blog/${titleUrl}/${id}`}>
