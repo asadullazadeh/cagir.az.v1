@@ -148,7 +148,7 @@ function Sifaris() {
   const chosenSub2ServiceId = findSub2IdByName(getSub2Services, selectedSub2);
   // console.log(chosenSub2ServiceId);
   // sub2Services functionality finishes here
-  // select criterias starts here 
+  // select criterias starts here
   const [getServiceCriterias, setgetServiceCriterias] = useState([]);
   useEffect(() => {
     axios
@@ -230,7 +230,7 @@ function Sifaris() {
       ? { serviceCriteriaId: selectedRadioId, count: 1 }
       : {};
 
-      setRadioBtnObject(radioBtnObject); // Update the radioBtnObject state with the new value
+    setRadioBtnObject(radioBtnObject); // Update the radioBtnObject state with the new value
     // Your other useEffect logic here that depends on 'radioBtnObject'
     // ...
 
@@ -290,7 +290,9 @@ function Sifaris() {
     ];
 
     // it gets rid of an element which its length is 0
-    const filteredCalculatePrice = calculatePrice.filter(item => Object.keys(item).length !== 0);
+    const filteredCalculatePrice = calculatePrice.filter(
+      (item) => Object.keys(item).length !== 0
+    );
     console.log(filteredCalculatePrice);
 
     axios
@@ -315,9 +317,9 @@ function Sifaris() {
 
   // when selectMain is updated,elements which go to calculate price become empty
   useEffect(() => {
-    setCheckedCheckboxArray([])
-    setMultiNumberArray([])
-    setRadioBtnObject([])
+    setCheckedCheckboxArray([]);
+    setMultiNumberArray([]);
+    setRadioBtnObject([]);
     setGetPrice(0); // Set getPrice to 0 when selectMain is updated
   }, [selectedMain]);
   // console.log(getPrice);

@@ -25,7 +25,8 @@ const Dropdown = ({
       onSelectService: onSelectSub2Service,
     },
   };
-  // console.log(dropdownInfos);
+
+  console.log(dropdownInfos);
 
   // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
@@ -42,6 +43,7 @@ const Dropdown = ({
   const [subServiceName, setSubServiceName] = useState("");
   const [sub2ServiceName, setSub2ServiceName] = useState("");
   const serviceNames = [mainServiceName, subServiceName, sub2ServiceName];
+  console.log(subServiceName);
   // Update subServiceName and sub2ServiceName when mainServiceName changes
   useEffect(() => {
     setSubServiceName("");
@@ -81,25 +83,39 @@ const Dropdown = ({
     }
     setIsOpen(false);
     // console.log(serviceName);
-
   };
+
+  // Function to check if sub2 object is empty to run third dropdown or not
+  function isSub2Exist(obj) {
+    return Object.keys(obj).length === 0;
+  }
+  const isSub2ElementsExist =
+    !isSub2Exist(dropdownInfos[1].serviceInfos) &&
+    isSub2Exist(dropdownInfos[2].serviceInfos) &&
+    subServiceName !== ""
+      ? false
+      : true;
 
   return (
     <div className="grid lg:grid-cols-3 justify-items-stretch lg:gap-x-[40px] gap-y-[15px]">
       {Object.keys(dropdownInfos).map((index) => {
+        if (index === "2" && !isSub2ElementsExist) {
+          return null; // Skip this iteration
+        }
+
         const serviceInfos = dropdownInfos[index].serviceInfos
           ? dropdownInfos[index].serviceInfos
           : "";
         const onSelectService = dropdownInfos[index].onSelectService;
-        // console.log(dropdownInfos);
+        console.log(isSub2ElementsExist);
 
         // 0-main,1-sub,2-sub2
         const mainIndex = index;
-
+        console.log(mainIndex);
         // console.log(serviceInfos);
 
         return (
-          <div key={index} className="">
+          <div key={index}>
             <div className="flex flex-col gap-y-[10px] lg:gap-y-0 relative ">
               <div className="hidden lg:flex flex-row justify-between pb-[5px]">
                 <label
