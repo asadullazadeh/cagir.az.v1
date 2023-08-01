@@ -27,7 +27,7 @@ function XidmetTag() {
         // Handle any errors
         console.error(error);
       });
-  }, []);
+  }, [tagName]);
   console.log(responseData);
   return (
     <div className="py-[15px] lg:py-[30px]">
