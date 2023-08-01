@@ -111,7 +111,10 @@ function Sifaris() {
   const handleSub2Select = (sub2Service) => {
     setSelectedSub2(sub2Service);
   };
-  // console.log(getSub2Services);
+
+  // checking if sub2 element is exist after choosing sub element
+  const isSub2ElementsExist = selectedSub !=="" && getSub2Services.length > 0;
+  console.log(isSub2ElementsExist);
 
   useEffect(() => {
     axios
@@ -154,7 +157,7 @@ function Sifaris() {
     axios
       .post(
         "https://api.cagir.az/api/serviceCriteria/getAllWithParent",
-        [chosenSub2ServiceId],
+        [!isSub2ElementsExist ? chosenSubServiceId : chosenSub2ServiceId],
         {
           headers: {
             "Accept-Language": "az",
@@ -169,7 +172,7 @@ function Sifaris() {
         // Handle any errors
         console.error(error);
       });
-  }, [chosenSub2ServiceId]);
+  }, [isSub2ElementsExist,chosenSubServiceId,chosenSub2ServiceId]);
   console.log(getServiceCriterias);
 
   // getting custom input-multinumber-FilterType=5 value for service criteria

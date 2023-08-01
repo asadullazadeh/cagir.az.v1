@@ -26,7 +26,7 @@ const Dropdown = ({
     },
   };
 
-  console.log(dropdownInfos);
+  // console.log(dropdownInfos);
 
   // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +43,7 @@ const Dropdown = ({
   const [subServiceName, setSubServiceName] = useState("");
   const [sub2ServiceName, setSub2ServiceName] = useState("");
   const serviceNames = [mainServiceName, subServiceName, sub2ServiceName];
-  console.log(subServiceName);
+  // console.log(subServiceName);
   // Update subServiceName and sub2ServiceName when mainServiceName changes
   useEffect(() => {
     setSubServiceName("");
@@ -107,11 +107,11 @@ const Dropdown = ({
           ? dropdownInfos[index].serviceInfos
           : "";
         const onSelectService = dropdownInfos[index].onSelectService;
-        console.log(isSub2ElementsExist);
+        // console.log(isSub2ElementsExist);
 
         // 0-main,1-sub,2-sub2
         const mainIndex = index;
-        console.log(mainIndex);
+        // console.log(mainIndex);
         // console.log(serviceInfos);
 
         return (
