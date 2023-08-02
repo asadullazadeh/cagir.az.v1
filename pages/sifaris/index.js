@@ -39,7 +39,7 @@ function Sifaris() {
   const handleMainSelect = (mainService) => {
     setSelectedMain(mainService);
   };
-  
+
   useEffect(() => {
     axios
       .get("https://api.cagir.az/api/service/getAllForFront", {
@@ -58,10 +58,11 @@ function Sifaris() {
   }, []);
 
   const findInfoByName = (mainServices, name) => {
-    const mainService = mainServices.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
+    const mainService =
+      mainServices.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
     return {
       id: mainService?.id || null,
-      text: mainService?.serviceNames?.[0]?.text || null
+      text: mainService?.serviceNames?.[0]?.text || null,
     };
   };
   // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
@@ -100,15 +101,15 @@ function Sifaris() {
   }, [selectedMainService.id]);
 
   const findSubInfoByName = (subServices, name) => {
-    const subService = subServices.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
+    const subService =
+      subServices.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
     return {
       id: subService?.id || null,
-      text: subService?.serviceNames?.[0]?.text || null
+      text: subService?.serviceNames?.[0]?.text || null,
     };
   };
   // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
   const selectedSubService = findSubInfoByName(getSubServices, selectedSub);
-  console.log(selectedSubService);
 
   /* ----------------------- sub2Services functionality ----------------------- */
   const [selectedSub2, setSelectedSub2] = useState("");
@@ -140,17 +141,16 @@ function Sifaris() {
       });
   }, [selectedSubService.id]);
 
-
   const findSub2InfoByName = (sub2Services, name) => {
-    const sub2Service = sub2Services.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
+    const sub2Service =
+      sub2Services.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
     return {
       id: sub2Service?.id || null,
-      text: sub2Service?.serviceNames?.[0]?.text || null
+      text: sub2Service?.serviceNames?.[0]?.text || null,
     };
   };
   // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
   const selectedSub2Service = findSub2InfoByName(getSub2Services, selectedSub2);
-  console.log(selectedSub2Service);
 
   /* ---------------------- Select criterias ---------------------- */
   const [getServiceCriterias, setgetServiceCriterias] = useState([]);
@@ -399,11 +399,17 @@ function Sifaris() {
     setGetPrice(0); // Set getPrice to 0 when selectMain,selectedSub,selectedSub2 is updated
   }, [selectedMain, selectedSub, selectedSub2]);
 
-  // Textarea
+  /* -------------------------------- Textarea functionality -------------------------------- */
   const [showTextarea, setshowTextarea] = useState(true);
+  const [receivedMessage, setReceivedMessage] = useState('');
   const toggleTextarea = () => {
     setshowTextarea(!showTextarea);
   };
+  // Define the callback function to receive the "message" data from the Textarea component
+  const handleMessage = (message) => {
+    setReceivedMessage(message);
+  };
+  console.log(receivedMessage);
 
   // Toggle part
   const [isOpen, setIsOpen] = useState(false);
@@ -543,7 +549,7 @@ function Sifaris() {
         </div>
 
         <div className="flex flex-col lg:flex-row ">
-          {isOpen && <Textarea />}
+          {isOpen && <Textarea sendMessage={handleMessage} />}
           <button
             className={`pl-[10px] mx-auto lg:m-0 font-medium lg:font-extrabold text-[12px] lg:text-[14px] 
             leading-[18px] lg:leading-[21px] text-cagiraz ${
