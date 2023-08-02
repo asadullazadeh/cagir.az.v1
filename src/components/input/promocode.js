@@ -11,7 +11,7 @@ const Promocode = () => {
   const promocodes = ["Cagiraz", "Turgut", "Alpay", "Orxan"];
   const [promoCode, setPromoCode] = useState("");
   const isPromoCodeValid = promocodes.includes(promoCode);
-  console.log(isPromoCodeValid);
+  // console.log(isPromoCodeValid);
 
   const handlePromoCodeChange = (e) => {
     setPromoCode(e.target.value);

@@ -4,11 +4,8 @@ import Link from "next/link";
 import minus from "@/icons/form/minus.svg";
 import plus from "@/icons/form/plus.svg";
 
-// name-from main page
-// updateCriteriaValue-it takes updated value from component to the main page
 // criteriaId-from the main page
-// updateCriteriaId-from component to the main page
-const InputPlusMinus = ({updateCriteriaValue,criteriaId,updateCriteriaId}) => {
+const InputPlusMinus = ({criteriaId,updateCriteriaValue,updateCriteriaId}) => {
   // value takes Service Criteria ID each time a new input is clicked
   const [value, setValue] = useState(0);
   // newId takes Service Criteria name each time a new input is clicked
@@ -18,7 +15,6 @@ const InputPlusMinus = ({updateCriteriaValue,criteriaId,updateCriteriaId}) => {
     setValue(value + 1);
     updateCriteriaValue(value + 1);
     updateCriteriaId(newId)
-     // Step 2: Invoke the onUpdate callback with the updated value
   };
 
   const handleDecrease = () => {
@@ -26,9 +22,10 @@ const InputPlusMinus = ({updateCriteriaValue,criteriaId,updateCriteriaId}) => {
       setValue(value - 1);
       updateCriteriaValue(value - 1);
       updateCriteriaId(newId)
+
         }
   };
-  
+  console.log(criteriaId,value);
 
   return (
     <div

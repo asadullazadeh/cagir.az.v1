@@ -1,27 +1,29 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const InputCustomized = ({ label }) => {
+const InputCustomized = ({ label,type,inputTextId,updateInputTextValue,updateInputTextId }) => {
+  const [inputValue, setInputValue] = useState("");
   const inputRef = useRef(null);
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
     setIsClicked((prevState) => !prevState);
   };
-
+  
+  const handleChange = (event) => {
+    const newValue = event.target.value;
+    setInputValue(newValue);
+    updateInputTextValue(newValue);
+    updateInputTextId(inputTextId); // Assuming inputTextId is defined somewhere
+  };
+  
+  
   const handleOutsideClick = (event) => {
     if (inputRef.current && !inputRef.current.contains(event.target)) {
       setIsClicked(false);
     }
   };
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClick);
-
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, []);
-
+  console.log(inputValue);
   return (
     <div className="flex flex-col gap-y-[5px]">
       <p className="hidden lg:flex font-semibold text-[12px] leading-[18px] text-black500">
@@ -43,20 +45,14 @@ const InputCustomized = ({ label }) => {
             </label>
           )}
           <input
-            type="text"
+            type={type}
+            value={inputValue}
             id="inpt"
             name="inpt"
-            className="hidden lg:block  w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0"
-            placeholder={isClicked ? "" : ""}
-            onClick={handleClick}
-          />
-          <input
-            type="text"
-            id="inpt"
-            name="inpt"
-            className="block lg:hidden w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0"
+            className="w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0"
             placeholder={isClicked ? "" : label}
             onClick={handleClick}
+            onChange={handleChange}
           />
         </div>
       </div>

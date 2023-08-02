@@ -23,7 +23,6 @@ import InputPlusMinus from "@/src/components/input/input_plus_minus";
 import MapBtn from "@/src/components/buttons/map_btn";
 import Calendar from "@/src/components/form/datepicker";
 import ModalStandart from "@/src/components/modal/modal_stand";
-
 function Sifaris() {
   // mainServices functionality starts here
   const [selectedMain, setSelectedMain] = useState("");
@@ -173,7 +172,7 @@ function Sifaris() {
         console.error(error);
       });
   }, [isSub2ElementsExist, chosenSubServiceId, chosenSub2ServiceId]);
-  console.log(getServiceCriterias);
+  // console.log(getServiceCriterias);
 
   // getting custom input-multinumber-FilterType=5 value for service criteria
   // multiNumberArray takes all the information of multi number input for pricing
@@ -215,6 +214,73 @@ function Sifaris() {
       }
     }
   }, [multiNumberId, multiNumberValue]);
+
+  // plus minus input
+  const [plusMinusValue, setPlusMinusValue] = useState(0);
+  const [plusMinusId, setPlusMinusId] = useState("");
+  const [plusMinusArray, setPlusMinusArray] = useState([]);
+  // console.log(multiNumberArray);
+  const handleDataUpdateForMinusPlus = (value) => {
+    setPlusMinusValue(value);
+  };
+
+  const handleCriteriaIdForMinusPlus = (id) => {
+    setPlusMinusId(id);
+  };
+
+  useEffect(() => {
+    // Check if multiNumberId is not null
+    if (plusMinusId !== "") {
+      // Check if an object with the same "multiNumberId" exists in multiNumberArray
+      const existingObjectIndex = plusMinusArray.findIndex(
+        (obj) => obj.serviceCriteriaId === plusMinusId
+      );
+
+      if (existingObjectIndex !== -1) {
+        // If the object with the same "multiNumberId" exists, update its key-values
+        setPlusMinusArray((prevArr) =>
+          prevArr.map((obj, index) =>
+            index === existingObjectIndex
+              ? { ...obj, count: plusMinusValue }
+              : obj
+          )
+        );
+      } else {
+        // If the object with the "multiNumberId" doesn't exist, add a new object to multiNumberArray
+        setPlusMinusArray((prevArr) => [
+          ...prevArr,
+          { serviceCriteriaId: plusMinusId, count: plusMinusValue },
+        ]);
+      }
+    }
+  }, [plusMinusId, plusMinusValue]);
+  //
+
+  /*Input Text */
+  const [inputTextValue, setInputTextValue] = useState(0);
+  const [inputTextId, setInputTextId] = useState("");
+  const [inputTextObject, setInputTextObject] = useState({});
+
+  useEffect(() => {
+    setInputTextObject(
+      inputTextId
+        ? {
+            serviceCriteriaId: inputTextId,
+            count: inputTextValue ? inputTextValue : 0,
+          }
+        : {}
+    );
+  }, [inputTextId, inputTextValue]);
+
+  const handleDataUpdateForInputText = (value, criteriaId) => {
+    setInputTextId(criteriaId);
+    setInputTextValue(value);
+  };
+
+  const handleCriteriaIdForInputText = (id) => {
+    setInputTextId(id);
+  };
+  console.log(inputTextValue ? "var" : "yox");
 
   //radio button functionality
   const [selectedRadioName, setSelectedRadioName] = useState(null);
@@ -290,7 +356,10 @@ function Sifaris() {
       radioBtnObject,
       ...checkedCheckboxArray,
       ...multiNumberArray,
+      ...plusMinusArray,
+      inputTextObject,
     ];
+    // console.log(inputTextArray);
 
     // it gets rid of an element which its length is 0
     const filteredCalculatePrice = calculatePrice.filter(
@@ -316,15 +385,24 @@ function Sifaris() {
         // Handle any errors
         console.error(error);
       });
-  }, [checkedCheckboxArray, multiNumberArray, radioBtnObject]); // Add 'calculatePrice' as a dependency
+  }, [
+    checkedCheckboxArray,
+    multiNumberArray,
+    radioBtnObject,
+    plusMinusArray,
+    inputTextObject,
+  ]); // Add 'calculatePrice' as a dependency
 
   // when selectMain is updated,elements which go to calculate price become empty
   useEffect(() => {
     setCheckedCheckboxArray([]);
     setMultiNumberArray([]);
     setRadioBtnObject([]);
+    setPlusMinusArray([]);
+    setInputTextObject({});
+    // setInputTextArray([])
     setGetPrice(0); // Set getPrice to 0 when selectMain is updated
-  }, [selectedMain]);
+  }, [selectedMain, selectedSub, selectedSub2]);
   // console.log(getPrice);
 
   // Textarea
@@ -358,6 +436,7 @@ function Sifaris() {
     onSelectSub2Service: handleSub2Select,
     getSub2Services: getSub2Services,
   };
+  // console.log(getServiceCriterias);
 
   return (
     <div
@@ -401,6 +480,27 @@ function Sifaris() {
                   {serviceCriteria.serviceCriteriaNames[0].name}
                 </h5>
                 <div className="flex flex-wrap gap-[15px] py-0 lg:py-[5px]  lg:order-1">
+                  {/*  */}
+                  {serviceCriteries.length === 0 &&
+                  serviceCriteria.filterType === 1 ? (
+                    <InputPlusMinus
+                      updateCriteriaValue={handleDataUpdateForMinusPlus}
+                      updateCriteriaId={handleCriteriaIdForMinusPlus}
+                      criteriaId={serviceCriteria.id}
+                    />
+                  ) : serviceCriteries.length === 0 &&
+                    serviceCriteria.filterType === 2 ? (
+                    <InputCustomized
+                      label="kv.m"
+                      type="number"
+                      inputTextId={serviceCriteria.id}
+                      updateInputTextValue={handleDataUpdateForInputText}
+                      updateInputTextId={handleCriteriaIdForInputText}
+                    />
+                  ) : (
+                    ""
+                  )}
+                  {/*  */}
                   {serviceCriteries.map(
                     ({ serviceCriteriaNames, filterType, index, id }) => (
                       <div key={index}>
