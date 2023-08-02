@@ -3,33 +3,43 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import Toggle from "@/src/components/form/toggle";
-import Qiymet from "@/src/components/form/qiymet";
-import Dropdown from "@/src/components/form/dropdown";
-import CheckBox from "@/src/components/buttons/checkbox";
-import CustomInput from "@/src/components/input/multiNumber_input";
-import Textarea from "@/src/components/input/textarea";
-import Download_image from "@/src/components/form/download_image";
-import Promocode from "@/src/components/input/promocode";
-import PaymentMethod from "@/src/components/form/payment_method";
-import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
-import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
-import LinkSmBtn from "@/src/components/buttons/link_sm_btn";
+import {
+  CustomInput,
+  Textarea,
+  Promocode,
+  InputCustomized,
+  InputPlusMinus,
+} from "@/src/components/input";
+import {
+  CheckBox,
+  PrimarySmBtn,
+  PrimaryOutlineSmBtn,
+  LinkSmBtn,
+  RadioButton,
+  MapBtn,
+} from "@/src/components/buttons";
+import {
+  Toggle,
+  Qiymet,
+  Dropdown,
+  Download_image,
+  PaymentMethod,
+  Calendar,
+} from "@/src/components/form";
 import info_btn from "@/icons/form/info_btn.svg";
 import Map_Image from "@/public/Map_Image.png";
-import InputCustomized from "@/src/components/input/input";
-import RadioButton from "@/src/components/buttons/radio_button";
-import InputPlusMinus from "@/src/components/input/input_plus_minus";
-import MapBtn from "@/src/components/buttons/map_btn";
-import Calendar from "@/src/components/form/datepicker";
 import ModalStandart from "@/src/components/modal/modal_stand";
+/* -------------------------------------------------------------------------- */
+/*                                   Sifaris                                  */
+/* -------------------------------------------------------------------------- */
 function Sifaris() {
-  // mainServices functionality starts here
+  /* ----------------- mainServices functionality ----------------- */
   const [selectedMain, setSelectedMain] = useState("");
+  const [getMainServices, setgetMainServices] = useState([]);
   const handleMainSelect = (mainService) => {
     setSelectedMain(mainService);
   };
-  const [getMainServices, setgetMainServices] = useState([]);
+  
   useEffect(() => {
     axios
       .get("https://api.cagir.az/api/service/getAllForFront", {
@@ -46,28 +56,25 @@ function Sifaris() {
         console.error(error);
       });
   }, []);
-  // console.log(selectedMain);
-  const findIdByName = (mainService, name) =>
-    (getMainServices.find((obj) => obj.serviceNames[0].name === name) || {})
-      .id || null;
-  const chosenMainServiceId = findIdByName(getMainServices, selectedMain);
 
-  const findTextByName = (mainService, name) =>
-    getMainServices.find((obj) => obj.serviceNames?.[0]?.name === name)
-      ?.serviceNames?.[0]?.text || null;
-  const chosenMainServiceText = findTextByName(getMainServices, selectedMain);
+  const findInfoByName = (mainServices, name) => {
+    const mainService = mainServices.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
+    return {
+      id: mainService?.id || null,
+      text: mainService?.serviceNames?.[0]?.text || null
+    };
+  };
+  // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
+  const selectedMainService = findInfoByName(getMainServices, selectedMain);
 
-  // console.log(chosenMainServiceText);
-  // mainServices functionality finishes here
-
-  // subServices functionality starts here
+  /* ------------------ subServices functionality ----------------- */
   const [selectedSub, setSelectedSub] = useState("");
   const handleSubSelect = (subService) => {
     setSelectedSub(subService);
   };
   const [getSubServices, setgetSubServices] = useState([]);
 
-  // When there is a change in first dropdown, it makes third dropdown elements as default
+  // When there is a change in first dropdown, it makes third dropdown elements empty
   useEffect(() => {
     setgetSub2Services([]);
   }, [selectedMain]);
@@ -75,7 +82,7 @@ function Sifaris() {
   useEffect(() => {
     axios
       .get(
-        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${chosenMainServiceId}`,
+        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${selectedMainService.id}`,
         {
           headers: {
             "Accept-Language": "az",
@@ -90,21 +97,20 @@ function Sifaris() {
         // Handle any errors
         console.error(error);
       });
-  }, [chosenMainServiceId]);
-  // console.log(getSubServices);
-  const findSubIdByName = (subService, name) =>
-    (getSubServices.find((obj) => obj.serviceNames[0].name === name) || {})
-      .id || null;
-  const chosenSubServiceId = findSubIdByName(getSubServices, selectedSub);
+  }, [selectedMainService.id]);
 
-  const findSubTextByName = (subService, name) =>
-    getSubServices.find((obj) => obj.serviceNames?.[0]?.name === name)
-      ?.serviceNames?.[0]?.text || null;
-  const chosenSubServiceText = findSubTextByName(getSubServices, selectedSub);
-  // console.log(chosenSubServiceText);
-  // subServices functionality finishes here
+  const findSubInfoByName = (subServices, name) => {
+    const subService = subServices.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
+    return {
+      id: subService?.id || null,
+      text: subService?.serviceNames?.[0]?.text || null
+    };
+  };
+  // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
+  const selectedSubService = findSubInfoByName(getSubServices, selectedSub);
+  console.log(selectedSubService);
 
-  // sub2Services functionality starts here
+  /* ----------------------- sub2Services functionality ----------------------- */
   const [selectedSub2, setSelectedSub2] = useState("");
   const [getSub2Services, setgetSub2Services] = useState([]);
   const handleSub2Select = (sub2Service) => {
@@ -113,12 +119,11 @@ function Sifaris() {
 
   // checking if sub2 element is exist after choosing sub element
   const isSub2ElementsExist = selectedSub !== "" && getSub2Services.length > 0;
-  console.log(isSub2ElementsExist);
 
   useEffect(() => {
     axios
       .get(
-        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${chosenSubServiceId}`,
+        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${selectedSubService.id}`,
         {
           headers: {
             "Accept-Language": "az",
@@ -133,30 +138,27 @@ function Sifaris() {
         // Handle any errors
         console.error(error);
       });
-  }, [chosenSubServiceId]);
+  }, [selectedSubService.id]);
 
-  const findSub2TextByName = (sub2Service, name) =>
-    getSub2Services.find((obj) => obj.serviceNames?.[0]?.name === name)
-      ?.serviceNames?.[0]?.text || null;
-  const chosenSub2ServiceText = findSub2TextByName(
-    getSub2Services,
-    selectedSub2
-  );
 
-  //getting chosen Sub2 id
-  const findSub2IdByName = (sub2Service, name) =>
-    getSub2Services.find((obj) => obj.serviceNames?.[0]?.name === name)?.id ||
-    null;
-  const chosenSub2ServiceId = findSub2IdByName(getSub2Services, selectedSub2);
-  // console.log(chosenSub2ServiceId);
-  // sub2Services functionality finishes here
-  // select criterias starts here
+  const findSub2InfoByName = (sub2Services, name) => {
+    const sub2Service = sub2Services.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
+    return {
+      id: sub2Service?.id || null,
+      text: sub2Service?.serviceNames?.[0]?.text || null
+    };
+  };
+  // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
+  const selectedSub2Service = findSub2InfoByName(getSub2Services, selectedSub2);
+  console.log(selectedSub2Service);
+
+  /* ---------------------- Select criterias ---------------------- */
   const [getServiceCriterias, setgetServiceCriterias] = useState([]);
   useEffect(() => {
     axios
       .post(
         "https://api.cagir.az/api/serviceCriteria/getAllWithParent",
-        [!isSub2ElementsExist ? chosenSubServiceId : chosenSub2ServiceId],
+        [!isSub2ElementsExist ? selectedSubService.id : selectedSub2Service.id],
         {
           headers: {
             "Accept-Language": "az",
@@ -171,10 +173,10 @@ function Sifaris() {
         // Handle any errors
         console.error(error);
       });
-  }, [isSub2ElementsExist, chosenSubServiceId, chosenSub2ServiceId]);
+  }, [isSub2ElementsExist, selectedSubService.id, selectedSub2Service.id]);
   // console.log(getServiceCriterias);
 
-  // getting custom input-multinumber-FilterType=5 value for service criteria
+  /* --------------------- Multinumber input functionality-FilterType=5 --------------------- */
   // multiNumberArray takes all the information of multi number input for pricing
   const [multiNumberValue, setMultiNumberValue] = useState(0);
   const [multiNumberId, setMultiNumberId] = useState("");
@@ -215,7 +217,7 @@ function Sifaris() {
     }
   }, [multiNumberId, multiNumberValue]);
 
-  // plus minus input
+  /* --------------------- Plus-Minus input functionality-FilterType=1 --------------------- */
   const [plusMinusValue, setPlusMinusValue] = useState(0);
   const [plusMinusId, setPlusMinusId] = useState("");
   const [plusMinusArray, setPlusMinusArray] = useState([]);
@@ -231,13 +233,13 @@ function Sifaris() {
   useEffect(() => {
     // Check if multiNumberId is not null
     if (plusMinusId !== "") {
-      // Check if an object with the same "multiNumberId" exists in multiNumberArray
+      // Check if an object with the same "plusMinusId" exists in plusMinusArray
       const existingObjectIndex = plusMinusArray.findIndex(
         (obj) => obj.serviceCriteriaId === plusMinusId
       );
 
       if (existingObjectIndex !== -1) {
-        // If the object with the same "multiNumberId" exists, update its key-values
+        // If the object with the same "plusMinusId" exists, update its key-values
         setPlusMinusArray((prevArr) =>
           prevArr.map((obj, index) =>
             index === existingObjectIndex
@@ -246,7 +248,7 @@ function Sifaris() {
           )
         );
       } else {
-        // If the object with the "multiNumberId" doesn't exist, add a new object to multiNumberArray
+        // If the object with the "plusMinusId" doesn't exist, add a new object to plusMinusArray
         setPlusMinusArray((prevArr) => [
           ...prevArr,
           { serviceCriteriaId: plusMinusId, count: plusMinusValue },
@@ -256,7 +258,7 @@ function Sifaris() {
   }, [plusMinusId, plusMinusValue]);
   //
 
-  /*Input Text */
+  /* --------------------- Text input functionality-FilterType=2 --------------------- */
   const [inputTextValue, setInputTextValue] = useState(0);
   const [inputTextId, setInputTextId] = useState("");
   const [inputTextObject, setInputTextObject] = useState({});
@@ -280,9 +282,8 @@ function Sifaris() {
   const handleCriteriaIdForInputText = (id) => {
     setInputTextId(id);
   };
-  console.log(inputTextValue ? "var" : "yox");
 
-  //radio button functionality
+  /* --------------------- Radio button functionality-FilterType=4 --------------------- */
   const [selectedRadioName, setSelectedRadioName] = useState(null);
   const [selectedRadioId, setSelectedRadioId] = useState("");
   const [radioBtnObject, setRadioBtnObject] = useState({}); // Define it in the component's scope
@@ -291,8 +292,7 @@ function Sifaris() {
     setSelectedRadioName(value);
     setSelectedRadioId(criteriaId);
   };
-  // console.log(selectedRadioName,selectedRadioId);
-  // detting data from radio button to calculate the price
+  // getting data from radio button to calculate the price
   useEffect(() => {
     // Move the 'radioBtnObject' conditional inside the useEffect callback
     const radioBtnObject = selectedRadioId
@@ -310,9 +310,7 @@ function Sifaris() {
     };
   }, [selectedRadioId]); // Add any other dependencies if necessary
 
-  // console.log(radioBtnObject);
-  // select criterias finishes here
-
+  /* --------------------- Checkbox functionality-FilterType=4 --------------------- */
   // checkmarks, to see more info-customized inputs in form section
   const [showSecondChild, setShowSecondChild] = useState(false);
   const toggleSecondChild = () => {
@@ -346,11 +344,9 @@ function Sifaris() {
   }, [checkboxIsChecked, checkboxId]);
   // console.log(checkedCheckboxArray);
 
-  // Calculate Price
-  // console.log(calculatePrice);
+  /* --------------------- Calculating Price of the Service --------------------- */
   const [getPrice, setGetPrice] = useState(0);
-  // Log the current value of getPrice
-  // console.log(getPrice);
+
   useEffect(() => {
     const calculatePrice = [
       radioBtnObject,
@@ -359,7 +355,6 @@ function Sifaris() {
       ...plusMinusArray,
       inputTextObject,
     ];
-    // console.log(inputTextArray);
 
     // it gets rid of an element which its length is 0
     const filteredCalculatePrice = calculatePrice.filter(
@@ -367,6 +362,7 @@ function Sifaris() {
     );
     console.log(filteredCalculatePrice);
 
+    // calculating the price
     axios
       .post(
         "https://api.cagir.az/api/serviceCriteria/calculate",
@@ -391,7 +387,7 @@ function Sifaris() {
     radioBtnObject,
     plusMinusArray,
     inputTextObject,
-  ]); // Add 'calculatePrice' as a dependency
+  ]); // when one of these dependencies is updated, the filteredCalculatePrice becomes null
 
   // when selectMain is updated,elements which go to calculate price become empty
   useEffect(() => {
@@ -400,10 +396,8 @@ function Sifaris() {
     setRadioBtnObject([]);
     setPlusMinusArray([]);
     setInputTextObject({});
-    // setInputTextArray([])
-    setGetPrice(0); // Set getPrice to 0 when selectMain is updated
+    setGetPrice(0); // Set getPrice to 0 when selectMain,selectedSub,selectedSub2 is updated
   }, [selectedMain, selectedSub, selectedSub2]);
-  // console.log(getPrice);
 
   // Textarea
   const [showTextarea, setshowTextarea] = useState(true);
@@ -420,11 +414,11 @@ function Sifaris() {
   // toggleProps.Selected Services and description for each category
   const toggleProps = {
     selectedMain,
-    descMain: chosenMainServiceText,
+    descMain: selectedMainService.text,
     selectedSub,
-    descSub: chosenSubServiceText,
+    descSub: selectedSubService.text,
     selectedSub2,
-    descSub2: chosenSub2ServiceText,
+    descSub2: selectedSub2Service.text,
   };
 
   // dropdownProps.to pass data from one dropdown to other one and selected service
@@ -436,7 +430,6 @@ function Sifaris() {
     onSelectSub2Service: handleSub2Select,
     getSub2Services: getSub2Services,
   };
-  // console.log(getServiceCriterias);
 
   return (
     <div
@@ -449,7 +442,7 @@ function Sifaris() {
           <Qiymet price={getPrice} />
         </div>
         {/* Toggle part is only  desktop */}
-        {chosenMainServiceText ? (
+        {selectedMainService.text ? (
           <div className="z-10 hidden lg:block sticky ">
             <Toggle {...toggleProps} />
           </div>
