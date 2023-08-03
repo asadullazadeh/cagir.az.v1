@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const InputCustomized = ({ label,type,inputTextId,updateInputTextValue,updateInputTextId }) => {
+const InputCustomized = ({ label, type, inputTextId, updateInputTextValue, updateInputTextId,onInputChange  }) => {
   const [inputValue, setInputValue] = useState("");
   const inputRef = useRef(null);
   const [isClicked, setIsClicked] = useState(false);
@@ -12,18 +12,19 @@ const InputCustomized = ({ label,type,inputTextId,updateInputTextValue,updateInp
   const handleChange = (event) => {
     const newValue = event.target.value;
     setInputValue(newValue);
-    updateInputTextValue(newValue);
-    updateInputTextId(inputTextId); // Assuming inputTextId is defined somewhere
+    
+    if (typeof updateInputTextId === "function" && typeof updateInputTextValue === "function" ) {
+      updateInputTextId(inputTextId); // Call the function only if it exists
+      updateInputTextValue(newValue);
+    }
+    onInputChange(newValue,label);
   };
-  
   
   const handleOutsideClick = (event) => {
     if (inputRef.current && !inputRef.current.contains(event.target)) {
       setIsClicked(false);
     }
   };
-
-  console.log(inputValue);
   return (
     <div className="flex flex-col gap-y-[5px]">
       <p className="hidden lg:flex font-semibold text-[12px] leading-[18px] text-black500">
@@ -61,3 +62,7 @@ const InputCustomized = ({ label,type,inputTextId,updateInputTextValue,updateInp
 };
 
 export default InputCustomized;
+
+
+
+

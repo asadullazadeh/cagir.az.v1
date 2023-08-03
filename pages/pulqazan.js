@@ -1,10 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios"; // Import axios here
 import InputCustomized from "@/src/components/input/input";
 import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
 
 function PulQazan() {
+  const [valueFromInput, setValueFromInput] = useState("");
+  const [labelFromInput, setLabelFromInput] = useState("");
+  const [inputPairs, setInputPairs] = useState({});
+
+  const handleInputChange = (value, label) => {
+    setValueFromInput(value);
+    setLabelFromInput(label);
+
+    setInputPairs((prevInputPairs) => ({
+      ...prevInputPairs,
+      [label]: value,
+    }));
+  };
+
+  const objectEarnMoney = {
+    senderName: inputPairs["Göndərən şəxsin adı"],
+    senderEmail: inputPairs["Göndərən şəxsin emaili"],
+    senderPhoneNumber: inputPairs["Göndərən şəxsin nömrəsi"],
+    receiverName: inputPairs["Alan şəxsin adı"],
+    receiverEmail: inputPairs["Alan şəxsin emaili"],
+    receiverPhoneNumber: inputPairs["Alan şəxsin nömrəsi"],
+  };
+  // console.log(objectEarnMoney);
+
+  /* --------------------- Creating affiliate --------------------- */
+  const [createAffiliate, setCreateAffiliate] = useState([]);
+  const [isSucess, setIsSucess] = useState(false);
+  const handleClick = () => {
+    axios
+      .post(
+        "https://api.cagir.az/api/affilate/create",
+        { ...objectEarnMoney },
+        {
+          headers: {
+            "Accept-Language": "az",
+          },
+        }
+      )
+      .then((response) => {
+        // setIsSucess(true)
+        // Handle the response data
+        setIsSucess(response.data.isSuccess);
+        setCreateAffiliate(response.data.result);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  };
+
+  // useEffect(() => {
+  //   handleClick();
+  // }, []);
+  console.log(createAffiliate);
+  console.log(isSucess);
+
   return (
     <div className="flex flex-col pt-[30px] pb-[60px]">
       <div className="flex flex-col lg:flex-row ">
@@ -59,18 +116,42 @@ function PulQazan() {
               PulQazan!
             </h4>
             <div className="flex flex-col gap-y-[15px] justify-between">
-              <InputCustomized label="Göndərən şəxsin adı" />
-              <InputCustomized label="Göndərən şəxsin emaili" />
-              <InputCustomized label="Göndərən şəxsin nömrəsi" />
-              <InputCustomized label="Alan şəxsin emaili" />
-              <InputCustomized label="Alan şəxsin adı" />
-              <InputCustomized label="Alan şəxsin nömrəsi" />
+              <InputCustomized
+                label="Göndərən şəxsin adı"
+                type="text"
+                onInputChange={handleInputChange}
+              />
+              <InputCustomized
+                label="Göndərən şəxsin emaili"
+                type="email"
+                onInputChange={handleInputChange}
+              />
+              <InputCustomized
+                label="Göndərən şəxsin nömrəsi"
+                type="number"
+                onInputChange={handleInputChange}
+              />
+              <InputCustomized
+                label="Alan şəxsin emaili"
+                type="email"
+                onInputChange={handleInputChange}
+              />
+              <InputCustomized
+                label="Alan şəxsin adı"
+                type="text"
+                onInputChange={handleInputChange}
+              />
+              <InputCustomized
+                label="Alan şəxsin nömrəsi"
+                type="number"
+                onInputChange={handleInputChange}
+              />
             </div>
           </div>
         </div>
       </div>
       <div className="flex lg:justify-end pt-[20px] xl:pt-[25px] 2xl:pt-[30px]">
-        <PrimarySmBtn btnName="Təsdiq et" classNames="" />
+        <PrimarySmBtn btnName="Təsdiq et" classNames="" onClick={handleClick} />
       </div>
     </div>
   );

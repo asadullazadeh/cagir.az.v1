@@ -401,7 +401,7 @@ function Sifaris() {
 
   /* -------------------------------- Textarea functionality -------------------------------- */
   const [showTextarea, setshowTextarea] = useState(true);
-  const [receivedMessage, setReceivedMessage] = useState('');
+  const [receivedMessage, setReceivedMessage] = useState("");
   const toggleTextarea = () => {
     setshowTextarea(!showTextarea);
   };
