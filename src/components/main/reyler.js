@@ -21,6 +21,20 @@ function Reyler({ parentId }) {
   const handleToggle = () => {
     setExpanded(!expanded);
   };
+  //
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
+  // const toggleDescription = (index) => {
+  //   setShowFullDescription(!showFullDescription);
+  // };
+  const toggleDescription = (index) => {
+    setShowFullDescription((prevState) => ({
+      ...prevState,
+      [index]: !showFullDescription[index],
+    }));
+  };
+
+  console.log(showFullDescription);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,78 +63,75 @@ function Reyler({ parentId }) {
   }
   const sliderCount =
     data.length < 2 ? 0 : data.length >= 2 && data.length <= 4 ? 2 : 3;
-  const childDataArray = Object.values(data).map((child) => ({
+  const childDataArray = Object.values(data).map((child, index) => ({
     jsxElement: (
-        <div key={child.name[0]}>
-          <div
-            className="flex flex-col relative
+      <div key={child.name[0]}>
+        <div
+          className="flex flex-col relative
               rounded-[10px] lg:rounded-[20px]"
-          >
-            <div className="p-[10px] lg:p-[30px] space-y-[10px] lg:space-y-[15px]">
-              {/* photo, name */}
-              <div className="flex gap-x-[10px] lg:gap-x-[15px]">
-                <Image
-                  width={65}
-                  height={65}
-                  src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                  alt="Profile picture"
-                  className="z-8 rounded-full w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] ml-[3.5px] lg:ml-[7px] mt-[3.5px] lg:mt-[7px] object-cover object-center"
-                />
-                <div className="absolute z-[-5]">
-                  <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] mt-0 ml-0"></div>
-                  <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] mt-[3.5px] lg:mt-[7px] ml-[7px] lg:ml-[14px]"></div>
-                  <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] ml-[1px] lg:ml-[2px] mt-[7px] lg:lg:mt-[14px]"></div>
-                </div>
+        >
+          <div className="p-[10px] lg:p-[30px] space-y-[10px] lg:space-y-[15px]">
+            {/* photo, name */}
+            <div className="flex gap-x-[10px] lg:gap-x-[15px]">
+              <Image
+                width={65}
+                height={65}
+                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                alt="Profile picture"
+                className="z-8 rounded-full w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] ml-[3.5px] lg:ml-[7px] mt-[3.5px] lg:mt-[7px] object-cover object-center"
+              />
+              <div className="absolute z-[-5]">
+                <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] mt-0 ml-0"></div>
+                <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] mt-[3.5px] lg:mt-[7px] ml-[7px] lg:ml-[14px]"></div>
+                <div className="absolute rounded-full bg-bluebckg opacity-[15%] w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] ml-[1px] lg:ml-[2px] mt-[7px] lg:lg:mt-[14px]"></div>
+              </div>
 
-                <h6
-                  className="w-[80px]
+              <h6
+                className="w-[80px]
                     font-semibold text-[8px] lg:text-[12px] leading-[12px] 
                    lg:leading-[18px]
                     text-black500 mt-[2px] lg:mt-[18px]"
-                >
-                  <span>{child.name}</span>
-                </h6>
-              </div>
+              >
+                <span>{child.name}</span>
+              </h6>
+            </div>
 
-              {/* rey */}
-              <div className="overflow-hidden ">
-                <div
-                  className="w-full italic font-semibold lg:font-bold text-[10px] sm:text-[12px] lg:text-[14px] leading-[18px]
+            {/* rey */}
+            <div className="overflow-hidden ">
+              <div
+                className="w-full italic font-semibold lg:font-bold text-[10px] sm:text-[12px] lg:text-[14px] leading-[18px]
                   sm:leading-[19px] lg:leading-[21px] text-black100"
-                >
-                  {child.description}
-                </div>
+              >
+                {showFullDescription[index]
+                  ? child.description
+                  : child.description.slice(0, 100)}
+                {child.description.length > 100 ? (
+                  <button
+                    className="font-semibold block text-cagiraz"
+                    onClick={() => toggleDescription(index)}
+                  >
+                    {showFullDescription[index] ? "Bağla" : "...Daha çox gör"}
+                  </button>
+                ) : (
+                  ""
+                )}
               </div>
+            </div>
 
-              {/* review stars */}
-              <div className="rating rating-sm">
-                {Array.from({ length: child.star }, (_, index) => (
-                  <input
-                    key={index}
-                    type=""
-                    name={`rating-${index}`}
-                    className="mask mask-star-2 bg-[#F9C00B]"
-                  />
-                ))}
-              </div>
-
-              {/* scroll section for services  */}
-              {/* <div className="overflow-x-scroll overflow-hidden w-[140px] lg:w-[270px]">
-                      <div className="flex gap-x-[4px]">
-                        {rey.jobs?.map((job) => (
-                        <div key={job.name}>
-                          <div className="border rounded-lg border-cagiraz">
-                            <p className="font-semibold text-[10px] leading-[15px] px-[10px] py-[4px] text-cagiraz whitespace-nowrap">
-                              {job}
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                      </div>
-                    </div> */}
+            {/* review stars */}
+            <div className="rating rating-sm">
+              {Array.from({ length: child.star }, (_, index) => (
+                <input
+                  key={index}
+                  type=""
+                  name={`rating-${index}`}
+                  className="mask mask-star-2 bg-[#F9C00B]"
+                />
+              ))}
             </div>
           </div>
         </div>
+      </div>
     ),
   }));
 
@@ -171,10 +182,18 @@ function Reyler({ parentId }) {
       <div className="flex flex-row gap-x-[20px] justify-center ">
         {Array.from({ length: sliderCount }, (_, index) => (
           <React.Fragment key={index}>
-            <div className=""><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-dot" viewBox="0 0 16 16">
-  <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
-</svg></div>
-            
+            <div className="">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="35"
+                height="35"
+                fill="currentColor"
+                class="bi bi-dot"
+                viewBox="0 0 16 16"
+              >
+                <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+              </svg>
+            </div>
             <span className="ml-2" /> {/* Add a margin-left of 2px */}
           </React.Fragment>
         ))}
