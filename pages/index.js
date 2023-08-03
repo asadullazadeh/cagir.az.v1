@@ -11,25 +11,19 @@ import Musteriler from "@/src/components/main/musteriler";
 import Reels from "@/src/components/main/reels";
 
 const inter = Inter({ subsets: ["latin"] });
-
 export async function getServerSideProps() {
   const data = await import("/data/data.json");
-  const { 
-    carouselPhotos1,
-  } = data;
+  const { carouselPhotos1 } = data;
   return {
     //will be passed to the page component as props
     props: {
-
       carouselPhotos1,
     },
   };
 }
 
 export default function Home(props) {
-  const {
-    carouselPhotos1,
-  } = props;
+  const { carouselPhotos1 } = props;
 
   return (
     <>
@@ -40,11 +34,11 @@ export default function Home(props) {
       pb-[60px] sm:pb-[75px] md:pb-[90px] lg:pb-[105px] xl:pb-[120px] 2xl:pb-[135px]"
       >
         <Carousel1 {...{ carouselPhotos1 }} />
-        <MainServices  />
+        <MainServices />
         <Reyler parentId={1} />
         <Icracilar parentId={1} />
         <Musteriler />
-        <Suallar  />
+        <Suallar />
         <Reels />
         <Deyerler />
         <LastPostedBlogs />

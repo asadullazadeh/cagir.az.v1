@@ -62,9 +62,8 @@ function RelatedBlogs({ blogId, categoryId, subject }) {
                 alt={id}
                 width={400}
                 height={400}
-                className="w-[54px] h-[54px] sm:w-[84px] sm:h-[84px] 
-                  md:w-[104px] md:h-[104px] lg:w-[84px]
-                   lg:h-[84px] rounded-[5px] object-center"
+                className="w-[54px] h-[54px] lg:w-[84px]
+                   lg:h-[84px] rounded-[5px] object-cover object-center"
               />
 
               <div className="w-full flex flex-col justify-between lg:justify-normal">

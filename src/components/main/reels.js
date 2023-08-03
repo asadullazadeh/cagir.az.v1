@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import arrow from "@/icons/arrow.svg";
 import AliceCarousel from "react-alice-carousel";
-import "react-alice-carousel/lib/alice-carousel.css";
+// import "react-alice-carousel/lib/alice-carousel.css";
 import reels1 from "@/public/reels/reels_1.png";
 import reels2 from "@/public/reels/reels_2.png";
 import reels3 from "@/public/reels/reels_3.png";
@@ -66,7 +66,7 @@ const items = [
 const sliderCount = items.length < 2 ? 0 : (items.length >= 2 && items.length <= 4 ? 2 : 3);
 
 
-const Example = () => {
+const Reels = () => {
   return (
     <div>
       <h2 className="my-h2 pb-[15px] lg:pb-[30px] text-center">
@@ -122,4 +122,4 @@ const Example = () => {
   );
 };
 
-export default Example;
+export default Reels;

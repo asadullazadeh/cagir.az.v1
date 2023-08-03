@@ -65,8 +65,8 @@ function BlogPost() {
       >
         <SocialNetworks classNames="hidden lg:flex flex-row gap-x-[20px] pb-[30px]" />
         <Image
-          width={300}
-          height={300}
+          width={900}
+          height={900}
           src={`https://api.cagir.az${imageUrl}`}
           alt={title}
           className="rounded-[20px] w-full aspect-[300/164] lg:aspect-[908/499]"
@@ -100,8 +100,8 @@ function BlogPost() {
           onClick={() => window.my_modal_3.showModal()}
           className="w-full h-auto hidden lg:block"
           alt="adImageUrl"
-          width={200}
-          height={200}
+          width={424}
+          height={512}
           src={`https://api.cagir.az${adImageUrl}`}
         />
         <ModalStandart

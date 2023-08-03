@@ -44,6 +44,7 @@ function LastPostedBlogs() {
           }) => (
             <li key={id}>
               <div className="drop-shadow-card lg:drop-shadow-none hover:drop-shadow-card transition duration-300 bg-white p-[15px] sm:p-[18px] md:p-[21px] lg:p-[24px] lx:p-[27px] 2xl:p-[30px] rounded-[20px] 2xl:rounded-[25px]">
+                <Link href={`blog/${titleUrl}/${id}`}>
                 <Image
                   width={360}
                   height={257}
@@ -51,6 +52,7 @@ function LastPostedBlogs() {
                   alt={title}
                   className="rounded-[10px] lg:rounded-[20px] w-full aspect-[360/257]"
                 />
+                </Link>
 
                 <div className="flex justify-between mt-[10px] lg:mt-[15px] items-center">
                   <p

@@ -3,12 +3,8 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import RelatedBlogs from "@/src/components/blog/relatedBlogs";
-import CategoriesBlog from "@/src/components/blog/categoriesBlog";
-import TagsBlog from "@/src/components/blog/tagsBlog";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
-import ModalStandart from "@/src/components/modal/modal_stand";
-import InputBtnNbTransition from "@/src/components/input/input_btn_nb_transition";
+
 
 import RelatedMediaPosts from "@/src/components/main/relatedMediaPosts"
 function MediaPost() {
