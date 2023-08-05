@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import up from "@/icons/form/up.svg";
+import up_blue from "@/icons/form/up_blue.svg";
 import down from "@/icons/form/down.svg";
-
 const Toggle = ({
   descMain,
   selectedMain,
@@ -59,27 +58,31 @@ const Toggle = ({
   return (
     <div>
       {Object.keys(toggleInfos).map((index) => {
-        const description = toggleInfos[index].description;
+        const description = toggleInfos[index].description; 
         const serviceName = toggleInfos[index].serviceName;
         if (!description) {
           // If the description is null or empty, skip rendering this item
           return null;
         }
-
         return (
           <div key={index} className="pb-[40px]">
             <button
               id="clickMe"
               onClick={() => toggleHidden(index)}
-              className="flex flex-row justify-between items-center w-full"
+              className={`flex flex-row justify-between items-center w-full
+              ${!isHidden[index] ? "border-b-2 border-cagiraz" : ""}
+              `}
             >
-              <h6 className="font-bold text-[14px] leading-[21px] text-black">
+              <h6
+                className={`font-bold text-[14px] leading-[21px] text-black 
+              ${!isHidden[index] ? "text-cagiraz" : ""}`}
+              >
                 {serviceName} haqda təsvir
               </h6>
 
               <div>
                 <Image
-                  src={isHidden[index] ? down : up}
+                  src={isHidden[index] ? down : up_blue}
                   alt={isHidden[index] ? "down_icon" : "up_icon"}
                 />
               </div>

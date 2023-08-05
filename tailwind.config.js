@@ -58,6 +58,15 @@ export const theme = {
     //   "1/3": "33.333333%",
     //   "2/3": "66.666667%",
     // },
+    keyframes: {
+      moveUpDown : {
+        "0%, 100%": { transform: "translateY(0)" },
+        "50%": { transform: "translateY(-20px)" }
+      }
+    },
+    animation: {
+      wiggle: "wiggle 200ms ease-in-out"
+    }
   },
   screens: {
     "xs": "320px",

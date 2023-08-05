@@ -10,10 +10,8 @@ import search1 from "@/icons/header/search1.svg";
 export default function NavbarMobile() {
   const [navbar, setNavbar] = useState(false);
 
-  const [showSecondImage, setShowSecondImage] = useState(false);
-
   const handleClick = () => {
-    setShowSecondImage(!showSecondImage);
+    setNavbar(false)
   };
 
   return (
@@ -68,42 +66,42 @@ export default function NavbarMobile() {
             sm:leading-[24px] leading-[27px] text-gray900 text-center "
             >
               <li>
-                <Link href="/temizlik-xidmeti">
+                <Link href="/temizlik-xidmeti" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Təmizlik xidməti
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi">
+                <Link href="/" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Kombi ustası
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi">
+                <Link href="/" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Santexnik ustasi
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi">
+                <Link href="/" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Kondisioner ustası
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi">
+                <Link href="/" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Paltaryuyan ustası
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi">
+                <Link href="/" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Elektrik ustası
                   </p>
@@ -114,22 +112,22 @@ export default function NavbarMobile() {
               <details className="dropdown dropdown-top">
                 <summary className="transition duration-300 hover:text-black pb-[17.5px] border-b border-[#EAEAEA]">Digər xidmətlər</summary>
                 <ul className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
-                  <li><Link href="/usta/kombi-ustasi">
+                  <li><Link href="/">
                   <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                   Paltaryuyan ustası
                   </p>
                 </Link></li>
-                <li><Link href="/usta/kombi-ustasi">
+                <li><Link href="/" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                   Paltaryuyan ustası
                   </p>
                 </Link></li>
-                <li><Link href="/usta/kombi-ustasi">
+                <li><Link href="/" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                   Paltaryuyan ustası
                   </p>
                 </Link></li>
-                <li><Link href="/usta/kombi-ustasi">
+                <li><Link href="/" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                   Paltaryuyan ustası
                   </p>
@@ -144,35 +142,35 @@ export default function NavbarMobile() {
               {/* second part */}
 
               <li>
-                <Link href="/usta/kombi-ustasi" className="">
+                <Link href="/" className="" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Axtar
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi" className="">
+                <Link href="/payment" className="" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Ödəniş et
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi" className="">
+                <Link href="/giris" className="" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Daxil ol
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi" className="">
+                <Link href="/qeydiyyat" className="" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Qeydiyyat
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi" className="">
+                <Link href="/" className="" onClick={handleClick}>
                   <p className="transition duration-300 text-danger">
                     Çıxış et
                   </p>

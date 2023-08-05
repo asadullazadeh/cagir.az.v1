@@ -125,3 +125,30 @@
   border-color: rgba(53, 152, 234, 0.15);
   color: rgba(53, 152, 234, 1);
 }
+
+
+
+
+
+
+
+
+
+
+
+/* .moveUpDown {
+  -webkit-animation: mover 400ms infinite  alternate;
+  animation: mover 400ms infinite  alternate;
+} */
+.moveUpDown {
+  -webkit-animation: mover 300ms infinite  alternate;
+  animation: mover 300ms infinite  alternate;
+}
+@-webkit-keyframes mover {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+@keyframes mover {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}

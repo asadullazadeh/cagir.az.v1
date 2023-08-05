@@ -43,7 +43,7 @@ const CheckBox = ({ name,criteriaId,sendDataToParent}) => {
                 justify-between py-[7px] px-[10px] lg:py-[12px] lg:px-[15px]
                  text-black500 border-[1px] border-gray900 rounded-[10px]
                   lg:rounded-full cursor-pointer ${
-                    isChecked ? "bg-blue-500 border-none text-white" : ""
+                    isChecked ? "bg-cagiraz border-none text-white" : ""
                   }`}
         >
           <div className="w-full">{name}</div>

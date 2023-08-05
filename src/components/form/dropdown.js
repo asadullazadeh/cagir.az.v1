@@ -27,7 +27,7 @@ const Dropdown = ({
     },
   };
 
-  // console.log(dropdownInfos);
+  // console.log(onDataCallback);
 
   // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +50,7 @@ const Dropdown = ({
     setSubServiceName("");
     setSub2ServiceName("");
   }, [mainServiceName]);
-
+console.log(mainServiceName);
   // Update sub2ServiceName when subServiceName changes
   useEffect(() => {
     setSub2ServiceName("");
@@ -70,7 +70,16 @@ const Dropdown = ({
       (obj) => obj.serviceNames[0].name === serviceNames[index]
     )?.serviceNames[0].text ?? null;
 
-    //selected main service
+    // 
+    let tremBlingObject = {
+      0: {0:false,1:true,2:false},
+      1: {0:false,1:false,2:true},
+      2: {0:false,1:false,2:false}
+    }
+
+    // which dropdown is trembling?
+    const [trembling, setTrembling] = useState({...tremBlingObject[0]});
+
   const handleOptionClick = (mainIndex, serviceName) => {
     if (mainIndex == 0) {
       setMainServiceName(serviceName);
@@ -85,9 +94,10 @@ const Dropdown = ({
     setIsOpen(false);
     // checking which serice category is selected.Main-1,sub-2,sub2-2
     // Call the callback function with the data
-    onDataCallback(mainIndex);
+    onDataCallback(mainIndex); 
+    setTrembling({...tremBlingObject[mainIndex]});
   };
-
+console.log(trembling);
 
   // Function to check if sub2 object is empty to run third dropdown or not
   function isSub2Exist(obj) {
@@ -99,6 +109,9 @@ const Dropdown = ({
     subServiceName !== ""
       ? false
       : true;
+
+
+      
 
   return (
     <div className="grid lg:grid-cols-3 justify-items-stretch lg:gap-x-[40px] gap-y-[15px]">
@@ -145,10 +158,14 @@ const Dropdown = ({
                   {serviceNames[index] || ""}
                 </label>
                 <button
-                  className="dropdown-button relative flex items-center justify-between w-full px-[15px] py-[5px] lg:py-[10px] text-[10px] lg:text-[12px] leading-[15px] lg:leading-[12px] font-medium lg:font-semibold
+                  className={`dropdown-button relative flex items-center justify-between w-full px-[15px] py-[5px] lg:py-[10px] text-[10px] lg:text-[12px] leading-[15px] lg:leading-[12px] font-medium lg:font-semibold
          text-gray900  bg-white rounded-[10px] lg:rounded-[50px] focus:outline-none focus:border-cagiraz
-         border-[1px] border-solid border-gray900"
-                  onClick={() => toggleDropdown(index)}
+         border-[1px] focus:border-[2px] border-solid border-gray900
+         ${trembling[index] ? "moveUpDown" : ""}       
+         `}
+                  onClick={() => {
+                    toggleDropdown(index)
+                  }}
                 >
                   <p
                     className={`lg:text-black500 ${
@@ -173,7 +190,7 @@ const Dropdown = ({
                   <ul
                     className={`${
                       isOpen[index] ? "block" : "hidden"
-                    } absolute z-10 w-full mt-[10px] rounded-[10px] border-[1px] border-solid border-cagiraz bg-white`}
+                    } absolute z-10 w-full mt-[10px] rounded-[10px] border-[2px] border-solid border-cagiraz bg-white`}
                   >
                     {serviceInfos &&
                       serviceInfos.map((item, index) => (

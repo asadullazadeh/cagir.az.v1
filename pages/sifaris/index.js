@@ -355,7 +355,7 @@ function Sifaris() {
       ...plusMinusArray,
       inputTextObject,
     ];
-
+    console.log(calculatePrice);
     // it gets rid of an element which its length is 0
     const filteredCalculatePrice = calculatePrice.filter(
       (item) => Object.keys(item).length !== 0
