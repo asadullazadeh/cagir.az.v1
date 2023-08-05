@@ -1,25 +1,36 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const InputCustomized = ({ label, type, inputTextId, updateInputTextValue, updateInputTextId,onInputChange  }) => {
+const InputCustomized = ({
+  label,
+  type,
+  inputTextId,
+  updateInputText,
+  updateInputTextId,
+  onInputChange,
+}) => {
   const [inputValue, setInputValue] = useState("");
+  const [inputId, setInputId] = useState("");
   const inputRef = useRef(null);
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
     setIsClicked((prevState) => !prevState);
   };
-  
-  const handleChange = (event) => {
+
+  const handleChange = (id, value) => {
     const newValue = event.target.value;
     setInputValue(newValue);
-    
-    if (typeof updateInputTextId === "function" && typeof updateInputTextValue === "function" ) {
-      updateInputTextId(inputTextId); // Call the function only if it exists
-      updateInputTextValue(newValue);
-    }
-    onInputChange(newValue,label);
+    setInputId(inputTextId);
+
+    // if (typeof updateInputTextId === "function" && typeof updateInputText === "function" ) {
+    // updateInputTextId(inputTextId); // Call the function only if it exists
+    updateInputText(inputTextId, newValue);
+    // }
+    // onInputChange(newValue,label);
   };
-  
+
+  console.log(inputId);
+
   const handleOutsideClick = (event) => {
     if (inputRef.current && !inputRef.current.contains(event.target)) {
       setIsClicked(false);
@@ -62,7 +73,3 @@ const InputCustomized = ({ label, type, inputTextId, updateInputTextValue, updat
 };
 
 export default InputCustomized;
-
-
-
-

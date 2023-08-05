@@ -268,20 +268,21 @@ function Sifaris() {
       inputTextId
         ? {
             serviceCriteriaId: inputTextId,
-            count: inputTextValue ? inputTextValue : 0,
+            count: inputTextValue ? Number(inputTextValue) : 0,
           }
         : {}
     );
   }, [inputTextId, inputTextValue]);
 
-  const handleDataUpdateForInputText = (value, criteriaId) => {
+  const handleDataUpdateForInputText = (criteriaId,value) => {
     setInputTextId(criteriaId);
     setInputTextValue(value);
   };
 
-  const handleCriteriaIdForInputText = (id) => {
-    setInputTextId(id);
-  };
+  // const handleCriteriaIdForInputText = (id) => {
+  //   setInputTextId(id);
+  // };
+  console.log(inputTextObject);
 
   /* --------------------- Radio button functionality-FilterType=4 --------------------- */
   const [selectedRadioName, setSelectedRadioName] = useState(null);
@@ -502,8 +503,8 @@ function Sifaris() {
                       label="kv.m"
                       type="number"
                       inputTextId={serviceCriteria.id}
-                      updateInputTextValue={handleDataUpdateForInputText}
-                      updateInputTextId={handleCriteriaIdForInputText}
+                      updateInputText={handleDataUpdateForInputText}
+                      // updateInputTextId={handleCriteriaIdForInputText}
                     />
                   ) : (
                     ""
