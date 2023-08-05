@@ -12,6 +12,7 @@ const Toggle = ({
   selectedSub,
   descSub2,
   selectedSub2,
+  whichServiceCategory,
 }) => {
   const toggleInfos = {
     0: {
@@ -28,7 +29,25 @@ const Toggle = ({
     },
   };
 
-  const [isHidden, setIsHidden] = useState({});
+  // this object takes all cases to give three key value to show which toggle need to be shown.
+  //0-when a main service is clicked, 1-sub,2-sub2.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  let objectForToggle = {
+    0: { 0: false, 1: true, 2: true },
+    1: toggleInfos[1].description
+      ? { 0: true, 1: false, 2: true }
+      : { 0: false, 1: true, 2: true },
+    2: toggleInfos[2].description
+      ? { 0: true, 1: true, 2: false }
+      : { 0: true, 1: false, 2: true },
+  };
+  // isHidden takes the previous
+  const [isHidden, setIsHidden] = useState({
+    ...objectForToggle[whichServiceCategory],
+  });
+  useEffect(() => {
+    setIsHidden({ ...objectForToggle[whichServiceCategory] });
+  }, [whichServiceCategory]);
 
   const toggleHidden = (index) => {
     setIsHidden((prevState) => ({
@@ -36,15 +55,12 @@ const Toggle = ({
       [index]: !prevState[index],
     }));
   };
-  // isHidden[index] ? "hidden" : ""
-  // 
 
   return (
     <div>
       {Object.keys(toggleInfos).map((index) => {
         const description = toggleInfos[index].description;
         const serviceName = toggleInfos[index].serviceName;
-
         if (!description) {
           // If the description is null or empty, skip rendering this item
           return null;
@@ -60,11 +76,11 @@ const Toggle = ({
               <h6 className="font-bold text-[14px] leading-[21px] text-black">
                 {serviceName} haqda təsvir
               </h6>
-              
+
               <div>
                 <Image
-                  src={isHidden[index] ? up : down}
-                  alt={isHidden[index] ? "up_icon" : "down_icon"}
+                  src={isHidden[index] ? down : up}
+                  alt={isHidden[index] ? "down_icon" : "up_icon"}
                 />
               </div>
             </button>

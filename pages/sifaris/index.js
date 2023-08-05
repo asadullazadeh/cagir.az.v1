@@ -437,6 +437,14 @@ function Sifaris() {
     getSub2Services: getSub2Services,
   };
 
+  // Callback function to which service service Category from the Dropdown component
+  //checking which service category is selected.Main-1,sub-2,sub2-2
+  const [whichServiceCategory, setWhichServiceCategory] = useState(null);
+  const handleCategoryLevelFromDropdown = (data) => {
+    setWhichServiceCategory(data);
+  };
+  console.log(whichServiceCategory);
+
   return (
     <div
       className="flex flex-col lg:flex-row lg:gap-x-[30px] xl:gap-x-[40px] 2xl:gap-x-[60px]
@@ -450,7 +458,8 @@ function Sifaris() {
         {/* Toggle part is only  desktop */}
         {selectedMainService.text ? (
           <div className="z-10 hidden lg:block sticky ">
-            <Toggle {...toggleProps} />
+            <Toggle {...toggleProps}
+            whichServiceCategory={whichServiceCategory} />
           </div>
         ) : (
           ""
@@ -467,7 +476,7 @@ function Sifaris() {
         </h4>
         {/* Dropdowns for services */}
         <div className="">
-          <Dropdown {...dropdownProps} />
+          <Dropdown {...dropdownProps} onDataCallback={handleCategoryLevelFromDropdown} />
         </div>
         {/* criterias example */}
 

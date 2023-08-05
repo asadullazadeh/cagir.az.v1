@@ -10,7 +10,8 @@ const Dropdown = ({
   getSubServices,
   onSelectSub2Service,
   getSub2Services,
-}) => {
+  onDataCallback
+} ) => {
   const dropdownInfos = {
     0: {
       serviceInfos: getMainServices,
@@ -69,7 +70,7 @@ const Dropdown = ({
       (obj) => obj.serviceNames[0].name === serviceNames[index]
     )?.serviceNames[0].text ?? null;
 
-  //selected main service
+    //selected main service
   const handleOptionClick = (mainIndex, serviceName) => {
     if (mainIndex == 0) {
       setMainServiceName(serviceName);
@@ -82,8 +83,11 @@ const Dropdown = ({
       onSelectSub2Service(serviceName);
     }
     setIsOpen(false);
-    // console.log(serviceName);
+    // checking which serice category is selected.Main-1,sub-2,sub2-2
+    // Call the callback function with the data
+    onDataCallback(mainIndex);
   };
+
 
   // Function to check if sub2 object is empty to run third dropdown or not
   function isSub2Exist(obj) {
