@@ -1,9 +1,41 @@
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import axios from "axios";
 
-const SifarishBtn = ({ classNames }) => (
-  <>
-    <Link href="/profil" className={classNames}>
+function SifarishBtn({classNames}) {
+  const router = useRouter();
+  const {mainService} = router.query
+  // console.log(mainService);
+
+  //
+  const [getMainServices, setgetMainServices] = useState([]);
+  // const handleMainSelect = (mainService) => {
+  //   setSelectedMain(mainService);
+  // };
+  useEffect(() => {
+    axios
+      .post("https://api.cagir.az/api/service/service-name",{
+        titleUrl:mainService
+      }, {
+        headers: {
+          "Accept-Language": "az",
+        },
+      })
+      .then((response) => {
+        // Handle the response data
+        setgetMainServices(response.data.result);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  }, [mainService]);
+  // console.log(getMainServices);
+  return (
+    <div>
+    <Link href="/sifaris-yarat" className={classNames}>
       <button
         className="
               font-extraBold text-[14px] lg:text-[18px] leading-[22px] lg:leading-[27px]
@@ -13,6 +45,8 @@ const SifarishBtn = ({ classNames }) => (
         Sifarişi yarat
       </button>
     </Link>
-  </>
-);
+  </div>
+  )
+}
+
 export default SifarishBtn;

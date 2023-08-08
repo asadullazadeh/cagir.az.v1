@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
+
 import NavbarDesktop from "@/src/components/header/navbarDesktop";
 import NavbarMobile from "@/src/components/header/navbarMobile";
 import Footer from "@/src/components/main/footer";
@@ -10,6 +11,7 @@ import CallIncmngWp from "@/src/components/buttons/call_incmng_wp";
 
 export default function Layout({ children }) {
   const router = useRouter();
+  // console.log(router);
 
   // const visiblePages = ["/", "/usta", "/blog", "/haqqimizda", "/elaqe"]; // Add the paths of the pages where the element should be visible
 

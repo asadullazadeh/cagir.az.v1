@@ -10,8 +10,10 @@ const Dropdown = ({
   getSubServices,
   onSelectSub2Service,
   getSub2Services,
-  onDataCallback
-} ) => {
+  defaultMain,
+  defaultSub,
+  onDataCallback,
+}) => {
   const dropdownInfos = {
     0: {
       serviceInfos: getMainServices,
@@ -27,7 +29,7 @@ const Dropdown = ({
     },
   };
 
-  // console.log(onDataCallback);
+  // console.log(defaultMain);
 
   // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
@@ -40,17 +42,26 @@ const Dropdown = ({
   };
 
   // mainServiceName is set to false as default.
-  const [mainServiceName, setMainServiceName] = useState("");
-  const [subServiceName, setSubServiceName] = useState("");
+  const [mainServiceName, setMainServiceName] = useState(
+    defaultMain?.serviceNames?.[0].name ? defaultMain?.serviceNames?.[0].name : "Təmizlik Xidməti"
+  );
+  const [subServiceName, setSubServiceName] = useState(
+    defaultSub?.serviceNames?.[0].name
+  );
+  // console.log(defaultSub.serviceNames?.[0]["name"]);
   const [sub2ServiceName, setSub2ServiceName] = useState("");
-  const serviceNames = [mainServiceName, subServiceName, sub2ServiceName];
-  // console.log(subServiceName);
+  const serviceNames = [
+    mainServiceName,
+    subServiceName ? subServiceName : defaultSub?.serviceNames?.[0]["name"],
+    sub2ServiceName,
+  ];
+  console.log(serviceNames);
   // Update subServiceName and sub2ServiceName when mainServiceName changes
   useEffect(() => {
     setSubServiceName("");
     setSub2ServiceName("");
   }, [mainServiceName]);
-console.log(mainServiceName);
+  // console.log(mainServiceName);
   // Update sub2ServiceName when subServiceName changes
   useEffect(() => {
     setSub2ServiceName("");
@@ -70,16 +81,16 @@ console.log(mainServiceName);
       (obj) => obj.serviceNames[0].name === serviceNames[index]
     )?.serviceNames[0].text ?? null;
 
-    // 
-    let tremBlingObject = {
-      0: {0:false,1:true,2:false},
-      1: {0:false,1:false,2:true},
-      2: {0:false,1:false,2:false}
-    }
+  //
+  let tremBlingObject = {
+    0: { 0: false, 1: defaultMain ? false : true, 2: true },
+    1: { 0: false, 1: false, 2: true },
+    2: { 0: false, 1: false, 2: false },
+  };
 
-    // which dropdown is trembling?
-    const [trembling, setTrembling] = useState({...tremBlingObject[0]});
-
+  // which dropdown is trembling?
+  const [trembling, setTrembling] = useState({ ...tremBlingObject[0]});
+  console.log(trembling);
   const handleOptionClick = (mainIndex, serviceName) => {
     if (mainIndex == 0) {
       setMainServiceName(serviceName);
@@ -94,10 +105,10 @@ console.log(mainServiceName);
     setIsOpen(false);
     // checking which serice category is selected.Main-1,sub-2,sub2-2
     // Call the callback function with the data
-    onDataCallback(mainIndex); 
-    setTrembling({...tremBlingObject[mainIndex]});
+    onDataCallback(mainIndex);
+    setTrembling({ ...tremBlingObject[mainIndex]});
   };
-console.log(trembling);
+  console.log(trembling);
 
   // Function to check if sub2 object is empty to run third dropdown or not
   function isSub2Exist(obj) {
@@ -109,9 +120,6 @@ console.log(trembling);
     subServiceName !== ""
       ? false
       : true;
-
-
-      
 
   return (
     <div className="grid lg:grid-cols-3 justify-items-stretch lg:gap-x-[40px] gap-y-[15px]">
@@ -164,7 +172,7 @@ console.log(trembling);
          ${trembling[index] ? "moveUpDown" : ""}       
          `}
                   onClick={() => {
-                    toggleDropdown(index)
+                    toggleDropdown(index);
                   }}
                 >
                   <p

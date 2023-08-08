@@ -12,6 +12,8 @@ const Toggle = ({
   descSub2,
   selectedSub2,
   whichServiceCategory,
+  defaultMain,
+  defaultSub,
 }) => {
   const toggleInfos = {
     0: {
@@ -27,27 +29,27 @@ const Toggle = ({
       serviceName: selectedSub2,
     },
   };
+  console.log(selectedSub2);
 
   // this object takes all cases to give three key value to show which toggle need to be shown.
   //0-when a main service is clicked, 1-sub,2-sub2.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   let objectForToggle = {
     0: { 0: false, 1: true, 2: true },
-    1: toggleInfos[1].description
-      ? { 0: true, 1: false, 2: true }
-      : { 0: false, 1: true, 2: true },
+    1: { 0: true, 1: false, 2: true },
     2: toggleInfos[2].description
       ? { 0: true, 1: true, 2: false }
       : { 0: true, 1: false, 2: true },
   };
+
   // isHidden takes the previous
   const [isHidden, setIsHidden] = useState({
-    ...objectForToggle[whichServiceCategory],
+    ...objectForToggle[defaultMain && !selectedSub2 ? 1 : whichServiceCategory],
   });
   useEffect(() => {
-    setIsHidden({ ...objectForToggle[whichServiceCategory] });
+    setIsHidden({ ...objectForToggle[defaultMain && !selectedSub2 ? 1 : whichServiceCategory]});
   }, [whichServiceCategory]);
-
+console.log(isHidden);
   const toggleHidden = (index) => {
     setIsHidden((prevState) => ({
       ...prevState,
@@ -58,7 +60,7 @@ const Toggle = ({
   return (
     <div>
       {Object.keys(toggleInfos).map((index) => {
-        const description = toggleInfos[index].description; 
+        const description = toggleInfos[index].description;
         const serviceName = toggleInfos[index].serviceName;
         if (!description) {
           // If the description is null or empty, skip rendering this item

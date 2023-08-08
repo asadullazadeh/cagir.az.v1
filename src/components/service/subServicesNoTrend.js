@@ -92,7 +92,7 @@ function SubServiceNoTrend() {
                     return (
                       <li className="" key={id}>
                         <Link
-                          href={`sifaris/${mainService}/${nameUrl}`}
+                          href={`/${mainService}/${nameUrl}`}
                           className="flex items-center justify-between w-full aspect-[15/3] sm:aspect-[302/91] rounded-[20px] drop-shadow-cardAlt lg:drop-shadow-none lg:hover:drop-shadow-cardAlt transition duration-300 bg-white px-[15px] sm:px-[30px] py-[9.5px] sm:py-[15px] group"
                         >
                           <div>
