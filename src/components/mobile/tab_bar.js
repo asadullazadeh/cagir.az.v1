@@ -6,6 +6,7 @@ import client from "@/public/client.jpg";
 import call_back from "@/icons/tab_bar/call_back.svg";
 import ModalStandart from "@/src/components/modal/modal_stand";
 import InputBtnNbTransition from "@/src/components/input/input_btn_nb_transition";
+import LiveChat from "@/src/components/livechat"
 const TabBar = () => (
   <>
     <div className="h-[55px] block lg:hidden fixed bottom-0 left-0 z-50 w-full bg-white border-t border-gray-200">
@@ -45,19 +46,21 @@ const TabBar = () => (
           </span>
         </Link>
         {/* Chat */}
-        <Link
-          href="/profil_settings"
+
+        <div
+          
           className="inline-flex flex-col items-center justify-center"
         >
-          <Image
-            width={65}
+          
+          <Image       
+           width={65}
             height={65}
             src={client}
             alt="Profile picture"
             className="z-50 rounded-full w-[22px] h-[22px]  object-cover object-center"
           />
           <span className="text-[10px] leading-[15px] text-black500">Çat</span>
-        </Link>
+        </div>
       </div>
     </div>
   </>

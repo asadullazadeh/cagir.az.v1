@@ -28,8 +28,8 @@ function TagsBlog({ blogId }) {
   }, [blogId]);
   const { id, imageUrl, viewCount, insertDate, postNames, tags, categoryId } =
     responseData;
-  console.log(tags);
-
+  
+// console.log(responseData);
   return (
     <div className="">
       <h4

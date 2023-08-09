@@ -34,6 +34,7 @@ function LastPostedBlogs() {
       <ul className="grid grid-cols-1 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
         {responseData?.map(
           ({
+            categoryName,
             id,
             imageUrl,
             shortDescription,
@@ -63,9 +64,10 @@ function LastPostedBlogs() {
                   </p>
                   <div className="ml-auto border border-cagiraz rounded-lg">
                     {/* what to add for this part? */}
-                    <p className="font-semibold	text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px] ">
-                      Mövzu
-                    </p>
+                    {/* blog/kateqoriya/${category.titleUrl} */} 
+                      <p className="font-semibold	text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px] ">
+                        {categoryName}
+                      </p>
                   </div>
                 </div>
 

@@ -55,7 +55,7 @@ const Dropdown = ({
     subServiceName ? subServiceName : defaultSub?.serviceNames?.[0]["name"],
     sub2ServiceName,
   ];
-  console.log(serviceNames);
+  // console.log(serviceNames);
   // Update subServiceName and sub2ServiceName when mainServiceName changes
   useEffect(() => {
     setSubServiceName("");
@@ -90,7 +90,6 @@ const Dropdown = ({
 
   // which dropdown is trembling?
   const [trembling, setTrembling] = useState({ ...tremBlingObject[0]});
-  console.log(trembling);
   const handleOptionClick = (mainIndex, serviceName) => {
     if (mainIndex == 0) {
       setMainServiceName(serviceName);
@@ -108,7 +107,7 @@ const Dropdown = ({
     onDataCallback(mainIndex);
     setTrembling({ ...tremBlingObject[mainIndex]});
   };
-  console.log(trembling);
+  // console.log(trembling);
 
   // Function to check if sub2 object is empty to run third dropdown or not
   function isSub2Exist(obj) {

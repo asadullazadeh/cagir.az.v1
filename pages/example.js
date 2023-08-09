@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
+import LiveChat from "@/src/components/livechat";
 
 const InputNumber = () => {
   const [getMainServices, setgetMainServices] = useState([]);
@@ -43,7 +44,7 @@ const InputNumber = () => {
 
   return (
     <div className="flex flex-col gap-y-[5px]">
-  
+  <LiveChat />
     </div>
   );
 };

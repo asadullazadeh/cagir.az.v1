@@ -32,7 +32,7 @@ function Blogs() {
     setSize((prevSize) => prevSize + 1);
   };
 
-  console.log(responseData);
+  // console.log(responseData);
 
   return (
     <div className="py-[15px] lg:py-[30px]">

@@ -29,7 +29,7 @@ const InputCustomized = ({
     // onInputChange(newValue,label);
   };
 
-  console.log(inputId);
+  // console.log(inputId);
 
   const handleOutsideClick = (event) => {
     if (inputRef.current && !inputRef.current.contains(event.target)) {

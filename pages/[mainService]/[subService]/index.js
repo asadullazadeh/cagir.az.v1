@@ -11,7 +11,7 @@ function Sub2Service({ dataMain }) {
   const { mainService, subService } = router.query;
   const mainServiceUrl = mainService;
   const subServiceUrl = subService;
-  console.log(subServiceUrl);
+  // console.log(subServiceUrl);
   const findMainInfoByNameUrl = (mainServices, nameUrl) => {
     const mainService =
       mainServices.find((obj) => obj.nameUrl === mainServiceUrl) || {};
@@ -19,7 +19,7 @@ function Sub2Service({ dataMain }) {
   };
   // to get id and text of selected main service, defaultSelectedMainService.id or defaultSelectedMainService.text
   const defaultMain = findMainInfoByNameUrl(dataMain, mainServiceUrl);
-  console.log(defaultMain);
+  // console.log(defaultMain);
 
   const [getSubServices, setGetSubServices] = useState([]);
 
@@ -43,7 +43,7 @@ function Sub2Service({ dataMain }) {
       });
   }, [defaultMain.id]);
 
-  console.log(getSubServices);
+  // console.log(getSubServices);
 
   const findSubInfoByNameUrl = (subServices, nameUrl) => {
     const subService =
@@ -52,14 +52,14 @@ function Sub2Service({ dataMain }) {
   };
   const defaultSub = findSubInfoByNameUrl(getSubServices, subServiceUrl);
 
-  console.log(defaultSub.serviceNames?.[0]?.["name"]);
+  // console.log(defaultSub.serviceNames?.[0]?.["name"]);
   //
   const [subUrlFromSifaris, setSubUrlFromSifaris] = useState("");
 
   const handleReceiveData = (data) => {
     setSubUrlFromSifaris(data); // Update state with the received data
   };
-  console.log(subUrlFromSifaris);
+  // console.log(subUrlFromSifaris);
 
   // Check for the old path and redirect to the new path
   const previousPath = `/${defaultMain.nameUrl}/${defaultSub.nameUrl}`;
@@ -73,7 +73,7 @@ function Sub2Service({ dataMain }) {
     if (router.asPath === previousPath) {
       router.replace(newPath); // Update the URL when subUrlFromSifaris changes
     }
-  }, [router,newPath,previousPath,subUrlFromSifaris]);
+  }, [newPath,previousPath,subUrlFromSifaris]);
   // console.log(router.asPath === `/${defaultMain.nameUrl}/${defaultSub.nameUrl}`);
   // console.log("/" + defaultMain.nameUrl + "/" + defaultSub.nameUrl);
 
@@ -103,7 +103,7 @@ export async function getServerSideProps(context) {
     );
 
     const dataMain = response.data.result; // Adjust the dataMain structure according to your API response
-    console.log(dataMain);
+    // console.log(dataMain);
     return {
       props: { dataMain },
     };

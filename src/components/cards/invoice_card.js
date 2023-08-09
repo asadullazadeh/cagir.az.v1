@@ -17,7 +17,9 @@ function Invoice_Card({
   name_client,
   email_client,
   final_amount,
-}) {
+  dataReceipt
+})
+{
   return (
     <div className="flex flex-col  ">
       {/* card->button */}
@@ -35,7 +37,8 @@ function Invoice_Card({
           <div className="flex flex-col">
             <h2 className="my-h2">Qəbz #25484512</h2>
             <p className="font-semibold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px]">
-              Tarix: 03.08.2023
+              {/* Tarix: 03.08.2023 */}
+              Tarix: {dataReceipt ? dataReceipt.startDate.slice(0,10) : ""}
             </p>
           </div>
         </div>
@@ -44,7 +47,7 @@ function Invoice_Card({
           <div className="pt-[30px] lg:pt-0  pb-[30px] lg:pb-[60px]">
             <p className="font-normal">
               <span className="font-extrabold">Ünvan: </span>
-              Ağa Neymətulla 99
+              {dataReceipt ? dataReceipt.address : ""}
             </p>
           </div>
 
@@ -52,7 +55,8 @@ function Invoice_Card({
           <div className="flex flex-col lg:flex-row lg:justify-between border-b border-[#EAEAEA] pb-[10px] lg:pb-[15px]">
             <p className="font-normal ">
               <span className="font-extrabold">Xidmət: </span>
-              Usta Krosna ustası Krosna təmiri
+              {dataReceipt ? dataReceipt.selectedMain : ""}
+              {dataReceipt ? dataReceipt.selectedSub : ""}
             </p>
 
             <p className="font-normal">
@@ -81,7 +85,7 @@ function Invoice_Card({
             <p className="font-semibold text-[14px] leading-[21px]">
               YEKUN MƏBLƏĞ
             </p>
-            <p className="font-bold text-[28px] leading-[42px]">30 AZN</p>
+            <p className="font-bold text-[28px] leading-[42px]">{dataReceipt ? dataReceipt.amount : 0} AZN</p>
           </div>
         </div>
         {/* ad ve email */}
