@@ -7,38 +7,23 @@ import kefiyyet from "@/icons/deyerler/kefiyyet.svg";
 import pesekar from "@/icons/deyerler/pesekar.svg";
 import qenaet from "@/icons/deyerler/qenaet.svg";
 function Deyerler() {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const config = {
-    headers: {
-      "Accept-Language": "az",
-    },
-  };
-
   const [data, setData] = useState([]);
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://api.cagir.az/api/adminDictionary/getAll?dictionaryType=2",
-          config
-        );
-        const resultArrays = response.data.result; // Assuming the response structure has a "data" object containing a "result" object with arrays
-        // console.log(resultArrays);
-        const formattedData = resultArrays.map((result) => ({
-          id: result.id,
-          text: result.text,
-          title: result.title,
-        }));
-
-        setData(formattedData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
+    axios
+      .get(`https://api.cagir.az/api/adminDictionary/getAll?dictionaryType=2`, {
+        headers: {
+          "Accept-Language": "az",
+        },
+      })
+      .then((response) => {
+        // Handle the response data
+        setData(response.data.result);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
   }, []);
-  console.log(data);
 
   return (
     <div>

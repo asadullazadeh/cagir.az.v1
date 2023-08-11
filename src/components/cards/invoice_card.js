@@ -7,9 +7,7 @@ import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn
 import logo2 from "@/public/logo2_cagiraz.png";
 import signature from "@/public/signature.jpg";
 
-function Invoice_Card({
-  dataReceipt,
-}) {
+function Invoice_Card({ dataReceipt }) {
   return (
     <div className="flex flex-col  ">
       {/* card->button */}
@@ -46,8 +44,8 @@ function Invoice_Card({
             <p className="font-normal ">
               <span className="font-extrabold">Xidmət: </span>
               {dataReceipt ? dataReceipt.selectedNamesArray[0] : ""} &gt;
-              {dataReceipt ? dataReceipt.selectedNamesArray[1] : ""} {`${dataReceipt.selectedNamesArray[2] ? '>' : ''}`}
-
+              {dataReceipt ? dataReceipt.selectedNamesArray[1] : ""}
+              {dataReceipt && dataReceipt.selectedNamesArray[2] ? ">" : ""}
               {dataReceipt ? dataReceipt.selectedNamesArray[2] : ""}
             </p>
 
