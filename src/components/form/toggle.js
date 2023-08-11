@@ -47,7 +47,7 @@ const Toggle = ({
   });
   useEffect(() => {
     setIsHidden({ ...objectForToggle[selectedNamesArray[0] && !selectedSub2 ? 1 : whichServiceCategory]});
-  }, [whichServiceCategory]);
+  }, [objectForToggle,selectedNamesArray,selectedSub2,whichServiceCategory]);
 // console.log(isHidden);
   const toggleHidden = (index) => {
     setIsHidden((prevState) => ({

@@ -6,7 +6,6 @@ import client from "@/public/client.jpg";
 import call_back from "@/icons/tab_bar/call_back.svg";
 import ModalStandart from "@/src/components/modal/modal_stand";
 import InputBtnNbTransition from "@/src/components/input/input_btn_nb_transition";
-import LiveChat from "@/src/components/livechat"
 const TabBar = () => (
   <>
     <div className="h-[55px] block lg:hidden fixed bottom-0 left-0 z-50 w-full bg-white border-t border-gray-200">
@@ -48,10 +47,8 @@ const TabBar = () => (
         {/* Chat */}
 
         <div
-          
           className="inline-flex flex-col items-center justify-center"
         >
-          
           <Image       
            width={65}
             height={65}
