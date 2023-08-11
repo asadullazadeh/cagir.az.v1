@@ -20,7 +20,8 @@ const CheckBox = ({ name,criteriaId,sendDataToParent}) => {
     // Some action in the child component
     const criteriaIdCheckbox = criteriaId;
     const checkboxIsChecked = !isChecked;
-    sendDataToParent(criteriaIdCheckbox, checkboxIsChecked); // Call the callback function with two different data
+    const criteriaNameCheckbox = name;
+    sendDataToParent(criteriaNameCheckbox,criteriaIdCheckbox, checkboxIsChecked); // Call the callback function with two different data
 
   };
   return (

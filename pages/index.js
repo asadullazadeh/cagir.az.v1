@@ -39,7 +39,7 @@ export default function Home(props) {
         <Icracilar parentId={1} />
         <Musteriler />
         <Suallar />
-        <Reels />
+        {/* <Reels /> */}
         <Deyerler />
         <LastPostedBlogs />
       </div>

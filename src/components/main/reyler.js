@@ -153,9 +153,9 @@ function Reyler({ parentId }) {
         // autoHeight={true}
         //autoWidth={true}
         // autoPlayControls
-        autoPlayInterval={1300}
+        // autoPlayInterval={1300}
         disableDotsControls
-        autoPlay
+        // autoPlay
         autoPlayStrategy="action"
         controlsStrategy="alternate"
         infinite
@@ -188,7 +188,7 @@ function Reyler({ parentId }) {
                 width="35"
                 height="35"
                 fill="currentColor"
-                class="bi bi-dot"
+                className="bi bi-dot"
                 viewBox="0 0 16 16"
               >
                 <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />

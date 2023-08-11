@@ -8,18 +8,8 @@ import logo2 from "@/public/logo2_cagiraz.png";
 import signature from "@/public/signature.jpg";
 
 function Invoice_Card({
-  facture_number,
-  adress,
-  service,
-  price_per_service,
-  service_number,
-  payment_method,
-  name_client,
-  email_client,
-  final_amount,
-  dataReceipt
-})
-{
+  dataReceipt,
+}) {
   return (
     <div className="flex flex-col  ">
       {/* card->button */}
@@ -38,7 +28,7 @@ function Invoice_Card({
             <h2 className="my-h2">Qəbz #25484512</h2>
             <p className="font-semibold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px]">
               {/* Tarix: 03.08.2023 */}
-              Tarix: {dataReceipt ? dataReceipt.startDate.slice(0,10) : ""}
+              Tarix: {dataReceipt ? dataReceipt.startDate.slice(0, 10) : ""}
             </p>
           </div>
         </div>
@@ -55,8 +45,10 @@ function Invoice_Card({
           <div className="flex flex-col lg:flex-row lg:justify-between border-b border-[#EAEAEA] pb-[10px] lg:pb-[15px]">
             <p className="font-normal ">
               <span className="font-extrabold">Xidmət: </span>
-              {dataReceipt ? dataReceipt.selectedMain : ""}
-              {dataReceipt ? dataReceipt.selectedSub : ""}
+              {dataReceipt ? dataReceipt.selectedNamesArray[0] : ""} &gt;
+              {dataReceipt ? dataReceipt.selectedNamesArray[1] : ""} {`${dataReceipt.selectedNamesArray[2] ? '>' : ''}`}
+
+              {dataReceipt ? dataReceipt.selectedNamesArray[2] : ""}
             </p>
 
             <p className="font-normal">
@@ -66,9 +58,15 @@ function Invoice_Card({
           </div>
           {/* say secimi */}
           <div className="border-b border-[#EAEAEA] py-[10px] lg:py-[15px]">
-            <p className="font-normal">
-              <span className="font-extrabold">Say seçimi: </span>2 krosna
-            </p>
+            <p className="font-normal"></p>
+            {dataReceipt && dataReceipt.criterias
+              ? dataReceipt.criterias.map((item, index) => (
+                  <div key={index}>
+                    <span className="font-extrabold">Say seçimi: </span>
+                    {item.count} {item.name}
+                  </div>
+                ))
+              : ""}
           </div>
           {/* odeme usulu */}
           <div className="border-b border-[#EAEAEA] py-[10px] lg:py-[15px]">
@@ -85,7 +83,9 @@ function Invoice_Card({
             <p className="font-semibold text-[14px] leading-[21px]">
               YEKUN MƏBLƏĞ
             </p>
-            <p className="font-bold text-[28px] leading-[42px]">{dataReceipt ? dataReceipt.amount : 0} AZN</p>
+            <p className="font-bold text-[28px] leading-[42px]">
+              {dataReceipt ? dataReceipt.amount : 0} AZN
+            </p>
           </div>
         </div>
         {/* ad ve email */}

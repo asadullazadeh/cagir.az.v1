@@ -77,7 +77,7 @@ function Page() {
          pb-[60px] sm:pb-[75px] md:pb-[90px] lg:pb-[105px] xl:pb-[120px] 2xl:pb-[135px]"
       >
         <SubServiceNoTrend />
-        <Reels />
+        {/* <Reels /> */}
         {/* <Banner /> */}
         <Reyler parentId={parentId} />
         <Icracilar parentId={parentId} />

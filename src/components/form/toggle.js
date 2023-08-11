@@ -12,8 +12,7 @@ const Toggle = ({
   descSub2,
   selectedSub2,
   whichServiceCategory,
-  defaultMain,
-  defaultSub,
+  selectedNamesArray
 }) => {
   const toggleInfos = {
     0: {
@@ -44,10 +43,10 @@ const Toggle = ({
 
   // isHidden takes the previous
   const [isHidden, setIsHidden] = useState({
-    ...objectForToggle[defaultMain && !selectedSub2 ? 1 : whichServiceCategory],
+    ...objectForToggle[selectedNamesArray[0] && !selectedSub2 ? 1 : whichServiceCategory],
   });
   useEffect(() => {
-    setIsHidden({ ...objectForToggle[defaultMain && !selectedSub2 ? 1 : whichServiceCategory]});
+    setIsHidden({ ...objectForToggle[selectedNamesArray[0] && !selectedSub2 ? 1 : whichServiceCategory]});
   }, [whichServiceCategory]);
 // console.log(isHidden);
   const toggleHidden = (index) => {

@@ -1,5 +1,5 @@
 // components/CustomDropdown.js
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import info_btn from "@/icons/form/info_btn.svg";
 
@@ -13,6 +13,7 @@ const Dropdown = ({
   defaultMain,
   defaultSub,
   onDataCallback,
+  onSelectedServiceNames,
 }) => {
   const dropdownInfos = {
     0: {
@@ -43,18 +44,30 @@ const Dropdown = ({
 
   // mainServiceName is set to false as default.
   const [mainServiceName, setMainServiceName] = useState(
-    defaultMain?.serviceNames?.[0].name ? defaultMain?.serviceNames?.[0].name : "Təmizlik Xidməti"
+    defaultMain?.serviceNames?.[0].name
+      ? defaultMain?.serviceNames?.[0].name
+      : "Təmizlik Xidməti"
   );
   const [subServiceName, setSubServiceName] = useState(
     defaultSub?.serviceNames?.[0].name
   );
   // console.log(defaultSub.serviceNames?.[0]["name"]);
   const [sub2ServiceName, setSub2ServiceName] = useState("");
-  const serviceNames = [
-    mainServiceName,
-    subServiceName ? subServiceName : defaultSub?.serviceNames?.[0]["name"],
-    sub2ServiceName,
-  ];
+
+  
+  const serviceNames = useMemo(
+    () => [
+      mainServiceName,
+      subServiceName ? subServiceName : defaultSub?.serviceNames?.[0]["name"],
+      sub2ServiceName,
+    ],
+    [mainServiceName, subServiceName, defaultSub, sub2ServiceName]
+  );
+
+  useEffect(() => {
+    onSelectedServiceNames(serviceNames);
+  }, [onSelectedServiceNames,serviceNames]);
+
   // console.log(serviceNames);
   // Update subServiceName and sub2ServiceName when mainServiceName changes
   useEffect(() => {
@@ -89,7 +102,7 @@ const Dropdown = ({
   };
 
   // which dropdown is trembling?
-  const [trembling, setTrembling] = useState({ ...tremBlingObject[0]});
+  const [trembling, setTrembling] = useState({ ...tremBlingObject[0] });
   const handleOptionClick = (mainIndex, serviceName) => {
     if (mainIndex == 0) {
       setMainServiceName(serviceName);
@@ -105,7 +118,7 @@ const Dropdown = ({
     // checking which serice category is selected.Main-1,sub-2,sub2-2
     // Call the callback function with the data
     onDataCallback(mainIndex);
-    setTrembling({ ...tremBlingObject[mainIndex]});
+    setTrembling({ ...tremBlingObject[mainIndex] });
   };
   // console.log(trembling);
 
@@ -176,7 +189,7 @@ const Dropdown = ({
                 >
                   <p
                     className={`lg:text-black500 ${
-                      isOpen[index] ? "opacity-0" : "opacity-100"
+                      isOpen[index] ? "opacity-0" : "opacity-100 text-black"
                     }`}
                   >
                     {serviceNames[mainIndex] || ""}

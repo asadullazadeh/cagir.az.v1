@@ -122,49 +122,49 @@ export default function NavbarDesktop() {
            items-center font-semibold text-[10px] xl:text-[12px] 2xl:text-[14px] leading-[21px] text-gray500 space-x-[35px] xl:space-x-[40px]"
             >
               <li>
-                <Link href="/temiwlik-xidmeti">
+                <Link href="/temizlik-xidmeti">
                   <p className="transition duration-300 hover:text-black">
                     Təmizlik xidməti
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi">
+                <Link href="/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Kombi ustası
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi">
+                <Link href="/santexnik-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Santexnik ustasi
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi">
+                <Link href="/kondisioner-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Kondisioner ustası
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi">
+                <Link href="/soyuducu-ustasi">
                   <p className="transition duration-300 hover:text-black">
-                    Paltaryuyan ustası
+                    Soyuducu ustası
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi">
+                <Link href="/elektrik-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Elektrik ustası
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/usta/kombi-ustasi">
+                <Link href="/xidmetler">
                   <p className="transition duration-300 hover:text-black">
                     Digər xidmətlər
                   </p>

@@ -8,7 +8,7 @@ import plus from "@/icons/form/plus.svg";
 // updateCriteriaValue-it takes updated value from component to the main page
 // criteriaId-from the main page
 // updateCriteriaId-from component to the main page
-const CustomInput = ({name,updateCriteriaValue,criteriaId,updateCriteriaId}) => {
+const CustomInput = ({name,updateCriteriaValue,updateMultiNumberName,criteriaId,updateCriteriaId}) => {
   // value takes Service Criteria ID each time a new input is clicked
   const [value, setValue] = useState(0);
   // newId takes Service Criteria name each time a new input is clicked
@@ -18,6 +18,7 @@ const CustomInput = ({name,updateCriteriaValue,criteriaId,updateCriteriaId}) => 
     setValue(value + 1);
     updateCriteriaValue(value + 1);
     updateCriteriaId(newId)
+    updateMultiNumberName(name)
      // Step 2: Invoke the onUpdate callback with the updated value
   };
 
@@ -26,6 +27,7 @@ const CustomInput = ({name,updateCriteriaValue,criteriaId,updateCriteriaId}) => 
       setValue(value - 1);
       updateCriteriaValue(value - 1);
       updateCriteriaId(newId)
+      updateMultiNumberName(name)
         }
      // Step 2: Invoke the onUpdate callback with the updated value
   };

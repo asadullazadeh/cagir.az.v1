@@ -111,9 +111,9 @@ function Icraci({ parentId }) {
         // autoHeight={false}
         //autoWidth={true}
         // autoPlayControls
-        autoPlayInterval={1300}
-        autoPlay
-        autoPlayStrategy="action"
+        // autoPlayInterval={1300}
+        // autoPlay
+        // autoPlayStrategy="action"
         controlsStrategy="alternate"
         infinite
         mouseTracking
@@ -136,7 +136,7 @@ function Icraci({ parentId }) {
       <div className="flex flex-row gap-x-[20px] justify-center">
         {Array.from({ length: sliderCount }, (_, index) => (
           <React.Fragment key={index}>
-            <div><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-dot" viewBox="0 0 16 16">
+            <div><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-dot" viewBox="0 0 16 16">
   <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
 </svg></div>
             <span className="ml-2" /> {/* Add a margin-left of 2px */}
