@@ -28,7 +28,6 @@ function Page() {
   const [subServices, setSubServices] = useState([]);
   //
   const [parentId, setParentId] = useState(null);
-
   useEffect(() => {
     const fetchData = async () => {
       try {

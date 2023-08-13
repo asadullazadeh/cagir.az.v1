@@ -6,38 +6,36 @@ import Image from "next/image";
 import Sifaris from "@/src/components/sifaris";
 
 function Sub2Service({ dataMain }) {
-  // selectedNames array from sifaris
-  const [selectedNamesArray, setSelectedNamesArray] = useState("");
-  const handleSelectedNamesArray = (data) => {
-    setSelectedNamesArray(data);
+  // selectedMain from sifaris
+  const [selectedMain, setSelectedMain] = useState("");
+  // Callback function to update the value in the parent component
+  const handleSelectedMain = (newValue) => {
+    setSelectedMain(newValue);
   };
-  //
-  const findMainNameUrlByName = (mainServices, name) => {
-    const mainServiceUrl =
-      mainServices.find(
-        (obj) => obj.serviceNames[0].name === selectedNamesArray[0]
-      ) || {};
-    return mainServiceUrl || null;
-  };
-  const defaultMainService = findMainNameUrlByName(
-    dataMain,
-    selectedNamesArray[0]
-  );
-
   //
   const router = useRouter();
   // // main and sub urls
   const { mainService, subService } = router.query;
-  const mainServiceUrl = defaultMainService.nameUrl;
+  const mainServiceUrl = mainService;
   const subServiceUrl = subService;
 
-  const findMainInfoByNameUrl = (mainServices, nameUrl) => {
+  const findMainInfoByName = (mainServices, name) => {
     const mainService =
-      mainServices.find((obj) => obj.nameUrl === mainServiceUrl) || {};
+      mainServices.find((obj) => obj.serviceNames[0].name === selectedMain) ||
+      {};
     return mainService || null;
   };
+  const defaultMain = findMainInfoByName(dataMain, selectedMain);
+  // console.log(defaultMain);
+  // };
 
-  const defaultMain = findMainInfoByNameUrl(dataMain, mainServiceUrl);
+  // const findMainInfoByNameUrl = (mainServices, nameUrl) => {
+  //   const mainService =
+  //     mainServices.find((obj) => obj.nameUrl === mainServiceUrl) || {};
+  //   return mainService || null;
+  // };
+  // to get id and text of selected main service, defaultSelectedMainService.id or defaultSelectedMainService.text
+  // const defaultMain = findMainInfoByNameUrl(dataMain, mainServiceUrl);
 
   const [getSubServices, setGetSubServices] = useState([]);
 
@@ -61,6 +59,8 @@ function Sub2Service({ dataMain }) {
       });
   }, [defaultMain.id]);
 
+  // console.log(getSubServices);
+
   const findSubInfoByNameUrl = (subServices, nameUrl) => {
     const subService =
       subServices.find((obj) => obj.nameUrl === subServiceUrl) || {};
@@ -68,44 +68,61 @@ function Sub2Service({ dataMain }) {
   };
   const defaultSub = findSubInfoByNameUrl(getSubServices, subServiceUrl);
 
-  // console.log(defaultSub.nameUrl);
+  // console.log(defaultSub.serviceNames?.[0]?.["name"]);
   //
   const [subUrlFromSifaris, setSubUrlFromSifaris] = useState("");
 
   const handleReceiveData = (data) => {
     setSubUrlFromSifaris(data); // Update state with the received data
   };
+  // console.log(subUrlFromSifaris);
 
-  // Check for the old path and redirect to the new pathsubServiceUrl
-  const previousPath = `/${mainServiceUrl}/${subUrlFromSifaris}`;
+  // Check for the old path and redirect to the new path
+  const previousPath = `/${defaultMain.nameUrl}/${defaultSub.nameUrl}`;
+  const [newPath, setNewPath] = useState(``);
   // console.log(previousPath);
 
-  const newPathWhenMainChanges = `/${mainServiceUrl}/${getSubServices?.[0]?.nameUrl}`;
-  const newPathWhenSubChanges = `/${mainServiceUrl}/${subUrlFromSifaris}`;
-  // Check for the old path and redirect to the new path
-
   useEffect(() => {
-    router.replace(newPathWhenMainChanges); // Update the URL when subUrlFromSifaris changes
-  }, [router, newPathWhenMainChanges]);
-
+    setNewPath(
+      `/${!defaultMain.nameUrl ? mainServiceUrl : defaultMain.nameUrl}/${
+        subUrlFromSifaris ? subUrlFromSifaris : subServiceUrl
+      }`
+    );
+  }, [defaultMain.nameUrl, mainServiceUrl, subServiceUrl, subUrlFromSifaris]);
+  // const newPath = `/${mainServiceUrl}/${subUrlFromSifaris? subUrlFromSifaris : subServiceUrl}`;
+  console.log("selectedMain: ", selectedMain);
+  console.log("dataMain: ", dataMain);
+  console.log("defaultMain: ", defaultMain);
+  console.log("mainServiceUrl: ", mainServiceUrl);
+  console.log("subServiceUrl: ", subServiceUrl);
+  console.log("getSubServices: ", getSubServices);
+  console.log("defaultSub: ", defaultSub);
+  console.log("subUrlFromSifaris:", subUrlFromSifaris);
+  console.log("previousPath: ", previousPath);
+  console.log("newPath: ", newPath);
   useEffect(() => {
-    router.replace(newPathWhenSubChanges); // Update the URL when subUrlFromSifaris changes
-  }, [router, newPathWhenSubChanges]);
+    // if (router.asPath === previousPath) {
+    router.replace(newPath); // Update the URL when subUrlFromSifaris changes
+    // }
+  }, [newPath]);
+  // console.log(router.asPath === `/${defaultMain.nameUrl}/${defaultSub.nameUrl}`);
+  // console.log("/" + defaultMain.nameUrl + "/" + defaultSub.nameUrl);
 
+  //
   return (
     <div>
       <Sifaris
         sendSubUrl={handleReceiveData}
         defaultMain={defaultMain}
         defaultSub={defaultSub}
-        onSelectedNamesArray={handleSelectedNamesArray}
+        onSelectedMainChange={handleSelectedMain}
       />
       {/* <button onClick={handleReplaceSubService}>Replace Path</button> */}
     </div>
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   try {
     const response = await axios.get(
       "https://api.cagir.az/api/service/getAllForFront",
@@ -118,7 +135,7 @@ export async function getServerSideProps() {
     );
 
     const dataMain = response.data.result; // Adjust the dataMain structure according to your API response
-    // console.log(dataMain);
+    console.log(dataMain);
     return {
       props: { dataMain },
     };
