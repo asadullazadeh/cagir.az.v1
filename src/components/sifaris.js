@@ -38,24 +38,26 @@ function Sifaris({
   defaultSub,
   sendSubUrl,
   onSelectedNamesArray,
-  onSelectedMainChange
+  onSelectedMainChange,
 }) {
+  // console.log(defaultMain);
   // passing selectedService names from dropdown to sifaris
   const [selectedNamesArray, setSelectedNamesArray] = useState("");
-
   const handleSelectedNamesArray = (data) => {
     setSelectedNamesArray(data);
     onSelectedNamesArray(selectedNamesArray);
   };
-  // console.log(defaultMain.serviceNames[0].name);
 
   /* ----------------- mainServices functionality ----------------- */
-  const [selectedMain, setSelectedMain] = useState(defaultMain.serviceNames?.[0].name);
+  const [selectedMain, setSelectedMain] = useState(
+    defaultMain.serviceNames?.[0].name
+  );
   const [getMainServices, setgetMainServices] = useState([]);
   const handleMainSelect = (mainService) => {
     setSelectedMain(mainService);
   };
-
+  // const router = useRouter();
+  // console.log(router);
   useEffect(() => {
     axios
       .get("https://api.cagir.az/api/service/getAllForFront", {
@@ -83,21 +85,22 @@ function Sifaris({
   };
   // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
   const selectedMainService = findInfoByName(getMainServices, selectedMain);
-// console.log(selectedMain);
-// passing selectedMain to the index page
-useEffect(() => {
-  // const newValue = "New Dynamic Value";
-  // Call the callback function with the new value
-  onSelectedMainChange(selectedMain);
-}, [onSelectedMainChange,selectedMain]);
+  // console.log(selectedMain);
+  // passing selectedMain to the index page
+  useEffect(() => {
+    // Call the callback function with the new value
+    onSelectedMainChange(selectedMain);
+  }, [onSelectedMainChange, selectedMain]);
   /* ------------------ subServices functionality ----------------- */
-  const [selectedSub, setSelectedSub] = useState("");
+  // console.log(defaultSub.serviceNames?.[0].name);
+  const [selectedSub, setSelectedSub] = useState(
+    defaultSub.serviceNames?.[0].name
+  );
   const handleSubSelect = (subService) => {
     setSelectedSub(subService);
   };
   const [getSubServices, setgetSubServices] = useState([]);
 
-  
   useEffect(() => {
     axios
       .get(
@@ -127,11 +130,8 @@ useEffect(() => {
     };
   };
   // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
-  const selectedSubService = findSubInfoByName(
-    getSubServices,
-    selectedSub
-  );
-  // console.log(selectedSub);
+  const selectedSubService = findSubInfoByName(getSubServices, selectedSub);
+  // console.log(selectedSubService);
 
   // findind previous SubNameUrl and pass it to Sifaris page to change the url
   const findSubNameUrlByName = (subServices, name) => {
@@ -139,33 +139,29 @@ useEffect(() => {
       subServices.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
     return subService?.nameUrl || null;
   };
-  const selectedSubNameUrl = findSubNameUrlByName(
-    getSubServices,
-    selectedSub
-  );
+  const selectedSubNameUrl = findSubNameUrlByName(getSubServices, selectedSub);
   const [subUrlToMainPage, setSubUrlToMainPage] = useState("");
 
   // Use useEffect to call the callback whenever subUrlToMainPage changes
   useEffect(() => {
     // if (typeof sendSubUrl === "function") {
-      sendSubUrl(selectedSubNameUrl);
-      setSubUrlToMainPage(selectedSubNameUrl);
+    sendSubUrl(selectedSubNameUrl);
+    setSubUrlToMainPage(selectedSubNameUrl);
     // }
-  }, [sendSubUrl,selectedSubNameUrl]);
-  // Simulate changing the dynamic variable
+  }, [sendSubUrl, selectedSubNameUrl]);
   // useEffect(() => {
-  //   // const interval = setInterval(() => {
-  //     setSubUrlToMainPage(selectedSubNameUrl);
-  //   // }, 1000);
-  //   // return () => clearInterval(interval);
-  // }, [selectedSubNameUrl]);
-  //
+  //   sendSubUrl(defaultSub.nameUrl);
+  //   setSubUrlToMainPage(defaultSub.nameUrl);
+  // },[selectedMain])
   // console.log(getSubServices[0]?.serviceNames[0]?.name);
+  // console.log(defaultSub.serviceNames ? defaultSub.serviceNames[0].name : "");
+  // console.log(defaultSub?.serviceNames?.[0].name ? getSubServices[0]?.serviceNames[0]?.name : "");
   useEffect(() => {
-    setSelectedMain(selectedMain)
+    setSelectedMain(selectedMain);
     setgetSub2Services([]);
-    setSelectedSub(getSubServices[0]?.serviceNames[0]?.name);
-  }, [getSubServices,selectedMain]);
+    setSelectedSub("");
+  }, [getSubServices, selectedMain]);
+  // console.log(selectedMain);
   /* ----------------------- sub2Services functionality ----------------------- */
   const [selectedSub2, setSelectedSub2] = useState("");
   const [getSub2Services, setgetSub2Services] = useState([]);
@@ -416,9 +412,9 @@ useEffect(() => {
   // console.log(checkedCheckboxArray);
 
   /* --------------------- Calculating Price of the Service --------------------- */
-  const getPrice = 100;
-  // const [getPrice, setGetPrice] = useState(0);
-  // console.log(getPrice);
+  // const getPrice = 100;
+  const [getPrice, setGetPrice] = useState(0);
+  console.log(getPrice);
   //
   const calculatePrice = [
     radioBtnObject,
@@ -432,29 +428,29 @@ useEffect(() => {
   const filteredCalculatePrice = calculatePrice.filter(
     (item) => Object.keys(item).length !== 0
   );
-  // console.log(calculatePrice);
+  console.log(calculatePrice);
 
-  // useEffect(() => {
-  //   // calculating the price
-  //   axios
-  //     .post(
-  //       "https://api.cagir.az/api/serviceCriteria/calculate",
-  //       [...filteredCalculatePrice],
-  //       {
-  //         headers: {
-  //           "Accept-Language": "az",
-  //         },
-  //       }
-  //     )
-  //     .then((response) => {
-  //       // Handle the response data
-  //       setGetPrice(response.data.result.amount);
-  //     })
-  //     .catch((error) => {
-  //       // Handle any errors
-  //       console.error(error);
-  //     });
-  // }, [filteredCalculatePrice]); // when one of these dependencies is updated, the filteredCalculatePrice becomes null
+  useEffect(() => {
+    // calculating the price
+    axios
+      .post(
+        "https://api.cagir.az/api/serviceCriteria/calculate",
+        [...filteredCalculatePrice],
+        {
+          headers: {
+            "Accept-Language": "az",
+          },
+        }
+      )
+      .then((response) => {
+        // Handle the response data
+        setGetPrice(response.data.result.amount);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  }, [filteredCalculatePrice]); // when one of these dependencies is updated, the filteredCalculatePrice becomes null
 
   // when selectMain is updated,elements which go to calculate price become empty
   useEffect(() => {
@@ -582,10 +578,10 @@ useEffect(() => {
           {/* Toggle part is only  desktop */}
           {selectedMainService.text ? (
             <div className="z-10 hidden lg:block sticky ">
-              {/* <Toggle
+              <Toggle
                 {...toggleProps}
                 whichServiceCategory={whichServiceCategory}
-              /> */}
+              />
             </div>
           ) : (
             ""

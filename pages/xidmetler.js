@@ -26,7 +26,9 @@ function ButunXidmetler() {
   }, []);
 
   return (
-    <div className="">
+    <div className="flex flex-col 
+    sm:pt-[36px] md:pt-[42px] lg:pt-[48px] xl:pt-[54px] 2xl:pt-[60px] 
+    py-[60px] sm:py-[75px] md:py-[90px] lg:py-[105px] xl:py-[120px] 2xl:py-[135px]">
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Xidmətlər</h2>
       {/* <OrderCardPrimary /> */}
       <ul className="grid grid-cols-2 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">

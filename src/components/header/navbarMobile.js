@@ -66,97 +66,97 @@ export default function NavbarMobile() {
             sm:leading-[24px] leading-[27px] text-gray900 text-center "
             >
               <li>
-                <Link href="/temizlik-xidmeti" onClick={handleClick}>
+                <a href="/temizlik-xidmeti" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Təmizlik xidməti
                   </p>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/kombi-ustasi" onClick={handleClick}>
+                <a href="/kombi-ustasi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Kombi ustası
                   </p>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/santexnik-ustasi" onClick={handleClick}>
+                <a href="/santexnik-ustasi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Santexnik ustasi
                   </p>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/kondisioner-ustasi" onClick={handleClick}>
+                <a href="/kondisioner-ustasi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Kondisioner ustası
                   </p>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/soyuducu-ustasi" onClick={handleClick}>
+                <a href="/soyuducu-ustasi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                   Soyuducu ustası
                   </p>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/elektrik-ustasi" onClick={handleClick}>
+                <a href="/elektrik-ustasi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Elektrik ustası
                   </p>
-                </Link>
+                </a>
               </li>
 
               <li>
               <details className="dropdown dropdown-right dropdown-end">
                 <summary className="transition duration-300 hover:text-black pb-[17.5px] border-b border-[#EAEAEA]">Digər xidmətlər</summary>
                 <ul className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
-                  <li><Link href="/avto-servis">
+                  <li><a href="/avto-servis">
                   <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                   Avtomobil servisi
                   </p>
-                </Link></li>
-                <li><Link href="/meditasiya" onClick={handleClick}>
+                </a></li>
+                <li><a href="/meditasiya" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                   Yoga Meditasiya
                   </p>
-                </Link></li>
-                <li><Link href="/eylence-merkezi" onClick={handleClick}>
+                </a></li>
+                <li><a href="/eylence-merkezi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                   Əyləncə
                   </p>
-                </Link></li>
-                <li><Link href="/masaj-xidmeti" onClick={handleClick}>
+                </a></li>
+                <li><a href="/masaj-xidmeti" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                   Masaj xidməti
                   </p>
-                </Link></li>
-                <li><Link href="/berber" onClick={handleClick}>
+                </a></li>
+                <li><a href="/berber" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                   Bərbər
                   </p>
-                </Link></li>
-                <li><Link href="/psixoloq" onClick={handleClick}>
+                </a></li>
+                <li><a href="/psixoloq" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                   Psixoloq xidməti
                   </p>
-                </Link></li>
-                <li><Link href="/it-pisik-baximi" onClick={handleClick}>
+                </a></li>
+                <li><a href="/it-pisik-baximi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                   İt Pişik baxımı
                   </p>
-                </Link></li>
-                <li><Link href="/gozellik-salonu" onClick={handleClick}>
+                </a></li>
+                <li><a href="/gozellik-salonu" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                   Gözəllik xidməti
                   </p>
-                </Link></li>
-                <li><Link href="/dizayn-sirketi" onClick={handleClick}>
+                </a></li>
+                <li><a href="/dizayn-sirketi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                   Dizayn xidməti
                   </p>
-                </Link></li>
+                </a></li>
                 </ul>
               </details>
 

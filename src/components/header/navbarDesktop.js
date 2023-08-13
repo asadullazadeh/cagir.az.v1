@@ -122,53 +122,53 @@ export default function NavbarDesktop() {
            items-center font-semibold text-[10px] xl:text-[12px] 2xl:text-[14px] leading-[21px] text-gray500 space-x-[35px] xl:space-x-[40px]"
             >
               <li>
-                <Link href="/temizlik-xidmeti">
+                <a href="/temizlik-xidmeti">
                   <p className="transition duration-300 hover:text-black">
                     Təmizlik xidməti
                   </p>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/kombi-ustasi">
+                <a href="/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Kombi ustası
                   </p>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/santexnik-ustasi">
+                <a href="/santexnik-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Santexnik ustasi
                   </p>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/kondisioner-ustasi">
+                <a href="/kondisioner-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Kondisioner ustası
                   </p>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/soyuducu-ustasi">
+                <a href="/soyuducu-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Soyuducu ustası
                   </p>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/elektrik-ustasi">
+                <a href="/elektrik-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Elektrik ustası
                   </p>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/xidmetler">
+                <a href="/xidmetler">
                   <p className="transition duration-300 hover:text-black">
                     Digər xidmətlər
                   </p>
-                </Link>
+                </a>
               </li>
             </ul>
             {/* 2nd navbar-2nd part- Qeydiyyat button */}
