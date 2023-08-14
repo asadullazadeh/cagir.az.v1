@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import axios from "axios";
 import Link from "next/link";
 import { Transition } from "@headlessui/react";
 const phonePrefixes = ["+50", "+51", "+55", "+70", "+77", "+90"];
@@ -7,36 +8,97 @@ const phonePrefixes = ["+50", "+51", "+55", "+70", "+77", "+90"];
 import paper_plane from "@/icons/footer/paper_plane.svg";
 
 const InputBtnNbTransition = ({ name }) => {
-  const inputRef = useRef(null);
-
-  function handleInputChange() {
-    const inputValue = inputRef.current.value;
-    console.log("Telefon nömrəsi:", selectedOption + inputValue);
-    // Perform any further processing with the input value
-  }
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [isOpen, setIsOpen] = useState(false);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [selectedOption, setSelectedOption] = useState(
+  const [phonePrefix, setPhonePrefix] = useState(
     `${phonePrefixes}`.split(",")[0]
   );
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
+  // console.log(phonePrefix);
+  const [isRotated, setIsRotated] = useState(false);
+
+// 
+// useEffect(() => {
+//   setPhonePrefix(`${phonePrefixes}`.split(",")[0])
+// },)
+  // 
+  const handleOptionClick = (option,index) => {
+    setPhonePrefix(phonePrefixes[index]);
     setIsOpen(false);
-    //
+    console.log(index);
+  };
+  // console.log(phonePrefix);
+  //
+  const inputRef = useRef(null);
+  // this will take the number with code that I entered 
+  const [enteredNumber, setEnteredNumber] = useState("");
+
+  const handleInputChange = () => {
+    const inputValue = inputRef.current.value
+      .replace(/[^0-9]/g, "")
+      .slice(0, 7);
+    // console.log("Telefon nömrəsi:", phonePrefix + inputValue);
+    let formattedValue = "";
+
+    if (inputValue.length > 3) {
+      formattedValue += inputValue.slice(0, 3) + "-";
+      if (inputValue.length > 5) {
+        formattedValue += inputValue.slice(3, 5) + "-";
+        formattedValue += inputValue.slice(5);
+      } else {
+        formattedValue += inputValue.slice(3);
+      }
+    } else {
+      formattedValue = inputValue;
+    }
+
+    inputRef.current.value = formattedValue;
+    setEnteredNumber(phonePrefix + inputValue)
   };
 
-  const [isRotated, setIsRotated] = useState(false);
+
+  //when phonePrefix changes, update enteredNumber with code
+  useEffect(() => {
+    // Whenever phonePrefix or inputValue changes, update enteredNumber
+    handleInputChange();
+  }, [phonePrefix]);
+  console.log(enteredNumber);
+  // 
+  
 
   const handleButtonClick = () => {
     setIsRotated(true);
+    console.log('button is clicked');
+    sendNumberBySms();
 
     setTimeout(() => {
       setIsRotated(false);
     }, 1000); // Adjust the duration as per your requirement
   };
+  /* ----------------- Api part to send the number by sms ----------------- */
+  const [numberSentBySms, setNumberSentBySms] = useState(false);
 
-  // console.log(selectedOption);
+  const sendNumberBySms = () => {
+    axios
+      .post(
+        "https://api.cagir.az/api/suggest/create",
+        {name: "Anonim", 
+        mainService: "Bilinmir", 
+        phoneNumber: enteredNumber, 
+        suggestDetails: []}, // Make sure you define `objectDetails` before using it
+        {
+          headers: {
+            "Accept-Language": "az",
+          },
+        }
+      )
+      .then((response) => {
+        // Handle the response data
+        setNumberSentBySms(response.data.isSuccess);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  };
   return (
     <div>
       <div
@@ -56,7 +118,7 @@ const InputBtnNbTransition = ({ name }) => {
             aria-expanded={isOpen ? "true" : "false"}
             onClick={() => setIsOpen(!isOpen)}
           >
-            {selectedOption}
+            {phonePrefix}
             <svg
               className={`w-5 h-5 ml-2 transform transition-transform duration-300 ${
                 isOpen ? "rotate-180" : ""
@@ -80,7 +142,7 @@ const InputBtnNbTransition = ({ name }) => {
                     className="px-[15px] py-[5px] hover:bg-gray-100
                   text-black focus:outline-none text-[14px] 
                   leading-[21px]"
-                    onClick={() => handleOptionClick(phonePrefix)}
+                    onClick={() => handleOptionClick(phonePrefix,index)}
                   >
                     {phonePrefix}
                   </li>
@@ -91,11 +153,6 @@ const InputBtnNbTransition = ({ name }) => {
         </div>
 
         <ul className="flex flex-col  w-[200px] sm:w-[250px] font-semibold text-[14px] leading-[21px] text-black500">
-          {/* <li className="">
-          <div href="#" className="">
-            {name}
-          </div>
-        </li> */}
           <li className="flex justify-between bg-white rounded-full items-center h-full border pr-[5px]">
             <input
               ref={inputRef}
