@@ -40,13 +40,14 @@ function Sifaris({
   onSelectedNamesArray,
   onSelectedMainChange,
 }) {
-  // console.log(defaultMain);
+  console.log(defaultSub);
   // passing selectedService names from dropdown to sifaris
   const [selectedNamesArray, setSelectedNamesArray] = useState("");
   const handleSelectedNamesArray = (data) => {
     setSelectedNamesArray(data);
     onSelectedNamesArray(selectedNamesArray);
   };
+  console.log(selectedNamesArray);
 
   /* ----------------- mainServices functionality ----------------- */
   const [selectedMain, setSelectedMain] = useState(
@@ -100,7 +101,7 @@ function Sifaris({
     setSelectedSub(subService);
   };
   const [getSubServices, setgetSubServices] = useState([]);
-
+  // console.log(defaultSub);
   useEffect(() => {
     axios
       .get(
@@ -156,10 +157,11 @@ function Sifaris({
   // console.log(getSubServices[0]?.serviceNames[0]?.name);
   // console.log(defaultSub.serviceNames ? defaultSub.serviceNames[0].name : "");
   // console.log(defaultSub?.serviceNames?.[0].name ? getSubServices[0]?.serviceNames[0]?.name : "");
+  console.log(defaultSub?.serviceNames?.[0]?.name);
   useEffect(() => {
     setSelectedMain(selectedMain);
     setgetSub2Services([]);
-    setSelectedSub("");
+    setSelectedSub(defaultSub?.serviceNames?.[0]?.name);
   }, [getSubServices, selectedMain]);
   // console.log(selectedMain);
   /* ----------------------- sub2Services functionality ----------------------- */

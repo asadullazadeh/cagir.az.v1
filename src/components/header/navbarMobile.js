@@ -11,7 +11,7 @@ export default function NavbarMobile() {
   const [navbar, setNavbar] = useState(false);
 
   const handleClick = () => {
-    setNavbar(false)
+    setNavbar(false);
   };
 
   return (
@@ -21,7 +21,7 @@ export default function NavbarMobile() {
           {/* 1st navbar */}
           <div className="flex items-center justify-between lg:block h-[40px] mx-auto">
             {/* LOGO */}
-            <Link href="/" className="">
+            <Link href="/" className="" passHref>
               <Image
                 src={logo}
                 alt="Cagir.az logo"
@@ -66,42 +66,42 @@ export default function NavbarMobile() {
             sm:leading-[24px] leading-[27px] text-gray900 text-center "
             >
               <li>
-                <a href="/temizlik-xidmeti" onClick={handleClick}>
+                <a passHref href="/temizlik-xidmeti" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Təmizlik xidməti
                   </p>
                 </a>
               </li>
               <li>
-                <a href="/kombi-ustasi" onClick={handleClick}>
+                <a passHref href="/kombi-ustasi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Kombi ustası
                   </p>
                 </a>
               </li>
               <li>
-                <a href="/santexnik-ustasi" onClick={handleClick}>
+                <a passHref href="/santexnik-ustasi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Santexnik ustasi
                   </p>
                 </a>
               </li>
               <li>
-                <a href="/kondisioner-ustasi" onClick={handleClick}>
+                <a passHref href="/kondisioner-ustasi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Kondisioner ustası
                   </p>
                 </a>
               </li>
               <li>
-                <a href="/soyuducu-ustasi" onClick={handleClick}>
+                <a passHref href="/soyuducu-ustasi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
-                  Soyuducu ustası
+                    Soyuducu ustası
                   </p>
                 </a>
               </li>
               <li>
-                <a href="/elektrik-ustasi" onClick={handleClick}>
+                <a passHref href="/elektrik-ustasi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Elektrik ustası
                   </p>
@@ -109,59 +109,76 @@ export default function NavbarMobile() {
               </li>
 
               <li>
-              <details className="dropdown dropdown-right dropdown-end">
-                <summary className="transition duration-300 hover:text-black pb-[17.5px] border-b border-[#EAEAEA]">Digər xidmətlər</summary>
-                <ul className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
-                  <li><a href="/avto-servis">
-                  <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                  Avtomobil servisi
-                  </p>
-                </a></li>
-                <li><a href="/meditasiya" onClick={handleClick}>
-                  <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                  Yoga Meditasiya
-                  </p>
-                </a></li>
-                <li><a href="/eylence-merkezi" onClick={handleClick}>
-                  <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                  Əyləncə
-                  </p>
-                </a></li>
-                <li><a href="/masaj-xidmeti" onClick={handleClick}>
-                  <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                  Masaj xidməti
-                  </p>
-                </a></li>
-                <li><a href="/berber" onClick={handleClick}>
-                  <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                  Bərbər
-                  </p>
-                </a></li>
-                <li><a href="/psixoloq" onClick={handleClick}>
-                  <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                  Psixoloq xidməti
-                  </p>
-                </a></li>
-                <li><a href="/it-pisik-baximi" onClick={handleClick}>
-                  <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                  İt Pişik baxımı
-                  </p>
-                </a></li>
-                <li><a href="/gozellik-salonu" onClick={handleClick}>
-                  <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                  Gözəllik xidməti
-                  </p>
-                </a></li>
-                <li><a href="/dizayn-sirketi" onClick={handleClick}>
-                  <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                  Dizayn xidməti
-                  </p>
-                </a></li>
-                </ul>
-              </details>
-
-
-
+                <details className="dropdown dropdown-right dropdown-end">
+                  <summary className="transition duration-300 hover:text-black pb-[17.5px] border-b border-[#EAEAEA]">
+                    Digər xidmətlər
+                  </summary>
+                  <ul className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
+                    <li>
+                      <a passHref href="/avto-servis">
+                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
+                          Avtomobil servisi
+                        </p>
+                      </a>
+                    </li>
+                    <li>
+                      <a passHref href="/meditasiya" onClick={handleClick}>
+                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
+                          Yoga Meditasiya
+                        </p>
+                      </a>
+                    </li>
+                    <li>
+                      <a passHref href="/eylence-merkezi" onClick={handleClick}>
+                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
+                          Əyləncə
+                        </p>
+                      </a>
+                    </li>
+                    <li>
+                      <a passHref href="/masaj-xidmeti" onClick={handleClick}>
+                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
+                          Masaj xidməti
+                        </p>
+                      </a>
+                    </li>
+                    <li>
+                      <a passHref href="/berber" onClick={handleClick}>
+                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
+                          Bərbər
+                        </p>
+                      </a>
+                    </li>
+                    <li>
+                      <a passHref href="/psixoloq" onClick={handleClick}>
+                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
+                          Psixoloq xidməti
+                        </p>
+                      </a>
+                    </li>
+                    <li>
+                      <a passHref href="/it-pisik-baximi" onClick={handleClick}>
+                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
+                          İt Pişik baxımı
+                        </p>
+                      </a>
+                    </li>
+                    <li>
+                      <a passHref href="/gozellik-salonu" onClick={handleClick}>
+                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
+                          Gözəllik xidməti
+                        </p>
+                      </a>
+                    </li>
+                    <li>
+                      <a passHref href="/dizayn-sirketi" onClick={handleClick}>
+                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
+                          Dizayn xidməti
+                        </p>
+                      </a>
+                    </li>
+                  </ul>
+                </details>
               </li>
 
               {/* second part */}

@@ -18,13 +18,13 @@ export default function NavbarDesktop() {
           {/* 1st navbar */}
           <div className="py-[12px] justify-between mx-auto items-center flex relative">
             {/* 1st navbar-left side-LOGO */}
-            <Link href="/" className="">
+            <Link passHref href="/" className="">
               <Image
                 src={logo}
                 alt="Cagir.az logo"
                 className="w-[106px] h-[27px]"
               />
-            </Link>
+            </ Link>
 
             {/* 1st navbar-right side */}
             <ul className="flex flex-row justify-center items-center space-x-[30px] h-full z-10">
@@ -122,53 +122,53 @@ export default function NavbarDesktop() {
            items-center font-semibold text-[10px] xl:text-[12px] 2xl:text-[14px] leading-[21px] text-gray500 space-x-[35px] xl:space-x-[40px]"
             >
               <li>
-                <a href="/temizlik-xidmeti">
+                <Link passHref href="/temizlik-xidmeti">
                   <p className="transition duration-300 hover:text-black">
                     Təmizlik xidməti
                   </p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/kombi-ustasi">
+                <Link passHref href="/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Kombi ustası
                   </p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/santexnik-ustasi">
+                <Link passHref href="/santexnik-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Santexnik ustasi
                   </p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/kondisioner-ustasi">
+                <Link passHref href="/kondisioner-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Kondisioner ustası
                   </p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/soyuducu-ustasi">
+                <Link passHref href="/soyuducu-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Soyuducu ustası
                   </p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/elektrik-ustasi">
+                <Link passHref href="/elektrik-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Elektrik ustası
                   </p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/xidmetler">
+                <Link passHref href="/xidmetler">
                   <p className="transition duration-300 hover:text-black">
                     Digər xidmətlər
                   </p>
-                </a>
+                </Link>
               </li>
             </ul>
             {/* 2nd navbar-2nd part- Qeydiyyat button */}

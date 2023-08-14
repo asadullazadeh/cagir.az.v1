@@ -36,6 +36,7 @@ function Xidmetler() {
             <li key={id}>
               <Link
                 href={nameUrl}
+                passHref
                 className="block rounded-[10px] lg:rounded-[25px] bg-white p-[11px] lg:p-[26px]  group
               hover:drop-shadow-card transition duration-300 "
               >
