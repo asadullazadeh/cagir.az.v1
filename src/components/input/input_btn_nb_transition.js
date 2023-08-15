@@ -15,12 +15,12 @@ const InputBtnNbTransition = ({ name }) => {
   // console.log(phonePrefix);
   const [isRotated, setIsRotated] = useState(false);
 
-// 
-// useEffect(() => {
-//   setPhonePrefix(`${phonePrefixes}`.split(",")[0])
-// },)
-  // 
-  const handleOptionClick = (option,index) => {
+  //
+  // useEffect(() => {
+  //   setPhonePrefix(`${phonePrefixes}`.split(",")[0])
+  // },)
+  //
+  const handleOptionClick = (option, index) => {
     setPhonePrefix(phonePrefixes[index]);
     setIsOpen(false);
     console.log(index);
@@ -28,7 +28,7 @@ const InputBtnNbTransition = ({ name }) => {
   // console.log(phonePrefix);
   //
   const inputRef = useRef(null);
-  // this will take the number with code that I entered 
+  // this will take the number with code that I entered
   const [enteredNumber, setEnteredNumber] = useState("");
 
   const handleInputChange = () => {
@@ -51,9 +51,10 @@ const InputBtnNbTransition = ({ name }) => {
     }
 
     inputRef.current.value = formattedValue;
-    setEnteredNumber(phonePrefix + inputValue)
+    if (inputValue.length) {
+      setEnteredNumber(phonePrefix + inputValue);
+    }
   };
-
 
   //when phonePrefix changes, update enteredNumber with code
   useEffect(() => {
@@ -61,13 +62,16 @@ const InputBtnNbTransition = ({ name }) => {
     handleInputChange();
   }, [phonePrefix]);
   console.log(enteredNumber);
-  // 
-  
+  //
 
   const handleButtonClick = () => {
     setIsRotated(true);
-    console.log('button is clicked');
-    sendNumberBySms();
+    console.log("button is clicked");
+    console.log(enteredNumber.length);
+    // if enteredNumber length is 10: +513852755, run sendNumberBySms()
+    if (enteredNumber.length === 10) {
+      sendNumberBySms();
+    }
 
     setTimeout(() => {
       setIsRotated(false);
@@ -80,10 +84,12 @@ const InputBtnNbTransition = ({ name }) => {
     axios
       .post(
         "https://api.cagir.az/api/suggest/create",
-        {name: "Anonim", 
-        mainService: "Bilinmir", 
-        phoneNumber: enteredNumber, 
-        suggestDetails: []}, // Make sure you define `objectDetails` before using it
+        {
+          name: "Anonim",
+          mainService: "Bilinmir",
+          phoneNumber: enteredNumber,
+          suggestDetails: [],
+        }, // Make sure you define `objectDetails` before using it
         {
           headers: {
             "Accept-Language": "az",
@@ -142,7 +148,7 @@ const InputBtnNbTransition = ({ name }) => {
                     className="px-[15px] py-[5px] hover:bg-gray-100
                   text-black focus:outline-none text-[14px] 
                   leading-[21px]"
-                    onClick={() => handleOptionClick(phonePrefix,index)}
+                    onClick={() => handleOptionClick(phonePrefix, index)}
                   >
                     {phonePrefix}
                   </li>

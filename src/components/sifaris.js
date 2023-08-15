@@ -86,14 +86,14 @@ function Sifaris({
   };
   // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
   const selectedMainService = findInfoByName(getMainServices, selectedMain);
-  // console.log(selectedMain);
+  // console.log(selectedMainService.id);
   // passing selectedMain to the index page
   useEffect(() => {
     // Call the callback function with the new value
     onSelectedMainChange(selectedMain);
   }, [onSelectedMainChange, selectedMain]);
+
   /* ------------------ subServices functionality ----------------- */
-  // console.log(defaultSub.serviceNames?.[0].name);
   const [selectedSub, setSelectedSub] = useState(
     defaultSub.serviceNames?.[0].name
   );
@@ -101,7 +101,7 @@ function Sifaris({
     setSelectedSub(subService);
   };
   const [getSubServices, setgetSubServices] = useState([]);
-  // console.log(defaultSub);
+
   useEffect(() => {
     axios
       .get(
@@ -121,7 +121,7 @@ function Sifaris({
         console.error(error);
       });
   }, [selectedMainService.id]);
-  // console.log(getSubServices?.[0]?.serviceNames?.[0]?.name);
+  console.log(defaultSub.serviceNames?.[0].name);
   const findSubInfoByName = (subServices, name) => {
     const subService =
       subServices.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
@@ -150,19 +150,12 @@ function Sifaris({
     setSubUrlToMainPage(selectedSubNameUrl);
     // }
   }, [sendSubUrl, selectedSubNameUrl]);
-  // useEffect(() => {
-  //   sendSubUrl(defaultSub.nameUrl);
-  //   setSubUrlToMainPage(defaultSub.nameUrl);
-  // },[selectedMain])
-  // console.log(getSubServices[0]?.serviceNames[0]?.name);
-  // console.log(defaultSub.serviceNames ? defaultSub.serviceNames[0].name : "");
-  // console.log(defaultSub?.serviceNames?.[0].name ? getSubServices[0]?.serviceNames[0]?.name : "");
+
   console.log(defaultSub?.serviceNames?.[0]?.name);
   useEffect(() => {
     setSelectedMain(selectedMain);
-    setgetSub2Services([]);
     setSelectedSub(defaultSub?.serviceNames?.[0]?.name);
-  }, [getSubServices, selectedMain]);
+  }, [defaultSub, getSubServices, selectedMain]);
   // console.log(selectedMain);
   /* ----------------------- sub2Services functionality ----------------------- */
   const [selectedSub2, setSelectedSub2] = useState("");
@@ -170,11 +163,12 @@ function Sifaris({
   const handleSub2Select = (sub2Service) => {
     setSelectedSub2(sub2Service);
   };
+  console.log(getSub2Services);
 
   // checking if sub2 element is exist after choosing sub element
-  const isSub2ElementsExist =
-    selectedSub || (selectedNamesArray[1] !== "" && getSub2Services.length > 0);
-
+  const isSub2ElementsExist = getSub2Services.length > 0;
+  // selectedSub || (selectedNamesArray[1] !== "" && getSub2Services.length > 0);
+  console.log(isSub2ElementsExist);
   useEffect(() => {
     axios
       .get(
@@ -203,8 +197,15 @@ function Sifaris({
       text: sub2Service?.serviceNames?.[0]?.text || null,
     };
   };
+  //
+  useEffect(() => {
+    setSelectedSub2("");
+    setgetSub2Services([]);
+  }, [selectedMain, selectedSub]);
+  //
   // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
   const selectedSub2Service = findSub2InfoByName(getSub2Services, selectedSub2);
+  console.log(selectedSub2);
 
   /* ---------------------- Select criterias ---------------------- */
   const [getServiceCriterias, setgetServiceCriterias] = useState([]);
@@ -212,7 +213,11 @@ function Sifaris({
     axios
       .post(
         "https://api.cagir.az/api/serviceCriteria/getAllWithParent",
-        [!isSub2ElementsExist ? selectedSubService.id : selectedSub2Service.id],
+        [
+          isSub2ElementsExist
+            ? selectedSub2Service.id
+            : selectedSubService.id,
+        ],
         {
           headers: {
             "Accept-Language": "az",
@@ -227,8 +232,8 @@ function Sifaris({
         // Handle any errors
         console.error(error);
       });
-  }, [isSub2ElementsExist, selectedSubService.id, selectedSub2Service.id]);
-  // console.log(getServiceCriterias);
+  }, [isSub2ElementsExist,selectedSubService.id, selectedSub2Service.id]);
+  console.log(getServiceCriterias);
 
   /* --------------------- Multinumber input functionality-FilterType=5 --------------------- */
   // multiNumberArray takes all the information of multi number input for pricing
@@ -414,9 +419,9 @@ function Sifaris({
   // console.log(checkedCheckboxArray);
 
   /* --------------------- Calculating Price of the Service --------------------- */
-  // const getPrice = 100;
-  const [getPrice, setGetPrice] = useState(0);
-  console.log(getPrice);
+  // const priceBeforePromo = 100;
+  const [priceBeforePromo, setPriceBeforePromo] = useState(0);
+  console.log(priceBeforePromo);
   //
   const calculatePrice = [
     radioBtnObject,
@@ -446,13 +451,21 @@ function Sifaris({
       )
       .then((response) => {
         // Handle the response data
-        setGetPrice(response.data.result.amount);
+        setPriceBeforePromo(response.data.result.amount);
       })
       .catch((error) => {
         // Handle any errors
         console.error(error);
       });
   }, [filteredCalculatePrice]); // when one of these dependencies is updated, the filteredCalculatePrice becomes null
+
+  //price after promocode
+  const [priceAfterPromo, setPriceAfterPromo] = useState(0);
+
+  const handlePriceUpdate = (value) => {
+    setPriceAfterPromo(value); // Update the receivedValue state in the parent component
+  };
+  
 
   // when selectMain is updated,elements which go to calculate price become empty
   useEffect(() => {
@@ -461,7 +474,8 @@ function Sifaris({
     setRadioBtnObject([]);
     setPlusMinusArray([]);
     setInputTextObject({});
-    // setGetPrice(0); // Set getPrice to 0 when selectMain,selectedSub,selectedSub2 is updated
+    setPriceAfterPromo(0)
+    setPriceBeforePromo(0); // Set priceBeforePromo to 0 when selectMain,selectedSub,selectedSub2 is updated
   }, [selectedMain, selectedSub, selectedSub2]);
 
   /* -------------------------------- Textarea functionality -------------------------------- */
@@ -519,7 +533,7 @@ function Sifaris({
   };
   // console.log(calculatePrice);
   const objectDetails = {
-    amount: getPrice,
+    amount: priceBeforePromo,
     payType: 2,
     address: "42, rue Antoine Charial,69003",
     note: receivedMessage,
@@ -531,31 +545,31 @@ function Sifaris({
   // console.log(objectDetails);
   const [isOrderPassed, setIsOrderPassed] = useState(false);
 
-  const fetchData = () => {
-    axios
-      .post(
-        "https://api.cagir.az/api/order/v3/create",
-        objectDetails, // Make sure you define `objectDetails` before using it
-        {
-          headers: {
-            "Accept-Language": "az",
-          },
-        }
-      )
-      .then((response) => {
-        // Handle the response data
-        setIsOrderPassed(response.data.isSuccess);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
-  };
+  // const fetchData = () => {
+  //   axios
+  //     .post(
+  //       "https://api.cagir.az/api/order/v3/create",
+  //       objectDetails, // Make sure you define `objectDetails` before using it
+  //       {
+  //         headers: {
+  //           "Accept-Language": "az",
+  //         },
+  //       }
+  //     )
+  //     .then((response) => {
+  //       // Handle the response data
+  //       setIsOrderPassed(response.data.isSuccess);
+  //     })
+  //     .catch((error) => {
+  //       // Handle any errors
+  //       console.error(error);
+  //     });
+  // };
   // console.log(isOrderPassed);
 
   /* -------------------------------- data to receipt -------------------------------- */
   const dataReceipt = {
-    amount: getPrice,
+    amount: priceBeforePromo,
     payType: 2,
     address: "42, rue Antoine Charial,69003",
     note: receivedMessage,
@@ -575,7 +589,7 @@ function Sifaris({
         {/* Left side of first part in Sifaris */}
         <div className="z-40 sticky top-[20px] lg:top-[110px] lg:h-screen overflow-y-auto flex flex-col lg:w-1/3 xl:w-1/4 gap-y-[25px] lg:gap-y-[25px] ">
           <div className="z-20 sticky top-[0px] bg-white py-[10px] px-[15px] mt-[10px] mb-[20px] lg:m-0 lg:p-0 shadow-dropblack25 lg:shadow-none rounded-[10px]">
-            <Qiymet price={getPrice} />
+            <Qiymet priceBeforePromo={priceBeforePromo} priceAfterPromo={priceAfterPromo} />
           </div>
           {/* Toggle part is only  desktop */}
           {selectedMainService.text ? (
@@ -725,7 +739,11 @@ function Sifaris({
                   />
                 </div>
                 <Download_image />
-                <Promocode />
+                <Promocode 
+                serviceId={selectedMainService.id}
+                priceBeforePromo={priceBeforePromo}
+                onPromoPriceChange={handlePriceUpdate}
+                 />
                 <PaymentMethod />
               </div>
               {/* map section for desktop */}

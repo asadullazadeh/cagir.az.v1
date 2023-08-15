@@ -34,8 +34,8 @@ function SifarishBtn({classNames}) {
   }, [mainService]);
   // console.log(getMainServices);
   return (
-    <div>
-    <Link href="/sifaris-yarat" className={classNames}>
+    <div className={classNames}>
+    <Link href="/sifaris-yarat" >
       <button
         className="
               font-extraBold text-[14px] lg:text-[18px] leading-[22px] lg:leading-[27px]

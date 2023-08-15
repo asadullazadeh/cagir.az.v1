@@ -66,46 +66,46 @@ export default function NavbarMobile() {
             sm:leading-[24px] leading-[27px] text-gray900 text-center "
             >
               <li>
-                <a passHref href="/temizlik-xidmeti" onClick={handleClick}>
+                <Link passHref href="/temizlik-xidmeti" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Təmizlik xidməti
                   </p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a passHref href="/kombi-ustasi" onClick={handleClick}>
+                <Link passHref href="/kombi-ustasi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Kombi ustası
                   </p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a passHref href="/santexnik-ustasi" onClick={handleClick}>
+                <Link passHref href="/santexnik-ustasi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Santexnik ustasi
                   </p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a passHref href="/kondisioner-ustasi" onClick={handleClick}>
+                <Link passHref href="/kondisioner-ustasi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Kondisioner ustası
                   </p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a passHref href="/soyuducu-ustasi" onClick={handleClick}>
+                <Link passHref href="/soyuducu-ustasi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Soyuducu ustası
                   </p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a passHref href="/elektrik-ustasi" onClick={handleClick}>
+                <Link passHref href="/elektrik-ustasi" onClick={handleClick}>
                   <p className="transition duration-300 hover:text-black">
                     Elektrik ustası
                   </p>
-                </a>
+                </Link>
               </li>
 
               <li>
@@ -115,67 +115,67 @@ export default function NavbarMobile() {
                   </summary>
                   <ul className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
                     <li>
-                      <a passHref href="/avto-servis">
+                      <Link passHref href="/avto-servis">
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           Avtomobil servisi
                         </p>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a passHref href="/meditasiya" onClick={handleClick}>
+                      <Link passHref href="/meditasiya" onClick={handleClick}>
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           Yoga Meditasiya
                         </p>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a passHref href="/eylence-merkezi" onClick={handleClick}>
+                      <Link passHref href="/eylence-merkezi" onClick={handleClick}>
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           Əyləncə
                         </p>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a passHref href="/masaj-xidmeti" onClick={handleClick}>
+                      <Link passHref href="/masaj-xidmeti" onClick={handleClick}>
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           Masaj xidməti
                         </p>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a passHref href="/berber" onClick={handleClick}>
+                      <Link passHref href="/berber" onClick={handleClick}>
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           Bərbər
                         </p>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a passHref href="/psixoloq" onClick={handleClick}>
+                      <Link passHref href="/psixoloq" onClick={handleClick}>
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           Psixoloq xidməti
                         </p>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a passHref href="/it-pisik-baximi" onClick={handleClick}>
+                      <Link passHref href="/it-pisik-baximi" onClick={handleClick}>
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           İt Pişik baxımı
                         </p>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a passHref href="/gozellik-salonu" onClick={handleClick}>
+                      <Link passHref href="/gozellik-salonu" onClick={handleClick}>
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           Gözəllik xidməti
                         </p>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a passHref href="/dizayn-sirketi" onClick={handleClick}>
+                      <Link passHref href="/dizayn-sirketi" onClick={handleClick}>
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           Dizayn xidməti
                         </p>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </details>

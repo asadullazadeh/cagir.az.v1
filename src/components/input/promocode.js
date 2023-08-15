@@ -1,20 +1,18 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
 import download from "@/icons/form/download.svg";
 import validation from "@/icons/form/validation.svg";
 
-const Promocode = () => {
+const Promocode = ({ serviceId, priceBeforePromo, onPromoPriceChange }) => {
   const [isInputClicked, setIsInputClicked] = useState(false);
   const prevPromoCodeRef = useRef("");
-
   const promocodes = ["Cagiraz", "Turgut", "Alpay", "Orxan"];
   const [promoCode, setPromoCode] = useState("");
-  const isPromoCodeValid = promocodes.includes(promoCode);
-  // console.log(isPromoCodeValid);
 
   const handlePromoCodeChange = (e) => {
-    setPromoCode(e.target.value);
+    setPromoCode(e.target.value.toUpperCase().slice(0, 8));
   };
 
   const handleInputClick = () => {
@@ -32,6 +30,49 @@ const Promocode = () => {
       setIsInputClicked(false);
     }
   };
+  /* ----------------- Promocode api ----------------- */
+  const [promoCodeRequest, setPromoCodeRequest] = useState({});
+
+  const checkIfPromoIsValid = () => {
+    axios
+      .post(
+        "https://api.cagir.az/api/promo/calculate",
+        {
+          serviceId: serviceId,
+          amount: priceBeforePromo,
+          promoCode: promoCode,
+        }, // Make sure you define `objectDetails` before using it
+        {
+          headers: {
+            "Accept-Language": "az",
+          },
+        }
+      )
+      .then((response) => {
+        // Handle the response data
+        setPromoCodeRequest(response.data.result);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  };
+
+  useEffect(() => {
+    setPromoCodeRequest({});
+    if (promoCode.length === 8) {
+      checkIfPromoIsValid();
+    }
+  }, [serviceId, priceBeforePromo, promoCode]);
+
+  //checking if promocode is valid
+  const isPromoCodeValid =
+    promoCode.length === 8 && priceBeforePromo !== promoCodeRequest.amount;
+
+  // passing promocode result from this component to sifaris page.
+  useEffect(() => {
+    onPromoPriceChange(promoCodeRequest.amount); // Call the callback function with the new value
+  }, [onPromoPriceChange, promoCodeRequest.amount]);
 
   return (
     <div className="flex flex-col gap-y-[5px]">
@@ -66,17 +107,19 @@ const Promocode = () => {
           <Image
             src={validation}
             alt="validation_icon"
-            className={`opacity-${isPromoCodeValid ? "100" : "0"}`}
+            className={`${isPromoCodeValid ? "" : "hidden"}`}
           />
         </div>
+
+        <p
+          className={`${
+            !isPromoCodeValid && promoCode.length === 8 ? "" : "hidden"
+          } ml-auto font-semibold text-[10px] leading-[15px] text-danger`}
+        >
+          Promokod səhvdir
+        </p>
+
         {/* {!isPromoCodeValid && (
-          <p
-            className={`hidden lg:block ml-auto font-semibold text-[10px] leading-[15px] text-danger `}
-          >
-            Promokod səhvdir
-          </p>
-        )}
-        {!isPromoCodeValid && (
           <p
             className={`block lg:hidden ml-auto font-semibold text-[10px] leading-[15px] text-danger `}
           >

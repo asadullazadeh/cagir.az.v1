@@ -32,13 +32,16 @@ const Toggle = ({
 
   // this object takes all cases to give three key value to show which toggle need to be shown.
   //0-when a main service is clicked, 1-sub,2-sub2.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // objectForToggle-which service toggle is open as default.
   let objectForToggle = {
     0: { 0: false, 1: true, 2: true },
-    1: { 0: true, 1: false, 2: true },
-    2: toggleInfos[2].description
-      ? { 0: true, 1: true, 2: false }
-      : { 0: true, 1: false, 2: true },
+    1: toggleInfos[1].description ? 
+    { 0: true, 1: false, 2: true } :
+    { 0: false, 1: true, 2: true },
+    2: toggleInfos[2].description && toggleInfos[1].description
+      ? { 0: true, 1: true, 2: false } : !toggleInfos[2].description && toggleInfos[1].description ?
+      { 0: true, 1: false, 2: true }
+      : { 0: false, 1: true, 2: true },
   };
 
   // isHidden takes the previous
@@ -54,7 +57,7 @@ const Toggle = ({
       ],
     });
   }, [selectedNamesArray, selectedSub2, whichServiceCategory]);
-  // console.log(isHidden);
+  console.log(selectedNamesArray);
   const toggleHidden = (index) => {
     setIsHidden((prevState) => ({
       ...prevState,

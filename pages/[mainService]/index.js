@@ -21,7 +21,8 @@ function Page() {
   };
   const router = useRouter();
   // mainService is a path for main services.
-  const mainService = router.query.mainService;
+  const mainServiceUrl = router.query.mainService;
+  console.log(mainServiceUrl);
   // we get the data of "mainService" service
   const [mainServiceData, setMainServiceData] = useState({});
   // subServices for an individual main service.
@@ -33,12 +34,13 @@ function Page() {
       try {
         const response = await axios.post(
           "https://api.cagir.az/api/service/service-name",
-          { titleUrl: mainService },
+          { titleUrl: mainServiceUrl },
           config
         );
         setMainServiceData(response.data.result);
 
         const newParentId = response.data.result.id;
+        console.log(newParentId);
         setParentId(newParentId);
 
         const subService = await axios.get(
@@ -50,13 +52,13 @@ function Page() {
         console.error(error);
       }
     };
-
     //need to recheck this condition
-    if (mainService && !parentId) {
+    if (mainServiceUrl && !parentId) {
       fetchData();
     }
-  }, [config, mainService, parentId]);
-
+  }, [config, mainServiceUrl, parentId]);
+  console.log(subServices);
+  console.log(mainServiceData);
   const { id, someProperty, serviceNames } = mainServiceData;
   const serviceName =
     serviceNames && serviceNames.length > 0 ? serviceNames[0].name : "";

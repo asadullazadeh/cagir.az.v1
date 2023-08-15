@@ -4,8 +4,7 @@ import Link from "next/link";
 
 
 
-const Qiymet = ({price}) => {
-  // this it for
+const Qiymet = ({priceBeforePromo,priceAfterPromo}) => {
   const [isHidden, setIsHidden] = useState(true);
   const toggleHidden = () => {
     setIsHidden(!isHidden);
@@ -20,7 +19,7 @@ const Qiymet = ({price}) => {
               Məbləğ
             </p>
             <p className="font-semibold text-[18px] leading-[27px] text-black500">
-              {price} AZN
+              {priceBeforePromo} AZN
             </p>
           </div>
 
@@ -29,7 +28,7 @@ const Qiymet = ({price}) => {
               Endirim
             </p>
             <p className="font-semibold text-[18px] leading-[27px] text-black500">
-              20 AZN
+              {priceBeforePromo-priceAfterPromo > 0 ? priceBeforePromo-priceAfterPromo : 0} AZN
             </p>
           </div>
 
@@ -38,7 +37,7 @@ const Qiymet = ({price}) => {
               Yekun
             </p>
             <p className="font-bold text-[26px] leading-[39px] text-cagiraz">
-              {price>20 ? price-20 : 0} AZN
+              {priceAfterPromo ? priceAfterPromo :priceBeforePromo}
             </p>
           </div>
         </div>

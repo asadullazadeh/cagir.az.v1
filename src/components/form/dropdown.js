@@ -43,7 +43,9 @@ const Dropdown = ({
 
   // mainServiceName is set to false as default.
   const [mainServiceName, setMainServiceName] = useState(
-    defaultMain?.serviceNames?.[0].name ? defaultMain?.serviceNames?.[0].name : "Təmizlik Xidməti"
+    defaultMain?.serviceNames?.[0].name
+      ? defaultMain?.serviceNames?.[0].name
+      : "Təmizlik Xidməti"
   );
   const [subServiceName, setSubServiceName] = useState(
     defaultSub?.serviceNames?.[0].name
@@ -89,7 +91,7 @@ const Dropdown = ({
   };
 
   // which dropdown is trembling?
-  const [trembling, setTrembling] = useState({ ...tremBlingObject[0]});
+  const [trembling, setTrembling] = useState({ ...tremBlingObject[0] });
   // console.log(trembling);
   const handleOptionClick = (mainIndex, serviceName) => {
     if (mainIndex == 0) {
@@ -106,21 +108,17 @@ const Dropdown = ({
     // checking which serice category is selected.Main-1,sub-2,sub2-2
     // Call the callback function with the data
     onDataCallback(mainIndex);
-    setTrembling({ ...tremBlingObject[mainIndex]});
+    setTrembling({ ...tremBlingObject[mainIndex] });
   };
-  // console.log(trembling);
+  console.log(getSub2Services);
 
   // Function to check if sub2 object is empty to run third dropdown or not
-  function isSub2Exist(obj) {
-    return Object.keys(obj).length === 0;
-  }
-  const isSub2ElementsExist =
-    !isSub2Exist(dropdownInfos[1].serviceInfos) &&
-    isSub2Exist(dropdownInfos[2].serviceInfos) &&
-    subServiceName !== ""
-      ? false
-      : true;
+  // function isSub2Exist(obj) {
+  //   return Object.keys(obj).length === 0;
+  // }
+  const isSub2ElementsExist = getSub2Services.length > 0;
 
+  console.log(isSub2ElementsExist);
   return (
     <div className="grid lg:grid-cols-3 justify-items-stretch lg:gap-x-[40px] gap-y-[15px]">
       {Object.keys(dropdownInfos).map((index) => {
