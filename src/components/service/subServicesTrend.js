@@ -5,8 +5,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import arrow_right from "@/icons/arrow_right.svg";
 
-function SubService() {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+function SubService({mainServiceData,subServices}) {
   const config = {
     headers: {
       "Accept-Language": "az",
@@ -15,49 +14,16 @@ function SubService() {
   const router = useRouter();
   const mainService = router.query.mainService;
 
-  const [mainServiceData, setMainServiceData] = useState({});
-  const [subServices, setSubServices] = useState([]);
-  const [parentId, setParentId] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.post(
-          "https://api.cagir.az/api/service/service-name",
-          { titleUrl: mainService },
-          config
-        );
-        setMainServiceData(response.data.result);
-
-        const newParentId = response.data.result.id;
-        setParentId(newParentId);
-        // console.log(newParentId);
-
-        const cavab = await axios.get(
-          `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${newParentId}`,
-          config
-        );
-        setSubServices(cavab.data.result);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    if (mainService && !parentId) {
-      fetchData();
-    }
-  }, [config, mainService, parentId]);
-console.log(mainServiceData);
   const { id, someProperty, serviceNames } = mainServiceData;
-  const serviceName =
-    serviceNames && serviceNames.length > 0 ? serviceNames[0].name : "";
-  const textService =
-    serviceNames && serviceNames.length > 0 ? serviceNames[0].text : "";
+  const serviceName = serviceNames?.[0].name
+  const textService = serviceNames?.[0].text
 
   //this is a boolean variable.True if there is any trend service
   const isServiceTrends = Object.values(subServices).some(
     (childObj) => childObj.isServiceTrend
   );
+  console.log(isServiceTrends);
 
   return (
     <div>

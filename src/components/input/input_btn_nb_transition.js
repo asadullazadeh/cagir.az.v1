@@ -66,16 +66,17 @@ const InputBtnNbTransition = ({ name }) => {
 
   const handleButtonClick = () => {
     setIsRotated(true);
-    console.log("button is clicked");
     console.log(enteredNumber.length);
     // if enteredNumber length is 10: +513852755, run sendNumberBySms()
     if (enteredNumber.length === 10) {
       sendNumberBySms();
     }
+    
 
     setTimeout(() => {
       setIsRotated(false);
     }, 1000); // Adjust the duration as per your requirement
+    window.location.reload();
   };
   /* ----------------- Api part to send the number by sms ----------------- */
   const [numberSentBySms, setNumberSentBySms] = useState(false);

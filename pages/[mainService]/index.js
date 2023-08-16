@@ -24,60 +24,82 @@ function Page() {
   const mainServiceUrl = router.query.mainService;
   console.log(mainServiceUrl);
   // we get the data of "mainService" service
-  const [mainServiceData, setMainServiceData] = useState({});
+
   // subServices for an individual main service.
-  const [subServices, setSubServices] = useState([]);
   //
   const [parentId, setParentId] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.post(
-          "https://api.cagir.az/api/service/service-name",
-          { titleUrl: mainServiceUrl },
-          config
-        );
-        setMainServiceData(response.data.result);
 
+// 
+const [mainServiceData, setMainServiceData] = useState({});
+  useEffect(() => {
+    axios
+      .post("https://api.cagir.az/api/service/service-name",
+      { titleUrl: mainServiceUrl },
+       {
+        headers: {
+          "Accept-Language": "az",
+        },
+      })
+      .then((response) => {
+        // Handle the response data
+        setMainServiceData(response.data.result)
         const newParentId = response.data.result.id;
         console.log(newParentId);
         setParentId(newParentId);
-
-        const subService = await axios.get(
-          `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${newParentId}`,
-          config
-        );
-        setSubServices(subService.data.result);
-      } catch (error) {
+      })
+      .catch((error) => {
+        // Handle any errors
         console.error(error);
-      }
-    };
-    //need to recheck this condition
-    if (mainServiceUrl && !parentId) {
-      fetchData();
-    }
-  }, [config, mainServiceUrl, parentId]);
+      });
+  }, [mainServiceUrl]);
+  console.log(mainServiceData);
+  // 
+  const [subServices, setSubServices] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${mainServiceData.id}`,
+       {
+        headers: {
+          "Accept-Language": "az",
+        },
+      })
+      .then((response) => {
+        // Handle the response data
+        setSubServices(response.data.result)
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  }, [mainServiceData]);
+  console.log(parentId);
+
   console.log(subServices);
   console.log(mainServiceData);
   const { id, someProperty, serviceNames } = mainServiceData;
-  const serviceName =
-    serviceNames && serviceNames.length > 0 ? serviceNames[0].name : "";
-  const textService =
-    serviceNames && serviceNames.length > 0 ? serviceNames[0].text : "";
+
+  const serviceName = serviceNames?.[0].name
+  const textService = serviceNames?.[0].text
+
   return (
     <div>
       {/* badge */}
       <div className="mt-[30px] lg:mt-[60px]">
         <Badge />
       </div>
-      <SubServiceTrend />
+      <SubServiceTrend 
+      mainServiceData={mainServiceData}
+      subServices={subServices}
+       />
       <div
         className="flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
         lg:gap-y-[105px] xl:gap-y-[120px] 2xl:gap-y-[135px]
          pt-[30px] sm:pt-[36px] md:pt-[42px] lg:pt-[48px] xl:pt-[54px] 2xl:pt-[60px] 
          pb-[60px] sm:pb-[75px] md:pb-[90px] lg:pb-[105px] xl:pb-[120px] 2xl:pb-[135px]"
       >
-        <SubServiceNoTrend />
+        <SubServiceNoTrend
+        mainServiceData={mainServiceData}
+        subServices={subServices} />
         {/* <Reels /> */}
         {/* <Banner /> */}
         <Reyler parentId={parentId} />
