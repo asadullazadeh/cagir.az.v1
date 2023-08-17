@@ -8,7 +8,7 @@ import Sifaris from "@/src/components/sifaris";
 function Sifaris_yarat() {
   return (
     <div className="">
-      {/* <Sifaris /> */}
+      <Sifaris />
     </div>
   );
 }

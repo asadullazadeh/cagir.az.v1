@@ -9,7 +9,9 @@ import SearchInputMd from "@/src/components/input/input_search_md";
 function Blogs() {
   const [size, setSize] = useState(0);
   const [responseData, setResponseData] = useState([]);
+  const [seeMoreBtnIsVisible, setseeMoreBtnIsVisible] = useState(true);
 
+  // 
   useEffect(() => {
     axios
       .get(`https://api.cagir.az/api/post/getAll?size=${size}`, {
@@ -31,18 +33,65 @@ function Blogs() {
   const handleClick = () => {
     setSize((prevSize) => prevSize + 1);
   };
+  //
+  const [deleteBtnIsClicked, setDeleteBtnIsClicked] = useState(false);
 
-  // console.log(responseData);
+  // Callback function to receive delete btn is cliked data from the child component
+  const receiveDataFromChild = (data) => {
+    setDeleteBtnIsClicked(data);
+  };
+
+  // ekranda gorunen updatedBlogList.It updates in each search
+  const [updatedBlogList, setUpdatedBlogList] = useState(responseData);
+  // the value that will search elements
+  const [searchVal, setSearchVal] = useState("");
+  useEffect(() => {
+    const filteredArray = responseData.filter((obj) => {
+      const keys = Object.keys(obj);
+      return (
+        obj.titleUrl.toLowerCase().includes(searchVal.toLowerCase()) ||
+        obj.postNames[0].shortDescription
+          .toLowerCase()
+          .includes(searchVal.toLowerCase())
+      );
+    });
+
+    if (searchVal.length > 0 && deleteBtnIsClicked === true) {
+      setUpdatedBlogList(responseData);
+    } else if (searchVal.length > 0 && deleteBtnIsClicked === false) {
+      setUpdatedBlogList(filteredArray);
+    } else {
+      setUpdatedBlogList(responseData);
+    }
+    console.log(searchVal);
+
+    if (filteredArray.length < 6) {
+      setseeMoreBtnIsVisible(false);
+    } else {
+      setseeMoreBtnIsVisible(true);
+    }
+    console.log(filteredArray.length);
+  }, [setseeMoreBtnIsVisible, deleteBtnIsClicked, searchVal, responseData]); // Only run this effect when searchVal changes
+
+  function handleInputChange(event) {
+    const inputValue = event.target.value;
+    setSearchVal(inputValue);
+  }
+
 
   return (
     <div className="py-[15px] lg:py-[30px]">
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Bloq</h2>
       <div className="flex justify-center">
-        <SearchInputMd />
+        <SearchInputMd
+          onChange={handleInputChange}
+          value={searchVal}
+          sendDataToParent={receiveDataFromChild}
+        />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
-        {Object.keys(responseData).map((childObjectName, index) => {
+        {Object.keys(updatedBlogList).map((childObjectName, index) => {
           const { shortDescription, postId, title } =
             responseData[childObjectName].postNames[0];
           const {
@@ -55,8 +104,8 @@ function Blogs() {
             insertDate,
             categoryName,
             category,
-          } = responseData[childObjectName];
-          // console.log(category);
+          } = updatedBlogList[childObjectName];
+
           return (
             <div key={index}>
               <div className="drop-shadow-card lg:drop-shadow-none hover:drop-shadow-card transition duration-300 bg-white p-[15px] sm:p-[18px] md:p-[21px] lg:p-[24px] lx:p-[27px] 2xl:p-[30px] rounded-[20px] 2xl:rounded-[25px]">
@@ -126,7 +175,9 @@ function Blogs() {
 
       <div
         onClick={handleClick}
-        className="flex items-center justify-center max-w-[155px] mx-auto rounded-[25px] mt-[15px] lg:mt-[30px]"
+        className={`flex items-center justify-center max-w-[155px] mx-auto rounded-[25px] mt-[15px] lg:mt-[30px] ${
+          seeMoreBtnIsVisible ? "" : "hidden"
+        }`}
       >
         <PrimaryOutlineSmBtn btnName="Daha çox gör" />
       </div>

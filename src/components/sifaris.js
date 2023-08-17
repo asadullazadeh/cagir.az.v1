@@ -51,7 +51,7 @@ function Sifaris({
 
   /* ----------------- mainServices functionality ----------------- */
   const [selectedMain, setSelectedMain] = useState(
-    defaultMain.serviceNames?.[0].name
+    defaultMain ? defaultMain.serviceNames?.[0].name : ""
   );
   const [getMainServices, setgetMainServices] = useState([]);
   const handleMainSelect = (mainService) => {
@@ -89,13 +89,15 @@ function Sifaris({
   // console.log(selectedMainService.id);
   // passing selectedMain to the index page
   useEffect(() => {
-    // Call the callback function with the new value
-    onSelectedMainChange(selectedMain);
+    if (typeof onSelectedMainChange === 'function') {
+      // Call the callback function with the new value
+      onSelectedMainChange(selectedMain);
+    }
   }, [onSelectedMainChange, selectedMain]);
 
   /* ------------------ subServices functionality ----------------- */
   const [selectedSub, setSelectedSub] = useState(
-    defaultSub.serviceNames?.[0].name
+    defaultSub ? defaultSub.serviceNames?.[0].name : ""
   );
   const handleSubSelect = (subService) => {
     setSelectedSub(subService);
@@ -121,7 +123,6 @@ function Sifaris({
         console.error(error);
       });
   }, [selectedMainService.id]);
-  console.log(defaultSub.serviceNames?.[0].name);
   const findSubInfoByName = (subServices, name) => {
     const subService =
       subServices.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
@@ -145,10 +146,10 @@ function Sifaris({
 
   // Use useEffect to call the callback whenever subUrlToMainPage changes
   useEffect(() => {
-    // if (typeof sendSubUrl === "function") {
+    if (typeof sendSubUrl === "function") {
     sendSubUrl(selectedSubNameUrl);
     setSubUrlToMainPage(selectedSubNameUrl);
-    // }
+    }
   }, [sendSubUrl, selectedSubNameUrl]);
 
   console.log(defaultSub?.serviceNames?.[0]?.name);

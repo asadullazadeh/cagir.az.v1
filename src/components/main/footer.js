@@ -55,7 +55,9 @@ const Footer = () => (
 
             {/* 1st column:3rd element */}
             {/* Sosial sebekeler insta, fb, linkedin */}
+
             <SocialNetworks classNames="flex flex-row justify-center lg:justify-start space-x-[25px]" />
+
             {/* 1st column:4th element */}
             <li className="flex justify-center lg:justify-start">
               <Link
@@ -117,7 +119,7 @@ const Footer = () => (
             </li>
             {/* <!-- 2nd column:6th --> */}
             <li className="hover:text-black transition duration-300 ">
-              <Link href="#">Xidmətlər</Link>
+              <Link href="/xidmet">Xidmətlər</Link>
             </li>
           </ul>
         </div>

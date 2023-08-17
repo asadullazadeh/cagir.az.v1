@@ -3,6 +3,7 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import views from "@/icons/bloq/views.svg";
+import SearchInputMd from "@/src/components/input/input_search_md";
 
 
 function Xidmet() {
@@ -24,15 +25,54 @@ function Xidmet() {
         console.error(error);
       });
   }, []);
-  console.log(responseData);
+
+console.log(responseData);
+  // 
+  const [deleteBtnIsClicked, setDeleteBtnIsClicked] = useState(false);
+
+  // ekranda gorunen updatedXidmetList.It updates in each search
+  const [updatedXidmetList, setUpdatedXidmetList] = useState(responseData);
+  // the value that will search elements
+  const [searchVal, setSearchVal] = useState("");
+  useEffect(() => {
+    const filteredArray = responseData.filter((obj) => {
+      const keys = Object.keys(obj);
+      return (
+        obj.titleUrl.toLowerCase().includes(searchVal.toLowerCase()) ||
+        obj.serviceInfoNames[0].title
+          .toLowerCase()
+          .includes(searchVal.toLowerCase())
+      );
+    });
+
+    if (searchVal.length > 0 && deleteBtnIsClicked === true) {
+      setUpdatedXidmetList(responseData);
+    } else if (searchVal.length > 0 && deleteBtnIsClicked === false) {
+      setUpdatedXidmetList(filteredArray);
+    } else {
+      setUpdatedXidmetList(responseData);
+    }
+    console.log(searchVal);
+
+    console.log(filteredArray.length);
+  }, [deleteBtnIsClicked,searchVal, responseData]); // Only run this effect when searchVal changes
+
+  function handleInputChange(event) {
+    const inputValue = event.target.value;
+    setSearchVal(inputValue);
+  }
+
   return (
     <div className="py-[15px] lg:py-[30px]">
-      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Xidmətlər</h2>
-      {/* <div className="flex justify-center">
-        <SearchInputMd />
-      </div> */}
+      <h2 className="my-h2 mb-[15px] text-center lg:mb-[30px]">Xidmətlər</h2>
+      <div className="flex flex-col items-center">
+      <SearchInputMd
+          onChange={handleInputChange}
+          value={searchVal}
+          // sendDataToParent={receiveDataFromChild}
+        />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
-        {responseData.map(({index, imageUrl, insertDate, serviceInfoNames, id,viewCount,titleUrl }) => (
+        {updatedXidmetList.map(({index, imageUrl, insertDate, serviceInfoNames, id,viewCount,titleUrl }) => (
           <div key={index}>
             <div className="drop-shadow-card lg:drop-shadow-none hover:drop-shadow-card transition duration-300 bg-white p-[15px] sm:p-[18px] md:p-[21px] lg:p-[24px] lx:p-[27px] 2xl:p-[30px] rounded-[20px] 2xl:rounded-[25px]">
               <Link href={`/xidmet/${titleUrl}`}>
@@ -96,6 +136,7 @@ function Xidmet() {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );

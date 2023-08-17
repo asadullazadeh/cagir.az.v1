@@ -1,25 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const SearchInputMd = ({ onChange }) => {
+const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const [inputValue, setInputValue] = useState("");
-
-  const handleChange = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  const handleDelete = () => {
-    setInputValue("");
-  };
-
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
     setIsClicked(!isClicked);
   };
+
+  const [deleteBtnClicked, setDeleteBtnClicked] = useState(false);
+
+  const handleDelete = () => {
+    setInputValue(value)
+    if(inputValue.length>0) {
+      setDeleteBtnClicked(true);
+    }else{
+      setDeleteBtnClicked(false)
+    }
+    
+    // 
+  };
+  console.log(value);
+  
+
+  useEffect(() => {
+    // if (inputValue.length > 0 && deleteBtnClicked) {
+      // setDeleteBtnClicked(false);
+      if(typeof sendDataToParent=== "function"){
+        sendDataToParent(deleteBtnClicked);
+      }else{
+        "sendDataToParent is not a function"
+      }
+      
+    // }
+  }, [deleteBtnClicked, setDeleteBtnClicked, sendDataToParent]);
+  console.log(deleteBtnClicked);
 
   return (
     <div
@@ -44,12 +63,12 @@ const SearchInputMd = ({ onChange }) => {
           focus:outline-none focus:ring-white px-[10px]"
           type="text"
           placeholder="Axtar"
-          value={inputValue}
-          onChange={handleChange}
+          value={value}
+          onChange={onChange}
         />
       </div>
-      {inputValue.length > 0 && (
-        <div onClick={handleDelete}>
+      
+        {/* <div onClick={handleDelete} className={`${deleteBtnClicked || value>0 ? 'hidden' : ""}`}>
           <svg
             width="14"
             height="16"
@@ -68,8 +87,8 @@ const SearchInputMd = ({ onChange }) => {
               fill="#F64242"
             />
           </svg>
-        </div>
-      )}
+        </div> */}
+
     </div>
   );
 };
