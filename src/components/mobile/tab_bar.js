@@ -12,7 +12,7 @@ const TabBar = () => (
       <div className="grid h-full w-inline-block grid-cols-4 mx-auto font-medium">
         {/* Call icon */}
         <Link
-          href="tel:994703482606"
+          href="tel:+994703482606"
           className="inline-flex flex-col items-center justify-center"
         >
           <Image src={phone} alt="phone_icon" />

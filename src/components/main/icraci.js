@@ -124,7 +124,7 @@ function Icraci({ parentId }) {
           </div>
         ))}
         // disableSlideInfo={false}
-        disableDotsControls
+        // disableDotsControls
         animationEasingFunction="ease"
         disableButtonsControls
         paddingLeft={0}
@@ -134,14 +134,16 @@ function Icraci({ parentId }) {
         touchMoveDefaultEvents={false}
       />
       <div className="flex flex-row gap-x-[20px] justify-center">
-        {Array.from({ length: sliderCount }, (_, index) => (
-          <React.Fragment key={index}>
-            <div><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-dot" viewBox="0 0 16 16">
-  <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
-</svg></div>
-            <span className="ml-2" /> {/* Add a margin-left of 2px */}
-          </React.Fragment>
-        ))}
+        {
+//         Array.from({ length: sliderCount }, (_, index) => (
+//           <React.Fragment key={index}>
+//             <div><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-dot" viewBox="0 0 16 16">
+//   <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+// </svg></div>
+//             <span className="ml-2" /> {/* Add a margin-left of 2px */}
+//           </React.Fragment>
+//         ))
+        }
       </div>
     </div>
   );

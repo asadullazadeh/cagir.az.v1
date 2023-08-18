@@ -50,7 +50,7 @@ function Blogs() {
       const keys = Object.keys(obj);
       return (
         obj.titleUrl.toLowerCase().includes(searchVal.toLowerCase()) ||
-        obj.postNames[0].shortDescription
+        obj.postNames[0].title
           .toLowerCase()
           .includes(searchVal.toLowerCase())
       );
@@ -78,7 +78,7 @@ function Blogs() {
     setSearchVal(inputValue);
   }
 
-
+console.log(responseData);
   return (
     <div className="py-[15px] lg:py-[30px]">
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Bloq</h2>

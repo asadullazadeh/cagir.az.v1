@@ -38,9 +38,15 @@ export default function Home(props) {
         <Reyler parentId={1} />
         <Icracilar parentId={1} />
         <Musteriler />
+        <div className="hidden lg:block">
         <Suallar />
-        {/* <Reels /> */}
+        </div>
+        <div className="hidden lg:block">
         <Deyerler />
+        </div>
+        
+        {/* <Reels /> */}
+        
         <LastPostedBlogs />
       </div>
     </>

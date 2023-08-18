@@ -119,7 +119,7 @@ export default function NavbarDesktop() {
             {/* 2nd navbar-1st part */}
             <ul
               className=" flex flex-row  
-           items-center font-semibold text-[10px] xl:text-[12px] 2xl:text-[14px] leading-[21px] text-gray500 space-x-[35px] xl:space-x-[40px]"
+           items-center font-semibold text-[10px] xl:text-[12px] 2xl:text-[14px] leading-[21px] text-gray500 space-x-[35px] lg:space-x-[40px] xl:space-x-[50px] 2xl:space-x-[70px]"
             >
               <li>
                 <Link passHref href="/temizlik-xidmeti">

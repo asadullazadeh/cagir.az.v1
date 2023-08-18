@@ -162,7 +162,7 @@ const Footer = () => (
         </div>
 
         {/* 4th column-Yeniliklerden xeberdar ol */}
-        <div className="flex flex-col col-span-2 lg:col-span-1 justify-center lg:justify-start order-3 lg:order-4 mx-auto lg:mx-0">
+        <div className="flex flex-col col-span-2 lg:col-span-1 justify-center items-center lg:items-start lg:justify-start order-3 lg:order-4 lg:mx-0">
           {/* 4th column:title */}
 
           <h2 className="lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500 text-left">

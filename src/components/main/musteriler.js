@@ -41,7 +41,13 @@ function Musteriler() {
   return (
     <div>
       <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">Müştərilər</h2>
-
+      <div className="grid place-items-end">
+        <Image
+          className="w-[22px] lg:w-[28px] h-[14px] lg:h-[24px]"
+          src={arrow}
+          alt="arrow_icon"
+        />
+      </div>
       <AliceCarousel
         // activeIndex = {1}
         animationDuration={1300}
@@ -74,7 +80,7 @@ function Musteriler() {
         // disableSlideInfo={false}
         animationEasingFunction="ease"
         disableButtonsControls
-        disableDotsControls
+        // disableDotsControls
         paddingLeft={0}
         paddingRight={0}
         keyboardNavigation
@@ -82,14 +88,16 @@ function Musteriler() {
         touchMoveDefaultEvents={false}
       />
       <div className="flex flex-row gap-x-[20px] justify-center ">
-        {Array.from({ length: sliderCount }, (_, index) => (
-          <React.Fragment key={index}>
-            <div><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-dot" viewBox="0 0 16 16">
-  <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
-</svg></div>
-            <span className="ml-2" /> {/* Add a margin-left of 2px */}
-          </React.Fragment>
-        ))}
+        {
+//         Array.from({ length: sliderCount }, (_, index) => (
+//           <React.Fragment key={index}>
+//             <div><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-dot" viewBox="0 0 16 16">
+//   <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+// </svg></div>
+//             <span className="ml-2" /> {/* Add a margin-left of 2px */}
+//           </React.Fragment>
+//         ))
+        }
       </div>
     </div>
   );

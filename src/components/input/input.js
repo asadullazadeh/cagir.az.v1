@@ -22,20 +22,22 @@ const InputCustomized = ({
     setInputValue(newValue);
     setInputId(inputTextId);
 
-    // if (typeof updateInputTextId === "function" && typeof updateInputText === "function" ) {
+    if (typeof updateInputText === "function" ) {
     // updateInputTextId(inputTextId); // Call the function only if it exists
     updateInputText(inputTextId, newValue);
-    // }
+    }
+    console.log(newValue);  
     // onInputChange(newValue,label);
   };
 
-  // console.log(inputId);
+  // console.log(newValue);
 
   const handleOutsideClick = (event) => {
     if (inputRef.current && !inputRef.current.contains(event.target)) {
       setIsClicked(false);
     }
   };
+  console.log();
   return (
     <div className="flex flex-col gap-y-[5px]">
       <p className="hidden lg:flex font-semibold text-[12px] leading-[18px] text-black500">

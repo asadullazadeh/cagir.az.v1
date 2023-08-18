@@ -89,7 +89,7 @@ function Sifaris({
   // console.log(selectedMainService.id);
   // passing selectedMain to the index page
   useEffect(() => {
-    if (typeof onSelectedMainChange === 'function') {
+    if (typeof onSelectedMainChange === "function") {
       // Call the callback function with the new value
       onSelectedMainChange(selectedMain);
     }
@@ -147,8 +147,8 @@ function Sifaris({
   // Use useEffect to call the callback whenever subUrlToMainPage changes
   useEffect(() => {
     if (typeof sendSubUrl === "function") {
-    sendSubUrl(selectedSubNameUrl);
-    setSubUrlToMainPage(selectedSubNameUrl);
+      sendSubUrl(selectedSubNameUrl);
+      setSubUrlToMainPage(selectedSubNameUrl);
     }
   }, [sendSubUrl, selectedSubNameUrl]);
 
@@ -214,11 +214,7 @@ function Sifaris({
     axios
       .post(
         "https://api.cagir.az/api/serviceCriteria/getAllWithParent",
-        [
-          isSub2ElementsExist
-            ? selectedSub2Service.id
-            : selectedSubService.id,
-        ],
+        [isSub2ElementsExist ? selectedSub2Service.id : selectedSubService.id],
         {
           headers: {
             "Accept-Language": "az",
@@ -233,7 +229,7 @@ function Sifaris({
         // Handle any errors
         console.error(error);
       });
-  }, [isSub2ElementsExist,selectedSubService.id, selectedSub2Service.id]);
+  }, [isSub2ElementsExist, selectedSubService.id, selectedSub2Service.id]);
   console.log(getServiceCriterias);
 
   /* --------------------- Multinumber input functionality-FilterType=5 --------------------- */
@@ -327,7 +323,7 @@ function Sifaris({
   }, [plusMinusId, plusMinusValue]);
   //
   /* --------------------- Text input functionality-FilterType=2 --------------------- */
-  const [inputTextValue, setInputTextValue] = useState(0);
+    const [inputTextValue, setInputTextValue] = useState(0);
   const [inputTextId, setInputTextId] = useState("");
   const [inputTextObject, setInputTextObject] = useState({});
 
@@ -350,7 +346,7 @@ function Sifaris({
   // const handleCriteriaIdForInputText = (id) => {
   //   setInputTextId(id);
   // };
-  // console.log(inputTextObject);
+  console.log(inputTextValue);
 
   /* --------------------- Radio button functionality-FilterType=4 --------------------- */
   const [selectedRadioName, setSelectedRadioName] = useState(null);
@@ -466,7 +462,6 @@ function Sifaris({
   const handlePriceUpdate = (value) => {
     setPriceAfterPromo(value); // Update the receivedValue state in the parent component
   };
-  
 
   // when selectMain is updated,elements which go to calculate price become empty
   useEffect(() => {
@@ -475,7 +470,7 @@ function Sifaris({
     setRadioBtnObject([]);
     setPlusMinusArray([]);
     setInputTextObject({});
-    setPriceAfterPromo(0)
+    setPriceAfterPromo(0);
     setPriceBeforePromo(0); // Set priceBeforePromo to 0 when selectMain,selectedSub,selectedSub2 is updated
   }, [selectedMain, selectedSub, selectedSub2]);
 
@@ -585,12 +580,17 @@ function Sifaris({
     <div>
       <div
         className={`flex flex-col lg:flex-row lg:gap-x-[30px] xl:gap-x-[40px] 2xl:gap-x-[60px]
-      lg:pt-[30px] lg:pb-[90px] w-full ${!isOrderPassed ? "" : "hidden"}`}
+      pb-[20px] lg:pt-[30px] lg:pb-[90px] w-full ${
+        !isOrderPassed ? "" : "hidden"
+      }`}
       >
         {/* Left side of first part in Sifaris */}
         <div className="z-40 sticky top-[20px] lg:top-[110px] lg:h-screen overflow-y-auto flex flex-col lg:w-1/3 xl:w-1/4 gap-y-[25px] lg:gap-y-[25px] ">
           <div className="z-20 sticky top-[0px] bg-white py-[10px] px-[15px] mt-[10px] mb-[20px] lg:m-0 lg:p-0 shadow-dropblack25 lg:shadow-none rounded-[10px]">
-            <Qiymet priceBeforePromo={priceBeforePromo} priceAfterPromo={priceAfterPromo} />
+            <Qiymet
+              priceBeforePromo={priceBeforePromo}
+              priceAfterPromo={priceAfterPromo}
+            />
           </div>
           {/* Toggle part is only  desktop */}
           {selectedMainService.text ? (
@@ -623,7 +623,7 @@ function Sifaris({
           </div>
           {/* criterias example */}
 
-          <div className="flex flex-col pt-[30px]">
+          <div className="flex flex-col pt-[30px] gap-y-[30px]">
             {getServiceCriterias.map(
               ({ serviceCriteria, serviceCriteries, index }) => (
                 <div key={index}>
@@ -689,14 +689,14 @@ function Sifaris({
                       )
                     )}
                   </div>
-                  <div className="flex flex-row gap-x-[5px] py-[15px] lg:py-0 lg:order-2">
+                  {/* <div className="flex flex-row gap-x-[5px] py-[15px] lg:py-0 lg:order-2">
                     <button>
                       <Image src={info_btn} alt="info_btn" />
                     </button>
                     <p className="font-medium text-[10px] leading-[15px] text-gray900">
                       50-101kv seçdiyinizə görə + 20AZN əlavə olundu
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               )
             )}
@@ -740,11 +740,11 @@ function Sifaris({
                   />
                 </div>
                 <Download_image />
-                <Promocode 
-                serviceId={selectedMainService.id}
-                priceBeforePromo={priceBeforePromo}
-                onPromoPriceChange={handlePriceUpdate}
-                 />
+                <Promocode
+                  serviceId={selectedMainService.id}
+                  priceBeforePromo={priceBeforePromo}
+                  onPromoPriceChange={handlePriceUpdate}
+                />
                 <PaymentMethod />
               </div>
               {/* map section for desktop */}

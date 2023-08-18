@@ -1,7 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import show_pswrd from "@/icons/show_pswrd.svg";
+import close_pswrd from "@/icons/close_pswrd.svg";
+const InputPassword = ({ label, onPasswordChange, changePswrdClasses}) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState("");
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
-const InputPassword = ({label}) => {
   const inputRef = useRef(null);
   const [isClicked, setIsClicked] = useState(false);
 
@@ -22,6 +30,15 @@ const InputPassword = ({label}) => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
+
+  useEffect(() => {
+    if(typeof onPasswordChange === "function"){
+    // Invoke the callback function whenever the password changes
+    onPasswordChange(password);
+  }
+  }, [password, onPasswordChange]);
+
+  console.log(password);
 
   return (
     <div className="flex flex-col gap-y-[5px]">
@@ -44,31 +61,39 @@ const InputPassword = ({label}) => {
             </label>
           )}
           <input
-            type="text"
+            type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             id="inpt"
             name="inpt"
             className="hidden lg:block  w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0"
             placeholder={isClicked ? "" : ""}
             onClick={handleClick}
           />
+
           <input
-            type="text"
+            type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             id="inpt"
             name="inpt"
             className="block lg:hidden w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0"
             placeholder={isClicked ? "" : label}
             onClick={handleClick}
           />
-          
+          <Image
+            alt={showPassword ? "Hide" : "Show"}
+            src={showPassword ? close_pswrd : show_pswrd}
+            onClick={togglePasswordVisibility}
+            className=""
+          />
         </div>
       </div>
       {/* Parolu deyis */}
-      <div className="hidden lg:flex justify-end">
-        <Link href="/">
-            <p className="font-semibold text-[14px] leading-[21px] text-cagiraz">
+      <div className={`${changePswrdClasses}`}>
+          <p className="font-semibold text-[14px] leading-[21px] text-cagiraz">
             Parolu dəyiş
-            </p>
-        </Link>
+          </p>
       </div>
     </div>
   );

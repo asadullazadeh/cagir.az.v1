@@ -59,7 +59,7 @@ function BlogCategory() {
       const keys = Object.keys(obj);
       return (
         obj.titleUrl.toLowerCase().includes(searchVal.toLowerCase()) ||
-        obj.postNames[0].shortDescription
+        obj.postNames[0].title
           .toLowerCase()
           .includes(searchVal.toLowerCase())
       );
