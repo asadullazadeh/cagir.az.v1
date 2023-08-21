@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import { useRouter } from 'next/router';
+import axios from 'axios'
 import Image from "next/image";
 import Link from "next/link";
 import InputCustomized from "@/src/components/input/input";
@@ -11,6 +13,68 @@ import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn
 import client from "@/public/client.jpg";
 
 function Profil_settings() {
+  const [token, setToken] = useState('');
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
+
+  /* --------------------------------- sign out -------------------------------- */
+const router = useRouter();
+
+const handleSignOut = () => {
+  localStorage.removeItem('token');
+  // Redirect to the login page
+  router.push('/qeydiyyat'); // Replace with your login route
+};
+
+/* --------------------------------- PROFILE DATA API -------------------------------- */
+  const [userData, setUserData] = useState([]);
+  useEffect(() => {
+    if (token) {
+      // Include the token in the request headers
+      const headers = {
+        Authorization: `Bearer ${token}`,
+        "Accept-Language": "az"
+      };
+
+      axios.get('https://api.cagir.az/api/user/getCurrentUser', { headers })
+        .then((response) => {
+          setUserData(response.data.result);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [token]);
+
+/* --------------------------------- PROFILE ORDER HISTORY -------------------------------- */
+const [userOrder, setUserOrder] = useState([]);
+  useEffect(() => {
+    if (token) {
+      // Include the token in the request headers
+      const headers = {
+        Authorization: `Bearer ${token}`,
+        "Accept-Language": "az"
+      };
+
+      axios.get('https://api.cagir.az/api/user/getCurrentUser', { headers })
+        .then((response) => {
+          setUserOrder(response.data.result);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [token]);
+  console.log(userData);
+
+
+
+  
   return (
     <div className="flex flex-col items-center pt-[30px] pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px]">
       <h2 className="my-h2 text-center pb-[15px] lg:pb-[90px]">
@@ -25,7 +89,7 @@ function Profil_settings() {
             className="rounded-full object-cover object-center w-[80px] h-[80px] lg:w-[120px] lg:h-[120px]"
           />
           <h5 className="my-h5 pt-[5px] pb-[15px] lg:pt-[5px] lg:pb-[20px]">
-            Aygun Mammadova
+            {userData.firstName + " " + userData.lastName}
           </h5>
           <div className="hidden lg:flex flex-col gap-y-[30px] lg:pb-[30px]">
             <button
@@ -60,6 +124,7 @@ function Profil_settings() {
       <div className="block lg:hidden pt-[30px] space-y-[30px] w-full border-t border-[#EAEAEA]">
         {/* Profilden cix button */}
         <button
+        onClick={handleSignOut}
           className="w-full lg:w-auto bg-white border-2 border-[#F64242] rounded-[30px] py-[10px] px-[26px]
                       font-extrabold text-[#F64242] text-[14px] leading-[21px] transition duration-400 transform hover:-translate-y-[5px]
                       "

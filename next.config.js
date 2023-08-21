@@ -6,7 +6,7 @@ const nextConfig = {
     // unoptimized: true,
     domains: [
       "api.cagir.az",
-      // "api.cagir.aznull",
+      "api.cagir.aznull",
       "api.cagir.azundefined",
       "photos.google.com",
       "images.unsplash.com",

@@ -23,7 +23,7 @@ const InputBtnNbTransition = ({ name }) => {
   const handleOptionClick = (option, index) => {
     setPhonePrefix(phonePrefixes[index]);
     setIsOpen(false);
-    console.log(index);
+    // console.log(index);
   };
   // console.log(phonePrefix);
   //
@@ -61,12 +61,12 @@ const InputBtnNbTransition = ({ name }) => {
     // Whenever phonePrefix or inputValue changes, update enteredNumber
     handleInputChange();
   }, [phonePrefix]);
-  console.log(enteredNumber);
+  // console.log(enteredNumber);
   //
 
   const handleButtonClick = () => {
     setIsRotated(true);
-    console.log(enteredNumber.length);
+    // console.log(enteredNumber.length);
     // if enteredNumber length is 10: +513852755, run sendNumberBySms()
     if (enteredNumber.length === 10) {
       sendNumberBySms();

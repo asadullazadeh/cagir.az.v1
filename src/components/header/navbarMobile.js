@@ -1,18 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/public/logo_cagiraz.png";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import burger_menu from "@/icons/header/burger_menu.svg";
 import close from "@/icons/header/close.svg";
 import LangSection from "@/src/components/others/lang_section";
 import search1 from "@/icons/header/search1.svg";
 
-export default function NavbarMobile() {
+export default function NavbarMobile({ifSearchIconClicked}) {
   const [navbar, setNavbar] = useState(false);
-
   const handleClick = () => {
     setNavbar(false);
   };
+
+  // if search input is clicked
+  const [searchIconIsClicked, setSearchIconIsClicked] = useState(false)
+
+  const handleSearchInput = () => {
+    setSearchIconIsClicked(true)
+    console.log('zezezezezez');
+  };
+  useEffect(() => {
+    ifSearchIconClicked(searchIconIsClicked)
+  },[ifSearchIconClicked,searchIconIsClicked])
+  console.log(searchIconIsClicked);
+
 
   return (
     <>
@@ -31,10 +43,10 @@ export default function NavbarMobile() {
             {/* HAMBURGER BUTTON FOR MOBILE */}
             <div className="flex flex-row items-center">
               {/* search button */}
-              <div>
+              <button onClick={handleSearchInput}>
                 {" "}
                 <Image src={search1} alt="search_alt_1" className=" " />
-              </div>
+              </button>
               {/* language section */}
               <div className="pl-[15px]">
                 {" "}

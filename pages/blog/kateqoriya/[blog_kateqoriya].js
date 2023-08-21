@@ -10,22 +10,23 @@ import SearchInputMd from "@/src/components/input/input_search_md";
 function BlogCategory() {
   const [size, setSize] = useState(0);
   const [responseData, setResponseData] = useState([]);
-  const [seeMoreBtnIsVisible,setseeMoreBtnIsVisible] = useState(true)
+  const [seeMoreBtnIsVisible, setseeMoreBtnIsVisible] = useState(true);
 
   const router = useRouter();
   const { query } = router;
   const { blog_kateqoriya } = query;
-  console.log(blog_kateqoriya,size);
-
-  
+  console.log(blog_kateqoriya, size);
 
   useEffect(() => {
     axios
-      .get(`https://api.cagir.az/api/post/getAll?size=${size}&categoryName=${blog_kateqoriya}`, {
-        headers: {
-          "Accept-Language": "az",
-        },
-      })
+      .get(
+        `https://api.cagir.az/api/post/getAll?size=${size}&categoryName=${blog_kateqoriya}`,
+        {
+          headers: {
+            "Accept-Language": "az",
+          },
+        }
+      )
       .then((response) => {
         const newData = response.data.result;
         setResponseData((prevData) => [...prevData, ...newData]);
@@ -34,69 +35,64 @@ function BlogCategory() {
         // Handle any errors
         console.error(error);
       });
-  }, [size,blog_kateqoriya]);
+  }, [size, blog_kateqoriya]);
 
   const handleClick = () => {
     setSize((prevSize) => prevSize + 1);
   };
-  // 
+  //
   const [deleteBtnIsClicked, setDeleteBtnIsClicked] = useState(false);
   // Callback function to receive data from the child component
   const receiveDataFromChild = (data) => {
     setDeleteBtnIsClicked(data);
   };
-  
+
   // ekranda gorunen updatedBlogList.It updates in each search
   const [updatedBlogList, setUpdatedBlogList] = useState(responseData);
   // the value that will search elements
   const [searchVal, setSearchVal] = useState("");
   useEffect(() => {
-    
-
     const filteredArray = responseData.filter((obj) => {
       const keys = Object.keys(obj);
       return (
         obj.titleUrl.toLowerCase().includes(searchVal.toLowerCase()) ||
-        obj.postNames[0].title
-          .toLowerCase()
-          .includes(searchVal.toLowerCase())
+        obj.postNames[0].title.toLowerCase().includes(searchVal.toLowerCase())
       );
     });
 
-    if (searchVal.length > 0 && deleteBtnIsClicked === true ) {
+    if (searchVal.length > 0 && deleteBtnIsClicked === true) {
       setUpdatedBlogList(responseData);
-    } else if(searchVal.length > 0 && deleteBtnIsClicked === false){
+    } else if (searchVal.length > 0 && deleteBtnIsClicked === false) {
       setUpdatedBlogList(filteredArray);
     } else {
       setUpdatedBlogList(responseData);
     }
     console.log(searchVal);
 
-    if(filteredArray.length < 6){
-      setseeMoreBtnIsVisible(false)
-    }else{
-      setseeMoreBtnIsVisible(true)
+    if (filteredArray.length < 6) {
+      setseeMoreBtnIsVisible(false);
+    } else {
+      setseeMoreBtnIsVisible(true);
     }
     console.log(filteredArray.length);
-  }, [setseeMoreBtnIsVisible,deleteBtnIsClicked,searchVal, responseData]); // Only run this effect when searchVal changes
+  }, [setseeMoreBtnIsVisible, deleteBtnIsClicked, searchVal, responseData]); // Only run this effect when searchVal changes
 
   function handleInputChange(event) {
     const inputValue = event.target.value;
     setSearchVal(inputValue);
   }
 
-  
-console.log(seeMoreBtnIsVisible);
+  console.log(seeMoreBtnIsVisible);
 
   return (
     <div className="py-[15px] lg:py-[30px]">
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Bloq</h2>
       <div className="flex justify-center">
-      <SearchInputMd 
-        onChange={handleInputChange} 
-        value={searchVal}
-        sendDataToParent={receiveDataFromChild}
-         />
+        <SearchInputMd
+          onChange={handleInputChange}
+          value={searchVal}
+          sendDataToParent={receiveDataFromChild}
+        />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
@@ -136,9 +132,9 @@ console.log(seeMoreBtnIsVisible);
                     {insertDate.slice(0, 10)}
                   </p>
                   <div className="ml-auto border border-cagiraz rounded-lg">
-                      <p className="font-semibold	text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px] ">
-                        {categoryName}
-                      </p>
+                    <p className="font-semibold	text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px] ">
+                      {categoryName}
+                    </p>
                   </div>
                 </div>
                 <Link href={`/blog/${titleUrl}/${id}`}>
@@ -182,7 +178,9 @@ console.log(seeMoreBtnIsVisible);
 
       <div
         onClick={handleClick}
-        className={`flex items-center justify-center max-w-[155px] mx-auto rounded-[25px] mt-[15px] lg:mt-[30px] ${seeMoreBtnIsVisible ? "" :"hidden"}`}
+        className={`flex items-center justify-center max-w-[155px] mx-auto rounded-[25px] mt-[15px] lg:mt-[30px] ${
+          seeMoreBtnIsVisible ? "" : "hidden"
+        }`}
       >
         <PrimaryOutlineSmBtn btnName="Daha çox gör" />
       </div>

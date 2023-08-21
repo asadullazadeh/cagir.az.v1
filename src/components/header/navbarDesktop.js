@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/public/logo_cagiraz.png";
@@ -10,7 +11,20 @@ import wallet1 from "@/icons/header/wallet1.svg";
 import LangSection from "@/src/components/others/lang_section";
 import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
 
-export default function NavbarDesktop() {
+
+
+
+export default function NavbarDesktop({ifSearchIconClicked}) {
+  const [searchIconIsClicked, setSearchIconIsClicked] = useState(false)
+
+  const handleClick = () => {
+    setSearchIconIsClicked(true)
+  };
+  useEffect(() => {
+    ifSearchIconClicked(searchIconIsClicked)
+  },[ifSearchIconClicked,searchIconIsClicked])
+  console.log(searchIconIsClicked);
+  
   return (
     <>
       <header className="hidden lg:block ">
@@ -18,21 +32,21 @@ export default function NavbarDesktop() {
           {/* 1st navbar */}
           <div className="py-[12px] justify-between mx-auto items-center flex relative">
             {/* 1st navbar-left side-LOGO */}
-            <Link passHref href="/" className="">
+            <Link href="/" className="">
               <Image
                 src={logo}
                 alt="Cagir.az logo"
                 className="w-[106px] h-[27px]"
               />
-            </ Link>
+            </Link>
 
             {/* 1st navbar-right side */}
             <ul className="flex flex-row justify-center items-center space-x-[30px] h-full z-10">
               {/* search icon */}
               <li>
-                <Link className="group flex relative" href="/search">
-                  <span>
-                    <div className="relative group">
+                <div className="group flex relative">
+                  <button onClick={handleClick}>
+                    <div className="relative group" >
                       <Image
                         src={search}
                         alt="search_alt"
@@ -44,7 +58,7 @@ export default function NavbarDesktop() {
                         className="absolute top-0 left-0 opacity-0 transition duration-300 ease-in-out group-hover:opacity-100"
                       />
                     </div>
-                  </span>
+                  </button>
                   <span
                     className="mt-[8px] rounded-[5px] py-[4px] px-[6px] font-medium
                   text-[10px] leading-[15px] bg-black500 text-white group-hover:opacity-100 transition-opacity absolute left-1/2
@@ -52,7 +66,7 @@ export default function NavbarDesktop() {
                   >
                     Axtarış
                   </span>
-                </Link>
+                </div>
               </li>
 
               {/* wallet icon */}

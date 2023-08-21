@@ -30,7 +30,7 @@ const InputNumber = ({label,updatedInputNumberValue,changeNbrClasses}) => {
   }, []);
   return (
     <div className="flex flex-col gap-y-[5px]">
-      <p className="hidden lg:block font-semibold text-[12px] leading-[18px] text-black500">
+      <p className="hidden lg:block font-semibold text-[12px] leading-[18px] text-black500 pl-[15px]">
         {label}
       </p>
       <div className="inline-flex flex-col w-full">

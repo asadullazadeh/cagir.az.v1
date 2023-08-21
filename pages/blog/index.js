@@ -11,7 +11,7 @@ function Blogs() {
   const [responseData, setResponseData] = useState([]);
   const [seeMoreBtnIsVisible, setseeMoreBtnIsVisible] = useState(true);
 
-  // 
+  //
   useEffect(() => {
     axios
       .get(`https://api.cagir.az/api/post/getAll?size=${size}`, {
@@ -49,10 +49,8 @@ function Blogs() {
     const filteredArray = responseData.filter((obj) => {
       const keys = Object.keys(obj);
       return (
-        obj.titleUrl.toLowerCase().includes(searchVal.toLowerCase()) ||
-        obj.postNames[0].title
-          .toLowerCase()
-          .includes(searchVal.toLowerCase())
+        // obj.titleUrl.toLowerCase().includes(searchVal.toLowerCase()) &&
+        obj.postNames[0].title.toLowerCase().includes(searchVal.toLowerCase())
       );
     });
 
@@ -70,15 +68,15 @@ function Blogs() {
     } else {
       setseeMoreBtnIsVisible(true);
     }
-    console.log(filteredArray.length);
+    // console.log(filteredArray.length);
   }, [setseeMoreBtnIsVisible, deleteBtnIsClicked, searchVal, responseData]); // Only run this effect when searchVal changes
 
   function handleInputChange(event) {
-    const inputValue = event.target.value;
-    setSearchVal(inputValue);
+    // const inputValue = event.target.value;
+    setSearchVal(event.target.value);
   }
 
-console.log(responseData);
+  console.log(responseData);
   return (
     <div className="py-[15px] lg:py-[30px]">
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Bloq</h2>
@@ -93,7 +91,7 @@ console.log(responseData);
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
         {Object.keys(updatedBlogList).map((childObjectName, index) => {
           const { shortDescription, postId, title } =
-            responseData[childObjectName].postNames[0];
+            updatedBlogList[childObjectName].postNames[0];
           const {
             id,
             adImageUrl,
