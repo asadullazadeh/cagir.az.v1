@@ -1,30 +1,37 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/public/logo_cagiraz.png";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import burger_menu from "@/icons/header/burger_menu.svg";
 import close from "@/icons/header/close.svg";
 import LangSection from "@/src/components/others/lang_section";
 import search1 from "@/icons/header/search1.svg";
 
-export default function NavbarMobile({ifSearchIconClicked}) {
+export default function NavbarMobile({ ifSearchIconClicked }) {
+  const router = useRouter();
   const [navbar, setNavbar] = useState(false);
   const handleClick = () => {
     setNavbar(false);
   };
 
   // if search input is clicked
-  const [searchIconIsClicked, setSearchIconIsClicked] = useState(false)
+  const [searchIconIsClicked, setSearchIconIsClicked] = useState(false);
 
   const handleSearchInput = () => {
-    setSearchIconIsClicked(true)
-    console.log('zezezezezez');
+    setSearchIconIsClicked(true);
+    setNavbar(false)
   };
-  useEffect(() => {
-    ifSearchIconClicked(searchIconIsClicked)
-  },[ifSearchIconClicked,searchIconIsClicked])
-  console.log(searchIconIsClicked);
 
+  const handleDeClickSearchIcon = async () => {
+    setTimeout(() => {
+      setSearchIconIsClicked(false);
+    }, 1); // Delay for 0,001 second before reloading
+  };
+
+  useEffect(() => {
+    ifSearchIconClicked(searchIconIsClicked);
+  }, [ifSearchIconClicked, searchIconIsClicked]);
 
   return (
     <>
@@ -33,7 +40,7 @@ export default function NavbarMobile({ifSearchIconClicked}) {
           {/* 1st navbar */}
           <div className="flex items-center justify-between lg:block h-[40px] mx-auto">
             {/* LOGO */}
-            <Link href="/" className="" passHref>
+            <Link href="/" className="">
               <Image
                 src={logo}
                 alt="Cagir.az logo"
@@ -44,7 +51,6 @@ export default function NavbarMobile({ifSearchIconClicked}) {
             <div className="flex flex-row items-center">
               {/* search button */}
               <button onClick={handleSearchInput}>
-                {" "}
                 <Image src={search1} alt="search_alt_1" className=" " />
               </button>
               {/* language section */}
@@ -78,42 +84,84 @@ export default function NavbarMobile({ifSearchIconClicked}) {
             sm:leading-[24px] leading-[27px] text-gray900 text-center "
             >
               <li>
-                <Link passHref href="/temizlik-xidmeti" onClick={handleClick}>
+                <Link
+                  passHref
+                  href="/temizlik-xidmeti"
+                  onClick={() => {
+                    handleClick();
+                    handleDeClickSearchIcon();
+                  }}
+                >
                   <p className="transition duration-300 hover:text-black">
                     Təmizlik xidməti
                   </p>
                 </Link>
               </li>
               <li>
-                <Link passHref href="/kombi-ustasi" onClick={handleClick}>
+                <Link
+                  passHref
+                  href="/kombi-ustasi"
+                  onClick={() => {
+                    handleClick();
+                    handleDeClickSearchIcon();
+                  }}
+                >
                   <p className="transition duration-300 hover:text-black">
                     Kombi ustası
                   </p>
                 </Link>
               </li>
               <li>
-                <Link passHref href="/santexnik-ustasi" onClick={handleClick}>
+                <Link
+                  passHref
+                  href="/santexnik-ustasi"
+                  onClick={() => {
+                    handleClick();
+                    handleDeClickSearchIcon();
+                  }}
+                >
                   <p className="transition duration-300 hover:text-black">
                     Santexnik ustasi
                   </p>
                 </Link>
               </li>
               <li>
-                <Link passHref href="/kondisioner-ustasi" onClick={handleClick}>
+                <Link
+                  passHref
+                  href="/kondisioner-ustasi"
+                  onClick={() => {
+                    handleClick();
+                    handleDeClickSearchIcon();
+                  }}
+                >
                   <p className="transition duration-300 hover:text-black">
                     Kondisioner ustası
                   </p>
                 </Link>
               </li>
               <li>
-                <Link passHref href="/soyuducu-ustasi" onClick={handleClick}>
+                <Link
+                  passHref
+                  href="/soyuducu-ustasi"
+                  onClick={() => {
+                    handleClick();
+                    handleDeClickSearchIcon();
+                  }}
+                >
                   <p className="transition duration-300 hover:text-black">
                     Soyuducu ustası
                   </p>
                 </Link>
               </li>
               <li>
-                <Link passHref href="/elektrik-ustasi" onClick={handleClick}>
+                <Link
+                  passHref
+                  href="/elektrik-ustasi"
+                  onClick={() => {
+                    handleClick();
+                    handleDeClickSearchIcon();
+                  }}
+                >
                   <p className="transition duration-300 hover:text-black">
                     Elektrik ustası
                   </p>
@@ -134,56 +182,112 @@ export default function NavbarMobile({ifSearchIconClicked}) {
                       </Link>
                     </li>
                     <li>
-                      <Link passHref href="/meditasiya" onClick={handleClick}>
+                      <Link
+                        passHref
+                        href="/meditasiya"
+                        onClick={() => {
+                          handleClick();
+                          handleDeClickSearchIcon();
+                        }}
+                      >
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           Yoga Meditasiya
                         </p>
                       </Link>
                     </li>
                     <li>
-                      <Link passHref href="/eylence-merkezi" onClick={handleClick}>
+                      <Link
+                        passHref
+                        href="/eylence-merkezi"
+                        onClick={() => {
+                          handleClick();
+                          handleDeClickSearchIcon();
+                        }}
+                      >
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           Əyləncə
                         </p>
                       </Link>
                     </li>
                     <li>
-                      <Link passHref href="/masaj-xidmeti" onClick={handleClick}>
+                      <Link
+                        passHref
+                        href="/masaj-xidmeti"
+                        onClick={() => {
+                          handleClick();
+                          handleDeClickSearchIcon();
+                        }}
+                      >
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           Masaj xidməti
                         </p>
                       </Link>
                     </li>
                     <li>
-                      <Link passHref href="/berber" onClick={handleClick}>
+                      <Link
+                        passHref
+                        href="/berber"
+                        onClick={() => {
+                          handleClick();
+                          handleDeClickSearchIcon();
+                        }}
+                      >
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           Bərbər
                         </p>
                       </Link>
                     </li>
                     <li>
-                      <Link passHref href="/psixoloq" onClick={handleClick}>
+                      <Link
+                        passHref
+                        href="/psixoloq"
+                        onClick={() => {
+                          handleClick();
+                          handleDeClickSearchIcon();
+                        }}
+                      >
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           Psixoloq xidməti
                         </p>
                       </Link>
                     </li>
                     <li>
-                      <Link passHref href="/it-pisik-baximi" onClick={handleClick}>
+                      <Link
+                        passHref
+                        href="/it-pisik-baximi"
+                        onClick={() => {
+                          handleClick();
+                          handleDeClickSearchIcon();
+                        }}
+                      >
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           İt Pişik baxımı
                         </p>
                       </Link>
                     </li>
                     <li>
-                      <Link passHref href="/gozellik-salonu" onClick={handleClick}>
+                      <Link
+                        passHref
+                        href="/gozellik-salonu"
+                        onClick={() => {
+                          handleClick();
+                          handleDeClickSearchIcon();
+                        }}
+                      >
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           Gözəllik xidməti
                         </p>
                       </Link>
                     </li>
                     <li>
-                      <Link passHref href="/dizayn-sirketi" onClick={handleClick}>
+                      <Link
+                        passHref
+                        href="/dizayn-sirketi"
+                        onClick={() => {
+                          handleClick();
+                          handleDeClickSearchIcon();
+                        }}
+                      >
                         <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
                           Dizayn xidməti
                         </p>
@@ -196,35 +300,70 @@ export default function NavbarMobile({ifSearchIconClicked}) {
               {/* second part */}
 
               <li>
-                <Link href="/" className="" onClick={handleClick}>
+                <Link
+                  href="/"
+                  className=""
+                  onClick={() => {
+                    handleClick();
+                    handleSearchInput();
+                  }}
+                >
                   <p className="transition duration-300 hover:text-black">
                     Axtar
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/payment" className="" onClick={handleClick}>
+                <Link
+                  href="/payment"
+                  className=""
+                  onClick={() => {
+                    handleClick();
+                    handleDeClickSearchIcon();
+                  }}
+                >
                   <p className="transition duration-300 hover:text-black">
                     Ödəniş et
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/giris" className="" onClick={handleClick}>
+                <Link
+                  href="/giris"
+                  className=""
+                  onClick={() => {
+                    handleClick();
+                    handleDeClickSearchIcon();
+                  }}
+                >
                   <p className="transition duration-300 hover:text-black">
                     Daxil ol
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/qeydiyyat" className="" onClick={handleClick}>
+                <Link
+                  href="/qeydiyyat"
+                  className=""
+                  onClick={() => {
+                    handleClick();
+                    handleDeClickSearchIcon();
+                  }}
+                >
                   <p className="transition duration-300 hover:text-black">
                     Qeydiyyat
                   </p>
                 </Link>
               </li>
               <li>
-                <Link href="/" className="" onClick={handleClick}>
+                <Link
+                  href="/"
+                  className=""
+                  onClick={() => {
+                    handleClick();
+                    handleDeClickSearchIcon();
+                  }}
+                >
                   <p className="transition duration-300 text-danger">
                     Çıxış et
                   </p>

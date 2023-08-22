@@ -29,7 +29,6 @@ function SearchServices() {
         console.error(error);
       });
   }, []);
-  console.log(mainServices);
 
   // getting all mainService ids in an array.
   const mainServiceIds = mainServices.map((child) => child.id);
@@ -42,7 +41,6 @@ function SearchServices() {
     const nameUrl = mainServiceNameUrls[i];
     mainServiceIdNameUrls[id] = nameUrl;
   }
-  console.log(mainServiceIdNameUrls);
 
   /* ----------------- subServices ----------------- */
   // const mainServiceIds = mainServices.map(child => child.id);
@@ -78,7 +76,8 @@ function SearchServices() {
 
   /* ----------------- search functionality ----------------- */
   // ekranda gorunen updatedSubServiceObject.It updates in each search
-  const [updatedSubServiceObject, setUpdatedSubServiceObject] = useState(subServices);
+  const [updatedSubServiceObject, setUpdatedSubServiceObject] =
+    useState(subServices);
   // the value that will search elements
   const [searchVal, setSearchVal] = useState("");
   useEffect(() => {
@@ -91,8 +90,7 @@ function SearchServices() {
     });
 
     setUpdatedSubServiceObject(filteredArray);
- 
-    console.log(searchVal);
+
   }, [searchVal, subServices]); // Only run this effect when searchVal changes
 
   function handleInputChange(event) {
@@ -142,7 +140,7 @@ function SearchServices() {
                   key={id}
                 >
                   <a
-                    href={`/${mainServiceIdNameUrls[parentId]}/${nameUrl}}`}
+                    href={`/${mainServiceIdNameUrls[parentId]}/${nameUrl}`}
                     className=" 
                             flex flex-row sm:flex-col rounded-[10px] sm:rounded-[25px]
                           p-[10px] sm:p-[15px] space-x-[15px] sm:space-x-0"

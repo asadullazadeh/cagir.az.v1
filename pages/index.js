@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
+import React, { useState, useEffect } from "react";
 import Carousel1 from "@/src/components/main/carousel1";
 import MainServices from "@/src/components/service/mainServices";
 import Reyler from "@/src/components/main/reyler";
@@ -9,6 +10,7 @@ import Deyerler from "@/src/components/main/deyerler";
 import LastPostedBlogs from "@/src/components/blog/LastPostedBlogs";
 import Musteriler from "@/src/components/main/musteriler";
 import Reels from "@/src/components/main/reels";
+import SearchServices from "@/src/components/main/search_services";
 
 const inter = Inter({ subsets: ["latin"] });
 export async function getServerSideProps() {
@@ -25,29 +27,48 @@ export async function getServerSideProps() {
 export default function Home(props) {
   const { carouselPhotos1 } = props;
 
+  // passing data from carousel to the main page
+  const [searchInptClicked, setSearchInptClicked] = useState(false);
+
+  // Callback function to receive data from the child component
+  const handleDataFromCarousel = (data) => {
+    setSearchInptClicked(data);
+  };
+
   return (
     <>
-      <div
-        className="flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
+      <div>
+        <div
+          className={`flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
       lg:gap-y-[105px] xl:gap-y-[120px] 2xl:gap-y-[135px]
       sm:pt-[36px] md:pt-[42px] lg:pt-[48px] xl:pt-[54px] 2xl:pt-[60px] 
-      pb-[60px] sm:pb-[75px] md:pb-[90px] lg:pb-[105px] xl:pb-[120px] 2xl:pb-[135px]"
-      >
-        <Carousel1 {...{ carouselPhotos1 }} />
-        <MainServices />
-        <Reyler parentId={1} />
-        <Icracilar parentId={1} />
-        <Musteriler />
-        <div className="hidden lg:block">
-        <Suallar />
+      pb-[60px] sm:pb-[75px] md:pb-[90px] lg:pb-[105px] xl:pb-[120px] 2xl:pb-[135px] ${
+        searchInptClicked ? "hidden" : ""
+      }`}
+        >
+          <Carousel1
+            {...{ carouselPhotos1 }}
+            onDataReceived={handleDataFromCarousel}
+          />
+          <MainServices />
+          <Reyler parentId={1} />
+          <Icracilar parentId={1} />
+          <Musteriler />
+          <div className="hidden lg:block">
+            <Suallar />
+          </div>
+          <div className="hidden lg:block">
+            <Deyerler />
+          </div>
+
+          {/* <Reels /> */}
+
+          <LastPostedBlogs />
         </div>
-        <div className="hidden lg:block">
-        <Deyerler />
+        <div classNames={`${searchInptClicked ? "block" : "hidden"}`}>
+          <SearchServices />
         </div>
-        
-        {/* <Reels /> */}
-        
-        <LastPostedBlogs />
+        <SearchServices />
       </div>
     </>
   );

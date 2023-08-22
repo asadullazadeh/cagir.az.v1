@@ -5,7 +5,7 @@ import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import SearchInput from "@/src/components/input/input_search_sm";
 
-export default function Carousel1({ carouselPhotos1 }) {
+export default function Carousel1({ carouselPhotos1,onDataReceived }) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -14,7 +14,26 @@ export default function Carousel1({ carouselPhotos1 }) {
     }, 2500);
     return () => clearInterval(interval);
   }, [currentSlide]);
+  
 
+  const [searchIsClicked,setsearchIsClicked] = useState(false)
+  const handleSearchClicked = () => {
+    setsearchIsClicked(true)
+  }
+
+  // passing data from carousel to the main page
+
+  const handleDataChange = (data) => {
+    // const newData = event.target.value;
+    
+    onDataFromCarousel(searchIsClicked); // Call the callback function to send data to parent
+  };
+
+  useEffect(() => {
+    onDataReceived(searchIsClicked);
+  },[onDataReceived,searchIsClicked])
+
+ 
   return (
     <div className="flex flex-col justify-between lg:gap-x-[25px] xl:gap-x-[45px] 2xl:gap-x-[75px] lg:flex-row">
       {/* first part of carousel section */}
@@ -34,7 +53,7 @@ export default function Carousel1({ carouselPhotos1 }) {
           </p>
         </div>
         {/* search button */}
-        <div className="block lg:hidden">
+        <div onClick={handleSearchClicked} className="block lg:hidden">
           <SearchInput />
         </div>
 

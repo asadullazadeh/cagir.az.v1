@@ -150,8 +150,8 @@ function PulQazan() {
           </div>
         </div>
       </div>
-      <div className="flex lg:justify-end pt-[20px] xl:pt-[25px] 2xl:pt-[30px]">
-        <PrimarySmBtn btnName="Təsdiq et" classNames="" onClick={handleClick} />
+      <div className="flex justify-center w-full lg:justify-end pt-[20px] xl:pt-[25px] 2xl:pt-[30px]">
+        <PrimarySmBtn btnName="Təsdiq et" classNames="w-full" onClick={handleClick} />
       </div>
     </div>
   );

@@ -11,20 +11,29 @@ import wallet1 from "@/icons/header/wallet1.svg";
 import LangSection from "@/src/components/others/lang_section";
 import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
 
-
-
-
-export default function NavbarDesktop({ifSearchIconClicked}) {
-  const [searchIconIsClicked, setSearchIconIsClicked] = useState(false)
+export default function NavbarDesktop({ ifSearchIconClicked }) {
+  const [searchIconIsClicked, setSearchIconIsClicked] = useState(false);
 
   const handleClick = () => {
-    setSearchIconIsClicked(true)
+    setSearchIconIsClicked(true);
+    console.log("desktop search is cliked");
   };
+
+  //set it to the false when other element is clicked
+  // const handleDeClickSearchIcon = () => {
+  //   setSearchIconIsClicked(false)
+  // };
+  const handleDeClickSearchIcon = async () => {
+    setTimeout(() => {
+      setSearchIconIsClicked(false);
+    }, 1); // Delay for 0,001 second before reloading
+  };
+  //
   useEffect(() => {
-    ifSearchIconClicked(searchIconIsClicked)
-  },[ifSearchIconClicked,searchIconIsClicked])
-  console.log(searchIconIsClicked);
-  
+    ifSearchIconClicked(searchIconIsClicked);
+  }, [ifSearchIconClicked, searchIconIsClicked]);
+  // console.log(searchIconIsClicked);
+
   return (
     <>
       <header className="hidden lg:block ">
@@ -32,7 +41,7 @@ export default function NavbarDesktop({ifSearchIconClicked}) {
           {/* 1st navbar */}
           <div className="py-[12px] justify-between mx-auto items-center flex relative">
             {/* 1st navbar-left side-LOGO */}
-            <Link href="/" className="">
+            <Link onClick={handleDeClickSearchIcon} href="/" className="">
               <Image
                 src={logo}
                 alt="Cagir.az logo"
@@ -46,7 +55,7 @@ export default function NavbarDesktop({ifSearchIconClicked}) {
               <li>
                 <div className="group flex relative">
                   <button onClick={handleClick}>
-                    <div className="relative group" >
+                    <div className="relative group">
                       <Image
                         src={search}
                         alt="search_alt"
@@ -73,7 +82,10 @@ export default function NavbarDesktop({ifSearchIconClicked}) {
               <li>
                 <Link className="group flex relative" href="/payment">
                   <span>
-                    <div className="relative group">
+                    <div
+                      onClick={handleDeClickSearchIcon}
+                      className="relative group"
+                    >
                       <Image
                         src={wallet}
                         alt="wallet_alt"
@@ -97,7 +109,11 @@ export default function NavbarDesktop({ifSearchIconClicked}) {
               </li>
               {/* Profile icon */}
               <li>
-                <Link className="group flex relative" href="/profil_settings">
+                <Link
+                  onClick={handleDeClickSearchIcon}
+                  className="group flex relative"
+                  href="/profil_settings"
+                >
                   <span>
                     <div className="relative group">
                       <Image
@@ -136,49 +152,58 @@ export default function NavbarDesktop({ifSearchIconClicked}) {
            items-center font-semibold text-[10px] xl:text-[12px] 2xl:text-[14px] leading-[21px] text-gray500 space-x-[35px] lg:space-x-[40px] xl:space-x-[50px] 2xl:space-x-[70px]"
             >
               <li>
-                <Link passHref href="/temizlik-xidmeti">
+                <Link
+                  onClick={handleDeClickSearchIcon}
+                  href="/temizlik-xidmeti"
+                >
                   <p className="transition duration-300 hover:text-black">
                     Təmizlik xidməti
                   </p>
                 </Link>
               </li>
               <li>
-                <Link passHref href="/kombi-ustasi">
+                <Link onClick={handleDeClickSearchIcon} href="/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Kombi ustası
                   </p>
                 </Link>
               </li>
               <li>
-                <Link passHref href="/santexnik-ustasi">
+                <Link
+                  onClick={handleDeClickSearchIcon}
+                  href="/santexnik-ustasi"
+                >
                   <p className="transition duration-300 hover:text-black">
                     Santexnik ustasi
                   </p>
                 </Link>
               </li>
               <li>
-                <Link passHref href="/kondisioner-ustasi">
+                <Link
+                  onClick={handleDeClickSearchIcon}
+                  href="/kondisioner-ustasi"
+                >
                   <p className="transition duration-300 hover:text-black">
                     Kondisioner ustası
                   </p>
                 </Link>
               </li>
               <li>
-                <Link passHref href="/soyuducu-ustasi">
+                <Link onClick={handleDeClickSearchIcon} href="/soyuducu-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Soyuducu ustası
                   </p>
                 </Link>
               </li>
               <li>
-                <Link passHref href="/elektrik-ustasi">
+                <Link onClick={handleDeClickSearchIcon} href="/elektrik-ustasi">
                   <p className="transition duration-300 hover:text-black">
                     Elektrik ustası
                   </p>
                 </Link>
               </li>
               <li>
-                <Link passHref href="/xidmetler">
+                <Link onClick={handleDeClickSearchIcon} href="/xidmetler">
                   <p className="transition duration-300 hover:text-black">
                     Digər xidmətlər
                   </p>
@@ -186,9 +211,13 @@ export default function NavbarDesktop({ifSearchIconClicked}) {
               </li>
             </ul>
             {/* 2nd navbar-2nd part- Qeydiyyat button */}
-            <div className="py-[7px]">
+            <Link
+              href="qeydiyyat"
+              onClick={handleDeClickSearchIcon}
+              className="py-[7px]"
+            >
               <PrimarySmBtn btnName="Qeydiyyat" />
-            </div>
+            </Link>
           </div>
         </nav>
       </header>

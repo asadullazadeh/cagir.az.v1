@@ -40,14 +40,12 @@ function Sifaris({
   onSelectedNamesArray,
   onSelectedMainChange,
 }) {
-  console.log(defaultSub);
   // passing selectedService names from dropdown to sifaris
   const [selectedNamesArray, setSelectedNamesArray] = useState("");
   const handleSelectedNamesArray = (data) => {
     setSelectedNamesArray(data);
     onSelectedNamesArray(selectedNamesArray);
   };
-  console.log(selectedNamesArray);
 
   /* ----------------- mainServices functionality ----------------- */
   const [selectedMain, setSelectedMain] = useState(
@@ -57,8 +55,7 @@ function Sifaris({
   const handleMainSelect = (mainService) => {
     setSelectedMain(mainService);
   };
-  // const router = useRouter();
-  // console.log(router);
+
   useEffect(() => {
     axios
       .get("https://api.cagir.az/api/service/getAllForFront", {
@@ -86,7 +83,6 @@ function Sifaris({
   };
   // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
   const selectedMainService = findInfoByName(getMainServices, selectedMain);
-  // console.log(selectedMainService.id);
   // passing selectedMain to the index page
   useEffect(() => {
     if (typeof onSelectedMainChange === "function") {
@@ -133,7 +129,6 @@ function Sifaris({
   };
   // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
   const selectedSubService = findSubInfoByName(getSubServices, selectedSub);
-  // console.log(selectedSubService);
 
   // findind previous SubNameUrl and pass it to Sifaris page to change the url
   const findSubNameUrlByName = (subServices, name) => {
@@ -152,24 +147,20 @@ function Sifaris({
     }
   }, [sendSubUrl, selectedSubNameUrl]);
 
-  console.log(defaultSub?.serviceNames?.[0]?.name);
   useEffect(() => {
     setSelectedMain(selectedMain);
     setSelectedSub(defaultSub?.serviceNames?.[0]?.name);
   }, [defaultSub, getSubServices, selectedMain]);
-  // console.log(selectedMain);
   /* ----------------------- sub2Services functionality ----------------------- */
   const [selectedSub2, setSelectedSub2] = useState("");
   const [getSub2Services, setgetSub2Services] = useState([]);
   const handleSub2Select = (sub2Service) => {
     setSelectedSub2(sub2Service);
   };
-  console.log(getSub2Services);
 
   // checking if sub2 element is exist after choosing sub element
   const isSub2ElementsExist = getSub2Services.length > 0;
   // selectedSub || (selectedNamesArray[1] !== "" && getSub2Services.length > 0);
-  console.log(isSub2ElementsExist);
   useEffect(() => {
     axios
       .get(
@@ -206,7 +197,6 @@ function Sifaris({
   //
   // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
   const selectedSub2Service = findSub2InfoByName(getSub2Services, selectedSub2);
-  console.log(selectedSub2);
 
   /* ---------------------- Select criterias ---------------------- */
   const [getServiceCriterias, setgetServiceCriterias] = useState([]);
@@ -230,7 +220,6 @@ function Sifaris({
         console.error(error);
       });
   }, [isSub2ElementsExist, selectedSubService.id, selectedSub2Service.id]);
-  console.log(getServiceCriterias);
 
   /* --------------------- Multinumber input functionality-FilterType=5 --------------------- */
   // multiNumberArray takes all the information of multi number input for pricing
@@ -238,7 +227,6 @@ function Sifaris({
   const [multiNumberId, setMultiNumberId] = useState("");
   const [multiNumberName, setMultiNumberName] = useState("");
   const [multiNumberArray, setMultiNumberArray] = useState([]);
-  // console.log(multiNumberArray);
   const handleDataUpdate = (value) => {
     setMultiNumberValue(value);
   };
@@ -281,12 +269,12 @@ function Sifaris({
       }
     }
   }, [multiNumberName, multiNumberId, multiNumberValue]);
-  // console.log(multiNumberArray);
+ 
   /* --------------------- Plus-Minus input functionality-FilterType=1 --------------------- */
   const [plusMinusValue, setPlusMinusValue] = useState(0);
   const [plusMinusId, setPlusMinusId] = useState("");
   const [plusMinusArray, setPlusMinusArray] = useState([]);
-  // console.log(multiNumberArray);
+
   const handleDataUpdateForMinusPlus = (value) => {
     setPlusMinusValue(value);
   };
@@ -346,7 +334,7 @@ function Sifaris({
   // const handleCriteriaIdForInputText = (id) => {
   //   setInputTextId(id);
   // };
-  console.log(inputTextValue);
+ 
 
   /* --------------------- Radio button functionality-FilterType=4 --------------------- */
   const [selectedRadioName, setSelectedRadioName] = useState(null);
@@ -376,7 +364,6 @@ function Sifaris({
       // ...
     };
   }, [selectedRadioName, selectedRadioId]); // Add any other dependencies if necessary
-  // console.log(radioBtnObject);
   /* --------------------- Checkbox functionality-FilterType=4 --------------------- */
   // checkmarks, to see more info-customized inputs in form section
   const [showSecondChild, setShowSecondChild] = useState(false);
@@ -393,7 +380,6 @@ function Sifaris({
     setCheckboxIsChecked(isChecked);
     setCheckedCheckboxName(name);
   };
-  // console.log(checkedCheckboxArray);
 
   useEffect(() => {
     if (checkboxIsChecked && checkboxId) {
@@ -413,12 +399,10 @@ function Sifaris({
       );
     }
   }, [checkedCheckboxName, checkboxIsChecked, checkboxId]);
-  // console.log(checkedCheckboxArray);
 
   /* --------------------- Calculating Price of the Service --------------------- */
   // const priceBeforePromo = 100;
   const [priceBeforePromo, setPriceBeforePromo] = useState(0);
-  console.log(priceBeforePromo);
   //
   const calculatePrice = [
     radioBtnObject,
@@ -432,7 +416,6 @@ function Sifaris({
   const filteredCalculatePrice = calculatePrice.filter(
     (item) => Object.keys(item).length !== 0
   );
-  console.log(calculatePrice);
 
   useEffect(() => {
     // calculating the price
@@ -484,7 +467,6 @@ function Sifaris({
   const handleMessage = (message) => {
     setReceivedMessage(message);
   };
-  // console.log(receivedMessage);
 
   // Toggle part
   const [isOpen, setIsOpen] = useState(false);
@@ -523,11 +505,9 @@ function Sifaris({
   /* -------------------------------- Creating order -------------------------------- */
   const [tesdiqleButton, setTesdiqleButton] = useState(false);
   const handleTesdiqleClicked = () => {
-    // console.log("Button clicked!"); // Replace with your desired action
     setTesdiqleButton(true);
     fetchData();
   };
-  // console.log(calculatePrice);
   const objectDetails = {
     amount: priceBeforePromo,
     payType: 2,
@@ -538,7 +518,6 @@ function Sifaris({
     orderDetails: [...filteredCalculatePrice],
     orderImage: [],
   };
-  // console.log(objectDetails);
   const [isOrderPassed, setIsOrderPassed] = useState(false);
 
   // const fetchData = () => {
@@ -574,7 +553,6 @@ function Sifaris({
     selectedNamesArray,
     criterias: [...filteredCalculatePrice],
   };
-  // console.log(dataReceipt);
 
   return (
     <div>

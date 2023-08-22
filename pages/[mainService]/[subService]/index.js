@@ -12,7 +12,6 @@ function Sub2Service({ dataMain }) {
   const handleSelectedMain = (newValue) => {
     setSelectedMain(newValue);
   };
-  console.log(selectedMain);
 
   const router = useRouter();
   // // main and sub urls
@@ -64,18 +63,13 @@ function Sub2Service({ dataMain }) {
   };
   const defaultSub = findSubInfoByNameUrl(getSubServices, subServiceUrl);
 
-  console.log(
-    subUrlFromSifaris ? subUrlFromSifaris : getSubServices[0]?.nameUrl
-  );
-
+  
   //bu main page'den gelende
 
   const pathMain = !defaultMain.nameUrl ? mainServiceUrl : defaultMain.nameUrl;
   const pathSub =
     (subUrlFromSifaris ?? defaultSub.nameUrl) || getSubServices[0]?.nameUrl;
-  console.log(pathSub);
   //
-  console.log(pathSub);
   const newPath = `/${pathMain}/${pathSub}`;
   useEffect(() => {
     router.replace(newPath);
@@ -88,7 +82,6 @@ function Sub2Service({ dataMain }) {
     return mainService || null;
   };
   const defaultMainNew = findMainInfoByNameUrlNew(dataMain, selectedMain);
-  console.log(defaultMainNew);
 
   return (
     <div>
@@ -116,7 +109,6 @@ export async function getServerSideProps(context) {
     );
 
     const dataMain = response.data.result; // Adjust the dataMain structure according to your API response
-    // console.log(dataMain);
     return {
       props: { dataMain },
     };

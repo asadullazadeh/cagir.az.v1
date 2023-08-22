@@ -22,7 +22,6 @@ function Page() {
   const router = useRouter();
   // mainService is a path for main services.
   const mainServiceUrl = router.query.mainService;
-  console.log(mainServiceUrl);
   // we get the data of "mainService" service
 
   // subServices for an individual main service.
@@ -44,7 +43,6 @@ const [mainServiceData, setMainServiceData] = useState({});
         // Handle the response data
         setMainServiceData(response.data.result)
         const newParentId = response.data.result.id;
-        console.log(newParentId);
         setParentId(newParentId);
       })
       .catch((error) => {
@@ -52,7 +50,6 @@ const [mainServiceData, setMainServiceData] = useState({});
         console.error(error);
       });
   }, [mainServiceUrl]);
-  console.log(mainServiceData);
   // 
   const [subServices, setSubServices] = useState([]);
   useEffect(() => {
@@ -72,10 +69,7 @@ const [mainServiceData, setMainServiceData] = useState({});
         console.error(error);
       });
   }, [mainServiceData]);
-  console.log(parentId);
 
-  console.log(subServices);
-  console.log(mainServiceData);
   const { id, someProperty, serviceNames } = mainServiceData;
 
   const serviceName = serviceNames?.[0].name

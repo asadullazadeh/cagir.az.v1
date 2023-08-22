@@ -11,13 +11,19 @@ import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 import CallIncmngWp from "@/src/components/buttons/call_incmng_wp";
 import SearchServices from "@/src/components/main/search_services";
 export default function Layout({ children }) {
-  // pass data from NavbarDesktop
+  // pass data from NavbarMobile
   const [ifSearchIconClicked, setifSearchIconClicked] = useState(false);
   // Callback function to be passed to the child component
   const SearchIconIsClickInNavbar = (data) => {
     setifSearchIconClicked(data);
   };
-  console.log(ifSearchIconClicked);
+
+// pass data from NavbarDesktop  
+  const [ifSearchIconClickedDesktop, setIfSearchIconClickedDesktop] = useState(false);
+  // Callback function to be passed to the child component
+  const SearchIconIsClickInNavbarDesktop = (data) => {
+    setIfSearchIconClickedDesktop(data);
+  };
   //
   const router = useRouter();
   //
@@ -67,7 +73,7 @@ export default function Layout({ children }) {
     router.asPath,
     visiblePages,
   ]);
-console.log(ifSearchIconClicked);
+
   return (
     <div className="">
       <Head>
@@ -75,19 +81,19 @@ console.log(ifSearchIconClicked);
       </Head>
       {/* navbar */}
       <div className="sticky top-0 z-50">
-        <NavbarDesktop ifSearchIconClicked={SearchIconIsClickInNavbar} />
+        <NavbarDesktop ifSearchIconClicked={SearchIconIsClickInNavbarDesktop} />
         <NavbarMobile ifSearchIconClicked={SearchIconIsClickInNavbar} />
       </div>
       <main
         className={`flex flex-col px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full ${
-          ifSearchIconClicked ? "hidden" : ""
+          ifSearchIconClicked || ifSearchIconClickedDesktop ? "hidden" : ""
         }`}
       >
         {/* Content */}
         {children}
       </main>
 
-      <div className={`${ifSearchIconClicked ? "block px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full" : "hidden"}`}>
+      <div className={`${ifSearchIconClicked || ifSearchIconClickedDesktop ? "block px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full" : "hidden"}`}>
         <SearchServices />
       </div>
 
