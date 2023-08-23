@@ -26,18 +26,21 @@ function SifarishBtn({ classNames }) {
         console.error(error);
       });
   }, []);
-  // console.log(router.query.mainService);
-  // console.log(responseData);
-  const mainServiceNameUrl = responseData.find(
+
+  const mainServicesInfo = responseData.find(
     (obj) => obj.nameUrl === router.query.mainService
   );
-  // console.log(mainServiceNameUrl?.nameUrl);
+  console.log(mainServicesInfo?.nameUrl);
+
+  const urlFromSifarisBtn = `${
+    mainServicesInfo
+      ? "/sifaris-yarat/" + mainServicesInfo?.nameUrl
+      : "/temizlik-xidmeti/ev-temizleme"
+  }`;
 
   return (
     <div className={classNames}>
-      <Link
-        href={`/sifaris-yarat`}
-      >
+      <Link href={urlFromSifarisBtn}>
         <button
           className="
               font-extraBold text-[14px] lg:text-[18px] leading-[22px] lg:leading-[27px]

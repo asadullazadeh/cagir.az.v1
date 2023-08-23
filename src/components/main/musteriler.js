@@ -70,7 +70,7 @@ function Musteriler() {
                   src={`https://api.cagir.az/${imageUrl}`}
                   width={400}
                   height={400}
-                  className="place-self-center pr-[50px]"
+                  className="w-[400px] h-[150px] place-self-center pr-[50px]"
                 />
               </Link>
             )}

@@ -34,6 +34,7 @@ export default function Home(props) {
   const handleDataFromCarousel = (data) => {
     setSearchInptClicked(data);
   };
+  console.log(searchInptClicked);
 
   return (
     <>
@@ -61,14 +62,13 @@ export default function Home(props) {
             <Deyerler />
           </div>
 
-          {/* <Reels /> */}
+          <Reels />
 
           <LastPostedBlogs />
         </div>
-        <div classNames={`${searchInptClicked ? "block" : "hidden"}`}>
+        <div className={`${searchInptClicked ? "" : "hidden"}`}>
           <SearchServices />
         </div>
-        <SearchServices />
       </div>
     </>
   );

@@ -73,7 +73,7 @@ export default function Layout({ children }) {
     router.asPath,
     visiblePages,
   ]);
-
+console.log(ifSearchIconClicked);
   return (
     <div className="">
       <Head>
