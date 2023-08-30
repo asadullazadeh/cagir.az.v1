@@ -28,7 +28,7 @@ function RelatedBlogs({ blogId, categoryId, subject }) {
         console.error(error);
       });
   }, [blogId, categoryId]);
-    return (
+  return (
     <div>
       <h4
         className="font-semibold lg:font-bold text-[16px] lg:text-[20px] lg:leading-[30px] leading-[24px] pb-[15px] pt-[30px] lg:pt-0 text-center lg:text-start

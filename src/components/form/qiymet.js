@@ -37,7 +37,7 @@ const Qiymet = ({priceBeforePromo,priceAfterPromo}) => {
               Yekun
             </p>
             <p className="font-bold text-[26px] leading-[39px] text-cagiraz">
-              {priceAfterPromo ? priceAfterPromo :priceBeforePromo}
+              {priceAfterPromo ? priceAfterPromo :priceBeforePromo} AZN
             </p>
           </div>
         </div>

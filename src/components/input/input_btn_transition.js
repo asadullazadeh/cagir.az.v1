@@ -5,7 +5,7 @@ import { Transition } from "@headlessui/react";
 
 import paper_plane from "@/icons/footer/paper_plane.svg";
 
-const InputBtnTransition = ({ name }) => {
+const InputBtnTransition = ({ name, classNames }) => {
   const [isRotated, setIsRotated] = useState(false);
 
   const handleButtonClick = () => {
@@ -19,17 +19,17 @@ const InputBtnTransition = ({ name }) => {
   return (
     <div className="flex justify-center">
       <ul className="  space-y-[10px] lg:space-y-[15px] font-semibold text-[14px] leading-[21px] text-black500">
-        <li className="mb-[5px] ">
-          <div href="#" className="">
+        <li className={`mb-[5px] ${classNames}`}>
+          <div href="#" className="pl-[15px]">
             {name}
           </div>
         </li>
         <li className="w-[235px] h-[58px] bg-white rounded-full flex items-center border ">
           
-            <div className="flex items-center h-[46px] gap-x-[6px]">
+            <div className="flex items-center h-[46px]">
               <input
                 className="appearance-none bg-transparent border-none text-black focus:outline-none text-[14px] 
-                    pl-[20px]
+                    pl-[10px] pr-[6px]
                     leading-[21px] w-[181px]"
                 type="text"
                 placeholder=""
@@ -37,7 +37,7 @@ const InputBtnTransition = ({ name }) => {
               />
               <button
                 id="myButton"
-                className="flex w-[46px] h-[46px] rounded-full bg-gradient-to-r from-[#3598EA] to-[#3D55DF]"
+                className="flex w-[46px] h-[46px] rounded-full bg-gradient-to-r from-[#3598EA] to-[#3D55DF] "
                 type="button"
                 onClick={handleButtonClick}
               >

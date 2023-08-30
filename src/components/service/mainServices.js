@@ -61,7 +61,7 @@ function Xidmetler() {
                       </div>
 
                       <div className="">
-                        <div className=" hidden group-hover:block transition duration-300">
+                        <div className="lg:hidden group-hover:block transition duration-300">
                           <Image
                             src={arrow}
                             alt="arrow_icon"

@@ -6,9 +6,11 @@ import client from "@/public/client.jpg";
 import call_back from "@/icons/tab_bar/call_back.svg";
 import ModalStandart from "@/src/components/modal/modal_stand";
 import InputBtnNbTransition from "@/src/components/input/input_btn_nb_transition";
-const TabBar = () => (
+const TabBar = ({ classNames }) => (
   <>
-    <div className="h-[55px] block lg:hidden fixed bottom-0 left-0 z-50 w-full bg-white border-t border-gray-200">
+    <div
+      className={`h-[55px] w-full bg-white border-t border-gray-200 ${classNames}`}
+    >
       <div className="grid h-full w-inline-block grid-cols-4 mx-auto font-medium">
         {/* Call icon */}
         <Link
@@ -46,11 +48,9 @@ const TabBar = () => (
         </Link>
         {/* Chat */}
 
-        <div
-          className="inline-flex flex-col items-center justify-center"
-        >
-          <Image       
-           width={65}
+        <div className="inline-flex flex-col items-center justify-center">
+          <Image
+            width={65}
             height={65}
             src={client}
             alt="Profile picture"

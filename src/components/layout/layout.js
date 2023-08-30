@@ -18,8 +18,9 @@ export default function Layout({ children }) {
     setifSearchIconClicked(data);
   };
 
-// pass data from NavbarDesktop  
-  const [ifSearchIconClickedDesktop, setIfSearchIconClickedDesktop] = useState(false);
+  // pass data from NavbarDesktop
+  const [ifSearchIconClickedDesktop, setIfSearchIconClickedDesktop] =
+    useState(false);
   // Callback function to be passed to the child component
   const SearchIconIsClickInNavbarDesktop = (data) => {
     setIfSearchIconClickedDesktop(data);
@@ -73,9 +74,9 @@ export default function Layout({ children }) {
     router.asPath,
     visiblePages,
   ]);
-console.log(ifSearchIconClicked);
+  console.log(ifSearchIconClicked);
   return (
-    <div className="">
+    <div className="max-w-[1512px]">
       <Head>
         <title>Cagir.az</title>
       </Head>
@@ -93,7 +94,13 @@ console.log(ifSearchIconClicked);
         {children}
       </main>
 
-      <div className={`${ifSearchIconClicked || ifSearchIconClickedDesktop ? "block px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full" : "hidden"}`}>
+      <div
+        className={`${
+          ifSearchIconClicked || ifSearchIconClickedDesktop
+            ? "block px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full"
+            : "hidden"
+        }`}
+      >
         <SearchServices />
       </div>
 
@@ -103,15 +110,11 @@ console.log(ifSearchIconClicked);
         </div>
       </div>
       <div className="hidden lg:flex justify-center items-center ">
-        <div className="bottom-[80px] fixed">
-          <CallIncmngWp />
-        </div>
+        <CallIncmngWp classNames="bottom-[80px] fixed" />
       </div>
       {/* TabBar/footer */}
       <div className="">
-        <div className="">
-          <TabBar />
-        </div>
+        <TabBar classNames="fixed bottom-0 left-0 z-50 lg:hidden" />
         <Footer />
       </div>
     </div>

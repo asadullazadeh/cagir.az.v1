@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/public/logo_cagiraz.png";
+import logo from "@/public/logo.svg";
 import search from "@/icons/header/search.svg";
 import search1 from "@/icons/header/search1.svg";
 import profile from "@/icons/header/profile.svg";
@@ -45,7 +45,7 @@ export default function NavbarDesktop({ ifSearchIconClicked }) {
               <Image
                 src={logo}
                 alt="Cagir.az logo"
-                className="w-[106px] h-[27px]"
+                className="w-[140px] h-[38px]"
               />
             </Link>
 
@@ -212,7 +212,7 @@ export default function NavbarDesktop({ ifSearchIconClicked }) {
             </ul>
             {/* 2nd navbar-2nd part- Qeydiyyat button */}
             <Link
-              href="qeydiyyat"
+              href="/qeydiyyat"
               onClick={handleDeClickSearchIcon}
               className="py-[7px]"
             >

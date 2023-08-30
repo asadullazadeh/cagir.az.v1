@@ -42,15 +42,17 @@ function Icraci({ parentId }) {
   }
   const sliderCount =
     data.length < 2 ? 0 : data.length >= 2 && data.length <= 4 ? 2 : 3;
-
+  console.log(sliderCount);
   const childDataArray = Object.values(data).map((child) => ({
     jsxElement: (
       <div key={child.name[0]}>
         <div
-          className="w-full h-full 
-              rounded-[10px] lg:rounded-[20px] flex flex-col"
+          className="max-w-[195px] lg:max-w-[302px] h-full 
+              rounded-[10px] lg:rounded-[20px] flex flex-col
+              bg-white
+              drop-shadow-cardAlt"
         >
-          <div className="w-full h-full p-[10px] lg:p-[30px] space-y-[10px] lg:space-y-[15px]">
+          <div className=" p-[10px] lg:p-[30px] space-y-[10px] lg:space-y-[15px]">
             {/* photo, name */}
             <div className="flex gap-x-[10px] lg:gap-x-[15px] items-center">
               <Image
@@ -58,7 +60,7 @@ function Icraci({ parentId }) {
                 height={200}
                 src={`https://api.cagir.az/${child.image}`}
                 alt="Profile picture"
-                className="rounded-full w-[65px] lg:w-[112px] h-[65px] lg:h-[112px] object-cover object-center"
+                className="rounded-full w-[65px] lg:w-[112px] h-[65px] lg:h-[112px] object-cover object-center border-2 border-cagiraz border-opacity-20"
               />
               <div className="flex flex-col">
                 <h6
@@ -104,46 +106,44 @@ function Icraci({ parentId }) {
         />
       </div>
       {/* Customized Carousel */}
-      <AliceCarousel
-        // activeIndex = {1}
-        animationDuration={1300}
-        animationType="fadeout"
-        // autoHeight={false}
-        //autoWidth={true}
-        // autoPlayControls
-        // autoPlayInterval={1300}
-        // autoPlay
-        // autoPlayStrategy="action"
-        controlsStrategy="alternate"
-        infinite
-        mouseTracking
-        responsive={responsive}
-        items={childDataArray.map((child, index) => (
-          <div key={index} className="pr-[15px] lg:pr-[60px]">
-            {child.jsxElement}
-          </div>
-        ))}
-        // disableSlideInfo={false}
-        // disableDotsControls
-        animationEasingFunction="ease"
-        disableButtonsControls
-        paddingLeft={0}
-        paddingRight={0}
-        keyboardNavigation
-        touchTracking={true}
-        touchMoveDefaultEvents={false}
-      />
-      <div className="flex flex-row gap-x-[20px] justify-center">
-        {
-//         Array.from({ length: sliderCount }, (_, index) => (
-//           <React.Fragment key={index}>
-//             <div><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-dot" viewBox="0 0 16 16">
-//   <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
-// </svg></div>
-//             <span className="ml-2" /> {/* Add a margin-left of 2px */}
-//           </React.Fragment>
-//         ))
-        }
+      <div className="flex flex-row gap-x-[30px]">
+        {data.length < 3 ? (
+          childDataArray.map((child, index) => (
+            <div key={index} className="">
+              {child.jsxElement}
+            </div>
+          ))
+        ) : (
+          <AliceCarousel
+            // activeIndex = {1}
+            animationDuration={1300}
+            animationType="fadeout"
+            // autoHeight={false}
+            //autoWidth={true}
+            // autoPlayControls
+            // autoPlayInterval={1300}
+            // autoPlay
+            // autoPlayStrategy="action"
+            controlsStrategy="alternate"
+            infinite
+            mouseTracking
+            responsive={responsive}
+            items={childDataArray.map((child, index) => (
+              <div key={index} className="pr-[15px] lg:pr-[60px]">
+                {child.jsxElement}
+              </div>
+            ))}
+            // disableSlideInfo={false}
+            // disableDotsControls
+            animationEasingFunction="ease"
+            disableButtonsControls
+            paddingLeft={0}
+            paddingRight={0}
+            keyboardNavigation
+            touchTracking={true}
+            touchMoveDefaultEvents={false}
+          />
+        )}
       </div>
     </div>
   );

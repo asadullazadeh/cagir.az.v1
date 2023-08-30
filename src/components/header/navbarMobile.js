@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/public/logo_cagiraz.png";
+import logo from "@/public/logo.svg";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import burger_menu from "@/icons/header/burger_menu.svg";
@@ -44,7 +44,7 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
               <Image
                 src={logo}
                 alt="Cagir.az logo"
-                className="w-[77px] h-[20px]"
+                className="w-[90px] sm:w-[100px] md:w-[120px] h-auto"
               />
             </Link>
             {/* HAMBURGER BUTTON FOR MOBILE */}

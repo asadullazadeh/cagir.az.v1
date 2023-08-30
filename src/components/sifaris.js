@@ -269,7 +269,7 @@ function Sifaris({
       }
     }
   }, [multiNumberName, multiNumberId, multiNumberValue]);
- 
+
   /* --------------------- Plus-Minus input functionality-FilterType=1 --------------------- */
   const [plusMinusValue, setPlusMinusValue] = useState(0);
   const [plusMinusId, setPlusMinusId] = useState("");
@@ -311,7 +311,7 @@ function Sifaris({
   }, [plusMinusId, plusMinusValue]);
   //
   /* --------------------- Text input functionality-FilterType=2 --------------------- */
-    const [inputTextValue, setInputTextValue] = useState(0);
+  const [inputTextValue, setInputTextValue] = useState(0);
   const [inputTextId, setInputTextId] = useState("");
   const [inputTextObject, setInputTextObject] = useState({});
 
@@ -334,7 +334,6 @@ function Sifaris({
   // const handleCriteriaIdForInputText = (id) => {
   //   setInputTextId(id);
   // };
- 
 
   /* --------------------- Radio button functionality-FilterType=4 --------------------- */
   const [selectedRadioName, setSelectedRadioName] = useState(null);
@@ -554,6 +553,18 @@ function Sifaris({
     criterias: [...filteredCalculatePrice],
   };
 
+  // Geri button
+  const router = useRouter();
+  const goBack = () => {
+    router.back(); // Navigates back to the previous page
+  };
+
+  // const sifirla = () => {
+  //   // router.replace("/temizlik-xidmeti/ev-temizliyi")
+  //   // router.reload()
+  //   // router.reload(window.location.pathname)
+  // }
+
   return (
     <div>
       <div
@@ -706,7 +717,13 @@ function Sifaris({
             <div className="flex flex-col xl:flex-row lg:gap-x-[30px] xl:gap-x-[30px] 2xl:gap-x-[40px] w-full">
               {/* inputs and map for mobile */}
               <div className="flex flex-col gap-y-[15px] xl:gap-y-0 lg:justify-between w-full xl:w-1/2">
-                <Calendar />
+                <div>
+                  <p className="font-semibold text-[12px] leading-[18px] pb-[5px]">
+                    Tarixi daxil et
+                  </p>
+                  <Calendar />
+                </div>
+
                 <InputCustomized />
                 {/* Calendar,data picker */}
                 <div className="flex flex-col blcok lg:hidden space-y-[5px]">
@@ -740,13 +757,19 @@ function Sifaris({
             {/* tesdiqle part */}
             <div className="flex flex-row w-full justify-between xl:w-1/3 pt-[20px]">
               <LinkSmBtn
+                onClick={goBack}
                 btnName="Geri"
-                // classNames="hidden lg:block"
+                classNames="hidden lg:block"
               />
-              <PrimaryOutlineSmBtn
-                btnName="Sıfırla"
-                // classNames="hidden lg:block"
-              />
+              <Link
+                // onClick={sifirla}
+                href="/temizlik-xidmeti/ev-temizleme"
+              >
+                <PrimaryOutlineSmBtn
+                  btnName="Sıfırla"
+                  classNames="hidden lg:block"
+                />
+              </Link>
 
               <PrimarySmBtn
                 onClick={handleTesdiqleClicked}

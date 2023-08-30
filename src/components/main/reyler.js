@@ -68,7 +68,9 @@ function Reyler({ parentId }) {
       <div key={child.name[0]}>
         <div
           className="flex flex-col relative
-              rounded-[10px] lg:rounded-[20px]"
+              rounded-[10px] lg:rounded-[20px]
+              bg-white
+              drop-shadow-cardAlt"
         >
           <div className="p-[10px] lg:p-[30px] space-y-[10px] lg:space-y-[15px]">
             {/* photo, name */}
@@ -145,59 +147,69 @@ function Reyler({ parentId }) {
           alt="arrow_icon"
         />
       </div>
+      <div className="flex flex-row gap-x-[30px]">
+        {data.length < 3 ? (
+          childDataArray.map((child, index) => (
+            <div key={index} className="">
+              {child.jsxElement}
+            </div>
+          ))
+        ) : (
+          <AliceCarousel
+            // activeIndex = {1}
+            animationDuration={1300}
+            animationType="fadeout"
+            // autoHeight={true}
+            //autoWidth={true}
+            // autoPlayControls
+            // autoPlayInterval={1300}
+            // disableDotsControls
+            // autoPlay
+            autoPlayStrategy="action"
+            controlsStrategy="responsive"
+            infinite
+            mouseTracking
+            items={childDataArray.map((child, index) => (
+              <div key={index} className="pr-[15px] 2xl:pr-[60px]">
+                {child.jsxElement}
+              </div>
+            ))}
+            responsive={responsive}
+            // disableSlideInfo={false}
+            animationEasingFunction="ease"
+            disableButtonsControls
+            paddingLeft={0}
+            paddingRight={0}
+            keyboardNavigation
+            touchTracking={true}
+            touchMoveDefaultEvents={false}
+          />
+        )}
+      </div>
       {/* Customized Carousel */}
-      <AliceCarousel
-        // activeIndex = {1}
-        animationDuration={1300}
-        animationType="fadeout"
-        // autoHeight={true}
-        //autoWidth={true}
-        // autoPlayControls
-        // autoPlayInterval={1300}
-        // disableDotsControls
-        // autoPlay
-        autoPlayStrategy="action"
-        controlsStrategy="alternate"
-        infinite
-        mouseTracking
-        items={childDataArray.map((child, index) => (
-          <div key={index} className="pr-[15px] 2xl:pr-[60px]">
-            {child.jsxElement}
-          </div>
-        ))}
-        responsive={responsive}
-        // disableSlideInfo={false}
-        animationEasingFunction="ease"
-        disableButtonsControls
-        paddingLeft={0}
-        paddingRight={0}
-        keyboardNavigation
-        touchTracking={true}
-        touchMoveDefaultEvents={false}
-      />
 
       {/* <div className="flex flex-row gap-x-[20px] justify-center text-[50px]">
       {".".repeat(sliderCount)}
       </div> */}
       <div className="flex flex-row gap-x-[20px] justify-center ">
         {
-        // Array.from({ length: sliderCount }, (_, index) => (
-        //   <React.Fragment key={index}>
-        //     <div className="">
-        //       <svg
-        //         xmlns="http://www.w3.org/2000/svg"
-        //         width="35"
-        //         height="35"
-        //         fill="currentColor"
-        //         className="bi bi-dot"
-        //         viewBox="0 0 16 16"
-        //       >
-        //         <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
-        //       </svg>
-        //     </div>
-        //     <span className="ml-2" /> {/* Add a margin-left of 2px */}
-        //   </React.Fragment>
-        // ))
+          // Array.from({ length: sliderCount }, (_, index) => (
+          //   <React.Fragment key={index}>
+          //     <div className="">
+          //       <svg
+          //         xmlns="http://www.w3.org/2000/svg"
+          //         width="35"
+          //         height="35"
+          //         fill="currentColor"
+          //         className="bi bi-dot"
+          //         viewBox="0 0 16 16"
+          //       >
+          //         <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+          //       </svg>
+          //     </div>
+          //     <span className="ml-2" /> {/* Add a margin-left of 2px */}
+          //   </React.Fragment>
+          // ))
         }
       </div>
     </div>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/public/logo_cagiraz.png";
+import logo from "@/public/logo.svg";
 import phone from "@/icons/footer/phone.svg";
 import copyright from "@/icons/footer/copyright.svg";
 import paper_plane from "@/icons/footer/paper_plane.svg";
@@ -19,10 +19,11 @@ const Footer = () => (
           />
         </Link>
       </div>
+      {/* first left */}
       <div className="grid grid-cols-2 lg:grid-cols-4 justify-between gap-y-[40px] lg:gap-y-0">
         {/* 1st column-Cagir.az */}
         <div className="justify-center col-span-2 lg:col-auto lg:justify-start order-4  lg:order-1 mx-auto lg:mx-0">
-          {/* 1st column:1st element */}
+          {/* 4th column:title */}
           <div className="hidden lg:flex mb-[20px] lg:mb-[30px] justify-center lg:justify-start">
             <Link href="/">
               <Image
@@ -33,17 +34,14 @@ const Footer = () => (
             </Link>
           </div>
 
-          <ul className="text-gray900 space-y-[20px] lg:space-y-[30px]">
-            {/* 1st column:2nd element */}
-            <li className="flex gap-x-[10px] justify-center lg:justify-start">
-              <div>
+          <div className="flex flex-col justify-between">
+            <div className="flex flex-col items-center lg:items-start gap-y-[20px] lg:gap-y-[30px]">
+              <div className="flex gap-x-[10px] justify-center lg:justify-start">
                 <Image
                   className="w-[20px] h-[20px]"
                   src={phone}
                   alt="phone_icon"
                 />
-              </div>
-              <div>
                 <Link
                   className="font-semibold text-[14px] leading-[21px] text-gray900 hover:text-black transition duration-300"
                   href="tel:994703482606"
@@ -51,50 +49,61 @@ const Footer = () => (
                   +994 70 348 26 06
                 </Link>
               </div>
-            </li>
-
-            {/* 1st column:3rd element */}
-            {/* Sosial sebekeler insta, fb, linkedin */}
-
-            <SocialNetworks classNames="flex flex-row justify-center lg:justify-start space-x-[25px]" />
-
-            {/* 1st column:4th element */}
-            <li className="flex justify-center lg:justify-start">
-              <Link
-                href="/haqqimizda/terms"
-                className="text-cagiraz font-extrabold lg:text-gray900 lg:font-semibold lg:hover:text-black transition duration-300 inline-block min-w-max"
-              >
-                Razılaşma müqaviləsi
-              </Link>
-            </li>
-            {/* 1st column:5th element */}
-            <li className="flex justify-center lg:justify-start">
-              <div className="flex gap-x-[10px]">
-                <div>
+              <SocialNetworks classNames="flex flex-row justify-center lg:justify-start space-x-[25px]" />
+              <div className="flex justify-center lg:hidden">
+                <Link
+                  href="/haqqimizda/terms"
+                  className="text-cagiraz font-extrabold lg:text-gray900 lg:font-semibold lg:hover:text-black transition duration-300 indivne-block min-w-max"
+                >
+                  Razılaşma müqaviləsi
+                </Link>
+              </div>
+              <div className="flex justify-center lg:hidden">
+                <div className="flex gap-x-[10px]">
                   <Image
                     src={copyright}
                     alt="copyright_icon"
                     className="w-[20px] h-[20px]"
                   />
-                </div>
-                <div>
-                  <p className="font-medium lg:font-semibold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] text-gray900">
-                    2023 Cagir.az. Bütün hüquqlar qorunur
-                  </p>
+                  <div>
+                    <p className="font-medium lg:font-semibold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] text-gray900">
+                      2023 Cagir.az. Bütün hüquqlar qorunur
+                    </p>
+                  </div>
                 </div>
               </div>
-            </li>
-          </ul>
+            </div>
+            {/*  */}
+            <div className="hidden lg:flex justify-center lg:justify-start items-end">
+              <div className="flex justify-center lg:justify-start">
+                <div className="flex gap-x-[10px] lg:pt-[72px] xl:pt-[91px]">
+                  <div>
+                    <Image
+                      src={copyright}
+                      alt="copyright_icon"
+                      className="w-[20px] h-[20px]"
+                    />
+                  </div>
+                  <div>
+                    <p className="font-medium lg:font-semibold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] text-gray900">
+                      2023 Cagir.az. Bütün hüquqlar qorunur
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/*  */}
         </div>
 
         {/* Faydali kecidler */}
-        <div className="flex justify-start order-2 ">
+        <div className="flex flex-col mx-auto justify-start order-2">
           {/* <!-- 3rd column:title --> */}
 
-          <ul className="flex flex-col mx-auto justify-center space-y-[10px] lg:space-y-[15px] font-semibold text-[14px] leading-[21px]  text-gray900">
+          <ul className="space-y-[10px] lg:space-y-[15px] font-semibold text-[14px] leading-[21px]  min-w-max text-gray900">
             {/* <!-- 2nd column:1st --> */}
-            <li className="hover:text-black transition duration-300 flex justify-center lg:justify-start">
-              <h2 className="lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500 text-center lg:text-left">
+            <li className="hover:text-black transition duration-300 ">
+              <h2 className="mb-[10px] lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500">
                 Faydalı keçidlər
               </h2>
             </li>
@@ -162,20 +171,30 @@ const Footer = () => (
         </div>
 
         {/* 4th column-Yeniliklerden xeberdar ol */}
-        <div className="flex flex-col col-span-2 lg:col-span-1 justify-center items-center lg:items-start lg:justify-start order-3 lg:order-4 lg:mx-0">
+        <div className="flex flex-col col-span-2 lg:col-span-1 items-center lg:items-start lg:justify-start order-3 lg:order-4 lg:mx-0 justify-between">
           {/* 4th column:title */}
-
           <h2 className="lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500 text-left">
             Yeniliklərdən xəbərdar ol
           </h2>
-          <div>
-            <div className="hidden lg:flex">
-              <InputBtnTransition name="Emaili yaz" />
-            </div>
-            <div className="flex lg:hidden">
-              <InputBtnTransition placeholder="Emaili yaz" />
+          <div className="flex flex-col lg:justify-between lg:h-full">
+            <InputBtnTransition
+              name="Emaili yaz"
+              placeholder="Emaili yaz"
+              classNames="hidden lg:block"
+            />
+
+            {/*  */}
+            <div className="hidden lg:flex justify-center lg:justify-start items-end">
+              <Link
+                href="/haqqimizda/terms"
+                // className="lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500 text-left"
+                className="text-cagiraz font-extrabold lg:text-gray900 lg:font-semibold lg:hover:text-black transition duration-300 inline-block min-w-max"
+              >
+                Razılaşma müqaviləsi
+              </Link>
             </div>
           </div>
+          {/*  */}
         </div>
       </div>
     </footer>

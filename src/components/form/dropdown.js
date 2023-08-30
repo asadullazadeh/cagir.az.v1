@@ -193,7 +193,7 @@ const Dropdown = ({
                   </svg>
                 </button>
                 {isOpen[index] && (
-                  <ul
+                  <div
                     className={`${
                       isOpen[index] ? "block" : "hidden"
                     } absolute z-10 w-full mt-[10px] rounded-[10px] border-[2px] border-solid border-cagiraz bg-white`}
@@ -201,7 +201,7 @@ const Dropdown = ({
                     {serviceInfos &&
                       serviceInfos.map((item, index) => (
                         <div key={index}>
-                          <li
+                          <button
                             className="px-[15px] py-[5px] font-medium lg:font-semibold text-[12px] leading-[18px] text-gray900 lg:text-black500"
                             onClick={() =>
                               handleOptionClick(
@@ -211,10 +211,10 @@ const Dropdown = ({
                             }
                           >
                             {item.serviceNames[0].name}
-                          </li>
+                          </button>
                         </div>
                       ))}
-                  </ul>
+                  </div>
                 )}
               </div>
               {/* info part */}

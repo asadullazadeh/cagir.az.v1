@@ -25,6 +25,7 @@ const Calendar = () => {
       </div>
     );
   };
+  console.log(startDate);
   
   return (
     <DatePicker

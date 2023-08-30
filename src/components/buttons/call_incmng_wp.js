@@ -7,7 +7,8 @@ import ModalStandart from "@/src/components/modal/modal_stand";
 import SifarisLegv from "@/src/components/others/tracking/sifaris_legv";
 import InputBtnNbTransition from "@/src/components/input/input_btn_nb_transition";
 
-const CallIncmngWp = () => (
+const CallIncmngWp = ({classNames}) => (
+  <div className={classNames}>
   <div className="flex flex-row rounded-[30px] bg-[#202020] bg-opacity-30 p-[2px] gap-x-[2px]">
     <Link
       className="group flex relative items-center justify-center w-[58px] h-[58px] bg-[#202020] bg-opacity-5 hover:bg-opacity-30 rounded-full"
@@ -76,6 +77,7 @@ const CallIncmngWp = () => (
         WhatsApp
       </span>
     </Link>
+  </div>
   </div>
 );
 export default CallIncmngWp;

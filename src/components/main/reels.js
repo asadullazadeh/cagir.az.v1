@@ -100,7 +100,7 @@ const Reels = () => {
         ))}
         responsive={responsive}
         // disableSlideInfo={false}
-        disableDotsControls
+        // disableDotsControls
         animationEasingFunction="ease"
         disableButtonsControls
         paddingLeft={0}
@@ -109,15 +109,15 @@ const Reels = () => {
         touchTracking={true}
         touchMoveDefaultEvents={false}
       />
-      <div className="flex flex-row gap-x-[20px] justify-center text-[50px]">
+      {/* <div className="flex flex-row gap-x-[20px] justify-center text-[50px]">
         
       {Array.from({ length: sliderCount }, (_, index) => (
         <React.Fragment key={index}>
           .
-          <span className="ml-2" /> {/* Add a margin-left of 2px */}
+          <span className="ml-2" /> 
         </React.Fragment>
       ))}
-    </div>
+    </div> */}
     </div>
   );
 };

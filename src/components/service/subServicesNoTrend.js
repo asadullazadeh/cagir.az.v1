@@ -66,8 +66,9 @@ function SubServiceNoTrend({ mainServiceData, subServices }) {
                             {price}
                           </p>
                         </div>
-                        <div className=" transition duration-300 sm:group-hover:block">
-                          <Image src={arrow_right} alt="arrow_icon" />
+                        <div className="hidden group-hover:block transition duration-300
+                         ">
+                          <Image src={arrow} alt="arrow_icon" className="hidden lg:block" />
                         </div>
                       </Link>
                     </li>
