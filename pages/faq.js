@@ -115,9 +115,9 @@ function Faq() {
             <Transition
               show={clickedItems[id] === true ? clickedItems[id] : false}
               enter="transform transition duration-[400ms]"
-              enterFrom="opacity-0 rotate-[0deg] scale-50"
-              enterTo="opacity-100 rotate-0 scale-100"
-              leave="transform duration-200 transition ease-in-out"
+              enterFrom="opacity-0 translate-y-[-20px] scale-95"
+              enterTo="opacity-100 translate-y-0 scale-100"
+              leave="transform duration-[300ms] transition ease-in-out"
               leaveFrom="opacity-100 rotate-0 scale-100 "
               leaveTo="opacity-0 scale-95 "
             >

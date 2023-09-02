@@ -7,15 +7,15 @@ import Layout from "@/src/components/layout/layout";
 // config.autoAddCss = false;
 
 export default function MyApp({ Component, pageProps }) {
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('token');
+    const storedToken = localStorage.getItem("token");
     if (storedToken) {
       setToken(storedToken);
     }
   }, []);
-  console.log(token);
+  // console.log(token);
   return (
     <div className="font-poppins">
       <Layout>

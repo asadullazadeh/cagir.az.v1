@@ -24,7 +24,6 @@ const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
     
     // 
   };
-  console.log(value);
   
 
   useEffect(() => {
@@ -38,7 +37,6 @@ const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
       
     // }
   }, [deleteBtnClicked, setDeleteBtnClicked, sendDataToParent]);
-  console.log(deleteBtnClicked);
 
   return (
     <div

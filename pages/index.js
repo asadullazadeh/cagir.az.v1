@@ -43,7 +43,7 @@ export default function Home(props) {
           className={`flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
       lg:gap-y-[105px] xl:gap-y-[120px] 2xl:gap-y-[135px]
       sm:pt-[36px] md:pt-[42px] lg:pt-[48px] xl:pt-[54px] 2xl:pt-[60px] 
-      pb-[60px] sm:pb-[75px] md:pb-[90px] lg:pb-[105px] xl:pb-[120px] 2xl:pb-[135px] ${
+      pb-[40px] sm:pb-[55px] md:pb-[70px] lg:pb-[85px] xl:pb-[100px] 2xl:pb-[115px] ${
         searchInptClicked ? "hidden" : ""
       }`}
         >

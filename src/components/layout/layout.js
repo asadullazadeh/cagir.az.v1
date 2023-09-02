@@ -74,9 +74,9 @@ export default function Layout({ children }) {
     router.asPath,
     visiblePages,
   ]);
-  console.log(ifSearchIconClicked);
+  
   return (
-    <div className="max-w-[1512px]">
+    <div className="">
       <Head>
         <title>Cagir.az</title>
       </Head>

@@ -16,7 +16,8 @@ function Elaqe() {
           <span className="mx-auto">
             O zaman{" "}
             <span className="text-cagiraz">
-              <Link href="/faq">Tez-tez verilən suallar</Link>  </span>
+              <Link href="/faq">Tez-tez verilən suallar</Link>{" "}
+            </span>
             bölməsinə keçin{" "}
           </span>
           <span className="mx-auto">
@@ -53,15 +54,15 @@ function Elaqe() {
             </div>
             <div className="row-span-2 col-span-1">
               <Link href="tel:994703482606">
-              <p className="font-semibold text-[14px] leading-[21px]">
-                {" "}
-                +994 70 348 26 06{" "}
-              </p>
+                <p className="font-semibold text-[14px] leading-[21px]">
+                  {" "}
+                  +994 70 348 26 06{" "}
+                </p>
               </Link>
             </div>
           </div>
           {/* Sosial sebekeler insta, fb, linkedin */}
-          <div className="flex flex-col  space-y-[18px]">
+          <div className="flex flex-col space-y-[18px] items-center lg:items-start">
             <h6 className="font-semibold lg:font-bold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] text-black500">
               Biz sosial şəbəkələrdə
             </h6>

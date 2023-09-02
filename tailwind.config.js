@@ -59,21 +59,21 @@ export const theme = {
     //   "2/3": "66.666667%",
     // },
     keyframes: {
-      moveUpDown : {
+      moveUpDown: {
         "0%, 100%": { transform: "translateY(0)" },
-        "50%": { transform: "translateY(-20px)" }
-      }
+        "50%": { transform: "translateY(-20px)" },
+      },
     },
     animation: {
-      wiggle: "wiggle 200ms ease-in-out"
-    }
+      wiggle: "wiggle 200ms ease-in-out",
+    },
   },
   screens: {
-    "xs": "320px",
-    "sm": "640px",
-    "md": "768px",
-    "lg": "1024px",
-    "xl": "1280px",
+    xs: "320px",
+    sm: "640px",
+    md: "768px",
+    lg: "1024px",
+    xl: "1280px",
     "2xl": "1512px",
   },
 };

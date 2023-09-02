@@ -32,6 +32,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
   useEffect(() => {
     ifSearchIconClicked(searchIconIsClicked);
   }, [ifSearchIconClicked, searchIconIsClicked]);
+  console.log('navbar:',navbar);
+console.log("searchIconIsClicked:",searchIconIsClicked);
 
   return (
     <>
@@ -44,14 +46,14 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
               <Image
                 src={logo}
                 alt="Cagir.az logo"
-                className="w-[90px] sm:w-[100px] md:w-[120px] h-auto"
+                className="w-[120px] h-auto"
               />
             </Link>
             {/* HAMBURGER BUTTON FOR MOBILE */}
             <div className="flex flex-row items-center">
               {/* search button */}
               <button onClick={handleSearchInput}>
-                <Image src={search1} alt="search_alt_1" className=" " />
+                <Image src={search1} alt="search_alt_1" className="w-[30px] h-[30px]" />
               </button>
               {/* language section */}
               <div className="pl-[15px]">
@@ -67,7 +69,7 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   width={13.75}
                   height={11.25}
                   alt="logo"
-                  className={`w-[13.75px] h-[11.25px] ${
+                  className={`w-[20.75px] h-[20.25px] ${
                     navbar
                       ? ""
                       : "focus:border-none active:border-none object-cover object-center"
@@ -169,147 +171,73 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
               </li>
 
               <li>
-                <details className="dropdown dropdown-right dropdown-end">
-                  <summary className="transition duration-300 hover:text-black pb-[17.5px] border-b border-[#EAEAEA]">
-                    Digər xidmətlər
-                  </summary>
-                  <ul className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
-                    <li>
-                      <Link passHref href="/avto-servis">
-                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                          Avtomobil servisi
-                        </p>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        passHref
-                        href="/meditasiya"
-                        onClick={() => {
-                          handleClick();
-                          handleDeClickSearchIcon();
-                        }}
-                      >
-                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                          Yoga Meditasiya
-                        </p>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        passHref
-                        href="/eylence-merkezi"
-                        onClick={() => {
-                          handleClick();
-                          handleDeClickSearchIcon();
-                        }}
-                      >
-                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                          Əyləncə
-                        </p>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        passHref
-                        href="/masaj-xidmeti"
-                        onClick={() => {
-                          handleClick();
-                          handleDeClickSearchIcon();
-                        }}
-                      >
-                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                          Masaj xidməti
-                        </p>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        passHref
-                        href="/berber"
-                        onClick={() => {
-                          handleClick();
-                          handleDeClickSearchIcon();
-                        }}
-                      >
-                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                          Bərbər
-                        </p>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        passHref
-                        href="/psixoloq"
-                        onClick={() => {
-                          handleClick();
-                          handleDeClickSearchIcon();
-                        }}
-                      >
-                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                          Psixoloq xidməti
-                        </p>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        passHref
-                        href="/it-pisik-baximi"
-                        onClick={() => {
-                          handleClick();
-                          handleDeClickSearchIcon();
-                        }}
-                      >
-                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                          İt Pişik baxımı
-                        </p>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        passHref
-                        href="/gozellik-salonu"
-                        onClick={() => {
-                          handleClick();
-                          handleDeClickSearchIcon();
-                        }}
-                      >
-                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                          Gözəllik xidməti
-                        </p>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        passHref
-                        href="/dizayn-sirketi"
-                        onClick={() => {
-                          handleClick();
-                          handleDeClickSearchIcon();
-                        }}
-                      >
-                        <p className="transition duration-300 hover:text-black pb-[17.5px]  border-[#EAEAEA]">
-                          Dizayn xidməti
-                        </p>
-                      </Link>
-                    </li>
-                  </ul>
-                </details>
+              <Link
+                  passHref
+                  href="/xidmetler"
+                  onClick={() => {
+                    handleClick();
+                    handleDeClickSearchIcon();
+                  }}
+                >
+                  <p className="transition duration-300 hover:text-black">
+                    Digər Xidmətlər
+                  </p>
+                </Link>
               </li>
 
               {/* second part */}
 
+              <li 
+              className=""
+              onClick={() => {
+                handleClick();
+                handleSearchInput();
+              }}>
+              
+                  <p className="transition duration-300 hover:text-black">
+                    Axtar
+                  </p>
+                
+              </li>
               <li>
                 <Link
-                  href="/"
+                  href="/blog"
                   className=""
                   onClick={() => {
                     handleClick();
-                    handleSearchInput();
+                    handleDeClickSearchIcon();
                   }}
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Axtar
+                    Bloq
+                  </p>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  passHref
+                  href="/haqqimizda"
+                  onClick={() => {
+                    handleClick();
+                    handleDeClickSearchIcon();
+                  }}
+                >
+                  <p className="transition duration-300 hover:text-black">
+                    Haqqımızda
+                  </p>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  passHref
+                  href="/elaqe"
+                  onClick={() => {
+                    handleClick();
+                    handleDeClickSearchIcon();
+                  }}
+                >
+                  <p className="transition duration-300 hover:text-black">
+                    Əlaqə
                   </p>
                 </Link>
               </li>

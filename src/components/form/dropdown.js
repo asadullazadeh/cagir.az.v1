@@ -1,5 +1,5 @@
 // components/CustomDropdown.js
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import info_btn from "@/icons/form/info_btn.svg";
 
@@ -33,13 +33,42 @@ const Dropdown = ({
 
   // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
-  // if "isOpen" is true, toggleDropdown works
+  const [clickedOutside, setClickedOutside] = useState(false);
+  const myElementRef = useRef(null);
+
   const toggleDropdown = (index) => {
     setIsOpen((prevState) => ({
-      ...prevState,
-      [index]: !isOpen[index],
+      ...Object.fromEntries(
+        Object.entries(prevState).map(([key]) => [key, false])
+      ),
+      [index]: !prevState[index], // Toggle the dropdown's state
     }));
   };
+
+  const handleClick = (event) => {
+    if (myElementRef.current && !myElementRef.current.contains(event.target)) {
+      setClickedOutside(true);
+    }
+  };
+
+  useEffect(() => {
+    if (clickedOutside) {
+      // Close all open dropdowns when clicked outside
+      setIsOpen((prevState) =>
+        Object.fromEntries(Object.keys(prevState).map((key) => [key, false]))
+      );
+      setClickedOutside(false); // Reset the clickedOutside state
+    }
+  }, [clickedOutside]);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, []);
+  console.log(isOpen);
 
   // mainServiceName is set to false as default.
   const [mainServiceName, setMainServiceName] = useState(
@@ -63,7 +92,6 @@ const Dropdown = ({
     setSubServiceName("");
     setSub2ServiceName("");
   }, [mainServiceName]);
-  // console.log(mainServiceName);
   // Update sub2ServiceName when subServiceName changes
   useEffect(() => {
     setSub2ServiceName("");
@@ -104,23 +132,23 @@ const Dropdown = ({
       setSub2ServiceName(serviceName);
       onSelectSub2Service(serviceName);
     }
+
     setIsOpen(false);
-    // checking which serice category is selected.Main-1,sub-2,sub2-2
-    // Call the callback function with the data
+    console.log(mainIndex, "mainIndex");
+
     onDataCallback(mainIndex);
     setTrembling({ ...tremBlingObject[mainIndex] });
   };
-  console.log(getSub2Services);
 
-  // Function to check if sub2 object is empty to run third dropdown or not
-  // function isSub2Exist(obj) {
-  //   return Object.keys(obj).length === 0;
-  // }
   const isSub2ElementsExist = getSub2Services.length > 0;
 
-  console.log(isSub2ElementsExist);
+  //
+
   return (
-    <div className="grid lg:grid-cols-3 justify-items-stretch lg:gap-x-[40px] gap-y-[15px]">
+    <div
+      ref={myElementRef}
+      className="grid lg:grid-cols-3 justify-items-stretch lg:gap-x-[40px] gap-y-[15px]"
+    >
       {Object.keys(dropdownInfos).map((index) => {
         if (index === "2" && !isSub2ElementsExist) {
           return null; // Skip this iteration
@@ -130,12 +158,8 @@ const Dropdown = ({
           ? dropdownInfos[index].serviceInfos
           : "";
         const onSelectService = dropdownInfos[index].onSelectService;
-        // console.log(isSub2ElementsExist);
 
-        // 0-main,1-sub,2-sub2
         const mainIndex = index;
-        // console.log(mainIndex);
-        // console.log(serviceInfos);
 
         return (
           <div key={index}>
@@ -174,7 +198,7 @@ const Dropdown = ({
                   }}
                 >
                   <p
-                    className={`lg:text-black500 ${
+                    className={`text-black500 ${
                       isOpen[index] ? "opacity-0" : "opacity-100"
                     }`}
                   >
@@ -202,7 +226,7 @@ const Dropdown = ({
                       serviceInfos.map((item, index) => (
                         <div key={index}>
                           <button
-                            className="px-[15px] py-[5px] font-medium lg:font-semibold text-[12px] leading-[18px] text-gray900 lg:text-black500"
+                            className="px-[15px] py-[5px] font-medium lg:font-semibold text-[12px] leading-[18px] text-black lg:text-black500"
                             onClick={() =>
                               handleOptionClick(
                                 mainIndex,
@@ -229,10 +253,11 @@ const Dropdown = ({
                   <div className="flex flex-col font-medium text-[10px] leading-[15px] text-gray900">
                     <div classNames="flex flex-row">
                       <div
+                        className={`${
+                          descIsOpen[index] ? "" : "line-clamp-1"
+                        } `}
                         dangerouslySetInnerHTML={{
-                          __html: descIsOpen[index]
-                            ? `${findDescById(index)}`
-                            : `${findDescById(index).slice(0, 200)}...`,
+                          __html: `${findDescById(index)}`,
                         }}
                       />
 

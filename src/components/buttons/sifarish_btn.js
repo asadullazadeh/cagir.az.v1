@@ -30,7 +30,6 @@ function SifarishBtn({ classNames }) {
   const mainServicesInfo = responseData.find(
     (obj) => obj.nameUrl === router.query.mainService
   );
-  console.log(mainServicesInfo?.nameUrl);
 
   const urlFromSifarisBtn = `${
     mainServicesInfo

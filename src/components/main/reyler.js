@@ -65,7 +65,7 @@ function Reyler({ parentId }) {
     data.length < 2 ? 0 : data.length >= 2 && data.length <= 4 ? 2 : 3;
   const childDataArray = Object.values(data).map((child, index) => ({
     jsxElement: (
-      <div key={child.name[0]}>
+      <div key={child.name[0]} className="py-[10px]">
         <div
           className="flex flex-col relative
               rounded-[10px] lg:rounded-[20px]

@@ -52,24 +52,24 @@ export default function NavbarDesktop({ ifSearchIconClicked }) {
             {/* 1st navbar-right side */}
             <ul className="flex flex-row justify-center items-center space-x-[30px] h-full z-10">
               {/* search icon */}
-              <li>
+              <li className="">
                 <div className="group flex relative">
                   <button onClick={handleClick}>
-                    <div className="relative group">
+                    <div className="relative group ">
                       <Image
                         src={search}
                         alt="search_alt"
-                        className="transition duration-300 ease-in-out group-hover:opacity-0"
+                        className="transition duration-300 ease-in-out group-hover:opacity-0 w-[35px] h-[35px]"
                       />
                       <Image
                         src={search1}
                         alt="search_alt_1"
-                        className="absolute top-0 left-0 opacity-0 transition duration-300 ease-in-out group-hover:opacity-100"
+                        className="absolute top-0 left-0 opacity-0 transition duration-300 ease-in-out group-hover:opacity-100 w-[35px] h-[35px]"
                       />
                     </div>
                   </button>
                   <span
-                    className="mt-[8px] rounded-[5px] py-[4px] px-[6px] font-medium
+                    className="mt-[20px] rounded-[5px] py-[4px] px-[6px] font-medium
                   text-[10px] leading-[15px] bg-black500 text-white group-hover:opacity-100 transition-opacity absolute left-1/2
                   -translate-x-1/2 translate-y-full opacity-0"
                   >
@@ -89,17 +89,17 @@ export default function NavbarDesktop({ ifSearchIconClicked }) {
                       <Image
                         src={wallet}
                         alt="wallet_alt"
-                        className="transition duration-300 ease-in-out group-hover:opacity-0"
+                        className="transition duration-300 ease-in-out group-hover:opacity-0 w-[35px] h-[35px]"
                       />
                       <Image
                         src={wallet1}
                         alt="wallet_alt_1"
-                        className="absolute top-0 left-0 opacity-0 transition duration-300 ease-in-out group-hover:opacity-100"
+                        className="absolute top-0 left-0 opacity-0 transition duration-300 ease-in-out group-hover:opacity-100 w-[35px] h-[35px]"
                       />
                     </div>
                   </span>
                   <span
-                    className="mt-[9px] rounded-[5px] py-[4px] px-[6px] font-medium
+                    className="mt-[20px] rounded-[5px] py-[4px] px-[6px] font-medium
                   text-[10px] leading-[15px] bg-black500 text-white group-hover:opacity-100 transition-opacity absolute left-1/2
                   -translate-x-1/2 translate-y-full opacity-0"
                   >
@@ -119,17 +119,17 @@ export default function NavbarDesktop({ ifSearchIconClicked }) {
                       <Image
                         src={profile}
                         alt="profile_alt"
-                        className="transition duration-300 ease-in-out group-hover:opacity-0"
+                        className="transition duration-300 ease-in-out group-hover:opacity-0 w-[35px] h-[35px]"
                       />
                       <Image
                         src={profile1}
                         alt="profile_alt_1"
-                        className="absolute top-0 left-0 opacity-0 transition duration-300 ease-in-out group-hover:opacity-100"
+                        className="absolute top-0 left-0 opacity-0 transition duration-300 ease-in-out group-hover:opacity-100 w-[35px] h-[35px]"
                       />
                     </div>
                   </span>
                   <span
-                    className="mt-[9px] rounded-[5px] py-[4px] px-[6px] font-medium
+                    className="mt-[20px] rounded-[5px] py-[4px] px-[6px] font-medium
                   text-[10px] leading-[15px] bg-black500 text-white group-hover:opacity-100 transition-opacity absolute left-1/2
                   -translate-x-1/2 translate-y-full opacity-0 whitespace-nowrap"
                   >

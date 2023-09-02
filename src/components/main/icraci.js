@@ -7,12 +7,13 @@ import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
 const responsive = {
-  0: { items: 2 },
+  0: { items: 1 },
+  430: { items: 2 },
   568: { items: 3 },
-  1300: { items: 4 },
+  1300: { items: 4 }, 
 };
 
-function Icraci({ parentId }) {
+function Icraci({ parentId }) { 
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -45,7 +46,10 @@ function Icraci({ parentId }) {
   console.log(sliderCount);
   const childDataArray = Object.values(data).map((child) => ({
     jsxElement: (
-      <div key={child.name[0]}>
+      <div
+        key={child.name[0]}
+        className="flex flex-row items-center justify-center py-[10px]"
+      >
         <div
           className="max-w-[195px] lg:max-w-[302px] h-full 
               rounded-[10px] lg:rounded-[20px] flex flex-col
@@ -83,7 +87,7 @@ function Icraci({ parentId }) {
             {/* icraci */}
             <div className="w-[175px] lg:w-[265px] h-full">
               <p
-                className="w-4/5 sm:w-full italic font-semibold lg:font-bold text-[10px] sm:text-[12px] lg:text-[14px] leading-[18px]
+                className="w-full italic font-semibold lg:font-bold text-[10px] sm:text-[12px] lg:text-[14px] leading-[18px]
                   sm:leading-[19px] lg:leading-[21px] text-black100"
               >
                 {child.description}
@@ -106,8 +110,8 @@ function Icraci({ parentId }) {
         />
       </div>
       {/* Customized Carousel */}
-      <div className="flex flex-row gap-x-[30px]">
-        {data.length < 3 ? (
+      <div className="flex flex-row justify-center gap-x-[30px]">
+        {data.length < 2 ? (
           childDataArray.map((child, index) => (
             <div key={index} className="">
               {child.jsxElement}
@@ -129,7 +133,7 @@ function Icraci({ parentId }) {
             mouseTracking
             responsive={responsive}
             items={childDataArray.map((child, index) => (
-              <div key={index} className="pr-[15px] lg:pr-[60px]">
+              <div key={index} className="md:pr-[15px] lg:pr-[60px]">
                 {child.jsxElement}
               </div>
             ))}
