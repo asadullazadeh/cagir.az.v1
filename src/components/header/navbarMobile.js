@@ -14,13 +14,14 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
   const handleClick = () => {
     setNavbar(false);
   };
+  console.log(router.asPath);
 
   // if search input is clicked
   const [searchIconIsClicked, setSearchIconIsClicked] = useState(false);
 
   const handleSearchInput = () => {
     setSearchIconIsClicked(true);
-    setNavbar(false)
+    setNavbar(false);
   };
 
   const handleDeClickSearchIcon = async () => {
@@ -32,8 +33,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
   useEffect(() => {
     ifSearchIconClicked(searchIconIsClicked);
   }, [ifSearchIconClicked, searchIconIsClicked]);
-  console.log('navbar:',navbar);
-console.log("searchIconIsClicked:",searchIconIsClicked);
+  console.log("navbar:", navbar);
+  console.log("searchIconIsClicked:", searchIconIsClicked);
 
   return (
     <>
@@ -42,7 +43,15 @@ console.log("searchIconIsClicked:",searchIconIsClicked);
           {/* 1st navbar */}
           <div className="flex items-center justify-between lg:block h-[40px] mx-auto">
             {/* LOGO */}
-            <Link href="/" className="">
+            <Link
+              passHref
+              onClick={() => {
+                handleDeClickSearchIcon();
+                router.asPath === "/" ? window.location.reload() : "";
+              }}
+              href="/"
+              className=""
+            >
               <Image
                 src={logo}
                 alt="Cagir.az logo"
@@ -53,7 +62,11 @@ console.log("searchIconIsClicked:",searchIconIsClicked);
             <div className="flex flex-row items-center">
               {/* search button */}
               <button onClick={handleSearchInput}>
-                <Image src={search1} alt="search_alt_1" className="w-[30px] h-[30px]" />
+                <Image
+                  src={search1}
+                  alt="search_alt_1"
+                  className="w-[30px] h-[30px]"
+                />
               </button>
               {/* language section */}
               <div className="pl-[15px]">
@@ -83,7 +96,7 @@ console.log("searchIconIsClicked:",searchIconIsClicked);
           <div className={` ${navbar ? "h-screen flex flex-col  " : "hidden"}`}>
             <ul
               className="flex flex-col justify-between font-medium h-4/5 mt-[17.5px] text-[12px] xs:text-[14px] sm:text-[16px] md:text-[18px] leading-[18px] xs:leading-[21px]
-            sm:leading-[24px] leading-[27px] text-gray900 text-center "
+            sm:leading-[24px] md:leading-[27px] text-gray900 text-center "
             >
               <li>
                 <Link
@@ -171,7 +184,7 @@ console.log("searchIconIsClicked:",searchIconIsClicked);
               </li>
 
               <li>
-              <Link
+                <Link
                   passHref
                   href="/xidmetler"
                   onClick={() => {
@@ -187,17 +200,16 @@ console.log("searchIconIsClicked:",searchIconIsClicked);
 
               {/* second part */}
 
-              <li 
-              className=""
-              onClick={() => {
-                handleClick();
-                handleSearchInput();
-              }}>
-              
-                  <p className="transition duration-300 hover:text-black">
-                    Axtar
-                  </p>
-                
+              <li
+                className=""
+                onClick={() => {
+                  handleClick();
+                  handleSearchInput();
+                }}
+              >
+                <p className="transition duration-300 hover:text-black">
+                  Axtar
+                </p>
               </li>
               <li>
                 <Link

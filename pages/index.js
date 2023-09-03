@@ -37,7 +37,6 @@ export default function Home(props) {
   console.log(searchInptClicked);
 
   return (
-    <>
       <div>
         <div
           className={`flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
@@ -70,6 +69,5 @@ export default function Home(props) {
           <SearchServices />
         </div>
       </div>
-    </>
   );
 }

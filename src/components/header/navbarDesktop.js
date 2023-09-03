@@ -41,7 +41,7 @@ export default function NavbarDesktop({ ifSearchIconClicked }) {
           {/* 1st navbar */}
           <div className="py-[12px] justify-between mx-auto items-center flex relative">
             {/* 1st navbar-left side-LOGO */}
-            <Link onClick={handleDeClickSearchIcon} href="/" className="">
+            <Link passHref onClick={handleDeClickSearchIcon} href="/" className="">
               <Image
                 src={logo}
                 alt="Cagir.az logo"

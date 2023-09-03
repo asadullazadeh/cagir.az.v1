@@ -37,7 +37,7 @@ const Textarea = ({sendMessage}) => {
       id="message"
       rows="3"
       className="resize-x block pt-[8px] lg:pt-[15px] px-[10px] lg:pr-[7px] lg:pl-[15px] pb-[20px] w-full lg:w-[300px] font-semibold text-[10px] leading-[15px] text-gray-900 bg-gray-50 outline-none rounded-lg border border-gray-300"
-      placeholder="Write your thoughts here..."
+      placeholder="Əlavə qeydlərinizi yazın..."
       value={message}
       onChange={handleInputChange}
     ></textarea>

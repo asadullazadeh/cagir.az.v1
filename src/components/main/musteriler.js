@@ -62,15 +62,15 @@ function Musteriler() {
         infinite
         mouseTracking
         items={responseData?.map(({ id, imageUrl, title, url }) => (
-          <div key={id} className="py-[10px]">
+          <div key={id} className="">
             {url && (
-              <Link href={url} target="_blank">
+              <Link href={url} target="_blank" className="">
                 <Image
                   alt={title}
                   src={`https://api.cagir.az/${imageUrl}`}
                   width={400}
                   height={150}
-                  className="w-[200px] lg:w-[400px] h-[75px] lg:h-[150px] place-self-center pr-[50px] drop-shadow-cardAlt"
+                  className="w-[200px] lg:w-[400px] h-[75px] lg:h-[150px] place-self-center pr-[50px] drop-shadow-cardAlt py-[10px]"
                 />
               </Link>
             )}

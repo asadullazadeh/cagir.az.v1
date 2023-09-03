@@ -48,6 +48,7 @@ export const theme = {
       qeydiyyat: "0 4px 4px rgba(53, 152, 234, 50%)",
       card: "0 4px 16px rgba(32, 32, 32, 15%)",
       cardAlt: "0 2px 4px rgba(32, 32, 32, 10%)",
+      cardNew:"0 4px 16px rgba(53, 152, 234, 0.05)"
     },
     boxShadow: {
       btnShdw: "0 4px 16px rgba(53, 152, 234, 50%)",
