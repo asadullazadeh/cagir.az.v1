@@ -51,7 +51,7 @@ function Icraci({ parentId }) {
         className="flex flex-row items-center justify-center py-[10px]"
       >
         <div
-          className="max-w-[195px] lg:max-w-[302px] h-full 
+          className="w-[195px] lg:w-[302px] h-full 
               rounded-[10px] lg:rounded-[20px] flex flex-col
               bg-white
               drop-shadow-cardAlt"
