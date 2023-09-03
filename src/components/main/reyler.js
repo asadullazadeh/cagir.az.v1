@@ -9,10 +9,10 @@ import ModalStandart from "@/src/components/modal/modal_stand";
 import exit_modal from "@/icons/exit_modal.svg";
 
 const responsive = {
-  0: { items: 1.5 },
-  410: { items: 2 },
-  568: { items: 3 },
-  1300: { items: 4 }, 
+  0: { items: 1 },
+  420: { items: 2 },
+  580: { items: 3 },
+  1300: { items: 4 },
 };
 
 function Reyler({ parentId }) {
@@ -65,7 +65,10 @@ function Reyler({ parentId }) {
     data.length < 2 ? 0 : data.length >= 2 && data.length <= 4 ? 2 : 3;
   const childDataArray = Object.values(data).map((child, index) => ({
     jsxElement: (
-      <div key={child.name[0]} className="flex flex-row items-center justify-center py-[10px]">
+      <div
+        key={child.name[0]}
+        className="flex flex-row items-center justify-center py-[10px]"
+      >
         <div
           className="flex flex-col max-w-[195px] lg:max-w-[302px] h-full relative
               rounded-[10px] lg:rounded-[20px]

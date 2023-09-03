@@ -12,9 +12,20 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
   const router = useRouter();
   const [navbar, setNavbar] = useState(false);
   const handleClick = () => {
-    setNavbar(false);
+    setNavbar(!navbar);
   };
+  useEffect(() => {
+    if(navbar){
+      document.body.style.overflow = 'hidden';
+
+  // Optionally, you can add a class to hide the scroll bar if needed
+  // document.body.classList.add('overflow-hidden');
+    } else{
+      document.body.style.overflow = 'visible';
+    }
+  },[navbar])
   console.log(router.asPath);
+  console.log(navbar);
 
   // if search input is clicked
   const [searchIconIsClicked, setSearchIconIsClicked] = useState(false);
@@ -36,6 +47,7 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
   console.log("navbar:", navbar);
   console.log("searchIconIsClicked:", searchIconIsClicked);
 
+  
   return (
     <>
       <header className="block lg:hidden">

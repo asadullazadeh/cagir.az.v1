@@ -8,12 +8,12 @@ import "react-alice-carousel/lib/alice-carousel.css";
 
 const responsive = {
   0: { items: 1 },
-  430: { items: 2 },
-  568: { items: 3 },
-  1300: { items: 4 }, 
+  420: { items: 2 },
+  580: { items: 3 },
+  1300: { items: 4 },
 };
 
-function Icraci({ parentId }) { 
+function Icraci({ parentId }) {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
