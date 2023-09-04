@@ -74,9 +74,9 @@ export default function Layout({ children }) {
     router.asPath,
     visiblePages,
   ]);
-  
+
   return (
-    <div className="">
+    <div className="max-w-[1512px]">
       <Head>
         <title>Cagir.az</title>
       </Head>
