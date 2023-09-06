@@ -9,7 +9,7 @@ import ModalStandart from "@/src/components/modal/modal_stand";
 import exit_modal from "@/icons/exit_modal.svg";
 
 const responsive = {
-  0: { items: 1 },
+  0: { items: 2 },
   420: { items: 2 },
   580: { items: 3 },
   1300: { items: 4 },
@@ -70,7 +70,7 @@ function Reyler({ parentId }) {
         className="flex flex-row items-center justify-center py-[10px]"
       >
         <div
-          className="flex flex-col w-[195px] lg:w-[302px] h-full relative
+          className="flex flex-col w-[145px] sm:w-[195px] lg:w-[302px] relative
               rounded-[10px] lg:rounded-[20px]
               bg-white
               drop-shadow-cardAlt"
@@ -105,12 +105,13 @@ function Reyler({ parentId }) {
             <div className="overflow-hidden ">
               <div
                 className="w-full italic font-semibold lg:font-bold text-[10px] sm:text-[12px] lg:text-[14px] leading-[18px]
-                  sm:leading-[19px] lg:leading-[21px] text-black100"
+                  sm:leading-[19px] lg:leading-[21px] min-h-[60px] text-black100"
               >
                 {showFullDescription[index]
                   ? child.description
-                  : child.description.slice(0, 100)}
-                {child.description.length > 100 ? (
+                  : child.description.slice(0, 70)}
+
+                {child.description.length > 70 ? (
                   <button
                     className="font-semibold block text-cagiraz"
                     onClick={() => toggleDescription(index)}

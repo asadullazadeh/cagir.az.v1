@@ -51,9 +51,9 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
   return (
     <>
       <header className="block lg:hidden">
-        <nav className="w-full bg-white fixed top-0 left-0 right-0 px-[10px] lg:px-[60px]">
+        <nav className="w-full bg-white fixed top-0 left-0 right-0 px-[10px] lg:px-[60px] drop-shadow-[0_2px_4px_rgba(32,32,32,0.10)]">
           {/* 1st navbar */}
-          <div className="flex items-center justify-between lg:block h-[40px] mx-auto">
+          <div className="flex items-center justify-between lg:block h-[40px] mx-auto ">
             {/* LOGO */}
             <Link
               passHref

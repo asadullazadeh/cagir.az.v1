@@ -32,16 +32,20 @@ export default function NavbarDesktop({ ifSearchIconClicked }) {
   useEffect(() => {
     ifSearchIconClicked(searchIconIsClicked);
   }, [ifSearchIconClicked, searchIconIsClicked]);
-  // console.log(searchIconIsClicked);
 
   return (
     <>
-      <header className="hidden lg:block ">
-        <nav className="relative w-full bg-white top-0 left-0 right-0 px-[10px] lg:px-[60px]">
+      <header className="hidden lg:block border-b-[1px] border-[#EAEAEA]">
+        <nav className="relative w-full bg-white top-0 left-0 right-0 px-[10px] lg:px-[60px] ">
           {/* 1st navbar */}
-          <div className="py-[12px] justify-between mx-auto items-center flex relative">
+          <div className="py-[12px] justify-between mx-auto items-center flex relative ">
             {/* 1st navbar-left side-LOGO */}
-            <Link passHref onClick={handleDeClickSearchIcon} href="/" className="">
+            <Link
+              passHref
+              onClick={handleDeClickSearchIcon}
+              href="/"
+              className=""
+            >
               <Image
                 src={logo}
                 alt="Cagir.az logo"

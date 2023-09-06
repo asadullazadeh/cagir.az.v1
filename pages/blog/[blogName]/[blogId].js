@@ -56,6 +56,7 @@ function BlogPost() {
   return (
     <div
       className="flex flex-col lg:flex-row lg:gap-x-[40px] xl:gap-x-[50px] 2xl:gap-x-[60px] 
+      pt-[25px]
     pb-[60px] lg:pb-[90px]"
     >
       {/* Left part-a full blog description */}
@@ -69,7 +70,7 @@ function BlogPost() {
           height={900}
           src={`https://api.cagir.az${imageUrl}`}
           alt={title}
-          className="rounded-[20px] w-full aspect-[300/164] lg:aspect-[908/499]"
+          className="rounded-[20px] w-full aspect-[300/164] lg:aspect-[908/499] object-cover"
         />
         <div className="flex flex-row justify-between pt-[5px] lg:pt-[30px] pb-[15px] lg:pb-[30px]">
           <p className="font-medium lg:font-semibold text-[8px] lg:text-[14px] leading-[12px] lg:leading-[21px] text-gray900">

@@ -7,7 +7,7 @@ import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
 const responsive = {
-  0: { items: 1 },
+  0: { items: 2 },
   420: { items: 2 },
   580: { items: 3 },
   1300: { items: 4 },
@@ -51,7 +51,7 @@ function Icraci({ parentId }) {
         className="flex flex-row items-center justify-center py-[10px]"
       >
         <div
-          className="w-[195px] lg:w-[302px] h-full 
+          className="w-[145px] sm:w-[195px] lg:w-[302px] h-full 
               rounded-[10px] lg:rounded-[20px] flex flex-col
               bg-white
               drop-shadow-cardAlt"
