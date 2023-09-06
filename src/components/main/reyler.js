@@ -70,7 +70,7 @@ function Reyler({ parentId }) {
         className="flex flex-row items-center justify-center py-[10px]"
       >
         <div
-          className="flex flex-col w-[145px] sm:w-[195px] lg:w-[302px] relative
+          className="flex flex-col w-[145px] screen360:w-[160px] screen375:w-[175px] screen412:w-[185px] sm:w-[195px] lg:w-[302px] relative
               rounded-[10px] lg:rounded-[20px]
               bg-white
               drop-shadow-cardAlt"

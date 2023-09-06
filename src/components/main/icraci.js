@@ -51,7 +51,7 @@ function Icraci({ parentId }) {
         className="flex flex-row items-center justify-center py-[10px]"
       >
         <div
-          className="w-[145px] sm:w-[195px] lg:w-[302px] h-full 
+          className="w-[145px] screen360:w-[160px] screen375:w-[175px] screen412:w-[185px] sm:w-[195px] lg:w-[302px] h-full 
               rounded-[10px] lg:rounded-[20px] flex flex-col
               bg-white
               drop-shadow-cardAlt"
@@ -87,7 +87,7 @@ function Icraci({ parentId }) {
             {/* icraci */}
             <div className="w-[175px] lg:w-[265px] h-full">
               <p
-                className="w-full italic font-semibold lg:font-bold text-[10px] sm:text-[12px] lg:text-[14px] leading-[18px]
+                className="w-5/6 screen412:w-full italic font-semibold lg:font-bold text-[10px] sm:text-[12px] lg:text-[14px] leading-[18px]
                   sm:leading-[19px] lg:leading-[21px] text-black100"
               >
                 {child.description}
