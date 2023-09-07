@@ -194,7 +194,7 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                 </Link>
               </li>
 
-              <li className="border-b-2 border-opacity-10 border-[#959595]">
+              <li className="">
                 <Link
                   passHref
                   href="/xidmetler"
@@ -208,6 +208,7 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   </p>
                 </Link>
               </li>
+              <li className="border-b-2 border-opacity-10 border-[#959595]"></li>
 
               {/* second part */}
 

@@ -68,7 +68,7 @@ const Dropdown = ({
       document.removeEventListener("mousedown", handleClick);
     };
   }, []);
-  console.log(isOpen);
+  // console.log(isOpen);
 
   // mainServiceName is set to false as default.
   const [mainServiceName, setMainServiceName] = useState(
@@ -143,6 +143,8 @@ const Dropdown = ({
   const isSub2ElementsExist = getSub2Services.length > 0;
 
   //
+  console.log(descIsOpen[0]);
+  console.log(isOpen);
 
   return (
     <div
@@ -254,7 +256,7 @@ const Dropdown = ({
                     <div classNames="flex flex-row">
                       <div
                         className={`${
-                          descIsOpen[index] ? "line-clamp-none" : "line-clamp-1"
+                          !descIsOpen[index] ? "line-clamp-1" : ""
                         } `}
                         dangerouslySetInnerHTML={{
                           __html: `${findDescById(index)}`,

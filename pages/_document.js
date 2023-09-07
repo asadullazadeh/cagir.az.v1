@@ -3,7 +3,7 @@ import Script from "next/script";
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="en" className="flex justify-center">
       <Head>
         <link
           href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"

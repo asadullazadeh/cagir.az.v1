@@ -46,6 +46,7 @@ const InputBtnTransition = ({ name, classNames }) => {
       }
     } else {
       setIsValidEmailText(false);
+      setIsRotated(false);
     }
   }, [email, isRotated, isValidEmail]);
 
