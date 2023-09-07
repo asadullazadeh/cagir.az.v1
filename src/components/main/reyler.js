@@ -11,7 +11,7 @@ import exit_modal from "@/icons/exit_modal.svg";
 const responsive = {
   0: { items: 2 },
   420: { items: 2 },
-  580: { items: 3 },
+  640: { items: 3 },
   1300: { items: 4 },
 };
 
@@ -144,7 +144,7 @@ function Reyler({ parentId }) {
   return (
     <div>
       <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">Müştəri rəyləri</h2>
-      <div className="grid place-items-end">
+      <div className={`grid place-items-end ${data.length > 2 ? "" : "hidden"}`}>
         <Image
           className="w-[22px] lg:w-[28px] h-[14px] lg:h-[24px]"
           src={arrow}

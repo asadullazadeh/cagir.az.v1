@@ -7,7 +7,7 @@ import Link from "next/link";
 import arrow from "@/icons/arrow.svg";
 
 const responsive = {
-  0: { items: 2 },
+  0: { items: 3 },
   568: { items: 3 },
   1024: { items: 4 },
 };
@@ -31,12 +31,7 @@ function Musteriler() {
         console.error(error);
       });
   }, []);
-  const sliderCount =
-    responseData.length < 2
-      ? 0
-      : responseData.length >= 2 && responseData.length <= 4
-      ? 2
-      : 3;
+
   console.log(responseData);
   return (
     <div>
@@ -68,9 +63,9 @@ function Musteriler() {
                 <Image
                   alt={title}
                   src={`https://api.cagir.az/${imageUrl}`}
-                  width={400}
+                  width={300}
                   height={150}
-                  className="w-[200px] lg:w-[400px] h-[75px] lg:h-[150px] place-self-center pr-[50px] drop-shadow-cardAlt py-[10px]"
+                  className="px-[5px] md:px-[15px]  drop-shadow-cardAlt py-[10px]"
                 />
               </Link>
             )}
@@ -87,7 +82,6 @@ function Musteriler() {
         touchTracking={true}
         touchMoveDefaultEvents={false}
       />
-      <div className="flex flex-row gap-x-[20px] justify-center "></div>
     </div>
   );
 }

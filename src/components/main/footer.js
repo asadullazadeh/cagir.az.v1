@@ -185,7 +185,7 @@ const Footer = () => (
               />
 
               {/*  */}
-              <div className="hidden lg:flex justify-center lg:justify-start items-end">
+              <div className="hidden lg:flex justify-center lg:justify-end items-end">
                 <Link
                   href="/haqqimizda/terms"
                   // className="lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500 text-left"

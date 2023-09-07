@@ -254,7 +254,7 @@ const Dropdown = ({
                     <div classNames="flex flex-row">
                       <div
                         className={`${
-                          descIsOpen[index] ? "" : "line-clamp-1"
+                          descIsOpen[index] ? "line-clamp-none" : "line-clamp-1"
                         } `}
                         dangerouslySetInnerHTML={{
                           __html: `${findDescById(index)}`,

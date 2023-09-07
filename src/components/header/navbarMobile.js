@@ -15,15 +15,15 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
     setNavbar(!navbar);
   };
   useEffect(() => {
-    if(navbar){
-      document.body.style.overflow = 'hidden';
+    if (navbar) {
+      document.body.style.overflow = "hidden";
 
-  // Optionally, you can add a class to hide the scroll bar if needed
-  // document.body.classList.add('overflow-hidden');
-    } else{
-      document.body.style.overflow = 'visible';
+      // Optionally, you can add a class to hide the scroll bar if needed
+      // document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.style.overflow = "visible";
     }
-  },[navbar])
+  }, [navbar]);
   console.log(router.asPath);
   console.log(navbar);
 
@@ -47,7 +47,6 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
   console.log("navbar:", navbar);
   console.log("searchIconIsClicked:", searchIconIsClicked);
 
-  
   return (
     <>
       <header className="block lg:hidden">
@@ -77,7 +76,7 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                 <Image
                   src={search1}
                   alt="search_alt_1"
-                  className="w-[30px] h-[30px]"
+                  className="w-[20px] h-[20px]"
                 />
               </button>
               {/* language section */}
@@ -86,7 +85,7 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                 <LangSection />{" "}
               </div>
               <button
-                className="p-2 text-gray-700 outline-none pl-[20px]"
+                className="px-[6.25px] py-8.75px text-gray-700 outline-none pl-[20px]"
                 onClick={() => setNavbar(!navbar)}
               >
                 <Image
@@ -94,7 +93,7 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   width={13.75}
                   height={11.25}
                   alt="logo"
-                  className={`w-[20.75px] h-[20.25px] ${
+                  className={`w-[16.5px] h-[13.5px] ${
                     navbar
                       ? ""
                       : "focus:border-none active:border-none object-cover object-center"
@@ -195,7 +194,7 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                 </Link>
               </li>
 
-              <li>
+              <li className="border-b-2 border-opacity-10 border-[#959595]">
                 <Link
                   passHref
                   href="/xidmetler"
@@ -219,9 +218,11 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   handleSearchInput();
                 }}
               >
-                <p className="transition duration-300 hover:text-black">
-                  Axtar
-                </p>
+                <Link href="/xidmet">
+                  <p className="transition duration-300 hover:text-black">
+                    Xidmətlər
+                  </p>
+                </Link>
               </li>
               <li>
                 <Link

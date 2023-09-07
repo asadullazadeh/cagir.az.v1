@@ -37,7 +37,7 @@ export default function Home(props) {
   console.log(searchInptClicked);
 
   return (
-      <div>
+      <div className="mt-[30px] lg:mt-[0px]">
         <div
           className={`flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
       lg:gap-y-[105px] xl:gap-y-[120px] 2xl:gap-y-[135px]

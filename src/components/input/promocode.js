@@ -90,7 +90,7 @@ const Promocode = ({ serviceId, priceBeforePromo, onPromoPriceChange }) => {
               htmlFor="promo_code"
               className="block lg:hidden absolute mt-[-45px] px-[10px] z-10 bg-white font-medium text-[8px] leading-[12px] text-cagiraz"
             >
-              promocode
+              Promokod
             </label>
           )}
           <input
@@ -98,7 +98,7 @@ const Promocode = ({ serviceId, priceBeforePromo, onPromoPriceChange }) => {
             id="promo_code"
             name="promo_code"
             className="block w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0"
-            placeholder={isInputClicked ? "" : "promokod"}
+            placeholder={isInputClicked ? "" : "Promokod"}
             value={promoCode}
             onChange={handlePromoCodeChange}
             // onBlur={handlePromoCodeBlur}

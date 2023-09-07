@@ -41,9 +41,9 @@ function Icraci({ parentId }) {
   if (data.length === 0) {
     return null; // Don't render anything if the data array is empty
   }
-  const sliderCount =
-    data.length < 2 ? 0 : data.length >= 2 && data.length <= 4 ? 2 : 3;
-  console.log(sliderCount);
+  // const sliderCount =
+  //   data.length < 2 ? 0 : data.length >= 2 && data.length <= 4 ? 2 : 3;
+  // console.log(sliderCount);
   const childDataArray = Object.values(data).map((child) => ({
     jsxElement: (
       <div
@@ -56,7 +56,7 @@ function Icraci({ parentId }) {
               bg-white
               drop-shadow-cardAlt"
         >
-          <div className=" p-[10px] lg:p-[30px] space-y-[10px] lg:space-y-[15px]">
+          <div className="p-[10px] lg:p-[30px] space-y-[10px] lg:space-y-[15px]">
             {/* photo, name */}
             <div className="flex gap-x-[10px] lg:gap-x-[15px] items-center">
               <Image
@@ -85,9 +85,9 @@ function Icraci({ parentId }) {
             </div>
 
             {/* icraci */}
-            <div className="w-[175px] lg:w-[265px] h-full">
+            <div className="w-full h-full">
               <p
-                className="w-5/6 screen412:w-full italic font-semibold lg:font-bold text-[10px] sm:text-[12px] lg:text-[14px] leading-[18px]
+                className=" italic font-semibold lg:font-bold text-[10px] sm:text-[12px] lg:text-[14px] leading-[18px]
                   sm:leading-[19px] lg:leading-[21px] text-black100"
               >
                 {child.description}
@@ -102,7 +102,9 @@ function Icraci({ parentId }) {
   return (
     <div>
       <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">İcraçı profilləri</h2>
-      <div className="grid place-items-end">
+      <div
+        className={`grid place-items-end ${data.length > 2 ? "" : "hidden"}`}
+      >
         <Image
           className="w-[22px] lg:w-[28px] h-[14px] lg:h-[24px]"
           src={arrow}
@@ -110,10 +112,11 @@ function Icraci({ parentId }) {
         />
       </div>
       {/* Customized Carousel */}
-      <div className="flex flex-row justify-center gap-x-[30px]">
-        {data.length < 2 ? (
+      {/* justify-center gap-x-[10px] screen375:gap-x-[15px] screen412:gap-x-[25px] sm:gap-x-[40px] */}
+      <div className="flex flex-row justify-between sm:justify-center sm:gap-x-[40px]">
+        {data.length < 3 ? (
           childDataArray.map((child, index) => (
-            <div key={index} className="">
+            <div key={index} className="w-1/2 sm:w-auto">
               {child.jsxElement}
             </div>
           ))
