@@ -22,11 +22,11 @@ const InputCustomized = ({
     setInputValue(newValue);
     setInputId(inputTextId);
 
-    if (typeof updateInputText === "function" ) {
-    // updateInputTextId(inputTextId); // Call the function only if it exists
-    updateInputText(inputTextId, newValue);
+    if (typeof updateInputText === "function") {
+      // updateInputTextId(inputTextId); // Call the function only if it exists
+      updateInputText(inputTextId, newValue);
     }
-    console.log(newValue);  
+    console.log(newValue);
     // onInputChange(newValue,label);
   };
 
@@ -53,7 +53,7 @@ const InputCustomized = ({
           {isClicked && (
             <label
               htmlFor="inpt"
-              className="block lg:hidden absolute mt-[-45px] px-[10px] z-10 bg-white font-medium text-[8px] leading-[12px] text-cagiraz"
+              className="block lg:hidden absolute mt-[-45px] px-[10px] z-10  font-medium text-[8px] leading-[12px] text-cagiraz"
             >
               {label}
             </label>

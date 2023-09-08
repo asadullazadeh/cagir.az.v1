@@ -9,9 +9,9 @@ function Payment() {
     <div className="flex flex-col items-center min-h-screen justify-center">
       <h2 className="my-h2 text-center pb-[15px]">Ödəniş</h2>
       <div className="flex flex-col w-full md:w-2/3 gap-y-[15px]">
-        <InputCustomized label="Ad və soyad" />
-        <InputCustomized label="Telefon nömrəsi" />
-        <InputCustomized label="Məbləğ" />
+        <InputCustomized label="Ad və soyad" type="text" />
+        <InputCustomized label="Telefon nömrəsi" type="number" />
+        <InputCustomized label="Məbləğ" type="number" />
         <div>
           <label
             htmlFor="message"
@@ -31,7 +31,10 @@ function Payment() {
           ></textarea>
         </div>
         <div className="w-full pt-[20px]">
-          <Link className="flex justify-center lg:justify-end" href="/payment_result">
+          <Link
+            className="flex justify-center lg:justify-end"
+            href="/payment_result"
+          >
             <PrimaryMdBtn btnName="Ödəniş et" classNames="w-full lg:w-auto" />
           </Link>
         </div>

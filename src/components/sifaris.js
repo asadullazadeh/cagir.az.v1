@@ -718,13 +718,13 @@ function Sifaris({
               {/* inputs and map for mobile */}
               <div className="flex flex-col gap-y-[15px] xl:gap-y-0 lg:justify-between w-full xl:w-1/2">
                 <div>
-                  <p className="font-semibold text-[12px] leading-[18px] pb-[5px]">
-                    Tarixi daxil et
+                  <p className="hidden lg:block font-semibold text-[12px] leading-[18px] pb-[5px]">
+                    Tarixi seç
                   </p>
                   <Calendar />
                 </div>
 
-                <InputCustomized />
+                {/* <InputCustomized /> */}
                 {/* Calendar,data picker */}
                 <div className="flex flex-col blcok lg:hidden space-y-[5px]">
                   <MapBtn />
