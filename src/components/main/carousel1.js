@@ -38,18 +38,14 @@ export default function Carousel1({ carouselPhotos1, onDataReceived }) {
       <div className="flex flex-col justify-between w-full lg:w-1/2">
         <h1 className="flex flex-col my-h1 text-black500">
           <span>Peşəkar xidmət,</span>
-          <span>sərfəli qiymət</span>
+          <span>sərfəli qiymət!</span>
         </h1>
 
-        <div className="">
-          <p className="flex flex-col text-[10px] xl:text-[12px] leading-[18px] xl:leading-[22px] lg:tracking-[0.02em] text-gray900 max-w-[470px]">
+          <p className="flex flex-col text-[10px] xl:text-[12px] leading-[18px] xl:leading-[22px] lg:tracking-[0.02em] text-gray900 w-full screen360:w-2/3 screen428:w-1/2 lg:w-[300px]">
             <span>
-              Biz dünyanın hər yerində sizə xidmət göstərməyə hazırıq.
-              Sifarişinizi indi yaradın və bizim onlarla xidmətimizdən elə bu
-              dəqiqə faydalanın.
+            Biz dünyanın hər yerində sizə xidmət göstərməyə hazırıq.  Sifarişinizi indi yaradın və xidmətimizdən faydalanmağa başlayın!
             </span>
           </p>
-        </div>
         {/* search button */}
         <div onClick={handleSearchClicked} className="block lg:hidden">
           <SearchInput />

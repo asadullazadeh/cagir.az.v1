@@ -17,7 +17,7 @@ import {
   PrimaryOutlineSmBtn,
   LinkSmBtn,
 } from "@/src/components/buttons";
-  
+
 function Registration() {
   //
   const [firstName, setFirstName] = useState("");

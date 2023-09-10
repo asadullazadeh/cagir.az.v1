@@ -23,7 +23,6 @@ const Calendar = () => {
     console.log("clicked");
   };
 
-
   const handleChange = (event) => {
     const newValue = event.target.value;
     setInputValue(newValue);
@@ -69,7 +68,7 @@ const Calendar = () => {
         customInput={
           <input
             type="text"
-            className="w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none"
+            className="xs:w-[280px] sm:w-[600px] xl:w-[400px]  font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none"
             value={inputValue}
             onChange={handleChange}
             readonly="readonly"

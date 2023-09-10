@@ -76,7 +76,7 @@ export default function Layout({ children }) {
   ]);
 
   return (
-    <div className="max-w-[1512px]">
+    <div className="screen1700:max-w-[1512px]">
       <Head>
         <title>Cagir.az</title>
       </Head>

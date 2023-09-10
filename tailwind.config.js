@@ -81,6 +81,9 @@ export const theme = {
     lg: "1024px",
     xl: "1280px",
     "2xl": "1512px",
+    screen1536: "1536px",
+    screen1600: "1600px",
+    screen1700: "1700px",
   },
 };
 export const plugins = [

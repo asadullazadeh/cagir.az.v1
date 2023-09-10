@@ -98,7 +98,9 @@ const InputBtnTransition = ({ name, classNames }) => {
           </div>
         </li>
         <li
-          className={`text-red-500 text-sm ${isValidEmailText ? "" : "hidden"}`}
+          className={`text-red-500 text-sm w-[220px] ${
+            isValidEmailText ? "" : "hidden"
+          }`}
         >
           Zəhmət olmasa uyğun emaili daxil edin.
         </li>

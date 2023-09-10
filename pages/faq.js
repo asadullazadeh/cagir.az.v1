@@ -95,7 +95,7 @@ function Faq() {
         </button>
       </div>
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">
-        Tez-tez verilən suallar
+      Ən çox verilən suallar
       </h2>
       <div className="space-y-[15px] lg:space-y-[17px]">
         {firstFaqNames.map(({ question, answer, isActive, faqId, id }) => (

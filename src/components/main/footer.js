@@ -10,7 +10,7 @@ import InputBtnTransition from "@/src/components/input/input_btn_transition";
 const Footer = () => (
   <>
     <footer>
-      <div className="hidden sm:block lg:px-[60px] pt-[15px] lg:pt-[80px] pb-[115px] lg:pb-[90px] bg-white200">
+      <div className="hidden sm:block lg:px-[60px] pt-[15px] lg:pt-[80px] pb-[115px] lg:pb-[90px] bg-white200 w-full">
         <div className="flex lg:hidden mb-[40px] lg:mb-[30px] justify-center lg:justify-start">
           <Link href="/">
             <Image

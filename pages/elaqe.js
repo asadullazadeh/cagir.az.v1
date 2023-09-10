@@ -64,7 +64,7 @@ function Elaqe() {
           {/* Sosial sebekeler insta, fb, linkedin */}
           <div className="flex flex-col space-y-[18px] items-center lg:items-start">
             <h6 className="font-semibold lg:font-bold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] text-black500">
-              Biz sosial şəbəkələrdə
+            Sosial mediada bizi izləyin
             </h6>
             <SocialNetworks classNames="flex flex-row gap-x-[20px]" />
           </div>
