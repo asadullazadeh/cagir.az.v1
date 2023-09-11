@@ -3,6 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import RelatedBlogs from "@/src/components/blog/relatedBlogs";
 import CategoriesBlog from "@/src/components/blog/categoriesBlog";
 import TagsBlog from "@/src/components/blog/tagsBlog";
@@ -52,8 +53,11 @@ function BlogPost() {
 
   // subject is the category name
   const subject = category?.categoryNames?.[0]?.name ?? "Default Value";
-  // console.log(responseData);
+  const metaTitle = responseData.postNames?.[0].title
+  console.log(metaTitle);
   return (
+    <div>
+      <Head><title>{metaTitle}</title></Head>
     <div
       className="flex flex-col lg:flex-row lg:gap-x-[40px] xl:gap-x-[50px] 2xl:gap-x-[60px] 
       pt-[25px]
@@ -112,6 +116,7 @@ function BlogPost() {
 
         {/*  */}
       </div>
+    </div>
     </div>
   );
 }

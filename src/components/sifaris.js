@@ -220,7 +220,7 @@ function Sifaris({
         console.error(error);
       });
   }, [isSub2ElementsExist, selectedSubService.id, selectedSub2Service.id]);
-
+  console.log(getServiceCriterias);
   /* --------------------- Multinumber input functionality-FilterType=5 --------------------- */
   // multiNumberArray takes all the information of multi number input for pricing
   const [multiNumberValue, setMultiNumberValue] = useState(0);

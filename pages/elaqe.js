@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import phone from "@/icons/phone.svg";
 import envelope from "@/icons/envelope.svg";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
@@ -8,6 +9,9 @@ import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 
 function Elaqe() {
   return (
+    <div>
+            <Head><title>Cagir.az - Əlaqə</title></Head>
+
     <div className="flex flex-col items-center min-h-screen justify-center">
       <div className="flex flex-col items-center">
         <h4 className="my-h4 pb-[30px] lg:pb-[60px]">Bizimlə əlaqə</h4>
@@ -70,6 +74,7 @@ function Elaqe() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

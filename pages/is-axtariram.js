@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import WorkWithUsDesktop from "@/public/workwithus_desktop.jpg";
 import WorkWithUsMobile from "@/public/workwithus_mobile.jpg";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 
 function IsAxtariram() {
   return (
+    <div>
+                  <Head><title>Cagir.az - iş axtarıram, ish elanlari</title></Head>
+
     <div className="flex flex-col pt-[30px] pb-[50px]  md:pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px]">
       <div className="">
         <Image
@@ -68,6 +72,7 @@ function IsAxtariram() {
           />
         </Link>
       </div>
+    </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import views from "@/icons/bloq/views.svg";
 import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
 import SearchInputMd from "@/src/components/input/input_search_md";
@@ -15,7 +16,7 @@ function BlogCategory() {
   const router = useRouter();
   const { query } = router;
   const { blog_tag } = query;
-  //   console.log(blog_tag,size);
+    console.log(blog_tag,size);
 
   useEffect(() => {
     axios
@@ -85,8 +86,11 @@ function BlogCategory() {
     const inputValue = event.target.value;
     setSearchVal(inputValue);
   }
-
+console.log(responseData);
   return (
+    <div>
+      <Head><title>Cagir.az - Bloq {blog_tag}</title></Head>
+    
     <div className="py-[15px] lg:py-[30px]">
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Bloq</h2>
       <div className="flex justify-center">
@@ -190,6 +194,7 @@ function BlogCategory() {
       >
         <PrimaryOutlineSmBtn btnName="Daha çox gör" />
       </div>
+    </div>
     </div>
   );
 }

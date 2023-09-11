@@ -1,5 +1,9 @@
+import Head from "next/head";
+
 function Terms() {
   return (
+    <div>
+      <Head><title>Cagir.az - Razılaşma müqaviləsi</title></Head>
     <div className="flex flex-col pb-[50px] md:pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px] pt-[30px]">
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">
         Razılaşma Müqaviləsi
@@ -196,6 +200,7 @@ function Terms() {
             </li>
           </ul>
         </ol>
+      </div>
       </div>
     </div>
   );

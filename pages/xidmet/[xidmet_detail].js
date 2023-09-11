@@ -3,6 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import RelatedBlogs from "@/src/components/blog/relatedBlogs";
 import CategoriesBlog from "@/src/components/blog/categoriesBlog";
 import TagsBlog from "@/src/components/blog/tagsBlog";
@@ -40,7 +41,7 @@ function XidmetDetail() {
         console.error(error);
       });
   }, [xidmet_detail]);
-  console.log(responseData);
+  console.log(responseData.metaTitle);
 
   const {
     imageUrl,
@@ -58,6 +59,8 @@ function XidmetDetail() {
       : {};
 
   return (
+    <div>
+      <Head><title>{responseData.metaTitle}</title></Head>
     <div
       className="flex flex-col items-center 
     py-[15px] lg:py-[30px]"
@@ -114,6 +117,7 @@ function XidmetDetail() {
           <Reyler parentId={1} />
           <Musteriler />
       </div>
+    </div>
     </div>
   );
 }

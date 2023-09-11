@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
+import Head from "next/head";
 import video from "@/public/video_about.jpg";
 import Banner from "@/src/components/main/banner";
 import Deyerler from "@/src/components/main/deyerler";
@@ -23,6 +23,8 @@ export default function Haqqimizda(props) {
   const { musteriler } = props;
 
   return (
+    <div>
+      <Head><title>Cagir.az - Haqqımızda</title></Head>
     <div className="flex flex-col pb-[50px] md:pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px]">
       <Image
         src={video}
@@ -73,6 +75,7 @@ export default function Haqqimizda(props) {
           <PrimaryMdBtn btnName="İndi sifariş yarat" />
         </Link>
       </div>
+    </div>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import views from "@/icons/bloq/views.svg";
 import SearchInputMd from "@/src/components/input/input_search_md";
 
@@ -63,10 +64,12 @@ console.log(responseData);
   }
 
   return (
+    <div>
+      <Head><title>Cagir.az - Xidmət</title></Head>
     <div className="py-[15px] lg:py-[30px]">
       <h2 className="my-h2 mb-[15px] text-center lg:mb-[30px]">Xidmətlər</h2>
       <div className="flex flex-col items-center">
-      <SearchInputMd
+      <SearchInputMd  
           onChange={handleInputChange}
           value={searchVal}
           // sendDataToParent={receiveDataFromChild}
@@ -138,6 +141,7 @@ console.log(responseData);
         ))}
       </div>
       </div>
+    </div>
     </div>
   );
 }

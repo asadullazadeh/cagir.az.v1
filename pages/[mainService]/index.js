@@ -75,8 +75,11 @@ const [mainServiceData, setMainServiceData] = useState({});
   const serviceName = serviceNames?.[0].name
   const textService = serviceNames?.[0].text
 
+  const metaTitle = mainServiceData.serviceNames?.[0].metaTitle
+console.log(metaTitle);
   return (
     <div>
+      <Head> <title>{metaTitle}</title></Head>
       {/* badge */}
       <div className="mt-[30px] lg:mt-[60px]">
         <Badge />

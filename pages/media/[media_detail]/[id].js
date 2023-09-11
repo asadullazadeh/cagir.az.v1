@@ -3,6 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 
 
@@ -39,8 +40,11 @@ function MediaPost() {
     responseData.mediaNames && responseData.mediaNames.length > 0
       ? responseData.mediaNames[0]
       : {};
+      
 
   return (
+    <div>
+      <Head><title>Cagir.az - {mediaNames?.[0].title}</title></Head>
     <div
       className="flex flex-col lg:flex-row lg:gap-x-[40px] xl:gap-x-[50px] 2xl:gap-x-[60px] 
     pb-[60px] lg:pb-[90px]"
@@ -80,6 +84,7 @@ function MediaPost() {
           
         />
       </div>
+    </div>
     </div>
   );
 }

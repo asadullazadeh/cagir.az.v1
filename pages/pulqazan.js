@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import axios from "axios"; // Import axios here
+import axios from "axios"; 
+import Head from "next/head";
 import InputCustomized from "@/src/components/input/input";
 import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
 
@@ -63,6 +64,8 @@ function PulQazan() {
   console.log(isSucess);
 
   return (
+    <div>
+      <Head><title>Cagir.az - PulQazan</title></Head>
     <div className="flex flex-col pt-[30px] pb-[60px]">
       <div className="flex flex-col lg:flex-row ">
         <h4 className="block lg:hidden font-semibold text-[16px] leading-[24px] text-center pb-[15px]">
@@ -153,6 +156,7 @@ function PulQazan() {
       <div className="flex justify-center w-full lg:justify-end pt-[20px] xl:pt-[25px] 2xl:pt-[30px]">
         <PrimarySmBtn btnName="Təsdiq et" classNames="w-full" onClick={handleClick} />
       </div>
+    </div>
     </div>
   );
 }

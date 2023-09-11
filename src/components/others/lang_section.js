@@ -45,7 +45,7 @@ const LangSection = () => {
   return (
     <div>
       <div
-        className={`absolute  rounded-full bg-gray900 bg-opacity-30 right-[50.8px] lg:right-[-1px] w-[25px] lg:w-[28px] h-[83px] lg:h-[98px] ${
+        className={`absolute  rounded-full bg-gray900 bg-opacity-30 right-[50.2px] lg:right-[-1px] w-[25px] lg:w-[28px] h-[83px] lg:h-[98px] ${
           isDropdownOpen || isHovered ? "" : "hidden"
         }`}
       ></div>
@@ -69,11 +69,11 @@ const LangSection = () => {
               <li
                 key={option.value}
                 className="bg-transparent rounded-full
-                      mt-[5px]  hover:bg-[#B5B5B5] w-[22px] h-[22px] lg:w-[27px] lg:h-[27px]"
+                      mt-[5px]  hover:bg-[#B5B5B5] ml-[1px] lg:ml-0 w-[22px] h-[22px] lg:w-[27px] lg:h-[27px]"
               >
                 <button
                   onClick={() => handleOptionClick(option)}
-                  className="ml-[1px] mt-[0.9px]  w-[20px] h-[20px] lg:w-[25px] lg:h-[25px]"
+                  className="ml-[1px] mt-[0.9px] w-[20px] h-[20px] lg:w-[25px] lg:h-[25px]"
                 >
                   {option.label}
                   {/* block mt-[5px] hover:border-solid hover:border-gray-300 hover:border-[2px]

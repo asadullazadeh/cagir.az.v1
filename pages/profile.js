@@ -1,8 +1,9 @@
-import React, { useState,useEffect } from "react";
-import { useRouter } from 'next/router';
-import axios from 'axios'
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import InputCustomized from "@/src/components/input/input";
 import InputNumber from "@/src/components/input/input_number";
 import InputPassword from "@/src/components/input/input_password";
@@ -13,35 +14,36 @@ import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn
 import client from "@/public/client.jpg";
 
 function Profil_settings() {
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('token');
+    const storedToken = localStorage.getItem("token");
     if (storedToken) {
       setToken(storedToken);
     }
   }, []);
 
   /* --------------------------------- sign out -------------------------------- */
-const router = useRouter();
+  const router = useRouter();
 
-const handleSignOut = () => {
-  localStorage.removeItem('token');
-  // Redirect to the login page
-  router.push('/qeydiyyat'); // Replace with your login route
-};
+  const handleSignOut = () => {
+    localStorage.removeItem("token");
+    // Redirect to the login page
+    router.push("/qeydiyyat"); // Replace with your login route
+  };
 
-/* --------------------------------- PROFILE DATA API -------------------------------- */
+  /* --------------------------------- PROFILE DATA API -------------------------------- */
   const [userData, setUserData] = useState([]);
   useEffect(() => {
     if (token) {
       // Include the token in the request headers
       const headers = {
         Authorization: `Bearer ${token}`,
-        "Accept-Language": "az"
+        "Accept-Language": "az",
       };
 
-      axios.get('https://api.cagir.az/api/user/getCurrentUser', { headers })
+      axios
+        .get("https://api.cagir.az/api/user/getCurrentUser", { headers })
         .then((response) => {
           setUserData(response.data.result);
         })
@@ -51,17 +53,18 @@ const handleSignOut = () => {
     }
   }, [token]);
 
-/* --------------------------------- PROFILE ORDER HISTORY -------------------------------- */
-const [userOrder, setUserOrder] = useState([]);
+  /* --------------------------------- PROFILE ORDER HISTORY -------------------------------- */
+  const [userOrder, setUserOrder] = useState([]);
   useEffect(() => {
     if (token) {
       // Include the token in the request headers
       const headers = {
         Authorization: `Bearer ${token}`,
-        "Accept-Language": "az"
+        "Accept-Language": "az",
       };
 
-      axios.get('https://api.cagir.az/api/user/getCurrentUser', { headers })
+      axios
+        .get("https://api.cagir.az/api/user/getCurrentUser", { headers })
         .then((response) => {
           setUserOrder(response.data.result);
         })
@@ -72,10 +75,9 @@ const [userOrder, setUserOrder] = useState([]);
   }, [token]);
   console.log(userData);
 
-
-
-  
   return (
+    <div>
+      <Head><title>Cagir.az - Daxil ol</title></Head>
     <div className="flex flex-col items-center pt-[30px] pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px]">
       <h2 className="my-h2 text-center pb-[15px] lg:pb-[90px]">
         Profil ayarları
@@ -99,7 +101,7 @@ const [userOrder, setUserOrder] = useState([]);
             >
               Profildən çıx
             </button>
-            <button
+            {/* <button
               className="w-auto bg-[#F64242] rounded-[30px] py-[10px] px-[26px]
                       font-extrabold text-white text-[14px] leading-[21px]
                        transition duration-400 transform hover:-translate-y-[5px]
@@ -107,7 +109,7 @@ const [userOrder, setUserOrder] = useState([]);
                       "
             >
               Profili sil
-            </button>
+            </button> */}
           </div>
         </div>
         <div className="flex flex-col gap-y-[20px] lg:gap-y-[15px] justify-between lg:w-3/5">
@@ -124,7 +126,7 @@ const [userOrder, setUserOrder] = useState([]);
       <div className="block lg:hidden pt-[30px] space-y-[30px] w-full border-t border-[#EAEAEA]">
         {/* Profilden cix button */}
         <button
-        onClick={handleSignOut}
+          onClick={handleSignOut}
           className="w-full lg:w-auto bg-white border-2 border-[#F64242] rounded-[30px] py-[10px] px-[26px]
                       font-extrabold text-[#F64242] text-[14px] leading-[21px] transition duration-400 transform hover:-translate-y-[5px]
                       "
@@ -191,6 +193,7 @@ const [userOrder, setUserOrder] = useState([]);
           </p>
         </div>
       </div>
+    </div>
     </div>
   );
 }

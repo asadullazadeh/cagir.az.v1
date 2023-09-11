@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Sifaris from "@/src/components/sifaris";
@@ -83,7 +84,11 @@ function Sub2Service({ dataMain }) {
   };
   const defaultMainNew = findMainInfoByNameUrlNew(dataMain, selectedMain);
 
+  
+
   return (
+    <div>
+      <Head> <title>Sifariş yarat</title></Head>
     <div>
       <Sifaris
         sendSubUrl={handleReceiveData}
@@ -92,6 +97,7 @@ function Sub2Service({ dataMain }) {
         onSelectedMainChange={handleSelectedMain}
       />
       {/* <button onClick={handleReplaceSubService}>Replace Path</button> */}
+    </div>
     </div>
   );
 }

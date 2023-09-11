@@ -37,6 +37,11 @@ export default function Home(props) {
   console.log(searchInptClicked);
 
   return (
+    <div>
+      <Head>
+        <title>Cagir.az</title>
+      </Head>
+    
       <div className="mt-[30px] lg:mt-[0px]">
         <div
           className={`flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
@@ -68,6 +73,7 @@ export default function Home(props) {
         <div className={`${searchInptClicked ? "" : "hidden"}`}>
           <SearchServices />
         </div>
+      </div>
       </div>
   );
 }

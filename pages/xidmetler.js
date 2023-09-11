@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import arrow from "@/icons/arrow.svg";
 import arrow_mobile from "@/icons/arrow_mobile.svg";
 
@@ -26,6 +27,8 @@ function ButunXidmetler() {
   }, []);
 
   return (
+    <div>
+      <Head><title>Cagir.az - Bütün xidmətlər</title></Head>
     <div className="flex flex-col 
     sm:pt-[36px] md:pt-[42px] lg:pt-[48px] xl:pt-[54px] 2xl:pt-[60px] 
     py-[60px] sm:py-[75px] md:py-[90px] lg:py-[105px] xl:py-[120px] 2xl:py-[135px]">
@@ -80,6 +83,7 @@ function ButunXidmetler() {
             </li>
           ))}
       </ul>
+    </div>
     </div>
   );
 }

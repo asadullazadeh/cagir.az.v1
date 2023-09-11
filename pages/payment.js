@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import InputCustomized from "@/src/components/input/input";
 import InputNumber from "@/src/components/input/input_number";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 
 function Payment() {
   return (
+    <div>
+      <Head><title>Cagir.az - Ödəniş</title></Head>
     <div className="flex flex-col items-center min-h-screen justify-center">
       <h2 className="my-h2 text-center pb-[15px]">Ödəniş</h2>
       <div className="flex flex-col w-full md:w-2/3 lg:w-1/2 gap-y-[15px]">
@@ -40,6 +43,7 @@ function Payment() {
           </Link>
         </div>
       </div>
+    </div>
     </div>
   );
 }

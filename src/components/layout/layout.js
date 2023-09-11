@@ -46,7 +46,7 @@ export default function Layout({ children }) {
         console.error(error);
       });
   }, []);
-  // console.log(responseData);
+  console.log(responseData);
 
   // add home page with account to this array
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -77,9 +77,7 @@ export default function Layout({ children }) {
 
   return (
     <div className="screen1700:max-w-[1512px]">
-      <Head>
-        <title>Cagir.az</title>
-      </Head>
+      <Head>{/* <title>Cagir.az</title> */}</Head>
       {/* navbar */}
       <div className="sticky top-0 z-50">
         <NavbarDesktop ifSearchIconClicked={SearchIconIsClickInNavbarDesktop} />
