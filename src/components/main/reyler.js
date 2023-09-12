@@ -15,7 +15,7 @@ const responsive = {
   1300: { items: 4 },
 };
 
-function Reyler({ parentId }) {
+function Reyler({ parentId, messages }) {
   const [data, setData] = useState([]);
   const [expanded, setExpanded] = useState(false);
   const handleToggle = () => {
@@ -140,10 +140,12 @@ function Reyler({ parentId }) {
       </div>
     ),
   }));
-
+console.log(messages);
   return (
     <div>
-      <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">Müştəri rəyləri</h2>
+      <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">
+        Rəylər
+        </h2>
       <div className={`grid place-items-end ${data.length > 2 ? "" : "hidden"}`}>
         <Image
           className="w-[22px] lg:w-[28px] h-[14px] lg:h-[24px]"

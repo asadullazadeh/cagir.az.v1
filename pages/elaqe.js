@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import Head from "next/head";
 import phone from "@/icons/phone.svg";
 import envelope from "@/icons/envelope.svg";
@@ -8,73 +10,76 @@ import SocialNetworks from "@/src/components/others/social_ntwrks";
 import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 
 function Elaqe() {
+  const { locales } = useRouter();
+  const intl = useIntl();
+  console.log(locales);
+  console.log(intl);
+  const messages = intl.messages;
+  console.log(messages);
   return (
     <div>
-            <Head><title>Cagir.az - Əlaqə</title></Head>
+      <Head>
+        <title>Cagir.az - Əlaqə</title>
+      </Head>
 
-    <div className="flex flex-col items-center min-h-screen justify-center">
-      <div className="flex flex-col items-center">
-        <h4 className="my-h4 pb-[30px] lg:pb-[60px]">Bizimlə əlaqə</h4>
-        <p className="flex flex-col font-medium lg:font-semibold text-[12px] lg:text-[18px] leading-[18px] lg:leading-[34px] pb-[60px]">
-          <span className="mx-auto">Hər hansı çətinliyiniz var?</span>
-          <span className="mx-auto">
-            O zaman{" "}
-            <span className="text-cagiraz">
-              <Link href="/faq">Tez-tez verilən suallar</Link>{" "}
-            </span>
-            bölməsinə keçin{" "}
-          </span>
-          <span className="mx-auto">
-            və ya aşağıdakı əlaqə vasitələri ilə bizə yazın
-          </span>
-        </p>
-
-        <div className="flex flex-col gap-y-[30px] mx-auto">
-          {/* email section */}
-          <div className="flex flex-row gap-x-[15px]">
-            <div className="inline-flex row-span-2 w-[42px] h-[42px] items-center justify-center rounded-full bg-cagiraz">
-              <Image src={envelope} alt="envelope_icon" />
-            </div>
-            <div className="flex flex-col">
-              <div className="col-span-1">
-                <p className="font-semibold text-[14px] leading-[21px]">
-                  {" "}
-                  info@cagir.az{" "}
-                </p>
-              </div>
-              <div className="row-span-1 col-span-1">
-                <p className="font-semibold text-[14px] leading-[21px]">
-                  {" "}
-                  hr@cagir.az{" "}
-                </p>
-              </div>
-            </div>
+      <div className="flex flex-col items-center min-h-screen justify-center">
+        <div className="flex flex-col items-center">
+          <h4 className="my-h4 pb-[30px] lg:pb-[60px]">{messages.contact}</h4>
+          <div className="flex flex-col font-medium lg:font-semibold text-[12px] lg:text-[18px] leading-[18px] lg:leading-[34px] pb-[60px] w-[500px]">
+            <span className="mx-auto">{messages.anyproblem}</span>
+            <Link className="mx-auto text-cagiraz" href="/faq">
+              {messages["faq"]}
+            </Link>{" "}
+            <span className="mx-auto">{messages["anyproblem-part"]}</span>
           </div>
 
-          {/* phone section */}
-          <div className="grid grid-rows-2 grid-flow-col items-center gap-x-[15px]">
-            <div className="flex row-span-2 w-[42px] h-[42px] items-center justify-center rounded-full bg-cagiraz">
-              <Image src={phone} alt="phone_icon" />
+          <div className="flex flex-col gap-y-[30px] mx-auto">
+            {/* email section */}
+            <div className="flex flex-row gap-x-[15px]">
+              <div className="inline-flex row-span-2 w-[42px] h-[42px] items-center justify-center rounded-full bg-cagiraz">
+                <Image src={envelope} alt="envelope_icon" />
+              </div>
+              <div className="flex flex-col">
+                <div className="col-span-1">
+                  <p className="font-semibold text-[14px] leading-[21px]">
+                    {" "} 
+                    info@cagir.az{" "}
+                  </p>
+                </div>
+                <div className="row-span-1 col-span-1">
+                  <p className="font-semibold text-[14px] leading-[21px]">
+                    {" "}
+                    hr@cagir.az{" "}
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="row-span-2 col-span-1">
-              <Link href="tel:994703482606">
-                <p className="font-semibold text-[14px] leading-[21px]">
-                  {" "}
-                  +994 70 348 26 06{" "}
-                </p>
-              </Link>
+
+            {/* phone section */}
+            <div className="grid grid-rows-2 grid-flow-col items-center gap-x-[15px]">
+              <div className="flex row-span-2 w-[42px] h-[42px] items-center justify-center rounded-full bg-cagiraz">
+                <Image src={phone} alt="phone_icon" />
+              </div>
+              <div className="row-span-2 col-span-1">
+                <Link href="tel:994703482606">
+                  <p className="font-semibold text-[14px] leading-[21px]">
+                    {" "}
+                    +994 70 348 26 06{" "}
+                  </p>
+                </Link>
+              </div>
             </div>
-          </div>
-          {/* Sosial sebekeler insta, fb, linkedin */}
-          <div className="flex flex-col space-y-[18px] items-center lg:items-start">
-            <h6 className="font-semibold lg:font-bold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] text-black500">
-            Sosial mediada bizi izləyin
-            </h6>
-            <SocialNetworks classNames="flex flex-row gap-x-[20px]" />
+            {/* Sosial sebekeler insta, fb, linkedin */}
+            <div className="flex flex-col space-y-[18px] items-center lg:items-start">
+              <h6 className="font-semibold lg:font-bold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] text-black500">
+                {/* Sosial mediada bizi izləyin */}
+                {messages["follow-us"]}
+              </h6>
+              <SocialNetworks classNames="flex flex-row gap-x-[20px]" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }

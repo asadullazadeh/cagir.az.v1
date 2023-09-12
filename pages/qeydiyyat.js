@@ -5,11 +5,12 @@ import Link from "next/link";
 import Head from "next/head";
 import views from "@/icons/bloq/views.svg";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import InputCustomized from "@/src/components/input/input";
 import InputPassword from "@/src/components/input/input_password";
 import InputNumber from "@/src/components/input/input_number";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
-import { useRouter } from "next/router";
 
 import {
   CheckBox,
@@ -87,6 +88,9 @@ function Registration() {
         console.error(error);
       });
   };
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const messages = intl.messages
 
   return (
     <div>
@@ -95,22 +99,22 @@ function Registration() {
       <h2 className="my-h2 text-center pb-[15px] lg:pb-[60px]">Qeydiyyat</h2>
       <div className="flex flex-col justify-between w-full gap-y-[20px] lg:gap-y-[20px] lg:3/4 xl:w-2/3 2xl:w-1/2">
         <InputCustomized
-          label="Ad"
+          label={messages.name}
           type="text"
           updateInputText={handleFirstNameUpdate}
         />
         <InputCustomized
-          label="Soyad"
+          label={messages.surname}
           type="text"
           updateInputText={handleLastNameUpdate}
         />
         <InputPassword
           changePswrdClasses="hidden"
           onPasswordChange={handlePasswordChange}
-          label="Şifrə"
+          label={messages.password}
         />
         <InputCustomized
-          label="Email"
+          label={messages.email}
           type="email"
           updateInputText={handleEmailUpdate}
         />

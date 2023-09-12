@@ -8,7 +8,7 @@ import close from "@/icons/header/close.svg";
 import LangSection from "@/src/components/others/lang_section";
 import search1 from "@/icons/header/search1.svg";
 
-export default function NavbarMobile({ ifSearchIconClicked }) {
+export default function NavbarMobile({ ifSearchIconClicked,messages }) {
   const router = useRouter();
   const [navbar, setNavbar] = useState(false);
   const handleClick = () => {
@@ -119,7 +119,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   }}
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Təmizlik xidməti
+                    {/* Təmizlik xidməti */}
+                    {messages["cleaning"]}
                   </p>
                 </Link>
               </li>
@@ -133,7 +134,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   }}
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Kombi ustası
+                    {/* Kombi ustası */}
+                    {messages["usta-kombi"]}
                   </p>
                 </Link>
               </li>
@@ -147,7 +149,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   }}
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Santexnik ustasi
+                    {/* Santexnik ustasi */}
+                    {messages["usta-santexnik"]}
                   </p>
                 </Link>
               </li>
@@ -175,7 +178,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   }}
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Soyuducu ustası
+                    {/* Soyuducu ustası */}
+                    {messages["usta-soyuducu"]}
                   </p>
                 </Link>
               </li>
@@ -189,7 +193,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   }}
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Elektrik ustası
+                    {/* Elektrik ustası */}
+                    {messages["usta-elektrik"]}
                   </p>
                 </Link>
               </li>
@@ -204,7 +209,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   }}
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Digər Xidmətlər
+                    {/* Digər Xidmətlər */}
+                    {messages["other-services"]}
                   </p>
                 </Link>
               </li>
@@ -221,7 +227,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
               >
                 <Link href="/xidmet">
                   <p className="transition duration-300 hover:text-black">
-                    Xidmətlər
+                    {/* Xidmətlər */}
+                    {messages["services"]}
                   </p>
                 </Link>
               </li>
@@ -235,7 +242,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   }}
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Bloq
+                    {/* Bloq */}
+                    {messages["blog"]}
                   </p>
                 </Link>
               </li>
@@ -249,7 +257,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   }}
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Haqqımızda
+                    {/* Haqqımızda */}
+                    {messages["about"]}
                   </p>
                 </Link>
               </li>
@@ -263,7 +272,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   }}
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Əlaqə
+                    {/* Əlaqə */}
+                    {messages["contact"]}
                   </p>
                 </Link>
               </li>
@@ -277,7 +287,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   }}
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Ödəniş et
+                    {/* Ödəniş et */}
+                    {messages["payment"]}
                   </p>
                 </Link>
               </li>
@@ -291,7 +302,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   }}
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Daxil ol
+                    {/* Daxil ol */}
+                    {messages["login"]}
                   </p>
                 </Link>
               </li>
@@ -305,7 +317,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   }}
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Qeydiyyat
+                    {/* Qeydiyyat */}
+                    {messages["register"]}
                   </p>
                 </Link>
               </li>
@@ -319,7 +332,8 @@ export default function NavbarMobile({ ifSearchIconClicked }) {
                   }}
                 >
                   <p className="transition duration-300 text-danger">
-                    Çıxış et
+                    {/* Çıxış et */}
+                    {messages["logout"]}
                   </p>
                 </Link>
               </li>

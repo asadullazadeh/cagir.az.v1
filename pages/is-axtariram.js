@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import WorkWithUsDesktop from "@/public/workwithus_desktop.jpg";
 import WorkWithUsMobile from "@/public/workwithus_mobile.jpg";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 
 function IsAxtariram() {
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const messages = intl.messages;
   return (
     <div>
                   <Head><title>Cagir.az - iş axtarıram, ish elanlari</title></Head>

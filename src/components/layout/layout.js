@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import axios from "axios";
+import { FormattedMessage, useIntl } from "react-intl";
 import NavbarDesktop from "@/src/components/header/navbarDesktop";
 import NavbarMobile from "@/src/components/header/navbarMobile";
 import Footer from "@/src/components/main/footer";
@@ -75,13 +76,18 @@ export default function Layout({ children }) {
     visiblePages,
   ]);
 
+  //
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const messages = intl.messages
+
   return (
     <div className="screen1700:max-w-[1512px]">
       <Head>{/* <title>Cagir.az</title> */}</Head>
       {/* navbar */}
       <div className="sticky top-0 z-50">
-        <NavbarDesktop ifSearchIconClicked={SearchIconIsClickInNavbarDesktop} />
-        <NavbarMobile ifSearchIconClicked={SearchIconIsClickInNavbar} />
+        <NavbarDesktop messages={messages} ifSearchIconClicked={SearchIconIsClickInNavbarDesktop} />
+        <NavbarMobile messages={messages} ifSearchIconClicked={SearchIconIsClickInNavbar} />
       </div>
       <main
         className={`flex flex-col px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full ${
@@ -112,8 +118,8 @@ export default function Layout({ children }) {
       </div>
       {/* TabBar/footer */}
       <div className="">
-        <TabBar classNames="fixed bottom-0 left-0 z-50 lg:hidden" />
-        <Footer />
+        <TabBar messages={messages} classNames="fixed bottom-0 left-0 z-50 lg:hidden" />
+        <Footer messages={messages} />
       </div>
     </div>
   );

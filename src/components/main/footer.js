@@ -7,7 +7,7 @@ import paper_plane from "@/icons/footer/paper_plane.svg";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import InputBtnTransition from "@/src/components/input/input_btn_transition";
 
-const Footer = () => (
+const Footer = ({ messages }) => (
   <>
     <footer>
       <div className="hidden sm:block lg:px-[60px] pt-[15px] lg:pt-[80px] pb-[115px] lg:pb-[90px] bg-white200 w-full">
@@ -87,7 +87,8 @@ const Footer = () => (
                     </div>
                     <div>
                       <p className="font-medium lg:font-semibold text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px] text-gray900">
-                        2023 Cagir.az. Bütün hüquqlar qorunur
+                        {/* 2023 Cagir.az. Bütün hüquqlar qorunur */}
+                        {messages.copyright}
                       </p>
                     </div>
                   </div>
@@ -105,31 +106,32 @@ const Footer = () => (
               {/* <!-- 2nd column:1st --> */}
               <li className="hover:text-black transition duration-300 ">
                 <h2 className="mb-[10px] lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500">
-                  Faydalı keçidlər
+                  {/* Faydalı keçidlər */}
+                  {messages["useful-links"]}
                 </h2>
               </li>
               <li className="hover:text-black transition duration-300 ">
-                <Link href="/haqqimizda">Haqqımızda</Link>
+                <Link href="/haqqimizda">{messages["about"]}</Link>
               </li>
               {/* <!-- 2nd column:2nd --> */}
               <li className="hover:text-black transition duration-300 ">
-                <Link href="/faq">Suallar</Link>
+                <Link href="/faq">{messages["faq-short"]}</Link>
               </li>
               {/* <!-- 2nd column:3rd --> */}
               <li className="hover:text-black transition duration-300 ">
-                <Link href="/elaqe">Əlaqə</Link>
+                <Link href="/elaqe">{messages["contact"]}</Link>
               </li>
               {/* <!-- 2nd column:4th --> */}
               <li className="hover:text-black transition duration-300 ">
-                <Link href="/blog">Bloq</Link>
+                <Link href="/blog">{messages["blog"]}</Link>
               </li>
               {/* <!-- 2nd column:5th --> */}
               <li className="hover:text-black transition duration-300 ">
-                <Link href="/media">Media</Link>
+                <Link href="/media">{messages["media"]}</Link>
               </li>
               {/* <!-- 2nd column:6th --> */}
               <li className="hover:text-black transition duration-300 ">
-                <Link href="/xidmet">Xidmətlər</Link>
+                <Link href="/xidmet">{messages["services"]}</Link>
               </li>
             </ul>
           </div>
@@ -142,31 +144,31 @@ const Footer = () => (
               {/* <!-- 2nd column:1st --> */}
               <li className="hover:text-black transition duration-300 ">
                 <h2 className="mb-[10px] lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500">
-                  Xidmətlər
+                {messages["services"]}
                 </h2>
               </li>
               <li className="hover:text-black transition duration-300 ">
-                <Link href="/temizlik-xidmeti">Təmizlik xidməti</Link>
+                <Link href="/temizlik-xidmeti">{messages["cleaning"]}</Link>
               </li>
               {/* <!-- 2nd column:2nd --> */}
               <li className="hover:text-black transition duration-300 ">
-                <Link href="/usta">Usta</Link>
+                <Link href="/usta">{messages["master"]}</Link>
               </li>
               {/* <!-- 2nd column:3rd --> */}
               <li className="hover:text-black transition duration-300 ">
-                <Link href="/masaj-xidmeti">Masaj xidməti</Link>
+                <Link href="/masaj-xidmeti">{messages["massage"]}</Link>
               </li>
               {/* <!-- 2nd column:4th --> */}
               <li className="hover:text-black transition duration-300 ">
-                <Link href="#">Hamısı</Link>
+                <Link href="#">{messages["all-services"]}</Link>
               </li>
               {/* <!-- 2nd column:5th --> */}
               <li className="hover:text-black transition duration-300 ">
-                <Link href="#">PulQazan</Link>
+                <Link href="#">{messages["affilate"]}</Link>
               </li>
               {/* <!-- 2nd column:6th --> */}
               <li className="hover:text-black transition duration-300 ">
-                <Link href="/is-axtariram">Bizimlə işlə</Link>
+                <Link href="/is-axtariram">{messages["work-with-us"]}</Link>
               </li>
             </ul>
           </div>
@@ -191,7 +193,7 @@ const Footer = () => (
                   // className="lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500 text-left"
                   className="text-cagiraz font-extrabold lg:text-gray900 lg:font-semibold lg:hover:text-black transition duration-300 inline-block min-w-max"
                 >
-                  Razılaşma müqaviləsi
+                  {messages["terms"]}
                 </Link>
               </div>
             </div>

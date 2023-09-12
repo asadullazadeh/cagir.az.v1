@@ -5,7 +5,7 @@ import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import SearchInput from "@/src/components/input/input_search_sm";
 
-export default function Carousel1({ carouselPhotos1, onDataReceived }) {
+export default function Carousel1({ carouselPhotos1, onDataReceived,messages }) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -37,8 +37,9 @@ export default function Carousel1({ carouselPhotos1, onDataReceived }) {
       {/* first part of carousel section */}
       <div className="flex flex-col justify-between w-full lg:w-1/2">
         <h1 className="flex flex-col my-h1 text-black500">
-          <span>Peşəkar xidmət,</span>
-          <span>sərfəli qiymət!</span>
+          {/* <span>Peşəkar xidmət,</span>
+          <span>sərfəli qiymət!</span> */}
+          {messages["slider-part-2"]}
         </h1>
 
           <p className="flex flex-col text-[10px] xl:text-[12px] leading-[18px] xl:leading-[22px] lg:tracking-[0.02em] text-gray900 w-full screen360:w-2/3 screen428:w-1/2 lg:w-[300px]">
@@ -56,7 +57,8 @@ export default function Carousel1({ carouselPhotos1, onDataReceived }) {
 
         <div className="hidden lg:block space-y-[18px]">
           <p className="font-semibold non-italic tracking-[0.02em] text-[14px] leading-[22px] text-black500">
-            Biz sosial şəbəkələrdə
+            {messages["follow-us"]}
+            {/* Biz sosial şəbəkələrdə */}
           </p>
           {/* Sosial sebekeler insta, fb, linkedin */}
           <SocialNetworks classNames="flex flex-row space-x-[20px]" />

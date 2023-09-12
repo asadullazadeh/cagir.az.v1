@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import Carousel1 from "@/src/components/main/carousel1";
 import MainServices from "@/src/components/service/mainServices";
 import Reyler from "@/src/components/main/reyler";
@@ -12,7 +14,7 @@ import Musteriler from "@/src/components/main/musteriler";
 import Reels from "@/src/components/main/reels";
 import SearchServices from "@/src/components/main/search_services";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 export async function getServerSideProps() {
   const data = await import("/data/data.json");
   const { carouselPhotos1 } = data;
@@ -25,6 +27,17 @@ export async function getServerSideProps() {
 }
 
 export default function Home(props) {
+  const { locales } = useRouter();
+
+  const intl = useIntl();
+
+  // const title = intl.formatMessage({ id: "contact" });
+  console.log(locales);
+  console.log(intl);
+  const messages = intl.messages
+  console.log(messages);
+
+
   const { carouselPhotos1 } = props;
 
   // passing data from carousel to the main page
@@ -34,7 +47,7 @@ export default function Home(props) {
   const handleDataFromCarousel = (data) => {
     setSearchInptClicked(data);
   };
-  console.log(searchInptClicked);
+
 
   return (
     <div>
@@ -54,24 +67,25 @@ export default function Home(props) {
           <Carousel1
             {...{ carouselPhotos1 }}
             onDataReceived={handleDataFromCarousel}
+            messages={messages}
           />
-          <MainServices />
-          <Reyler parentId={1} />
-          <Icracilar parentId={1} />
-          <Musteriler />
+          <MainServices messages={messages} />
+          <Reyler messages={messages} parentId={1} />
+          <Icracilar messages={messages} parentId={1} />
+          <Musteriler messages={messages} />
           <div className="hidden lg:block">
-            <Suallar />
+            <Suallar messages={messages} />
           </div>
           <div className="hidden lg:block">
-            <Deyerler />
+            <Deyerler messages={messages} />
           </div>
 
           {/* <Reels /> */}
 
-          <LastPostedBlogs />
+          <LastPostedBlogs messages={messages} />
         </div>
         <div className={`${searchInptClicked ? "" : "hidden"}`}>
-          <SearchServices />
+          <SearchServices messages={messages} />
         </div>
       </div>
       </div>

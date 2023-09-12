@@ -143,7 +143,7 @@ const Dropdown = ({
   const isSub2ElementsExist = getSub2Services.length > 0;
 
   //
-  console.log(descIsOpen[0]);
+  console.log(descIsOpen);
   console.log(isOpen);
 
   return (
@@ -256,7 +256,7 @@ const Dropdown = ({
                     <div classNames="flex flex-row">
                       <div
                         className={`${
-                          !descIsOpen[index] ? "line-clamp-1" : ""
+                          descIsOpen[mainIndex] ? "" : "line-clamp-1"
                         } `}
                         dangerouslySetInnerHTML={{
                           __html: `${findDescById(index)}`,

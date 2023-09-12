@@ -5,7 +5,7 @@ import Link from "next/link";
 import arrow from "@/icons/arrow.svg";
 import arrow_mobile from "@/icons/arrow_mobile.svg";
 
-function Xidmetler() {
+function Xidmetler({messages}) {
   const [responseData, setResponseData] = useState([]);
 
   useEffect(() => {
@@ -24,10 +24,11 @@ function Xidmetler() {
         console.error(error);
       });
   }, []);
+  console.log(messages);
 
   return (
     <div className="">
-      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Xidmətlər</h2>
+      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">{messages.services}</h2>
       {/* <OrderCardPrimary /> */}
       <ul className="grid grid-cols-2 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
         {responseData

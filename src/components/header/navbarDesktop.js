@@ -11,7 +11,7 @@ import wallet1 from "@/icons/header/wallet1.svg";
 import LangSection from "@/src/components/others/lang_section";
 import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
 
-export default function NavbarDesktop({ ifSearchIconClicked }) {
+export default function NavbarDesktop({ ifSearchIconClicked,messages }) {
   const [searchIconIsClicked, setSearchIconIsClicked] = useState(false);
 
   const handleClick = () => {
@@ -77,7 +77,7 @@ export default function NavbarDesktop({ ifSearchIconClicked }) {
                   text-[10px] leading-[15px] bg-black500 text-white group-hover:opacity-100 transition-opacity absolute left-1/2
                   -translate-x-1/2 translate-y-full opacity-0"
                   >
-                    Axtarış
+                    {messages.search}
                   </span>
                 </div>
               </li>
@@ -107,7 +107,7 @@ export default function NavbarDesktop({ ifSearchIconClicked }) {
                   text-[10px] leading-[15px] bg-black500 text-white group-hover:opacity-100 transition-opacity absolute left-1/2
                   -translate-x-1/2 translate-y-full opacity-0"
                   >
-                    Ödəniş
+                    {messages.payment}
                   </span>
                 </Link>
               </li>
@@ -116,7 +116,7 @@ export default function NavbarDesktop({ ifSearchIconClicked }) {
                 <Link
                   onClick={handleDeClickSearchIcon}
                   className="group flex relative"
-                  href="/profil_settings"
+                  href="/profile"
                 >
                   <span>
                     <div className="relative group">
@@ -137,7 +137,7 @@ export default function NavbarDesktop({ ifSearchIconClicked }) {
                   text-[10px] leading-[15px] bg-black500 text-white group-hover:opacity-100 transition-opacity absolute left-1/2
                   -translate-x-1/2 translate-y-full opacity-0 whitespace-nowrap"
                   >
-                    Giriş et
+                    {messages.login}
                   </span>
                 </Link>
               </li>
@@ -161,14 +161,15 @@ export default function NavbarDesktop({ ifSearchIconClicked }) {
                   href="/temizlik-xidmeti"
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Təmizlik xidməti
+                    {messages.cleaning}
                   </p>
                 </Link>
               </li>
               <li>
                 <Link onClick={handleDeClickSearchIcon} href="/kombi-ustasi">
                   <p className="transition duration-300 hover:text-black">
-                    Kombi ustası
+                    {/* Kombi ustası */}
+                    {messages["usta-kombi"]}
                   </p>
                 </Link>
               </li>
@@ -178,7 +179,8 @@ export default function NavbarDesktop({ ifSearchIconClicked }) {
                   href="/santexnik-ustasi"
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Santexnik ustasi
+                    {/* Santexnik ustasi */}
+                    {messages["usta-santexnik"]}
                   </p>
                 </Link>
               </li>
@@ -188,28 +190,34 @@ export default function NavbarDesktop({ ifSearchIconClicked }) {
                   href="/kondisioner-ustasi"
                 >
                   <p className="transition duration-300 hover:text-black">
-                    Kondisioner ustası
+                    {/* Kondisioner ustası */}
+                    {messages["usta-kondisioner"]}
+
                   </p>
                 </Link>
               </li>
               <li>
                 <Link onClick={handleDeClickSearchIcon} href="/soyuducu-ustasi">
                   <p className="transition duration-300 hover:text-black">
-                    Soyuducu ustası
+                    {/* Soyuducu ustası */}
+                    {messages["usta-soyuducu"]}
                   </p>
                 </Link>
               </li>
               <li>
                 <Link onClick={handleDeClickSearchIcon} href="/elektrik-ustasi">
                   <p className="transition duration-300 hover:text-black">
-                    Elektrik ustası
+                    {/* Elektrik ustası */}
+                    {messages["usta-elektrik"]}
+
                   </p>
                 </Link>
               </li>
               <li>
                 <Link onClick={handleDeClickSearchIcon} href="/xidmetler">
                   <p className="transition duration-300 hover:text-black">
-                    Digər xidmətlər
+                    {/* Digər xidmətlər */}
+                    {messages["other-services"]}
                   </p>
                 </Link>
               </li>
@@ -220,7 +228,7 @@ export default function NavbarDesktop({ ifSearchIconClicked }) {
               onClick={handleDeClickSearchIcon}
               className="py-[7px]"
             >
-              <PrimarySmBtn btnName="Qeydiyyat" />
+              <PrimarySmBtn btnName={messages.register} />
             </Link>
           </div>
         </nav>

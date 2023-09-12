@@ -6,7 +6,7 @@ import client from "@/public/client.jpg";
 import call_back from "@/icons/tab_bar/call_back.svg";
 import ModalStandart from "@/src/components/modal/modal_stand";
 import InputBtnNbTransition from "@/src/components/input/input_btn_nb_transition";
-const TabBar = ({ classNames }) => (
+const TabBar = ({ classNames, messages }) => (
   <>
     <div
       className={`h-[55px] w-full bg-white border-t border-gray-200 ${classNames}`}

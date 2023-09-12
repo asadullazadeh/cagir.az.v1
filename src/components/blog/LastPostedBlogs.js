@@ -7,7 +7,7 @@ import arrow_mobile from "@/icons/arrow_mobile.svg";
 import views from "@/icons/bloq/views.svg";
 import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
 
-function LastPostedBlogs() {
+function LastPostedBlogs({messages}) {
   const [responseData, setResponseData] = useState([]);
 
   useEffect(() => {
@@ -30,7 +30,8 @@ function LastPostedBlogs() {
   console.log(responseData);
   return (
     <div className="">
-      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Bloq</h2>
+      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">
+        {messages["blog"]}</h2>
       <ul className="grid grid-cols-1 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
         {responseData?.map(
           ({

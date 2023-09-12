@@ -1,24 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import icon_az from "@/icons/icon_az.svg";
 import icon_en from "@/icons/icon_en.svg";
 import icon_ru from "@/icons/icon_ru.svg";
 
 const LangSection = () => {
+  const router = useRouter();
   const [navbar, setNavbar] = useState(false);
 
   const options = [
     {
-      value: "1",
+      lang: "az",
+      value: 0,
       label: <Image src={icon_az} alt="Azerbaijan flag" />,
     },
     {
-      value: "2",
+      lang: "en",
+      value: 1,
       label: <Image src={icon_en} alt="United Kingdom flag" />,
     },
     {
-      value: "3",
+      lang: "ru",
+      value: 2,
       label: <Image src={icon_ru} alt="Russia flag" />,
     },
   ];
@@ -41,6 +46,11 @@ const LangSection = () => {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+  useEffect(() => {
+    router.push(router.pathname, router.asPath, {
+      locale: selectedOption.lang,
+    });
+  }, [selectedOption.lang]);
 
   return (
     <div>

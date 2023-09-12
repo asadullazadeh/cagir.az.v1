@@ -13,7 +13,7 @@ const responsive = {
   1300: { items: 4 },
 };
 
-function Icraci({ parentId }) {
+function Icraci({ parentId,messages }) {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -101,7 +101,10 @@ function Icraci({ parentId }) {
 
   return (
     <div>
-      <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">İcraçı profilləri</h2>
+      <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">
+       {/* {messages["provider-comments"]}  */}
+        İcraçı profilləri
+        </h2>
       <div
         className={`grid place-items-end ${data.length > 2 ? "" : "hidden"}`}
       >

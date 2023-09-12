@@ -6,7 +6,7 @@ import Link from "next/link";
 import up from "@/icons/form/up.svg";
 import down from "@/icons/form/down.svg";
 
-function Suallar() {
+function Suallar({messages}) {
   const [responseData, setResponseData] = useState([]);
   const [clickedItems, setClickedItems] = useState({});
 
@@ -40,7 +40,8 @@ function Suallar() {
 
   return (
     <div className="">
-      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Suallar</h2>
+      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">
+        {messages["faq-short"]}</h2>
       <div className="space-y-[15px] lg:space-y-[17px]">
         {firstFaqNames.map(({ question, answer, isActive, faqId, id }) => (
           <div key={id}>
