@@ -110,6 +110,13 @@ const Dropdown = ({
       [index]: !descIsOpen[index],
     }));
   };
+
+  const closeDesc = (index) => {
+    setdescIsOpen((prevState) => ({
+      ...prevState,
+      [index]: !descIsOpen[index],
+    }));
+  };
   //finding main service Description by using Id
   const findDescById = (index) =>
     dropdownInfos[index].serviceInfos.find(
@@ -260,9 +267,8 @@ const Dropdown = ({
                   <div className="flex flex-col font-medium text-[10px] leading-[15px] text-gray900">
                     <div classNames="flex flex-row">
                       <div
-                        className={`${
-                          descIsOpen[mainIndex] ? "line-clamp-none" : "line-clamp-1"
-                        } `}
+                      onClick={() => closeDesc(index)}
+                        className={`line-clamp-${descIsOpen[mainIndex] ? "none" : "1"} `}
                         dangerouslySetInnerHTML={{
                           __html: `${findDescById(index)}`,
                         }}

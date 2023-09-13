@@ -27,8 +27,7 @@ export default function MyApp({ Component, pageProps }) {
   const [token, setToken] = useState("");
   const { locale } = useRouter();
   const router = useRouter();
-  // console.log(router);
-  console.log(locale);
+  console.log(token);
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");

@@ -47,6 +47,16 @@ export default function NavbarMobile({ ifSearchIconClicked,messages }) {
   console.log("navbar:", navbar);
   console.log("searchIconIsClicked:", searchIconIsClicked);
 
+  const [token, setToken] = useState("");
+  const { locale } = useRouter();
+  console.log(token);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
   return (
     <>
       <header className="block lg:hidden">
@@ -292,7 +302,7 @@ export default function NavbarMobile({ ifSearchIconClicked,messages }) {
                   </p>
                 </Link>
               </li>
-              <li>
+              <li className={`${token ? "hidden" : ""}`}>
                 <Link
                   href="/giris"
                   className=""
@@ -307,7 +317,7 @@ export default function NavbarMobile({ ifSearchIconClicked,messages }) {
                   </p>
                 </Link>
               </li>
-              <li>
+              <li className={`${token ? "hidden" : ""}`}>
                 <Link
                   href="/qeydiyyat"
                   className=""
@@ -322,7 +332,7 @@ export default function NavbarMobile({ ifSearchIconClicked,messages }) {
                   </p>
                 </Link>
               </li>
-              <li>
+              <li className={`${token ? "" : "hidden"}`}>
                 <Link
                   href="/"
                   className=""
@@ -331,7 +341,7 @@ export default function NavbarMobile({ ifSearchIconClicked,messages }) {
                     handleDeClickSearchIcon();
                   }}
                 >
-                  <p className="transition duration-300 text-danger">
+                  <p className={`transition duration-300 text-danger`}>
                     {/* Çıxış et */}
                     {messages["logout"]}
                   </p>
