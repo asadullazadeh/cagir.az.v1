@@ -3,6 +3,8 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import views from "@/icons/bloq/views.svg";
 import SearchInputMd from "@/src/components/input/input_search_md";
 
@@ -63,11 +65,15 @@ console.log(responseData);
     setSearchVal(inputValue);
   }
 
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale
+  const messages = intl.messages
   return (
     <div>
       <Head><title>Cagir.az - Xidmət</title></Head>
     <div className="py-[15px] lg:py-[30px]">
-      <h2 className="my-h2 mb-[15px] text-center lg:mb-[30px]">Xidmətlər</h2>
+      <h2 className="my-h2 mb-[15px] text-center lg:mb-[30px]">{messages.services}</h2>
       <div className="flex flex-col items-center">
       <SearchInputMd  
           onChange={handleInputChange}

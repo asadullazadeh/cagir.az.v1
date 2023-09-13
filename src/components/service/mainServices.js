@@ -5,14 +5,14 @@ import Link from "next/link";
 import arrow from "@/icons/arrow.svg";
 import arrow_mobile from "@/icons/arrow_mobile.svg";
 
-function Xidmetler({messages}) {
+function Xidmetler({ messages, chosenLang }) {
   const [responseData, setResponseData] = useState([]);
 
   useEffect(() => {
     axios
       .get("https://api.cagir.az/api/service/getAllForFront", {
         headers: {
-          "Accept-Language": "az",
+          "Accept-Language": chosenLang,
         },
       })
       .then((response) => {
@@ -23,12 +23,14 @@ function Xidmetler({messages}) {
         // Handle any errors
         console.error(error);
       });
-  }, []);
+  }, [chosenLang]);
   console.log(messages);
 
   return (
     <div className="">
-      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">{messages.services}</h2>
+      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">
+        {messages.services}
+      </h2>
       {/* <OrderCardPrimary /> */}
       <ul className="grid grid-cols-2 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
         {responseData

@@ -3,10 +3,12 @@ import { Transition } from "@headlessui/react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import up from "@/icons/form/up.svg";
 import down from "@/icons/form/down.svg";
 
-function Suallar({messages}) {
+function Suallar({messages, chosenLang}) {
   const [responseData, setResponseData] = useState([]);
   const [clickedItems, setClickedItems] = useState({});
 
@@ -14,7 +16,7 @@ function Suallar({messages}) {
     axios
       .get("https://api.cagir.az/api/faq/getAllByCategory?faqCategoryId=1", {
         headers: {
-          "Accept-Language": "az",
+          "Accept-Language": chosenLang,
         },
       })
       .then((response) => {
@@ -25,7 +27,7 @@ function Suallar({messages}) {
         // Handle any errors
         console.error(error);
       });
-  }, []);
+  }, [chosenLang]);
 
   const firstFaqNames = Object.values(responseData).map(
     (child) => child.faqNames[0]

@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 
 import {
   CustomInput,
@@ -40,6 +41,10 @@ function Sifaris({
   onSelectedNamesArray,
   onSelectedMainChange,
 }) {
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale
+  const messages = intl.messages
   // passing selectedService names from dropdown to sifaris
   const [selectedNamesArray, setSelectedNamesArray] = useState("");
   const handleSelectedNamesArray = (data) => {
@@ -60,7 +65,7 @@ function Sifaris({
     axios
       .get("https://api.cagir.az/api/service/getAllForFront", {
         headers: {
-          "Accept-Language": "az",
+          "Accept-Language": chosenLang,
         },
       })
       .then((response) => {
@@ -71,7 +76,7 @@ function Sifaris({
         // Handle any errors
         console.error(error);
       });
-  }, []);
+  }, [chosenLang]);
 
   const findInfoByName = (mainServices, name) => {
     const mainService =
@@ -106,7 +111,7 @@ function Sifaris({
         `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${selectedMainService.id}`,
         {
           headers: {
-            "Accept-Language": "az",
+            "Accept-Language": chosenLang,
           },
         }
       )
@@ -118,7 +123,7 @@ function Sifaris({
         // Handle any errors
         console.error(error);
       });
-  }, [selectedMainService.id]);
+  }, [selectedMainService.id,chosenLang]);
   const findSubInfoByName = (subServices, name) => {
     const subService =
       subServices.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
@@ -167,7 +172,7 @@ function Sifaris({
         `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${selectedSubService.id}`,
         {
           headers: {
-            "Accept-Language": "az",
+            "Accept-Language": chosenLang,
           },
         }
       )
@@ -179,7 +184,7 @@ function Sifaris({
         // Handle any errors
         console.error(error);
       });
-  }, [selectedSubService.id]);
+  }, [selectedSubService.id,chosenLang]);
 
   const findSub2InfoByName = (sub2Services, name) => {
     const sub2Service =
@@ -207,7 +212,7 @@ function Sifaris({
         [isSub2ElementsExist ? selectedSub2Service.id : selectedSubService.id],
         {
           headers: {
-            "Accept-Language": "az",
+            "Accept-Language": chosenLang,
           },
         }
       )
@@ -219,7 +224,7 @@ function Sifaris({
         // Handle any errors
         console.error(error);
       });
-  }, [isSub2ElementsExist, selectedSubService.id, selectedSub2Service.id]);
+  }, [isSub2ElementsExist, selectedSubService.id, selectedSub2Service.id,chosenLang]);
   console.log(getServiceCriterias);
   /* --------------------- Multinumber input functionality-FilterType=5 --------------------- */
   // multiNumberArray takes all the information of multi number input for pricing
@@ -424,7 +429,7 @@ function Sifaris({
         [...filteredCalculatePrice],
         {
           headers: {
-            "Accept-Language": "az",
+            "Accept-Language": chosenLang,
           },
         }
       )
@@ -436,7 +441,7 @@ function Sifaris({
         // Handle any errors
         console.error(error);
       });
-  }, [filteredCalculatePrice]); // when one of these dependencies is updated, the filteredCalculatePrice becomes null
+  }, [filteredCalculatePrice,chosenLang]); // when one of these dependencies is updated, the filteredCalculatePrice becomes null
 
   //price after promocode
   const [priceAfterPromo, setPriceAfterPromo] = useState(0);
@@ -482,6 +487,8 @@ function Sifaris({
     selectedSub2,
     descSub2: selectedSub2Service.text,
     selectedNamesArray,
+    messages,
+    chosenLang
   };
 
   // dropdownProps.to pass data from one dropdown to other one and selected service
@@ -494,6 +501,8 @@ function Sifaris({
     getSub2Services: getSub2Services,
     defaultMain,
     defaultSub,
+    messages,
+    chosenLang
   };
   // Callback function to which service service Category from the Dropdown component
   //checking which service category is selected.Main-1,sub-2,sub2-2
@@ -579,6 +588,7 @@ function Sifaris({
             <Qiymet
               priceBeforePromo={priceBeforePromo}
               priceAfterPromo={priceAfterPromo}
+              {...{messages}}
             />
           </div>
           {/* Toggle part is only  desktop */}

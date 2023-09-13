@@ -3,6 +3,8 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import views from "@/icons/bloq/views.svg";
 
 
@@ -26,11 +28,16 @@ function Media() {
       });
   }, []);
 
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale
+  const messages = intl.messages
+
   return (
     <div>
       <Head><title>Cagir.az - Media</title></Head>
     <div className="py-[15px] lg:py-[30px]">
-      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Media</h2>
+      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">{messages.media}</h2>
       {/* <div className="flex justify-center">
         <SearchInputMd />
       </div> */}

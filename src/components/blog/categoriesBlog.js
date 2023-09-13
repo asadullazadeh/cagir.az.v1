@@ -7,7 +7,7 @@ import RelatedBlogs from "@/src/components/blog/relatedBlogs";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import img_banner_blog from "@/public/img_banner_blog.png";
 
-function CategoriesBlog({ categoryId, id }) {
+function CategoriesBlog({ categoryId, id, messages, chosenLang }) {
   //
   const [categoriesData, setcategoriesData] = useState([]);
   useEffect(() => {
@@ -36,7 +36,7 @@ function CategoriesBlog({ categoryId, id }) {
         className="font-semibold lg:font-bold text-[16px] lg:text-[20px] lg:leading-[30px] leading-[24px] pb-[15px] pt-[30px] lg:pt-0 text-center lg:text-start
             border-t border-[#EAEAEA] lg:border-none"
       >
-        Kateqoriyalar
+        {messages.categories}
       </h4>
 
       <div className="grid grid-cols-2  gap-[10px] lg:gap-[15px]">

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,29 +17,31 @@ const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
   const [deleteBtnClicked, setDeleteBtnClicked] = useState(false);
 
   const handleDelete = () => {
-    setInputValue(value)
-    if(inputValue.length>0) {
+    setInputValue(value);
+    if (inputValue.length > 0) {
       setDeleteBtnClicked(true);
-    }else{
-      setDeleteBtnClicked(false)
+    } else {
+      setDeleteBtnClicked(false);
     }
-    
-    // 
+
+    //
   };
-  
 
   useEffect(() => {
     // if (inputValue.length > 0 && deleteBtnClicked) {
-      // setDeleteBtnClicked(false);
-      if(typeof sendDataToParent=== "function"){
-        sendDataToParent(deleteBtnClicked);
-      }else{
-        "sendDataToParent is not a function"
-      }
-      
+    // setDeleteBtnClicked(false);
+    if (typeof sendDataToParent === "function") {
+      sendDataToParent(deleteBtnClicked);
+    } else {
+      ("sendDataToParent is not a function");
+    }
+
     // }
   }, [deleteBtnClicked, setDeleteBtnClicked, sendDataToParent]);
-
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale;
+  const messages = intl.messages;
   return (
     <div
       className={`flex flex-row w-full lg:w-1/3 justify-between items-center px-[12px] lg:px-[10px] py-[12px] lg:py-[15px] rounded-[10px] lg:rounded-[50px] border
@@ -65,8 +69,8 @@ const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
           onChange={onChange}
         />
       </div>
-      
-        {/* <div onClick={handleDelete} className={`${deleteBtnClicked || value>0 ? 'hidden' : ""}`}>
+
+      {/* <div onClick={handleDelete} className={`${deleteBtnClicked || value>0 ? 'hidden' : ""}`}>
           <svg
             width="14"
             height="16"
@@ -86,7 +90,6 @@ const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
             />
           </svg>
         </div> */}
-
     </div>
   );
 };

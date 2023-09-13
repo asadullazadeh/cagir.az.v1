@@ -79,6 +79,7 @@ export default function Layout({ children }) {
   //
   const { locales } = useRouter();
   const intl = useIntl();
+  const chosenLang = intl.locale
   const messages = intl.messages
 
   return (
@@ -86,8 +87,8 @@ export default function Layout({ children }) {
       <Head>{/* <title>Cagir.az</title> */}</Head>
       {/* navbar */}
       <div className="sticky top-0 z-50">
-        <NavbarDesktop messages={messages} ifSearchIconClicked={SearchIconIsClickInNavbarDesktop} />
-        <NavbarMobile messages={messages} ifSearchIconClicked={SearchIconIsClickInNavbar} />
+        <NavbarDesktop {...{messages}} ifSearchIconClicked={SearchIconIsClickInNavbarDesktop} />
+        <NavbarMobile {...{messages}} ifSearchIconClicked={SearchIconIsClickInNavbar} />
       </div>
       <main
         className={`flex flex-col px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full ${
@@ -105,7 +106,7 @@ export default function Layout({ children }) {
             : "hidden"
         }`}
       >
-        <SearchServices />
+        <SearchServices {...{messages}} {...{chosenLang}} />
       </div>
 
       <div className={isElementVisible ? "flex justify-center" : "hidden"}>
@@ -118,8 +119,8 @@ export default function Layout({ children }) {
       </div>
       {/* TabBar/footer */}
       <div className="">
-        <TabBar messages={messages} classNames="fixed bottom-0 left-0 z-50 lg:hidden" />
-        <Footer messages={messages} />
+        <TabBar {...{messages}} classNames="fixed bottom-0 left-0 z-50 lg:hidden" />
+        <Footer {...{messages}} />
       </div>
     </div>
   );

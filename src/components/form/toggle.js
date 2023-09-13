@@ -13,6 +13,8 @@ const Toggle = ({
   selectedSub2,
   whichServiceCategory,
   selectedNamesArray,
+  messages,
+  chosenLang
 }) => {
   const toggleInfos = {
     0: {

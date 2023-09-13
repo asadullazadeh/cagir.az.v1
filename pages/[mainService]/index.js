@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import Image from "next/image";
 import arrow_right from "@/icons/arrow_right.svg";
 import Head from "next/head";
@@ -13,22 +14,24 @@ import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
 import SubServiceNoTrend from "@/src/components/service/subServicesNoTrend";
 function Page() {
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale
+  const messages = intl.messages
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const config = {
     headers: {
-      "Accept-Language": "az",
+      "Accept-Language": chosenLang,
     },
   };
-  const router = useRouter();
-  // mainService is a path for main services.
-  const mainServiceUrl = router.query.mainService;
-  // we get the data of "mainService" service
+const router = useRouter();
+// mainService is a path for main services.
+const mainServiceUrl = router.query.mainService;
+// we get the data of "mainService" service
 
-  // subServices for an individual main service.
-  //
-  const [parentId, setParentId] = useState(null);
+// subServices for an individual main service.
+const [parentId, setParentId] = useState(null);
 
-// 
 const [mainServiceData, setMainServiceData] = useState({});
   useEffect(() => {
     axios
@@ -36,7 +39,7 @@ const [mainServiceData, setMainServiceData] = useState({});
       { titleUrl: mainServiceUrl },
        {
         headers: {
-          "Accept-Language": "az",
+          "Accept-Language": chosenLang,
         },
       })
       .then((response) => {
@@ -49,15 +52,16 @@ const [mainServiceData, setMainServiceData] = useState({});
         // Handle any errors
         console.error(error);
       });
-  }, [mainServiceUrl]);
+  }, [mainServiceUrl,chosenLang]);
   // 
+  console.log(mainServiceData);
   const [subServices, setSubServices] = useState([]);
   useEffect(() => {
     axios
       .get(`https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${mainServiceData.id}`,
        {
         headers: {
-          "Accept-Language": "az",
+          "Accept-Language": chosenLang,
         },
       })
       .then((response) => {
@@ -68,7 +72,7 @@ const [mainServiceData, setMainServiceData] = useState({});
         // Handle any errors
         console.error(error);
       });
-  }, [mainServiceData]);
+  }, [mainServiceData,chosenLang]);
 
   const { id, someProperty, serviceNames } = mainServiceData;
 
@@ -76,17 +80,20 @@ const [mainServiceData, setMainServiceData] = useState({});
   const textService = serviceNames?.[0].text
 
   const metaTitle = mainServiceData.serviceNames?.[0].metaTitle
-console.log(metaTitle);
   return (
     <div>
       <Head> <title>{metaTitle}</title></Head>
       {/* badge */}
       <div className="mt-[30px] lg:mt-[60px]">
-        <Badge />
+      <Badge 
+      {...{messages}}
+      {...{chosenLang}} />
       </div>
       <SubServiceTrend 
-      mainServiceData={mainServiceData}
-      subServices={subServices}
+      {...{mainServiceData}}
+      {...{subServices}}
+      {...{messages}}
+      {...{chosenLang}}
        />
       <div
         className="flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
@@ -95,16 +102,26 @@ console.log(metaTitle);
          pb-[60px] sm:pb-[75px] md:pb-[90px] lg:pb-[105px] xl:pb-[120px] 2xl:pb-[135px]"
       >
         <SubServiceNoTrend
-        mainServiceData={mainServiceData}
-        subServices={subServices} />
+        {...{mainServiceData}}
+        {...{subServices}}
+        {...{messages}}
+        {...{chosenLang}}
+         />
         {/* <Reels /> */}
         {/* <Banner /> */}
-        <Reyler parentId={parentId} />
-        <Icracilar parentId={parentId} />
+        <Reyler 
+        {...{parentId}}
+        {...{messages}}
+        {...{chosenLang}}
+         />
+        <Icracilar 
+        {...{parentId}}
+        {...{messages}}
+        {...{chosenLang}} />
 
         {/* Tesvir */}
         <div>
-          <h2 className="my-h2 mb-[15px] text-center">Təsvir</h2>
+          <h2 className="my-h2 mb-[15px] text-center">{messages.description}</h2>
           <div dangerouslySetInnerHTML={{ __html: textService }} />
         </div>
       </div>

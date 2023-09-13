@@ -6,7 +6,7 @@ import Link from "next/link";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import img_banner_blog from "@/public/img_banner_blog.png";
 
-function RelatedBlogs({ blogId, categoryId, subject }) {
+function RelatedBlogs({ blogId, categoryId, subject, messages, chosenLang }) {
   // Related blogs
   const [relatedBlogs, setrelatedBlogs] = useState([]);
   useEffect(() => {
@@ -34,7 +34,7 @@ function RelatedBlogs({ blogId, categoryId, subject }) {
         className="font-semibold lg:font-bold text-[16px] lg:text-[20px] lg:leading-[30px] leading-[24px] pb-[15px] pt-[30px] lg:pt-0 text-center lg:text-start
         border-t border-[#EAEAEA] lg:border-none"
       >
-        Oxşar yazılar
+        {messages["related-posts"]}
       </h4>
       <div className="overflow-y-scroll h-[300px]">
         {Object.keys(relatedBlogs).map((childObjectName, index) => {

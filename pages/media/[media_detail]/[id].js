@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
@@ -13,6 +14,10 @@ function MediaPost() {
   const router = useRouter();
   const { query } = router;
   const { media_detail,id } = query;
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale
+  const messages = intl.messages
   useEffect(() => {
     axios
       .get(`https://api.cagir.az/api/media/getDetail?id=${id}`, {

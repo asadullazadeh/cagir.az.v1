@@ -7,7 +7,7 @@ import RelatedBlogs from "@/src/components/blog/relatedBlogs";
 import CategoriesBlog from "@/src/components/blog/categoriesBlog";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 
-function TagsBlog({ blogId }) {
+function TagsBlog({ blogId,messages, chosenLang}) {
   const [responseData, setResponseData] = useState([]);
 
   useEffect(() => {
@@ -29,7 +29,6 @@ function TagsBlog({ blogId }) {
   const { id, imageUrl, viewCount, insertDate, postNames, tags, categoryId } =
     responseData;
   
-// console.log(responseData);
   return (
     <div className="">
       <h4

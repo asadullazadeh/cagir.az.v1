@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import views from "@/icons/bloq/views.svg";
 
 function XidmetTag() {
@@ -11,6 +12,10 @@ function XidmetTag() {
   const { query } = router;
   const { tagName } = query;
   console.log(tagName);
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale
+  const messages = intl.messages
   const [responseData, setResponseData] = useState([]);
 
   useEffect(() => {
@@ -29,12 +34,11 @@ function XidmetTag() {
         console.error(error);
       });
   }, [tagName]);
-  console.log(responseData);
   return (
     <div>
       <Head><title>Cagir.az - Xidmət {tagName}</title></Head>
     <div className="py-[15px] lg:py-[30px]">
-      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Xidmətlər</h2>
+      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">{messages.services}</h2>
       {/* <div className="flex justify-center">
         <SearchInputMd />
       </div> */}

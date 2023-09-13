@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import RelatedBlogs from "@/src/components/blog/relatedBlogs";
 import CategoriesBlog from "@/src/components/blog/categoriesBlog";
 import TagsBlog from "@/src/components/blog/tagsBlog";
@@ -16,7 +17,10 @@ function BlogPost() {
   const router = useRouter();
   const { query } = router;
   const { blogId } = query;
-  // console.log(blogId);  service/getAllForFront
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale
+  const messages = intl.messages
 
   useEffect(() => {
     axios
@@ -54,7 +58,6 @@ function BlogPost() {
   // subject is the category name
   const subject = category?.categoryNames?.[0]?.name ?? "Default Value";
   const metaTitle = responseData.postNames?.[0].title
-  console.log(metaTitle);
   return (
     <div>
       <Head><title>{metaTitle}</title></Head>
@@ -93,13 +96,22 @@ function BlogPost() {
       <div className="w-full lg:w-1/3 flex flex-col lg:gap-y-[40px]">
         {/* Oxsar yazilar */}
         <RelatedBlogs
-          blogId={blogId}
-          categoryId={categoryId}
-          subject={subject}
+          {...{blogId}}
+          {...{categoryId}}
+          {...{subject}}
+          {...{messages}}
+          {...{chosenLang}}
+
         />
-        <CategoriesBlog />
+        <CategoriesBlog
+        {...{messages}}
+        {...{chosenLang}}
+         />
         {/* tags */}
-        <TagsBlog blogId={blogId} />
+        <TagsBlog 
+        {...{blogId}}
+        {...{messages}}
+        {...{chosenLang}} />
         {/*  */}
         <Image
           onClick={() => window.my_modal_3.showModal()}
@@ -111,10 +123,8 @@ function BlogPost() {
         />
         <ModalStandart
           dialogId="my_modal_3"
-          content={<InputBtnNbTransition name="Sürətli sifariş" />}
+          content={<InputBtnNbTransition name={messages["fast-order"]} />}
         />
-
-        {/*  */}
       </div>
     </div>
     </div>

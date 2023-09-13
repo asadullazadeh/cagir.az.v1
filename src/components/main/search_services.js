@@ -9,7 +9,7 @@ import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn
 import SearchInputMd from "@/src/components/input/input_search_md";
 import arrow_right from "@/icons/arrow_right.svg";
 
-function SearchServices() {
+function SearchServices({messages, chosenLang}) {
   /* ----------------- mainServices ----------------- */
 
   const [mainServices, setMainServices] = useState([]);
@@ -17,7 +17,7 @@ function SearchServices() {
     axios
       .get("https://api.cagir.az/api/service/getAllForFront", {
         headers: {
-          "Accept-Language": "az",
+          "Accept-Language": chosenLang,
         },
       })
       .then((response) => {
@@ -28,7 +28,7 @@ function SearchServices() {
         // Handle any errors
         console.error(error);
       });
-  }, []);
+  }, [chosenLang]);
 
   // getting all mainService ids in an array.
   const mainServiceIds = mainServices.map((child) => child.id);
@@ -54,7 +54,7 @@ function SearchServices() {
             `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${id}`,
             {
               headers: {
-                "Accept-Language": "az",
+                "Accept-Language": chosenLang,
               },
             }
           )
@@ -72,7 +72,7 @@ function SearchServices() {
     };
 
     fetchSubServices();
-  }, [mainServices]);
+  }, [mainServices, chosenLang]);
 
   /* ----------------- search functionality ----------------- */
   // ekranda gorunen updatedSubServiceObject.It updates in each search

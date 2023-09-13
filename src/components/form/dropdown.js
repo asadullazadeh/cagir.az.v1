@@ -13,6 +13,8 @@ const Dropdown = ({
   defaultMain,
   defaultSub,
   onDataCallback,
+  messages,
+  chosenLang
 }) => {
   const dropdownInfos = {
     0: {
@@ -29,7 +31,7 @@ const Dropdown = ({
     },
   };
 
-  // console.log(defaultMain);
+  // console.log(getMainServices[0].serviceNames[0].name);
 
   // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
@@ -74,7 +76,7 @@ const Dropdown = ({
   const [mainServiceName, setMainServiceName] = useState(
     defaultMain?.serviceNames?.[0].name
       ? defaultMain?.serviceNames?.[0].name
-      : "Təmizlik Xidməti"
+      : getMainServices?.[0].serviceNames[0].name
   );
   const [subServiceName, setSubServiceName] = useState(
     defaultSub?.serviceNames?.[0].name
@@ -86,7 +88,10 @@ const Dropdown = ({
     subServiceName ? subServiceName : defaultSub?.serviceNames?.[0]["name"],
     sub2ServiceName,
   ];
-  // console.log(serviceNames);
+  console.log(defaultMain);
+  // console.log(mainServiceData);
+  console.log(subServiceName);
+  console.log(sub2ServiceName);
   // Update subServiceName and sub2ServiceName when mainServiceName changes
   useEffect(() => {
     setSubServiceName("");
@@ -256,13 +261,12 @@ const Dropdown = ({
                     <div classNames="flex flex-row">
                       <div
                         className={`${
-                          descIsOpen[mainIndex] ? "" : "line-clamp-1"
+                          descIsOpen[mainIndex] ? "line-clamp-none" : "line-clamp-1"
                         } `}
                         dangerouslySetInnerHTML={{
                           __html: `${findDescById(index)}`,
                         }}
                       />
-
                       <button
                         className="font-semibold block text-cagiraz"
                         onClick={() => handleToggleDesc(index)}

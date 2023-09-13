@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import video from "@/public/video_about.jpg";
 import Banner from "@/src/components/main/banner";
 import Deyerler from "@/src/components/main/deyerler";
@@ -21,6 +23,10 @@ export async function getServerSideProps() {
 
 export default function Haqqimizda(props) {
   const { musteriler } = props;
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale
+  const messages = intl.messages
 
   return (
     <div>
@@ -66,12 +72,17 @@ export default function Haqqimizda(props) {
       </div>
       <Banner />
       <div className="flex flex-col gap-y-[60px] pt-[60px] lg:pt-[90px]">
-        <Deyerler />
-        <Statistika />
+        <Deyerler
+        {...{messages}}
+        {...{chosenLang}}
+         />
+        <Statistika
+        {...{messages}}
+        {...{chosenLang}} />
         <Musteriler {...{ musteriler }} />
       </div>
       <div className="hidden lg:flex justify-center pt-[65px]">
-        <Link href="http://localhost:3000/sifaris">
+        <Link href="">
           <PrimaryMdBtn btnName="İndi sifariş yarat" />
         </Link>
       </div>

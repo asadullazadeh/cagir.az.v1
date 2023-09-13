@@ -7,16 +7,9 @@ import Image from "next/image";
 import arrow from "@/icons/arrow.svg";
 import arrow_right from "@/icons/arrow_right.svg";
 
-function SubService({mainServiceData,subServices}) {
-  const config = {
-    headers: {
-      "Accept-Language": "az",
-    },
-  };
+function SubService({mainServiceData, subServices, messages, chosenLang}) {
   const router = useRouter();
   const mainService = router.query.mainService;
-
-
   const { id, someProperty, serviceNames } = mainServiceData;
   const serviceName = serviceNames?.[0].name
   const textService = serviceNames?.[0].text
@@ -25,7 +18,6 @@ function SubService({mainServiceData,subServices}) {
   const isServiceTrends = Object.values(subServices).some(
     (childObj) => childObj.isServiceTrend
   );
-  console.log(isServiceTrends);
 
   return (
     <div>

@@ -13,7 +13,7 @@ const responsive = {
   1300: { items: 4 },
 };
 
-function Icraci({ parentId,messages }) {
+function Icraci({ parentId,messages, chosenLang }) {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {

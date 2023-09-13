@@ -83,8 +83,6 @@ function BlogCategory() {
     setSearchVal(inputValue);
   }
 
-  console.log(seeMoreBtnIsVisible);
-
   return (
     <div>
        <Head><title>Cagir.az - Bloq {blog_kateqoriya}</title></Head>

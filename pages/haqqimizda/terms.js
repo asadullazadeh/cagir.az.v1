@@ -1,12 +1,17 @@
 import Head from "next/head";
-
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 function Terms() {
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale
+  const messages = intl.messages
   return (
     <div>
       <Head><title>Cagir.az - Razılaşma müqaviləsi</title></Head>
     <div className="flex flex-col pb-[50px] md:pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px] pt-[30px]">
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">
-        Razılaşma Müqaviləsi
+        {messages.terms}
       </h2>
       <div className="flex flex-col font-semibold  gap-y-[15px] pb-[30px] lg:pb-[90px] text-gray900">
         <p className="text-[12px] lg:text-[18px] leading-[22px] lg:leading-[34px]">

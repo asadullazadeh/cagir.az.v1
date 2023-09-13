@@ -28,15 +28,9 @@ export async function getServerSideProps() {
 
 export default function Home(props) {
   const { locales } = useRouter();
-
   const intl = useIntl();
-
-  // const title = intl.formatMessage({ id: "contact" });
-  console.log(locales);
-  console.log(intl);
+  const chosenLang = intl.locale
   const messages = intl.messages
-  console.log(messages);
-
 
   const { carouselPhotos1 } = props;
 
@@ -69,15 +63,15 @@ export default function Home(props) {
             onDataReceived={handleDataFromCarousel}
             messages={messages}
           />
-          <MainServices messages={messages} />
-          <Reyler messages={messages} parentId={1} />
+          <MainServices messages={messages} {...{chosenLang}} />
+          <Reyler messages={messages} {...{chosenLang}} parentId={1} />
           <Icracilar messages={messages} parentId={1} />
           <Musteriler messages={messages} />
           <div className="hidden lg:block">
-            <Suallar messages={messages} />
+            <Suallar {...{messages}} {...{chosenLang}}  />
           </div>
           <div className="hidden lg:block">
-            <Deyerler messages={messages} />
+            <Deyerler {...{messages}} {...{chosenLang}} />
           </div>
 
           {/* <Reels /> */}

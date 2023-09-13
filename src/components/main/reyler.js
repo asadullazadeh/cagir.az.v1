@@ -15,7 +15,7 @@ const responsive = {
   1300: { items: 4 },
 };
 
-function Reyler({ parentId, messages }) {
+function Reyler({ parentId, messages}) {
   const [data, setData] = useState([]);
   const [expanded, setExpanded] = useState(false);
   const handleToggle = () => {

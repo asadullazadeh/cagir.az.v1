@@ -3,6 +3,8 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import views from "@/icons/bloq/views.svg";
 import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
 import SearchInputMd from "@/src/components/input/input_search_md";
@@ -12,7 +14,6 @@ function Blogs() {
   const [responseData, setResponseData] = useState([]);
   const [seeMoreBtnIsVisible, setseeMoreBtnIsVisible] = useState(true);
 
-  //
   useEffect(() => {
     axios
       .get(`https://api.cagir.az/api/post/getAll?size=${size}`, {
@@ -62,27 +63,27 @@ function Blogs() {
     } else {
       setUpdatedBlogList(responseData);
     }
-    console.log(searchVal);
 
     if (filteredArray.length < 6) {
       setseeMoreBtnIsVisible(false);
     } else {
       setseeMoreBtnIsVisible(true);
     }
-    // console.log(filteredArray.length);
   }, [setseeMoreBtnIsVisible, deleteBtnIsClicked, searchVal, responseData]); // Only run this effect when searchVal changes
 
   function handleInputChange(event) {
-    // const inputValue = event.target.value;
     setSearchVal(event.target.value);
   }
 
-  console.log(responseData);
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale
+  const messages = intl.messages
   return (
     <div>
     <Head> <title>Bloq</title></Head>
     <div className="py-[15px] lg:py-[30px]">
-      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Bloq</h2>
+      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">{messages.blog}</h2>
       <div className="flex justify-center">
         <SearchInputMd
           onChange={handleInputChange}

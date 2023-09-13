@@ -6,12 +6,7 @@ import Image from "next/image";
 import arrow_right from "@/icons/arrow_right.svg";
 import arrow from "@/icons/arrow.svg";
 
-function SubServiceNoTrend({ mainServiceData, subServices }) {
-  const config = {
-    headers: {
-      "Accept-Language": "az",
-    },
-  };
+function SubServiceNoTrend({ mainServiceData, subServices, messages, chosenLang }) {
   const router = useRouter();
   const mainService = router.query.mainService;
 
