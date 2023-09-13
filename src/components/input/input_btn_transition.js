@@ -50,7 +50,6 @@ const InputBtnTransition = ({ name, classNames }) => {
     }
   }, [email, isRotated, isValidEmail]);
 
-  console.log(email.length);
   return (
     <div className="flex justify-center">
       <ul className="space-y-[10px] lg:space-y-[15px] font-semibold text-[14px] leading-[21px] text-black500">

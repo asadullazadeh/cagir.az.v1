@@ -24,8 +24,6 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
       document.body.style.overflow = "visible";
     }
   }, [navbar]);
-  console.log(router.asPath);
-  console.log(navbar);
 
   // if search input is clicked
   const [searchIconIsClicked, setSearchIconIsClicked] = useState(false);
@@ -44,12 +42,10 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
   useEffect(() => {
     ifSearchIconClicked(searchIconIsClicked);
   }, [ifSearchIconClicked, searchIconIsClicked]);
-  console.log("navbar:", navbar);
-  console.log("searchIconIsClicked:", searchIconIsClicked);
+
 
   const [token, setToken] = useState("");
   const { locale } = useRouter();
-  console.log(token);
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");

@@ -58,7 +58,6 @@ const InputNumber = ({ label }) => {
     // Whenever phonePrefix or inputValue changes, update enteredNumber
     handleInputChange();
   }, [inputValue]);
-  console.log(isClicked);
 
   return (
     <div className="flex flex-col gap-y-[5px]">

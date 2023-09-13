@@ -38,7 +38,6 @@ const InputPassword = ({ label, onPasswordChange, changePswrdClasses}) => {
   }
   }, [password, onPasswordChange]);
 
-  console.log(password);
 
   return (
     <div className="flex flex-col gap-y-[5px]">

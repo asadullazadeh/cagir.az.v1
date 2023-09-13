@@ -11,8 +11,8 @@ function SubServiceNoTrend({ mainServiceData, subServices, messages, chosenLang 
   const mainService = router.query.mainService;
 
   const { id, someProperty, serviceNames } = mainServiceData;
-  const serviceName = serviceNames?.[0].name;
-  const textService = serviceNames?.[0].text;
+  // const serviceName = serviceNames?.[0].name;
+  // const textService = serviceNames?.[0].text;
 
   //this is a boolean variable.True if there is any trend service
   const isServiceTrends = Object.values(subServices).some(

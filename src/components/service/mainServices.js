@@ -24,7 +24,6 @@ function Xidmetler({ messages, chosenLang }) {
         console.error(error);
       });
   }, [chosenLang]);
-  console.log(messages);
 
   return (
     <div className="">

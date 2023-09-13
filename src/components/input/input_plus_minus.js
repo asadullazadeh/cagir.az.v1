@@ -25,8 +25,7 @@ const InputPlusMinus = ({criteriaId,updateCriteriaValue,updateCriteriaId}) => {
 
         }
   };
-  console.log(criteriaId,value);
-
+  
   return (
     <div
       className="inline-flex items-center justify-between border-none lg:border lg:border-solid lg:border-gray900 rounded-full 

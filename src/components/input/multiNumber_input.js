@@ -31,7 +31,6 @@ const CustomInput = ({name,updateCriteriaValue,updateMultiNumberName,criteriaId,
         }
      // Step 2: Invoke the onUpdate callback with the updated value
   };
-  // console.log(name);
   
 
   return (

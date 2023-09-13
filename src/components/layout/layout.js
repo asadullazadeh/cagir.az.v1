@@ -47,7 +47,6 @@ export default function Layout({ children }) {
         console.error(error);
       });
   }, []);
-  console.log(responseData);
 
   // add home page with account to this array
   // eslint-disable-next-line react-hooks/exhaustive-deps

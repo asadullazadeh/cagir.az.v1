@@ -43,7 +43,6 @@ function Icraci({ parentId,messages, chosenLang }) {
   }
   // const sliderCount =
   //   data.length < 2 ? 0 : data.length >= 2 && data.length <= 4 ? 2 : 3;
-  // console.log(sliderCount);
   const childDataArray = Object.values(data).map((child) => ({
     jsxElement: (
       <div

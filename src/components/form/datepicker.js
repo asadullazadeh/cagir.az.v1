@@ -20,14 +20,12 @@ const Calendar = () => {
   const handleClick = () => {
     setIsClicked(true);
     setIsFocused(false); // Ensure focus state is false when clicked
-    console.log("clicked");
   };
 
   const handleChange = (event) => {
     const newValue = event.target.value;
     setInputValue(newValue);
     // You can perform other logic here if needed
-    console.log(newValue);
   };
 
   const handleOutsideClick = (event) => {
@@ -46,8 +44,6 @@ const Calendar = () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
-
-  console.log(startDate);
 
   return (
     <div

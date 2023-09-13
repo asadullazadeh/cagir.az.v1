@@ -30,7 +30,6 @@ const Toggle = ({
       serviceName: selectedSub2,
     },
   };
-  // console.log(selectedSub2);
 
   // this object takes all cases to give three key value to show which toggle need to be shown.
   //0-when a main service is clicked, 1-sub,2-sub2.
@@ -59,7 +58,6 @@ const Toggle = ({
       ],
     });
   }, [selectedNamesArray, selectedSub2, whichServiceCategory]);
-  console.log(selectedNamesArray);
   const toggleHidden = (index) => {
     setIsHidden((prevState) => ({
       ...prevState,

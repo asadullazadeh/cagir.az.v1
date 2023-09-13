@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import logo from "@/public/logo.svg";
 import search from "@/icons/header/search.svg";
 import search1 from "@/icons/header/search1.svg";
@@ -11,12 +12,11 @@ import wallet1 from "@/icons/header/wallet1.svg";
 import LangSection from "@/src/components/others/lang_section";
 import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
 
-export default function NavbarDesktop({ ifSearchIconClicked,messages }) {
+export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
   const [searchIconIsClicked, setSearchIconIsClicked] = useState(false);
 
   const handleClick = () => {
     setSearchIconIsClicked(true);
-    console.log("desktop search is cliked");
   };
 
   //set it to the false when other element is clicked
@@ -32,6 +32,16 @@ export default function NavbarDesktop({ ifSearchIconClicked,messages }) {
   useEffect(() => {
     ifSearchIconClicked(searchIconIsClicked);
   }, [ifSearchIconClicked, searchIconIsClicked]);
+
+  const [token, setToken] = useState("");
+  const { locale } = useRouter();
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
 
   return (
     <>
@@ -192,7 +202,6 @@ export default function NavbarDesktop({ ifSearchIconClicked,messages }) {
                   <p className="transition duration-300 hover:text-black">
                     {/* Kondisioner ustası */}
                     {messages["usta-kondisioner"]}
-
                   </p>
                 </Link>
               </li>
@@ -209,7 +218,6 @@ export default function NavbarDesktop({ ifSearchIconClicked,messages }) {
                   <p className="transition duration-300 hover:text-black">
                     {/* Elektrik ustası */}
                     {messages["usta-elektrik"]}
-
                   </p>
                 </Link>
               </li>

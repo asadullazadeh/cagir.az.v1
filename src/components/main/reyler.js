@@ -34,8 +34,6 @@ function Reyler({ parentId, messages}) {
     }));
   };
 
-  console.log(showFullDescription);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -140,7 +138,7 @@ function Reyler({ parentId, messages}) {
       </div>
     ),
   }));
-console.log(messages);
+
   return (
     <div>
       <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">

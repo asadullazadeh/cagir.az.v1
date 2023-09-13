@@ -26,12 +26,9 @@ const InputCustomized = ({
     // updateInputTextId(inputTextId); // Call the function only if it exists
     updateInputText(inputTextId, newValue);
     }
-    console.log(newValue);  
     // onInputChange(newValue,label);
   };
-
-  // console.log(newValue);
-
+  
   const handleOutsideClick = (event) => {
     if (inputRef.current && !inputRef.current.contains(event.target)) {
       setIsClicked(false);

@@ -14,7 +14,7 @@ const Dropdown = ({
   defaultSub,
   onDataCallback,
   messages,
-  chosenLang
+  chosenLang,
 }) => {
   const dropdownInfos = {
     0: {
@@ -70,7 +70,6 @@ const Dropdown = ({
       document.removeEventListener("mousedown", handleClick);
     };
   }, []);
-  // console.log(isOpen);
 
   // mainServiceName is set to false as default.
   const [mainServiceName, setMainServiceName] = useState(
@@ -81,17 +80,12 @@ const Dropdown = ({
   const [subServiceName, setSubServiceName] = useState(
     defaultSub?.serviceNames?.[0].name
   );
-  // console.log(defaultSub.serviceNames?.[0]["name"]);
   const [sub2ServiceName, setSub2ServiceName] = useState("");
   const serviceNames = [
     mainServiceName,
     subServiceName ? subServiceName : defaultSub?.serviceNames?.[0]["name"],
     sub2ServiceName,
   ];
-  console.log(defaultMain);
-  // console.log(mainServiceData);
-  console.log(subServiceName);
-  console.log(sub2ServiceName);
   // Update subServiceName and sub2ServiceName when mainServiceName changes
   useEffect(() => {
     setSubServiceName("");
@@ -132,7 +126,6 @@ const Dropdown = ({
 
   // which dropdown is trembling?
   const [trembling, setTrembling] = useState({ ...tremBlingObject[0] });
-  // console.log(trembling);
   const handleOptionClick = (mainIndex, serviceName) => {
     if (mainIndex == 0) {
       setMainServiceName(serviceName);
@@ -146,17 +139,12 @@ const Dropdown = ({
     }
 
     setIsOpen(false);
-    console.log(mainIndex, "mainIndex");
 
     onDataCallback(mainIndex);
     setTrembling({ ...tremBlingObject[mainIndex] });
   };
 
   const isSub2ElementsExist = getSub2Services.length > 0;
-
-  //
-  console.log(descIsOpen);
-  console.log(isOpen);
 
   return (
     <div
@@ -174,8 +162,6 @@ const Dropdown = ({
         const onSelectService = dropdownInfos[index].onSelectService;
 
         const mainIndex = index;
-        const lineClampClass = `line-clamp-${descIsOpen[mainIndex] ? "none" : "1"}`;
-        console.log(lineClampClass);
         return (
           <div key={index}>
             <div className="flex flex-col gap-y-[10px] lg:gap-y-0 relative ">
@@ -268,8 +254,10 @@ const Dropdown = ({
                   <div className="flex flex-col font-medium text-[10px] leading-[15px] text-gray900">
                     <div classNames="flex flex-row">
                       <div
-                      onClick={() => closeDesc(index)}
-                        className={`${descIsOpen[mainIndex] ? "" : "line-clamp-1"}`}
+                        onClick={() => closeDesc(index)}
+                        className={`${
+                          descIsOpen[mainIndex] ? "" : "line-clamp-1"
+                        }`}
                         dangerouslySetInnerHTML={{
                           __html: `${findDescById(index)}`,
                         }}

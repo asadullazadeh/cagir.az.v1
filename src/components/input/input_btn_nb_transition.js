@@ -12,7 +12,6 @@ const InputBtnNbTransition = ({ name }) => {
   const [phonePrefix, setPhonePrefix] = useState(
     `${phonePrefixes}`.split(",")[0]
   );
-  // console.log(phonePrefix);
   const [isRotated, setIsRotated] = useState(false);
 
   //
@@ -61,12 +60,10 @@ const InputBtnNbTransition = ({ name }) => {
     // Whenever phonePrefix or inputValue changes, update enteredNumber
     handleInputChange();
   }, [phonePrefix]);
-  // console.log(enteredNumber);
   //
 
   const handleButtonClick = () => {
     setIsRotated(true);
-    // console.log(enteredNumber.length);
     // if enteredNumber length is 10: +513852755, run sendNumberBySms()
     if (enteredNumber.length === 10) {
       sendNumberBySms();
