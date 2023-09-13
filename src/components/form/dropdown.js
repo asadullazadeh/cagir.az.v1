@@ -76,7 +76,7 @@ const Dropdown = ({
   const [mainServiceName, setMainServiceName] = useState(
     defaultMain?.serviceNames?.[0].name
       ? defaultMain?.serviceNames?.[0].name
-      : getMainServices?.[0].serviceNames[0].name
+      : "Təmizlik xidməti"
   );
   const [subServiceName, setSubServiceName] = useState(
     defaultSub?.serviceNames?.[0].name

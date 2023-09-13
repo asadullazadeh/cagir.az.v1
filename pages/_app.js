@@ -12,13 +12,13 @@ const messages = {
   en,
   ru,
 };
-function getDirection(locale) {
-  if (locale === "az") {
-    return "rtl";
-  }
+// function getDirection(locale) {
+//   if (locale === "az") {
+//     return "rtl";
+//   }
 
-  return "ltr";
-}
+//   return "ltr";
+// }
 // import { config } from "@fortawesome/fontawesome-svg-core";
 // import "@fortawesome/fontawesome-svg-core/styles.css";
 // config.autoAddCss = false;
