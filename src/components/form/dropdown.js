@@ -174,7 +174,8 @@ const Dropdown = ({
         const onSelectService = dropdownInfos[index].onSelectService;
 
         const mainIndex = index;
-
+        const lineClampClass = `line-clamp-${descIsOpen[mainIndex] ? "none" : "1"}`;
+        console.log(lineClampClass);
         return (
           <div key={index}>
             <div className="flex flex-col gap-y-[10px] lg:gap-y-0 relative ">
@@ -268,7 +269,7 @@ const Dropdown = ({
                     <div classNames="flex flex-row">
                       <div
                       onClick={() => closeDesc(index)}
-                        className={`line-clamp-${descIsOpen[mainIndex] ? "none" : "1"} `}
+                        className={`${descIsOpen[mainIndex] ? "" : "line-clamp-1"}`}
                         dangerouslySetInnerHTML={{
                           __html: `${findDescById(index)}`,
                         }}

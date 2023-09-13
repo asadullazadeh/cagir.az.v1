@@ -8,7 +8,7 @@ import close from "@/icons/header/close.svg";
 import LangSection from "@/src/components/others/lang_section";
 import search1 from "@/icons/header/search1.svg";
 
-export default function NavbarMobile({ ifSearchIconClicked,messages }) {
+export default function NavbarMobile({ ifSearchIconClicked, messages }) {
   const router = useRouter();
   const [navbar, setNavbar] = useState(false);
   const handleClick = () => {
@@ -224,7 +224,7 @@ export default function NavbarMobile({ ifSearchIconClicked,messages }) {
                   </p>
                 </Link>
               </li>
-              <li className="border-b-2 border-opacity-10 border-[#959595]"></li>
+              {/* <li className="border-b-2 border-opacity-10 border-[#959595]"></li> */}
 
               {/* second part */}
 
