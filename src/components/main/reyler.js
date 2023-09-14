@@ -144,13 +144,13 @@ function Reyler({ parentId, messages}) {
       <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">
         Rəylər
         </h2>
-      <div className={`grid place-items-end ${data.length > 2 ? "" : "hidden"}`}>
+      {/* <div className={`grid place-items-end ${data.length > 2 ? "" : "hidden"}`}>
         <Image
           className="w-[22px] lg:w-[28px] h-[14px] lg:h-[24px]"
           src={arrow}
           alt="arrow_icon"
         />
-      </div>
+      </div> */}
       <div className="flex flex-row gap-x-[30px]">
         {data.length < 3 ? (
           childDataArray.map((child, index) => (

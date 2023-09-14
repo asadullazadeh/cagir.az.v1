@@ -9,7 +9,7 @@ import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn
 import SearchInputMd from "@/src/components/input/input_search_md";
 import arrow_right from "@/icons/arrow_right.svg";
 
-function SearchServices({messages, chosenLang}) {
+function SearchServices({ messages, chosenLang }) {
   /* ----------------- mainServices ----------------- */
 
   const [mainServices, setMainServices] = useState([]);
@@ -90,7 +90,6 @@ function SearchServices({messages, chosenLang}) {
     });
 
     setUpdatedSubServiceObject(filteredArray);
-
   }, [searchVal, subServices]); // Only run this effect when searchVal changes
 
   function handleInputChange(event) {
@@ -98,17 +97,45 @@ function SearchServices({messages, chosenLang}) {
     setSearchVal(event.target.value);
   }
 
+  const suggestedServices = [
+    {
+      service: messages.cleaning,
+      url: "/temizlik-xidmeti",
+    },
+    {
+      service: messages["usta-kombi"],
+      url: "/usta/kombi-ustasi",
+    },
+    {
+      service: messages["usta-santexnik"],
+      url: "/usta/santexnik-ustasi",
+    },
+  ];
+
   return (
     <div className="py-[15px] lg:py-[30px]">
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">
         Hansı xidməti axtarırsınız?
       </h2>
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-[15px] mb-[15px]">
         <SearchInputMd
           onChange={handleInputChange}
           value={searchVal}
           // sendDataToParent={receiveDataFromChild}
         />
+      </div>
+      <div className="flex flex-row justify-center gap-x-[5px] lg:gap-x-[15px]">
+        {suggestedServices.map((item, index) => (
+          <div key={index}>
+            <div className="border border-cagiraz rounded-lg">
+              <a className="" href={item.url}>
+                <p className="font-semibold text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px]">
+                  {item.service}
+                </p>
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* all services */}

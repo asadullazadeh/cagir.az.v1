@@ -29,7 +29,6 @@ function PulQazan() {
     receiverEmail: inputPairs["Alan şəxsin emaili"],
     receiverPhoneNumber: inputPairs["Alan şəxsin nömrəsi"],
   };
-  // console.log(objectEarnMoney);
 
   /* --------------------- Creating affiliate --------------------- */
   const [createAffiliate, setCreateAffiliate] = useState([]);

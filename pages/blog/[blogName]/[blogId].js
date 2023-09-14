@@ -96,22 +96,12 @@ function BlogPost() {
       <div className="w-full lg:w-1/3 flex flex-col lg:gap-y-[40px]">
         {/* Oxsar yazilar */}
         <RelatedBlogs
-          {...{blogId}}
-          {...{categoryId}}
-          {...{subject}}
-          {...{messages}}
-          {...{chosenLang}}
-
-        />
+          {...{blogId,categoryId,subject,messages,chosenLang}} />
         <CategoriesBlog
-        {...{messages}}
-        {...{chosenLang}}
-         />
+        {...{messages, chosenLang}} />
         {/* tags */}
         <TagsBlog 
-        {...{blogId}}
-        {...{messages}}
-        {...{chosenLang}} />
+        {...{blogId, messages, chosenLang}} />
         {/*  */}
         <Image
           onClick={() => window.my_modal_3.showModal()}

@@ -744,11 +744,12 @@ function Sifaris({
                     className="w-full aspect-[666/365]"
                   />
                 </div>
-                <Download_image />
+                <Download_image {...{messages}} />
                 <Promocode
                   serviceId={selectedMainService.id}
-                  priceBeforePromo={priceBeforePromo}
+                  {...{priceBeforePromo}}
                   onPromoPriceChange={handlePriceUpdate}
+                  {...{messages}}
                 />
                 <PaymentMethod />
               </div>
@@ -783,7 +784,7 @@ function Sifaris({
 
               <PrimarySmBtn
                 onClick={handleTesdiqleClicked}
-                btnName="Təsdiqlə"
+                btnName={messages["confirm"]}
                 classNames="w-full"
               />
             </div>

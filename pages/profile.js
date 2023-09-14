@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import InputCustomized from "@/src/components/input/input";
 import InputNumber from "@/src/components/input/input_number";
 import InputPassword from "@/src/components/input/input_password";
@@ -14,6 +15,11 @@ import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn
 import client from "@/public/client.jpg";
 
 function Profil_settings() {
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale
+  const messages = intl.messages
+
   const [token, setToken] = useState("");
 
   useEffect(() => {
@@ -73,7 +79,6 @@ function Profil_settings() {
         });
     }
   }, [token]);
-  console.log(userData);
 
   return (
     <div>
@@ -116,9 +121,9 @@ function Profil_settings() {
           <InputCustomized label="Ad və soyad" />
 
           <InputNumber label="Nömrə" />
-          <InputPassword label="Parol" />
+          <InputPassword label={messages.password} />
           <div className="flex lg:justify-end py-[30px]">
-            <PrimaryMdBtn btnName="Yadda saxla" classNames="w-full lg:w-auto" />
+            <PrimaryMdBtn btnName={messages["btn-save"]} classNames="w-full lg:w-auto" />
           </div>
         </div>
       </div>
@@ -134,7 +139,7 @@ function Profil_settings() {
           Profildən çıx
         </button>
         {/* Profili sil button */}
-        <button
+        {/* <button
           className="w-full lg:w-auto bg-[#F64242] rounded-[30px] py-[10px] px-[26px]
                       font-extrabold text-white text-[14px] leading-[21px]
                        transition duration-400 transform hover:-translate-y-[5px]
@@ -142,12 +147,12 @@ function Profil_settings() {
                       "
         >
           Profili sil
-        </button>
+        </button> */}
       </div>
 
       {/* Sifaris tarixcesi */}
       <h4 className="font-semibold lg:font-bold text-[16px] lg:text-[20px] leading-[24px] lg:leading-[30px] pb-[55px] pt-[30px] lg:pb-[30px] border-t border-[#EAEAEA]">
-        Sifariş tarixçəsi
+        {messages["order-history"]}
       </h4>
       <div className="flex flex-col w-full lg:3/4 xl:w-2/3 2xl:w-1/2 ">
         {/* 1st */}

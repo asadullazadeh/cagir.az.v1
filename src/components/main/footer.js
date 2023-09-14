@@ -160,11 +160,11 @@ const Footer = ({ messages }) => (
               </li>
               {/* <!-- 2nd column:4th --> */}
               <li className="hover:text-black transition duration-300 ">
-                <Link href="#">{messages["all-services"]}</Link>
+                <Link href="/xidmetler">{messages["all-services"]}</Link>
               </li>
               {/* <!-- 2nd column:5th --> */}
               <li className="hover:text-black transition duration-300 ">
-                <Link href="#">{messages["affilate"]}</Link>
+                <Link href="/pulqazan">{messages["affilate"]}</Link>
               </li>
               {/* <!-- 2nd column:6th --> */}
               <li className="hover:text-black transition duration-300 ">

@@ -16,7 +16,6 @@ function BlogCategory() {
   const router = useRouter();
   const { query } = router;
   const { blog_kateqoriya } = query;
-  console.log(blog_kateqoriya, size);
 
   useEffect(() => {
     axios

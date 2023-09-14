@@ -24,7 +24,7 @@ function Xidmetler({ messages, chosenLang }) {
         console.error(error);
       });
   }, [chosenLang]);
-
+  console.log(responseData);
   return (
     <div className="">
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">
@@ -37,7 +37,7 @@ function Xidmetler({ messages, chosenLang }) {
           .map(({ id, imageUrl, nameUrl, serviceNames }) => (
             <li key={id}>
               <Link
-                href={nameUrl}
+                href={`/${nameUrl}`}
                 passHref
                 className="block rounded-[10px] lg:rounded-[25px] bg-white p-[11px] lg:p-[26px]  group
               hover:drop-shadow-card transition duration-300 "

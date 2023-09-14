@@ -104,7 +104,7 @@ function Icraci({ parentId,messages, chosenLang }) {
        {/* {messages["provider-comments"]}  */}
         İcraçı profilləri
         </h2>
-      <div
+      {/* <div
         className={`grid place-items-end ${data.length > 2 ? "" : "hidden"}`}
       >
         <Image
@@ -112,7 +112,7 @@ function Icraci({ parentId,messages, chosenLang }) {
           src={arrow}
           alt="arrow_icon"
         />
-      </div>
+      </div> */}
       {/* Customized Carousel */}
       {/* justify-center gap-x-[10px] screen375:gap-x-[15px] screen412:gap-x-[25px] sm:gap-x-[40px] */}
       <div className="flex flex-row justify-between sm:justify-center sm:gap-x-[40px]">

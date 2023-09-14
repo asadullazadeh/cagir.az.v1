@@ -59,27 +59,26 @@ export default function Home(props) {
       }`}
         >
           <Carousel1
-            {...{ carouselPhotos1 }}
+            {...{ carouselPhotos1,messages }}
             onDataReceived={handleDataFromCarousel}
-            messages={messages}
           />
-          <MainServices messages={messages} {...{chosenLang}} />
-          <Reyler messages={messages} {...{chosenLang}} parentId={1} />
-          <Icracilar messages={messages} parentId={1} />
-          <Musteriler messages={messages} />
+          <MainServices {...{chosenLang,messages}} />
+          <Reyler {...{chosenLang,messages}} parentId={1} />
+          <Icracilar {...{messages}} parentId={1} />
+          <Musteriler {...{messages}} />
           <div className="hidden lg:block">
-            <Suallar {...{messages}} {...{chosenLang}}  />
+            <Suallar {...{chosenLang,messages}}  />
           </div>
           <div className="hidden lg:block">
-            <Deyerler {...{messages}} {...{chosenLang}} />
+            <Deyerler {...{chosenLang,messages}} />
           </div>
 
           {/* <Reels /> */}
 
-          <LastPostedBlogs messages={messages} />
+          <LastPostedBlogs {...{messages}} />
         </div>
         <div className={`${searchInptClicked ? "" : "hidden"}`}>
-          <SearchServices messages={messages} />
+          <SearchServices {...{messages}} />
         </div>
       </div>
       </div>

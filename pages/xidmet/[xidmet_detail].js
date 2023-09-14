@@ -51,7 +51,6 @@ function XidmetDetail() {
     titleUrl,
     viewCount,
   } = responseData;
-  console.log(serviceInfoTags);
 
   const { description, shortDescription, title } =
     responseData.serviceInfoNames && responseData.serviceInfoNames.length > 0

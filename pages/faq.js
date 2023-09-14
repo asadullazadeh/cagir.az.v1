@@ -16,6 +16,11 @@ import up from "@/icons/form/up.svg";
 import down from "@/icons/form/down.svg";
 
 function Faq() {
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale
+  const messages = intl.messages
+
   const [categoryId, setCategoryId] = useState(0); // Initial categoryId is 0
   const [responseData, setResponseData] = useState([]);
   const [clickedItems, setClickedItems] = useState({});
@@ -26,7 +31,7 @@ function Faq() {
         `https://api.cagir.az/api/faq/getAllByCategory?faqCategoryId=${categoryId}`,
         {
           headers: {
-            "Accept-Language": "az",
+            "Accept-Language": chosenLang,
           },
         }
       )
@@ -38,7 +43,7 @@ function Faq() {
         // Handle any errors
         console.error(error);
       });
-  }, [categoryId]);
+  }, [categoryId,chosenLang]);
   const firstFaqNames = Object.values(responseData).map(
     (child) => child.faqNames[0]
   );
@@ -59,9 +64,6 @@ function Faq() {
     }));
   };
 
-  const { locales } = useRouter();
-  const intl = useIntl();
-  const messages = intl.messages
   return (
     <div>
       <Head>

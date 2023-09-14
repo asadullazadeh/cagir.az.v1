@@ -1,132 +1,103 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { FormattedMessage, useIntl } from "react-intl";
-import Image from "next/image";
-import arrow_right from "@/icons/arrow_right.svg";
 import Head from "next/head";
 import Badge from "@/src/components/others/badge";
 import SubServiceTrend from "@/src/components/service/subServicesTrend";
-import Reels from "@/src/components/main/reels";
-import Banner from "@/src/components/main/banner";
+import SubServiceNoTrend from "@/src/components/service/subServicesNoTrend";
 import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
-import SubServiceNoTrend from "@/src/components/service/subServicesNoTrend";
-function Page() {
-  const { locales } = useRouter();
+import { useIntl } from "react-intl";
+
+const Page = ({ mainServiceData, subServices, chosenLang, parentId }) => {
   const intl = useIntl();
-  const chosenLang = intl.locale
-  const messages = intl.messages
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const config = {
-    headers: {
-      "Accept-Language": chosenLang,
-    },
-  };
-const router = useRouter();
-// mainService is a path for main services.
-const mainServiceUrl = router.query.mainService;
-// we get the data of "mainService" service
+  const messages = intl.messages;
+  const { serviceNames } = mainServiceData;
+  const { text: textService, metaTitle } = serviceNames?.[0] || {};
 
-// subServices for an individual main service.
-const [parentId, setParentId] = useState(null);
+  const containerClass = `
+    flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
+    lg:gap-y-[105px] xl:gap-y-[120px] 2xl:gap-y-[135px]
+    pt-[30px] sm:pt-[36px] md:pt-[42px] lg:pt-[48px] xl:pt-[54px] 2xl:pt-[60px]
+    pb-[60px] sm:pb-[75px] md:pb-[90px] lg:pb-[105px] xl:pb-[120px] 2xl:pb-[135px]
+  `;
 
-const [mainServiceData, setMainServiceData] = useState({});
-  useEffect(() => {
-    axios
-      .post("https://api.cagir.az/api/service/service-name",
-      { titleUrl: mainServiceUrl },
-       {
-        headers: {
-          "Accept-Language": chosenLang,
-        },
-      })
-      .then((response) => {
-        // Handle the response data
-        setMainServiceData(response.data.result)
-        const newParentId = response.data.result.id;
-        setParentId(newParentId);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
-  }, [mainServiceUrl,chosenLang]);
-  // 
-  console.log(mainServiceData);
-  const [subServices, setSubServices] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${mainServiceData.id}`,
-       {
-        headers: {
-          "Accept-Language": chosenLang,
-        },
-      })
-      .then((response) => {
-        // Handle the response data
-        setSubServices(response.data.result)
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
-  }, [mainServiceData,chosenLang]);
-
-  const { id, someProperty, serviceNames } = mainServiceData;
-
-  const serviceName = serviceNames?.[0].name
-  const textService = serviceNames?.[0].text
-
-  const metaTitle = mainServiceData.serviceNames?.[0].metaTitle
   return (
     <div>
-      <Head> <title>{metaTitle}</title></Head>
-      {/* badge */}
-      <div className="mt-[30px] lg:mt-[60px]">
-      <Badge 
-      {...{messages}}
-      {...{chosenLang}} />
-      </div>
-      <SubServiceTrend 
-      {...{mainServiceData}}
-      {...{subServices}}
-      {...{messages}}
-      {...{chosenLang}}
-       />
-      <div
-        className="flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
-        lg:gap-y-[105px] xl:gap-y-[120px] 2xl:gap-y-[135px]
-         pt-[30px] sm:pt-[36px] md:pt-[42px] lg:pt-[48px] xl:pt-[54px] 2xl:pt-[60px] 
-         pb-[60px] sm:pb-[75px] md:pb-[90px] lg:pb-[105px] xl:pb-[120px] 2xl:pb-[135px]"
-      >
+      <Head>
+        <title>{metaTitle}</title>
+      </Head>
+      <Badge {...{ chosenLang }} />
+      <SubServiceTrend {...{ mainServiceData, subServices, chosenLang }} />
+      <div className={containerClass}>
         <SubServiceNoTrend
-        {...{mainServiceData}}
-        {...{subServices}}
-        {...{messages}}
-        {...{chosenLang}}
-         />
-        {/* <Reels /> */}
-        {/* <Banner /> */}
-        <Reyler 
-        {...{parentId}}
-        {...{messages}}
-        {...{chosenLang}}
-         />
-        <Icracilar 
-        {...{parentId}}
-        {...{messages}}
-        {...{chosenLang}} />
-
-        {/* Tesvir */}
+          {...{ mainServiceData, subServices, chosenLang, messages }}
+        />
+        <Reyler {...{ parentId, chosenLang, messages }} />
+        <Icracilar {...{ parentId, chosenLang, messages }} />
         <div>
-          <h2 className="my-h2 mb-[15px] text-center">{messages.description}</h2>
+          <h2 className="my-h2 mb-[15px] text-center">
+            {messages.description}
+          </h2>
           <div dangerouslySetInnerHTML={{ __html: textService }} />
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Page;
+
+// Separate function for fetching mainServiceData
+async function fetchMainServiceData(mainServiceUrl, chosenLang) {
+  try {
+    const response = await axios.post(
+      "https://api.cagir.az/api/service/service-name",
+      { titleUrl: mainServiceUrl },
+      {
+        headers: {
+          "Accept-Language": chosenLang,
+        },
+      }
+    );
+    return response.data.result;
+  } catch (error) {
+    console.error(error);
+    return {};
+  }
+}
+
+// Separate function for fetching subServices
+async function fetchSubServices(parentId, chosenLang) {
+  try {
+    const response = await axios.get(
+      `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${parentId}`,
+      {
+        headers: {
+          "Accept-Language": chosenLang,
+        },
+      }
+    );
+    return response.data.result;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+export async function getServerSideProps(context) {
+  const mainServiceUrl = context.query.mainService;
+  const chosenLang = context.locale || "az";
+  const mainServiceData = await fetchMainServiceData(
+    mainServiceUrl,
+    chosenLang
+  );
+  const subServices = await fetchSubServices(mainServiceData.id, chosenLang);
+  return {
+    props: {
+      mainServiceData,
+      subServices,
+      chosenLang,
+      parentId: mainServiceData.id,
+    },
+  };
+}

@@ -5,7 +5,7 @@ import axios from "axios";
 import download from "@/icons/form/download.svg";
 import validation from "@/icons/form/validation.svg";
 
-const Promocode = ({ serviceId, priceBeforePromo, onPromoPriceChange }) => {
+const Promocode = ({ serviceId, priceBeforePromo, onPromoPriceChange, messages }) => {
   const [isInputClicked, setIsInputClicked] = useState(false);
   const prevPromoCodeRef = useRef("");
   const promocodes = ["Cagiraz", "Turgut", "Alpay", "Orxan"];
@@ -77,7 +77,7 @@ const Promocode = ({ serviceId, priceBeforePromo, onPromoPriceChange }) => {
   return (
     <div className="flex flex-col gap-y-[5px]">
       <p className="hidden lg:block font-semibold text-[12px] leading-[18px] text-black500">
-        Promokod
+        {messages["promo-code"]}
       </p>
       <div className="inline-flex flex-col w-full">
         <div
@@ -90,7 +90,7 @@ const Promocode = ({ serviceId, priceBeforePromo, onPromoPriceChange }) => {
               htmlFor="promo_code"
               className="block lg:hidden absolute mt-[-45px] px-[10px] z-10 bg-white font-medium text-[8px] leading-[12px] text-cagiraz"
             >
-              Promokod
+              {messages["promo-code"]}
             </label>
           )}
           <input

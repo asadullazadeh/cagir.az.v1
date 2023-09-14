@@ -2,27 +2,33 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import InputCustomized from "@/src/components/input/input";
 import InputNumber from "@/src/components/input/input_number";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 
 function Payment() {
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale
+  const messages = intl.messages
   return (
     <div>
       <Head><title>Cagir.az - Ödəniş</title></Head>
     <div className="flex flex-col items-center min-h-screen justify-center">
-      <h2 className="my-h2 text-center pb-[15px]">Ödəniş</h2>
+      <h2 className="my-h2 text-center pb-[15px]">{messages.payment}</h2>
       <div className="flex flex-col w-full md:w-2/3 lg:w-1/2 gap-y-[15px]">
         <InputCustomized label="Ad və soyad" type="text" />
-        <InputNumber label="Telefon nömrəsi" />
-        <InputCustomized label="Məbləğ" type="number" />
+        <InputNumber label={messages.phone} />
+        <InputCustomized label={messages.amount} type="number" />
         <div>
           <label
             htmlFor="message"
             className="block lg:pb-[5px] pl-[15px] font-medium lg:font-semibold text-[12px] leading-[18px] 
             lg:leading-[15px] text-gray900 lg:text-black500"
           >
-            Qeyd
+            {messages.note}
           </label>
           <textarea
             id="message"
@@ -39,7 +45,7 @@ function Payment() {
             className="flex justify-center lg:justify-end"
             href="/payment_result"
           >
-            <PrimaryMdBtn btnName="Ödəniş et" classNames="w-full lg:w-auto" />
+            <PrimaryMdBtn btnName={messages["btn-paymet"]} classNames="w-full lg:w-auto" />
           </Link>
         </div>
       </div>

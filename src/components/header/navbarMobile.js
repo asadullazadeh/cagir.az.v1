@@ -43,7 +43,6 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
     ifSearchIconClicked(searchIconIsClicked);
   }, [ifSearchIconClicked, searchIconIsClicked]);
 
-
   const [token, setToken] = useState("");
   const { locale } = useRouter();
 

@@ -46,7 +46,7 @@ const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
     <div
       className={`flex flex-row w-full lg:w-1/3 justify-between items-center px-[12px] lg:px-[10px] py-[12px] lg:py-[15px] rounded-[10px] lg:rounded-[50px] border
       ${isClicked ? "border-cagiraz" : "border-gray900"}  
-      mt-[15px] mb-[30px]`}
+      `}
       onClick={handleClick}
     >
       <div className="flex flex-row">

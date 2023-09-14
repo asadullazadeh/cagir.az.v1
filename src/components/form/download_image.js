@@ -4,11 +4,11 @@ import Link from "next/link";
 import download from "@/icons/form/download.svg";
 import delete_icon from "@/icons/form/delete.svg";
 
-const Download_image = () => {
+const Download_image = ({messages}) => {
   return (
     <div className="flex flex-col gap-y-[5px]">
       <p className="hidden lg:block font-semibold text-[12px] leading-[18px] text-black500">
-        Şəkil yüklə
+        {messages["upload-image"]}
       </p>
 
       <div className="inline-flex flex-col w-full">

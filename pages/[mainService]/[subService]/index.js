@@ -67,14 +67,16 @@ function Sub2Service({ dataMain }) {
   
   //bu main page'den gelende
 
-  const pathMain = !defaultMain.nameUrl ? mainServiceUrl : defaultMain.nameUrl;
-  const pathSub =
-    (subUrlFromSifaris ?? defaultSub.nameUrl) || getSubServices[0]?.nameUrl;
-  //
-  const newPath = `/${pathMain}/${pathSub}`;
-  useEffect(() => {
-    router.replace(newPath);
-  }, [newPath]);
+  // const pathMain = !defaultMain.nameUrl ? mainServiceUrl : defaultMain.nameUrl;
+  // const pathSub =
+  //   (subUrlFromSifaris ?? defaultSub.nameUrl) || getSubServices[0]?.nameUrl;
+  // //
+  // const newPath = `/${pathMain}/${pathSub}`;
+  // useEffect(() => {
+  //   router.replace(newPath);
+  // }, [newPath]);
+
+
 
   // this takes the last mainService infos to the sifaris page
   const findMainInfoByNameUrlNew = (mainServices, nameUrl) => {
@@ -93,7 +95,7 @@ function Sub2Service({ dataMain }) {
       <Sifaris
         sendSubUrl={handleReceiveData}
         defaultMain={defaultMainNew}
-        defaultSub={defaultSub}
+        {...{defaultSub}}
         onSelectedMainChange={handleSelectedMain}
       />
       {/* <button onClick={handleReplaceSubService}>Replace Path</button> */}

@@ -28,7 +28,7 @@ function Deyerler({messages, chosenLang}) {
   return (
     <div>
       <h2 className="my-h2 mb-[15px] lg:mb-[60px] text-center">
-        Dəyərlər</h2>
+        {messages["our-values"]}</h2>
       <div
         className="grid grid-cols-2 lg:grid-cols-4 gap-x-[10px] sm:gap-x-[40px] md:gap-x-[70px] lg:gap-x-[100px] xl:gap-x-[130px] 2xl:gap-x-[156px] 
             gap-y-[15px]"

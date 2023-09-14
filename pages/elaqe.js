@@ -12,10 +12,7 @@ import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 function Elaqe() {
   const { locales } = useRouter();
   const intl = useIntl();
-  console.log(locales);
-  console.log(intl);
   const messages = intl.messages;
-  console.log(messages);
   return (
     <div>
       <Head>
