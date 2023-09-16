@@ -165,24 +165,23 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
               className="flex flex-col justify-between font-medium h-4/5 mt-[17.5px] text-[12px] xs:text-[14px] sm:text-[16px] md:text-[18px] leading-[18px] xs:leading-[21px]
             sm:leading-[24px] md:leading-[27px] text-gray900 text-center "
             >
-              {linkInfos.map(
-                ({ index, href, text, className }, actualIndex) => (
-                  <li key={actualIndex} className={className}>
-                    <Link
-                      passHref
-                      href={href}
-                      onClick={() => {
-                        handleClick();
-                        handleDeClickSearchIcon();
-                      }}
-                    >
-                      <p className={`transition duration-300 hover:text-black`}>
-                        {text}
-                      </p>
-                    </Link>
-                  </li>
-                )
-              )}
+              {linkInfos.map(({ href, text, className }) => (
+                // eslint-disable-next-line react/jsx-key
+                <li className={className}>
+                  <Link
+                    passHref
+                    href={href}
+                    onClick={() => {
+                      handleClick();
+                      handleDeClickSearchIcon();
+                    }}
+                  >
+                    <p className={`transition duration-300 hover:text-black`}>
+                      {text}
+                    </p>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </nav>
