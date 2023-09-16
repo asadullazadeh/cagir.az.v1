@@ -13,6 +13,32 @@ import LangSection from "@/src/components/others/lang_section";
 import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
 
 export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
+  const linkInfos = [
+    { href: "/temizlik-xidmeti", text: messages["cleaning"], className: "" },
+    { href: "/kombi-ustasi", text: messages["usta-kombi"], className: "" },
+    {
+      href: "/santexnik-ustasi",
+      text: messages["usta-santexnik"],
+      className: "",
+    },
+    {
+      href: "/kondisioner-ustasi",
+      text: messages["usta-kondisioner"],
+      className: "",
+    },
+    {
+      href: "/soyuducu-ustasi",
+      text: messages["usta-soyuducu"],
+      className: "",
+    },
+    {
+      href: "/elektrik-ustasi",
+      text: messages["usta-elektrik"],
+      className: "",
+    },
+    { href: "/xidmetler", text: messages["other-services"], className: "" }
+  ];
+  
   const [searchIconIsClicked, setSearchIconIsClicked] = useState(false);
 
   const handleClick = () => {
@@ -165,70 +191,18 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
               className=" flex flex-row  
            items-center font-semibold text-[10px] xl:text-[12px] 2xl:text-[14px] leading-[21px] text-gray500 space-x-[35px] lg:space-x-[40px] xl:space-x-[50px] 2xl:space-x-[70px]"
             >
-              <li>
+              {linkInfos.map(({index,href,text}) => (
+                <li>
                 <Link
                   onClick={handleDeClickSearchIcon}
-                  href="/temizlik-xidmeti"
+                  href={href}
                 >
                   <p className="transition duration-300 hover:text-black">
-                    {messages.cleaning}
+                    {text}
                   </p>
                 </Link>
               </li>
-              <li>
-                <Link onClick={handleDeClickSearchIcon} href="/kombi-ustasi">
-                  <p className="transition duration-300 hover:text-black">
-                    {/* Kombi ustası */}
-                    {messages["usta-kombi"]}
-                  </p>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  onClick={handleDeClickSearchIcon}
-                  href="/santexnik-ustasi"
-                >
-                  <p className="transition duration-300 hover:text-black">
-                    {/* Santexnik ustasi */}
-                    {messages["usta-santexnik"]}
-                  </p>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  onClick={handleDeClickSearchIcon}
-                  href="/kondisioner-ustasi"
-                >
-                  <p className="transition duration-300 hover:text-black">
-                    {/* Kondisioner ustası */}
-                    {messages["usta-kondisioner"]}
-                  </p>
-                </Link>
-              </li>
-              <li>
-                <Link onClick={handleDeClickSearchIcon} href="/soyuducu-ustasi">
-                  <p className="transition duration-300 hover:text-black">
-                    {/* Soyuducu ustası */}
-                    {messages["usta-soyuducu"]}
-                  </p>
-                </Link>
-              </li>
-              <li>
-                <Link onClick={handleDeClickSearchIcon} href="/elektrik-ustasi">
-                  <p className="transition duration-300 hover:text-black">
-                    {/* Elektrik ustası */}
-                    {messages["usta-elektrik"]}
-                  </p>
-                </Link>
-              </li>
-              <li>
-                <Link onClick={handleDeClickSearchIcon} href="/xidmetler">
-                  <p className="transition duration-300 hover:text-black">
-                    {/* Digər xidmətlər */}
-                    {messages["other-services"]}
-                  </p>
-                </Link>
-              </li>
+              ))}
             </ul>
             {/* 2nd navbar-2nd part- Qeydiyyat button */}
             <Link

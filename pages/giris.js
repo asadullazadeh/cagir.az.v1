@@ -96,7 +96,7 @@ function SignIn() {
         <title>Cagir.az - Daxil ol</title>
       </Head>
 
-      <div className="flex flex-col items-center min-h-screen justify-center">
+      <div className="flex flex-col items-center min-h-screen lg:justify-center pt-[20px] lg:pt-0">
         <h2 className="my-h2 text-center pb-[15px] lg:pb-[60px]">Daxil ol</h2>
         <div className="flex flex-col justify-between w-full gap-y-[20px] lg:gap-y-[20px] lg:3/4 xl:w-2/3 2xl:w-1/2">
           <InputCustomized

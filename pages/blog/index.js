@@ -84,7 +84,7 @@ function Blogs() {
     <Head> <title>Bloq</title></Head>
     <div className="py-[15px] lg:py-[30px]">
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">{messages.blog}</h2>
-      <div className="flex justify-center">
+      <div className="flex justify-center mb-[20px] lg:mb-[50px]">
         <SearchInputMd
           onChange={handleInputChange}
           value={searchVal}

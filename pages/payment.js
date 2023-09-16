@@ -16,7 +16,7 @@ function Payment() {
   return (
     <div>
       <Head><title>Cagir.az - Ödəniş</title></Head>
-    <div className="flex flex-col items-center min-h-screen justify-center">
+    <div className="flex flex-col items-center min-h-screen lg:justify-center pt-[20px] lg:pt-0">
       <h2 className="my-h2 text-center pb-[15px]">{messages.payment}</h2>
       <div className="flex flex-col w-full md:w-2/3 lg:w-1/2 gap-y-[15px]">
         <InputCustomized label="Ad və soyad" type="text" />
