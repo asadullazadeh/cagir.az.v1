@@ -1,43 +1,37 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Image from "next/image";
-import Link from "next/link";
-import Head from "next/head";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Image from 'next/image';
+import Head from 'next/head';
 import { useRouter } from "next/router";
 import { FormattedMessage, useIntl } from "react-intl";
-import RelatedBlogs from "@/src/components/blog/relatedBlogs";
-import CategoriesBlog from "@/src/components/blog/categoriesBlog";
-import TagsBlog from "@/src/components/blog/tagsBlog";
-import SocialNetworks from "@/src/components/others/social_ntwrks";
-import ModalStandart from "@/src/components/modal/modal_stand";
-import InputBtnNbTransition from "@/src/components/input/input_btn_nb_transition";
+import RelatedBlogs from '@/src/components/blog/relatedBlogs';
+import CategoriesBlog from '@/src/components/blog/categoriesBlog';
+import TagsBlog from '@/src/components/blog/tagsBlog';
+import SocialNetworks from '@/src/components/others/social_ntwrks';
+import ModalStandart from '@/src/components/modal/modal_stand';
+import InputBtnNbTransition from '@/src/components/input/input_btn_nb_transition';
 
-function BlogPost() {
-  const [responseData, setResponseData] = useState([]);
-  const router = useRouter();
-  const { query } = router;
-  const { blogId } = query;
-  const { locales } = useRouter();
+export async function getServerSideProps(context) {
+  const { blogId } = context.query;
+  let responseData = {};
+
+  try {
+    const response = await axios.get(`https://api.cagir.az/api/post/detail?id=${blogId}`, {
+      headers: { 'Accept-Language': 'az' },
+    });
+    responseData = response.data.result;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+
+  return { props: { initialData: responseData } };
+}
+
+function BlogPost({ initialData }) {
+  const { query: { blogId }, locales } = useRouter();
   const intl = useIntl();
-  const chosenLang = intl.locale
-  const messages = intl.messages
-
-  useEffect(() => {
-    axios
-      .get(`https://api.cagir.az/api/post/detail?id=${blogId}`, {
-        headers: {
-          "Accept-Language": "az",
-        },
-      })
-      .then((response) => {
-        // Handle the response data
-        setResponseData(response.data.result);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
-  }, [blogId, query, router]);
+  const { locale: chosenLang, messages } = intl;
+  
   const {
     id,
     imageUrl,
@@ -48,75 +42,39 @@ function BlogPost() {
     tags,
     categoryId,
     category,
-  } = responseData;
-
+  } = initialData;
+console.log(postNames[0].title);
   const { description, shortDescription, postId, title } =
-    responseData.postNames && responseData.postNames.length > 0
-      ? responseData.postNames[0]
-      : {};
+    postNames?.length ? postNames[0] : {};
 
-  // subject is the category name
-  const subject = category?.categoryNames?.[0]?.name ?? "Default Value";
-  const metaTitle = responseData.postNames?.[0].title
+  const subject = category?.categoryNames?.[0]?.name || 'Default Value';
+
   return (
     <div>
-      <Head><title>{metaTitle}</title></Head>
-    <div
-      className="flex flex-col lg:flex-row lg:gap-x-[40px] xl:gap-x-[50px] 2xl:gap-x-[60px] 
-      pt-[25px]
-    pb-[60px] lg:pb-[90px]"
-    >
-      {/* Left part-a full blog description */}
-      <div
-        className="w-full lg:w-2/3 pb-[30px] lg:pb-0 
-      drop-shadow-card lg:drop-shadow-none lg:hover:drop-shadow-card transition duration-300"
-      >
-        <SocialNetworks classNames="hidden lg:flex flex-row gap-x-[20px] pb-[30px]" />
-        <Image
-          width={900}
-          height={900}
-          src={`https://api.cagir.az${imageUrl}`}
-          alt={title}
-          className="rounded-[20px] w-full aspect-[300/164] lg:aspect-[908/499] object-cover"
-        />
-        <div className="flex flex-row justify-between pt-[5px] lg:pt-[30px] pb-[15px] lg:pb-[30px]">
-          <p className="font-medium lg:font-semibold text-[8px] lg:text-[14px] leading-[12px] lg:leading-[21px] text-gray900">
-            {insertDate ? insertDate.slice(0, 10) : ""}
-          </p>
-          <p className="font-semibold text-[10px] lg:text-[18px] leading-[15px] lg:leading-[27px] text-cagiraz">
-            Baxış: {viewCount}
-          </p>
+      <Head>
+        <title>{postNames[0].title}</title>
+      </Head>
+      <div className="flex flex-col lg:flex-row gap-x-[40px] xl:gap-x-[50px] 2xl:gap-x-[60px] pt-[25px] pb-[60px] lg:pb-[90px]">
+        {/* Main Content */}
+        <div className="w-full lg:w-2/3 pb-[30px] lg:pb-0">
+          <SocialNetworks classNames="hidden lg:flex flex-row gap-x-[20px] pb-[30px]" />
+          <Image src={`https://api.cagir.az${imageUrl}`} alt={title} width={900} height={900} />
+          <div className="flex justify-between pt-5 lg:pt-30 pb-15 lg:pb-30">
+            <p className="text-gray900 font-medium lg:font-semibold text-8 lg:text-14 leading-12 lg:leading-21">{insertDate?.slice(0, 10)}</p>
+            <p className="text-cagiraz font-semibold text-10 lg:text-18 leading-15 lg:leading-27">Baxış: {viewCount}</p>
+          </div>
+          <div dangerouslySetInnerHTML={{ __html: description }} />
+          <SocialNetworks classNames="flex flex-row gap-x-[20px] pt-[10px] lg:pt-[30px]" />
         </div>
-        {/* <h3 className="my-h2 pb-[5px] lg:pb-[30px]">{title}</h3> */}
-
-        <div dangerouslySetInnerHTML={{ __html: description }} />
-
-        <SocialNetworks classNames="flex flex-row gap-x-[20px] pt-[10px] lg:pt-[30px]" />
+        {/* Sidebar */}
+        <div className="w-full lg:w-1/3 flex flex-col gap-y-[40px] lg:gap-y-[40px]">
+          <RelatedBlogs {...{ blogId, categoryId, subject, messages, chosenLang }} />
+          <CategoriesBlog {...{ messages, chosenLang }} />
+          <TagsBlog {...{ blogId, messages, chosenLang }} />
+          <Image src={`https://api.cagir.az${adImageUrl}`} alt="Ad Image" width={424} height={512} />
+          <ModalStandart dialogId="my_modal_3" content={<InputBtnNbTransition name={messages['fast-order']} />} />
+        </div>
       </div>
-      <div className="w-full lg:w-1/3 flex flex-col lg:gap-y-[40px]">
-        {/* Oxsar yazilar */}
-        <RelatedBlogs
-          {...{blogId,categoryId,subject,messages,chosenLang}} />
-        <CategoriesBlog
-        {...{messages, chosenLang}} />
-        {/* tags */}
-        <TagsBlog 
-        {...{blogId, messages, chosenLang}} />
-        {/*  */}
-        <Image
-          onClick={() => window.my_modal_3.showModal()}
-          className="w-full h-auto hidden lg:block"
-          alt="adImageUrl"
-          width={424}
-          height={512}
-          src={`https://api.cagir.az${adImageUrl}`}
-        />
-        <ModalStandart
-          dialogId="my_modal_3"
-          content={<InputBtnNbTransition name={messages["fast-order"]} />}
-        />
-      </div>
-    </div>
     </div>
   );
 }

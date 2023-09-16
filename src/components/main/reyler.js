@@ -21,12 +21,7 @@ function Reyler({ parentId, messages}) {
   const handleToggle = () => {
     setExpanded(!expanded);
   };
-  //
   const [showFullDescription, setShowFullDescription] = useState(false);
-
-  // const toggleDescription = (index) => {
-  //   setShowFullDescription(!showFullDescription);
-  // };
   const toggleDescription = (index) => {
     setShowFullDescription((prevState) => ({
       ...prevState,
@@ -144,13 +139,6 @@ function Reyler({ parentId, messages}) {
       <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">
         Rəylər
         </h2>
-      {/* <div className={`grid place-items-end ${data.length > 2 ? "" : "hidden"}`}>
-        <Image
-          className="w-[22px] lg:w-[28px] h-[14px] lg:h-[24px]"
-          src={arrow}
-          alt="arrow_icon"
-        />
-      </div> */}
       <div className="flex flex-row gap-x-[30px]">
         {data.length < 3 ? (
           childDataArray.map((child, index) => (
@@ -163,12 +151,6 @@ function Reyler({ parentId, messages}) {
             // activeIndex = {1}
             animationDuration={1300}
             animationType="fadeout"
-            // autoHeight={true}
-            //autoWidth={true}
-            // autoPlayControls
-            // autoPlayInterval={1300}
-            // disableDotsControls
-            // autoPlay
             autoPlayStrategy="action"
             controlsStrategy="responsive"
             infinite
@@ -179,7 +161,6 @@ function Reyler({ parentId, messages}) {
               </div>
             ))}
             responsive={responsive}
-            // disableSlideInfo={false}
             animationEasingFunction="ease"
             disableButtonsControls
             paddingLeft={0}
@@ -189,32 +170,6 @@ function Reyler({ parentId, messages}) {
             touchMoveDefaultEvents={false}
           />
         )}
-      </div>
-      {/* Customized Carousel */}
-
-      {/* <div className="flex flex-row gap-x-[20px] justify-center text-[50px]">
-      {".".repeat(sliderCount)}
-      </div> */}
-      <div className="flex flex-row gap-x-[20px] justify-center ">
-        {
-          // Array.from({ length: sliderCount }, (_, index) => (
-          //   <React.Fragment key={index}>
-          //     <div className="">
-          //       <svg
-          //         xmlns="http://www.w3.org/2000/svg"
-          //         width="35"
-          //         height="35"
-          //         fill="currentColor"
-          //         className="bi bi-dot"
-          //         viewBox="0 0 16 16"
-          //       >
-          //         <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
-          //       </svg>
-          //     </div>
-          //     <span className="ml-2" /> {/* Add a margin-left of 2px */}
-          //   </React.Fragment>
-          // ))
-        }
       </div>
     </div>
   );

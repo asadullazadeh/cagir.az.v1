@@ -43,8 +43,8 @@ function Sifaris({
 }) {
   const { locales } = useRouter();
   const intl = useIntl();
-  const chosenLang = intl.locale
-  const messages = intl.messages
+  const chosenLang = intl.locale;
+  const messages = intl.messages;
   // passing selectedService names from dropdown to sifaris
   const [selectedNamesArray, setSelectedNamesArray] = useState("");
   const handleSelectedNamesArray = (data) => {
@@ -123,7 +123,7 @@ function Sifaris({
         // Handle any errors
         console.error(error);
       });
-  }, [selectedMainService.id,chosenLang]);
+  }, [selectedMainService.id, chosenLang]);
   const findSubInfoByName = (subServices, name) => {
     const subService =
       subServices.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
@@ -184,7 +184,7 @@ function Sifaris({
         // Handle any errors
         console.error(error);
       });
-  }, [selectedSubService.id,chosenLang]);
+  }, [selectedSubService.id, chosenLang]);
 
   const findSub2InfoByName = (sub2Services, name) => {
     const sub2Service =
@@ -224,7 +224,12 @@ function Sifaris({
         // Handle any errors
         console.error(error);
       });
-  }, [isSub2ElementsExist, selectedSubService.id, selectedSub2Service.id,chosenLang]);
+  }, [
+    isSub2ElementsExist,
+    selectedSubService.id,
+    selectedSub2Service.id,
+    chosenLang,
+  ]);
 
   /* --------------------- Multinumber input functionality-FilterType=5 --------------------- */
   // multiNumberArray takes all the information of multi number input for pricing
@@ -441,7 +446,7 @@ function Sifaris({
         // Handle any errors
         console.error(error);
       });
-  }, [filteredCalculatePrice,chosenLang]); // when one of these dependencies is updated, the filteredCalculatePrice becomes null
+  }, [filteredCalculatePrice, chosenLang]); // when one of these dependencies is updated, the filteredCalculatePrice becomes null
 
   //price after promocode
   const [priceAfterPromo, setPriceAfterPromo] = useState(0);
@@ -488,22 +493,23 @@ function Sifaris({
     descSub2: selectedSub2Service.text,
     selectedNamesArray,
     messages,
-    chosenLang
+    chosenLang,
   };
 
   // dropdownProps.to pass data from one dropdown to other one and selected service
   const dropdownProps = {
     onSelectMainService: handleMainSelect,
-    getMainServices: getMainServices,
+    getMainServices,
     onSelectSubService: handleSubSelect,
-    getSubServices: getSubServices,
+    getSubServices,
     onSelectSub2Service: handleSub2Select,
-    getSub2Services: getSub2Services,
+    getSub2Services,
     defaultMain,
     defaultSub,
     messages,
-    chosenLang
+    chosenLang,
   };
+  console.log(dropdownProps);
   // Callback function to which service service Category from the Dropdown component
   //checking which service category is selected.Main-1,sub-2,sub2-2
   const [whichServiceCategory, setWhichServiceCategory] = useState(null);
@@ -588,7 +594,7 @@ function Sifaris({
             <Qiymet
               priceBeforePromo={priceBeforePromo}
               priceAfterPromo={priceAfterPromo}
-              {...{messages}}
+              {...{ messages }}
             />
           </div>
           {/* Toggle part is only  desktop */}
@@ -744,12 +750,12 @@ function Sifaris({
                     className="w-full aspect-[666/365]"
                   />
                 </div>
-                <Download_image {...{messages}} />
+                <Download_image {...{ messages }} />
                 <Promocode
                   serviceId={selectedMainService.id}
-                  {...{priceBeforePromo}}
+                  {...{ priceBeforePromo }}
                   onPromoPriceChange={handlePriceUpdate}
-                  {...{messages}}
+                  {...{ messages }}
                 />
                 <PaymentMethod />
               </div>

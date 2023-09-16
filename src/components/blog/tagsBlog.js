@@ -1,62 +1,57 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useRouter } from "next/router";
-import Image from "next/image";
-import Link from "next/link";
-import RelatedBlogs from "@/src/components/blog/relatedBlogs";
-import CategoriesBlog from "@/src/components/blog/categoriesBlog";
-import SocialNetworks from "@/src/components/others/social_ntwrks";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import Link from 'next/link';
 
-function TagsBlog({ blogId,messages, chosenLang}) {
+const titleClasses = "font-semibold lg:font-bold text-[16px] lg:text-[20px] lg:leading-[30px] leading-[24px] pb-[15px] pt-[30px] lg:pt-0 text-center lg:text-start border-t border-[#EAEAEA] lg:border-none";
+const tagClasses = "font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px] border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz";
+const tagContainerClasses = "flex flex-row flex-wrap gap-[10px] lg:gap-[15px]";
+
+const fetchTags = async (blogId) => {
+  try {
+    const response = await axios.get(`https://api.cagir.az/api/post/detail?id=${blogId}`, {
+      headers: {
+        "Accept-Language": "az",
+      },
+    });
+    return response.data.result;
+  } catch (error) {
+    console.error(error);
+    return {};
+  }
+};
+
+const Tag = ({ name }) => (
+  <div>
+    <Link href={`/blog/tag/${name}`}>
+      <p className={tagClasses}>{name}</p>
+    </Link>
+  </div>
+);
+
+const TagsBlog = ({ blogId }) => {
   const [responseData, setResponseData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`https://api.cagir.az/api/post/detail?id=${blogId}`, {
-        headers: {
-          "Accept-Language": "az",
-        },
-      })
-      .then((response) => {
-        // Handle the response data
-        setResponseData(response.data.result);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
+    (async () => {
+      const data = await fetchTags(blogId);
+      setResponseData(data);
+    })();
   }, [blogId]);
-  const { id, imageUrl, viewCount, insertDate, postNames, tags, categoryId } =
-    responseData;
-  
+
+  const { tags } = responseData;
+
   return (
-    <div className="">
-      <h4
-        className="font-semibold lg:font-bold text-[16px] lg:text-[20px] lg:leading-[30px] leading-[24px] pb-[15px] pt-[30px] lg:pt-0 text-center lg:text-start
-            border-t border-[#EAEAEA] lg:border-none"
-      >
-        Təqlər
-      </h4>
+    <div>
+      <h4 className={titleClasses}>Təqlər</h4>
       {tags && tags.length > 0 ? (
-        <div className="flex flex-row flex-wrap gap-[10px] lg:gap-[15px]">
-          {tags.map(({ name, index }) => (
-            <div key={index}>
-              <Link href={`/blog/tag/${name}`}>
-                <p
-                  className="font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px]
-                  border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz"
-                >
-                  {name}
-                </p>
-              </Link>
-            </div>
-          ))}
+        <div className={tagContainerClasses}>
+          {tags.map((tag, index) => <Tag key={index} name={tag.name} />)}
         </div>
       ) : (
         ""
       )}
     </div>
   );
-}
+};
 
 export default TagsBlog;

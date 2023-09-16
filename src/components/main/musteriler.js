@@ -35,23 +35,9 @@ function Musteriler() {
   return (
     <div>
       <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">Müştərilər</h2>
-      {/* <div className="grid place-items-end">
-        <Image
-          className="w-[22px] lg:w-[28px] h-[14px] lg:h-[24px]"
-          src={arrow}
-          alt="arrow_icon"
-        />
-      </div> */}
       <AliceCarousel
-        // activeIndex = {1}
         animationDuration={1300}
         animationType="fadeout"
-        // autoHeight={true}
-        //autoWidth={true}
-        // autoPlayControls
-        // autoPlayInterval={1300}
-        // autoPlay
-        // autoPlayStrategy="action"
         controlsStrategy="responsive"
         infinite
         mouseTracking
@@ -71,10 +57,8 @@ function Musteriler() {
           </div>
         ))}
         responsive={responsive}
-        // disableSlideInfo={false}
         animationEasingFunction="ease"
         disableButtonsControls
-        // disableDotsControls
         paddingLeft={0}
         paddingRight={0}
         keyboardNavigation

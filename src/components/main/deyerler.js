@@ -6,7 +6,7 @@ import memnuniyyet from "@/icons/deyerler/memnuniyyet.svg";
 import kefiyyet from "@/icons/deyerler/kefiyyet.svg";
 import pesekar from "@/icons/deyerler/pesekar.svg";
 import qenaet from "@/icons/deyerler/qenaet.svg";
-function Deyerler({messages, chosenLang}) {
+function Deyerler({ messages, chosenLang }) {
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
@@ -28,7 +28,8 @@ function Deyerler({messages, chosenLang}) {
   return (
     <div>
       <h2 className="my-h2 mb-[15px] lg:mb-[60px] text-center">
-        {messages["our-values"]}</h2>
+        {messages["our-values"]}
+      </h2>
       <div
         className="grid grid-cols-2 lg:grid-cols-4 gap-x-[10px] sm:gap-x-[40px] md:gap-x-[70px] lg:gap-x-[100px] xl:gap-x-[130px] 2xl:gap-x-[156px] 
             gap-y-[15px]"

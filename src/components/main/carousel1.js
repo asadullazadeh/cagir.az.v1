@@ -5,7 +5,11 @@ import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import SearchInput from "@/src/components/input/input_search_sm";
 
-export default function Carousel1({ carouselPhotos1, onDataReceived,messages }) {
+export default function Carousel1({
+  carouselPhotos1,
+  onDataReceived,
+  messages,
+}) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -23,8 +27,6 @@ export default function Carousel1({ carouselPhotos1, onDataReceived,messages }) 
   // passing data from carousel to the main page
 
   const handleDataChange = (data) => {
-    // const newData = event.target.value;
-
     onDataFromCarousel(searchIsClicked); // Call the callback function to send data to parent
   };
 
@@ -37,16 +39,15 @@ export default function Carousel1({ carouselPhotos1, onDataReceived,messages }) 
       {/* first part of carousel section */}
       <div className="flex flex-col justify-between w-full lg:w-1/2">
         <h1 className="flex flex-col my-h1 text-black500">
-          {/* <span>Peşəkar xidmət,</span>
-          <span>sərfəli qiymət!</span> */}
           {messages["slider-part-2"]}
         </h1>
 
-          <p className="flex flex-col text-[10px] xl:text-[12px] leading-[18px] xl:leading-[22px] lg:tracking-[0.02em] text-gray900 w-full screen360:w-2/3 screen428:w-1/2 lg:w-[300px]">
-            <span>
-            Biz dünyanın hər yerində sizə xidmət göstərməyə hazırıq.  Sifarişinizi indi yaradın və xidmətimizdən faydalanmağa başlayın!
-            </span>
-          </p>
+        <p className="flex flex-col text-[10px] xl:text-[12px] leading-[18px] xl:leading-[22px] lg:tracking-[0.02em] text-gray900 w-full screen360:w-2/3 screen428:w-1/2 lg:w-[300px]">
+          <span>
+            Biz dünyanın hər yerində sizə xidmət göstərməyə hazırıq.
+            Sifarişinizi indi yaradın və xidmətimizdən faydalanmağa başlayın!
+          </span>
+        </p>
         {/* search button */}
         <div onClick={handleSearchClicked} className="block lg:hidden">
           <SearchInput />
@@ -87,9 +88,6 @@ export default function Carousel1({ carouselPhotos1, onDataReceived,messages }) 
                 height={438}
                 src={slide.src}
                 alt={slide.alt}
-                // layout="responsive"
-                // objectFit="contain"
-                // objectPosition="center"
                 className="w-full aspect-[821/438] "
               />
             </div>

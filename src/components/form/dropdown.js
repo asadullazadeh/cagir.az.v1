@@ -30,6 +30,7 @@ const Dropdown = ({
       onSelectService: onSelectSub2Service,
     },
   };
+  console.log(dropdownInfos);
 
   // console.log(getMainServices[0].serviceNames[0].name);
 
@@ -75,7 +76,7 @@ const Dropdown = ({
   const [mainServiceName, setMainServiceName] = useState(
     defaultMain?.serviceNames?.[0].name
       ? defaultMain?.serviceNames?.[0].name
-      : "Təmizlik xidməti"
+      : ""
   );
   const [subServiceName, setSubServiceName] = useState(
     defaultSub?.serviceNames?.[0].name
@@ -86,6 +87,7 @@ const Dropdown = ({
     subServiceName ? subServiceName : defaultSub?.serviceNames?.[0]["name"],
     sub2ServiceName,
   ];
+  console.log(serviceNames);
   // Update subServiceName and sub2ServiceName when mainServiceName changes
   useEffect(() => {
     setSubServiceName("");
@@ -145,6 +147,7 @@ const Dropdown = ({
   };
 
   const isSub2ElementsExist = getSub2Services.length > 0;
+  console.log(getSubServices);
 
   return (
     <div
