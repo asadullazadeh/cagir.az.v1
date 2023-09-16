@@ -3,16 +3,17 @@ import axios from "axios";
 import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import Image from "next/image";
 import Sifaris from "@/src/components/sifaris";
 
-async function fetchSubServices(parentId) {
+async function fetchSubServices(parentId, chosenLang) {
   try {
     const response = await axios.get(
       `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${parentId}`,
       {
         headers: {
-          "Accept-Language": "az",
+          "Accept-Language": chosenLang,
         },
       }
     );
@@ -23,13 +24,13 @@ async function fetchSubServices(parentId) {
   }
 }
 
-async function fetchMainServices() {
+async function fetchMainServices(chosenLang) {
   try {
     const response = await axios.get(
       "https://api.cagir.az/api/service/getAllForFront",
       {
         headers: {
-          "Accept-Language": "az",
+          "Accept-Language": chosenLang,
         },
       }
     );
@@ -40,7 +41,7 @@ async function fetchMainServices() {
   }
 }
 
-function Sub2Service({ dataMain }) {
+function Sub2Service({ dataMain, chosenLang }) {
   const [selectedMain, setSelectedMain] = useState("");
   const [getSubServices, setGetSubServices] = useState([]);
   const [subUrlFromSifaris, setSubUrlFromSifaris] = useState("");
@@ -57,9 +58,9 @@ function Sub2Service({ dataMain }) {
 
   useEffect(() => {
     if (defaultMain.id) {
-      fetchSubServices(defaultMain.id).then(setGetSubServices);
+      fetchSubServices(defaultMain.id, chosenLang).then(setGetSubServices);
     }
-  }, [defaultMain.id]);
+  }, [defaultMain.id, chosenLang]);
 
   const handleReceiveData = (data) => {
     setSubUrlFromSifaris(data);
@@ -69,19 +70,26 @@ function Sub2Service({ dataMain }) {
     subServices.find((obj) => obj.nameUrl === subService) || {};
   const defaultSub = findSubInfoByNameUrl(getSubServices, subService);
 
-  const pathMain = !defaultMain.nameUrl ? mainService : defaultMain.nameUrl;
+  const pathMain = !defaultMain.serviceNames?.[0].titleUrl
+    ? mainService
+    : defaultMain.serviceNames?.[0].titleUrl;
   const pathSub =
-    (subUrlFromSifaris ?? defaultSub.nameUrl) || getSubServices[0]?.nameUrl;
+    (subUrlFromSifaris ?? defaultSub.serviceNames?.[0].titleUrl) ||
+    getSubServices[0]?.serviceNames?.[0].titleUrl;
   const newPath = `/${pathMain}/${pathSub}`;
 
   useEffect(() => {
     router.replace(newPath);
   }, [newPath]);
+  console.log(pathSub);
+  // console.log(defaultSub);
+  // console.log(newPath);
+  // console.log(pathSub);
 
   const findMainInfoByNameUrlNew = (mainServices, nameUrl) =>
     mainServices.find((obj) => obj.nameUrl === mainService) || {};
   const defaultMainNew = findMainInfoByNameUrlNew(dataMain, selectedMain);
-
+  console.log(chosenLang);
   return (
     <div>
       <Head>
@@ -100,9 +108,11 @@ function Sub2Service({ dataMain }) {
 }
 
 export async function getServerSideProps(context) {
-  const dataMain = await fetchMainServices();
+  const chosenLang = context.locale || "az";
+  const dataMain = await fetchMainServices(chosenLang);
+
   return {
-    props: { dataMain },
+    props: { dataMain, chosenLang },
   };
 }
 
