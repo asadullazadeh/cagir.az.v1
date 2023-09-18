@@ -257,19 +257,15 @@ const Dropdown = ({
 
                   <div className="flex flex-col font-medium text-[10px] leading-[15px] text-gray900">
                     <div classNames="flex flex-row">
-                      <div
-                        
-                      >
                         <div
+                        onClick={() => closeDesc(index)}
                         className={`${
-                          descIsOpen[mainIndex] ? "" : "line-clamp-1"
-                        }`}
-                          onClick={() => closeDesc(index)}
-                          dangerouslySetInnerHTML={{
-                            __html: `${findDescById(index)}`,
-                          }}
-                        />
-                      </div>
+                          descIsOpen[index] ? "" : "line-clamp-1"
+                        } `}
+                        dangerouslySetInnerHTML={{
+                          __html: `${findDescById(index)}`,
+                        }}
+                      />
                       <button
                         className="font-semibold block text-cagiraz"
                         onClick={() => handleToggleDesc(index)}

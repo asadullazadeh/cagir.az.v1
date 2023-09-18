@@ -36,19 +36,8 @@
 
 /* h1 default classes*/
 
-.h1-styles {
-  font-weight: 700; /*bold*/
-  font-size: 60px;
-  line-height: 74px;
-  color: #202020;
-}
 
-.h1m-styles {
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 38px;
-  color: #202020;
-}
+
 
 /* h1 default classes*/
 .my-h1 {
@@ -71,60 +60,6 @@
   @apply font-semibold lg:font-bold text-[12px] sm:text-[14px] md:text-[18px] lg:text-[20px] leading-[18px] sm:leading-[22px] md:leading-[26px] lg:leading-[30px];
 }
 
-/* h3 default classes*/
-.h3-styles {
-  font-weight: 700; /*bold*/
-  font-size: 32px;
-  line-height: 48px;
-  color: #202020;
-}
-
-/* h4 default classes*/
-.h4-styles {
-  font-weight: 700; /*bold*/
-  font-size: 28px;
-  line-height: 42px;
-  color: #202020;
-}
-
-.h5-styles {
-  font-weight: 700; /*bold*/
-  font-size: 20px;
-  line-height: 30px;
-  color: #202020;
-}
-
-/* h6 default classes*/
-.h6-styles {
-  font-weight: 700; /*bold*/
-  font-size: 14px;
-  line-height: 21px;
-  color: #202020;
-}
-
-.my-selected:not([disabled]) {
-  /* font-size:12px;
-  line-height:18px; */
-  font-weight: 800;
-  border: 2px solid currentColor;
-  background-color: rgba(53, 152, 234, 1);
-  color: white;
-}
-.my-selected:hover:not([disabled]) {
-  /* font-size:12px;
-  line-height:18px; */
-  font-weight: 800;
-  border-color: rgba(53, 152, 234, 1);
-  color: rgba(53, 152, 234, 1);
-}
-.my-today {
-  /* font-size:12px;
-  line-height:18px; */
-  font-weight: 800;
-  font-size: 140%;
-  border-color: rgba(53, 152, 234, 0.15);
-  color: rgba(53, 152, 234, 1);
-}
 
 
 
@@ -134,48 +69,3 @@
 
 
 
-
-
-/* .moveUpDown {
-  -webkit-animation: mover 400ms infinite  alternate;
-  animation: mover 400ms infinite  alternate;
-} */
-.moveUpDown {
-  -webkit-animation: mover 300ms infinite  alternate;
-  animation: mover 300ms infinite  alternate;
-}
-@-webkit-keyframes mover {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-5px); }
-}
-@keyframes mover {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-5px); }
-}
-
-
-
-
-
-
-
-
-
-/* reels */
-.video-container {
-  position: relative;
-  width: 300px;
-  height: 200px;
-  overflow: hidden;
-}
-
-.video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease-in-out;
-}
-
-.hovered {
-  transform: scale(1.1);
-}
