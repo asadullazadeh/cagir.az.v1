@@ -81,10 +81,10 @@ function Sub2Service({ dataMain, chosenLang }) {
   useEffect(() => {
     router.replace(newPath);
   }, [newPath]);
-  console.log(pathSub);
-  // console.log(defaultSub);
-  // console.log(newPath);
   // console.log(pathSub);
+  console.log(subUrlFromSifaris);
+  console.log(defaultSub.serviceNames?.[0].titleUrl);
+  console.log(getSubServices[0]?.serviceNames?.[0].titleUrl);
 
   const findMainInfoByNameUrlNew = (mainServices, nameUrl) =>
     mainServices.find((obj) => obj.nameUrl === mainService) || {};

@@ -48,11 +48,11 @@ function Registration() {
     setMainPagePassword(password);
   };
 
-  // console.log("firstName:", firstName);
-  // console.log("lastName:", lastName);
-  // console.log("email:", email);
-  // console.log("number:", number);
-  // console.log("mainPagePassword:", mainPagePassword);
+  console.log("firstName:", firstName);
+  console.log("lastName:", lastName);
+  console.log("email:", email);
+  console.log("number:", number);
+  console.log("mainPagePassword:", mainPagePassword);
   const router = useRouter();
 
   const goBack = () => {
@@ -90,54 +90,62 @@ function Registration() {
   };
   const { locales } = useRouter();
   const intl = useIntl();
-  const messages = intl.messages
+  const messages = intl.messages;
+
+  useEffect(() => {
+    if (register?.data?.token) {
+      router.replace("/");
+    }
+  }, [register?.data?.token, router]);
 
   return (
     <div>
-      <Head><title>Cagir.az - Qeydiyyat</title></Head>
-    <div className="flex flex-col items-center min-h-screen lg:justify-center pt-[20px] lg:pt-0">
-      <h2 className="my-h2 text-center pb-[15px] lg:pb-[60px]">Qeydiyyat</h2>
-      <div className="flex flex-col justify-between w-full gap-y-[20px] lg:gap-y-[20px] lg:3/4 xl:w-2/3 2xl:w-1/2">
-        <InputCustomized
-          label={messages.name}
-          type="text"
-          updateInputText={handleFirstNameUpdate}
-        />
-        <InputCustomized
-          label={messages.surname}
-          type="text"
-          updateInputText={handleLastNameUpdate}
-        />
-        <InputPassword
-          changePswrdClasses="hidden"
-          onPasswordChange={handlePasswordChange}
-          label={messages.password}
-        />
-        <InputCustomized
-          label={messages.email}
-          type="email"
-          updateInputText={handleEmailUpdate}
-        />
-        <InputNumber
-          updatedInputNumberValue={handleNumberUpdate}
-          label="Telefon nömrəsi"
-          changeNbrClasses="hidden"
-        />
+      <Head>
+        <title>Cagir.az - Qeydiyyat</title>
+      </Head>
+      <div className="flex flex-col items-center min-h-screen lg:justify-center pt-[20px] lg:pt-0">
+        <h2 className="my-h2 text-center pb-[15px] lg:pb-[60px]">Qeydiyyat</h2>
+        <div className="flex flex-col justify-between w-full gap-y-[20px] lg:gap-y-[20px] lg:3/4 xl:w-2/3 2xl:w-1/2">
+          <InputCustomized
+            label={messages.name}
+            type="text"
+            updateInputText={handleFirstNameUpdate}
+          />
+          <InputCustomized
+            label={messages.surname}
+            type="text"
+            updateInputText={handleLastNameUpdate}
+          />
+          <InputPassword
+            changePswrdClasses="hidden"
+            onPasswordChange={handlePasswordChange}
+            label={messages.password}
+          />
+          <InputCustomized
+            label={messages.email}
+            type="email"
+            updateInputText={handleEmailUpdate}
+          />
+          <InputNumber
+            updatedInputNumberValue={handleNumberUpdate}
+            label="Telefon nömrəsi"
+            changeNbrClasses="hidden"
+          />
 
-        <div className="flex flex-col justify-center lg:justify-end place-items-end	">
-          <PrimaryMdBtn
-            btnName="Təsdiq et"
-            onclick={btnIsClicked}
-            classNames="w-full lg:w-1/3 lg:w-auto"
-          />
-          <LinkSmBtn
-            onClick={goBack}
-            btnName="Geri"
-            classNames="lg:hidden w-full"
-          />
+          <div className="flex flex-col justify-center lg:justify-end place-items-end	">
+            <PrimaryMdBtn
+              btnName="Təsdiq et"
+              onClick={btnIsClicked}
+              classNames="w-full lg:w-1/3 lg:w-auto"
+            />
+            <LinkSmBtn
+              onClick={goBack}
+              btnName="Geri"
+              classNames="lg:hidden w-full"
+            />
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }

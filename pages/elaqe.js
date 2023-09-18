@@ -19,10 +19,10 @@ function Elaqe() {
         <title>Cagir.az - Əlaqə</title>
       </Head>
 
-      <div className="flex flex-col items-center min-h-screen justify-center">
-        <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center min-h-screen pt-[50px] md:pt-0 md:justify-center">
+        <div className="flex flex-col items-center w-4/5">
           <h4 className="my-h4 pb-[30px] lg:pb-[60px]">{messages.contact}</h4>
-          <div className="flex flex-col font-medium lg:font-semibold text-[12px] lg:text-[18px] leading-[18px] lg:leading-[34px] pb-[60px] w-[500px]">
+          <div className="flex flex-col font-medium lg:font-semibold text-[12px] lg:text-[18px] leading-[18px] lg:leading-[34px] pb-[60px] lg:first-letter:w-[500px]">
             <span className="mx-auto">{messages.anyproblem}</span>
             <Link className="mx-auto text-cagiraz" href="/faq">
               {messages["faq"]}
@@ -39,7 +39,7 @@ function Elaqe() {
               <div className="flex flex-col">
                 <div className="col-span-1">
                   <p className="font-semibold text-[14px] leading-[21px]">
-                    {" "} 
+                    {" "}
                     info@cagir.az{" "}
                   </p>
                 </div>

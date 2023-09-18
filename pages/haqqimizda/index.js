@@ -31,7 +31,7 @@ export default function Haqqimizda(props) {
   return (
     <div>
       <Head><title>Cagir.az - Haqqımızda</title></Head>
-    <div className="flex flex-col pb-[50px] md:pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px]">
+    <div className="flex flex-col pb-[50px] pt-[30px] md:pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px]">
       <Image
         src={video}
         alt="video_img"

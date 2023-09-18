@@ -162,8 +162,8 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
           {/* 2nd navbar */}
           <div className={` ${navbar ? "h-screen flex flex-col  " : "hidden"}`}>
             <ul
-              className="flex flex-col justify-between font-medium h-4/5 mt-[17.5px] text-[12px] xs:text-[14px] sm:text-[16px] md:text-[18px] leading-[18px] xs:leading-[21px]
-            sm:leading-[24px] md:leading-[27px] text-gray900 text-center "
+              className="flex flex-col justify-between font-medium h-full mt-[10px] mb-[120px] text-[12px] xs:text-[14px] sm:text-[16px] md:text-[18px] leading-[18px] xs:leading-[21px]
+            sm:leading-[24px] md:leading-[27px] text-gray900 text-center"
             >
               {linkInfos.map(({ href, text, className }) => (
                 // eslint-disable-next-line react/jsx-key

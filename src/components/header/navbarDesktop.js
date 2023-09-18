@@ -36,9 +36,9 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
       text: messages["usta-elektrik"],
       className: "",
     },
-    { href: "/xidmetler", text: messages["other-services"], className: "" }
+    { href: "/xidmetler", text: messages["other-services"], className: "" },
   ];
-  
+
   const [searchIconIsClicked, setSearchIconIsClicked] = useState(false);
 
   const handleClick = () => {
@@ -152,7 +152,7 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
                 <Link
                   onClick={handleDeClickSearchIcon}
                   className="group flex relative"
-                  href="/profile"
+                  href="/giris"
                 >
                   <span>
                     <div className="relative group">
@@ -191,18 +191,15 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
               className=" flex flex-row  
            items-center font-semibold text-[10px] xl:text-[12px] 2xl:text-[14px] leading-[21px] text-gray500 space-x-[35px] lg:space-x-[40px] xl:space-x-[50px] 2xl:space-x-[70px]"
             >
-              {linkInfos.map(({index,href,text}) => (
+              {linkInfos.map(({ index, href, text }) => (
                 // eslint-disable-next-line react/jsx-key
                 <li>
-                <Link
-                  onClick={handleDeClickSearchIcon}
-                  href={href}
-                >
-                  <p className="transition duration-300 hover:text-black">
-                    {text}
-                  </p>
-                </Link>
-              </li>
+                  <Link onClick={handleDeClickSearchIcon} href={href}>
+                    <p className="transition duration-300 hover:text-black">
+                      {text}
+                    </p>
+                  </Link>
+                </li>
               ))}
             </ul>
             {/* 2nd navbar-2nd part- Qeydiyyat button */}

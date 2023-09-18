@@ -30,7 +30,7 @@ const Dropdown = ({
       onSelectService: onSelectSub2Service,
     },
   };
-  console.log(dropdownInfos);
+  console.log(defaultSub);
 
   // console.log(getMainServices[0].serviceNames[0].name);
 
@@ -88,6 +88,7 @@ const Dropdown = ({
     sub2ServiceName,
   ];
   console.log(serviceNames);
+  console.log(subServiceName)
   // Update subServiceName and sub2ServiceName when mainServiceName changes
   useEffect(() => {
     setSubServiceName("");
@@ -257,11 +258,12 @@ const Dropdown = ({
                   <div className="flex flex-col font-medium text-[10px] leading-[15px] text-gray900">
                     <div classNames="flex flex-row">
                       <div
+                        
+                      >
+                        <div
                         className={`${
                           descIsOpen[mainIndex] ? "" : "line-clamp-1"
                         }`}
-                      >
-                        <div
                           onClick={() => closeDesc(index)}
                           dangerouslySetInnerHTML={{
                             __html: `${findDescById(index)}`,

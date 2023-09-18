@@ -52,7 +52,7 @@ function MediaPost() {
       <Head><title>Cagir.az - {mediaNames?.[0].title}</title></Head>
     <div
       className="flex flex-col lg:flex-row lg:gap-x-[40px] xl:gap-x-[50px] 2xl:gap-x-[60px] 
-    pb-[60px] lg:pb-[90px]"
+    pb-[60px] lg:pb-[90px] pt-[20px] lg:pt-[50px]"
     >
       
       {/* Left part-a full blog description */}

@@ -78,7 +78,7 @@ export default function Home(props) {
           <LastPostedBlogs {...{messages}} />
         </div>
         <div className={`${searchInptClicked ? "" : "hidden"}`}>
-          <SearchServices {...{messages}} />
+          <SearchServices {...{messages, chosenLang}} />
         </div>
       </div>
       </div>

@@ -22,8 +22,6 @@ import {
 } from "@/src/components/buttons";
 
 function SignIn() {
-  //
-
   const [email, setEmail] = useState("");
   const [mainPagePassword, setMainPagePassword] = useState("");
 
@@ -35,8 +33,6 @@ function SignIn() {
     setMainPagePassword(password);
   };
 
-  console.log("email:", email);
-  console.log("mainPagePassword:", mainPagePassword);
   const router = useRouter();
 
   const goBack = () => {
@@ -68,6 +64,7 @@ function SignIn() {
         // Handle any errors
         console.error(error);
       });
+    console.log("fdfefer ");
   };
 
   console.log(signin.isSuccess);
@@ -83,20 +80,25 @@ function SignIn() {
       // Store the token in localStorage
       localStorage.setItem("token", token);
     }
-    console.log(localStorage);
-  }, [signin]);
+    console.log(token);
+
+    // If the user is logged in, redirect to the homepage
+    if (localStorage?.token) {
+      router.replace("/");
+    }
+  }, [signin, router]);
 
   const { locales } = useRouter();
   const intl = useIntl();
   const messages = intl.messages;
-
+  console.log(signin);
   return (
     <div>
       <Head>
         <title>Cagir.az - Daxil ol</title>
       </Head>
 
-      <div className="flex flex-col items-center min-h-screen lg:justify-center pt-[20px] lg:pt-0">
+      <div className="flex flex-col items-center min-h-screen lg:justify-center pt-[200px] lg:pt-0">
         <h2 className="my-h2 text-center pb-[15px] lg:pb-[60px]">Daxil ol</h2>
         <div className="flex flex-col justify-between w-full gap-y-[20px] lg:gap-y-[20px] lg:3/4 xl:w-2/3 2xl:w-1/2">
           <InputCustomized
@@ -119,7 +121,7 @@ function SignIn() {
           <div className="flex flex-col justify-center lg:justify-end place-items-end	">
             <PrimaryMdBtn
               btnName="Təsdiq et"
-              onclick={btnIsClicked}
+              onClick={btnIsClicked}
               classNames="w-full lg:w-1/3 lg:w-auto"
             />
             <LinkSmBtn
