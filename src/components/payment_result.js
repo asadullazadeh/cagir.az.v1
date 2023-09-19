@@ -6,11 +6,10 @@ import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn
 function Receipt({ dataReceipt }) {
   return (
     <div className="flex flex-col md:mx-100 lg:mx-200 2xl:mx-250 pt-30 lg:pt-60 pb-60">
-      
       <h2 className="my-h2 text-center pb-5 lg:pb-15">
         Ödənişin uğurla tamamlandı
       </h2>
-      
+
       <p className="font-medium lg:font-semibold text-12 lg:text-18 leading-18 lg:leading-27 text-center pb-15 lg:pb-60">
         Təşəkkür edirik!
       </p>
@@ -21,13 +20,14 @@ function Receipt({ dataReceipt }) {
 
       {/* Button Section */}
       <div className="flex flex-col pt-20 lg:pt-35 space-y-15">
-        
         <div className="flex lg:justify-end">
           <PrimaryMdBtn btnName="Qəbzi yüklə" classNames="w-full lg:w-auto" />
         </div>
 
-        <PrimaryOutlineSmBtn btnName="Emailə göndər" classNames="block lg:hidden" />
-
+        <PrimaryOutlineSmBtn
+          btnName="Emailə göndər"
+          classNames="block lg:hidden"
+        />
       </div>
     </div>
   );

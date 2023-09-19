@@ -3,6 +3,9 @@ import { useRouter } from "next/router";
 import { FormattedMessage, useIntl } from "react-intl";
 import Image from "next/image"
 import Head from "next/head"
+import Link from "next/link";
+import jale from "@/public/jale.jpg";
+
 
 const LiveChat = () => {
   useEffect(() => {
@@ -25,9 +28,9 @@ const LiveChat = () => {
   return (
     <div>
       <noscript>
-        <a href="https://www.livechat.com/chat-with/14444979/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a>
+        <Link href="https://www.livechat.com/chat-with/14444979/" rel="nofollow">Chat with us</Link>, powered by <Link href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</Link>
       </noscript>
-      <Image alt="livechat image" width={65} height={65} className="bubble z-50 rounded-full w-[22px] h-[22px]  object-cover object-center" onclick="LiveChatWidget.call('maximize')" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" />
+      <Image alt="livechat image" width={65} height={65} className="bubble z-50 rounded-full w-[22px] h-[22px]  object-cover object-center" onclick="LiveChatWidget.call('maximize')" src={jale} />
     </div>
   );
 };
