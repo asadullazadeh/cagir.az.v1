@@ -1,42 +1,31 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
+import useOutsideClick from "@/src/components/others/useOutsideClick";
 
-const InputCustomized = ({
-  label,
-  type,
-  inputTextId,
-  updateInputText,
-  updateInputTextId,
-  onInputChange,
-}) => {
-  const [inputValue, setInputValue] = useState("");
-  const [inputId, setInputId] = useState("");
-  const inputRef = useRef(null);
+const InputCustomized = ({ label, type, inputTextId, updateInputText }) => {
+  // State variables and refs
+  const [inputState, setInputState] = useState({ value: "", id: "" });
   const [isClicked, setIsClicked] = useState(false);
+  const containerRef = useRef(null);
+  const inputRef = useRef(null);
 
-  const handleClick = () => {
-    setIsClicked((prevState) => !prevState);
-  };
+  // Handle the input click to toggle state
+  const handleClick = () => setIsClicked(!isClicked);
 
-  const handleChange = (id, value) => {
-    const newValue = event.target.value;
-    setInputValue(newValue);
-    setInputId(inputTextId);
+  // Handle the input change event
+  const handleChange = (event) => {
+    const { value } = event.target;
+    setInputState({ value, id: inputTextId });
 
-    if (typeof updateInputText === "function" ) {
-    // updateInputTextId(inputTextId); // Call the function only if it exists
-    updateInputText(inputTextId, newValue);
-    }
-    // onInputChange(newValue,label);
-  };
-  
-  const handleOutsideClick = (event) => {
-    if (inputRef.current && !inputRef.current.contains(event.target)) {
-      setIsClicked(false);
+    if (typeof updateInputText === "function") {
+      updateInputText(inputTextId, value);
     }
   };
-  console.log();
+
+  // Hook to detect outside click and update isClicked
+  useOutsideClick(containerRef, () => setIsClicked(false));
+
   return (
-    <div className="flex flex-col gap-y-[5px]">
+    <div className="flex flex-col gap-y-[5px]" ref={containerRef}>
       <p className="hidden lg:flex font-semibold text-[12px] leading-[18px] text-black500 pl-[15px]">
         {label}
       </p>
@@ -57,7 +46,7 @@ const InputCustomized = ({
           )}
           <input
             type={type}
-            value={inputValue}
+            value={inputState.value}
             id="inpt"
             name="inpt"
             className="w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0"

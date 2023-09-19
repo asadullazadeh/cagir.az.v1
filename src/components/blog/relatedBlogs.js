@@ -53,7 +53,7 @@ function RelatedBlogs({ blogId, categoryId, subject, messages, chosenLang }) {
           return (
             <div
               key={id}
-              className="flex flex-row gap-x-[10px] lg:gap-x-[20px] p-[10px]  rounded-[10px] shadow-rectangle4 lg:shadow-none"
+              className="flex flex-row gap-x-[10px] lg:gap-x-[20px] p-[10px]  rounded-[10px]"
             >
               <Image
                 src={`https://api.cagir.az${imageUrl}`}

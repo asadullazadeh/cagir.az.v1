@@ -1,89 +1,71 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import axios from "axios";
+import useOutsideClick from "@/src/components/others/useOutsideClick";
 import download from "@/icons/form/download.svg";
 import validation from "@/icons/form/validation.svg";
 
-const Promocode = ({ serviceId, priceBeforePromo, onPromoPriceChange, messages }) => {
+const Promocode = ({
+  serviceId,
+  priceBeforePromo,
+  onPromoPriceChange,
+  messages,
+}) => {
   const [isInputClicked, setIsInputClicked] = useState(false);
-  const prevPromoCodeRef = useRef("");
-  const promocodes = ["Cagiraz", "Turgut", "Alpay", "Orxan"];
   const [promoCode, setPromoCode] = useState("");
+  const [promoCodeRequest, setPromoCodeRequest] = useState({});
+
+  const prevPromoCodeRef = useRef("");
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    setPromoCodeRequest({});
+    if (promoCode.length === 8) checkIfPromoIsValid();
+  }, [serviceId, priceBeforePromo, promoCode]);
+
+  useEffect(() => {
+    onPromoPriceChange(promoCodeRequest.amount);
+  }, [onPromoPriceChange, promoCodeRequest.amount]);
+
+  useOutsideClick(containerRef, () => setIsInputClicked(false));
 
   const handlePromoCodeChange = (e) => {
     setPromoCode(e.target.value.toUpperCase().slice(0, 8));
   };
 
   const handleInputClick = () => {
-    if (isInputClicked) {
-      setPromoCode(prevPromoCodeRef.current);
-    } else {
-      prevPromoCodeRef.current = promoCode;
-    }
+    const currentPromoCode = isInputClicked
+      ? prevPromoCodeRef.current
+      : promoCode;
+    prevPromoCodeRef.current = promoCode;
+    setPromoCode(currentPromoCode);
     setIsInputClicked(!isInputClicked);
   };
 
-  const handleOutsideClick = (e) => {
-    if (!e.target.matches("#promo_code")) {
-      setPromoCode(prevPromoCodeRef.current);
-      setIsInputClicked(false);
-    }
-  };
-  /* ----------------- Promocode api ----------------- */
-  const [promoCodeRequest, setPromoCodeRequest] = useState({});
-
   const checkIfPromoIsValid = () => {
+    const payload = { serviceId, amount: priceBeforePromo, promoCode };
+    const headers = { "Accept-Language": "az" };
+
     axios
-      .post(
-        "https://api.cagir.az/api/promo/calculate",
-        {
-          serviceId: serviceId,
-          amount: priceBeforePromo,
-          promoCode: promoCode,
-        }, // Make sure you define `objectDetails` before using it
-        {
-          headers: {
-            "Accept-Language": "az",
-          },
-        }
-      )
-      .then((response) => {
-        // Handle the response data
-        setPromoCodeRequest(response.data.result);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
+      .post("https://api.cagir.az/api/promo/calculate", payload, { headers })
+      .then((response) => setPromoCodeRequest(response.data.result))
+      .catch(console.error);
   };
 
-  useEffect(() => {
-    setPromoCodeRequest({});
-    if (promoCode.length === 8) {
-      checkIfPromoIsValid();
-    }
-  }, [serviceId, priceBeforePromo, promoCode]);
-
-  //checking if promocode is valid
   const isPromoCodeValid =
     promoCode.length === 8 && priceBeforePromo !== promoCodeRequest.amount;
-
-  // passing promocode result from this component to sifaris page.
-  useEffect(() => {
-    onPromoPriceChange(promoCodeRequest.amount); // Call the callback function with the new value
-  }, [onPromoPriceChange, promoCodeRequest.amount]);
+  const inputBorderClass = isInputClicked
+    ? "border-cagiraz"
+    : "border-gray-300";
 
   return (
-    <div className="flex flex-col gap-y-[5px]">
+    <div className="flex flex-col gap-y-[5px]" ref={containerRef}>
       <p className="hidden lg:block font-semibold text-[12px] leading-[18px] text-black500">
         {messages["promo-code"]}
       </p>
       <div className="inline-flex flex-col w-full">
         <div
-          className={`flex flex-row items-center px-[15px] py-[15px] lg:px-[15px] lg:py-[12.5px] border border-gray-300 rounded-[10px] lg:rounded-full ${
-            isInputClicked ? "border-[#3598EA]" : ""
-          }`}
+          className={`flex flex-row items-center px-[15px] py-[15px] lg:px-[15px] lg:py-[12.5px] border rounded-[10px] lg:rounded-full ${inputBorderClass}`}
         >
           {isInputClicked && (
             <label
@@ -101,34 +83,28 @@ const Promocode = ({ serviceId, priceBeforePromo, onPromoPriceChange, messages }
             placeholder={isInputClicked ? "" : "Promokod"}
             value={promoCode}
             onChange={handlePromoCodeChange}
-            // onBlur={handlePromoCodeBlur}
             onClick={handleInputClick}
           />
-          <Image
-            src={validation}
-            alt="validation_icon"
-            className={`${isPromoCodeValid ? "" : "hidden"}`}
-          />
+          {isPromoCodeValid && <Image src={validation} alt="validation_icon" />}
         </div>
-
-        <p
-          className={`${
-            !isPromoCodeValid && promoCode.length === 8 ? "" : "hidden"
-          } ml-auto font-semibold text-[10px] leading-[15px] text-danger`}
-        >
-          Promokod səhvdir
-        </p>
-
-        {/* {!isPromoCodeValid && (
-          <p
-            className={`block lg:hidden ml-auto font-semibold text-[10px] leading-[15px] text-danger `}
-          >
-            Xəta baş verdi
+        {!isPromoCodeValid && promoCode.length === 8 && (
+          <p className="ml-auto font-semibold text-[10px] leading-[15px] text-danger">
+            Promokod səhvdir
           </p>
-        )} */}
+        )}
       </div>
     </div>
   );
 };
 
 export default Promocode;
+
+{
+  /* {!isPromoCodeValid && (
+          <p
+            className={`block lg:hidden ml-auto font-semibold text-[10px] leading-[15px] text-danger `}
+          >
+            Xəta baş verdi
+          </p>
+        )} */
+}

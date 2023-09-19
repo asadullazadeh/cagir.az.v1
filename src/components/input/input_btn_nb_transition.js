@@ -3,7 +3,17 @@ import Image from "next/image";
 import axios from "axios";
 import Link from "next/link";
 import { Transition } from "@headlessui/react";
-const phonePrefixes = ["+50", "+51", "+55", "+70", "+77", "+90"];
+const phonePrefixes = [
+  "+50",
+  "+51",
+  "+55",
+  "+70",
+  "+77",
+  "+90",
+  "+99",
+  "+10",
+  "+65",
+];
 
 import paper_plane from "@/icons/footer/paper_plane.svg";
 
@@ -13,6 +23,7 @@ const InputBtnNbTransition = ({ name }) => {
     `${phonePrefixes}`.split(",")[0]
   );
   const [isRotated, setIsRotated] = useState(false);
+  const [isValidNumber, setIsValidNumber] = useState(false);
 
   //
   // useEffect(() => {
@@ -63,46 +74,45 @@ const InputBtnNbTransition = ({ name }) => {
   //
 
   const handleButtonClick = () => {
-    setIsRotated(true);
     // if enteredNumber length is 10: +513852755, run sendNumberBySms()
     if (enteredNumber.length === 10) {
       sendNumberBySms();
+      setIsRotated(true);
+      setTimeout(() => {
+        setIsRotated(false);
+      }, 1000); // Adjust the duration as per your requirement
+      window.location.reload();
     }
-    
-
-    setTimeout(() => {
-      setIsRotated(false);
-    }, 1000); // Adjust the duration as per your requirement
-    window.location.reload();
   };
   /* ----------------- Api part to send the number by sms ----------------- */
   const [numberSentBySms, setNumberSentBySms] = useState(false);
 
   const sendNumberBySms = () => {
-    axios
-      .post(
-        "https://api.cagir.az/api/suggest/create",
-        {
-          name: "Anonim",
-          mainService: "Bilinmir",
-          phoneNumber: enteredNumber,
-          suggestDetails: [],
-        }, // Make sure you define `objectDetails` before using it
-        {
-          headers: {
-            "Accept-Language": "az",
-          },
-        }
-      )
-      .then((response) => {
-        // Handle the response data
-        setNumberSentBySms(response.data.isSuccess);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
+    // axios
+    //   .post(
+    //     "https://api.cagir.az/api/suggest/create",
+    //     {
+    //       name: "Anonim",
+    //       mainService: "Bilinmir",
+    //       phoneNumber: enteredNumber,
+    //       suggestDetails: [],
+    //     }, // Make sure you define `objectDetails` before using it
+    //     {
+    //       headers: {
+    //         "Accept-Language": "az",
+    //       },
+    //     }
+    //   )
+    //   .then((response) => {
+    //     // Handle the response data
+    //     setNumberSentBySms(response.data.isSuccess);
+    //   })
+    //   .catch((error) => {
+    //     // Handle any errors
+    //     console.error(error);
+    //   });
   };
+  console.log(enteredNumber.length);
   return (
     <div>
       <div

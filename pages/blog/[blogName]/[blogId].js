@@ -90,6 +90,7 @@ function BlogPost({ initialData }) {
           <CategoriesBlog {...{ messages, chosenLang }} />
           <TagsBlog {...{ blogId, messages, chosenLang }} />
           <Image
+            onClick={() => window.my_modal_3.showModal()}
             src={`https://api.cagir.az${adImageUrl}`}
             alt="Ad Image"
             width={424}

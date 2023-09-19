@@ -97,20 +97,27 @@ function SearchServices({ messages, chosenLang }) {
     setSearchVal(event.target.value);
   }
 
-  const suggestedServices = [
-    {
-      service: messages.cleaning,
-      url: "/temizlik-xidmeti",
-    },
-    {
-      service: messages["usta-kombi"],
-      url: "/usta/kombi-ustasi",
-    },
-    {
-      service: messages["usta-santexnik"],
-      url: "/usta/santexnik-ustasi",
-    },
-  ];
+  // 
+  const [trendServices, seTrendServices] = useState([]);
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.cagir.az/api/service/getShortCutServicesNew`,
+        {
+          headers: {
+            "Accept-Language": chosenLang,
+          },
+        }
+      )
+      .then((response) => {
+        // Handle the response data
+        seTrendServices(response.data.result);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  }, [chosenLang]);
 
   return (
     <div className="py-[15px] lg:py-[30px]">
@@ -125,12 +132,12 @@ function SearchServices({ messages, chosenLang }) {
         />
       </div>
       <div className="flex flex-row justify-center gap-x-[5px] lg:gap-x-[15px]">
-        {suggestedServices.map((item, index) => (
+        {trendServices.map((item, index) => (
           <div key={index}>
             <div className="border border-cagiraz rounded-lg">
-              <a className="" href={item.url}>
+              <a className="" href={item.serviceNames[0].titleUrl}>
                 <p className="font-semibold text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px]">
-                  {item.service}
+                  {item.serviceNames[0].name}
                 </p>
               </a>
             </div>

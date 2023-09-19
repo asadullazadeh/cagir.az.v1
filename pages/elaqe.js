@@ -26,7 +26,7 @@ function Elaqe() {
             <span className="mx-auto">{messages.anyproblem}</span>
             <Link className="mx-auto text-cagiraz" href="/faq">
               {messages["faq"]}
-            </Link>{" "}
+            </Link>
             <span className="mx-auto">{messages["anyproblem-part"]}</span>
           </div>
 
@@ -38,16 +38,15 @@ function Elaqe() {
               </div>
               <div className="flex flex-col">
                 <div className="col-span-1">
-                  <p className="font-semibold text-[14px] leading-[21px]">
-                    {" "}
-                    info@cagir.az{" "}
-                  </p>
+                  <Link href="mailto:info@cagir.az" className="font-semibold text-[14px] leading-[21px]">
+                    info@cagir.az
+                  </Link>
                 </div>
                 <div className="row-span-1 col-span-1">
-                  <p className="font-semibold text-[14px] leading-[21px]">
-                    {" "}
-                    hr@cagir.az{" "}
-                  </p>
+                  <Link href="mailto:hr@cagir.az" className="font-semibold text-[14px] leading-[21px]">
+                    
+                    hr@cagir.az
+                  </Link>
                 </div>
               </div>
             </div>
@@ -58,10 +57,10 @@ function Elaqe() {
                 <Image src={phone} alt="phone_icon" />
               </div>
               <div className="row-span-2 col-span-1">
-                <Link href="tel:994703482606">
+                <Link href="tel:+994703482606">
                   <p className="font-semibold text-[14px] leading-[21px]">
-                    {" "}
-                    +994 70 348 26 06{" "}
+                    
+                    +994 70 348 26 06
                   </p>
                 </Link>
               </div>

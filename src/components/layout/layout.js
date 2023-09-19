@@ -43,7 +43,7 @@ export default function Layout({ children }) {
   }, [router.query.subService, router.query.mainService, router.asPath]);
 
   return (
-    <div className="screen1700:max-w-[1512px]">
+    <div className="screen1700:max-w-[1512px] bg-white">
       <Head>{/* <title>Cagir.az</title> */}</Head>
 
       {/* Navigation */}

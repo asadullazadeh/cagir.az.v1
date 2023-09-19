@@ -705,19 +705,18 @@ function Sifaris({
                 </div>
               )
             )}
-          </div>
-
-          <div className="flex flex-col lg:flex-row ">
-            {isOpen && <Textarea sendMessage={handleMessage} />}
-            <button
-              className={`pl-[10px] mx-auto lg:m-0 font-medium lg:font-extrabold text-[12px] lg:text-[14px] 
+            <div className="flex flex-col lg:flex-row">
+              {isOpen && <Textarea sendMessage={handleMessage} />}
+              <button
+                className={`pl-[10px] mx-auto lg:m-0 font-medium lg:font-extrabold text-[12px] lg:text-[14px] 
             leading-[18px] lg:leading-[21px] text-cagiraz ${
               isOpen ? "hidden" : ""
             }`}
-              onClick={handleToggle}
-            >
-              {isOpen ? "" : "Əlavə qeydlər"}
-            </button>
+                onClick={handleToggle}
+              >
+                {isOpen ? "" : "Əlavə qeydlər"}
+              </button>
+            </div>
           </div>
 
           {/* Sifarisi tamamla */}

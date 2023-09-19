@@ -1,52 +1,46 @@
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { FormattedMessage, useIntl } from "react-intl";
+import Image from "next/image";
+import Link from "next/link";
+import useOutsideClick from "@/src/components/others/useOutsideClick";
 
 const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
+  // State variables
   const [searchQuery, setSearchQuery] = useState("");
-
   const [inputValue, setInputValue] = useState("");
   const [isClicked, setIsClicked] = useState(false);
-
-  const handleClick = () => {
-    setIsClicked(!isClicked);
-  };
-
   const [deleteBtnClicked, setDeleteBtnClicked] = useState(false);
 
+  // Hooks and Utilities
+  const outsideClickRef = useRef(null);
+  useOutsideClick(outsideClickRef, () => setIsClicked(false));
+  
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const { locale: chosenLang, messages } = intl;
+
+  // Event Handlers
+  const handleClick = () => setIsClicked(!isClicked);
+  
   const handleDelete = () => {
     setInputValue(value);
-    if (inputValue.length > 0) {
-      setDeleteBtnClicked(true);
-    } else {
-      setDeleteBtnClicked(false);
-    }
-
-    //
+    setDeleteBtnClicked(inputValue.length > 0);
   };
 
+  // Side Effects
   useEffect(() => {
-    // if (inputValue.length > 0 && deleteBtnClicked) {
-    // setDeleteBtnClicked(false);
     if (typeof sendDataToParent === "function") {
       sendDataToParent(deleteBtnClicked);
     } else {
-      ("sendDataToParent is not a function");
+      console.warn("sendDataToParent is not a function");
     }
+  }, [deleteBtnClicked]);
 
-    // }
-  }, [deleteBtnClicked, setDeleteBtnClicked, sendDataToParent]);
-  const { locales } = useRouter();
-  const intl = useIntl();
-  const chosenLang = intl.locale;
-  const messages = intl.messages;
   return (
     <div
-      className={`flex flex-row w-full lg:w-1/3 justify-between items-center px-[12px] lg:px-[10px] py-[12px] lg:py-[15px] rounded-[10px] lg:rounded-[50px] border
-      ${isClicked ? "border-cagiraz" : "border-gray900"}  
-      `}
+      ref={outsideClickRef}
+      className={`flex flex-row w-full lg:w-1/3 justify-between items-center px-[12px] lg:px-[10px] py-[12px] lg:py-[15px] rounded-[10px] lg:rounded-[50px] border ${isClicked ? "border-cagiraz" : "border-gray900"}`}
       onClick={handleClick}
     >
       <div className="flex flex-row">
@@ -61,16 +55,22 @@ const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
           <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
         </svg>
         <input
-          className="rounded border-none text-left text-[10px] font-semibold leading-normal text-black500 outline-none
-          focus:outline-none focus:ring-white px-[10px]"
+          className="rounded border-none text-left text-[10px] font-semibold leading-normal text-black500 outline-none focus:outline-none focus:ring-white px-[10px]"
           type="text"
           placeholder="Axtar"
           value={value}
           onChange={onChange}
         />
       </div>
+    </div>
+  );
+};
 
-      {/* <div onClick={handleDelete} className={`${deleteBtnClicked || value>0 ? 'hidden' : ""}`}>
+export default SearchInputMd;
+
+
+{
+  /* <div onClick={handleDelete} className={`${deleteBtnClicked || value>0 ? 'hidden' : ""}`}>
           <svg
             width="14"
             height="16"
@@ -89,9 +89,5 @@ const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
               fill="#F64242"
             />
           </svg>
-        </div> */}
-    </div>
-  );
-};
-
-export default SearchInputMd;
+        </div> */
+}

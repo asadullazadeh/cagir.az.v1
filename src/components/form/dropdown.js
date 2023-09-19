@@ -88,7 +88,7 @@ const Dropdown = ({
     sub2ServiceName,
   ];
   console.log(serviceNames);
-  console.log(subServiceName)
+  console.log(subServiceName);
   // Update subServiceName and sub2ServiceName when mainServiceName changes
   useEffect(() => {
     setSubServiceName("");
@@ -229,18 +229,19 @@ const Dropdown = ({
                   >
                     {serviceInfos &&
                       serviceInfos.map((item, index) => (
-                        <div key={index}>
-                          <button
-                            className="px-[15px] py-[5px] font-medium lg:font-semibold text-[12px] leading-[18px] text-black lg:text-black500"
-                            onClick={() =>
-                              handleOptionClick(
-                                mainIndex,
-                                item.serviceNames[0].name
-                              )
-                            }
-                          >
+                        <div
+                          key={index}
+                          onClick={() =>
+                            handleOptionClick(
+                              mainIndex,
+                              item.serviceNames[0].name
+                            )
+                          }
+                          className="w-full hover:bg-blue-500 hover:bg-opacity-[15%]"
+                        >
+                          <div className="px-[15px] py-[5px] font-medium lg:font-semibold text-[12px] leading-[18px] text-black lg:text-black500">
                             {item.serviceNames[0].name}
-                          </button>
+                          </div>
                         </div>
                       ))}
                   </div>
@@ -257,7 +258,7 @@ const Dropdown = ({
 
                   <div className="flex flex-col font-medium text-[10px] leading-[15px] text-gray900">
                     <div classNames="flex flex-row">
-                        <div
+                      <div
                         onClick={() => closeDesc(index)}
                         className={`${
                           descIsOpen[index] ? "" : "line-clamp-1"
