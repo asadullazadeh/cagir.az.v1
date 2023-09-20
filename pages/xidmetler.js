@@ -3,17 +3,23 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import arrow from "@/icons/arrow.svg";
 import arrow_mobile from "@/icons/arrow_mobile.svg";
 
 function ButunXidmetler() {
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale;
+  const messages = intl.messages;
   const [responseData, setResponseData] = useState([]);
 
   useEffect(() => {
     axios
       .get("https://api.cagir.az/api/service/getAllForFront", {
         headers: {
-          "Accept-Language": "az",
+          "Accept-Language": chosenLang,
         },
       })
       .then((response) => {
@@ -24,7 +30,7 @@ function ButunXidmetler() {
         // Handle any errors
         console.error(error);
       });
-  }, []);
+  }, [chosenLang]);
 
   return (
     <div>
@@ -32,7 +38,7 @@ function ButunXidmetler() {
     <div className="flex flex-col 
     sm:pt-[36px] md:pt-[42px] lg:pt-[48px] xl:pt-[54px] 2xl:pt-[60px] 
     py-[60px] sm:py-[75px] md:py-[90px] lg:py-[105px] xl:py-[120px] 2xl:py-[135px]">
-      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Xidmətlər</h2>
+      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">{messages.services}</h2>
       {/* <OrderCardPrimary /> */}
       <ul className="grid grid-cols-2 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
         {responseData.map(({ id, imageUrl, nameUrl, serviceNames }) => (

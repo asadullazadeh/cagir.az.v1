@@ -1,7 +1,7 @@
 const StatsCard = ({ title, value }) => {
   const commonH1Classes = "font-medium text-[40px] lg:text-[82px] leading-[80px] lg:leading-[123px]";
   const commonH5Classes = "my-h5 text-gray900";
-  const commonDivClasses = "flex flex-col gap-y-0 lg:gap-y-[15px]";
+  const commonDivClasses = "flex flex-col gap-y-0 lg:gap-y-[15px] items-center lg:items-start";
 
   return (
     <div className={commonDivClasses}>

@@ -38,7 +38,7 @@ export default function Carousel1({
     <div className="flex flex-col justify-between lg:gap-x-[25px] xl:gap-x-[45px] 2xl:gap-x-[75px] lg:flex-row">
       {/* first part of carousel section */}
       <div className="flex flex-col justify-between w-full lg:w-1/2">
-        <h1 className="flex flex-col my-h1 text-black500">
+        <h1 className="flex flex-col my-h1 text-black500 xs:w-[250px] sm:w-auto">
           {messages["slider-part-2"]}
         </h1>
 
