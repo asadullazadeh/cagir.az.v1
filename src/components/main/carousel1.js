@@ -43,10 +43,8 @@ export default function Carousel1({
         </h1>
 
         <p className="flex flex-col text-[10px] xl:text-[12px] leading-[18px] xl:leading-[22px] lg:tracking-[0.02em] text-gray900 w-full screen360:w-2/3 screen428:w-1/2 lg:w-[300px]">
-          <span>
             Biz dünyanın hər yerində sizə xidmət göstərməyə hazırıq.
             Sifarişinizi indi yaradın və xidmətimizdən faydalanmağa başlayın!
-          </span>
         </p>
         {/* search button */}
         <div onClick={handleSearchClicked} className="block lg:hidden">

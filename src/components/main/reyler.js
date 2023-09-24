@@ -124,7 +124,7 @@ function Reyler({ parentId, messages}) {
                   key={index}
                   type=""
                   name={`rating-${index}`}
-                  className="mask mask-star-2 bg-[#F9C00B]"
+                  className="mask mask-star-2 bg-[#F9C00B] w-[14px] h-[13px]"
                 />
               ))}
             </div>

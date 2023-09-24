@@ -43,7 +43,18 @@ const LiveChat = () => {
           n.async = true;
           n.type = "text/javascript";
           n.src = "https://cdn.livechatinc.com/tracking.js";
-          t.head.appendChild(n);
+          console.log("Script element:", n);
+          // t.head.appendChild(n);
+          if (t.head) {
+            try {
+              console.log("Appending script to head", n);
+              t.head.appendChild(n);
+            } catch (e) {
+              console.error("Error appending script", e);
+            }
+          } else {
+            console.warn("Document head not available");
+          }
         },
       };
 
@@ -62,17 +73,20 @@ const LiveChat = () => {
   return (
     <div className="">
       <noscript>
-        <a href="https://www.livechat.com/chat-with/14444979/" rel="nofollow">
+        <Link
+          href="https://www.livechat.com/chat-with/14444979/"
+          rel="nofollow"
+        >
           Chat with us
-        </a>
+        </Link>
         , powered by{" "}
-        <a
+        <Link
           href="https://www.livechat.com/?welcome"
           rel="noopener nofollow"
           target="_blank"
         >
           LiveChat
-        </a>
+        </Link>
       </noscript>
       <Image
         alt="livechat image"

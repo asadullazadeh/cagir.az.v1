@@ -25,7 +25,7 @@ const ProfileCard = ({ name, title, image, description }) => (
             width={200}
             height={200}
             src={`https://api.cagir.az/${image}`}
-            alt={name}
+            alt="Profile picture"
             className="rounded-full w-[65px] lg:w-[112px] h-[65px] lg:h-[112px] object-cover object-center border-2 border-cagiraz border-opacity-20"
           />
           <div className="flex flex-col">
@@ -93,7 +93,7 @@ function Icraci({ parentId, messages, chosenLang }) {
     <div>
       <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">İcraçı profilləri</h2>
 
-      <div className="flex flex-row justify-center sm:gap-x-[40px]">
+      <div className="flex flex-row justify-between sm:justify-center sm:gap-x-[40px]">
         {data.length < 3 ? (
           childDataArray
         ) : (
