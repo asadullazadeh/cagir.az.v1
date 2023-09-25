@@ -14,7 +14,7 @@ const Toggle = ({
   whichServiceCategory,
   selectedNamesArray,
   messages,
-  chosenLang
+  chosenLang,
 }) => {
   const toggleInfos = {
     0: {
@@ -36,13 +36,15 @@ const Toggle = ({
   // objectForToggle-which service toggle is open as default.
   let objectForToggle = {
     0: { 0: false, 1: true, 2: true },
-    1: toggleInfos[1].description ? 
-    { 0: true, 1: false, 2: true } :
-    { 0: false, 1: true, 2: true },
-    2: toggleInfos[2].description && toggleInfos[1].description
-      ? { 0: true, 1: true, 2: false } : !toggleInfos[2].description && toggleInfos[1].description ?
-      { 0: true, 1: false, 2: true }
+    1: toggleInfos[1].description
+      ? { 0: true, 1: false, 2: true }
       : { 0: false, 1: true, 2: true },
+    2:
+      toggleInfos[2].description && toggleInfos[1].description
+        ? { 0: true, 1: true, 2: false }
+        : !toggleInfos[2].description && toggleInfos[1].description
+        ? { 0: true, 1: false, 2: true }
+        : { 0: false, 1: true, 2: true },
   };
 
   // isHidden takes the previous
@@ -100,11 +102,21 @@ const Toggle = ({
 
             <div
               id="hiddenText"
-              className={`relative  over bg-white py-2 rounded mt-2 ${
+              className={`relative  over bg-white py-2 rounded mt-2 text-[12px] leading-[18px] ${
                 isHidden[index] ? "hidden" : ""
               }`}
             >
-              <div dangerouslySetInnerHTML={{ __html: description }} />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: description
+                    .replaceAll(
+                      "<ul>",
+                      '<ul class="list-disc py-[3px] ml-[15px] mt-[3px] mb-[7px] ">'
+                    )
+                    .replaceAll("<p", '<p class="leading-[22px] "')
+                    .replaceAll("<span>", "<span>"),
+                }}
+              />
             </div>
           </div>
         );
