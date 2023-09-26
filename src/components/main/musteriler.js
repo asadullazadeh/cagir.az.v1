@@ -12,7 +12,7 @@ const responsive = {
   1024: { items: 4 },
 };
 
-function Musteriler() {
+function Musteriler({ messages }) {
   const [responseData, setResponseData] = useState([]);
 
   useEffect(() => {
@@ -34,7 +34,9 @@ function Musteriler() {
 
   return (
     <div>
-      <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">Müştərilər</h2>
+      <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">
+        {messages.customers}
+      </h2>
       <AliceCarousel
         animationDuration={1300}
         animationType="fadeout"

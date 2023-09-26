@@ -616,7 +616,7 @@ function Sifaris({
             className="font-semibold lg:font-bold text-[16px] lg:text-[20px] leading-[14px] lg:leading-[30px] 
       text-black500 text-center pb-[15px] lg:pb-[15px]"
           >
-            Sifarişi yarat
+            {messages["order-create"]}
           </h4>
           {/* Dropdowns for services */}
           <div className="">

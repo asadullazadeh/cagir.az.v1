@@ -79,7 +79,19 @@ function BlogPost({ initialData }) {
               Baxış: {viewCount}
             </p>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: description }} />
+          {/* style="background-color: transparent; color:#959595" */}
+          {/* <p><span style='background-color: transparent;'>*/}
+          <div
+            dangerouslySetInnerHTML={{
+              __html: description
+                .replaceAll(
+                  "<ul>",
+                  '<ul class="list-disc pt-[3px] pb-[7px] ml-[17px]  ">'
+                )
+                .replaceAll("<span", '<span class="text-[#959595]"')
+                .replaceAll("<a", '<a class="font-semibold"'),
+            }}
+          />
           <SocialNetworks classNames="flex flex-row gap-x-[20px] pt-[10px] lg:pt-[30px]" />
         </div>
         {/* Sidebar */}

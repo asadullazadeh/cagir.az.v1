@@ -115,7 +115,7 @@ function LastPostedBlogs({ messages }) {
       </ul>
       <div className="flex items-center justify-center max-w-[155px] mx-auto rounded-[25px] mt-[15px] lg:mt-[30px]">
         <Link href="/blog">
-          <PrimaryOutlineSmBtn btnName="Hamısına bax" />
+          <PrimaryOutlineSmBtn btnName={messages["see-all"]} />
         </Link>
       </div>
     </div>

@@ -91,7 +91,7 @@ function Icraci({ parentId, messages, chosenLang }) {
 
   return (
     <div>
-      <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">İcraçı profilləri</h2>
+      <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">{messages.executives}</h2>
 
       <div className="flex flex-row justify-between sm:justify-center sm:gap-x-[40px]">
         {data.length < 3 ? (

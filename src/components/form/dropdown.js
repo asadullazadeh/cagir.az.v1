@@ -260,10 +260,10 @@ const Dropdown = ({
                     <div classNames="flex flex-row">
                       <div
                         onClick={() => closeDesc(index)}
-                        className={`${
+                        className={`text-[12px] leading-[18px] ${
                           descIsOpen[index]
                             ? ""
-                            : "text-[12px] leading-[18px] truncate w-full h-[15px] max-w-[150px] xs:max-w-[260px] screen360:max-w-[295px] screen375:max-w-[310px] screen390:max-w-[320px] screen412:max-w-[350px] screen428:max-w-[380px] sm:max-w-[600px] md:max-w-[700px]  whitespace-nowrap overflow-hidden overflow-x-hidden	"
+                            : " truncate w-full h-[16px] max-w-[150px] xs:max-w-[260px] screen360:max-w-[295px] screen375:max-w-[310px] screen390:max-w-[320px] screen412:max-w-[350px] screen428:max-w-[380px] sm:max-w-[600px] md:max-w-[700px]  whitespace-nowrap overflow-hidden overflow-x-hidden	"
                         } `}
                         dangerouslySetInnerHTML={{
                           __html: `${findDescById(index)
@@ -271,7 +271,7 @@ const Dropdown = ({
                               "<ul>",
                               '<ul class="list-disc pt-[3px] pb-[7px] ml-[10px]">'
                             )
-                            .replaceAll("<p", '<p class="leading-[20px]"')}`,
+                            .replaceAll("<p", '<p class=""')}`,
                         }}
                       ></div>
 

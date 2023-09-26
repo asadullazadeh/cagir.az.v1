@@ -181,8 +181,8 @@ const Footer = ({ messages }) => (
             </h2>
             <div className="flex flex-col lg:justify-between lg:h-full">
               <InputBtnTransition
-                name="Emaili yaz"
-                placeholder="Emaili yaz"
+                name={messages["write-email"]}
+                placeholder={messages["write-email"]}
                 classNames="hidden lg:block"
               />
 

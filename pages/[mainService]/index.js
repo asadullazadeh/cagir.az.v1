@@ -20,14 +20,14 @@ const Page = ({ mainServiceData, subServices, chosenLang, parentId }) => {
     pt-[30px] sm:pt-[36px] md:pt-[42px] lg:pt-[48px] xl:pt-[54px] 2xl:pt-[60px]
     pb-[60px] sm:pb-[75px] md:pb-[90px] lg:pb-[105px] xl:pb-[120px] 2xl:pb-[135px]
   `;
-console.log(subServices)
+  console.log(subServices);
   return (
     <div>
       <Head>
         <title>{metaTitle}</title>
       </Head>
-      <Badge {...{ chosenLang }} />
-      <SubServiceTrend {...{ mainServiceData, subServices, chosenLang }} />
+      <Badge {...{ chosenLang, messages }} />
+      <SubServiceTrend {...{ mainServiceData, subServices, chosenLang, messages }} />
       <div className={containerClass}>
         <SubServiceNoTrend
           {...{ mainServiceData, subServices, chosenLang, messages }}
@@ -35,10 +35,21 @@ console.log(subServices)
         <Reyler {...{ parentId, chosenLang, messages }} />
         <Icracilar {...{ parentId, chosenLang, messages }} />
         <div>
-          <h2 className="my-h2 mb-[15px] text-center">
+          <h2 className="my-h2 mb-[15px] text-center ">
             {messages.description}
           </h2>
-          <div dangerouslySetInnerHTML={{ __html: textService }} />
+          <div
+            className="text-[10px] lg:text-[16px] leading-[18px] lg:leading-[34px] font-normal lg:font-medium text-[#959595]"
+            dangerouslySetInnerHTML={{
+              __html: textService
+                .replaceAll(
+                  "<ul>",
+                  '<ul class="list-disc pt-[3px] pb-[7px] ml-[17px]  ">'
+                )
+                .replaceAll("<p", '<p class=""')
+                // .replaceAll("<p><span style='background-color: transparent;'>","<p><span style='background-color: transparent; font-black	"),
+            }}
+          />
         </div>
       </div>
     </div>
