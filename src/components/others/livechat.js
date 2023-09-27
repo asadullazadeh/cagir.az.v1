@@ -92,7 +92,7 @@ const LiveChat = () => {
         alt="livechat image"
         width={65}
         height={65}
-        className="bubble z-50 rounded-full w-[22px] h-[22px]  object-cover object-center"
+        className="bubble z-50 rounded-full w-[22px] h-[22px] object-cover object-center"
         onClick={handleChatMaximize}
         src={jale}
       />

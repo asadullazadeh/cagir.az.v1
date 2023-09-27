@@ -35,8 +35,8 @@ function Musteriler({ messages }) {
   return (
     <div>
       <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">
-        {/* {messages["customers"]} */}
-        Müştərilər
+        {messages["customers"]}
+        {/* Müştərilər */}
       </h2>
       <AliceCarousel
         animationDuration={1300}

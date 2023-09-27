@@ -78,7 +78,7 @@ const TabBar = ({ classNames, messages }) => {
       <div
         className={`h-[55px] w-full bg-white border-t border-gray-200 ${classNames}`}
       >
-        <div className="grid h-full w-inline-block grid-cols-4 mx-auto font-medium">
+        <div className="grid h-full w-inline-block grid-cols-3 mx-auto font-medium">
           {/* Call icon */}
           <Link
             href="tel:+994703482606"
@@ -117,8 +117,8 @@ const TabBar = ({ classNames, messages }) => {
           </Link>
           {/* Chat */}
 
-          <div className="inline-flex flex-col items-center justify-center">
-            <LiveChat />
+          {/* <div className="inline-flex flex-col items-center justify-center">
+            <LiveChat /> */}
 
             {/* <Image
               alt="livechat image"
@@ -128,11 +128,11 @@ const TabBar = ({ classNames, messages }) => {
               onclick="LiveChatWidget.call('maximize')"
               src={jale}
             /> */}
-
+{/* 
             <span className="text-[10px] leading-[15px] text-black500">
               Çat
             </span>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -26,3 +26,45 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+
+
+
+// import axios from 'axios';
+// import Image from "next/image";
+
+// function MyPage({ data }) {
+//   console.log(data)
+//     return (
+//         <div>
+//         {data.map((item, index) => {
+//             return (
+//                 <div key={index}>
+//                   {`https://api.cagir.az/${item.imageUrl}`}
+//                   <Image width={600} height={300} alt={index} src={`https://api.cagir.az/${item.imageUrl}`} />
+//                   </div>
+//             )
+//         })}
+//     </div>
+//     );
+// }
+
+// export async function getServerSideProps() {
+//     let data = {};
+
+//     try {
+//         const response = await axios.get('https://api.cagir.az/api/adminDictionary/getAllByType?dictionaryType=6');
+//         data = response.data.result;
+//     } catch (error) {
+//         console.error("There was an error fetching data", error);
+//     }
+
+//     return {
+//         props: {
+//             data
+//         }
+//     };
+// }
+
+// export default MyPage;
+
