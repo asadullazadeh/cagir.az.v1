@@ -5,6 +5,7 @@
   "write-email": "Напишите электронное письмо",
   "follow-us": "Подписывайтесь на нас",
   "write-us-happy": "Мы будем очень рады, если вы напишите нам!",
+  "hero-text": "Мы готовы обслужить вас в любой точке мира. Создайте заказ прямо сейчас и начните пользоваться нашими услугами!",
   "name-required": "Введите имя",
   "name": "Имя",
   "send": "ОТПРАВИТЬ",
@@ -62,7 +63,6 @@
   "faq-short": "Вопросы",
   "register": "Регистрация",
   "about": "O Hac",
-  "all-services": "Все",
   "see-all": "Увидеть все",
   "main-page": "Главная Страница",
   "page-not-found": "Страница не найдена",
@@ -207,6 +207,7 @@
   "accept-validation": "Условия и Положения не приняты",
   "suggest-success": "С вами скоро свяжутся.",
   "amount-discount": "Сумма скидки",
+  "customer-comments": "Отзывы клиентов",
   "send-offer": "Отправить предложение",
   "campaign": "Kampaniya",
   "campaigns": "Kampaniyalar",
@@ -227,6 +228,7 @@
   "usta-elektrik": "Ремонт Electric",
   "usta": "Ремонт",
   "other-services": "Другие услуги",
+  "all-services": "Все услуги",
   "region": "Region",
   "location": "Location",
   "location-placeholder": "Please click icon for getting location",
@@ -236,5 +238,6 @@
   "service-description": "Service Descriptions",
   "startup-of-the-year": "Стартап года",
   "most-wanted-services": "Самые востребованные услуги",
-  "conclusion": "Заключение"
+  "conclusion": "Заключение",
+  "stay-up-to-date":"Будьте в курсе!"
 }

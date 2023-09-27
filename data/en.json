@@ -5,6 +5,7 @@
   "write-email": "Write the email",
   "follow-us": "Follow us",
   "write-us-happy": " We will be very glad if you write to us!",
+  "hero-text":"We are ready to serve you anywhere in the world. Create your order now and start benefiting from our services!",
   "name-required": "Please enter your name",
   "name": "Name",
   "send": "SEND",
@@ -62,7 +63,6 @@
   "faq-short": "FAQ",
   "register": "Register",
   "about": "About Us",
-  "all-services": "All",
   "see-all": "See all",
   "main-page": "Home Page",
   "page-not-found": "Page Not Found",
@@ -207,6 +207,7 @@
   "accept-validation": "Terms&Conditions not accepted",
   "suggest-success": "You will be contacted shortly.",
   "amount-discount": "Amount discount",
+  "customer-comments": "Customer reviews",
   "send-offer": "Send Offer",
   "campaign": "Campaign",
   "campaigns": "Campaigns",
@@ -227,6 +228,7 @@
   "usta-elektrik": "Electric repair",
   "usta": "Repair",
   "other-services": "Other services",
+  "all-services": "All services",
   "region": "Region",
   "location": "Location",
   "location-placeholder": "Please click icon for getting location",
@@ -236,5 +238,6 @@
   "service-description": "Service Descriptions",
   "startup-of-the-year": "Startup of the year",
   "most-wanted-services": "Most wanted services",
-  "conclusion": "Conclusion"
+  "conclusion": "Conclusion",
+  "stay-up-to-date":"Stay up to date!"
 }

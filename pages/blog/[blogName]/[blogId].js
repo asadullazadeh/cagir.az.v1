@@ -89,7 +89,7 @@ function BlogPost({ initialData }) {
                   '<ul class="list-disc pt-[3px] pb-[7px] ml-[17px]">'
                 )
                 .replaceAll("<span", '<span class="text-[#959595]"')
-                .replaceAll("<a", '<a class="font-semibold"'),
+                .replaceAll("<a", '<a class="font-semibold text-cagiraz"'),
             }}
           />
           <SocialNetworks classNames="flex flex-row gap-x-[20px] pt-[10px] lg:pt-[30px]" />

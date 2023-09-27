@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import arrow from "@/icons/arrow.svg";
 
-const SubServiceNoTrend = ({ mainServiceData, subServices }) => {
+const SubServiceNoTrend = ({ mainServiceData, subServices, messages }) => {
   const router = useRouter();
   const mainService = router.query.mainService;
   console.log(subServices);
@@ -20,7 +20,10 @@ const SubServiceNoTrend = ({ mainServiceData, subServices }) => {
   return (
     <div>
       {isServiceTrends && (
-        <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">Bütün xidmətlər</h2>
+        <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">
+          {messages["all-services"]}
+          {/* Bütün xidmətlər */}
+        </h2>
       )}
 
       {mainServiceData && (

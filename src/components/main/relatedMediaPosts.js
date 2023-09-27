@@ -36,11 +36,11 @@ function RelatedMediaPostItem({ id, imageUrl, insertDate, mediaNames }) {
           </h4>
         </Link>
         <div className="flex flex-row justify-between">
-          <p className="lg:order-2 font-medium lg:font-semibold text-xs lg:text-xs leading-4 lg:leading-5 border border-cagiraz rounded-sm py-0.5 lg:py-1 px-2 lg:px-2 text-cagiraz">
+          {/* <p className="lg:order-2 font-medium lg:font-semibold text-xs lg:text-xs leading-4 lg:leading-5 border border-cagiraz rounded-sm py-0.5 lg:py-1 px-2 lg:px-2 text-cagiraz">
             subject
-          </p>
+          </p> */}
           <p className="lg:order-1 font-medium lg:font-semibold text-xs lg:text-xs leading-4 lg:leading-5 text-gray-900">
-            {insertDate.slice(0, 10)}
+            {mediaNames[0].insertDate?.slice(0, 10)}
           </p>
         </div>
       </div>

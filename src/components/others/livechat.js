@@ -64,11 +64,11 @@ const LiveChat = () => {
     })(window, document, [].slice);
   }, []);
 
-  const handleChatMaximize = () => {
-    if (window.LiveChatWidget) {
-      window.LiveChatWidget.call("maximize");
-    }
-  };
+  // const handleChatMaximize = () => {
+  //   if (window.LiveChatWidget) {
+  //     window.LiveChatWidget.call("maximize");
+  //   }
+  // };
 
   return (
     <div className="">
@@ -88,14 +88,14 @@ const LiveChat = () => {
           LiveChat
         </Link>
       </noscript>
-      <Image
+      {/* <Image
         alt="livechat image"
         width={65}
         height={65}
         className="bubble z-50 rounded-full w-[22px] h-[22px] object-cover object-center"
         onClick={handleChatMaximize}
         src={jale}
-      />
+      /> */}
     </div>
   );
 };

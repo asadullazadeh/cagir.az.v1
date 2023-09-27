@@ -1,45 +1,28 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { useIntl } from "react-intl";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import RelatedBlogs from "@/src/components/blog/relatedBlogs";
-import CategoriesBlog from "@/src/components/blog/categoriesBlog";
-import TagsBlog from "@/src/components/blog/tagsBlog";
-import SocialNetworks from "@/src/components/others/social_ntwrks";
-import ModalStandart from "@/src/components/modal/modal_stand";
-import InputBtnNbTransition from "@/src/components/input/input_btn_nb_transition";
 import Reyler from "@/src/components/main/reyler";
 import Musteriler from "@/src/components/main/musteriler";
 
-import RelatedMediaPosts from "@/src/components/main/relatedMediaPosts";
-function XidmetDetail() {
-  const [responseData, setResponseData] = useState([]);
-  const router = useRouter();
-  const { query } = router;
-  const { xidmet_detail } = query;
+function XidmetDetail({ xidmetDetail }) {
+  const [responseData, setResponseData] = useState({});
+  const { locale } = useRouter();
+  const intl = useIntl();
 
   useEffect(() => {
     axios
       .post(
         "https://api.cagir.az/api/serviceInfo/detail",
-        { titleUrl: xidmet_detail },
-        {
-          headers: {
-            "Accept-Language": "az",
-          },
-        }
+        { titleUrl: xidmetDetail },
+        { headers: { "Accept-Language": "az" } }
       )
-      .then((response) => {
-        // Handle the response data
-        setResponseData(response.data.result);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
-  }, [xidmet_detail]);
+      .then((response) => setResponseData(response.data.result))
+      .catch((error) => console.error(error));
+  }, [xidmetDetail]);
 
   const {
     imageUrl,
@@ -50,25 +33,16 @@ function XidmetDetail() {
     viewCount,
   } = responseData;
 
-  const { description, shortDescription, title } =
-    responseData.serviceInfoNames && responseData.serviceInfoNames.length > 0
-      ? responseData.serviceInfoNames[0]
-      : {};
+  const { description = "" } = serviceInfoNames?.[0] || {};
 
   return (
     <div>
       <Head>
         <title>{responseData.metaTitle}</title>
       </Head>
-      <div
-        className="flex flex-col items-center 
-    py-[15px] lg:py-[30px]"
-      >
+      <div className="flex flex-col items-center py-[15px] lg:py-[30px]">
         <div className="flex flex-col w-full lg:w-4/5 gap-y-[30px] lg:gap-y-[60px]">
-          <div
-            className="flex flex-col pb-[30px] lg:pb-0 
-      drop-shadow-card lg:drop-shadow-none lg:hover:drop-shadow-card transition duration-300"
-          >
+          <div className="flex flex-col pb-[30px] lg:pb-0 drop-shadow-card lg:drop-shadow-none lg:hover:drop-shadow-card transition duration-300">
             <Image
               width={300}
               height={300}
@@ -84,40 +58,50 @@ function XidmetDetail() {
                 Baxış: {viewCount}
               </p>
             </div>
-            <div dangerouslySetInnerHTML={{ __html: description }} />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: description
+                  .replaceAll(
+                    "<ul>",
+                    '<ul class="list-disc pt-[3px] pb-[7px] ml-[17px]'
+                  )
+                  .replaceAll("<a", '<a class="font-semibold text-cagiraz"')
+                  .replaceAll("<span", '<span class="text-[#959595]"'),
+              }}
+            />
           </div>
-          <div>
-            <h4
-              className="font-semibold lg:font-bold text-[16px] lg:text-[20px] lg:leading-[30px] leading-[24px] pb-[15px] pt-[30px] lg:pt-0 text-center lg:text-start
-            border-t border-[#EAEAEA] lg:border-none"
-            >
-              Təqlər
-            </h4>
-            {serviceInfoTags && serviceInfoTags.length > 0 ? (
+          {serviceInfoTags?.length > 0 && (
+            <div>
+              <h4 className="font-semibold lg:font-bold text-[16px] lg:text-[20px] lg:leading-[30px] leading-[24px] pb-[15px] pt-[30px] lg:pt-0 text-center lg:text-start border-t border-[#EAEAEA] lg:border-none">
+                Təqlər
+              </h4>
               <div className="flex flex-row flex-wrap gap-[10px] lg:gap-[15px]">
-                {serviceInfoTags.map(({ id, name, index }) => (
+                {serviceInfoTags.map(({ name }, index) => (
                   <div key={index}>
                     <Link href={`/xidmet/tag/${name}`}>
-                      <p
-                        className="font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px]
-                    border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz"
-                      >
+                      <p className="font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px] border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz">
                         {name}
                       </p>
                     </Link>
                   </div>
                 ))}
               </div>
-            ) : (
-              ""
-            )}
-          </div>
-          <Reyler parentId={1} />
-          <Musteriler />
+            </div>
+          )}
+          <Reyler {...{ messages: intl.messages }} parentId={1} />
+          <Musteriler {...{ messages: intl.messages }} />
         </div>
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      xidmetDetail: context.query.xidmet_detail,
+    },
+  };
 }
 
 export default XidmetDetail;

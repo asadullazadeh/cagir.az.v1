@@ -27,7 +27,9 @@ const Page = ({ mainServiceData, subServices, chosenLang, parentId }) => {
         <title>{metaTitle}</title>
       </Head>
       <Badge {...{ chosenLang, messages }} />
-      <SubServiceTrend {...{ mainServiceData, subServices, chosenLang, messages }} />
+      <SubServiceTrend
+        {...{ mainServiceData, subServices, chosenLang, messages }}
+      />
       <div className={containerClass}>
         <SubServiceNoTrend
           {...{ mainServiceData, subServices, chosenLang, messages }}
@@ -44,10 +46,11 @@ const Page = ({ mainServiceData, subServices, chosenLang, parentId }) => {
               __html: textService
                 .replaceAll(
                   "<ul>",
-                  '<ul class="list-disc pt-[3px] pb-[7px] ml-[17px]  ">'
+                  '<ul class="list-disc pt-[3px] pb-[7px] ml-[17px]">'
                 )
                 .replaceAll("<p", '<p class=""')
-                // .replaceAll("<p><span style='background-color: transparent;'>","<p><span style='background-color: transparent; font-black	"),
+                .replaceAll("<span", "<span class=''"),
+              // .replaceAll("<p><span style='background-color: transparent;'>","<p><span style='background-color: transparent; font-black	"),
             }}
           />
         </div>

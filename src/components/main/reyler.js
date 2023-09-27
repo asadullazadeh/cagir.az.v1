@@ -137,7 +137,7 @@ function Reyler({ parentId, messages}) {
   return (
     <div>
       <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">
-        {messages["provider-comments"]}
+        {messages["customer-comments"]}
         </h2>
       <div className="flex flex-row gap-x-[30px]">
         {data.length < 3 ? (

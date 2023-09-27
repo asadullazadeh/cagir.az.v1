@@ -61,13 +61,13 @@ function Media() {
                 >
                   {insertDate.slice(0, 10)}
                 </p>
-                <div className="ml-auto border border-cagiraz rounded-lg">
+                {/* <div className="ml-auto border border-cagiraz rounded-lg">
                   <Link href={`/media/media-detail/${id}`}>
                     <p className="font-semibold	text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px] ">
                       categoryName
                     </p>
                   </Link>
-                </div>
+                </div> */}
               </div>
               <Link href={`/media/media-detail/${id}`}>
                 <h5 className="my-h5 mt-[5px] lg:mt-[15px]">
@@ -81,7 +81,7 @@ function Media() {
                 {mediaNames[0].shortDescription}
               </p>
               <div className="flex justify-between mt-[5px] lg:mt-[15px] text-cagiraz">
-                <div className="flex flew-row justify-center items-center space-x-[5px]">
+                {/* <div className="flex flew-row justify-center items-center space-x-[5px]">
                   <Image
                     className="w-[22px] h-[15px]"
                     src={views}
@@ -92,7 +92,7 @@ function Media() {
                       viewCount
                     </p>
                   </div>
-                </div>
+                </div> */}
                 <div className="ml-auto">
                   <Link
                     className="font-extrabold text-[14px] leading-[21px]"

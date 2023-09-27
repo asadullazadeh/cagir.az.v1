@@ -5,6 +5,7 @@
   "write-email": "Emaili yaz",
   "follow-us": "Bizi izləyin",
   "write-us-happy": "Bizə yazsaz biz çox şad olarıq!",
+  "hero-text": "Biz dünyanın hər yerində sizə xidmət göstərməyə hazırıq. Sifarişinizi indi yaradın və xidmətlərimizdən faydalanmağa başlayın!",
   "name-required": " Adı daxil edin",
   "name": "Ad",
   "send": "GÖNDƏR",
@@ -62,7 +63,6 @@
   "faq-short": "Suallar",
   "register": "Qeydiyyat",
   "about": "Haqqımızda",
-  "all-services": "Hamısı",
   "see-all": "Hamısına bax",
   "main-page": "Əsas Səhifə",
   "page-not-found": "Səhifə Tapılmadı",
@@ -228,6 +228,7 @@
   "usta-elektrik": "Elektrik ustası",
   "usta": "Usta",
   "other-services": "Digər xidmətlər",
+  "all-services": "Bütün xidmətlər",
   "region": "Rayon",
   "location": "Koordinatlar",
   "location-placeholder": "Koordinatlar üçün işərəyə klikləyin",
@@ -237,5 +238,6 @@
   "service-description": "Xidmət təsvirləri",
   "startup-of-the-year": "İlin startupı",
   "most-wanted-services": "Ən çox axtarılan xidmətlər",
-  "conclusion": "Yekun"
+  "conclusion": "Yekun",
+  "stay-up-to-date":"Yeniliklərdən xəbərdar ol!"
 }

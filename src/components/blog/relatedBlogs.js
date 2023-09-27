@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
-import img_banner_blog from "@/public/img_banner_blog.png";
+
 
 function RelatedBlogs({ blogId, categoryId, subject, messages, chosenLang }) {
   // Related blogs

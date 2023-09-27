@@ -144,7 +144,7 @@ const Footer = ({ messages }) => (
               {/* <!-- 2nd column:1st --> */}
               <li className="hover:text-black transition duration-300 ">
                 <h2 className="mb-[10px] lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500">
-                {messages["services"]}
+                  {messages["services"]}
                 </h2>
               </li>
               <li className="hover:text-black transition duration-300 ">
@@ -177,7 +177,7 @@ const Footer = ({ messages }) => (
           <div className="flex flex-col col-span-2 lg:col-span-1 items-center lg:items-start lg:justify-start order-3 lg:order-4 lg:mx-0 justify-between">
             {/* 4th column:title */}
             <h2 className="lg:mb-[15px] font-extrabold text-[16px] lg:text-[18px] leading-[24px] lg:leading-[27px] text-black500 text-left">
-              Yeniliklərdən xəbərdar ol
+              {messages["stay-up-to-date"]}
             </h2>
             <div className="flex flex-col lg:justify-between lg:h-full">
               <InputBtnTransition

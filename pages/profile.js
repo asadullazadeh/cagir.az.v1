@@ -4,13 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import InputCustomized from "@/src/components/input/input";
 import InputNumber from "@/src/components/input/input_number";
 import InputPassword from "@/src/components/input/input_password";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
-import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
-import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
+
 
 import client from "@/public/client.jpg";
 
