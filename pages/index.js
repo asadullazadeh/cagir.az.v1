@@ -73,7 +73,7 @@ export default function Home(props) {
             <Deyerler {...{chosenLang,messages}} />
           </div>
 
-          {/* <Reels /> */}
+          <Reels />
 
           <LastPostedBlogs {...{messages}} />
         </div>

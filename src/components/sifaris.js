@@ -727,11 +727,11 @@ function Sifaris({
             Sifarişi tamamla
           </h4>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col lg:flex-row  lg:justify-between ">
             {/* inputs and map part */}
-            <div className="flex flex-col xl:flex-row lg:gap-x-[30px] xl:gap-x-[30px] 2xl:gap-x-[40px] w-full">
+            <div className="flex flex-col xl:flex-row lg:gap-x-[30px] xl:gap-x-[30px] 2xl:gap-x-[40px] w-full lg:max-w-[350px] xl:max-w-[450px] 2xl:max-w-[500px]">
               {/* inputs and map for mobile */}
-              <div className="flex flex-col gap-y-[15px] xl:gap-y-0 lg:justify-between w-full xl:w-1/2">
+              <div className="flex flex-col gap-y-[15px] xl:gap-y-[20px] lg:justify-between w-full ">
                 <div>
                   <p className="hidden lg:block font-semibold text-[12px] leading-[18px] pb-[5px]">
                     Tarixi seç
@@ -741,14 +741,7 @@ function Sifaris({
 
                 {/* <InputCustomized /> */}
                 {/* Calendar,data picker */}
-                <div className="flex flex-col blcok lg:hidden space-y-[5px]">
-                  <MapBtn />
-                  <Image
-                    src={Map_Image}
-                    alt="map_image"
-                    className="w-full aspect-[666/365]"
-                  />
-                </div>
+
                 <Download_image {...{ messages }} />
                 <Promocode
                   serviceId={selectedMainService.id}
@@ -756,42 +749,40 @@ function Sifaris({
                   onPromoPriceChange={handlePriceUpdate}
                   {...{ messages }}
                 />
-                <PaymentMethod />
-              </div>
-              {/* map section for desktop */}
-              <div className="hidden lg:flex flex-col space-y-[5px] w-full aspect-[666/365]">
-                <MapBtn />
-                {/* <Map  />  */}
-                <Image
-                  src={Map_Image}
-                  alt="map_image"
-                  className="w-full aspect-[666/365]"
-                />
+                <div className="lg:hidden">
+                  <PaymentMethod />
+                </div>
               </div>
             </div>
 
             {/* tesdiqle part */}
-            <div className="flex flex-row w-full justify-between xl:w-1/3 pt-[20px]">
-              <LinkSmBtn
-                onClick={goBack}
-                btnName="Geri"
-                classNames="hidden lg:block"
-              />
-              <Link
-                // onClick={sifirla}
-                href="/temizlik-xidmeti/ev-temizleme"
-              >
-                <PrimaryOutlineSmBtn
-                  btnName="Sıfırla"
+
+            <div className="flex flex-col w-full lg:max-w-[300px] 2xl:max-w-[400px]">
+              <div className="hidden lg:block">
+                <PaymentMethod />
+              </div>
+              <div className="flex flex-row w-full justify-between pt-[20px]">
+                <LinkSmBtn
+                  onClick={goBack}
+                  btnName="Geri"
                   classNames="hidden lg:block"
                 />
-              </Link>
+                <Link
+                  // onClick={sifirla}
+                  href="/temizlik-xidmeti/ev-temizleme"
+                >
+                  <PrimaryOutlineSmBtn
+                    btnName="Sıfırla"
+                    classNames="hidden lg:block"
+                  />
+                </Link>
 
-              <PrimarySmBtn
-                onClick={handleTesdiqleClicked}
-                btnName={messages["confirm"]}
-                classNames="w-full"
-              />
+                <PrimarySmBtn
+                  onClick={handleTesdiqleClicked}
+                  btnName={messages["confirm"]}
+                  classNames="w-full"
+                />
+              </div>
             </div>
           </div>
         </div>

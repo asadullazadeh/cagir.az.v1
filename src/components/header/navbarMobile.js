@@ -48,6 +48,7 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
       text: messages[""],
       className: "border-b-2 border-opacity-10 border-[#959595] my-[-15px]",
     },
+    { href: "/xidmet", text: messages["service-description"], className: "" },
     { href: "/blog", text: messages["blog"], className: "" },
     { href: "/haqqimizda", text: messages["about"], className: "" },
     { href: "/elaqe", text: messages["contact"], className: "" },

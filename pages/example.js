@@ -13,7 +13,6 @@ const HomePage = () => {
   console.log(intl);
   return (
     <div>
-      <h1>Welcome to My Next.js Video Page</h1>
       <div className="flex flex-row">
         <VideoPlayer videoSrc={videoSrc} />
         <VideoPlayer videoSrc={videoSrc} />

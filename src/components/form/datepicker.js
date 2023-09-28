@@ -64,7 +64,7 @@ const Calendar = () => {
         customInput={
           <input
             type="text"
-            className="xs:w-[280px] sm:w-[600px] xl:w-[400px]  font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none"
+            className="xs:w-[280px] sm:w-[600px] lg:w-[300px] xl:w-[400px]  font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none"
             value={inputValue}
             onChange={handleChange}
             readonly="readOnly"

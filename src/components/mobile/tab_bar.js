@@ -78,7 +78,7 @@ const TabBar = ({ classNames, messages }) => {
       <div
         className={`h-[55px] w-full bg-white border-t border-gray-200 ${classNames}`}
       >
-        <div className="grid h-full w-inline-block grid-cols-4 mx-auto font-medium">
+        <div className="grid h-full w-inline-block grid-cols-3 mx-auto font-medium">
           {/* Call icon */}
           <Link
             href="tel:+994703482606"
@@ -91,7 +91,7 @@ const TabBar = ({ classNames, messages }) => {
           </Link>
           {/* Geri zeng icons */}
 
-          <button
+          {/* <button
             onClick={() => window.my_modal_6.showModal()}
             type="button"
             className="inline-flex flex-col items-center justify-center"
@@ -100,11 +100,11 @@ const TabBar = ({ classNames, messages }) => {
             <span className="text-[10px] leading-[15px] text-danger">
               Geri Zəng
             </span>
-          </button>
-          <ModalStandart
+          </button> */}
+          {/* <ModalStandart
             dialogId="my_modal_6"
             content={<InputBtnNbTransition name="Sürətli sifariş" />}
-          />
+          /> */}
           {/* Whatsapp */}
           <Link
             href="https://wa.me/994703482606"
