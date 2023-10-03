@@ -1,7 +1,13 @@
 import React, { useState, useRef } from "react";
 import useOutsideClick from "@/src/components/others/useOutsideClick";
 
-const InputCustomized = ({ label, type, inputTextId, updateInputText }) => {
+const InputCustomized = ({
+  label,
+  type,
+  inputTextId,
+  updateInputText,
+  typeMore,
+}) => {
   // State variables and refs
   const [inputState, setInputState] = useState({ value: "", id: "" });
   const [isClicked, setIsClicked] = useState(false);
@@ -49,11 +55,28 @@ const InputCustomized = ({ label, type, inputTextId, updateInputText }) => {
             value={inputState.value}
             id="inpt"
             name="inpt"
-            className="w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0"
+            className="w-full font-semibold text-[10px] leading-[15px] text-black500 bg-white focus:outline-none focus:ring focus:ring-white border-none p-0 lg:hidden"
             placeholder={isClicked ? "" : label}
             onClick={handleClick}
             onChange={handleChange}
           />
+          <input
+            type={type}
+            value={inputState.value}
+            id="inpt"
+            name="inpt"
+            className="hidden lg:block w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0"
+            // placeholder={isClicked ? "" : label}
+            onClick={handleClick}
+            onChange={handleChange}
+          />
+          <span
+            className={`text-[12px] leading-[14px] ${
+              typeMore === "money" ? "" : "hidden"
+            }`}
+          >
+            AZN
+          </span>
         </div>
       </div>
     </div>

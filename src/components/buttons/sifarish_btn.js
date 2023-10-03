@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-function SifarishBtn({ classNames }) {
+function SifarishBtn({ classNames, messages }) {
   const router = useRouter();
   const [responseData, setResponseData] = useState([]);
   
@@ -41,7 +41,8 @@ function SifarishBtn({ classNames }) {
     <div className={classNames}>
       <Link href={urlFromSifarisBtn}>
         <button className={btnClasses}>
-          Sifarişi yarat
+          {/* Sifarişi yarat */}
+          {messages["order-create"]}
         </button>
       </Link>
     </div>

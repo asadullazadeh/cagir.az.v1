@@ -57,7 +57,7 @@ const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
         <input
           className="rounded border-none text-left text-[10px] font-semibold leading-normal text-black500 outline-none focus:outline-none focus:ring-white px-[10px]"
           type="text"
-          placeholder="Axtar"
+          placeholder={messages.search}
           value={value}
           onChange={onChange}
         />

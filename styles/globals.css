@@ -41,7 +41,7 @@
 
 /* h1 default classes*/
 .my-h1 {
-  @apply font-semibold lg:font-bold text-[28px] sm:text-[34px] md:text-[40px] lg:text-[36px] xl:lg:text-[48px] 2xl:lg:text-[56px] 
+  @apply font-semibold lg:font-bold text-[28px] sm:text-[34px] md:text-[40px] lg:text-[36px] xl:lg:text-[48px] 2xl:lg:text-[60px] 
   leading-[38px] sm:leading-[45px] md:leading-[52px] lg:leading-[60px] xl:lg:leading-[67px] 2xl:lg:leading-[74px];
 }
 

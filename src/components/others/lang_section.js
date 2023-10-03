@@ -55,7 +55,7 @@ const LangSection = () => {
   return (
     <div>
       <div
-        className={`absolute  rounded-full bg-gray900 bg-opacity-30 right-[50.2px] lg:right-[-1px] w-[25px] lg:w-[28px] h-[83px] lg:h-[98px] ${
+        className={`absolute  rounded-full bg-gray900 bg-opacity-30 right-[50.2px] lg:right-[-1.3px] w-[25px] lg:w-[28px] h-[83px] lg:h-[98px] ${
           isDropdownOpen || isHovered ? "" : "hidden"
         }`}
       ></div>

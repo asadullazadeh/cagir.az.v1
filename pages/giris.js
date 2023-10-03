@@ -64,34 +64,26 @@ function SignIn() {
         // Handle any errors
         console.error(error);
       });
-    console.log("fdfefer ");
   };
 
-  console.log(signin.isSuccess);
-
-  // After successful login
-  //   const token = signin.result?.token;
-  // console.log(token);
-
   useEffect(() => {
-    const token = signin.result?.token;
+    // const token = signin.result?.token;
 
-    if (token) {
+    if (signin.result?.token) {
       // Store the token in localStorage
-      localStorage.setItem("token", token);
-    }
-    console.log(token);
-
-    // If the user is logged in, redirect to the homepage
-    if (localStorage?.token) {
-      router.replace("/");
+      localStorage.setItem("token", signin.result?.token);
+      window.location.href = "/";
+      // Then, replace the page
+      //   setTimeout(() => {
+      //   router.replace("/")
+      // }, 100); // 200ms delay
     }
   }, [signin, router]);
 
   const { locales } = useRouter();
   const intl = useIntl();
   const messages = intl.messages;
-  console.log(signin);
+
   return (
     <div>
       <Head>
@@ -99,8 +91,10 @@ function SignIn() {
       </Head>
 
       <div className="flex flex-col items-center min-h-screen lg:justify-center pt-[200px] lg:pt-0">
-        <h2 className="my-h2 text-center pb-[15px] lg:pb-[60px]">Daxil ol</h2>
-        <div className="flex flex-col justify-between w-full gap-y-[20px] lg:gap-y-[20px] lg:3/4 xl:w-2/3 2xl:w-1/2">
+        <h2 className="my-h2 text-center pb-[15px] lg:pb-[30px]">
+          {messages.login}
+        </h2>
+        <div className="flex flex-col justify-between w-full gap-y-[20px] lg:w-2/5 ">
           <InputCustomized
             label={messages.email}
             type="email"
@@ -120,13 +114,13 @@ function SignIn() {
 
           <div className="flex flex-col justify-center lg:justify-end place-items-end	">
             <PrimaryMdBtn
-              btnName="Təsdiq et"
+              btnName={messages["do-confirm"]}
               onClick={btnIsClicked}
               classNames="w-full lg:w-1/3 lg:w-auto"
             />
             <LinkSmBtn
               onClick={goBack}
-              btnName="Geri"
+              btnName={messages["btn-back"]}
               classNames="lg:hidden w-full"
             />
           </div>

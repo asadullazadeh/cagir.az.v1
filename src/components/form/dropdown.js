@@ -269,7 +269,7 @@ const Dropdown = ({
                           __html: `${findDescById(index)
                             .replaceAll(
                               "<ul>",
-                              '<ul class="list-disc pt-[3px] pb-[7px] ml-[10px]">'
+                              '<ul class="list-disc list-inside pt-[3px] pb-[7px]">'
                             )
                             .replaceAll("<p", '<p class=""')}`,
                         }}

@@ -63,7 +63,7 @@ function XidmetDetail({ xidmetDetail }) {
                 __html: description
                   .replaceAll(
                     "<ul>",
-                    '<ul class="list-disc pt-[3px] pb-[7px] ml-[17px]'
+                    '<ul class="list-disc list-inside pt-[3px] pb-[7px]'
                   )
                   .replaceAll("<a", '<a class="font-semibold text-cagiraz"')
                   .replaceAll("<span", '<span class="text-[#959595]"'),

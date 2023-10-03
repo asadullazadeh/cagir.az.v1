@@ -21,13 +21,13 @@ const fetchRelatedMediaPosts = async () => {
 
 function RelatedMediaPostItem({ id, imageUrl, insertDate, mediaNames }) {
   return (
-    <div className="flex flex-row gap-2 lg:gap-4 p-2 rounded-md shadow-md lg:shadow-none">
+    <div className="flex flex-row gap-2 lg:gap-4 p-2 rounded-md">
       <Image
         src={`https://api.cagir.az${imageUrl}`}
         alt={mediaNames}
         width={400}
         height={400}
-        className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-20 lg:h-20 rounded-sm"
+        className="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-20 lg:h-20 rounded-[5px]"
       />
       <div className="flex flex-col justify-between lg:justify-normal w-full">
         <Link href={`/media/media-detail/${id}`}>

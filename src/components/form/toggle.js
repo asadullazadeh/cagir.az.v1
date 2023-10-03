@@ -111,7 +111,7 @@ const Toggle = ({
                   __html: description
                     .replaceAll(
                       "<ul>",
-                      '<ul class="list-disc py-[3px] ml-[15px] mt-[3px] mb-[7px] ">'
+                      '<ul class="list-disc list-inside py-[3px] mt-[3px] mb-[7px] ">'
                     )
                     .replaceAll("<p", '<p class="leading-[22px] "')
                     .replaceAll("<span>", "<span>"),

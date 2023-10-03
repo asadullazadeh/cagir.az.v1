@@ -37,25 +37,25 @@ export default function Carousel1({
   return (
     <div className="flex flex-col justify-between lg:gap-x-[25px] xl:gap-x-[45px] 2xl:gap-x-[75px] lg:flex-row">
       {/* first part of carousel section */}
-      <div className="flex flex-col justify-between w-full lg:w-1/2">
-        <h1 className="flex flex-col my-h1 text-black500 xs:w-[250px] sm:w-auto">
-          {messages["slider-part-2"]}
-        </h1>
+      <div className="flex flex-col justify-between w-full lg:w-3/5">
+        <div>
+          <h1 className="flex flex-col my-h1 text-black500 xs:w-[250px] sm:w-1/2 lg:w-full">
+            {messages["slider-part-2"]}
+          </h1>
+          <p className="flex flex-col text-[10px] lg:text-[12px] leading-[18px] lg:leading-[22px] lg:tracking-[0.02em] text-gray900 w-full  screen428:w-[300px] lg:w-[300px] xl:w-[380px] 2xl:w-[411px] lg:pt-[20px] 2xl:pt-[30px]">
+            {messages["hero-text"]}
+          </p>
+        </div>
 
-        <p className="flex flex-col text-[10px] lg:text-[12px] leading-[18px] lg:leading-[22px] lg:tracking-[0.02em] text-gray900 w-full  screen428:w-1/2 lg:w-[300px] xl:w-[400px] 2xl:w-[450px]">
-          {/* Biz dünyanın hər yerində sizə xidmət göstərməyə hazırıq.
-            Sifarişinizi indi yaradın və xidmətimizdən faydalanmağa başlayın! */}
-          {messages["hero-text"]}
-        </p>
         {/* search button */}
         <div onClick={handleSearchClicked} className="block lg:hidden">
-          <SearchInput />
+          <SearchInput {...{ messages }} />
         </div>
 
         {/* sifaris button-for desktop */}
-        <SifarishBtn classNames="hidden lg:block" />
+        <SifarishBtn {...{ messages }} classNames="hidden lg:block pt-[10px] xl:pt-0" />
 
-        <div className="hidden lg:block space-y-[18px]">
+        <div className="hidden lg:block space-y-[10px]">
           <p className="font-semibold non-italic tracking-[0.02em] text-[14px] leading-[22px] text-black500">
             {messages["follow-us"]}
             {/* Biz sosial şəbəkələrdə */}

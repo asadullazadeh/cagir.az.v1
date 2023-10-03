@@ -20,53 +20,76 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
   }, []);
 
   const linkInfos = [
-    { href: "/temizlik-xidmeti", text: messages["cleaning"], className: "" },
-    { href: "/kombi-ustasi", text: messages["usta-kombi"], className: "" },
+    {
+      href: "/temizlik-xidmeti",
+      text: messages["cleaning"],
+      className: "",
+      index: 0,
+    },
+    {
+      href: "/kombi-ustasi",
+      text: messages["usta-kombi"],
+      className: "",
+      index: 1,
+    },
     {
       href: "/santexnik-ustasi",
       text: messages["usta-santexnik"],
       className: "",
+      index: 2,
     },
     {
       href: "/kondisioner-ustasi",
       text: messages["usta-kondisioner"],
       className: "",
+      index: 3,
     },
     {
       href: "/soyuducu-ustasi",
       text: messages["usta-soyuducu"],
       className: "",
+      index: 4,
     },
     {
       href: "/elektrik-ustasi",
       text: messages["usta-elektrik"],
       className: "",
+      index: 5,
     },
     { href: "/xidmetler", text: messages["other-services"], className: "" },
     {
       href: "/",
       text: messages[""],
       className: "border-b-2 border-opacity-10 border-[#959595] my-[-15px]",
+      index: 6,
     },
-    { href: "/xidmet", text: messages["service-description"], className: "" },
-    { href: "/blog", text: messages["blog"], className: "" },
-    { href: "/haqqimizda", text: messages["about"], className: "" },
-    { href: "/elaqe", text: messages["contact"], className: "" },
-    { href: "/payment", text: messages["payment"], className: "" },
+    {
+      href: "/xidmet",
+      text: messages["service-description"],
+      className: "",
+      index: 7,
+    },
+    { href: "/blog", text: messages["blog"], className: "", index: 8 },
+    { href: "/haqqimizda", text: messages["about"], className: "", index: 9 },
+    { href: "/elaqe", text: messages["contact"], className: "", index: 10 },
+    { href: "/payment", text: messages["payment"], className: "", index: 11 },
     {
       href: "/giris",
       text: messages["login"],
       className: `${token ? "hidden" : ""}`,
+      index: 12,
     },
     {
       href: "/qeydiyyat",
       text: messages["register"],
       className: `${token ? "hidden" : ""}`,
+      index: 13,
     },
     {
       href: "/",
       text: messages["logout"],
       className: `text-danger ${token ? "" : "hidden"}`,
+      index: 14,
     },
   ];
 
@@ -103,6 +126,18 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
   useEffect(() => {
     ifSearchIconClicked(searchIconIsClicked);
   }, [ifSearchIconClicked, searchIconIsClicked]);
+
+
+  //when logout button is clicked
+  function logout(index) {
+    if (index === 14) {
+      // Remove the token (or other authentication info) from storage
+      localStorage.removeItem("token");
+
+      // Redirect to a public page or the login page
+      window.location.href = "/";
+    }
+  }
 
   return (
     <>
@@ -166,7 +201,7 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
               className="flex flex-col justify-between font-medium h-full mt-[10px] mb-[120px] text-[12px] xs:text-[14px] sm:text-[16px] md:text-[18px] leading-[18px] xs:leading-[21px]
             sm:leading-[24px] md:leading-[27px] text-gray900 text-center"
             >
-              {linkInfos.map(({ href, text, className }) => (
+              {linkInfos.map(({ href, text, className, index }) => (
                 // eslint-disable-next-line react/jsx-key
                 <li className={className}>
                   <Link
@@ -175,6 +210,7 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
                     onClick={() => {
                       handleClick();
                       handleDeClickSearchIcon();
+                      logout(index);
                     }}
                   >
                     <p className={`transition duration-300 hover:text-black`}>

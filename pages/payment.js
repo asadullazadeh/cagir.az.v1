@@ -19,11 +19,21 @@ function Payment() {
         <title>Cagir.az - Ödəniş</title>
       </Head>
       <div className="flex flex-col items-center min-h-screen lg:justify-center pt-[50px] lg:pt-0">
-        <h2 className="my-h2 text-center pb-[15px]">{messages.payment}</h2>
-        <div className="flex flex-col w-full md:w-2/3 lg:w-1/2 gap-y-[15px]">
-          <InputCustomized label="Ad və soyad" type="text" />
+        <h2 className="my-h2 text-center pb-[15px] lg:pb-[30px]">
+          {messages.payment}
+        </h2>
+        <div className="flex flex-col justify-between w-full gap-y-[20px] lg:w-2/5">
+          <InputCustomized
+            label={messages["name-and-surname"]}
+            type="text"
+            typeMore="name"
+          />
           <InputNumber label={messages.phone} />
-          <InputCustomized label={messages.amount} type="number" />
+          <InputCustomized
+            label={messages.amount}
+            type="number"
+            typeMore="money"
+          />
           <div>
             <label
               htmlFor="message"
@@ -39,7 +49,7 @@ function Payment() {
             font-semibold text-[10px] leading-[15px] 
             text-gray-900 bg-white outline-none
             rounded-lg border border-gray-300"
-              placeholder="Qeydlərinizi edin..."
+              // placeholder="Qeydlərinizi edin..."
             ></textarea>
           </div>
           <div className="w-full pt-[20px]">

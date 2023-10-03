@@ -56,7 +56,7 @@ function MediaPost({ mediaId }) {
               __html: description
                 ?.replaceAll(
                   "<ul>",
-                  '<ul class="list-disc pt-[3px] pb-[7px] ml-[17px]">'
+                  '<ul class="list-disc list-inside pt-[3px] pb-[7px]">'
                 )
                 .replaceAll("<a", '<a class="text-cagiraz"')
                 .replaceAll("<span", '<span class=""'),

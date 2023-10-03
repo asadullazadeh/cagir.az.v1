@@ -97,18 +97,15 @@ function SearchServices({ messages, chosenLang }) {
     setSearchVal(event.target.value);
   }
 
-  // 
+  //
   const [trendServices, seTrendServices] = useState([]);
   useEffect(() => {
     axios
-      .get(
-        `https://api.cagir.az/api/service/getShortCutServicesNew`,
-        {
-          headers: {
-            "Accept-Language": chosenLang,
-          },
-        }
-      )
+      .get(`https://api.cagir.az/api/service/getShortCutServicesNew`, {
+        headers: {
+          "Accept-Language": chosenLang,
+        },
+      })
       .then((response) => {
         // Handle the response data
         seTrendServices(response.data.result);
@@ -122,7 +119,8 @@ function SearchServices({ messages, chosenLang }) {
   return (
     <div className="py-[15px] lg:py-[30px]">
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">
-        Hansı xidməti axtarırsınız?
+        {/* Hansı xidməti axtarırsınız? */}
+        {messages["which-service-looking"]}
       </h2>
       <div className="flex justify-center mt-[15px] mb-[15px]">
         <SearchInputMd

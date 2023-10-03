@@ -8,6 +8,7 @@
   "hero-text": "Biz dünyanın hər yerində sizə xidmət göstərməyə hazırıq. Sifarişinizi indi yaradın və xidmətlərimizdən faydalanmağa başlayın!",
   "name-required": " Adı daxil edin",
   "name": "Ad",
+  "name-and-surname": "Ad və soyad",
   "send": "GÖNDƏR",
   "anyproblem": "Hər hansı çətinliyiniz var? O zaman ",
   "anyproblem-part": "bölməsinə keçin və ya aşağıdakı əlaqə vasitələri ilə bizə yazın",
@@ -28,6 +29,7 @@
   "surname-required": "Soyadı daxil edin",
   "note": "Qeyd",
   "search-placeholder": "Sizə lazım olan xidməti axtarın...",
+  "which-service-looking": "Hansı xidməti axtarırsınız?",
   "our-values": "Dəyərlər",
   "partners": "Partnyorlar",
   "video-text": "Bizi tanımaq üçün elə indi izləməyə başla",
@@ -91,7 +93,7 @@
   "choose-service-category-desc": "Hər bir xidmət haqqında ətraflı məlumat əldə etmək üçün info düyməsinə sıxın",
   "other": "Xidmətlər",
   "order-note-desc": "Bilməli olduğumuz detalları qeyd edin. Heç bir qeydiniz yoxdursa 'Növbəti'-ni klikləyin",
-  "btn-back": "GERİ",
+  "btn-back": "Geri",
   "btn-show-providers": "İCRAÇILARI GÖSTƏR",
   "date": "Tarix",
   "time": "Saat",
@@ -200,6 +202,7 @@
   "btn-affilate": "Göndər",
   "enter-email": "Emaili daxil edin",
   "confirm": "Təsdiqlə",
+  "do-confirm": "Təsdiq et",
   "close": "Bağla",
   "sender-phone": "Göndərən şəxsin nömrəsi",
   "receiver-phone": "Alan şəxsin nömrəsi",
@@ -239,5 +242,5 @@
   "startup-of-the-year": "İlin startupı",
   "most-wanted-services": "Ən çox axtarılan xidmətlər",
   "conclusion": "Yekun",
-  "stay-up-to-date":"Yeniliklərdən xəbərdar ol!"
+  "stay-up-to-date": "Yeniliklərdən xəbərdar ol!"
 }

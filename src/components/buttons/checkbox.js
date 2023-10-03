@@ -5,7 +5,7 @@ const CheckBox = ({ name, criteriaId, sendDataToParent }) => {
 
   const handleClick = () => {
     const checkboxIsChecked = !isChecked;
-    sendDataToParent(name, criteriaId, checkboxIsChecked); 
+    sendDataToParent(name, criteriaId, checkboxIsChecked);
     setIsChecked(checkboxIsChecked);
   };
 

@@ -102,7 +102,7 @@ function Xidmet() {
                       width={360}
                       height={257}
                       src={`https://api.cagir.az${imageUrl}`}
-                      alt={serviceInfoNames}
+                      alt={titleUrl}
                       className="rounded-[10px] lg:rounded-[20px] w-full aspect-[360/257]"
                     />
                   </Link>

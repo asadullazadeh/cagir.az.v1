@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 
-function CategoriesBlog({ messages }) {
+function CategoriesBlog({ messages, chosenLang }) {
   const [categoriesData, setCategoriesData] = useState([]);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ function CategoriesBlog({ messages }) {
       try {
         const response = await axios.get("https://api.cagir.az/api/category/getAll", {
           headers: {
-            "Accept-Language": "az",
+            "Accept-Language": chosenLang,
           },
         });
         setCategoriesData(response.data.result);
@@ -20,7 +20,7 @@ function CategoriesBlog({ messages }) {
     };
 
     fetchData();
-  }, []);
+  }, [chosenLang]);
 
   const titleStyle =
     "font-semibold lg:font-bold text-[16px] lg:text-[20px] lg:leading-[30px] leading-[24px] pb-[15px] pt-[30px] lg:pt-0 text-center lg:text-start border-t border-[#EAEAEA] lg:border-none";

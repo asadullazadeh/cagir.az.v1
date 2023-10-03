@@ -11,6 +11,7 @@ import wallet from "@/icons/header/wallet.svg";
 import wallet1 from "@/icons/header/wallet1.svg";
 import LangSection from "@/src/components/others/lang_section";
 import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
+import avatar from "@/public/avatar.svg";
 
 export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
   const linkInfos = [
@@ -50,9 +51,9 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
   //   setSearchIconIsClicked(false)
   // };
   const handleDeClickSearchIcon = async () => {
-    setTimeout(() => {
-      setSearchIconIsClicked(false);
-    }, 1); // Delay for 0,001 second before reloading
+    // setTimeout(() => {
+    setSearchIconIsClicked(false);
+    // }, 1); // Delay for 0,001 second before reloading
   };
   //
   useEffect(() => {
@@ -67,8 +68,8 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
     if (storedToken) {
       setToken(storedToken);
     }
-  }, []);
-
+  }, [token]);
+  // console.log(token.length===0)
   return (
     <>
       <header className="hidden lg:block border-b-[1px] border-[#EAEAEA]">
@@ -147,11 +148,13 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
                   </span>
                 </Link>
               </li>
-              {/* Profile icon */}
+              {/* Profile if not logged in */}
               <li>
                 <Link
                   onClick={handleDeClickSearchIcon}
-                  className="group flex relative"
+                  className={
+                    token.length === 0 ? "group flex relative" : "hidden"
+                  }
                   href="/giris"
                 >
                   <span>
@@ -176,7 +179,19 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
                     {messages.login}
                   </span>
                 </Link>
+
+                <Link
+                  href="/profile"
+                  className={token.length === 0 ? "hidden" : ""}
+                >
+                  <Image
+                    src={avatar}
+                    alt="profile_pic"
+                    className="w-5 h-5 rounded-full"
+                  />
+                </Link>
               </li>
+              {/* profile if logged in */}
               {/* Language choice section */}
               <li>
                 <LangSection />

@@ -29,7 +29,6 @@ import {
   Calendar,
 } from "@/src/components/form";
 import info_btn from "@/icons/form/info_btn.svg";
-import Map_Image from "@/public/Map_Image.png";
 import Receipt from "@/src/components/payment_result";
 /* -------------------------------------------------------------------------- */
 /*                                   Sifaris                                  */

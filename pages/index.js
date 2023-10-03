@@ -29,8 +29,8 @@ export async function getServerSideProps() {
 export default function Home(props) {
   const { locales } = useRouter();
   const intl = useIntl();
-  const chosenLang = intl.locale
-  const messages = intl.messages
+  const chosenLang = intl.locale;
+  const messages = intl.messages;
 
   const { carouselPhotos1 } = props;
 
@@ -42,13 +42,12 @@ export default function Home(props) {
     setSearchInptClicked(data);
   };
 
-
   return (
     <div>
       <Head>
         <title>Cagir.az</title>
       </Head>
-    
+
       <div className="mt-[30px] lg:mt-[0px]">
         <div
           className={`flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
@@ -59,28 +58,28 @@ export default function Home(props) {
       }`}
         >
           <Carousel1
-            {...{ carouselPhotos1,messages }}
+            {...{ carouselPhotos1, messages }}
             onDataReceived={handleDataFromCarousel}
           />
-          <MainServices {...{chosenLang,messages}} />
-          <Reyler {...{chosenLang,messages}} parentId={1} />
-          <Icracilar {...{messages}} parentId={1} />
-          <Musteriler {...{messages}} />
+          <MainServices {...{ chosenLang, messages }} />
+          <Reyler {...{ chosenLang, messages }} parentId={1} />
+          <Icracilar {...{ messages }} parentId={1} />
+          <Musteriler {...{ messages }} />
           <div className="hidden lg:block">
-            <Suallar {...{chosenLang,messages}}  />
+            <Suallar {...{ chosenLang, messages }} />
           </div>
           <div className="hidden lg:block">
-            <Deyerler {...{chosenLang,messages}} />
+            <Deyerler {...{ chosenLang, messages }} />
           </div>
 
-          <Reels />
+          {/* <Reels /> */}
 
-          <LastPostedBlogs {...{messages}} />
+          <LastPostedBlogs {...{ messages }} />
         </div>
         <div className={`${searchInptClicked ? "" : "hidden"}`}>
-          <SearchServices {...{messages, chosenLang}} />
+          <SearchServices {...{ messages, chosenLang }} />
         </div>
       </div>
-      </div>
+    </div>
   );
 }

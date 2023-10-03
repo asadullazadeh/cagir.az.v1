@@ -82,7 +82,7 @@ export default function Layout({ children }) {
 
       {/* Buttons */}
       <div className={isElementVisible ? "flex justify-center" : "hidden"}>
-        <SifarishBtn classNames="lg:hidden bottom-[62px] fixed" />
+        <SifarishBtn {...{messages}} classNames="lg:hidden bottom-[62px] fixed" />
       </div>
 
       {/* Call Button */}

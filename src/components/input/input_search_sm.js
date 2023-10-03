@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const SearchInput = () => {
+const SearchInput = ({messages}) => {
   const [inputValue, setInputValue] = useState("");
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -37,7 +37,7 @@ const SearchInput = () => {
         className="w-full rounded border-none text-left text-sm leading-none text-gray-600 outline-none
           focus:outline-none focus:ring-white px-[10px]"
         type="text"
-        placeholder="Axtar"
+        placeholder={messages.search}
         value={inputValue}
         onChange={handleChange}
       />

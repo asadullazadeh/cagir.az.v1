@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import show_pswrd from "@/icons/show_pswrd.svg";
 import close_pswrd from "@/icons/close_pswrd.svg";
-const InputPassword = ({ label, onPasswordChange, changePswrdClasses}) => {
+const InputPassword = ({ label, onPasswordChange, changePswrdClasses }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
   const togglePasswordVisibility = () => {
@@ -32,12 +32,11 @@ const InputPassword = ({ label, onPasswordChange, changePswrdClasses}) => {
   }, []);
 
   useEffect(() => {
-    if(typeof onPasswordChange === "function"){
-    // Invoke the callback function whenever the password changes
-    onPasswordChange(password);
-  }
+    if (typeof onPasswordChange === "function") {
+      // Invoke the callback function whenever the password changes
+      onPasswordChange(password);
+    }
   }, [password, onPasswordChange]);
-
 
   return (
     <div className="flex flex-col gap-y-[5px]">
@@ -84,15 +83,15 @@ const InputPassword = ({ label, onPasswordChange, changePswrdClasses}) => {
             alt={showPassword ? "Hide" : "Show"}
             src={showPassword ? close_pswrd : show_pswrd}
             onClick={togglePasswordVisibility}
-            className=""
+            className="w-[16px] h-[16px]"
           />
         </div>
       </div>
       {/* Parolu deyis */}
       <div className={`${changePswrdClasses}`}>
-          <p className="font-semibold text-[14px] leading-[21px] text-cagiraz">
-            Parolu dəyiş
-          </p>
+        <p className="font-semibold text-[14px] leading-[21px] text-cagiraz">
+          Parolu dəyiş
+        </p>
       </div>
     </div>
   );

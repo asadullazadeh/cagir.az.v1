@@ -109,7 +109,7 @@ function LastPostedBlogs({ messages }) {
         {messages["blog"]}
       </h2>
       <ul className="grid grid-cols-1 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
-        {responseData?.map((post,id) => (
+        {responseData?.map((post, id) => (
           <BlogCard key={id} {...post} />
         ))}
       </ul>
