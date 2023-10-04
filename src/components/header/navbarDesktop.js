@@ -187,7 +187,7 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
                   <Image
                     src={avatar}
                     alt="profile_pic"
-                    className="w-5 h-5 rounded-full"
+                    className="w-[25px] h-[25px] rounded-full"
                   />
                 </Link>
               </li>

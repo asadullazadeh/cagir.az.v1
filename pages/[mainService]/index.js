@@ -98,6 +98,23 @@ async function fetchSubServices(parentId, chosenLang) {
   }
 }
 
+// export async function getServerSideProps(context) {
+//   const mainServiceUrl = context.query.mainService;
+//   const chosenLang = context.locale || "az";
+//   const mainServiceData = await fetchMainServiceData(
+//     mainServiceUrl,
+//     chosenLang
+//   );
+//   const subServices = await fetchSubServices(mainServiceData.id, chosenLang);
+//   return {
+//     props: {
+//       mainServiceData,
+//       subServices,
+//       chosenLang,
+//       parentId: mainServiceData.id,
+//     },
+//   };
+// }
 export async function getServerSideProps(context) {
   const mainServiceUrl = context.query.mainService;
   const chosenLang = context.locale || "az";
@@ -105,6 +122,17 @@ export async function getServerSideProps(context) {
     mainServiceUrl,
     chosenLang
   );
+
+  // Check if mainServiceData is null or if it doesn't have the id property
+  if (!mainServiceData || !mainServiceData.id) {
+    return {
+      redirect: {
+        destination: "/sehife-tapilmadi", // You can adjust this path if it's different
+        permanent: false,
+      },
+    };
+  }
+
   const subServices = await fetchSubServices(mainServiceData.id, chosenLang);
   return {
     props: {

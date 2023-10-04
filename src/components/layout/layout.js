@@ -49,11 +49,11 @@ export default function Layout({ children }) {
       {/* Navigation */}
       <div className="sticky top-0 z-50">
         <NavbarDesktop
-          {...{messages}}
+          {...{ messages }}
           ifSearchIconClicked={setSearchIconClickedDesktop}
         />
         <NavbarMobile
-          {...{messages}}
+          {...{ messages }}
           ifSearchIconClicked={setSearchIconClickedMobile}
         />
       </div>
@@ -77,12 +77,15 @@ export default function Layout({ children }) {
             : "hidden"
         }
       >
-        <SearchServices {...{messages}} chosenLang={locale} />
+        <SearchServices {...{ messages }} chosenLang={locale} />
       </div>
 
       {/* Buttons */}
       <div className={isElementVisible ? "flex justify-center" : "hidden"}>
-        <SifarishBtn {...{messages}} classNames="lg:hidden bottom-[62px] fixed" />
+        <SifarishBtn
+          {...{ messages }}
+          classNames="lg:hidden bottom-[62px] fixed"
+        />
       </div>
 
       {/* Call Button */}
@@ -93,10 +96,10 @@ export default function Layout({ children }) {
       {/* TabBar & Footer */}
       <div>
         <TabBar
-         {...{messages}}
+          {...{ messages }}
           classNames="fixed bottom-0 left-0 z-50 lg:hidden"
         />
-        <Footer {...{messages}} />
+        <Footer {...{ messages }} />
       </div>
     </div>
   );
