@@ -14,20 +14,23 @@ const HomePage = () => {
   return (
     <div>
       <div className="flex flex-row">
+        {/* <VideoPlayer videoSrc={videoSrc} />
         <VideoPlayer videoSrc={videoSrc} />
         <VideoPlayer videoSrc={videoSrc} />
         <VideoPlayer videoSrc={videoSrc} />
-        <VideoPlayer videoSrc={videoSrc} />
-        <VideoPlayer videoSrc={videoSrc} />
+        <VideoPlayer videoSrc={videoSrc} /> */}
+        {/* <div class="sk-ww-instagram-reels" data-embed-id="204293"></div>
+        <script
+          src="https://widgets.sociablekit.com/instagram-reels/widget.js"
+          async
+          defer
+        ></script>{" "} */}
       </div>
     </div>
   );
 };
 
 export default HomePage;
-
-
-
 
 // import axios from 'axios';
 // import Image from "next/image";
@@ -66,4 +69,3 @@ export default HomePage;
 // }
 
 // export default MyPage;
-

@@ -49,11 +49,11 @@ export default function Layout({ children }) {
       {/* Navigation */}
       <div className="sticky top-0 z-50">
         <NavbarDesktop
-          messages={messages}
+          {...{messages}}
           ifSearchIconClicked={setSearchIconClickedDesktop}
         />
         <NavbarMobile
-          messages={messages}
+          {...{messages}}
           ifSearchIconClicked={setSearchIconClickedMobile}
         />
       </div>
@@ -77,7 +77,7 @@ export default function Layout({ children }) {
             : "hidden"
         }
       >
-        <SearchServices messages={messages} chosenLang={locale} />
+        <SearchServices {...{messages}} chosenLang={locale} />
       </div>
 
       {/* Buttons */}
@@ -93,10 +93,10 @@ export default function Layout({ children }) {
       {/* TabBar & Footer */}
       <div>
         <TabBar
-          messages={messages}
+         {...{messages}}
           classNames="fixed bottom-0 left-0 z-50 lg:hidden"
         />
-        <Footer messages={messages} />
+        <Footer {...{messages}} />
       </div>
     </div>
   );

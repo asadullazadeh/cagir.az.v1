@@ -263,7 +263,7 @@ const Dropdown = ({
                         className={`text-[12px] leading-[18px] ${
                           descIsOpen[index]
                             ? ""
-                            : " truncate w-full h-[16px] max-w-[150px] xs:max-w-[260px] screen360:max-w-[295px] screen375:max-w-[310px] screen390:max-w-[320px] screen412:max-w-[350px] screen428:max-w-[380px] sm:max-w-[600px] md:max-w-[700px]  whitespace-nowrap overflow-hidden overflow-x-hidden	"
+                            : " truncate w-full h-[16px] max-w-[150px] xs:max-w-[260px] screen360:max-w-[295px] screen375:max-w-[310px] screen390:max-w-[320px] screen412:max-w-[350px] screen428:max-w-[380px] sm:max-w-[600px] md:max-w-[700px]  whitespace-nowrap overflow-hidden overflow-x-hidden"
                         } `}
                         dangerouslySetInnerHTML={{
                           __html: `${findDescById(index)

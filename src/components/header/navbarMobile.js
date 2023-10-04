@@ -100,12 +100,11 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
   };
   useEffect(() => {
     if (navbar) {
-      document.body.style.overflow = "hidden";
-
+      // document.body.style.overflow = "hidden";
       // Optionally, you can add a class to hide the scroll bar if needed
       // document.body.classList.add('overflow-hidden');
     } else {
-      document.body.style.overflow = "visible";
+      // document.body.style.overflow = "visible";
     }
   }, [navbar]);
 
@@ -126,7 +125,6 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
   useEffect(() => {
     ifSearchIconClicked(searchIconIsClicked);
   }, [ifSearchIconClicked, searchIconIsClicked]);
-
 
   //when logout button is clicked
   function logout(index) {
@@ -196,9 +194,13 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
           </div>
 
           {/* 2nd navbar */}
-          <div className={` ${navbar ? "h-screen flex flex-col  " : "hidden"}`}>
+          <div
+            className={` ${
+              navbar ? "h-screen flex flex-col pb-[120px]" : "hidden"
+            }`}
+          >
             <ul
-              className="flex flex-col justify-between font-medium h-full mt-[10px] mb-[120px] text-[12px] xs:text-[14px] sm:text-[16px] md:text-[18px] leading-[18px] xs:leading-[21px]
+              className="flex flex-col justify-between font-medium h-screen  text-[12px] xs:text-[14px] sm:text-[16px] md:text-[18px] leading-[18px] xs:leading-[21px]
             sm:leading-[24px] md:leading-[27px] text-gray900 text-center"
             >
               {linkInfos.map(({ href, text, className, index }) => (
