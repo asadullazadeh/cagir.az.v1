@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import arrow from "@/icons/arrow.svg";
 import arrow_mobile from "@/icons/arrow_mobile.svg";
+import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
 
 const fetchServices = async (chosenLang) => {
   const config = {
@@ -75,6 +76,16 @@ const Xidmetler = ({ messages, chosenLang }) => {
       <ul className="grid grid-cols-2 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
         {responseData.slice(0, 6).map(ServiceItem)}
       </ul>
+      <div className="flex items-center justify-center max-w-[155px] mx-auto rounded-[25px] mt-[15px] lg:mt-[30px]">
+        <Link
+          href="/xidmetler"
+          className="bg-white rounded-[30px] py-[10px] px-[26px] border-[2px] border-cagiraz 
+                 font-extrabold text-cagiraz text-[14px] leading-[21px] 
+                 transition duration-400 transform hover:-translate-y-[5px] whitespace-nowrap"
+        >
+          {messages["all-services"]}
+        </Link>
+      </div>
     </div>
   );
 };

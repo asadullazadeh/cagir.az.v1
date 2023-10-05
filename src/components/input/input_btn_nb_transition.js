@@ -172,7 +172,7 @@ const InputBtnNbTransition = ({ name }) => {
               ref={inputRef}
               className="appearance-none bg-transparent border-none
                  text-black focus:outline-none text-[14px] pl-[10px]
-                    leading-[21px] w-[130px] sm:w-auto"
+                    leading-[21px] w-[130px] sm:w-auto bg-white"
               minLength="7"
               type="text"
               placeholder="Telefon nömrəsi"

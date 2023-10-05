@@ -77,7 +77,7 @@ const InputNumber = ({ label }) => {
           )}
           <input
             ref={inputRef}
-            className="w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none p-0 lg:hidden"
+            className="w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none p-0 lg:hidden bg-white"
             minLength="7"
             type="text"
             placeholder={!isInputFocused ? label : ""}
@@ -88,7 +88,7 @@ const InputNumber = ({ label }) => {
           />
           <input
             ref={inputRef}
-            className="hidden lg:block w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none p-0"
+            className="hidden lg:block w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none p-0 bg-white"
             minLength="7"
             type="text"
             // placeholder={!isInputFocused ? label : ""}

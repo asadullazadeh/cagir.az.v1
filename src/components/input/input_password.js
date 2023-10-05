@@ -64,7 +64,7 @@ const InputPassword = ({ label, onPasswordChange, changePswrdClasses }) => {
             onChange={(e) => setPassword(e.target.value)}
             id="inpt"
             name="inpt"
-            className="hidden lg:block  w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0"
+            className="hidden lg:block  w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0 bg-white"
             placeholder={isClicked ? "" : ""}
             onClick={handleClick}
           />
@@ -75,7 +75,7 @@ const InputPassword = ({ label, onPasswordChange, changePswrdClasses }) => {
             onChange={(e) => setPassword(e.target.value)}
             id="inpt"
             name="inpt"
-            className="block lg:hidden w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0"
+            className="block lg:hidden w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0 bg-white"
             placeholder={isClicked ? "" : label}
             onClick={handleClick}
           />

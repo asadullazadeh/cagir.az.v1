@@ -76,10 +76,10 @@ export default function Haqqimizda(props) {
         <div className="flex flex-col gap-y-[60px] pt-[60px] lg:pt-[90px]">
           <Deyerler {...{ messages }} {...{ chosenLang }} />
           <Statistika {...{ messages }} {...{ chosenLang }} />
-          <Musteriler {...{ musteriler }} />
+          <Musteriler {...{ messages, musteriler }} />
         </div>
         <div className="hidden lg:flex justify-center pt-[65px]">
-          <Link href="">
+          <Link href="/temizlik-xidmeti/ev-temizleme">
             <PrimaryMdBtn btnName="İndi sifariş yarat" />
           </Link>
         </div>

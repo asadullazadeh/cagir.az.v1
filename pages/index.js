@@ -16,13 +16,8 @@ import SearchServices from "@/src/components/main/search_services";
 
 // const inter = Inter({ subsets: ["latin"] });
 export async function getServerSideProps() {
-  const data = await import("/data/data.json");
-  const { carouselPhotos1 } = data;
   return {
-    //will be passed to the page component as props
-    props: {
-      carouselPhotos1,
-    },
+    props: {},
   };
 }
 
@@ -31,8 +26,6 @@ export default function Home(props) {
   const intl = useIntl();
   const chosenLang = intl.locale;
   const messages = intl.messages;
-
-  const { carouselPhotos1 } = props;
 
   // passing data from carousel to the main page
   const [searchInptClicked, setSearchInptClicked] = useState(false);
@@ -58,7 +51,7 @@ export default function Home(props) {
       }`}
         >
           <Carousel1
-            {...{ carouselPhotos1, messages }}
+            {...{ messages }}
             onDataReceived={handleDataFromCarousel}
           />
           <MainServices {...{ chosenLang, messages }} />

@@ -1,23 +1,39 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import SearchInput from "@/src/components/input/input_search_sm";
 
-export default function Carousel1({
-  carouselPhotos1,
-  onDataReceived,
-  messages,
-}) {
-  const [currentSlide, setCurrentSlide] = useState(0);
+export default function Carousel1({ onDataReceived, messages }) {
+  const [carouselPhotos, setcarouselPhotos] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`https://api.cagir.az/api/adminDictionary/getAll?dictionaryType=6`, {
+        headers: {
+          "Accept-Language": "az",
+        },
+      })
+      .then((response) => {
+        // Handle the response data
+        setcarouselPhotos(response.data.result);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  }, []);
+  console.log(carouselPhotos);
 
+  const [currentSlide, setCurrentSlide] = useState(1);
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((currentSlide + 1) % 3);
+      // setCurrentSlide((currentSlide + 1) % 3);
+      setCurrentSlide((currentSlide + 1) % carouselPhotos.length);
     }, 2500);
     return () => clearInterval(interval);
-  }, [currentSlide]);
+  }, [currentSlide, carouselPhotos.length]);
 
   const [searchIsClicked, setsearchIsClicked] = useState(false);
   const handleSearchClicked = () => {
@@ -53,7 +69,10 @@ export default function Carousel1({
         </div>
 
         {/* sifaris button-for desktop */}
-        <SifarishBtn {...{ messages }} classNames="hidden lg:block pt-[10px] xl:pt-0" />
+        <SifarishBtn
+          {...{ messages }}
+          classNames="hidden lg:block pt-[10px] xl:pt-0"
+        />
 
         <div className="hidden lg:block space-y-[10px]">
           <p className="font-semibold non-italic tracking-[0.02em] text-[14px] leading-[22px] text-black500">
@@ -72,22 +91,23 @@ export default function Carousel1({
           className="relative overflow-hidden rounded-lg w-full aspect-[821/438]"
           data-carousel="slide"
         >
-          {carouselPhotos1.map((slide, index) => (
+          {carouselPhotos.map(({ index, imageUrl, orderIndex }) => (
             <div
-              key={index}
+              key={orderIndex}
               className={`absolute w-full aspect-[821/438] ${
-                index === currentSlide
+                orderIndex === currentSlide
                   ? "slide-enter-active"
                   : "slide-exit-active"
               }`}
+              // className="slide-enter-active"
               style={{ height: "100%", width: "100%" }}
             >
               <Image
                 width={821}
                 height={438}
-                src={slide.src}
-                alt={slide.alt}
-                className="w-full aspect-[821/438] "
+                src={`https://api.cagir.az${imageUrl}`}
+                alt={imageUrl}
+                className="w-full aspect-[821/438]"
               />
             </div>
           ))}

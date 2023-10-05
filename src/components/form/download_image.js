@@ -1,10 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import download from "@/icons/form/download.svg";
 import delete_icon from "@/icons/form/delete.svg";
 
-const Download_image = ({messages}) => {
+const Download_image = ({ messages }) => {
+  const [file, setFile] = useState(null);
+
+  useEffect(() => {
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        console.log("File contents:", e.target);
+      };
+      reader.readAsText(file);
+    }
+  }, [file]);
+
+  const handleFileChange = (e) => {
+    if (e.target.files.length > 0) {
+      setFile(e.target.files[0]);
+    }
+  };
+
+  // console.log(file);
+
   return (
     <div className="flex flex-col gap-y-[5px]">
       <p className="hidden lg:block font-semibold text-[12px] leading-[18px] text-black500">
@@ -25,7 +45,12 @@ const Download_image = ({messages}) => {
           </p>
           <Image src={delete_icon} alt="delete_icon" className="" />
 
-          <input id="dropzone-file" type="file" className="hidden" />
+          <input
+            id="dropzone-file"
+            type="file"
+            className="hidden"
+            onChange={handleFileChange}
+          />
         </label>
       </div>
     </div>

@@ -35,7 +35,7 @@ const SearchInput = ({messages}) => {
       </svg>
       <input
         className="w-full rounded border-none text-left text-sm leading-none text-gray-600 outline-none
-          focus:outline-none focus:ring-white px-[10px]"
+          focus:outline-none focus:ring-white px-[10px] bg-white"
         type="text"
         placeholder={messages.search}
         value={inputValue}

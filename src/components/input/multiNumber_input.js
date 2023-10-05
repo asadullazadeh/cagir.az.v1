@@ -55,13 +55,13 @@ const CustomInput = ({
           <Image src={minus} alt="minus_logo" className="self-center" />
         </button>
         <input
-          className="min-w-[8px] max-w-[30px] text-center mx-[5px] lg:mx-[8px] focus:outline-none"
+          className="min-w-[8px] max-w-[30px] text-center mx-[5px] lg:mx-[8px] focus:outline-none bg-white"
           type=""
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
         <button
-          className="bg-cagiraz rounded-[5px] lg:rounded-full w-[25px] h-[25px] lg:w-[30px] lg:h-[30px] flex justify-center focus:outline-none"
+          className="bg-cagiraz rounded-[5px] lg:rounded-full w-[25px] h-[25px] lg:w-[30px] lg:h-[30px] flex justify-center focus:outline-none "
           onClick={handleIncrease}
         >
           <Image src={plus} alt="plus_logo" className="self-center" />
