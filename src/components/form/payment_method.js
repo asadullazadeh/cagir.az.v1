@@ -19,7 +19,7 @@ const PaymentMethod = () => {
               type="radio"
               // value=""
               name="default-radio"
-              className="w-[20px] h-[20px] text-cagiraz  border-cagiraz"
+              className="w-[20px] h-[20px] text-cagiraz  border-cagiraz bg-white"
             />
             <label
               htmlFor="default-radio-1"
@@ -37,7 +37,7 @@ const PaymentMethod = () => {
               type="radio"
               // value=""
               name="default-radio"
-              className="w-[20px] h-[20px] text-cagiraz  border-cagiraz"
+              className="w-[20px] h-[20px] text-cagiraz  border-cagiraz bg-white"
             />
             <label
               htmlFor="default-radio-2"

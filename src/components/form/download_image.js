@@ -6,24 +6,26 @@ import delete_icon from "@/icons/form/delete.svg";
 
 const Download_image = ({ messages }) => {
   const [file, setFile] = useState(null);
+  const [imageBase64, setImageBase64] = useState('');
 
   useEffect(() => {
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        console.log("File contents:", e.target);
-      };
-      reader.readAsText(file);
-    }
+      if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+              setImageBase64(e.target.result);
+              console.log('Base64 Image:', e.target.result);
+          };
+          reader.readAsDataURL(file);  // This reads the file as a data URL
+      }
   }, [file]);
 
   const handleFileChange = (e) => {
-    if (e.target.files.length > 0) {
-      setFile(e.target.files[0]);
-    }
+      if (e.target.files.length > 0) {
+          setFile(e.target.files[0]);
+      }
   };
 
-  // console.log(file);
+  console.log(imageBase64);
 
   return (
     <div className="flex flex-col gap-y-[5px]">
