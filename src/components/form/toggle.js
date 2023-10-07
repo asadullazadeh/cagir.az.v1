@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import up_blue from "@/icons/form/up_blue.svg";
@@ -13,8 +12,6 @@ const Toggle = ({
   selectedSub2,
   whichServiceCategory,
   selectedNamesArray,
-  messages,
-  chosenLang,
 }) => {
   const toggleInfos = {
     0: {

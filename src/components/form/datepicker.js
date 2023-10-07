@@ -1,13 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import DatePicker from "react-datepicker";
-import CalendarContainer from "react-datepicker";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import az from "date-fns/locale/az";
 registerLocale("az", az);
 import "react-datepicker/dist/react-datepicker.css";
-import InputCustomized from "@/src/components/input/input";
-import SifarishBtn from "@/src/components/buttons/sifarish_btn";
-import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
+
 
 const Calendar = () => {
   const [startDate, setStartDate] = useState(new Date());

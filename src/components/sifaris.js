@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,6 +30,9 @@ import {
 } from "@/src/components/form";
 import info_btn from "@/icons/form/info_btn.svg";
 import Receipt from "@/src/components/payment_result";
+import ModalStandart from "@/src/components/modal/modal_stand";
+import InputBtnNbTransition from "@/src/components/input/input_btn_nb_transition";
+
 /* -------------------------------------------------------------------------- */
 /*                                   Sifaris                                  */
 /* -------------------------------------------------------------------------- */
@@ -40,7 +43,6 @@ function Sifaris({
   onSelectedNamesArray,
   onSelectedMainChange,
 }) {
-  const { locales } = useRouter();
   const intl = useIntl();
   const chosenLang = intl.locale;
   const messages = intl.messages;
@@ -56,6 +58,7 @@ function Sifaris({
     defaultMain ? defaultMain.serviceNames?.[0].name : ""
   );
   const [getMainServices, setgetMainServices] = useState([]);
+
   const handleMainSelect = (mainService) => {
     setSelectedMain(mainService);
   };
@@ -68,29 +71,26 @@ function Sifaris({
         },
       })
       .then((response) => {
-        // Handle the response data
         setgetMainServices(response.data.result);
       })
       .catch((error) => {
-        // Handle any errors
         console.error(error);
       });
   }, [chosenLang]);
 
   const findInfoByName = (mainServices, name) => {
-    const mainService =
+    const { id, serviceNames } =
       mainServices.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
     return {
-      id: mainService?.id || null,
-      text: mainService?.serviceNames?.[0]?.text || null,
+      id: id || null,
+      text: serviceNames?.[0]?.text || null,
     };
   };
-  // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
+
   const selectedMainService = findInfoByName(getMainServices, selectedMain);
-  // passing selectedMain to the index page
+
   useEffect(() => {
     if (typeof onSelectedMainChange === "function") {
-      // Call the callback function with the new value
       onSelectedMainChange(selectedMain);
     }
   }, [onSelectedMainChange, selectedMain]);
@@ -204,25 +204,24 @@ function Sifaris({
 
   /* ---------------------- Select criterias ---------------------- */
   const [getServiceCriterias, setgetServiceCriterias] = useState([]);
+
   useEffect(() => {
+    const serviceId = isSub2ElementsExist
+      ? selectedSub2Service.id
+      : selectedSubService.id;
+
     axios
       .post(
         "https://api.cagir.az/api/serviceCriteria/getAllWithParent",
-        [isSub2ElementsExist ? selectedSub2Service.id : selectedSubService.id],
+        [serviceId],
         {
           headers: {
             "Accept-Language": chosenLang,
           },
         }
       )
-      .then((response) => {
-        // Handle the response data
-        setgetServiceCriterias(response.data.result);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
+      .then((response) => setgetServiceCriterias(response.data.result))
+      .catch((error) => console.error(error));
   }, [
     isSub2ElementsExist,
     selectedSubService.id,
@@ -249,33 +248,29 @@ function Sifaris({
   };
 
   useEffect(() => {
-    // Check if multiNumberId is not null
-    if (multiNumberId !== "") {
-      // Check if an object with the same "multiNumberId" exists in multiNumberArray
-      const existingObjectIndex = multiNumberArray.findIndex(
-        (obj) => obj.serviceCriteriaId === multiNumberId
-      );
+    if (!multiNumberId) return;
 
-      if (existingObjectIndex !== -1) {
-        // If the object with the same "multiNumberId" exists, update its key-values
-        setMultiNumberArray((prevArr) =>
-          prevArr.map((obj, index) =>
-            index === existingObjectIndex
-              ? { ...obj, name: multiNumberName, count: multiNumberValue }
-              : obj
-          )
-        );
-      } else {
-        // If the object with the "multiNumberId" doesn't exist, add a new object to multiNumberArray
-        setMultiNumberArray((prevArr) => [
-          ...prevArr,
-          {
-            serviceCriteriaId: multiNumberId,
-            name: multiNumberName,
-            count: multiNumberValue,
-          },
-        ]);
-      }
+    const existingObjectIndex = multiNumberArray.findIndex(
+      (obj) => obj.serviceCriteriaId === multiNumberId
+    );
+
+    if (existingObjectIndex !== -1) {
+      setMultiNumberArray((prevArr) =>
+        prevArr.map((obj, index) =>
+          index === existingObjectIndex
+            ? { ...obj, name: multiNumberName, count: multiNumberValue }
+            : obj
+        )
+      );
+    } else {
+      setMultiNumberArray((prevArr) => [
+        ...prevArr,
+        {
+          serviceCriteriaId: multiNumberId,
+          name: multiNumberName,
+          count: multiNumberValue,
+        },
+      ]);
     }
   }, [multiNumberName, multiNumberId, multiNumberValue]);
 
@@ -325,14 +320,12 @@ function Sifaris({
   const [inputTextObject, setInputTextObject] = useState({});
 
   useEffect(() => {
-    setInputTextObject(
-      inputTextId
-        ? {
-            serviceCriteriaId: inputTextId,
-            count: inputTextValue ? Number(inputTextValue) : 0,
-          }
-        : {}
-    );
+    if (!inputTextId) return;
+
+    setInputTextObject({
+      serviceCriteriaId: inputTextId,
+      count: Number(inputTextValue),
+    });
   }, [inputTextId, inputTextValue]);
 
   const handleDataUpdateForInputText = (criteriaId, value) => {
@@ -347,31 +340,31 @@ function Sifaris({
   /* --------------------- Radio button functionality-FilterType=4 --------------------- */
   const [selectedRadioName, setSelectedRadioName] = useState(null);
   const [selectedRadioId, setSelectedRadioId] = useState("");
-  const [radioBtnObject, setRadioBtnObject] = useState({}); // Define it in the component's scope
+  const [radioBtnObject, setRadioBtnObject] = useState({});
 
   const handleChange = (value, criteriaId) => {
     setSelectedRadioName(value);
     setSelectedRadioId(criteriaId);
   };
-  // getting data from radio button to calculate the price
-  useEffect(() => {
-    // Move the 'radioBtnObject' conditional inside the useEffect callback
-    const radioBtnObject = selectedRadioId
-      ? {
-          name: selectedRadioName,
-          serviceCriteriaId: selectedRadioId,
-          count: 1,
-        }
-      : {};
 
-    setRadioBtnObject(radioBtnObject); // Update the radioBtnObject state with the new value
-    // Your other useEffect logic here that depends on 'radioBtnObject'
-    // Clean-up function (if needed)
+  useEffect(() => {
+    setRadioBtnObject(
+      selectedRadioId
+        ? {
+            name: selectedRadioName,
+            serviceCriteriaId: selectedRadioId,
+            count: 1,
+          }
+        : {}
+    );
+    // If you have other logic within useEffect, place it here
+
+    // If you need a clean-up function, keep it
     return () => {
       // Clean-up logic here
-      // ...
     };
-  }, [selectedRadioName, selectedRadioId]); // Add any other dependencies if necessary
+  }, [selectedRadioName, selectedRadioId]);
+
   /* --------------------- Checkbox functionality-FilterType=4 --------------------- */
   // checkmarks, to see more info-customized inputs in form section
   const [showSecondChild, setShowSecondChild] = useState(false);
@@ -433,7 +426,7 @@ function Sifaris({
         [...filteredCalculatePrice],
         {
           headers: {
-            "Accept-Language": chosenLang,
+            "Accept-Language": "",
           },
         }
       )
@@ -445,7 +438,7 @@ function Sifaris({
         // Handle any errors
         console.error(error);
       });
-  }, [filteredCalculatePrice, chosenLang]); // when one of these dependencies is updated, the filteredCalculatePrice becomes null
+  }, [filteredCalculatePrice]); // when one of these dependencies is updated, the filteredCalculatePrice becomes null
 
   //price after promocode
   const [priceAfterPromo, setPriceAfterPromo] = useState(0);
@@ -508,7 +501,6 @@ function Sifaris({
     messages,
     chosenLang,
   };
-  console.log(dropdownProps);
   // Callback function to which service service Category from the Dropdown component
   //checking which service category is selected.Main-1,sub-2,sub2-2
   const [whichServiceCategory, setWhichServiceCategory] = useState(null);
@@ -521,37 +513,95 @@ function Sifaris({
     setTesdiqleButton(true);
     fetchData();
   };
+
+  // upload image
+  const [childUploadImage, setChildUploadImage] = useState({
+    imageData: null,
+    imageBase64: "",
+  });
+
+  const handleChildImageUpload = useCallback((uploadImage) => {
+    setChildUploadImage(uploadImage);
+  }, []);
+
+  //add address
+  const [address, setaddress] = useState("");
+
+  const handleAddressUpdate = (criteriaId, value) => {
+    setaddress(value);
+  };
+
+  // add number
+  const [addNumber, setaddNumber] = useState("");
+
+  const handleDataInputNumber = (data) => {
+    setaddNumber(data);
+  };
+
+  //
   const objectDetails = {
     amount: priceBeforePromo,
     payType: 2,
-    address: "42, rue Antoine Charial,69003",
+    address: address,
     note: receivedMessage,
-    phoneNumber: "+994556984869",
+    phoneNumber: addNumber,
     startDate: "2023-08-30T10:00:00",
     orderDetails: [...filteredCalculatePrice],
-    orderImage: [],
+    orderImages: [
+      { imageBase64: childUploadImage.imageBase64 },
+      { imageExtension: childUploadImage.imageData?.name },
+    ],
   };
+
   const [isOrderPassed, setIsOrderPassed] = useState(false);
+  const [orderPassed, setOrderPassed] = useState(null);
+  // const [receivedData, setReceivedData] = useState(null);
+
+  const handleDataFromChildBtn = (data) => {
+    setIsOrderPassed(data);
+  };
+
+
+  // if (isOrderPassed) {
+  //   axios
+  //   .post(
+  //     "https://api.cagir.az/api/order/v3/create",
+  //     objectDetails, // Make sure you define `objectDetails` before using it
+  //     {
+  //       headers: {
+  //         "Accept-Language": "az",
+  //       },
+  //     }
+  //   )
+  //   .then((response) => {
+  //     // Handle the response data
+  //     setOrderPassed(response.data.isSuccess);
+  //   })
+  //   .catch((error) => {
+  //     // Handle any errors
+  //     console.error(error);
+  //   });
+  // }
 
   // const fetchData = () => {
-  //   axios
-  //     .post(
-  //       "https://api.cagir.az/api/order/v3/create",
-  //       objectDetails, // Make sure you define `objectDetails` before using it
-  //       {
-  //         headers: {
-  //           "Accept-Language": "az",
-  //         },
-  //       }
-  //     )
-  //     .then((response) => {
-  //       // Handle the response data
-  //       setIsOrderPassed(response.data.isSuccess);
-  //     })
-  //     .catch((error) => {
-  //       // Handle any errors
-  //       console.error(error);
-  //     });
+  // axios
+  //   .post(
+  //     "https://api.cagir.az/api/order/v3/create",
+  //     objectDetails, // Make sure you define `objectDetails` before using it
+  //     {
+  //       headers: {
+  //         "Accept-Language": "az",
+  //       },
+  //     }
+  //   )
+  //   .then((response) => {
+  //     // Handle the response data
+  //     setIsOrderPassed(response.data.isSuccess);
+  //   })
+  //   .catch((error) => {
+  //     // Handle any errors
+  //     console.error(error);
+  //   });
   // };
   // console.log(isOrderPassed);
 
@@ -583,18 +633,12 @@ function Sifaris({
     <div>
       <div
         className={`flex flex-col lg:flex-row lg:gap-x-[30px] xl:gap-x-[40px] 2xl:gap-x-[60px]
-      pb-[20px] lg:pt-[30px] lg:pb-[90px] w-full ${
-        !isOrderPassed ? "" : "hidden"
-      }`}
+      pb-[20px] lg:pt-[30px] lg:pb-[90px] w-full ${!isOrderPassed ? "" : ""}`}
       >
         {/* Left side of first part in Sifaris */}
         <div className="z-40 sticky top-[30px] lg:top-[110px] lg:h-screen overflow-y-auto flex flex-col lg:w-1/3 xl:w-1/4 gap-y-[25px] lg:gap-y-[25px] px-[5px]">
           <div className="z-20 sticky top-[0px] bg-white py-[10px] px-[15px] mt-[10px] mb-[20px] lg:m-0 lg:p-0 shadow-dropblack25 lg:shadow-none rounded-[10px]">
-            <Qiymet
-              priceBeforePromo={priceBeforePromo}
-              priceAfterPromo={priceAfterPromo}
-              {...{ messages }}
-            />
+            <Qiymet {...{ priceBeforePromo, priceAfterPromo, messages }} />
           </div>
           {/* Toggle part is only  desktop */}
           {selectedMainService.text ? (
@@ -741,13 +785,26 @@ function Sifaris({
                 {/* <InputCustomized /> */}
                 {/* Calendar,data picker */}
 
-                <Download_image {...{ messages }} />
+                <Download_image
+                  onImageUpload={handleChildImageUpload}
+                  {...{ messages }}
+                />
                 <Promocode
                   serviceId={selectedMainService.id}
                   {...{ priceBeforePromo }}
                   onPromoPriceChange={handlePriceUpdate}
                   {...{ messages }}
                 />
+                <div className="block lg:hidden">
+                  <InputCustomized
+                    label="Ünvanı qeyd et"
+                    type="text"
+                    updateInputText={handleAddressUpdate}
+                    // inputTextId={serviceCriteria.id}
+                    // updateInputText={handleDataUpdateForInputText}
+                    // updateInputTextId={handleCriteriaIdForInputText}
+                  />
+                </div>
                 <div className="lg:hidden">
                   <PaymentMethod />
                 </div>
@@ -756,7 +813,17 @@ function Sifaris({
 
             {/* tesdiqle part */}
 
-            <div className="flex flex-col w-full lg:max-w-[300px] 2xl:max-w-[400px]">
+            <div className="flex flex-col lg:justify-between w-full lg:max-w-[300px] 2xl:max-w-[400px]">
+              <div className="hidden lg:block">
+                <InputCustomized
+                  label="Ünvanı qeyd et"
+                  type="text"
+                  updateInputText={handleAddressUpdate}
+                  // inputTextId={serviceCriteria.id}
+                  // updateInputText={handleDataUpdateForInputText}
+                  // updateInputTextId={handleCriteriaIdForInputText}
+                />
+              </div>
               <div className="hidden lg:block">
                 <PaymentMethod />
               </div>
@@ -777,16 +844,26 @@ function Sifaris({
                 </Link>
 
                 <PrimarySmBtn
-                  onClick={handleTesdiqleClicked}
+                  onClick={() => window.my_modal_10.showModal()}
                   btnName={messages["confirm"]}
                   classNames="w-full"
+                />
+                <ModalStandart
+                  dialogId="my_modal_10"
+                  content={
+                    <InputBtnNbTransition
+                      name="Sürətli sifariş"
+                      numberToParent={handleDataInputNumber}
+                      sendDataToParent={handleDataFromChildBtn}
+                    />
+                  }
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className={`${isOrderPassed ? "" : "hidden"}`}>
+      <div className={`${isOrderPassed ? "hidden" : "hidden"}`}>
         <Receipt dataReceipt={dataReceipt} />
       </div>
     </div>

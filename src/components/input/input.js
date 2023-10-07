@@ -29,7 +29,7 @@ const InputCustomized = ({
 
   // Hook to detect outside click and update isClicked
   useOutsideClick(containerRef, () => setIsClicked(false));
-
+  
   return (
     <div className="flex flex-col gap-y-[5px]" ref={containerRef}>
       <p className="hidden lg:flex font-semibold text-[12px] leading-[18px] text-black500 pl-[15px]">

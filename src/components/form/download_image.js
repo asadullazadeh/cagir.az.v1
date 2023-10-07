@@ -1,31 +1,35 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import download from "@/icons/form/download.svg";
 import delete_icon from "@/icons/form/delete.svg";
 
-const Download_image = ({ messages }) => {
-  const [file, setFile] = useState(null);
-  const [imageBase64, setImageBase64] = useState('');
+const Download_image = ({ messages, onImageUpload }) => {
+  const [uploadImage, setUploadImage] = useState({
+    imageData: null,
+    imageBase64: "",
+  });
 
   useEffect(() => {
-      if (file) {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-              setImageBase64(e.target.result);
-              console.log('Base64 Image:', e.target.result);
-          };
-          reader.readAsDataURL(file);  // This reads the file as a data URL
-      }
-  }, [file]);
+    if (uploadImage.imageData) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const newUploadImage = { ...uploadImage, imageBase64: e.target.result };
+        setUploadImage(newUploadImage);
+        onImageUpload(newUploadImage); // Pass the data up to the parent
+        // console.log("Base64 Image:", e.target.result);
+      };
+      reader.readAsDataURL(uploadImage.imageData);
+    }
+  }, [uploadImage.imageData, onImageUpload]);
 
   const handleFileChange = (e) => {
-      if (e.target.files.length > 0) {
-          setFile(e.target.files[0]);
-      }
+    if (e.target.files.length > 0) {
+      setUploadImage((prevState) => ({
+        ...prevState,
+        imageData: e.target.files[0],
+      }));
+    }
   };
-
-  console.log(imageBase64);
 
   return (
     <div className="flex flex-col gap-y-[5px]">

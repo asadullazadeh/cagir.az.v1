@@ -17,7 +17,7 @@ const phonePrefixes = [
 
 import paper_plane from "@/icons/footer/paper_plane.svg";
 
-const InputBtnNbTransition = ({ name }) => {
+const InputBtnNbTransition = ({ name, numberToParent,buttonIsClicked,sendDataToParent }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [phonePrefix, setPhonePrefix] = useState(
     `${phonePrefixes}`.split(",")[0]
@@ -33,9 +33,7 @@ const InputBtnNbTransition = ({ name }) => {
   const handleOptionClick = (option, index) => {
     setPhonePrefix(phonePrefixes[index]);
     setIsOpen(false);
-    // console.log(index);
   };
-  // console.log(phonePrefix);
   //
   const inputRef = useRef(null);
   // this will take the number with code that I entered
@@ -45,7 +43,7 @@ const InputBtnNbTransition = ({ name }) => {
     const inputValue = inputRef.current.value
       .replace(/[^0-9]/g, "")
       .slice(0, 7);
-    // console.log("Telefon nömrəsi:", phonePrefix + inputValue);
+
     let formattedValue = "";
 
     if (inputValue.length > 3) {
@@ -65,6 +63,16 @@ const InputBtnNbTransition = ({ name }) => {
       setEnteredNumber(phonePrefix + inputValue);
     }
   };
+  
+  const handleChange = (event) => {
+    // Send data to parent
+    numberToParent(`${phonePrefix}${event.target.value}`.replace(/-/g, ''));
+  };
+
+function combinedOnChange(event) {
+  handleInputChange(event);
+  handleChange(event);  // assuming handleChange sends data to the parent
+}
 
   //when phonePrefix changes, update enteredNumber with code
   useEffect(() => {
@@ -81,7 +89,7 @@ const InputBtnNbTransition = ({ name }) => {
       setTimeout(() => {
         setIsRotated(false);
       }, 1000); // Adjust the duration as per your requirement
-      window.location.reload();
+      // window.location.reload();
     }
   };
   /* ----------------- Api part to send the number by sms ----------------- */
@@ -112,7 +120,10 @@ const InputBtnNbTransition = ({ name }) => {
     //     console.error(error);
     //   });
   };
-  console.log(enteredNumber.length);
+  
+  const handleClick = () => {
+    sendDataToParent(true);
+}
   return (
     <div>
       <div
@@ -177,7 +188,7 @@ const InputBtnNbTransition = ({ name }) => {
               type="text"
               placeholder="Telefon nömrəsi"
               aria-label="Full name"
-              onChange={handleInputChange}
+              onChange={combinedOnChange}
             />
             <button
               id="myButton"
@@ -186,6 +197,7 @@ const InputBtnNbTransition = ({ name }) => {
               onClick={() => {
                 handleButtonClick();
                 handleInputChange();
+                handleClick()
               }}
             >
               <Transition

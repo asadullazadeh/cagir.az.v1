@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
-import Link from "next/link";
 import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import SearchInput from "@/src/components/input/input_search_sm";
@@ -24,7 +23,6 @@ export default function Carousel1({ onDataReceived, messages }) {
         console.error(error);
       });
   }, []);
-  console.log(carouselPhotos);
 
   const [currentSlide, setCurrentSlide] = useState(1);
   useEffect(() => {

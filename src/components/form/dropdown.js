@@ -13,8 +13,6 @@ const Dropdown = ({
   defaultMain,
   defaultSub,
   onDataCallback,
-  messages,
-  chosenLang,
 }) => {
   const dropdownInfos = {
     0: {
@@ -30,9 +28,7 @@ const Dropdown = ({
       onSelectService: onSelectSub2Service,
     },
   };
-  console.log(defaultSub);
 
-  // console.log(getMainServices[0].serviceNames[0].name);
 
   // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
@@ -87,8 +83,7 @@ const Dropdown = ({
     subServiceName ? subServiceName : defaultSub?.serviceNames?.[0]["name"],
     sub2ServiceName,
   ];
-  console.log(serviceNames);
-  console.log(subServiceName);
+
   // Update subServiceName and sub2ServiceName when mainServiceName changes
   useEffect(() => {
     setSubServiceName("");
@@ -148,7 +143,6 @@ const Dropdown = ({
   };
 
   const isSub2ElementsExist = getSub2Services.length > 0;
-  console.log(getSubServices);
 
   return (
     <div

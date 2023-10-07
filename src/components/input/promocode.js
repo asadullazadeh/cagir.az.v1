@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
 import useOutsideClick from "@/src/components/others/useOutsideClick";
-import download from "@/icons/form/download.svg";
 import validation from "@/icons/form/validation.svg";
 
 const Promocode = ({

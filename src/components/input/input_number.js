@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import useOutsideClick from "@/src/components/others/useOutsideClick";
-import { Transition } from "@headlessui/react";
 
 const MAX_PHONE_LENGTH = 10;
 const phonePrefixes = [

@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import show_pswrd from "@/icons/show_pswrd.svg";
 import close_pswrd from "@/icons/close_pswrd.svg";

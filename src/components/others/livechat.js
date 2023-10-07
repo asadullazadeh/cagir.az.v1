@@ -43,17 +43,17 @@ const LiveChat = () => {
           n.async = true;
           n.type = "text/javascript";
           n.src = "https://cdn.livechatinc.com/tracking.js";
-          console.log("Script element:", n);
+          // console.log("Script element:", n);
           // t.head.appendChild(n);
           if (t.head) {
             try {
-              console.log("Appending script to head", n);
+              // console.log("Appending script to head", n);
               t.head.appendChild(n);
             } catch (e) {
-              console.error("Error appending script", e);
+              // console.error("Error appending script", e);
             }
           } else {
-            console.warn("Document head not available");
+            // console.warn("Document head not available");
           }
         },
       };

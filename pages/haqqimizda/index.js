@@ -11,14 +11,14 @@ import Musteriler from "@/src/components/main/musteriler";
 import Statistika from "@/src/components/main/statistika";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 export async function getServerSideProps() {
-  const data = await import("/data/data.json");
-  const { musteriler } = data;
+  // const data = await import("/data/data.json");
+  // const { musteriler } = data;
   return {
     //will be passed to the page component as props
     props: {
-      musteriler,
+      // musteriler,
     },
-  };
+  };  
 }
 
 export default function Haqqimizda(props) {

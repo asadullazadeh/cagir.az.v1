@@ -1,12 +1,8 @@
 import React, { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import download from "@/icons/form/download.svg";
-import validation from "@/icons/form/validation.svg";
 
 const PaymentMethod = () => {
   return (
-    <div className="flex flex-col gap-y-[5px] px-[15px] lg:px-0 py-[15px] lg:py-0 border border-[1px] border-gray900 rounded-[10px] lg:border-none">
+    <div className="flex flex-col gap-y-[5px] px-[15px] lg:px-0 py-[15px] lg:py-0 border-[1px] border-gray900 rounded-[10px] lg:border-none">
       <p className="font-semibold text-[12px] leading-[18px] text-gray900 lg:text-black500">
         Ödəniş üsulunu seçin
       </p>

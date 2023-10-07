@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import exit_modal from "@/icons/exit_modal.svg";
-import client from "@/public/client.jpg";
 
 const ModalStandart = ({ dialogId, content }) => (
   <dialog id={dialogId} className="modal">

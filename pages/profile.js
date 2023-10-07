@@ -49,27 +49,7 @@ function Profil_settings() {
         });
     }
   }, [token]);
-
-  /* --------------------------------- PROFILE ORDER HISTORY -------------------------------- */
-  const [userOrder, setUserOrder] = useState([]);
-  useEffect(() => {
-    if (token.length > 0) {
-      // Include the token in the request headers
-      const headers = {
-        Authorization: `Bearer ${token}`,
-        "Accept-Language": "az",
-      };
-
-      axios
-        .get("https://api.cagir.az/api/user/getCurrentUser", { headers })
-        .then((response) => {
-          setUserOrder(response.data.result);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  }, [token]);
+  console.log(userData);
 
   function handleSignOut() {
     // Remove the token (or other authentication info) from storage
@@ -117,15 +97,6 @@ function Profil_settings() {
               >
                 Profildən çıx
               </button>
-              {/* <button
-              className="w-auto bg-[#F64242] rounded-[30px] py-[10px] px-[26px]
-                      font-extrabold text-white text-[14px] leading-[21px]
-                       transition duration-400 transform hover:-translate-y-[5px]
-                       
-                      "
-            >
-              Profili sil
-            </button> */}
             </div>
           </div>
           <div className="flex flex-col gap-y-[20px] lg:gap-y-[15px] justify-between lg:w-3/5">
@@ -154,16 +125,6 @@ function Profil_settings() {
           >
             Profildən çıx
           </button>
-          {/* Profili sil button */}
-          {/* <button
-          className="w-full lg:w-auto bg-[#F64242] rounded-[30px] py-[10px] px-[26px]
-                      font-extrabold text-white text-[14px] leading-[21px]
-                       transition duration-400 transform hover:-translate-y-[5px]
-                       drop-shadow-[0_4px_16px_rgba(246, 66, 66, 0.5)]
-                      "
-        >
-          Profili sil
-        </button> */}
         </div>
 
         {/* Sifaris tarixcesi */}

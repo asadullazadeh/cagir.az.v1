@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
-import { FormattedMessage, useIntl } from "react-intl";
-import Image from "next/image";
-import Link from "next/link";
+import {useIntl } from "react-intl";
 import useOutsideClick from "@/src/components/others/useOutsideClick";
 
 const SearchInputMd = ({ onChange, value, sendDataToParent }) => {

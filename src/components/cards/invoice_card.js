@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import InputCustomized from "@/src/components/input/input";
-import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
-import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
 import logo2 from "@/public/logo2_cagiraz.png";
 import signature from "@/public/signature.jpg";
 

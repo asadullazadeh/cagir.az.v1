@@ -7,7 +7,6 @@ import arrow from "@/icons/arrow.svg";
 const SubServiceNoTrend = ({ mainServiceData, subServices, messages }) => {
   const router = useRouter();
   const mainService = router.query.mainService;
-  console.log(subServices);
   const isServiceTrends = subServices.some((service) => service.isServiceTrend);
 
   const containerClasses =

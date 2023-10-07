@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import axios from "axios";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import NavbarDesktop from "@/src/components/header/navbarDesktop";
 import NavbarMobile from "@/src/components/header/navbarMobile";
 import Footer from "@/src/components/main/footer";

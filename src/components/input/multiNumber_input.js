@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import minus from "@/icons/form/minus.svg";
 import plus from "@/icons/form/plus.svg";
 

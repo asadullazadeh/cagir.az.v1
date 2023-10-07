@@ -17,8 +17,7 @@ const SubService = ({ mainServiceData, subServices, messages }) => {
     "drop-shadow-cardAlt lg:drop-shadow-none lg:hover:drop-shadow-cardAlt transition duration-300 rounded-[10px] bg-white";
   const titleClasses =
     "relative text-center font-semibold lg:font-bold text-[12px] sm:text-[15px] md:text-[18px] lg:text-[21px] xl:text-[24px] 2xl:text-[28px] leading-[18px] sm:leading-[22px] md:leading-[27px] lg:leading-[32px] xl:leading-[37px] 2xl:leading-[42px] mb-[15px] lg:mb-[30px] text-gray900";
-  console.log(subServices);
-  console.log(mainServiceData);
+
   return (
     <div>
       <h2 className="my-h2 mt-[20px] lg:mt-[60px] mb-0 lg:mb-[15px] text-center">

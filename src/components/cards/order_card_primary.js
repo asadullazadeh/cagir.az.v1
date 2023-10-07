@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import arrow from "@/icons/arrow.svg";
 import arrow_mobile from "@/icons/arrow_mobile.svg";
 
 const OrderCardPrimary = ({ responseData }) => {
-  console.log(responseData);
+  
   return (
     <div>
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Xidmətlər</h2>
