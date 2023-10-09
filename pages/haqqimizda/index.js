@@ -10,6 +10,9 @@ import Deyerler from "@/src/components/main/deyerler";
 import Musteriler from "@/src/components/main/musteriler";
 import Statistika from "@/src/components/main/statistika";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
+import TeamCard from "@/src/components/cards/team_card";
+import Contact_Part from "@/src/components/others/contact_part"
+
 export async function getServerSideProps() {
   // const data = await import("/data/data.json");
   // const { musteriler } = data;
@@ -18,7 +21,7 @@ export async function getServerSideProps() {
     props: {
       // musteriler,
     },
-  };  
+  };
 }
 
 export default function Haqqimizda(props) {
@@ -74,8 +77,16 @@ export default function Haqqimizda(props) {
         </div>
         <Banner />
         <div className="flex flex-col gap-y-[60px] pt-[60px] lg:pt-[90px]">
-          <Deyerler {...{ messages }} {...{ chosenLang }} />
-          <Statistika {...{ messages }} {...{ chosenLang }} />
+          <Deyerler {...{ messages, chosenLang }} />
+          <Statistika {...{ messages, chosenLang }} />
+          <div className="flex flex-row justify-between">
+            <TeamCard />
+            <TeamCard />
+            <TeamCard />
+            <TeamCard />
+            <TeamCard />
+          </div>
+          <Contact_Part />
           <Musteriler {...{ messages, musteriler }} />
         </div>
         <div className="hidden lg:flex justify-center pt-[65px]">

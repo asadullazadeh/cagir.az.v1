@@ -4,20 +4,25 @@ import axios from "axios";
 import Link from "next/link";
 import { Transition } from "@headlessui/react";
 const phonePrefixes = [
-  "+50",
-  "+51",
-  "+55",
-  "+70",
-  "+77",
-  "+90",
-  "+99",
-  "+10",
-  "+65",
+  "050",
+  "051",
+  "055",
+  "070",
+  "077",
+  "090",
+  "099",
+  "010",
+  "065",
 ];
 
 import paper_plane from "@/icons/footer/paper_plane.svg";
 
-const InputBtnNbTransition = ({ name, numberToParent,buttonIsClicked,sendDataToParent }) => {
+const InputBtnNbTransition = ({
+  name,
+  // numberToParent,
+  buttonIsClicked,
+  sendDataToParent,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [phonePrefix, setPhonePrefix] = useState(
     `${phonePrefixes}`.split(",")[0]
@@ -63,16 +68,20 @@ const InputBtnNbTransition = ({ name, numberToParent,buttonIsClicked,sendDataToP
       setEnteredNumber(phonePrefix + inputValue);
     }
   };
-  
+
   const handleChange = (event) => {
-    // Send data to parent
-    numberToParent(`${phonePrefix}${event.target.value}`.replace(/-/g, ''));
+    if (typeof numberToParent === "function") {
+      // Send data to parent
+      numberToParent(`${phonePrefix}${event.target.value}`);
+    } else {
+      console.warn("numberToParent is not a function");
+    }
   };
 
-function combinedOnChange(event) {
-  handleInputChange(event);
-  handleChange(event);  // assuming handleChange sends data to the parent
-}
+  function combinedOnChange(event) {
+    handleInputChange(event);
+    handleChange(event); // assuming handleChange sends data to the parent
+  }
 
   //when phonePrefix changes, update enteredNumber with code
   useEffect(() => {
@@ -94,7 +103,6 @@ function combinedOnChange(event) {
   };
   /* ----------------- Api part to send the number by sms ----------------- */
   const [numberSentBySms, setNumberSentBySms] = useState(false);
-
   const sendNumberBySms = () => {
     // axios
     //   .post(
@@ -120,10 +128,15 @@ function combinedOnChange(event) {
     //     console.error(error);
     //   });
   };
-  
+
   const handleClick = () => {
-    sendDataToParent(true);
-}
+    if (typeof sendDataToParent === "function") {
+      sendDataToParent(true);
+    } else {
+      console.warn("sendDataToParent is not a function");
+    }
+  };
+
   return (
     <div>
       <div
@@ -197,7 +210,7 @@ function combinedOnChange(event) {
               onClick={() => {
                 handleButtonClick();
                 handleInputChange();
-                handleClick()
+                handleClick();
               }}
             >
               <Transition
