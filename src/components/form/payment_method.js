@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const PaymentMethod = () => {
+const PaymentMethod = ({messages}) => {
   return (
     <div className="flex flex-col gap-y-[5px] px-[15px] lg:px-0 py-[15px] lg:py-0 border-[1px] border-gray900 rounded-[10px] lg:border-none">
       <p className="font-semibold text-[12px] leading-[18px] text-gray900 lg:text-black500">

@@ -93,7 +93,7 @@ function RelatedBlogs({ blogId, categoryId, subject, messages, chosenLang }) {
           className="lg:py-[10px] lg:px-[26px]
           font-medium lg:font-extrabold text-cagiraz text-[12px] lg:text-[14px] leading-[18px] lg:leading-[21px]"
         >
-          Daha çox gör
+          {messages["see-more"]}
         </Link>
       </div>
     </div>

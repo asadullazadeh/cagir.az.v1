@@ -3,6 +3,7 @@ import Image from "next/image";
 import axios from "axios";
 import Link from "next/link";
 import { Transition } from "@headlessui/react";
+
 const phonePrefixes = [
   "050",
   "051",
@@ -22,6 +23,7 @@ const InputBtnNbTransition = ({
   // numberToParent,
   buttonIsClicked,
   sendDataToParent,
+  messages
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [phonePrefix, setPhonePrefix] = useState(
@@ -199,7 +201,7 @@ const InputBtnNbTransition = ({
                     leading-[21px] w-[130px] sm:w-auto bg-white"
               minLength="7"
               type="text"
-              placeholder="Telefon nömrəsi"
+              placeholder={messages["phone-number"]}
               aria-label="Full name"
               onChange={combinedOnChange}
             />

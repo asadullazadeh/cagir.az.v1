@@ -53,7 +53,7 @@ function MediaPost({ mediaId }) {
           <div
             className="font-semibold text-[#959595]"
             dangerouslySetInnerHTML={{
-              __html: description
+              __html: (description || "")
                 ?.replaceAll(
                   "<ul>",
                   '<ul class="list-disc list-inside pt-[3px] pb-[7px]">'

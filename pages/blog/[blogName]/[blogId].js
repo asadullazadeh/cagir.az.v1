@@ -83,7 +83,7 @@ function BlogPost({ initialData }) {
           {/* <p><span style='background-color: transparent;'>*/}
           <div
             dangerouslySetInnerHTML={{
-              __html: description
+              __html: (description || "")
                 .replaceAll(
                   "<ul>",
                   '<ul class="list-disc list-inside pt-[3px] pb-[7px]">'
@@ -110,7 +110,12 @@ function BlogPost({ initialData }) {
           />
           <ModalStandart
             dialogId="my_modal_3"
-            content={<InputBtnNbTransition name={messages["fast-order"]} />}
+            content={
+              <InputBtnNbTransition
+                {...{ messages }}
+                name={messages["fast-order"]}
+              />
+            }
           />
         </div>
       </div>

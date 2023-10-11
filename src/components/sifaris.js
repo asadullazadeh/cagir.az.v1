@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FormattedMessage, useIntl } from "react-intl";
+import Success_Page from "@/src/components/others/success_page";
 
 import {
   CustomInput,
@@ -228,6 +229,7 @@ function Sifaris({
     selectedSub2Service.id,
     chosenLang,
   ]);
+  console.log(getServiceCriterias);
 
   /* --------------------- Multinumber input functionality-FilterType=5 --------------------- */
   // multiNumberArray takes all the information of multi number input for pricing
@@ -561,27 +563,28 @@ function Sifaris({
     setIsOrderPassed(data);
   };
 
-
-  // if (isOrderPassed) {
-  //   axios
-  //   .post(
-  //     "https://api.cagir.az/api/order/v3/create",
-  //     objectDetails, // Make sure you define `objectDetails` before using it
-  //     {
-  //       headers: {
-  //         "Accept-Language": "az",
-  //       },
-  //     }
-  //   )
-  //   .then((response) => {
-  //     // Handle the response data
-  //     setOrderPassed(response.data.isSuccess);
-  //   })
-  //   .catch((error) => {
-  //     // Handle any errors
-  //     console.error(error);
-  //   });
-  // }
+  if (isOrderPassed) {
+    axios
+      .post(
+        "https://api.cagir.az/api/order/v3/create",
+        objectDetails, // Make sure you define `objectDetails` before using it
+        {
+          headers: {
+            "Accept-Language": "az",
+          },
+        }
+      )
+      .then((response) => {
+        // Handle the response data
+        setOrderPassed(response.data.isSuccess);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  }
+  console.log(orderPassed);
+  console.log(isOrderPassed);
 
   // const fetchData = () => {
   // axios
@@ -629,115 +632,131 @@ function Sifaris({
   //   // router.reload(window.location.pathname)
   // }
 
+  const [succesPage, setSuccesPage] = useState(false)
+
+
+
+  useEffect(() => {
+    if (isOrderPassed) {
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      setSuccesPage(true)
+      }, 500);
+      
+      
+    }
+  }, [isOrderPassed]);
+
   return (
     <div>
-      <div
-        className={`flex flex-col lg:flex-row lg:gap-x-[30px] xl:gap-x-[40px] 2xl:gap-x-[60px]
-      pb-[20px] lg:pt-[30px] lg:pb-[90px] w-full ${!isOrderPassed ? "" : ""}`}
-      >
-        {/* Left side of first part in Sifaris */}
-        <div className="z-40 sticky top-[30px] lg:top-[110px] lg:h-screen overflow-y-auto flex flex-col lg:w-1/3 xl:w-1/4 gap-y-[25px] lg:gap-y-[25px] px-[5px]">
-          <div className="z-20 sticky top-[0px] bg-white py-[10px] px-[15px] mt-[10px] mb-[20px] lg:m-0 lg:p-0 shadow-dropblack25 lg:shadow-none rounded-[10px]">
-            <Qiymet {...{ priceBeforePromo, priceAfterPromo, messages }} />
+      {!isOrderPassed && (
+        <div
+          className={`flex flex-col lg:flex-row lg:gap-x-[30px] xl:gap-x-[40px] 2xl:gap-x-[60px]
+      pb-[20px] lg:pt-[30px] lg:pb-[90px] w-full ${succesPage ? "" : ""}`}
+        >
+          {/* Left side of first part in Sifaris */}
+          <div className="z-40 sticky top-[30px] lg:top-[110px] lg:h-screen overflow-y-auto flex flex-col lg:w-1/3 xl:w-1/4 gap-y-[25px] lg:gap-y-[25px] px-[5px]">
+            <div className="z-20 sticky top-[0px] bg-white py-[10px] px-[15px] mt-[10px] mb-[20px] lg:m-0 lg:p-0 shadow-dropblack25 lg:shadow-none rounded-[10px]">
+              <Qiymet {...{ priceBeforePromo, priceAfterPromo, messages }} />
+            </div>
+            {/* Toggle part is only  desktop */}
+            {selectedMainService.text ? (
+              <div className="z-10 hidden lg:block sticky ">
+                <Toggle
+                  {...toggleProps}
+                  whichServiceCategory={whichServiceCategory}
+                />
+              </div>
+            ) : (
+              ""
+            )}
           </div>
-          {/* Toggle part is only  desktop */}
-          {selectedMainService.text ? (
-            <div className="z-10 hidden lg:block sticky ">
-              <Toggle
-                {...toggleProps}
-                whichServiceCategory={whichServiceCategory}
+
+          {/* Right side of first part in Sifaris */}
+          <div className="w-full z-[10] lg:z-auto">
+            <h4
+              className="font-semibold lg:font-bold text-[16px] lg:text-[20px] leading-[14px] lg:leading-[30px] 
+      text-black500 text-center pb-[15px] lg:pb-[15px]"
+            >
+              {messages["order-create"]}
+            </h4>
+            {/* Dropdowns for services */}
+            <div className="">
+              <Dropdown
+                {...dropdownProps}
+                onDataCallback={handleCategoryLevelFromDropdown}
+                onSelectedServiceNames={handleSelectedNamesArray}
               />
             </div>
-          ) : (
-            ""
-          )}
-        </div>
+            {/* criterias example */}
 
-        {/* Right side of first part in Sifaris */}
-        <div className="w-full z-[10] lg:z-auto">
-          <h4
-            className="font-semibold lg:font-bold text-[16px] lg:text-[20px] leading-[14px] lg:leading-[30px] 
-      text-black500 text-center pb-[15px] lg:pb-[15px]"
-          >
-            {messages["order-create"]}
-          </h4>
-          {/* Dropdowns for services */}
-          <div className="">
-            <Dropdown
-              {...dropdownProps}
-              onDataCallback={handleCategoryLevelFromDropdown}
-              onSelectedServiceNames={handleSelectedNamesArray}
-            />
-          </div>
-          {/* criterias example */}
-
-          <div className="flex flex-col pt-[30px] gap-y-[30px]">
-            {getServiceCriterias.map(
-              ({ serviceCriteria, serviceCriteries, index }) => (
-                <div key={index}>
-                  <h5 className="font-semibold text-[12px] leading-[18px] text-black500">
-                    {serviceCriteria.serviceCriteriaNames[0].name}
-                  </h5>
-                  <div className="flex flex-wrap gap-[15px] py-0 lg:py-[5px]  lg:order-1">
-                    {/*  */}
-                    {serviceCriteries.length === 0 &&
-                    serviceCriteria.filterType === 1 ? (
-                      <InputPlusMinus
-                        updateCriteriaValue={handleDataUpdateForMinusPlus}
-                        updateCriteriaId={handleCriteriaIdForMinusPlus}
-                        criteriaId={serviceCriteria.id}
-                      />
-                    ) : serviceCriteries.length === 0 &&
-                      serviceCriteria.filterType === 2 ? (
-                      <InputCustomized
-                        label="Kv.m"
-                        type="number"
-                        inputTextId={serviceCriteria.id}
-                        updateInputText={handleDataUpdateForInputText}
-                        // updateInputTextId={handleCriteriaIdForInputText}
-                      />
-                    ) : (
-                      ""
-                    )}
-                    {/*  */}
-                    {serviceCriteries.map(
-                      ({ serviceCriteriaNames, filterType, index, id }) => (
-                        <div key={index}>
-                          {filterType === 3 || filterType === 0 ? (
-                            <CheckBox
-                              name={serviceCriteriaNames[0].name}
-                              criteriaId={id}
-                              sendDataToParent={handleDataFromChild}
-                            />
-                          ) : filterType === 4 ? (
-                            <RadioButton
-                              name={serviceCriteriaNames[0].name}
-                              checked={
-                                selectedRadioName ===
-                                serviceCriteriaNames[0].name
-                              }
-                              handleChange={(value, criteriaId) =>
-                                handleChange(serviceCriteriaNames[0].name, id)
-                              }
-                              criteriaId={id}
-                            />
-                          ) : filterType === 5 ? (
-                            <CustomInput
-                              name={serviceCriteriaNames[0].name}
-                              updateCriteriaValue={handleDataUpdate}
-                              updateCriteriaId={handleCriteriaId}
-                              // citeriaIdToBack
-                              criteriaId={id}
-                              updateMultiNumberName={handleNameForMultiNumber}
-                            />
-                          ) : (
-                            serviceCriteriaNames[0].name
-                          )}
-                        </div>
-                      )
-                    )}
-                  </div>
-                  {/* <div className="flex flex-row gap-x-[5px] py-[15px] lg:py-0 lg:order-2">
+            <div className="flex flex-col pt-[30px] gap-y-[30px]">
+              {getServiceCriterias.map(
+                ({ serviceCriteria, serviceCriteries, index }) => (
+                  <div key={index}>
+                    <h5 className="font-semibold text-[12px] leading-[18px] text-black500">
+                      {serviceCriteria.serviceCriteriaNames[0].name}
+                    </h5>
+                    <div className="flex flex-wrap gap-[15px] py-0 lg:py-[5px]  lg:order-1">
+                      {/*  */}
+                      {serviceCriteries.length === 0 &&
+                      serviceCriteria.filterType === 1 ? (
+                        <InputPlusMinus
+                          updateCriteriaValue={handleDataUpdateForMinusPlus}
+                          updateCriteriaId={handleCriteriaIdForMinusPlus}
+                          criteriaId={serviceCriteria.id}
+                        />
+                      ) : serviceCriteries.length === 0 &&
+                        serviceCriteria.filterType === 2 ? (
+                        <InputCustomized
+                          label="Kv.m"
+                          type="number"
+                          inputTextId={serviceCriteria.id}
+                          updateInputText={handleDataUpdateForInputText}
+                          // updateInputTextId={handleCriteriaIdForInputText}
+                        />
+                      ) : (
+                        ""
+                      )}
+                      {/*  */}
+                      {serviceCriteries.map(
+                        ({ serviceCriteriaNames, filterType, index, id }) => (
+                          <div key={index}>
+                            {filterType === 3 || filterType === 0 ? (
+                              <CheckBox
+                                name={serviceCriteriaNames[0].name}
+                                criteriaId={id}
+                                sendDataToParent={handleDataFromChild}
+                              />
+                            ) : filterType === 4 ? (
+                              <RadioButton
+                                name={serviceCriteriaNames[0].name}
+                                checked={
+                                  selectedRadioName ===
+                                  serviceCriteriaNames[0].name
+                                }
+                                handleChange={(value, criteriaId) =>
+                                  handleChange(serviceCriteriaNames[0].name, id)
+                                }
+                                criteriaId={id}
+                              />
+                            ) : filterType === 5 ? (
+                              <CustomInput
+                                name={serviceCriteriaNames[0].name}
+                                updateCriteriaValue={handleDataUpdate}
+                                updateCriteriaId={handleCriteriaId}
+                                // citeriaIdToBack
+                                criteriaId={id}
+                                updateMultiNumberName={handleNameForMultiNumber}
+                              />
+                            ) : (
+                              serviceCriteriaNames[0].name
+                            )}
+                          </div>
+                        )
+                      )}
+                    </div>
+                    {/* <div className="flex flex-row gap-x-[5px] py-[15px] lg:py-0 lg:order-2">
                     <button>
                       <Image src={info_btn} alt="info_btn" />
                     </button>
@@ -745,57 +764,76 @@ function Sifaris({
                       50-101kv seçdiyinizə görə + 20AZN əlavə olundu
                     </p>
                   </div> */}
-                </div>
-              )
-            )}
-            <div className="flex flex-col lg:flex-row">
-              {isOpen && <Textarea sendMessage={handleMessage} />}
-              <button
-                className={`pl-[10px] mx-auto lg:m-0 font-medium lg:font-extrabold text-[12px] lg:text-[14px] 
+                  </div>
+                )
+              )}
+              <div className="flex flex-col lg:flex-row">
+                {isOpen && <Textarea sendMessage={handleMessage} />}
+                <button
+                  className={`pl-[10px] mx-auto lg:m-0 font-medium lg:font-extrabold text-[12px] lg:text-[14px] 
             leading-[18px] lg:leading-[21px] text-cagiraz ${
               isOpen ? "hidden" : ""
             }`}
-                onClick={handleToggle}
-              >
-                {isOpen ? "" : "Əlavə qeydlər"}
-              </button>
+                  onClick={handleToggle}
+                >
+                  {isOpen ? "" : messages["additional-notes"]}
+                </button>
+              </div>
             </div>
-          </div>
 
-          {/* Sifarisi tamamla */}
-          <h4
-            className="font-semibold lg:font-bold text-[16px] lg:text-[20px] leading-[14px] lg:leading-[30px] 
+            {/* Sifarisi tamamla */}
+            <h4
+              className="font-semibold lg:font-bold text-[16px] lg:text-[20px] leading-[14px] lg:leading-[30px] 
         text-black500 pb-[20px] lg:pb-[30px] pt-[30px]"
-          >
-            Sifarişi tamamla
-          </h4>
+            >
+              {messages["complete-the-order"]}
+            </h4>
 
-          <div className="flex flex-col lg:flex-row  lg:justify-between ">
-            {/* inputs and map part */}
-            <div className="flex flex-col xl:flex-row lg:gap-x-[30px] xl:gap-x-[30px] 2xl:gap-x-[40px] w-full lg:max-w-[350px] xl:max-w-[450px] 2xl:max-w-[500px]">
-              {/* inputs and map for mobile */}
-              <div className="flex flex-col gap-y-[15px] xl:gap-y-[20px] lg:justify-between w-full ">
-                <div>
-                  <p className="hidden lg:block font-semibold text-[12px] leading-[18px] pb-[5px]">
-                    Tarixi seç
-                  </p>
-                  <Calendar />
+            <div className="flex flex-col lg:flex-row  lg:justify-between ">
+              {/* inputs and map part */}
+              <div className="flex flex-col xl:flex-row lg:gap-x-[30px] xl:gap-x-[30px] 2xl:gap-x-[40px] w-full lg:max-w-[350px] xl:max-w-[450px] 2xl:max-w-[500px]">
+                {/* inputs and map for mobile */}
+                <div className="flex flex-col gap-y-[15px] xl:gap-y-[20px] lg:justify-between w-full ">
+                  <div>
+                    <p className="hidden lg:block font-semibold text-[12px] leading-[18px] pb-[5px]">
+                      {messages["select-date"]}
+                    </p>
+                    <Calendar />
+                  </div>
+
+                  {/* <InputCustomized /> */}
+                  {/* Calendar,data picker */}
+
+                  <Download_image
+                    onImageUpload={handleChildImageUpload}
+                    {...{ messages }}
+                  />
+                  <Promocode
+                    serviceId={selectedMainService.id}
+                    {...{ priceBeforePromo }}
+                    onPromoPriceChange={handlePriceUpdate}
+                    {...{ messages }}
+                  />
+                  <div className="block lg:hidden">
+                    <InputCustomized
+                      label="Ünvanı qeyd et"
+                      type="text"
+                      updateInputText={handleAddressUpdate}
+                      // inputTextId={serviceCriteria.id}
+                      // updateInputText={handleDataUpdateForInputText}
+                      // updateInputTextId={handleCriteriaIdForInputText}
+                    />
+                  </div>
+                  <div className="lg:hidden">
+                    <PaymentMethod />
+                  </div>
                 </div>
+              </div>
 
-                {/* <InputCustomized /> */}
-                {/* Calendar,data picker */}
+              {/* tesdiqle part */}
 
-                <Download_image
-                  onImageUpload={handleChildImageUpload}
-                  {...{ messages }}
-                />
-                <Promocode
-                  serviceId={selectedMainService.id}
-                  {...{ priceBeforePromo }}
-                  onPromoPriceChange={handlePriceUpdate}
-                  {...{ messages }}
-                />
-                <div className="block lg:hidden">
+              <div className="flex flex-col lg:justify-between w-full lg:max-w-[300px] 2xl:max-w-[400px]">
+                <div className="hidden lg:block">
                   <InputCustomized
                     label="Ünvanı qeyd et"
                     type="text"
@@ -805,67 +843,48 @@ function Sifaris({
                     // updateInputTextId={handleCriteriaIdForInputText}
                   />
                 </div>
-                <div className="lg:hidden">
-                  <PaymentMethod />
+                <div className="hidden lg:block">
+                  <PaymentMethod {...{ messages }} />
                 </div>
-              </div>
-            </div>
-
-            {/* tesdiqle part */}
-
-            <div className="flex flex-col lg:justify-between w-full lg:max-w-[300px] 2xl:max-w-[400px]">
-              <div className="hidden lg:block">
-                <InputCustomized
-                  label="Ünvanı qeyd et"
-                  type="text"
-                  updateInputText={handleAddressUpdate}
-                  // inputTextId={serviceCriteria.id}
-                  // updateInputText={handleDataUpdateForInputText}
-                  // updateInputTextId={handleCriteriaIdForInputText}
-                />
-              </div>
-              <div className="hidden lg:block">
-                <PaymentMethod />
-              </div>
-              <div className="flex flex-row w-full justify-between pt-[20px]">
-                <LinkSmBtn
-                  onClick={goBack}
-                  btnName="Geri"
-                  classNames="hidden lg:block"
-                />
-                <Link
-                  // onClick={sifirla}
-                  href="/temizlik-xidmeti/ev-temizleme"
-                >
-                  <PrimaryOutlineSmBtn
-                    btnName="Sıfırla"
+                <div className="flex flex-row w-full justify-between pt-[20px]">
+                  <LinkSmBtn
+                    onClick={goBack}
+                    btnName={messages["btn-back"]}
                     classNames="hidden lg:block"
                   />
-                </Link>
-
-                <PrimarySmBtn
-                  onClick={() => window.my_modal_10.showModal()}
-                  btnName={messages["confirm"]}
-                  classNames="w-full"
-                />
-                <ModalStandart
-                  dialogId="my_modal_10"
-                  content={
-                    <InputBtnNbTransition
-                      name="Sürətli sifariş"
-                      numberToParent={handleDataInputNumber}
-                      sendDataToParent={handleDataFromChildBtn}
+                  <Link
+                    // onClick={sifirla}
+                    href="/temizlik-xidmeti/ev-temizleme"
+                  >
+                    <PrimaryOutlineSmBtn
+                      btnName={messages.reset}
+                      classNames="hidden lg:block"
                     />
-                  }
-                />
+                  </Link>
+
+                  <PrimarySmBtn
+                    onClick={() => window.my_modal_10.showModal()}
+                    btnName={messages["confirm"]}
+                    classNames="w-full"
+                  />
+                  <ModalStandart
+                    dialogId="my_modal_10"
+                    content={
+                      <InputBtnNbTransition
+                        name="Sürətli sifariş"
+                        numberToParent={handleDataInputNumber}
+                        sendDataToParent={handleDataFromChildBtn}
+                        {...{ messages }}
+                      />
+                    }
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className={`${isOrderPassed ? "hidden" : "hidden"}`}>
-        <Receipt dataReceipt={dataReceipt} />
-      </div>
+      )}
+      {succesPage && <Success_Page />}
     </div>
   );
 }

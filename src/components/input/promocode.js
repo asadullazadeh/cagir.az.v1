@@ -79,7 +79,7 @@ const Promocode = ({
             id="promo_code"
             name="promo_code"
             className="block w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none p-0 bg-white"
-            placeholder={isInputClicked ? "" : "Promokod"}
+            placeholder={isInputClicked ? "" : messages["promo-code"]}
             value={promoCode}
             onChange={handlePromoCodeChange}
             onClick={handleInputClick}
@@ -88,7 +88,7 @@ const Promocode = ({
         </div>
         {!isPromoCodeValid && promoCode.length === 8 && (
           <p className="ml-auto font-semibold text-[10px] leading-[15px] text-danger">
-            Promokod səhvdir
+            {messages["promo-code-incorrect"]}
           </p>
         )}
       </div>

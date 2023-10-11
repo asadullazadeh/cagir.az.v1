@@ -89,7 +89,7 @@ export default function Layout({ children }) {
 
       {/* Call Button */}
       <div className="hidden lg:flex justify-center items-center">
-        <CallIncmngWp classNames="bottom-[80px] fixed" />
+        <CallIncmngWp classNames="bottom-[80px] fixed" {...{ messages }} />
       </div>
 
       {/* TabBar & Footer */}

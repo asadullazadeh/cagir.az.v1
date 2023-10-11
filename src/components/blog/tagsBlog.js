@@ -28,7 +28,7 @@ const Tag = ({ name }) => (
   </div>
 );
 
-const TagsBlog = ({ blogId }) => {
+const TagsBlog = ({ blogId,messages }) => {
   const [responseData, setResponseData] = useState([]);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const TagsBlog = ({ blogId }) => {
 
   return (
     <div>
-      <h4 className={titleClasses}>Təqlər</h4>
+      <h4 className={titleClasses}>{messages.tags}</h4>
       {tags && tags.length > 0 ? (
         <div className={tagContainerClasses}>
           {tags.map((tag, index) => <Tag key={index} name={tag.name} />)}

@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import { FormattedMessage, useIntl } from "react-intl";
 import Image from "next/image";
 import VideoPlayer from "@/src/components/VideoHover";
+import Success_Page from "@/src/components/others/success_page";
+
 // import video from "@/public/video";
 const HomePage = () => {
   const videoSrc =
@@ -13,7 +15,7 @@ const HomePage = () => {
   console.log(intl);
   return (
     <div>
-      <div className="flex flex-row">
+      <Success_Page />
         {/* <VideoPlayer videoSrc={videoSrc} />
         <VideoPlayer videoSrc={videoSrc} />
         <VideoPlayer videoSrc={videoSrc} />
@@ -25,7 +27,7 @@ const HomePage = () => {
           async
           defer
         ></script>{" "} */}
-      </div>
+ 
     </div>
   );
 };

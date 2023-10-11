@@ -8,11 +8,14 @@ function CategoriesBlog({ messages, chosenLang }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://api.cagir.az/api/category/getAll", {
-          headers: {
-            "Accept-Language": chosenLang,
-          },
-        });
+        const response = await axios.get(
+          "https://api.cagir.az/api/category/getAll",
+          {
+            headers: {
+              "Accept-Language": chosenLang,
+            },
+          }
+        );
         setCategoriesData(response.data.result);
       } catch (error) {
         console.error("Error fetching categories:", error);

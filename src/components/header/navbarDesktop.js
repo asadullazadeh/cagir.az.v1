@@ -69,7 +69,7 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
       setToken(storedToken);
     }
   }, [token]);
-  
+
   return (
     <>
       <header className="hidden lg:block border-b-[1px] border-[#EAEAEA]">

@@ -56,18 +56,18 @@ function Profil_settings() {
     localStorage.removeItem("token");
 
     // Redirect to a public page or the login page
-    window.location.href = "/";
+    // window.location.href = "/";
   }
 
   // if no profile is logged in, redirect to login page
   useEffect(() => {
-    if (token.length === 0) {
-      // router.replace('/giris');
+    if (token.length === 0 || token === "") {
+      router.replace("/giris");
     }
   }, [token, router]);
 
   return (
-    <div>
+    <div className={token === "" ? "hidden" : ""}>
       <Head>
         <title>Cagir.az - Daxil ol</title>
       </Head>

@@ -43,14 +43,13 @@ const Page = ({ mainServiceData, subServices, chosenLang, parentId }) => {
           <div
             className="text-[10px] lg:text-[16px] leading-[18px] lg:leading-[34px] font-normal lg:font-medium text-[#959595]"
             dangerouslySetInnerHTML={{
-              __html: textService
+              __html: (textService || "") // Ensure textService is not null or undefined
                 .replaceAll(
                   "<ul>",
                   '<ul class="list-disc pt-[3px] pb-[7px] ml-[17px]">'
                 )
                 .replaceAll("<p", '<p class=""')
                 .replaceAll("<span", "<span class=''"),
-              // .replaceAll("<p><span style='background-color: transparent;'>","<p><span style='background-color: transparent; font-black	"),
             }}
           />
         </div>

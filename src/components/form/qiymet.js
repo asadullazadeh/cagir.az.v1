@@ -34,7 +34,7 @@ const Qiymet = ({ priceBeforePromo, priceAfterPromo, messages }) => {
 
         <div className="flex justify-between items-center">
           <p className="font-semibold text-[16px] leading-[24px] text-gray900">
-            Yekun
+            {messages.conclusion}
           </p>
           <p className="font-bold text-[26px] leading-[39px] text-cagiraz">
             {priceAfterPromo ? priceAfterPromo : priceBeforePromo} AZN

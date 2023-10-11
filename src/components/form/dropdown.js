@@ -13,6 +13,7 @@ const Dropdown = ({
   defaultMain,
   defaultSub,
   onDataCallback,
+  messages
 }) => {
   const dropdownInfos = {
     0: {
@@ -168,7 +169,7 @@ const Dropdown = ({
                   htmlFor="button"
                   className="font-semibold text-[12px] leading-[18px] text-black500"
                 >
-                  Xidməti seç
+                  {messages["select-service"]}
                 </label>
                 <button>
                   <Image src={info_btn} alt="info_btn" />

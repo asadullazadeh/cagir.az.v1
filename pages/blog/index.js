@@ -186,7 +186,7 @@ function Blogs() {
             seeMoreBtnIsVisible ? "" : "hidden"
           }`}
         >
-          <PrimaryOutlineSmBtn btnName="Daha çox gör" />
+          <PrimaryOutlineSmBtn btnName={messages["see-more"]} />
         </div>
       </div>
     </div>

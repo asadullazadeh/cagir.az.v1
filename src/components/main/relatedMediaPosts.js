@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const fetchRelatedMediaPosts = async () => {
   const config = {
@@ -20,6 +22,8 @@ const fetchRelatedMediaPosts = async () => {
 };
 
 function RelatedMediaPostItem({ id, imageUrl, insertDate, mediaNames }) {
+  
+
   return (
     <div className="flex flex-row gap-2 lg:gap-4 p-2 rounded-md">
       <Image
@@ -49,6 +53,11 @@ function RelatedMediaPostItem({ id, imageUrl, insertDate, mediaNames }) {
 }
 
 function RelatedMediaPosts() {
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale;
+  const messages = intl.messages;
+
   const [relatedMediaPosts, setRelatedMediaPosts] = useState([]);
 
   useEffect(() => {
@@ -58,7 +67,7 @@ function RelatedMediaPosts() {
   return (
     <div>
       <h4 className="font-semibold lg:font-bold text-lg lg:text-xl leading-6 lg:leading-7 pb-4 pt-8 lg:pt-0 text-center lg:text-left border-t border-gray-300 lg:border-none">
-        Oxşar yazılar
+        {messages["related-posts"]}
       </h4>
       <div className="overflow-y-scroll h-72">
         {relatedMediaPosts.map((post, index) => (
@@ -70,7 +79,8 @@ function RelatedMediaPosts() {
           href="/media"
           className="py-2 px-6 font-medium lg:font-extrabold text-cagiraz text-sm lg:text-base leading-4 lg:leading-5"
         >
-          Daha çox gör
+        {messages["see-more"]}
+
         </Link>
       </div>
     </div>

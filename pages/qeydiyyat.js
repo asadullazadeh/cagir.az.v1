@@ -134,13 +134,13 @@ function Registration() {
 
           <div className="flex flex-col justify-center lg:justify-end place-items-end	">
             <PrimaryMdBtn
-              btnName="Təsdiq et"
+              btnName={messages["do-confirm"]}
               onClick={btnIsClicked}
               classNames="w-full lg:w-1/3 lg:w-auto"
             />
             <LinkSmBtn
               onClick={goBack}
-              btnName="Geri"
+              btnName={messages["btn-back"]}
               classNames="lg:hidden w-full"
             />
           </div>

@@ -28,6 +28,9 @@ const nextConfig = {
       "www.kapitalbank.az",
       "i.imgur.com",
       "bakcell.com",
+      "scontent-ord5-2.cdninstagram.com",
+      "scontent-ord5-1.cdninstagram.com",
+      "www.instagram.com"
     ],
   },
 };
