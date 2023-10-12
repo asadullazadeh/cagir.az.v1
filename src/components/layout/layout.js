@@ -31,14 +31,16 @@ export default function Layout({ children }) {
     "/elaqe",
   ];
 
+  console.log(router);
+
   useEffect(() => {
-    if (!router.query.subService && router.query.mainService) {
-      setElementVisible(true);
-    } else if (visiblePages.includes(router.asPath)) {
-      setElementVisible(true);
-    } else {
-      setElementVisible(false);
-    }
+    const hasMainService = !router.query.subService && router.query.mainService;
+    const isInVisiblePages = visiblePages.includes(router.asPath);
+    const hasKeywordsInPath = ["/xidmet", "/blog", "/media"].some((keyword) =>
+      router.asPath.includes(keyword)
+    );
+
+    setElementVisible(hasMainService || isInVisiblePages || hasKeywordsInPath);
   }, [router.query.subService, router.query.mainService, router.asPath]);
 
   return (
@@ -59,7 +61,7 @@ export default function Layout({ children }) {
 
       {/* Main Content */}
       <main
-        className={`flex flex-col px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full ${
+        className={`flex flex-col px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full  ${
           isSearchIconClickedMobile || isSearchIconClickedDesktop
             ? "hidden"
             : ""

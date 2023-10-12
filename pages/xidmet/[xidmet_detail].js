@@ -34,7 +34,6 @@ function XidmetDetail({ xidmetDetail }) {
   } = responseData;
 
   const { description = "" } = serviceInfoNames?.[0] || {};
-
   return (
     <div>
       <Head>
@@ -44,18 +43,18 @@ function XidmetDetail({ xidmetDetail }) {
         <div className="flex flex-col w-full lg:w-4/5 gap-y-[30px] lg:gap-y-[60px]">
           <div className="flex flex-col pb-[30px] lg:pb-0 drop-shadow-card lg:drop-shadow-none lg:hover:drop-shadow-card transition duration-300">
             <Image
-              width={300}
-              height={300}
+              width={1000}
+              height={900}
               src={`https://api.cagir.az${imageUrl}`}
               alt={titleUrl}
-              className="rounded-[20px] w-full aspect-[300/164] lg:aspect-[908/499]"
+              className="rounded-[20px] w-full aspect-[300/164] lg:aspect-[908/499] "
             />
             <div className="flex flex-row justify-between pt-[5px] lg:pt-[30px] pb-[15px] lg:pb-[30px]">
               <p className="font-medium lg:font-semibold text-[8px] lg:text-[14px] leading-[12px] lg:leading-[21px] text-gray900">
                 {insertDate ? insertDate.slice(0, 10) : ""}
               </p>
               <p className="font-semibold text-[10px] lg:text-[18px] leading-[15px] lg:leading-[27px] text-cagiraz">
-                Baxış: {viewCount}
+                Sifariş sayı: {viewCount}
               </p>
             </div>
             <div

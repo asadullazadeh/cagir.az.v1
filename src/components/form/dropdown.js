@@ -13,7 +13,7 @@ const Dropdown = ({
   defaultMain,
   defaultSub,
   onDataCallback,
-  messages
+  messages,
 }) => {
   const dropdownInfos = {
     0: {
@@ -29,7 +29,6 @@ const Dropdown = ({
       onSelectService: onSelectSub2Service,
     },
   };
-
 
   // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
@@ -171,9 +170,6 @@ const Dropdown = ({
                 >
                   {messages["select-service"]}
                 </label>
-                <button>
-                  <Image src={info_btn} alt="info_btn" />
-                </button>
               </div>
 
               <div>

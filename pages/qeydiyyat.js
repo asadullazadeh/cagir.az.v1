@@ -94,7 +94,7 @@ function Registration() {
 
   useEffect(() => {
     if (register?.data?.token) {
-      router.replace("/");
+      router.replace("/giris");
     }
   }, [register?.data?.token, router]);
 

@@ -43,12 +43,21 @@ const Download_image = ({ messages, onImageUpload }) => {
           className="flex flex-row justify-between items-center border-2 h-[40px] space-x-[16px] border-cagiraz border-dashed rounded-[10px] lg:rounded-full cursor-pointer px-[16px] "
         >
           <Image src={download} alt="download_icon" />
-          <p className="block lg:hidden font-semibold text-[10px] leading-[15px] text-gray900">
-            Şəkil yüklə (Maksimum həcmi 1MB olmalıdır)
-          </p>
-          <p className="hidden lg:block font-semibold text-[10px] leading-[15px] text-gray900">
-            Maksimum həcmi 1MB olmalıdır
-          </p>
+          {uploadImage?.imageData?.name ? (
+            <p className="font-semibold text-[10px] leading-[15px] text-gray900">
+              {uploadImage.imageData.name}
+            </p>
+          ) : (
+            <>
+              <p className="block lg:hidden font-semibold text-[10px] leading-[15px] text-gray900">
+                Şəkil yüklə (Maksimum həcmi 1MB olmalıdır)
+              </p>
+              <p className="hidden lg:block font-semibold text-[10px] leading-[15px] text-gray900">
+                Maksimum həcmi 1MB olmalıdır
+              </p>
+            </>
+          )}
+
           <Image src={delete_icon} alt="delete_icon" className="" />
 
           <input

@@ -60,11 +60,11 @@ function Profil_settings() {
   }
 
   // if no profile is logged in, redirect to login page
-  useEffect(() => {
-    if (token.length === 0 || token === "") {
-      router.replace("/giris");
-    }
-  }, [token, router]);
+  // useEffect(() => {
+  //   if (token.length === 0 || token === "") {
+  //     router.replace("/giris");
+  //   }
+  // }, [token, router]);
 
   return (
     <div className={token === "" ? "hidden" : ""}>

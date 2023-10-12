@@ -132,6 +132,7 @@ function Sifaris({
       text: subService?.serviceNames?.[0]?.text || null,
     };
   };
+  console.log(getSubServices);
   // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
   const selectedSubService = findSubInfoByName(getSubServices, selectedSub);
 
@@ -451,6 +452,7 @@ function Sifaris({
 
   // when selectMain is updated,elements which go to calculate price become empty
   useEffect(() => {
+    setgetServiceCriterias([]);
     setCheckedCheckboxArray([]);
     setMultiNumberArray([]);
     setRadioBtnObject([]);
@@ -583,8 +585,6 @@ function Sifaris({
         console.error(error);
       });
   }
-  console.log(orderPassed);
-  console.log(isOrderPassed);
 
   // const fetchData = () => {
   // axios
@@ -632,18 +632,14 @@ function Sifaris({
   //   // router.reload(window.location.pathname)
   // }
 
-  const [succesPage, setSuccesPage] = useState(false)
-
-
+  const [succesPage, setSuccesPage] = useState(false);
 
   useEffect(() => {
     if (isOrderPassed) {
       setTimeout(() => {
         window.scrollTo(0, 0);
-      setSuccesPage(true)
+        setSuccesPage(true);
       }, 500);
-      
-      
     }
   }, [isOrderPassed]);
 

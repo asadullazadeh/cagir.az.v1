@@ -86,10 +86,16 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
       index: 13,
     },
     {
+      href: "/profile",
+      text: messages["profile"],
+      className: ` ${token ? "" : "hidden"}`,
+      index: 14,
+    },
+    {
       href: "/",
       text: messages["logout"],
       className: `text-danger ${token ? "" : "hidden"}`,
-      index: 14,
+      index: 15,
     },
   ];
 
@@ -128,7 +134,7 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
 
   //when logout button is clicked
   function logout(index) {
-    if (index === 14) {
+    if (index === 15) {
       // Remove the token (or other authentication info) from storage
       localStorage.removeItem("token");
 

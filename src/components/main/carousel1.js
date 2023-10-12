@@ -29,7 +29,7 @@ export default function Carousel1({ onDataReceived, messages }) {
     const interval = setInterval(() => {
       // setCurrentSlide((currentSlide + 1) % 3);
       setCurrentSlide((currentSlide + 1) % carouselPhotos.length);
-    }, 2500);
+    }, 4000);
     return () => clearInterval(interval);
   }, [currentSlide, carouselPhotos.length]);
 

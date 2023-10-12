@@ -25,6 +25,8 @@ const fetchServices = async (chosenLang) => {
   }
 };
 
+
+
 const ServiceItem = ({ id, imageUrl, nameUrl, serviceNames }) => (
   <li key={id}>
     <Link href={`/${nameUrl}`} passHref>
@@ -68,6 +70,7 @@ const Xidmetler = ({ messages, chosenLang }) => {
     fetchServices(chosenLang).then(setResponseData);
   }, [chosenLang]);
 
+console.log(responseData)
   return (
     <div>
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">
