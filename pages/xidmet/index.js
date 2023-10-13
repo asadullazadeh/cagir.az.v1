@@ -134,14 +134,15 @@ function Xidmet() {
                   </p>
                   <div className="flex justify-between mt-[5px] lg:mt-[15px] text-cagiraz">
                     <div className="flex flew-row justify-center items-center space-x-[5px]">
-                      <Image
+                      {/* <Image
                         className="w-[22px] h-[15px]"
                         src={views}
                         alt="views logo"
-                      />
+                      /> */}
+                      
                       <div>
                         <p className="font-semibold text-[16px]	lg:text-[18px] leading-[24px] lg:leading-[27px]">
-                          {viewCount}
+                        Sifariş sayı: {viewCount}
                         </p>
                       </div>
                     </div>

@@ -8,8 +8,8 @@ import views from "@/icons/bloq/views.svg";
 import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
 import SearchInputMd from "@/src/components/input/input_search_md";
 import arrow_right from "@/icons/arrow_right.svg";
-
-function SearchServices({ messages, chosenLang }) {
+import close from "@/icons/header/close.svg";
+function SearchServices({ messages, chosenLang, onExit }) {
   /* ----------------- mainServices ----------------- */
 
   const [mainServices, setMainServices] = useState([]);
@@ -116,12 +116,36 @@ function SearchServices({ messages, chosenLang }) {
       });
   }, [chosenLang]);
 
+  //
+  const [exitBtnClicked, setExitBtnClicked] = useState(false);
+
+  const exitBtn = () => {
+    // Toggle the local state to indicate "exit"
+    setExitBtnClicked((prev) => !prev);
+
+    // Use the callback to inform the parent
+    onExit(exitBtnClicked);
+  };
+
   return (
     <div className="py-[15px] lg:py-[30px]">
-      <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">
-        {/* Hansı xidməti axtarırsınız? */}
-        {messages["which-service-looking"]}
-      </h2>
+      <div className="relative flex flex-row justify-between sm:justify-center mb-[15px] lg:mb-[30px]">
+        <h2 className="my-h2  text-center">
+          {messages["which-service-looking"]}
+        </h2>
+        <button
+          onClick={() => {
+            exitBtn();
+          }}
+        >
+          <Image
+            src={close}
+            alt="close_icon"
+            className="w-[20px] h-[20px] sm:absolute sm:top-0 sm:right-0"
+          />
+        </button>
+      </div>
+
       <div className="flex justify-center mt-[15px] mb-[15px]">
         <SearchInputMd
           onChange={handleInputChange}

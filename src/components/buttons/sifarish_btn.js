@@ -6,13 +6,16 @@ import axios from "axios";
 function SifarishBtn({ classNames, messages }) {
   const router = useRouter();
   const [responseData, setResponseData] = useState([]);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://api.cagir.az/api/service/getAllForFront", {
-          headers: { "Accept-Language": "az" },
-        });
+        const response = await axios.get(
+          "https://api.cagir.az/api/service/getAllForFront",
+          {
+            headers: { "Accept-Language": "az" },
+          }
+        );
         setResponseData(response.data.result);
       } catch (error) {
         console.error(error);

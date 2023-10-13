@@ -118,7 +118,7 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
   const [searchIconIsClicked, setSearchIconIsClicked] = useState(false);
 
   const handleSearchInput = () => {
-    setSearchIconIsClicked(true);
+    setSearchIconIsClicked((prev) => !prev);
     setNavbar(false);
   };
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
-import {useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import useOutsideClick from "@/src/components/others/useOutsideClick";
 
 const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
@@ -13,14 +13,14 @@ const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
   // Hooks and Utilities
   const outsideClickRef = useRef(null);
   useOutsideClick(outsideClickRef, () => setIsClicked(false));
-  
+
   const { locales } = useRouter();
   const intl = useIntl();
   const { locale: chosenLang, messages } = intl;
 
   // Event Handlers
   const handleClick = () => setIsClicked(!isClicked);
-  
+
   const handleDelete = () => {
     setInputValue(value);
     setDeleteBtnClicked(inputValue.length > 0);
@@ -38,7 +38,9 @@ const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
   return (
     <div
       ref={outsideClickRef}
-      className={`flex flex-row w-full lg:w-1/3 justify-between items-center px-[12px] lg:px-[10px] py-[12px] lg:py-[15px] rounded-[10px] lg:rounded-[50px] border ${isClicked ? "border-cagiraz" : "border-gray900"}`}
+      className={`flex flex-row w-full sm:w-2/3 lg:w-1/3 justify-between items-center px-[12px] lg:px-[10px] py-[12px] lg:py-[15px] rounded-[10px] lg:rounded-[50px] border ${
+        isClicked ? "border-cagiraz" : "border-gray900"
+      }`}
       onClick={handleClick}
     >
       <div className="flex flex-row">
@@ -65,7 +67,6 @@ const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
 };
 
 export default SearchInputMd;
-
 
 {
   /* <div onClick={handleDelete} className={`${deleteBtnClicked || value>0 ? 'hidden' : ""}`}>

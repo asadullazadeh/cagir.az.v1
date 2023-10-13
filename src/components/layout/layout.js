@@ -12,10 +12,30 @@ import CallIncmngWp from "@/src/components/buttons/call_incmng_wp";
 import SearchServices from "@/src/components/main/search_services";
 
 export default function Layout({ children }) {
+  //
+  const [isExited, setIsExited] = useState(false);
+
+  const handleExit = () => {
+    setIsExited(true);
+  };
+  //
   const [isSearchIconClickedMobile, setSearchIconClickedMobile] =
     useState(false);
   const [isSearchIconClickedDesktop, setSearchIconClickedDesktop] =
     useState(false);
+
+  useEffect(() => {
+    if (!isSearchIconClickedMobile || !isSearchIconClickedDesktop) {
+      setIsExited(false);
+    }
+  }, [isSearchIconClickedMobile, isSearchIconClickedDesktop]);
+
+  // useEffect(() => {
+  //   if(isExited){
+  //   setSearchIconClickedMobile(false)
+  //   setSearchIconClickedDesktop(false)
+  //   }
+  // },[isExited])
   const [isElementVisible, setElementVisible] = useState(false);
 
   const router = useRouter();
@@ -31,8 +51,6 @@ export default function Layout({ children }) {
     "/elaqe",
   ];
 
-  console.log(router);
-
   useEffect(() => {
     const hasMainService = !router.query.subService && router.query.mainService;
     const isInVisiblePages = visiblePages.includes(router.asPath);
@@ -42,7 +60,31 @@ export default function Layout({ children }) {
 
     setElementVisible(hasMainService || isInVisiblePages || hasKeywordsInPath);
   }, [router.query.subService, router.query.mainService, router.asPath]);
+  console.log("isSearchIconClickedMobile:", isSearchIconClickedMobile);
+  console.log("isSearchIconClickedDesktop:", isSearchIconClickedDesktop);
+  console.log("isExited:", isExited);
 
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
+  useEffect(() => {
+    if (
+      !isSearchIconClickedMobile &&
+      !isSearchIconClickedDesktop &&
+      !isExited
+    ) {
+      setIsSearchVisible(false);
+    } else if (
+      (isSearchIconClickedMobile || isSearchIconClickedDesktop) &&
+      !isExited
+    ) {
+      setIsSearchVisible(true);
+    } else if (
+      (!isSearchIconClickedMobile || !isSearchIconClickedDesktop) &&
+      isExited
+    ) {
+      setIsSearchVisible(false);
+    }
+  }, [isExited, isSearchIconClickedDesktop, isSearchIconClickedMobile]);
+  console.log(isSearchVisible);
   return (
     <div className="screen1700:max-w-[1512px] bg-white">
       <Head>{/* <title>Cagir.az</title> */}</Head>
@@ -62,9 +104,7 @@ export default function Layout({ children }) {
       {/* Main Content */}
       <main
         className={`flex flex-col px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full  ${
-          isSearchIconClickedMobile || isSearchIconClickedDesktop
-            ? "hidden"
-            : ""
+          isSearchVisible ? "hidden" : ""
         }`}
       >
         {children}
@@ -73,12 +113,16 @@ export default function Layout({ children }) {
       {/* Search Services */}
       <div
         className={
-          isSearchIconClickedMobile || isSearchIconClickedDesktop
+          isSearchVisible
             ? "block px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full"
             : "hidden"
         }
       >
-        <SearchServices {...{ messages }} chosenLang={locale} />
+        <SearchServices
+          {...{ messages }}
+          chosenLang={locale}
+          onExit={handleExit}
+        />
       </div>
 
       {/* Buttons */}

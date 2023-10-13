@@ -43,7 +43,7 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
   const [searchIconIsClicked, setSearchIconIsClicked] = useState(false);
 
   const handleClick = () => {
-    setSearchIconIsClicked(true);
+    setSearchIconIsClicked((prev) => !prev);
   };
 
   //set it to the false when other element is clicked

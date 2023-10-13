@@ -37,7 +37,7 @@ const PaymentMethod = ({messages}) => {
             />
             <label
               htmlFor="default-radio-2"
-              className="font-semibold text-[12px] leading-[18px] text-black500"
+              className="font-semibold text-[12px] leading-[18px] text-[#959595]"
             >
               <p>Kart ilə ödəniş</p>
             </label>
