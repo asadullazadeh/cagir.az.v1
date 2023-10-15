@@ -46,11 +46,20 @@ const LangSection = () => {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+  
   useEffect(() => {
-    router.push(router.pathname, router.asPath, {
-      locale: selectedOption.lang,
-    });
+    const excludedPaths = ["/master", "/plumber","/combi","/climate", "/clean"]
+    // Check if the current pathname matches any of the excluded paths
+    const shouldExclude = excludedPaths.includes(router.pathname);
+  
+    // If not excluded, then push the new locale to the router
+    if (!shouldExclude) {
+      router.push(router.pathname, router.asPath, {
+        locale: selectedOption.lang,
+      });
+    }
   }, [selectedOption.lang]);
+  
 
   return (
     <div>

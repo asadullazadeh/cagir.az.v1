@@ -132,10 +132,9 @@ function Sifaris({
       text: subService?.serviceNames?.[0]?.text || null,
     };
   };
-  console.log(getSubServices);
   // to get id and text of selected main service, selectedMainService.id or selectedMainService.text
   const selectedSubService = findSubInfoByName(getSubServices, selectedSub);
-
+  // console.log(selectedSubService)
   // findind previous SubNameUrl and pass it to Sifaris page to change the url
   const findSubNameUrlByName = (subServices, name) => {
     const subService =
@@ -206,12 +205,15 @@ function Sifaris({
 
   /* ---------------------- Select criterias ---------------------- */
   const [getServiceCriterias, setgetServiceCriterias] = useState([]);
+  console.log("selectedSub2Service:", selectedSub2Service.id);
+  console.log("selectedSubService:", selectedSubService.id);
+  // console.log(isSub2ElementsExist)
 
   useEffect(() => {
     const serviceId = isSub2ElementsExist
       ? selectedSub2Service.id
       : selectedSubService.id;
-
+    console.log(serviceId);
     axios
       .post(
         "https://api.cagir.az/api/serviceCriteria/getAllWithParent",

@@ -148,6 +148,7 @@ function SearchServices({ messages, chosenLang, onExit }) {
 
       <div className="flex justify-center mt-[15px] mb-[15px]">
         <SearchInputMd
+        {...{messages,chosenLang}}
           onChange={handleInputChange}
           value={searchVal}
           // sendDataToParent={receiveDataFromChild}

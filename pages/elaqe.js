@@ -22,7 +22,7 @@ function Elaqe() {
         <title>Cagir.az - Əlaqə</title>
       </Head>
       {/* flex flex-col items-center min-h-screen lg:justify-center pt-[50px] lg:pt-0 */}
-      <div className="flex flex-col items-center min-h-screen lg:justify-center pt-[50px] lg:pt-0">
+      <div className="flex flex-col  pb-[50px] pt-[30px] md:pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px]">
         <div className="flex flex-col items-center w-full ">
           <h4 className="my-h4 pb-[30px] lg:pb-[60px]">{messages.contact}</h4>
           <div className="flex flex-col font-medium lg:font-semibold text-[12px] lg:text-[18px] leading-[18px] lg:leading-[34px] pb-[60px] lg:first-letter:w-[500px] text-[#959595]">

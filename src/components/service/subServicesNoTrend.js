@@ -6,7 +6,19 @@ import arrow from "@/icons/arrow.svg";
 
 const SubServiceNoTrend = ({ mainServiceData, subServices, messages }) => {
   const router = useRouter();
-  const mainService = router.query.mainService;
+  const mainService =
+  router.asPath === "/master"
+    ? "usta"
+    : router.asPath === "/plumber"
+    ? "santexnik-ustasi"
+    : router.asPath === "/combi"
+    ? "kombi-ustasi"
+    : router.asPath === "/climate"
+    ? "kondisioner-ustasi"
+    : router.asPath === "/clean"
+    ? "temizlik-xidmeti"
+    : router.query.mainService;
+
   const isServiceTrends = subServices.some((service) => service.isServiceTrend);
 
   const containerClasses =
@@ -15,7 +27,7 @@ const SubServiceNoTrend = ({ mainServiceData, subServices, messages }) => {
     "grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-[15px] sm:gap-[20px] md:gap-[25px] lg:gap-[35px] xl:gap-y-[51px] 2xl:gap-[60px]";
   const linkClasses =
     "flex items-center justify-between w-full aspect-[15/3] sm:aspect-[302/91] rounded-[20px] drop-shadow-cardAlt lg:drop-shadow-none lg:hover:drop-shadow-cardAlt transition duration-300 bg-white px-[15px] sm:px-[30px] py-[9.5px] sm:py-[15px] group";
-
+console.log(subServices)
   return (
     <div>
       {isServiceTrends && (
@@ -42,7 +54,7 @@ const SubServiceNoTrend = ({ mainServiceData, subServices, messages }) => {
                     <li key={id}>
                       <Link
                         className={linkClasses}
-                        href={`/${mainService}/${serviceNames[0].titleUrl}`}
+                        href={`/${mainService}/${nameUrl}`}
                       >
                         <div>
                           <h5 className="relative font-semibold lg:font-bold text-[16px] lg:text-[20px] leading-[24px] lg:leading-[30px] text-black500">

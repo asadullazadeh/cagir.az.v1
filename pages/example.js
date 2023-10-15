@@ -1,73 +1,73 @@
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import { FormattedMessage, useIntl } from "react-intl";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Image from "next/image";
-import VideoPlayer from "@/src/components/VideoHover";
-import Success_Page from "@/src/components/others/success_page";
-
-// import video from "@/public/video";
-const HomePage = () => {
-  const videoSrc =
-    "https://static.videezy.com/system/resources/previews/000/044/479/original/banana.mp4"; // Update with the actual video path
-  const { locales } = useRouter();
-
-  const intl = useIntl();
-  console.log(intl);
+import Link from "next/link";
+import memnuniyyet from "@/icons/deyerler/memnuniyyet.svg";
+import kefiyyet from "@/icons/deyerler/kefiyyet.svg";
+import pesekar from "@/icons/deyerler/pesekar.svg";
+import qenaet from "@/icons/deyerler/qenaet.svg";
+function Deyerler({ messages, chosenLang }) {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .post(`https://api.cagir.az/api/service/service-name`,
+      { titleUrl: "temizlik-xidmeti" }, {
+        headers: {
+          "Accept-Language": "az",
+        },
+      })
+      .then((response) => {
+        // Handle the response data
+        setData(response.data.result);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  }, []);
+  
+console.log(data)
   return (
     <div>
-      <Success_Page />
-        {/* <VideoPlayer videoSrc={videoSrc} />
-        <VideoPlayer videoSrc={videoSrc} />
-        <VideoPlayer videoSrc={videoSrc} />
-        <VideoPlayer videoSrc={videoSrc} />
-        <VideoPlayer videoSrc={videoSrc} /> */}
-        {/* <div class="sk-ww-instagram-reels" data-embed-id="204293"></div>
-        <script
-          src="https://widgets.sociablekit.com/instagram-reels/widget.js"
-          async
-          defer
-        ></script>{" "} */}
- 
+      {/* <h2 className="my-h2 mb-[15px] lg:mb-[60px] text-center">
+        {messages["our-values"]}
+      </h2> */}
+      <div
+        className="grid grid-cols-2 lg:grid-cols-4 gap-x-[10px] sm:gap-x-[40px] md:gap-x-[70px] lg:gap-x-[100px] xl:gap-x-[130px] 2xl:gap-x-[156px] 
+            gap-y-[15px]"
+      >
+        {/* {data.map(({ index, title, text, imageUrl, id }) => (
+          <div key={index}>
+            <div className="flex flex-col">
+              <div className="flex justify-center items-center w-[30px] lg:w-[60px] h-[30px] lg:h-[60px] mb-[15px] lg:mb-[30px]">
+                <Image
+                  src={
+                    id === 37
+                      ? pesekar
+                      : id === 31
+                      ? qenaet
+                      : id === 34
+                      ? memnuniyyet
+                      : kefiyyet
+                  }
+                  alt={title}
+                  className=""
+                  width={200}
+                  height={200}
+                />
+              </div>
+
+              <h5 className="mb-[5px] my-h5">{title}</h5>
+
+              <p className="font-medium lg:font-semibold text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] leading-[12px] sm:leading-[15px] md:leading-[18px] lg:leading-[21px] text-gray900">
+                {text}
+              </p>
+            </div>
+          </div>
+        ))} */}
+      </div>
     </div>
   );
-};
+}
 
-export default HomePage;
-
-// import axios from 'axios';
-// import Image from "next/image";
-
-// function MyPage({ data }) {
-//   console.log(data)
-//     return (
-//         <div>
-//         {data.map((item, index) => {
-//             return (
-//                 <div key={index}>
-//                   {`https://api.cagir.az/${item.imageUrl}`}
-//                   <Image width={600} height={300} alt={index} src={`https://api.cagir.az/${item.imageUrl}`} />
-//                   </div>
-//             )
-//         })}
-//     </div>
-//     );
-// }
-
-// export async function getServerSideProps() {
-//     let data = {};
-
-//     try {
-//         const response = await axios.get('https://api.cagir.az/api/adminDictionary/getAllByType?dictionaryType=6');
-//         data = response.data.result;
-//     } catch (error) {
-//         console.error("There was an error fetching data", error);
-//     }
-
-//     return {
-//         props: {
-//             data
-//         }
-//     };
-// }
-
-// export default MyPage;
+export default Deyerler;

@@ -25,8 +25,6 @@ const fetchServices = async (chosenLang) => {
   }
 };
 
-
-
 const ServiceItem = ({ id, imageUrl, nameUrl, serviceNames }) => (
   <li key={id}>
     <Link href={`/${nameUrl}`} passHref>
@@ -69,7 +67,6 @@ const Xidmetler = ({ messages, chosenLang }) => {
   useEffect(() => {
     fetchServices(chosenLang).then(setResponseData);
   }, [chosenLang]);
-
 console.log(responseData)
   return (
     <div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { FormattedMessage, useIntl } from "react-intl";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,6 +13,11 @@ function BlogCategory() {
   const [size, setSize] = useState(0);
   const [responseData, setResponseData] = useState([]);
   const [seeMoreBtnIsVisible, setseeMoreBtnIsVisible] = useState(true);
+
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale;
+  const messages = intl.messages;
 
   const router = useRouter();
   const { query } = router;
@@ -95,6 +101,7 @@ function BlogCategory() {
         <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">Bloq</h2>
         <div className="flex justify-center mb-[20px] lg:mb-[50px]">
           <SearchInputMd
+            {...{ messages, chosenLang }}
             onChange={handleInputChange}
             value={searchVal}
             sendDataToParent={receiveDataFromChild}

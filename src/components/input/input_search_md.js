@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import useOutsideClick from "@/src/components/others/useOutsideClick";
 
-const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
+const SearchInputMd = ({ onChange, value, sendDataToParent,messages,chosenLang }) => {
   // State variables
   const [searchQuery, setSearchQuery] = useState("");
   const [inputValue, setInputValue] = useState("");
@@ -14,9 +14,6 @@ const SearchInputMd = ({ onChange, value, sendDataToParent }) => {
   const outsideClickRef = useRef(null);
   useOutsideClick(outsideClickRef, () => setIsClicked(false));
 
-  const { locales } = useRouter();
-  const intl = useIntl();
-  const { locale: chosenLang, messages } = intl;
 
   // Event Handlers
   const handleClick = () => setIsClicked(!isClicked);

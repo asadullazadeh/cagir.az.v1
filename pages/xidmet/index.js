@@ -81,6 +81,7 @@ function Xidmet() {
           <SearchInputMd
             onChange={handleInputChange}
             value={searchVal}
+            {...{messages,chosenLang}}
             // sendDataToParent={receiveDataFromChild}
           />
         </div>
@@ -142,7 +143,7 @@ function Xidmet() {
                       
                       <div>
                         <p className="font-semibold text-[16px]	lg:text-[18px] leading-[24px] lg:leading-[27px]">
-                        Sifariş sayı: {viewCount}
+                        Sifariş sayı: {Math.round(viewCount/2)}
                         </p>
                       </div>
                     </div>

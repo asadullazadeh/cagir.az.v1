@@ -13,6 +13,8 @@ const nextConfig = {
       "api.cagir.az",
       "api.cagir.aznull",
       "api.cagir.azundefined",
+      "api.cagir.aztemizlik-xidmeti",
+      "api.cagir.azkombi-ustasi",
       "photos.google.com",
       "images.unsplash.com",
       "wembleypark.com",

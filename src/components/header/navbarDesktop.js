@@ -69,6 +69,7 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
       setToken(storedToken);
     }
   }, [token]);
+  console.log(locale);
 
   return (
     <>

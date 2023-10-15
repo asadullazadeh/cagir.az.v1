@@ -91,6 +91,7 @@ function Blogs() {
         </h2>
         <div className="flex justify-center mb-[20px] lg:mb-[50px]">
           <SearchInputMd
+          {...{messages, chosenLang}}
             onChange={handleInputChange}
             value={searchVal}
             sendDataToParent={receiveDataFromChild}
