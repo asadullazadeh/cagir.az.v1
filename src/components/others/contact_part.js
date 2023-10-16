@@ -7,8 +7,6 @@ import Head from "next/head";
 import TeamCard from "@/src/components/cards/contact_team_card";
 import phone from "@/icons/phone.svg";
 import phone_black from "@/icons/phone_black.svg";
-import envelope from "@/icons/envelope.svg";
-import SocialNetworks from "@/src/components/others/social_ntwrks";
 
 function Contact_Part() {
   return (

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Transition } from "@headlessui/react";
 import axios from "axios";
 import Image from "next/image";
-import Link from "next/link";
 import up from "@/icons/form/up.svg";
 import down from "@/icons/form/down.svg";
 

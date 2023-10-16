@@ -210,8 +210,7 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
             sm:leading-[24px] md:leading-[27px] text-gray900 text-center"
             >
               {linkInfos.map(({ href, text, className, index }) => (
-                // eslint-disable-next-line react/jsx-key
-                <li className={className}>
+                <li key={text} className={className}>
                   <Link
                     passHref
                     href={href}

@@ -14,14 +14,13 @@ const Page = ({ mainServiceData, subServices, parentId }) => {
   const { serviceNames } = mainServiceData;
   const { text: textService, metaTitle } = serviceNames?.[0] || {};
 
- 
   const containerClass = `
     flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
     lg:gap-y-[105px] xl:gap-y-[120px] 2xl:gap-y-[135px]
     pt-[30px] sm:pt-[36px] md:pt-[42px] lg:pt-[48px] xl:pt-[54px] 2xl:pt-[60px]
     pb-[60px] sm:pb-[75px] md:pb-[90px] lg:pb-[105px] xl:pb-[120px] 2xl:pb-[135px]
   `;
-  
+
   return (
     <div>
       <Head>
@@ -105,17 +104,6 @@ export async function getServerSideProps(context) {
     mainServiceUrl,
     chosenLang
   );
-
-  // Check if mainServiceData is null or if it doesn't have the id property
-  // if (!mainServiceData || !mainServiceData.id) {
-  //   return {
-  //     redirect: {
-  //       destination: "/sehife-tapilmadi", // You can adjust this path if it's different
-  //       permanent: false,
-  //     },
-  //   };
-  // }
-
   const subServices = await fetchSubServices(mainServiceData.id, chosenLang);
   return {
     props: {

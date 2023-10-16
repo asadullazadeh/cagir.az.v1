@@ -39,9 +39,7 @@ export default function Layout({ children }) {
   }, [urlsToAvoid,router.asPath, defaultMessages]);
 
 
-  //
-  console.log(locale)
-  const [isExited, setIsExited] = useState(false);
+   const [isExited, setIsExited] = useState(false);
 
   const handleExit = () => {
     setIsExited(true);
@@ -66,16 +64,16 @@ export default function Layout({ children }) {
   // },[isExited])
   const [isElementVisible, setElementVisible] = useState(false);
 
-  const visiblePages = [
-    "/",
-    "/blog",
-    "/media",
-    "/xidmet",
-    "/haqqimizda",
-    "/elaqe",
-  ];
-
   useEffect(() => {
+    const visiblePages = [
+      "/",
+      "/blog",
+      "/media",
+      "/xidmet",
+      "/haqqimizda",
+      "/elaqe",
+    ];
+
     const hasMainService = !router.query.subService && router.query.mainService;
     const isInVisiblePages = visiblePages.includes(router.asPath);
     const hasKeywordsInPath = ["/xidmet", "/blog", "/media"].some((keyword) =>
@@ -83,11 +81,8 @@ export default function Layout({ children }) {
     );
 
     setElementVisible(hasMainService || isInVisiblePages || hasKeywordsInPath);
-  }, [visiblePages, router.query.subService, router.query.mainService, router.asPath]);
+  }, [router.query.subService, router.query.mainService, router.asPath]);
 
-  console.log("isSearchIconClickedMobile:", isSearchIconClickedMobile);
-  console.log("isSearchIconClickedDesktop:", isSearchIconClickedDesktop);
-  console.log("isExited:", isExited);
 
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   useEffect(() => {
@@ -109,7 +104,6 @@ export default function Layout({ children }) {
       setIsSearchVisible(false);
     }
   }, [isExited, isSearchIconClickedDesktop, isSearchIconClickedMobile]);
-  console.log(isSearchVisible);
   return (
     <div className="screen1700:max-w-[1512px] bg-white">
       <Head>{/* <title>Cagir.az</title> */}</Head>

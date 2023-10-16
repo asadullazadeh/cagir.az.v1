@@ -17,20 +17,9 @@ import az from "@/data/az.json";
 export default function Layout({ children }) {
   const router = useRouter();
   const { locales } = router;
-  // master-2 usta
-  //plumber 2549  santexnik-ustasi
-  // combi-1538 kombi-ustasi
-  //climate-1539 kondisioner-ustasi
-  //clean -1 temizlik-xidmeti
-  //
 
   const urlsToAvoid = ["/master", "/plumber", "/combi", "/climate", "/clean"];
 
-  // const { locale: defaultLocale } = useIntl();
-  // const locale = urlsToAvoid.includes(router.asPath) ? "az" : defaultLocale;
-  // const messages = urlsToAvoid.includes(router.asPath)
-  //   ? az
-  //   : useIntl().messages;
 
   const intl = useIntl();
   const { locale: defaultLocale, messages: defaultMessages } = intl;

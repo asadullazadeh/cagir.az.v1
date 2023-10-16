@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import Link from "next/link";
-import arrow from "@/icons/arrow.svg";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import ModalStandart from "@/src/components/modal/modal_stand";
-import exit_modal from "@/icons/exit_modal.svg";
 
 const responsive = {
   0: { items: 2 },
-  420: { items: 2 },
   640: { items: 3 },
   1300: { items: 4 },
 };
 
-function Reyler({ parentId, messages}) {
+function Reyler({ parentId, messages }) {
   const [data, setData] = useState([]);
-  const [expanded, setExpanded] = useState(false);
-  const handleToggle = () => {
-    setExpanded(!expanded);
-  };
   const [showFullDescription, setShowFullDescription] = useState(false);
   const toggleDescription = (index) => {
     setShowFullDescription((prevState) => ({
@@ -36,7 +27,6 @@ function Reyler({ parentId, messages}) {
           `https://api.cagir.az/api/providerFeed/getAllByServiceId?serviceId=${parentId}`
         );
         const resultArrays = response.data.result; // Assuming the response structure has a "data" object containing a "result" object with arrays
-        // console.log(resultArrays);
         const formattedData = resultArrays.map((result) => ({
           name: result.providerName,
           star: result.star,
@@ -138,7 +128,7 @@ function Reyler({ parentId, messages}) {
     <div>
       <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">
         {messages["customer-comments"]}
-        </h2>
+      </h2>
       <div className="flex flex-row gap-x-[30px]">
         {data.length < 3 ? (
           childDataArray.map((child, index) => (
@@ -148,7 +138,6 @@ function Reyler({ parentId, messages}) {
           ))
         ) : (
           <AliceCarousel
-            // activeIndex = {1}
             animationDuration={1300}
             animationType="fadeout"
             autoPlayStrategy="action"

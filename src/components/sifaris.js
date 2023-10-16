@@ -19,7 +19,6 @@ import {
   PrimaryOutlineSmBtn,
   LinkSmBtn,
   RadioButton,
-  MapBtn,
 } from "@/src/components/buttons";
 import {
   Toggle,
@@ -29,8 +28,6 @@ import {
   PaymentMethod,
   Calendar,
 } from "@/src/components/form";
-import info_btn from "@/icons/form/info_btn.svg";
-import Receipt from "@/src/components/payment_result";
 import ModalStandart from "@/src/components/modal/modal_stand";
 import InputBtnNbTransition from "@/src/components/input/input_btn_nb_transition";
 
@@ -362,7 +359,6 @@ function Sifaris({
           }
         : {}
     );
-    // If you have other logic within useEffect, place it here
 
     // If you need a clean-up function, keep it
     return () => {
@@ -711,7 +707,6 @@ function Sifaris({
                           type="number"
                           inputTextId={serviceCriteria.id}
                           updateInputText={handleDataUpdateForInputText}
-                          // updateInputTextId={handleCriteriaIdForInputText}
                         />
                       ) : (
                         ""
@@ -754,14 +749,6 @@ function Sifaris({
                         )
                       )}
                     </div>
-                    {/* <div className="flex flex-row gap-x-[5px] py-[15px] lg:py-0 lg:order-2">
-                    <button>
-                      <Image src={info_btn} alt="info_btn" />
-                    </button>
-                    <p className="font-medium text-[10px] leading-[15px] text-gray900">
-                      50-101kv seçdiyinizə görə + 20AZN əlavə olundu
-                    </p>
-                  </div> */}
                   </div>
                 )
               )}
@@ -817,9 +804,6 @@ function Sifaris({
                       label="Ünvanı qeyd et"
                       type="text"
                       updateInputText={handleAddressUpdate}
-                      // inputTextId={serviceCriteria.id}
-                      // updateInputText={handleDataUpdateForInputText}
-                      // updateInputTextId={handleCriteriaIdForInputText}
                     />
                   </div>
                   <div className="lg:hidden">
@@ -836,9 +820,6 @@ function Sifaris({
                     label="Ünvanı qeyd et"
                     type="text"
                     updateInputText={handleAddressUpdate}
-                    // inputTextId={serviceCriteria.id}
-                    // updateInputText={handleDataUpdateForInputText}
-                    // updateInputTextId={handleCriteriaIdForInputText}
                   />
                 </div>
                 <div className="hidden lg:block">

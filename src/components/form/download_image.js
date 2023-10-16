@@ -20,7 +20,7 @@ const Download_image = ({ messages, onImageUpload }) => {
       };
       reader.readAsDataURL(uploadImage.imageData);
     }
-  }, [uploadImage.imageData, onImageUpload]);
+  }, [uploadImage, onImageUpload]);
 
   const handleFileChange = (e) => {
     if (e.target.files.length > 0) {

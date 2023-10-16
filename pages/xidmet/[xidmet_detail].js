@@ -40,7 +40,7 @@ function XidmetDetail({ xidmetDetail }) {
         <title>{responseData.metaTitle}</title>
       </Head>
       <div className="flex flex-col items-center py-[15px] lg:py-[30px]">
-        <div className="flex flex-col w-full lg:w-4/5 gap-y-[30px] lg:gap-y-[60px]">
+        <div className="flex flex-col w-full  gap-y-[30px] lg:gap-y-[60px]">
           <div className="flex flex-col pb-[30px] lg:pb-0 drop-shadow-card lg:drop-shadow-none lg:hover:drop-shadow-card transition duration-300">
             <Image
               width={1000}

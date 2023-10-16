@@ -26,7 +26,7 @@ const Page = ({ mainServiceData, subServices, chosenLang, parentId }) => {
   return (
     <div>
       <Head>
-          {/* <meta name="description" content={mainServiceData.serviceNames[0].metaDescription} /> */}
+          <meta name="description" content={mainServiceData.serviceNames[0].metaDescription} />
           <title>{metaTitle}</title>
       </Head>
       <Badge {...{ chosenLang, messages }} />

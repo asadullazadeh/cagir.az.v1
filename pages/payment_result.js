@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
 import Invoice_Card from "@/src/components/cards/invoice_card";
-import signature from "@/public/signature.jpg";
 
 function Payment() {
   return (

@@ -3,11 +3,8 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import phone from "@/icons/tab_bar/phone.svg";
 import whatsapp from "@/icons/tab_bar/whatsapp.svg";
-import client from "@/public/client.jpg";
 import jale from "@/public/jale.jpg";
-import call_back from "@/icons/tab_bar/call_back.svg";
-import ModalStandart from "@/src/components/modal/modal_stand";
-import InputBtnNbTransition from "@/src/components/input/input_btn_nb_transition";
+
 import LiveChat from "@/src/components/others/livechat";
 
 const TabBar = ({ classNames, messages }) => {
@@ -99,22 +96,7 @@ const TabBar = ({ classNames, messages }) => {
               Zəng
             </span>
           </Link>
-          {/* Geri zeng icons */}
-
-          {/* <button
-            onClick={() => window.my_modal_6.showModal()}
-            type="button"
-            className="inline-flex flex-col items-center justify-center"
-          >
-            <Image src={call_back} alt="whatsapp_icon" />
-            <span className="text-[10px] leading-[15px] text-danger">
-              Geri Zəng
-            </span>
-          </button> */}
-          {/* <ModalStandart
-            dialogId="my_modal_6"
-            content={<InputBtnNbTransition name="Sürətli sifariş" />}
-          /> */}
+          
           {/* Whatsapp */}
           <Link
             href="https://wa.me/994703482606"
@@ -136,7 +118,7 @@ const TabBar = ({ classNames, messages }) => {
                 width={65}
                 height={65}
                 className="bubble z-50 rounded-full w-[22px] h-[22px] object-cover object-center"
-                onclick="LiveChatWidget.call('maximize')"
+                onClick="LiveChatWidget.call('maximize')"
                 src={jale}
               />
 

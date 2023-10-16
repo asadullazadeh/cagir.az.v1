@@ -69,7 +69,6 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
       setToken(storedToken);
     }
   }, [token]);
-  console.log(locale);
 
   return (
     <>
@@ -94,7 +93,7 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
             {/* 1st navbar-right side */}
             <ul className="flex flex-row justify-center items-center space-x-[30px] h-full z-10">
               {/* search icon */}
-              <li className="">
+              <li key="search" className="">
                 <div className="group flex relative">
                   <button onClick={handleClick}>
                     <div className="relative group ">
@@ -121,7 +120,7 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
               </li>
 
               {/* wallet icon */}
-              <li>
+              <li key="wallet">
                 <Link className="group flex relative" href="/payment">
                   <span>
                     <div
@@ -150,7 +149,7 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
                 </Link>
               </li>
               {/* Profile if not logged in */}
-              <li>
+              <li key="profile">
                 <Link
                   onClick={handleDeClickSearchIcon}
                   className={
@@ -194,7 +193,7 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
               </li>
               {/* profile if logged in */}
               {/* Language choice section */}
-              <li>
+              <li key="language">
                 <LangSection />
               </li>
             </ul>
@@ -209,7 +208,7 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
             >
               {linkInfos.map(({ index, href, text }) => (
                 // eslint-disable-next-line react/jsx-key
-                <li>
+                <li key={href}>
                   <Link onClick={handleDeClickSearchIcon} href={href}>
                     <p className="transition duration-300 hover:text-black">
                       {text}

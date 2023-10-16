@@ -4,13 +4,12 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import views from "@/icons/bloq/views.svg";
 import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
 import SearchInputMd from "@/src/components/input/input_search_md";
 
 function BlogCategory() {
-  const { locales } = useRouter();
   const intl = useIntl();
   const chosenLang = intl.locale;
   const messages = intl.messages;

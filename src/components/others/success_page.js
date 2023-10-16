@@ -1,17 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-// import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
-import Link from "next/link";
-import views from "@/icons/bloq/views.svg";
-import Image from "next/image";
-import Head from "next/head";
 import { useRouter } from "next/router";
-import { FormattedMessage, useIntl } from "react-intl";
-import InputCustomized from "@/src/components/input/input";
-import InputPassword from "@/src/components/input/input_password";
-import InputNumber from "@/src/components/input/input_number";
+import { useIntl } from "react-intl";
+
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
-import Cookies from "js-cookie";
 import LinkSmBtn from "@/src/components/buttons/link_sm_btn";
 import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
 

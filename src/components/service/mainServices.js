@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import arrow from "@/icons/arrow.svg";
 import arrow_mobile from "@/icons/arrow_mobile.svg";
-import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
 
 const fetchServices = async (chosenLang) => {
   const config = {
@@ -67,7 +66,7 @@ const Xidmetler = ({ messages, chosenLang }) => {
   useEffect(() => {
     fetchServices(chosenLang).then(setResponseData);
   }, [chosenLang]);
-console.log(responseData)
+  console.log(responseData);
   return (
     <div>
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">

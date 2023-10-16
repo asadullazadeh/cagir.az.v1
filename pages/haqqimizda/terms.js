@@ -1,10 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 function Terms() {
-  const { locales } = useRouter();
   const intl = useIntl();
-  const chosenLang = intl.locale
   const messages = intl.messages
   return (
     <div>

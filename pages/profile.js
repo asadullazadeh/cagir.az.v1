@@ -10,6 +10,8 @@ import InputNumber from "@/src/components/input/input_number";
 import InputPassword from "@/src/components/input/input_password";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 import client from "@/public/avatar.svg";
+import download from "@/icons/form/download.svg";
+import delete_icon from "@/icons/form/delete.svg";
 
 function Profil_settings() {
   const { locales } = useRouter();
@@ -27,8 +29,34 @@ function Profil_settings() {
     }
   }, []);
 
-  /* --------------------------------- sign out -------------------------------- */
+  /* --------------------------------- add profile photo -------------------------------- */
+  // const [uploadImage, setUploadImage] = useState({
+  //   imageData: null,
+  //   imageBase64: "",
+  // });
 
+  // useEffect(() => {
+  //   if (uploadImage.imageData) {
+  //     const reader = new FileReader();
+  //     reader.onload = (e) => {
+  //       const newUploadImage = { ...uploadImage, imageBase64: e.target.result };
+  //       setUploadImage(newUploadImage);
+  //       // onImageUpload(newUploadImage); // Pass the data up to the parent
+  //       // console.log("Base64 Image:", e.target.result);
+  //     };
+  //     reader.readAsDataURL(uploadImage.imageData);
+  //   }
+  // }, [uploadImage]);
+
+  // const handleFileChange = (e) => {
+  //   if (e.target.files.length > 0) {
+  //     setUploadImage((prevState) => ({
+  //       ...prevState,
+  //       imageData: e.target.files[0],
+  //     }));
+  //   }
+  // };
+  // console.log(uploadImage)
   /* --------------------------------- PROFILE DATA API -------------------------------- */
   const [userData, setUserData] = useState([]);
   useEffect(() => {
@@ -49,7 +77,7 @@ function Profil_settings() {
         });
     }
   }, [token]);
-  console.log(userData);
+  // console.log(userData);
 
   function handleSignOut() {
     // Remove the token (or other authentication info) from storage
@@ -87,6 +115,37 @@ function Profil_settings() {
               {userData.firstName + " " + userData.lastName}
             </h5>
             <div className="hidden lg:flex flex-col gap-y-[30px] lg:pb-[30px]">
+              {/*  */}
+              <div className="inline-flex flex-col w-full">
+        <label
+          htmlFor="dropzone-file"
+          className="flex flex-row justify-between items-center border-2 h-[40px] space-x-[16px] border-cagiraz border-dashed rounded-[10px] lg:rounded-full cursor-pointer px-[16px] "
+        >
+          <Image src={download} alt="download_icon" />
+          {/* {uploadImage?.imageData?.name ? (
+            <p className="font-semibold text-[10px] leading-[15px] text-gray900">
+              {uploadImage.imageData.name}
+            </p>
+          ) : (
+            <>
+              <p className="block lg:hidden font-semibold text-[10px] leading-[15px] text-gray900">
+                Şəkil yüklə 
+              </p>
+       
+            </>
+          )} */}
+
+          <Image src={delete_icon} alt="delete_icon" className="" />
+
+          <input
+            id="dropzone-file"
+            type="file"
+            className="hidden"
+            // onChange={handleFileChange}
+          />
+        </label>
+      </div>
+              {/*  */}
               <button
                 onClick={() => {
                   handleSignOut();

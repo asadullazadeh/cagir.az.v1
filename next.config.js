@@ -1,3 +1,5 @@
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
@@ -32,9 +34,21 @@ const nextConfig = {
       "bakcell.com",
       "scontent-ord5-2.cdninstagram.com",
       "scontent-ord5-1.cdninstagram.com",
-      "www.instagram.com"
+      "www.instagram.com",
     ],
   },
+  // webpack: (config, { isServer }) => {
+  //   if (!isServer) {
+  //     config.plugins.push(
+  //       new BundleAnalyzerPlugin({
+  //         analyzerMode: 'server',
+  //         analyzerPort: 8888,
+  //       })
+  //     );
+  //   }
+
+  //   return config;
+  // },
 };
 
 module.exports = nextConfig;

@@ -15,7 +15,6 @@ import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 import {
   CheckBox,
   PrimarySmBtn,
-  // PrimaryMdBtn,
   PrimaryOutlineSmBtn,
   LinkSmBtn,
 } from "@/src/components/buttons";

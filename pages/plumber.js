@@ -106,16 +106,6 @@ export async function getServerSideProps(context) {
     chosenLang
   );
 
-  // Check if mainServiceData is null or if it doesn't have the id property
-  // if (!mainServiceData || !mainServiceData.id) {
-  //   return {
-  //     redirect: {
-  //       destination: "/sehife-tapilmadi", // You can adjust this path if it's different
-  //       permanent: false,
-  //     },
-  //   };
-  // }
-
   const subServices = await fetchSubServices(mainServiceData.id, chosenLang);
   return {
     props: {
