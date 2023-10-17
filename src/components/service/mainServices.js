@@ -66,7 +66,6 @@ const Xidmetler = ({ messages, chosenLang }) => {
   useEffect(() => {
     fetchServices(chosenLang).then(setResponseData);
   }, [chosenLang]);
-  console.log(responseData);
   return (
     <div>
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">

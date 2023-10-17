@@ -56,6 +56,8 @@ const Badge = () => (
         <div key={badge.alt}>
           <Link href={badge.href} className="flex flex-col items-center">
             <Image
+            width={50}
+            height={68}
               className="block w-[50px] h-[68px]"
               {...badge}
               alt={badge.text}
@@ -70,8 +72,13 @@ const Badge = () => (
     <div className="flex lg:hidden justify-center gap-x-[55px] sm:gap-x-[83px] md:gap-x-[110px]">
       {mobileBadges.map((badge) => (
         <div key={badge.alt}>
-          <Link href={badge.href} className="flex flex-col items-center">
+          <Link 
+          
+           href={badge.href} className="flex flex-col items-center">
+            
             <Image
+            width={42}
+            height={45}
               className="block w-[42px] h-[45px]"
               {...badge}
               alt={badge.text}

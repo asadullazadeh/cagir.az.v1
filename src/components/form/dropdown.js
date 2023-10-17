@@ -265,17 +265,6 @@ const Dropdown = ({
                             .replaceAll("<p", '<p class=""')}`,
                         }}
                       ></div>
-
-                      {/* <div
-                        onClick={() => closeDesc(index)}
-                        className={`${
-                          descIsOpen[index] ? "" : ""
-                        } `}
-                        dangerouslySetInnerHTML={{
-                          __html: `${findDescById(index)}`,
-                        }}
-                      /> */}
-
                       <button
                         className="font-semibold block text-cagiraz"
                         onClick={() => handleToggleDesc(index)}

@@ -56,7 +56,11 @@ export default function Carousel1({ onDataReceived, messages }) {
           <h1 className="flex flex-col my-h1 text-black500 xs:w-[250px] sm:w-1/2 lg:w-full">
             {messages["slider-part-2"]}
           </h1>
-          <p className="flex flex-col text-[10px] lg:text-[12px] leading-[18px] lg:leading-[22px] lg:tracking-[0.02em] text-gray900 w-full  screen428:w-[300px] lg:w-[300px] xl:w-[380px] 2xl:w-[411px] lg:pt-[20px] 2xl:pt-[30px]">
+          <p
+            className="flex flex-col text-[10px] lg:text-[12px] leading-[18px] lg:leading-[22px] 
+          lg:tracking-[0.02em] text-[#595959] lg:text-[#959595] w-full  screen428:w-[300px] lg:w-[300px] xl:w-[380px] 
+          2xl:w-[411px] lg:pt-[20px] 2xl:pt-[30px]"
+          >
             {messages["hero-text"]}
           </p>
         </div>

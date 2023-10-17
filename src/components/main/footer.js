@@ -3,7 +3,6 @@ import Link from "next/link";
 import logo from "@/public/logo.svg";
 import phone from "@/icons/footer/phone.svg";
 import copyright from "@/icons/footer/copyright.svg";
-import paper_plane from "@/icons/footer/paper_plane.svg";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import InputBtnTransition from "@/src/components/input/input_btn_transition";
 

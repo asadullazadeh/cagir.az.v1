@@ -3,7 +3,7 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 
 const fetchRelatedMediaPosts = async () => {
   const config = {
@@ -53,9 +53,7 @@ function RelatedMediaPostItem({ id, imageUrl, insertDate, mediaNames }) {
 }
 
 function RelatedMediaPosts() {
-  const { locales } = useRouter();
   const intl = useIntl();
-  const chosenLang = intl.locale;
   const messages = intl.messages;
 
   const [relatedMediaPosts, setRelatedMediaPosts] = useState([]);

@@ -53,8 +53,6 @@ const BlogCard = ({
           {insertDate.slice(0, 10)}
         </p>
         <div className="ml-auto border border-cagiraz rounded-lg">
-          {/* what to add for this part? */}
-          {/* blog/kateqoriya/${category.titleUrl} */}
           <p className="font-semibold	text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px] ">
             {categoryName}
           </p>

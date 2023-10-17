@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { useIntl } from "react-intl";
@@ -14,13 +14,6 @@ import az from "@/data/az.json";
 
 export default function Layout({ children }) {
   const router = useRouter();
-  const { locales } = router;
-  // master-2 usta
-  //plumber 2549  santexnik-ustasi
-  // combi-1538 kombi-ustasi
-  //climate-1539 kondisioner-ustasi
-  //clean -1 temizlik-xidmeti
-  //
 
   const urlsToAvoid = ["/master", "/plumber", "/combi", "/climate", "/clean"];
 
@@ -32,14 +25,13 @@ export default function Layout({ children }) {
 
   const intl = useIntl();
   const { locale: defaultLocale, messages: defaultMessages } = intl;
-  const locale = urlsToAvoid.includes(router.asPath) ? 'az' : defaultLocale;
-  
+  const locale = urlsToAvoid.includes(router.asPath) ? "az" : defaultLocale;
+
   const messages = useMemo(() => {
     return urlsToAvoid.includes(router.asPath) ? az : defaultMessages;
-  }, [urlsToAvoid,router.asPath, defaultMessages]);
+  }, [urlsToAvoid, router.asPath, defaultMessages]);
 
-
-   const [isExited, setIsExited] = useState(false);
+  const [isExited, setIsExited] = useState(false);
 
   const handleExit = () => {
     setIsExited(true);
@@ -83,27 +75,14 @@ export default function Layout({ children }) {
     setElementVisible(hasMainService || isInVisiblePages || hasKeywordsInPath);
   }, [router.query.subService, router.query.mainService, router.asPath]);
 
-
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+
   useEffect(() => {
-    if (
-      !isSearchIconClickedMobile &&
-      !isSearchIconClickedDesktop &&
-      !isExited
-    ) {
-      setIsSearchVisible(false);
-    } else if (
-      (isSearchIconClickedMobile || isSearchIconClickedDesktop) &&
-      !isExited
-    ) {
-      setIsSearchVisible(true);
-    } else if (
-      (!isSearchIconClickedMobile || !isSearchIconClickedDesktop) &&
-      isExited
-    ) {
-      setIsSearchVisible(false);
-    }
+    setIsSearchVisible(
+      (isSearchIconClickedMobile || isSearchIconClickedDesktop) && !isExited
+    );
   }, [isExited, isSearchIconClickedDesktop, isSearchIconClickedMobile]);
+
   return (
     <div className="screen1700:max-w-[1512px] bg-white">
       <Head>{/* <title>Cagir.az</title> */}</Head>

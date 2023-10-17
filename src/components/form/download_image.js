@@ -9,6 +9,16 @@ const Download_image = ({ messages, onImageUpload }) => {
     imageBase64: "",
   });
 
+  const [deleteBtn, setDeleteBtn] = useState(false);
+
+  const handleClick = () => {
+    // setDeleteBtn((prev) => !prev)
+    setUploadImage({
+      imageData: null,
+      imageBase64: "",
+    });
+  };
+
   useEffect(() => {
     if (uploadImage.imageData) {
       const reader = new FileReader();
@@ -19,8 +29,10 @@ const Download_image = ({ messages, onImageUpload }) => {
         // console.log("Base64 Image:", e.target.result);
       };
       reader.readAsDataURL(uploadImage.imageData);
+    } else {
+      setUploadImage("");
     }
-  }, [uploadImage, onImageUpload]);
+  }, [uploadImage.imageData, onImageUpload]);
 
   const handleFileChange = (e) => {
     if (e.target.files.length > 0) {
@@ -31,42 +43,45 @@ const Download_image = ({ messages, onImageUpload }) => {
     }
   };
 
+  
   return (
-    <div className="flex flex-col gap-y-[5px]">
+    <div className="flex flex-col gap-y-[5px]  ">
       <p className="hidden lg:block font-semibold text-[12px] leading-[18px] text-black500">
         {messages["upload-image"]}
       </p>
 
-      <div className="inline-flex flex-col w-full">
+      <div className="flex flex-row justify-between w-full border-2 border-cagiraz border-dashed rounded-[10px] lg:rounded-full h-[40px] px-[16px]">
         <label
           htmlFor="dropzone-file"
-          className="flex flex-row justify-between items-center border-2 h-[40px] space-x-[16px] border-cagiraz border-dashed rounded-[10px] lg:rounded-full cursor-pointer px-[16px] "
+          className="flex flex-row justify-between items-center  space-x-[16px]  cursor-pointer  w-full"
         >
-          <Image src={download} alt="download_icon" />
-          {uploadImage?.imageData?.name ? (
-            <p className="font-semibold text-[10px] leading-[15px] text-gray900">
-              {uploadImage.imageData.name}
-            </p>
-          ) : (
-            <>
-              <p className="block lg:hidden font-semibold text-[10px] leading-[15px] text-gray900">
-                Şəkil yüklə (Maksimum həcmi 1MB olmalıdır)
-              </p>
-              <p className="hidden lg:block font-semibold text-[10px] leading-[15px] text-gray900">
-                Maksimum həcmi 1MB olmalıdır
-              </p>
-            </>
-          )}
+          <div className="flex flex-row gap-x-[15px] sm:gap-x-[30px] lg:gap-x-[15px]  items-center">
+            <Image src={download} alt="download_icon" />
 
-          <Image src={delete_icon} alt="delete_icon" className="" />
+            {uploadImage?.imageData?.name ? (
+              <p className="font-semibold text-[10px] leading-[15px] text-gray900">
+                {uploadImage.imageData.name}
+              </p>
+            ) : (
+              <>
+                <p className="font-semibold text-[10px] leading-[15px] text-gray900">
+                  Şəkil yüklə (Ətraflı məlumat üçün)
+                </p>
+              </>
+            )}
+          </div>
 
           <input
+            placeholder="Şəkil yüklə (Ətraflı məlumat üçün)"
             id="dropzone-file"
             type="file"
             className="hidden"
             onChange={handleFileChange}
           />
         </label>
+        <button onClick={handleClick}>
+          <Image src={delete_icon} alt="delete_icon" className="" />
+        </button>
       </div>
     </div>
   );

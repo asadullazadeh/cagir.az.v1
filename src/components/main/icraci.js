@@ -50,7 +50,7 @@ const ProfileCard = ({ name, title, image, description }) => (
         <div className="w-full h-full">
           <p
             className=" italic font-semibold lg:font-bold text-[10px] sm:text-[12px] lg:text-[14px] leading-[18px]
-                  sm:leading-[19px] lg:leading-[21px] text-black100"
+                  sm:leading-[19px] lg:leading-[21px] text-[#404040]"
           >
             {description}
           </p>

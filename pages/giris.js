@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
-import views from "@/icons/bloq/views.svg";
-import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
@@ -10,7 +8,6 @@ import InputCustomized from "@/src/components/input/input";
 import InputPassword from "@/src/components/input/input_password";
 import InputNumber from "@/src/components/input/input_number";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
-import Cookies from "js-cookie";
 
 import {
   CheckBox,

@@ -15,16 +15,11 @@ const nextConfig = {
       "api.cagir.az",
       "api.cagir.aznull",
       "api.cagir.azundefined",
-      "api.cagir.aztemizlik-xidmeti",
-      "api.cagir.azkombi-ustasi",
       "photos.google.com",
       "images.unsplash.com",
-      "wembleypark.com",
-      "hydeparkwinterwonderland.com",
       "plus.unsplash.com",
       "via.placeholder.com",
       "tailwindui.com",
-      "lh3.googleusercontent.com",
       "talpa.az",
       "www.facebook.com",
       "www.itchf.org",
@@ -41,7 +36,7 @@ const nextConfig = {
   //   if (!isServer) {
   //     config.plugins.push(
   //       new BundleAnalyzerPlugin({
-  //         analyzerMode: 'server',
+  //         analyzerMode: "server",
   //         analyzerPort: 8888,
   //       })
   //     );

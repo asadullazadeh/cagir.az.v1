@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import Head from "next/head";
-import { useRouter } from 'next/router';
 import Badge from "@/src/components/others/badge";
 import SubServiceTrend from "@/src/components/service/subServicesTrend";
 import SubServiceNoTrend from "@/src/components/service/subServicesNoTrend";
@@ -15,19 +14,21 @@ const Page = ({ mainServiceData, subServices, chosenLang, parentId }) => {
   const { serviceNames } = mainServiceData;
   const { text: textService, metaTitle } = serviceNames?.[0] || {};
 
-  const router = useRouter(); // Get the router object
   const containerClass = `
     flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
     lg:gap-y-[105px] xl:gap-y-[120px] 2xl:gap-y-[135px]
     pt-[30px] sm:pt-[36px] md:pt-[42px] lg:pt-[48px] xl:pt-[54px] 2xl:pt-[60px]
     pb-[60px] sm:pb-[75px] md:pb-[90px] lg:pb-[105px] xl:pb-[120px] 2xl:pb-[135px]
   `;
-  console.log(subServices);
+
   return (
     <div>
       <Head>
-          <meta name="description" content={mainServiceData.serviceNames[0].metaDescription} />
-          <title>{metaTitle}</title>
+        <meta
+          name="description"
+          content={mainServiceData.serviceNames[0].metaDescription}
+        />
+        <title>{metaTitle}</title>
       </Head>
       <Badge {...{ chosenLang, messages }} />
       <SubServiceTrend
@@ -102,9 +103,8 @@ async function fetchSubServices(parentId, chosenLang) {
 
 export async function getServerSideProps(context) {
   const mainServiceUrl = context.query.mainService;
-  console.log(mainServiceUrl)
   const chosenLang = context.locale || "az";
-  // what is mainServiceUrl 
+  // what is mainServiceUrl
   const mainServiceData = await fetchMainServiceData(
     mainServiceUrl,
     chosenLang
@@ -127,29 +127,11 @@ export async function getServerSideProps(context) {
       mainServiceData,
       subServices,
       chosenLang,
-  // what is parentId 
+      // what is parentId
       parentId: mainServiceData.id,
     },
   };
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React from "react";
 // import axios from "axios";
@@ -160,7 +142,6 @@ export async function getServerSideProps(context) {
 // import Reyler from "@/src/components/main/reyler";
 // import Icracilar from "@/src/components/main/icraci";
 // import { useIntl } from "react-intl";
-
 
 // const Page = ({ mainServiceData, subServices, chosenLang, parentId }) => {
 //   const intl = useIntl();
@@ -214,7 +195,6 @@ export async function getServerSideProps(context) {
 
 // export default Page;
 
-
 // // all services
 // async function allServices(mainServiceUrl) {
 //   try {
@@ -249,7 +229,7 @@ export async function getServerSideProps(context) {
 //   }
 // }
 
-// // 
+// //
 
 // // Separate function for fetching mainServiceData
 // async function fetchMainServiceData(mainServiceUrl, chosenLang) {
@@ -288,7 +268,6 @@ export async function getServerSideProps(context) {
 //   }
 // }
 
-
 // export async function getServerSideProps(context) {
 //   const serviceResult = await allServices(context.query.mainService);
 
@@ -298,7 +277,7 @@ export async function getServerSideProps(context) {
 
 //     // Continue with your asynchronous operations
 //     const mainServiceData = await fetchMainServiceData(nameUrl, chosenLang);
-  
+
 //     const parentId = context.query.mainService === 'service-1' ? 1 : id;
 //     const subServices = await fetchSubServices(parentId, chosenLang);
 //   // Check if mainServiceData is null or if it doesn't have the id property
@@ -326,16 +305,3 @@ export async function getServerSideProps(context) {
 //     };
 //   }
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-

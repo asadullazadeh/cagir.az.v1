@@ -10,7 +10,6 @@ import search1 from "@/icons/header/search1.svg";
 
 export default function NavbarMobile({ ifSearchIconClicked, messages }) {
   const [token, setToken] = useState("");
-  const { locale } = useRouter();
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
@@ -210,7 +209,7 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
             sm:leading-[24px] md:leading-[27px] text-gray900 text-center"
             >
               {linkInfos.map(({ href, text, className, index }) => (
-                <li key={text} className={className}>
+                <li key={index} className={className}>
                   <Link
                     passHref
                     href={href}

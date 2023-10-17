@@ -1,15 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import DatePicker from "react-datepicker";
-import { registerLocale, setDefaultLocale } from "react-datepicker";
+import { registerLocale } from "react-datepicker";
 import az from "date-fns/locale/az";
+import date from "@/icons/form/date.svg";
 registerLocale("az", az);
 import "react-datepicker/dist/react-datepicker.css";
-
 
 const Calendar = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [inputValue, setInputValue] = useState("");
-  const [inputId, setInputId] = useState("");
   const inputRef = useRef(null);
   const [isClicked, setIsClicked] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -44,7 +44,7 @@ const Calendar = () => {
 
   return (
     <div
-      className={`px-[15px] py-[15px] lg:px-[15px] lg:py-[12.5px] border ${
+      className={`h-[40px] relative flex flex-row justify-between items-center px-[15px] border ${
         isClicked || isFocused ? "border-[#3598EA]" : "border-gray-300"
       } rounded-[10px] lg:rounded-full`}
       ref={inputRef}
@@ -61,13 +61,23 @@ const Calendar = () => {
         customInput={
           <input
             type="text"
-            className="xs:w-[280px] sm:w-[600px] lg:w-[300px] xl:w-[400px]  font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none bg-white"
+            className="xs:w-[280px] screen360:w-[px] 
+            screen375:w-[335px]
+            screen390:w-[350px]
+            screen412:w-[372px]
+            screen428:w-[388px]
+            sm:w-[600px]
+            lg:w-[300px] 
+            xl:w-[400px]  
+            2xl:w-[450px]
+            font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none focus:ring focus:ring-white border-none bg-white"
             value={inputValue}
             onChange={handleChange}
             readonly="readOnly"
           />
         }
       />
+      <Image className="absolute right-[15px]" alt="date_icon" src={date} />
     </div>
   );
 };

@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/router";
-import { useIntl } from "react-intl";
 import useOutsideClick from "@/src/components/others/useOutsideClick";
 
-const SearchInputMd = ({ onChange, value, sendDataToParent,messages,chosenLang }) => {
+const SearchInputMd = ({
+  onChange,
+  value,
+  sendDataToParent,
+  messages,
+  chosenLang,
+}) => {
   // State variables
-  const [searchQuery, setSearchQuery] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [isClicked, setIsClicked] = useState(false);
   const [deleteBtnClicked, setDeleteBtnClicked] = useState(false);
@@ -13,7 +16,6 @@ const SearchInputMd = ({ onChange, value, sendDataToParent,messages,chosenLang }
   // Hooks and Utilities
   const outsideClickRef = useRef(null);
   useOutsideClick(outsideClickRef, () => setIsClicked(false));
-
 
   // Event Handlers
   const handleClick = () => setIsClicked(!isClicked);
@@ -30,7 +32,7 @@ const SearchInputMd = ({ onChange, value, sendDataToParent,messages,chosenLang }
     } else {
       console.warn("sendDataToParent is not a function");
     }
-  }, [deleteBtnClicked]);
+  }, [sendDataToParent, deleteBtnClicked]);
 
   return (
     <div

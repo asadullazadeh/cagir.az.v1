@@ -1,6 +1,6 @@
 import React from "react";
 
-const PaymentMethod = ({messages}) => {
+const PaymentMethod = ({ messages }) => {
   return (
     <div className="flex flex-col gap-y-[5px] px-[15px] lg:px-0 py-[15px] lg:py-0 border-[1px] border-gray900 rounded-[10px] lg:border-none">
       <p className="font-semibold text-[12px] leading-[18px] text-gray900 lg:text-black500">
@@ -26,13 +26,11 @@ const PaymentMethod = ({messages}) => {
           </div>
           <div className="flex gap-x-[10px] items-center">
             <input
-              readOnly
               disabled
-              // checked
               id="default-radio-2"
               type="radio"
               // value=""
-              name="default-radio"
+              name="default-radio-2"
               className="w-[20px] h-[20px] text-cagiraz  border-cagiraz bg-white"
             />
             <label

@@ -23,7 +23,7 @@ const InputBtnNbTransition = ({
   // numberToParent,
   buttonIsClicked,
   sendDataToParent,
-  messages
+  messages,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [phonePrefix, setPhonePrefix] = useState(

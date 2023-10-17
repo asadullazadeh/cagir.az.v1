@@ -10,7 +10,6 @@ import Musteriler from "@/src/components/main/musteriler";
 
 function XidmetDetail({ xidmetDetail }) {
   const [responseData, setResponseData] = useState({});
-  const { locale } = useRouter();
   const intl = useIntl();
 
   useEffect(() => {

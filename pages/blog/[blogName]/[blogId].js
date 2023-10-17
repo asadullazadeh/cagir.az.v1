@@ -49,7 +49,6 @@ function BlogPost({ initialData }) {
     categoryId,
     category,
   } = initialData;
-  console.log(postNames[0].title);
   const { description, shortDescription, postId, title } = postNames?.length
     ? postNames[0]
     : {};

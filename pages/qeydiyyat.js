@@ -6,7 +6,7 @@ import Head from "next/head";
 import views from "@/icons/bloq/views.svg";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import InputCustomized from "@/src/components/input/input";
 import InputPassword from "@/src/components/input/input_password";
 import InputNumber from "@/src/components/input/input_number";

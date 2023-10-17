@@ -72,14 +72,12 @@ function BlogCategory() {
     } else {
       setUpdatedBlogList(responseData);
     }
-    console.log(searchVal);
 
     if (filteredArray.length < 6) {
       setseeMoreBtnIsVisible(false);
     } else {
       setseeMoreBtnIsVisible(true);
     }
-    console.log(filteredArray.length);
   }, [setseeMoreBtnIsVisible, deleteBtnIsClicked, searchVal, responseData]); // Only run this effect when searchVal changes
 
   function handleInputChange(event) {

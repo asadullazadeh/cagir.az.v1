@@ -44,8 +44,7 @@ function Reyler({ parentId, messages }) {
   if (data.length === 0) {
     return null; // Don't render anything if the data array is empty
   }
-  const sliderCount =
-    data.length < 2 ? 0 : data.length >= 2 && data.length <= 4 ? 2 : 3;
+
   const childDataArray = Object.values(data).map((child, index) => ({
     jsxElement: (
       <div
@@ -157,7 +156,7 @@ function Reyler({ parentId, messages }) {
             keyboardNavigation
             touchTracking={true}
             touchMoveDefaultEvents={false}
-          />
+          />  
         )}
       </div>
     </div>

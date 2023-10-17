@@ -47,7 +47,6 @@ function Sub2Service({ dataMain, chosenLang }) {
   const [subUrlFromSifaris, setSubUrlFromSifaris] = useState("");
   const router = useRouter();
   const { mainService, subService } = router.query;
-
   const handleSelectedMain = (newValue) => {
     setSelectedMain(newValue);
   };
@@ -70,26 +69,20 @@ function Sub2Service({ dataMain, chosenLang }) {
     subServices.find((obj) => obj.nameUrl === subService) || {};
   const defaultSub = findSubInfoByNameUrl(getSubServices, subService);
 
-  const pathMain = !defaultMain.serviceNames?.[0].titleUrl
+  const pathMain = !defaultMain.nameUrl
     ? mainService
-    : defaultMain.serviceNames?.[0].titleUrl;
-  const pathSub =
-    (subUrlFromSifaris ?? defaultSub.serviceNames?.[0].titleUrl) ||
-    getSubServices[0]?.serviceNames?.[0].titleUrl;
+    : defaultMain.nameUrl;
+  const pathSub = subUrlFromSifaris || getSubServices[0]?.nameUrl
   const newPath = `/${pathMain}/${pathSub}`;
 
   useEffect(() => {
     router.replace(newPath);
   }, [newPath]);
-  // console.log(pathSub);
-  console.log(subUrlFromSifaris);
-  console.log(defaultSub.serviceNames?.[0].titleUrl);
-  console.log(getSubServices[0]?.serviceNames?.[0].titleUrl);
 
   const findMainInfoByNameUrlNew = (mainServices, nameUrl) =>
     mainServices.find((obj) => obj.nameUrl === mainService) || {};
   const defaultMainNew = findMainInfoByNameUrlNew(dataMain, selectedMain);
-  console.log(chosenLang);
+
   return (
     <div>
       <Head>
@@ -97,9 +90,11 @@ function Sub2Service({ dataMain, chosenLang }) {
       </Head>
       <div>
         <Sifaris
+          getMainServices={dataMain}
+          {...{getSubServices}}
           sendSubUrl={handleReceiveData}
           defaultMain={defaultMainNew}
-          defaultSub={defaultSub}
+          {...{defaultSub}}
           onSelectedMainChange={handleSelectedMain}
         />
       </div>

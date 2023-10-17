@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import Carousel1 from "@/src/components/main/carousel1";
 import MainServices from "@/src/components/service/mainServices";
 import Reyler from "@/src/components/main/reyler";
@@ -38,6 +38,7 @@ export default function Home(props) {
   return (
     <div>
       <Head>
+        <meta name="description" content="" />
         <title>Cagir.az</title>
       </Head>
 

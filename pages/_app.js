@@ -47,7 +47,6 @@ export default function MyApp({ Component, pageProps }) {
 
   const [token, setToken] = useState("");
   const { locale } = useRouter();
-  console.log(token);
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
@@ -131,7 +130,6 @@ export default function MyApp({ Component, pageProps }) {
     </div>
   );
 }
-
 
 // import React, { useEffect, useState } from "react";
 // import { useRouter } from "next/router";
