@@ -59,8 +59,6 @@ function PulQazan() {
   // useEffect(() => {
   //   handleClick();
   // }, []);
-  console.log(createAffiliate);
-  console.log(isSucess);
 
   return (
     <div>

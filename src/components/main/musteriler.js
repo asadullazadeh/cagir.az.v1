@@ -4,7 +4,6 @@ import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import Image from "next/image";
 import Link from "next/link";
-import arrow from "@/icons/arrow.svg";
 
 const responsive = {
   0: { items: 3 },

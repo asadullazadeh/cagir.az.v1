@@ -29,7 +29,6 @@ const Toggle = ({
     },
   };
 
-
   // this object takes all cases to give three key value to show which toggle need to be shown.
   //0-when a main service is clicked, 1-sub,2-sub2.
   // objectForToggle-which service toggle is open as default.

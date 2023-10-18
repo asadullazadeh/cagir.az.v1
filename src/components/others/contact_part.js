@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useIntl } from "react-intl";
-import Head from "next/head";
-import TeamCard from "@/src/components/cards/contact_team_card";
-import phone from "@/icons/phone.svg";
 import phone_black from "@/icons/phone_black.svg";
 
 function Contact_Part() {

@@ -50,54 +50,58 @@ function Sifaris({
     onSelectedNamesArray(selectedNamesArray);
   };
 
-  /* ---------------------------------- mainServices functionality ---------------------------------- */
+  /* ---------------------------------- mainServices and subServices functionality ---------------------------------- */
+  // State initialization
   const [selectedMain, setSelectedMain] = useState(
-    defaultMain.serviceNames?.[0].name || ""
+    defaultMain.serviceNames?.[0]?.name || ""
+  );
+  const [selectedSub, setSelectedSub] = useState(
+    defaultSub?.serviceNames?.[0]?.name ||
+      getSubServices[0]?.serviceNames?.[0]?.name
   );
 
-  const handleMainSelect = (mainService) => {
-    setSelectedMain(mainService);
-  };
+  // Event handlers
+  const handleMainSelect = setSelectedMain;
+  const handleSubSelect = setSelectedSub;
 
+  // Derived state and utility functions
+  const selectedSubNameUrl = defaultSub?.nameUrl || selectedSub?.nameUrl;
+  const findSubServiceInfoByName = (subServices, name) =>
+    subServices.find((obj) => obj.serviceNames[0].name === name);
+
+  const subService = findSubServiceInfoByName(getSubServices, selectedSub);
+  // Effects
   useEffect(() => {
     onSelectedMainChange(selectedMain);
   }, [onSelectedMainChange, selectedMain]);
 
-  /* ---------------------------------- subServices functionality ---------------------------------- */
-  const [selectedSub, setSelectedSub] = useState(
-    defaultSub ? defaultSub.serviceNames?.[0].name : ""
-  );
-  const handleSubSelect = (subService) => {
-    setSelectedSub(subService);
-  };
-
-  // to get id and text of selected main service, defaultMain.id or defaultMain.text
-  const selectedSubNameUrl = defaultSub["nameUrl"];
-  const findSubServiceInfoByName = (subServices, name) =>
-  subServices.find((obj) => obj.serviceNames[0].name === selectedSub) || {}
-  const subService = findSubServiceInfoByName(getSubServices, selectedSub);
-
-  // Use useEffect to call the callback whenever subUrlToMainPage changes
   useEffect(() => {
-    sendSubUrl(subService["nameUrl"]);
+    sendSubUrl(subService?.serviceNames?.[0]?.namUrl);
   }, [subService, sendSubUrl]);
 
   useEffect(() => {
     setSelectedMain(selectedMain);
     setSelectedSub(subService?.serviceNames?.[0]?.name);
-  }, [defaultSub, getSubServices, selectedMain]);
+  }, [defaultSub, getSubServices, selectedMain, subService?.serviceNames]);
+// console.log("selectedSubNameUrl:",selectedSubNameUrl)
+// console.log("subService?.serviceNames?.[0]?.name:",subService?.serviceNames?.[0]?.name)
+
 
   /* ----------------------------------  sub2Services functionality ---------------------------------- */
+  // State initialization
   const [selectedSub2, setSelectedSub2] = useState("");
   const [getSub2Services, setgetSub2Services] = useState([]);
+
+  // Event handlers
   const handleSub2Select = (sub2Service) => {
     setSelectedSub2(sub2Service);
   };
 
+  // Effects
   useEffect(() => {
     axios
       .get(
-        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${defaultSub.id}`,
+        `https://api.cagir.az/api/service/getSubServicesByParentId?parentId=${defaultSub?.id}`,
         {
           headers: {
             "Accept-Language": chosenLang,
@@ -110,10 +114,14 @@ function Sifaris({
       .catch((error) => {
         console.error(error);
       });
-  }, [defaultSub.id, chosenLang]);
+  }, [defaultSub?.id, chosenLang]);
 
-  const isSub2ElementsExist = getSub2Services.length > 0;
+  useEffect(() => {
+    setSelectedSub2("");
+    setgetSub2Services([]);
+  }, [selectedMain, selectedSub]);
 
+  // Utility functions
   const findSub2InfoByName = (sub2Services, name) => {
     const sub2Service =
       sub2Services.find((obj) => obj.serviceNames?.[0]?.name === name) || {};
@@ -123,21 +131,18 @@ function Sifaris({
     };
   };
 
-  useEffect(() => {
-    setSelectedSub2("");
-    setgetSub2Services([]);
-  }, [selectedMain, selectedSub]);
-
-  // to get id and text of selected main service, defaultMain.id or defaultMain.text
+  // Derived state
+  const isSub2ElementsExist = getSub2Services.length > 0;
   const selectedSub2Service = findSub2InfoByName(getSub2Services, selectedSub2);
-
   /* ----------------------------------  Select criterias ---------------------------------- */
+  // State initialization
   const [getServiceCriterias, setgetServiceCriterias] = useState([]);
 
+  // Effects
   useEffect(() => {
     const serviceId = isSub2ElementsExist
       ? selectedSub2Service.id
-      : defaultSub.id;
+      : defaultSub?.id;
 
     axios
       .post(
@@ -151,27 +156,23 @@ function Sifaris({
       )
       .then((response) => setgetServiceCriterias(response.data.result))
       .catch((error) => console.error(error));
-  }, [isSub2ElementsExist, defaultSub.id, selectedSub2Service.id, chosenLang]);
+  }, [isSub2ElementsExist, defaultSub?.id, selectedSub2Service.id, chosenLang]);
 
   /* ----------------------------------  Multinumber input functionality-FilterType=5 ---------------------------------- */
 
   // multiNumberArray takes all the information of multi number input for pricing
+  // State initialization
   const [multiNumberValue, setMultiNumberValue] = useState(0);
   const [multiNumberId, setMultiNumberId] = useState("");
   const [multiNumberName, setMultiNumberName] = useState("");
   const [multiNumberArray, setMultiNumberArray] = useState([]);
-  const handleDataUpdate = (value) => {
-    setMultiNumberValue(value);
-  };
 
-  const handleCriteriaId = (id) => {
-    setMultiNumberId(id);
-  };
+  // Event handlers
+  const handleDataUpdate = setMultiNumberValue;
+  const handleCriteriaId = setMultiNumberId;
+  const handleNameForMultiNumber = setMultiNumberName;
 
-  const handleNameForMultiNumber = (name) => {
-    setMultiNumberName(name);
-  };
-
+  // Effects
   useEffect(() => {
     if (!multiNumberId) return;
 
@@ -200,75 +201,76 @@ function Sifaris({
   }, [multiNumberName, multiNumberId, multiNumberValue]);
 
   /* ----------------------------------  Plus-Minus input functionality-FilterType=1 ---------------------------------- */
+  // State initialization
   const [plusMinusValue, setPlusMinusValue] = useState(0);
   const [plusMinusId, setPlusMinusId] = useState("");
   const [plusMinusArray, setPlusMinusArray] = useState([]);
 
-  const handleDataUpdateForMinusPlus = (value) => {
-    setPlusMinusValue(value);
-  };
+  // Event handlers
+  const handleDataUpdateForMinusPlus = setPlusMinusValue;
+  const handleCriteriaIdForMinusPlus = setPlusMinusId;
 
-  const handleCriteriaIdForMinusPlus = (id) => {
-    setPlusMinusId(id);
-  };
-
+  // Effects
   useEffect(() => {
-    // Check if multiNumberId is not null
-    if (plusMinusId !== "") {
-      // Check if an object with the same "plusMinusId" exists in plusMinusArray
-      const existingObjectIndex = plusMinusArray.findIndex(
-        (obj) => obj.serviceCriteriaId === plusMinusId
-      );
+    if (!plusMinusId) return;
 
-      if (existingObjectIndex !== -1) {
-        // If the object with the same "plusMinusId" exists, update its key-values
-        setPlusMinusArray((prevArr) =>
-          prevArr.map((obj, index) =>
-            index === existingObjectIndex
-              ? { ...obj, count: plusMinusValue }
-              : obj
-          )
-        );
-      } else {
-        // If the object with the "plusMinusId" doesn't exist, add a new object to plusMinusArray
-        setPlusMinusArray((prevArr) => [
-          ...prevArr,
-          { serviceCriteriaId: plusMinusId, count: plusMinusValue },
-        ]);
-      }
+    const existingObjectIndex = plusMinusArray.findIndex(
+      (obj) => obj.serviceCriteriaId === plusMinusId
+    );
+
+    if (existingObjectIndex !== -1) {
+      setPlusMinusArray((prevArr) =>
+        prevArr.map((obj, index) =>
+          index === existingObjectIndex
+            ? { ...obj, count: plusMinusValue }
+            : obj
+        )
+      );
+    } else {
+      setPlusMinusArray((prevArr) => [
+        ...prevArr,
+        { serviceCriteriaId: plusMinusId, count: plusMinusValue },
+      ]);
     }
   }, [plusMinusId, plusMinusValue]);
 
   /* ---------------------------------- Text input functionality-FilterType=2 ---------------------------------- */
-  const [inputTextValue, setInputTextValue] = useState(0);
-  const [inputTextId, setInputTextId] = useState("");
-  const [inputTextObject, setInputTextObject] = useState({});
+  // State initialization
+const [inputTextValue, setInputTextValue] = useState(0);
+const [inputTextId, setInputTextId] = useState("");
+const [inputTextObject, setInputTextObject] = useState({});
 
-  useEffect(() => {
+// Event handlers
+const handleDataUpdateForInputText = (criteriaId, value) => {
+    setInputTextId(criteriaId);
+    setInputTextValue(value);
+};
+
+// Effects
+useEffect(() => {
     if (!inputTextId) return;
 
     setInputTextObject({
       serviceCriteriaId: inputTextId,
       count: Number(inputTextValue),
     });
-  }, [inputTextId, inputTextValue]);
+}, [inputTextId, inputTextValue]);
 
-  const handleDataUpdateForInputText = (criteriaId, value) => {
-    setInputTextId(criteriaId);
-    setInputTextValue(value);
-  };
 
   /* ---------------------------------- Radio button functionality-FilterType=4 ---------------------------------- */
-  const [selectedRadioName, setSelectedRadioName] = useState(null);
-  const [selectedRadioId, setSelectedRadioId] = useState("");
-  const [radioBtnObject, setRadioBtnObject] = useState({});
+  // State initialization
+const [selectedRadioName, setSelectedRadioName] = useState(null);
+const [selectedRadioId, setSelectedRadioId] = useState("");
+const [radioBtnObject, setRadioBtnObject] = useState({});
 
-  const handleChange = (value, criteriaId) => {
+// Event handlers
+const handleChange = (value, criteriaId) => {
     setSelectedRadioName(value);
     setSelectedRadioId(criteriaId);
-  };
+};
 
-  useEffect(() => {
+// Effects
+useEffect(() => {
     setRadioBtnObject(
       selectedRadioId
         ? {
@@ -278,77 +280,74 @@ function Sifaris({
           }
         : {}
     );
-  }, [selectedRadioName, selectedRadioId]);
+}, [selectedRadioName, selectedRadioId]);
+
 
   /* ---------------------------------- Checkbox functionality-FilterType=4 ---------------------------------- */
-  // checkmarks, to see more info-customized inputs in form section
-  const [checkboxId, setCheckboxId] = useState(null);
-  const [checkboxIsChecked, setCheckboxIsChecked] = useState(false);
-  const [checkedCheckboxName, setCheckedCheckboxName] = useState("");
-  const [checkedCheckboxArray, setCheckedCheckboxArray] = useState([]);
+  // State initialization
+const [checkboxId, setCheckboxId] = useState(null);
+const [checkboxIsChecked, setCheckboxIsChecked] = useState(false);
+const [checkedCheckboxName, setCheckedCheckboxName] = useState("");
+const [checkedCheckboxArray, setCheckedCheckboxArray] = useState([]);
 
-  const handleDataFromChild = (name, criteriaId, isChecked) => {
+// Event handlers
+const handleDataFromChild = (name, criteriaId, isChecked) => {
     setCheckboxId(criteriaId);
     setCheckboxIsChecked(isChecked);
     setCheckedCheckboxName(name);
-  };
+};
 
-  useEffect(() => {
+// Effects
+useEffect(() => {
     if (checkboxIsChecked && checkboxId) {
       const newObj = {
         name: checkedCheckboxName,
         serviceCriteriaId: checkboxId,
         count: 1,
       };
-
-      // Add the object to the array if checkboxIsChecked is true
       setCheckedCheckboxArray((prevArray) => [...prevArray, newObj]);
     } else {
-      // Remove the object from the array if checkboxIsChecked is false
       setCheckedCheckboxArray((prevArray) =>
         prevArray.filter((obj) => obj.serviceCriteriaId !== checkboxId)
       );
     }
-  }, [checkedCheckboxName, checkboxIsChecked, checkboxId]);
+}, [checkedCheckboxName, checkboxIsChecked, checkboxId]);
+
 
   /* ---------------------------------- Calculating Price of the Service ---------------------------------- */
-  const [priceBeforePromo, setPriceBeforePromo] = useState(0);
-  //
-  const calculatePrice = [
+  // State initialization
+const [priceBeforePromo, setPriceBeforePromo] = useState(0);
+
+// Data processing
+const calculatePrice = [
     radioBtnObject,
     ...checkedCheckboxArray,
     ...multiNumberArray,
     ...plusMinusArray,
     inputTextObject,
-  ];
+];
 
-  // it gets rid of an element which its length is 0
-  const filteredCalculatePrice = calculatePrice.filter(
+const filteredCalculatePrice = calculatePrice.filter(
     (item) => Object.keys(item).length !== 0
-  );
+);
 
-  useEffect(() => {
-    // calculating the price
+// Effects
+useEffect(() => {
     axios
-      .post(
-        "https://api.cagir.az/api/serviceCriteria/calculate",
-        [...filteredCalculatePrice],
-        {
-          headers: {
-            "Accept-Language": "",
-          },
-        }
-      )
-      .then((response) => {
-        setPriceBeforePromo(response.data.result.amount);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [filteredCalculatePrice]); // when one of these dependencies is updated, the filteredCalculatePrice becomes null
+        .post(
+            "https://api.cagir.az/api/serviceCriteria/calculate",
+            [...filteredCalculatePrice],
+            { headers: { "Accept-Language": "" } }
+        )
+        .then((response) => {
+            setPriceBeforePromo(response.data.result.amount);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}, [filteredCalculatePrice]);
 
-  // when selectMain is updated,elements which go to calculate price become empty
-  useEffect(() => {
+useEffect(() => {
     setgetServiceCriterias([]);
     setCheckedCheckboxArray([]);
     setMultiNumberArray([]);
@@ -356,40 +355,48 @@ function Sifaris({
     setPlusMinusArray([]);
     setInputTextObject({});
     setPriceBeforePromo(0);
-  }, [selectedMain, selectedSub, selectedSub2]);
+}, [selectedMain, selectedSub, selectedSub2]);
+
 
   /* ---------------------------------- Textarea functionality ---------------------------------- */
-  const [showTextarea, setshowTextarea] = useState(true);
-  const [receivedMessage, setReceivedMessage] = useState("");
-  const toggleTextarea = () => {
-    setshowTextarea(!showTextarea);
-  };
-  // Define the callback function to receive the "message" data from the Textarea component
-  const handleMessage = (message) => {
+  // State Initialization
+const [showTextarea, setshowTextarea] = useState(false);
+const [receivedMessage, setReceivedMessage] = useState("");
+const [isOpen, setIsOpen] = useState(false);
+const [whichServiceCategory, setWhichServiceCategory] = useState(null);
+
+// Effects
+useEffect(() => {
+    setshowTextarea(getServiceCriterias.length > 0);
+}, [getServiceCriterias]);
+
+// Callbacks & Handlers
+const handleMessage = (message) => {
     setReceivedMessage(message);
-  };
+};
 
-  // Toggle part
-  const [isOpen, setIsOpen] = useState(false);
-  const handleToggle = () => {
+const handleToggle = () => {
     setIsOpen(!isOpen);
-  };
+};
 
-  // toggleProps.Selected Services and description for each category
-  const toggleProps = {
+const handleCategoryLevelFromDropdown = (data) => {
+    setWhichServiceCategory(data);
+};
+
+// Props preparation
+const toggleProps = {
     selectedMain,
-    descMain: defaultMain.serviceNames[0].text,
-    selectedSub: selectedSub ?? selectedNamesArray[1],
-    descSub: defaultSub.serviceNames?.[0].text,
+    descMain: defaultMain.serviceNames?.[0].text,
+    selectedSub: selectedSub || selectedNamesArray[1],
+    descSub: defaultSub?.serviceNames?.[0].text,
     selectedSub2,
     descSub2: selectedSub2Service.text,
     selectedNamesArray,
     messages,
     chosenLang,
-  };
+};
 
-  // dropdownProps.to pass data from one dropdown to other one and selected service
-  const dropdownProps = {
+const dropdownProps = {
     onSelectMainService: handleMainSelect,
     getMainServices,
     onSelectSubService: handleSubSelect,
@@ -400,95 +407,74 @@ function Sifaris({
     defaultSub,
     messages,
     chosenLang,
-  };
-  // Callback function to which service service Category from the Dropdown component
-  //checking which service category is selected.Main-1,sub-2,sub2-2
-  const [whichServiceCategory, setWhichServiceCategory] = useState(null);
-  const handleCategoryLevelFromDropdown = (data) => {
-    setWhichServiceCategory(data);
-  };
+};
+
 
   /* ---------------------------------- Creating order ---------------------------------- */
 
-  // upload image
-  const [childUploadImage, setChildUploadImage] = useState({
-    imageData: null,
-    imageBase64: "",
-  });
+  // States Initialization
+const [childUploadImage, setChildUploadImage] = useState({
+  imageData: null,
+  imageBase64: "",
+});
+const [address, setAddress] = useState("");
+const [addNumber, setAddNumber] = useState("");
+const [isOrderPassed, setIsOrderPassed] = useState(false);
+const [orderPassed, setOrderPassed] = useState(null);
 
-  const handleChildImageUpload = useCallback((uploadImage) => {
-    setChildUploadImage(uploadImage);
-  }, []);
+// Callbacks & Handlers
+const handleChildImageUpload = useCallback((uploadImage) => {
+  setChildUploadImage(uploadImage);
+}, []);
 
-  //add address
-  const [address, setaddress] = useState("");
+const handleAddressUpdate = (criteriaId, value) => {
+  setAddress(value);
+};
 
-  const handleAddressUpdate = (criteriaId, value) => {
-    setaddress(value);
-  };
+const handleDataInputNumber = (data) => {
+  setAddNumber(data);
+};
 
-  // add number
-  const [addNumber, setaddNumber] = useState("");
+const handleDataFromChildBtn = (data) => {
+  setIsOrderPassed(data);
+};
 
-  const handleDataInputNumber = (data) => {
-    setaddNumber(data);
-  };
-
-  //
-  const objectDetails = {
-    amount: priceBeforePromo,
-    payType: 2,
-    address: address,
-    note: receivedMessage,
-    phoneNumber: addNumber,
-    startDate: "2023-08-30T10:00:00",
-    orderDetails: [...filteredCalculatePrice],
-    orderImages: [
+// Object Preparation
+const objectDetails = {
+  amount: priceBeforePromo,
+  payType: 2,
+  address: address,
+  note: receivedMessage,
+  phoneNumber: addNumber,
+  startDate: "2023-08-30T10:00:00",
+  orderDetails: [...filteredCalculatePrice],
+  orderImages: [
       { imageBase64: childUploadImage.imageBase64 },
       { imageExtension: childUploadImage.imageData?.name },
-    ],
-  };
+  ],
+};
 
-  const [isOrderPassed, setIsOrderPassed] = useState(false);
-  const [orderPassed, setOrderPassed] = useState(null);
-
-  const handleDataFromChildBtn = (data) => {
-    setIsOrderPassed(data);
-  };
-
-  if (isOrderPassed) {
-    axios
+// Order Creation
+if (isOrderPassed) {
+  axios
       .post(
-        "https://api.cagir.az/api/order/v3/create",
-        objectDetails, // Make sure you define `objectDetails` before using it
-        {
-          headers: {
-            "Accept-Language": "az",
-          },
-        }
+          "https://api.cagir.az/api/order/v3/create",
+          objectDetails,
+          {
+              headers: {
+                  "Accept-Language": "az",
+              },
+          }
       )
       .then((response) => {
-        setOrderPassed(response.data.isSuccess);
+          setOrderPassed(response.data.isSuccess);
       })
       .catch((error) => {
-        console.error(error);
+          console.error(error);
       });
-  }
-
-  /* ----------------------------------  data to receipt ---------------------------------- */
-  // const dataReceipt = {
-  //   amount: priceBeforePromo,
-  //   payType: 2,
-  //   address: "42, rue Antoine Charial,69003",
-  //   note: receivedMessage,
-  //   phoneNumber: "+994556984869",
-  //   startDate: "2023-08-30T10:00:00",
-  //   selectedNamesArray,
-  //   criterias: [...filteredCalculatePrice],
-  // };
+}
 
   // Geri button
-
   const router = useRouter();
   const goBack = () => {
     router.back(); // Navigates back to the previous page
@@ -524,13 +510,9 @@ function Sifaris({
               <Qiymet {...{ priceBeforePromo, messages }} />
             </div>
             {/* Toggle part is only  desktop */}
-            {defaultMain.serviceNames[0].text ? (
-              <div className="z-10 hidden lg:block sticky ">
+             {defaultMain.serviceNames?.[0].text && <div className="z-10 hidden lg:block sticky ">
                 <Toggle {...toggleProps} {...{ whichServiceCategory }} />
-              </div>
-            ) : (
-              ""
-            )}
+              </div> }
           </div>
 
           {/* Right side of first part in Sifaris */}
@@ -618,7 +600,11 @@ function Sifaris({
                   </div>
                 )
               )}
-              <div className="flex flex-col lg:flex-row">
+              <div
+                className={`${
+                  showTextarea ? "flex flex-col lg:flex-row" : "hidden"
+                }`}
+              >
                 {isOpen && <Textarea sendMessage={handleMessage} />}
                 <button
                   className={`pl-[10px] mx-auto lg:m-0 font-medium lg:font-extrabold text-[12px] lg:text-[14px] 
@@ -642,7 +628,7 @@ function Sifaris({
 
             <div className="flex flex-col lg:flex-row  lg:justify-between ">
               {/* inputs and map part */}
-              <div className="flex flex-col xl:flex-row lg:gap-x-[30px] xl:gap-x-[30px] 2xl:gap-x-[40px] w-full lg:max-w-[350px] xl:max-w-[450px] 2xl:max-w-[500px]">
+              <div className="flex flex-col xl:flex-row lg:gap-x-[30px] xl:gap-x-[30px] 2xl:gap-x-[40px] w-full lg:max-w-[320px] xl:max-w-[450px] 2xl:max-w-[500px]">
                 {/* inputs and map for mobile */}
                 <div className="flex flex-col gap-y-[15px] xl:gap-y-[20px] lg:justify-between w-full ">
                   <div>
@@ -663,7 +649,7 @@ function Sifaris({
               </div>
 
               {/* tesdiqle part */}
-              <div className="flex flex-col lg:justify-between w-full lg:max-w-[300px] 2xl:max-w-[400px]">
+              <div className="flex flex-col lg:justify-between w-full lg:max-w-[330px] 2xl:max-w-[400px]">
                 <div className="hidden lg:block">
                   <PaymentMethod {...{ messages }} />
                 </div>

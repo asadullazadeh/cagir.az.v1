@@ -77,7 +77,7 @@ const Calendar = () => {
           />
         }
       />
-      <Image className="absolute right-[15px]" alt="date_icon" src={date} />
+      <Image className="absolute right-[15px] w-[14px] h-[14px] " alt="date_icon" src={date} />
     </div>
   );
 };

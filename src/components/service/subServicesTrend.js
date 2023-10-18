@@ -20,8 +20,6 @@ const SubService = ({ mainServiceData, subServices, messages }) => {
       ? "temizlik-xidmeti"
       : router.query.mainService;
 
-  // router.query.mainService;
-  // const mainServiceNameUrl = router.query.mainService;
 
   const serviceName = mainServiceData?.serviceNames?.[0]?.name;
 

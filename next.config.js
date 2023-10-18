@@ -10,7 +10,6 @@ const nextConfig = {
   },
   swcMinify: true,
   images: {
-    // unoptimized: true,
     domains: [
       "api.cagir.az",
       "api.cagir.aznull",
@@ -18,7 +17,6 @@ const nextConfig = {
       "photos.google.com",
       "images.unsplash.com",
       "plus.unsplash.com",
-      "via.placeholder.com",
       "tailwindui.com",
       "talpa.az",
       "www.facebook.com",
@@ -27,8 +25,6 @@ const nextConfig = {
       "www.kapitalbank.az",
       "i.imgur.com",
       "bakcell.com",
-      "scontent-ord5-2.cdninstagram.com",
-      "scontent-ord5-1.cdninstagram.com",
       "www.instagram.com",
     ],
   },

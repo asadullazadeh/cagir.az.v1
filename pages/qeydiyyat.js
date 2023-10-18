@@ -47,11 +47,7 @@ function Registration() {
     setMainPagePassword(password);
   };
 
-  console.log("firstName:", firstName);
-  console.log("lastName:", lastName);
-  console.log("email:", email);
-  console.log("number:", number);
-  console.log("mainPagePassword:", mainPagePassword);
+
   const router = useRouter();
 
   const goBack = () => {

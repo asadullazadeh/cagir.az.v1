@@ -66,14 +66,30 @@ function Sub2Service({ dataMain, chosenLang }) {
   };
 
   const findSubInfoByNameUrl = (subServices, nameUrl) =>
-    subServices.find((obj) => obj.nameUrl === subService) || {};
+    subServices.find((obj) => obj.nameUrl === subService);
   const defaultSub = findSubInfoByNameUrl(getSubServices, subService);
 
-  const pathMain = !defaultMain.nameUrl
-    ? mainService
-    : defaultMain.nameUrl;
-  const pathSub = subUrlFromSifaris || getSubServices[0]?.nameUrl
+  const pathMain = !defaultMain.nameUrl ? mainService : defaultMain.nameUrl;
+  const pathSub = subService
+  // subUrlFromSifaris ||  getSubServices[0]?.nameUrl || subService 
+
   const newPath = `/${pathMain}/${pathSub}`;
+  // console.log(subUrlFromSifaris || defaultSub?.[0]?.nameUrl ||  getSubServices[0]?.nameUrl || subService )
+  // console.log(!subUrlFromSifaris || typeof subUrlFromSifaris === "undefined"
+  // ? getSubServices[0]?.nameUrl
+  // : subUrlFromSifaris);
+  // defaultSub evvel secileni sonra en birinci elementi goturur.
+  console.log("subUrlFromSifaris:",subUrlFromSifaris)
+  console.log("defaultSub?.[0]?.nameUrl:",defaultSub?.[0]?.nameUrl)
+  console.log("getSubServices[0]?.nameUrl:",getSubServices[0]?.nameUrl)
+  console.log("subService:",subService)
+
+  // console.log("subUrlFromSifaris typeof:", typeof subUrlFromSifaris);
+  // console.log("subUrlFromSifaris length:",subUrlFromSifaris?.length);
+  // console.log("subUrlFromSifaris:",subUrlFromSifaris);
+
+  // console.log("subService:", subService);
+  // console.log("getSubServices[0]?.nameUrl:", getSubServices[0]?.nameUrl);
 
   useEffect(() => {
     router.replace(newPath);
@@ -91,10 +107,10 @@ function Sub2Service({ dataMain, chosenLang }) {
       <div>
         <Sifaris
           getMainServices={dataMain}
-          {...{getSubServices}}
+          {...{ getSubServices }}
           sendSubUrl={handleReceiveData}
           defaultMain={defaultMainNew}
-          {...{defaultSub}}
+          {...{ defaultSub }}
           onSelectedMainChange={handleSelectedMain}
         />
       </div>

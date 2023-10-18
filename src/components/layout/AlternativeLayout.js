@@ -29,7 +29,6 @@ export default function Layout({ children }) {
 
 
   //
-  console.log(locale)
   const [isExited, setIsExited] = useState(false);
 
   const handleExit = () => {
@@ -74,9 +73,7 @@ export default function Layout({ children }) {
     setElementVisible(hasMainService || isInVisiblePages || hasKeywordsInPath);
   }, [visiblePages, router.query.subService, router.query.mainService, router.asPath]);
 
-  console.log("isSearchIconClickedMobile:", isSearchIconClickedMobile);
-  console.log("isSearchIconClickedDesktop:", isSearchIconClickedDesktop);
-  console.log("isExited:", isExited);
+
 
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   useEffect(() => {
@@ -98,7 +95,7 @@ export default function Layout({ children }) {
       setIsSearchVisible(false);
     }
   }, [isExited, isSearchIconClickedDesktop, isSearchIconClickedMobile]);
-  console.log(isSearchVisible);
+  
   return (
     <div className="screen1700:max-w-[1512px] bg-white">
       <Head>{/* <title>Cagir.az</title> */}</Head>

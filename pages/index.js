@@ -1,6 +1,5 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import Carousel1 from "@/src/components/main/carousel1";
@@ -11,10 +10,8 @@ import Suallar from "@/src/components/main/suallar";
 import Deyerler from "@/src/components/main/deyerler";
 import LastPostedBlogs from "@/src/components/blog/LastPostedBlogs";
 import Musteriler from "@/src/components/main/musteriler";
-import Reels from "@/src/components/main/reels";
 import SearchServices from "@/src/components/main/search_services";
 
-// const inter = Inter({ subsets: ["latin"] });
 export async function getServerSideProps() {
   return {
     props: {},

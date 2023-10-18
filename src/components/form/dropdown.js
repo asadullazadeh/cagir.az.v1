@@ -80,10 +80,10 @@ const Dropdown = ({
   const [sub2ServiceName, setSub2ServiceName] = useState("");
   const serviceNames = [
     mainServiceName,
-    subServiceName ? subServiceName : defaultSub?.serviceNames?.[0]["name"],
+    subServiceName || defaultSub?.serviceNames?.[0]["name"],
     sub2ServiceName,
   ];
-
+ 
   // Update subServiceName and sub2ServiceName when mainServiceName changes
   useEffect(() => {
     setSubServiceName("");
@@ -143,7 +143,6 @@ const Dropdown = ({
   };
 
   const isSub2ElementsExist = getSub2Services.length > 0;
-
   return (
     <div
       ref={myElementRef}
@@ -247,31 +246,29 @@ const Dropdown = ({
                     alt="info_icon"
                   />
 
-                  <div className="flex flex-col font-medium text-[10px] leading-[15px] text-gray900">
-                    <div classNames="flex flex-row">
-                      <div
-                        onClick={() => closeDesc(index)}
-                        className={`text-[12px] leading-[18px] ${
-                          descIsOpen[index]
-                            ? ""
-                            : " truncate w-full h-[16px] max-w-[150px] xs:max-w-[260px] screen360:max-w-[295px] screen375:max-w-[310px] screen390:max-w-[320px] screen412:max-w-[350px] screen428:max-w-[380px] sm:max-w-[600px] md:max-w-[700px]  whitespace-nowrap overflow-hidden overflow-x-hidden"
-                        } `}
-                        dangerouslySetInnerHTML={{
-                          __html: `${findDescById(index)
-                            .replaceAll(
-                              "<ul>",
-                              '<ul class="list-disc list-inside pt-[3px] pb-[7px]">'
-                            )
-                            .replaceAll("<p", '<p class=""')}`,
-                        }}
-                      ></div>
-                      <button
-                        className="font-semibold block text-cagiraz"
-                        onClick={() => handleToggleDesc(index)}
-                      >
-                        {descIsOpen[index] ? "Bağla" : "Ətraflı oxu"}
-                      </button>
-                    </div>
+                  <div classNames="flex flex-col font-medium  text-gray900">
+                    <div
+                      onClick={() => closeDesc(index)}
+                      className={`text-[12px] leading-[18px] ${
+                        descIsOpen[index]
+                          ? ""
+                          : " truncate w-full h-[16px] max-w-[150px] xs:max-w-[260px] screen360:max-w-[295px] screen375:max-w-[310px] screen390:max-w-[320px] screen412:max-w-[350px] screen428:max-w-[380px] sm:max-w-[600px] md:max-w-[700px]  whitespace-nowrap overflow-hidden overflow-x-hidden"
+                      } `}
+                      dangerouslySetInnerHTML={{
+                        __html: `${findDescById(index)
+                          .replaceAll(
+                            "<ul>",
+                            '<ul class="list-disc list-inside pt-[3px] pb-[7px]">'
+                          )
+                          .replaceAll("<p", '<p class=""')}`,
+                      }}
+                    ></div>
+                    <button
+                      className="text-[10px] leading-[15px] font-semibold block text-cagiraz "
+                      onClick={() => handleToggleDesc(index)}
+                    >
+                      {descIsOpen[index] ? "Bağla" : "Ətraflı oxu"}
+                    </button>
                   </div>
                 </div>
               )}

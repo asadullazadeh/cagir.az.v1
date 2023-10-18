@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Router from "next/router";
-import { useRouter } from "next/router";
 import axios from "axios";
 import Image from "next/image";
-import Link from "next/link";
-import views from "@/icons/bloq/views.svg";
-import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
 import SearchInputMd from "@/src/components/input/input_search_md";
 import arrow_right from "@/icons/arrow_right.svg";
 import close from "@/icons/header/close.svg";
 function SearchServices({ messages, chosenLang, onExit }) {
-  /* ----------------- mainServices ----------------- */
 
+  /* ----------------- mainServices ----------------- */
   const [mainServices, setMainServices] = useState([]);
   useEffect(() => {
     axios
@@ -82,9 +77,7 @@ function SearchServices({ messages, chosenLang, onExit }) {
   const [searchVal, setSearchVal] = useState("");
   useEffect(() => {
     const filteredArray = subServices.filter((obj) => {
-      const keys = Object.keys(obj);
       return (
-        // obj.titleUrl.toLowerCase().includes(searchVal.toLowerCase()) &&
         obj.serviceNames[0].name.toLowerCase().includes(searchVal.toLowerCase())
       );
     });
@@ -97,7 +90,6 @@ function SearchServices({ messages, chosenLang, onExit }) {
     setSearchVal(event.target.value);
   }
 
-  //
   const [trendServices, seTrendServices] = useState([]);
   useEffect(() => {
     axios
@@ -116,7 +108,6 @@ function SearchServices({ messages, chosenLang, onExit }) {
       });
   }, [chosenLang]);
 
-  //
   const [exitBtnClicked, setExitBtnClicked] = useState(false);
 
   const exitBtn = () => {
@@ -189,8 +180,6 @@ function SearchServices({ messages, chosenLang, onExit }) {
               serviceNames,
               isServiceTrend,
             }) => {
-              //
-
               return (
                 <li
                   className="drop-shadow-cardAlt lg:drop-shadow-none lg:hover:drop-shadow-cardAlt transition duration-300 rounded-[10px] bg-white"
@@ -206,7 +195,6 @@ function SearchServices({ messages, chosenLang, onExit }) {
                       width={272}
                       height={205}
                       src={`https://api.cagir.az${imageUrl}`}
-                      // src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
                       alt={nameUrl}
                       className="w-[70px] sm:w-full rounded-[5px] sm:rounded-[20px] object-cover object-center"
                     />
@@ -234,7 +222,6 @@ function SearchServices({ messages, chosenLang, onExit }) {
           )}
         </ul>
       </div>
-      {/*  */}
     </div>
   );
 }

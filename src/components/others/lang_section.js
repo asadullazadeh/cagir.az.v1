@@ -100,8 +100,6 @@ const LangSection = () => {
                   className="ml-[1px] mt-[0.9px] w-[20px] h-[20px] lg:w-[25px] lg:h-[25px]"
                 >
                   {option.label}
-                  {/* block mt-[5px] hover:border-solid hover:border-gray-300 hover:border-[2px]
-                          hover:rounded-full */}
                 </button>
               </li>
             ))}

@@ -26,7 +26,6 @@ const Download_image = ({ messages, onImageUpload }) => {
         const newUploadImage = { ...uploadImage, imageBase64: e.target.result };
         setUploadImage(newUploadImage);
         onImageUpload(newUploadImage); // Pass the data up to the parent
-        // console.log("Base64 Image:", e.target.result);
       };
       reader.readAsDataURL(uploadImage.imageData);
     } else {
