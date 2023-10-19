@@ -56,6 +56,10 @@ function XidmetDetail({ xidmetDetail }) {
                 Sifariş sayı: {viewCount}
               </p>
             </div>
+            <h2 className="my-h2 pt-[5px] lg:pt-[10px] pb-[5px] lg:pb-[20px]">
+              {serviceInfoNames?.[0].title}
+              </h2>
+
             <div
               dangerouslySetInnerHTML={{
                 __html: description
@@ -77,7 +81,7 @@ function XidmetDetail({ xidmetDetail }) {
                 {serviceInfoTags.map(({ name }, index) => (
                   <div key={index}>
                     <Link href={`/xidmet/tag/${name}`}>
-                      <p className="font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px] border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz">
+                      <p className="font-medium lg:font-semibold text-[10px] lg:text-[12px] leading-[15px] lg:leading-[16px] border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz">
                         {name}
                       </p>
                     </Link>

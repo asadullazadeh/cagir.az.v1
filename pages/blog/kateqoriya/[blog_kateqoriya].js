@@ -138,7 +138,7 @@ function BlogCategory() {
                       {insertDate.slice(0, 10)}
                     </p>
                     <div className="ml-auto border border-cagiraz rounded-lg">
-                      <p className="font-semibold	text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px] ">
+                      <p className="font-semibold	text-[12px] leading-[16px] text-cagiraz px-[10px] py-[4px] ">
                         {categoryName}
                       </p>
                     </div>

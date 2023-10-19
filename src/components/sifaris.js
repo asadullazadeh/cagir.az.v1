@@ -65,7 +65,7 @@ function Sifaris({
   const handleSubSelect = setSelectedSub;
 
   // Derived state and utility functions
-  const selectedSubNameUrl = defaultSub?.nameUrl || selectedSub?.nameUrl;
+  const selectedSubNameUrl = selectedSub?.nameUrl || defaultSub?.nameUrl;
   const findSubServiceInfoByName = (subServices, name) =>
     subServices.find((obj) => obj.serviceNames[0].name === name);
 
@@ -76,14 +76,16 @@ function Sifaris({
   }, [onSelectedMainChange, selectedMain]);
 
   useEffect(() => {
-    sendSubUrl(subService?.serviceNames?.[0]?.namUrl);
+    sendSubUrl(subService?.nameUrl);
   }, [subService, sendSubUrl]);
 
   useEffect(() => {
     setSelectedMain(selectedMain);
     setSelectedSub(subService?.serviceNames?.[0]?.name);
   }, [defaultSub, getSubServices, selectedMain, subService?.serviceNames]);
-// console.log("selectedSubNameUrl:",selectedSubNameUrl)
+// console.log("subService?.serviceNames?.[0]?.nameUrl:",subService.nameUrl)
+// console.log("defaultSub?.nameUrl:",defaultSub?.nameUrl)
+
 // console.log("subService?.serviceNames?.[0]?.name:",subService?.serviceNames?.[0]?.name)
 
 

@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import info_btn from "@/icons/form/info_btn.svg";
+import { useRouter } from "next/router";
 
 const Dropdown = ({
   getMainServices,
@@ -29,6 +30,8 @@ const Dropdown = ({
       onSelectService: onSelectSub2Service,
     },
   };
+
+  const router = useRouter();
 
   // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
@@ -83,7 +86,7 @@ const Dropdown = ({
     subServiceName || defaultSub?.serviceNames?.[0]["name"],
     sub2ServiceName,
   ];
- 
+
   // Update subServiceName and sub2ServiceName when mainServiceName changes
   useEffect(() => {
     setSubServiceName("");
@@ -143,6 +146,39 @@ const Dropdown = ({
   };
 
   const isSub2ElementsExist = getSub2Services.length > 0;
+
+  const findMainInfoByName = (mainServices, name) =>
+    mainServices.find((obj) => obj.serviceNames[0].name === serviceNames[0]) ||
+    {};
+  const mainInfo = findMainInfoByName(getMainServices, serviceNames[0]);
+
+  const findSubInfoByName = (subServices, name) =>
+    subServices.find((obj) => obj.serviceNames[0].name === serviceNames[1]) ||
+    {};
+  const subInfo = findSubInfoByName(getSubServices, serviceNames[1]);
+  console.log(mainInfo.nameUrl);
+  console.log(subInfo.nameUrl);
+  console.log(getSubServices);
+
+  const pathMain = mainInfo.nameUrl;
+  const pathSub = subInfo.nameUrl || getSubServices[0]?.nameUrl;
+  const newPath = `/${pathMain}/${pathSub}`;
+
+  // if page redirects from different page, it useEffect is not applied.
+  const isInitialMount = useRef(true);
+  useEffect(() => {
+    // If it's the initial mount, we'll check if we're being redirected
+    if (isInitialMount.current) {
+      if (router.asPath !== newPath) {
+        // router.replace(newPath);
+      }
+      isInitialMount.current = false;
+    } else {
+      // For subsequent updates, always navigate
+      router.replace(newPath);
+    }
+  }, [newPath]);
+  console.log(dropdownInfos);
   return (
     <div
       ref={myElementRef}

@@ -70,7 +70,7 @@ function RelatedBlogs({ blogId, categoryId, subject, messages, chosenLang }) {
                 </Link>
                 <div className="flex flex-row justify-between">
                   <p
-                    className="lg:order-2 font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px]
+                    className="lg:order-2 font-medium lg:font-semibold text-[10px] lg:text-[10px] leading-[15px] lg:leading-[16px]
                   border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz"
                   >
                     {subject}

@@ -3,7 +3,7 @@ import axios from 'axios';
 import Link from 'next/link';
 
 const titleClasses = "font-semibold lg:font-bold text-[16px] lg:text-[20px] lg:leading-[30px] leading-[24px] pb-[15px] pt-[30px] lg:pt-0 text-center lg:text-start border-t border-[#EAEAEA] lg:border-none";
-const tagClasses = "font-medium lg:font-semibold text-[8px] lg:text-[10px] leading-[12px] lg:leading-[15px] border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz";
+const tagClasses = "font-medium lg:font-semibold text-[12px] leading-[15px] border border-cagiraz rounded-[5px] py-[2px] lg:py-[4px] px-[8px] lg:px-[10px] text-cagiraz";
 const tagContainerClasses = "flex flex-row flex-wrap gap-[10px] lg:gap-[15px]";
 
 const fetchTags = async (blogId) => {

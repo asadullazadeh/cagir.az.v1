@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from 'next/router';
 import fb from "@/icons/social_ntwrk/fb.svg";
 import fb1 from "@/icons/social_ntwrk/fb1.svg";
 import insta from "@/icons/social_ntwrk/insta.svg";
@@ -8,30 +9,40 @@ import insta1 from "@/icons/social_ntwrk/insta1.svg";
 import linkedin from "@/icons/social_ntwrk/linkedin.svg";
 import linkedin1 from "@/icons/social_ntwrk/linkedin1.svg";
 
-export default function SocialNetworks({ classNames }) {
-  const socialElements = [
-    {
-      id: 1,
-      imageUnhovered: insta,
-      imageHovered: insta1,
-      link: "https://www.instagram.com/cagir.az",
-      alt: "insta_icon",
-    },
-    {
-      id: 2,
-      imageUnhovered: fb,
-      imageHovered: fb1,
-      link: "https://www.facebook.com/cagir.az",
-      alt: "fb_icon",
-    },
-    {
-      id: 3,
-      imageUnhovered: linkedin,
-      imageHovered: linkedin1,
-      link: "https://www.linkedin.com/company/cagir-az/",
-      alt: "linkedin_icon",
-    },
-  ];
+export default function SocialNetworks({ classNames, isSharingEnabled }) {
+
+  const currentURL = "https://cagir.az" + useRouter().asPath;
+
+const getLink = (baseLink, shareLink) => {
+  return isSharingEnabled ? shareLink : baseLink;
+};
+
+const socialElements = [
+  {
+    id: 1,
+    imageUnhovered: insta,
+    imageHovered: insta1,
+    baseLink: "https://www.instagram.com/cagir.az",
+    shareLink: "",  // Instagram doesn't support direct web sharing
+    alt: "insta_icon",
+  },
+  {
+    id: 2,
+    imageUnhovered: fb,
+    imageHovered: fb1,
+    baseLink: "https://www.facebook.com/cagir.az",
+    shareLink: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentURL)}`,
+    alt: "fb_icon",
+  },
+  {
+    id: 3,
+    imageUnhovered: linkedin,
+    imageHovered: linkedin1,
+    baseLink: "https://www.linkedin.com/company/cagir-az/",
+    shareLink: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentURL)}`,
+    alt: "linkedin_icon",
+  },
+];
 
   const [hoveredElements, setHoveredElements] = useState({});
 
@@ -49,25 +60,19 @@ export default function SocialNetworks({ classNames }) {
   return (
     <div className={classNames}>
       {socialElements.map((element) => (
-        <Link
+        <a
           key={element.id}
-          href={element.link}
+          href={getLink(element.baseLink, element.shareLink)}
           target="_blank"
+          rel="noopener noreferrer"
           onMouseEnter={() => handleMouseEnter(element.id)}
           onMouseLeave={() => handleMouseLeave(element.id)}
           className={transitionClass}
         >
-          <Image
-            {...imageDimension}
-            src={
-              hoveredElements[element.id]
-                ? element.imageHovered
-                : element.imageUnhovered
-            }
-            alt={element.alt}
-          />
-        </Link>
+          <Image {...imageDimension} src={hoveredElements[element.id] ? element.imageHovered : element.imageUnhovered} alt={element.alt} />
+        </a>
       ))}
     </div>
   );
+  
 }

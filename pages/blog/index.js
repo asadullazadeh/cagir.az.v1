@@ -136,7 +136,7 @@ function Blogs() {
                     </p>
                     <div className="ml-auto border border-cagiraz rounded-lg">
                       <Link href={`blog/kateqoriya/${category.titleUrl}`}>
-                        <p className="font-semibold	text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px] ">
+                        <p className="font-semibold	text-[12px] leading-[16px] text-cagiraz px-[10px] py-[4px] ">
                           {categoryName}
                         </p>
                       </Link>

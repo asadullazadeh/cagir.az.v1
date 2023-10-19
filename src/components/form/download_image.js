@@ -4,45 +4,45 @@ import download from "@/icons/form/download.svg";
 import delete_icon from "@/icons/form/delete.svg";
 
 const Download_image = ({ messages, onImageUpload }) => {
-  const [uploadImage, setUploadImage] = useState({
-    imageData: null,
-    imageBase64: "",
-  });
-
-  const [deleteBtn, setDeleteBtn] = useState(false);
+  const [uploadImages, setUploadImages] = useState([]);
 
   const handleClick = () => {
-    // setDeleteBtn((prev) => !prev)
-    setUploadImage({
-      imageData: null,
-      imageBase64: "",
-    });
+    setUploadImages([]);
   };
 
   useEffect(() => {
-    if (uploadImage.imageData) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const newUploadImage = { ...uploadImage, imageBase64: e.target.result };
-        setUploadImage(newUploadImage);
-        onImageUpload(newUploadImage); // Pass the data up to the parent
-      };
-      reader.readAsDataURL(uploadImage.imageData);
-    } else {
-      setUploadImage("");
-    }
-  }, [uploadImage.imageData, onImageUpload]);
+    uploadImages.forEach((image, index) => {
+      if (image.imageData && !image.imageBase64) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const updatedImages = [...uploadImages];
+          updatedImages[index].imageBase64 = e.target.result;
+          setUploadImages(updatedImages);
+          onImageUpload(updatedImages);
+        };
+        reader.readAsDataURL(image.imageData);
+      }
+    });
+  }, [uploadImages, onImageUpload]);
 
   const handleFileChange = (e) => {
     if (e.target.files.length > 0) {
-      setUploadImage((prevState) => ({
-        ...prevState,
-        imageData: e.target.files[0],
+      const files = Array.from(e.target.files);
+      const newImages = files.map((file) => ({
+        imageData: file,
+        imageBase64: null,
       }));
+      setUploadImages((prevImages) => [...prevImages, ...newImages]);
     }
   };
 
-  
+  const inputPlaceHolder =
+    uploadImages.length === 0 || null
+      ? "Şəkil yüklə (Ətraflı məlumat üçün)"
+      : uploadImages.length === 1
+      ? uploadImages[0].imageData.name
+      : `${uploadImages.length} fayl əlavə olundu`;
+
   return (
     <div className="flex flex-col gap-y-[5px]  ">
       <p className="hidden lg:block font-semibold text-[12px] leading-[18px] text-black500">
@@ -57,17 +57,9 @@ const Download_image = ({ messages, onImageUpload }) => {
           <div className="flex flex-row gap-x-[15px] sm:gap-x-[30px] lg:gap-x-[15px]  items-center">
             <Image src={download} alt="download_icon" />
 
-            {uploadImage?.imageData?.name ? (
-              <p className="font-semibold text-[10px] leading-[15px] text-gray900">
-                {uploadImage.imageData.name}
-              </p>
-            ) : (
-              <>
-                <p className="font-semibold text-[10px] leading-[15px] text-gray900">
-                  Şəkil yüklə (Ətraflı məlumat üçün)
-                </p>
-              </>
-            )}
+            <p className="font-semibold text-[10px] leading-[15px] text-gray900">
+              {inputPlaceHolder}
+            </p>
           </div>
 
           <input
@@ -76,6 +68,7 @@ const Download_image = ({ messages, onImageUpload }) => {
             type="file"
             className="hidden"
             onChange={handleFileChange}
+            multiple
           />
         </label>
         <button onClick={handleClick}>

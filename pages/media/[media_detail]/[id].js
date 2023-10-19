@@ -9,8 +9,9 @@ import RelatedMediaPosts from "@/src/components/main/relatedMediaPosts";
 
 function MediaPost({ mediaId }) {
   const [responseData, setResponseData] = useState([]);
-  const { locales } = useRouter();
-  const { locale } = useIntl();
+  
+  const intl = useIntl();
+  const messages = intl.messages;
 
   useEffect(() => {
     axios
@@ -26,10 +27,9 @@ function MediaPost({ mediaId }) {
   const {
     imageUrl,
     mediaNames: [
-      { description, shortDescription, title, insertDate } = {},
+      { description, shortDescription, title, insertDate,mediaNames } = {},
     ] = [],
   } = responseData;
-
   return (
     <div>
       <Head>
@@ -37,7 +37,13 @@ function MediaPost({ mediaId }) {
       </Head>
       <div className="flex flex-col lg:flex-row lg:gap-x-[40px] xl:gap-x-[50px] 2xl:gap-x-[60px] pb-[60px] lg:pb-[90px] pt-[20px] lg:pt-[50px]">
         <div className="w-full lg:w-2/3 pb-[30px] lg:pb-0 drop-shadow-card lg:drop-shadow-none lg:hover:drop-shadow-card transition duration-300">
-          <SocialNetworks classNames="hidden lg:flex flex-row gap-x-[20px] pb-[30px]" />
+        <div className="hidden lg:flex flex-row gap-x-[10px]">
+          <p className="font-semibold non-italic tracking-[0.02em] text-[14px] leading-[22px] text-black500">
+          {messages.share}: 
+            </p>
+            
+          <SocialNetworks classNames="hidden lg:flex flex-row gap-x-[20px] pb-[30px]" isSharingEnabled={true} />
+          </div>
           <Image
             width={300}
             height={300}
@@ -50,6 +56,9 @@ function MediaPost({ mediaId }) {
               {insertDate?.slice(0, 10)}
             </p>
           </div>
+          <h2 className="my-h2 pt-[5px] lg:pt-[10px] pb-[5px] lg:pb-[20px]">
+            {responseData.mediaNames?.[0].title}
+            </h2>
           <div
             className="font-semibold text-[#959595]"
             dangerouslySetInnerHTML={{
@@ -62,7 +71,12 @@ function MediaPost({ mediaId }) {
                 .replaceAll("<span", '<span class=""'),
             }}
           />
-          <SocialNetworks classNames="flex flex-row gap-x-[20px] pt-[10px] lg:pt-[30px]" />
+          <div className="flex flex-row items-center gap-x-[10px] pt-[10px] lg:pt-[30px]">
+          <p className="font-semibold non-italic tracking-[0.02em] text-[14px] leading-[22px] text-black500">
+          {messages.share}: 
+            </p>
+          <SocialNetworks classNames="flex flex-row gap-x-[20px] " isSharingEnabled={true} />
+          </div>
         </div>
         <div className="w-full lg:w-1/3 flex flex-col lg:gap-y-[40px]">
           <RelatedMediaPosts />

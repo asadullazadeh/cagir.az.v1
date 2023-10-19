@@ -60,44 +60,41 @@ function Sub2Service({ dataMain, chosenLang }) {
       fetchSubServices(defaultMain.id, chosenLang).then(setGetSubServices);
     }
   }, [defaultMain.id, chosenLang]);
-
+console.log(getSubServices)
   const handleReceiveData = (data) => {
     setSubUrlFromSifaris(data);
   };
+  //
+  const [subServiceNameUrl, setsubServiceNameUrl] = useState("");
+  useEffect(() => {
+    if (subUrlFromSifaris) {
+      setsubServiceNameUrl(subUrlFromSifaris);
+    } 
+    else {
+      setsubServiceNameUrl(getSubServices?.[0]?.nameUrl);
+    }
+  }, [getSubServices, subUrlFromSifaris]);
+
+  // console.log(getSubServices[0].nameUrl)
 
   const findSubInfoByNameUrl = (subServices, nameUrl) =>
     subServices.find((obj) => obj.nameUrl === subService);
   const defaultSub = findSubInfoByNameUrl(getSubServices, subService);
 
   const pathMain = !defaultMain.nameUrl ? mainService : defaultMain.nameUrl;
-  const pathSub = subService
-  // subUrlFromSifaris ||  getSubServices[0]?.nameUrl || subService 
+  const pathSub =  subServiceNameUrl;
 
   const newPath = `/${pathMain}/${pathSub}`;
-  // console.log(subUrlFromSifaris || defaultSub?.[0]?.nameUrl ||  getSubServices[0]?.nameUrl || subService )
-  // console.log(!subUrlFromSifaris || typeof subUrlFromSifaris === "undefined"
-  // ? getSubServices[0]?.nameUrl
-  // : subUrlFromSifaris);
-  // defaultSub evvel secileni sonra en birinci elementi goturur.
-  console.log("subUrlFromSifaris:",subUrlFromSifaris)
-  console.log("defaultSub?.[0]?.nameUrl:",defaultSub?.[0]?.nameUrl)
-  console.log("getSubServices[0]?.nameUrl:",getSubServices[0]?.nameUrl)
-  console.log("subService:",subService)
 
-  // console.log("subUrlFromSifaris typeof:", typeof subUrlFromSifaris);
-  // console.log("subUrlFromSifaris length:",subUrlFromSifaris?.length);
-  // console.log("subUrlFromSifaris:",subUrlFromSifaris);
-
-  // console.log("subService:", subService);
-  // console.log("getSubServices[0]?.nameUrl:", getSubServices[0]?.nameUrl);
-
-  useEffect(() => {
-    router.replace(newPath);
-  }, [newPath]);
+  // useEffect(() => {
+  //   router.replace(newPath);
+  // }, [newPath]);
 
   const findMainInfoByNameUrlNew = (mainServices, nameUrl) =>
     mainServices.find((obj) => obj.nameUrl === mainService) || {};
   const defaultMainNew = findMainInfoByNameUrlNew(dataMain, selectedMain);
+console.log(subUrlFromSifaris)
+
 
   return (
     <div>
@@ -105,6 +102,7 @@ function Sub2Service({ dataMain, chosenLang }) {
         <title>Sifariş yarat</title>
       </Head>
       <div>
+      {/* {isFirstLoad ? "First Load or Refreshed!" : "Navigated from another page!"} */}
         <Sifaris
           getMainServices={dataMain}
           {...{ getSubServices }}
