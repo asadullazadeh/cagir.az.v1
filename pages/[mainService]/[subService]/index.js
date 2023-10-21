@@ -92,11 +92,14 @@ function Sub2Service({ dataMain, chosenLang }) {
   const findMainInfoByNameUrlNew = (mainServices, nameUrl) =>
     mainServices.find((obj) => obj.nameUrl === mainService) || {};
   const defaultMainNew = findMainInfoByNameUrlNew(dataMain, selectedMain);
-  // console.log(subUrlFromSifaris)
 
   return (
     <div>
       <Head>
+        <meta
+          name="description"
+          content={defaultSub?.serviceNames[0].metaDescription}
+        />
         <title>Sifariş yarat</title>
       </Head>
       <div>

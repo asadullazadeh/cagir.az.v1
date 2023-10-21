@@ -446,6 +446,7 @@ function Sifaris({
       { imageExtension: childUploadImage.imageData?.name },
     ],
   };
+  console.log(objectDetails["orderDetails"].length);
 
   // Order Creation
   if (isOrderPassed) {
@@ -485,6 +486,9 @@ function Sifaris({
       }, 500);
     }
   }, [isOrderPassed]);
+
+
+  const orderReadyToPass = priceBeforePromo > 0
 
   return (
     <div>
@@ -665,15 +669,26 @@ function Sifaris({
                     btnName="Sorğu göndər"
                     classNames="w-full"
                   />
+                  {/* {objectDetails["orderDetails"].length >0} */}
                   <ModalStandart
                     dialogId="my_modal_10"
                     content={
-                      <InputBtnNbTransition
-                        name="Sürətli sifariş"
-                        numberToParent={handleDataInputNumber}
-                        sendDataToParent={handleDataFromChildBtn}
-                        {...{ messages }}
-                      />
+                      orderReadyToPass ? (
+                        <InputBtnNbTransition
+                          name="Sürətli sifariş"
+                          numberToParent={handleDataInputNumber}
+                          sendDataToParent={handleDataFromChildBtn}
+                          {...{ messages }}
+                        />
+                      ) : (
+                        <div className=" flex items-center justify-center ">
+                          <div className="flex flex-col gap-y-[10px] text-center">
+                            <h2 className="my-h3 pt-[15px]">
+                              Zəhmət olmasa minimum bir meyar seçin.
+                            </h2>
+                          </div>
+                        </div>
+                      )
                     }
                   />
                 </div>

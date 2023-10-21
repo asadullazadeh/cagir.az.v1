@@ -35,7 +35,10 @@ export default function Home(props) {
   return (
     <div>
       <Head>
-        <meta name="description" content="" />
+        <meta
+          name="description"
+          content="Cagir.az-temizlik xidmeti,paltaryuyan ustasi,kondisioner ustasi,kombi ustasi,soyuducu ustasi, temizlik sirketi,komputer ustasi,masaj,xalca yuma,elektrik"
+        />
         <title>Cagir.az</title>
       </Head>
 
