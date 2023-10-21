@@ -60,7 +60,7 @@ function Sub2Service({ dataMain, chosenLang }) {
       fetchSubServices(defaultMain.id, chosenLang).then(setGetSubServices);
     }
   }, [defaultMain.id, chosenLang]);
-console.log(getSubServices)
+  // console.log(getSubServices)
   const handleReceiveData = (data) => {
     setSubUrlFromSifaris(data);
   };
@@ -69,8 +69,7 @@ console.log(getSubServices)
   useEffect(() => {
     if (subUrlFromSifaris) {
       setsubServiceNameUrl(subUrlFromSifaris);
-    } 
-    else {
+    } else {
       setsubServiceNameUrl(getSubServices?.[0]?.nameUrl);
     }
   }, [getSubServices, subUrlFromSifaris]);
@@ -82,7 +81,7 @@ console.log(getSubServices)
   const defaultSub = findSubInfoByNameUrl(getSubServices, subService);
 
   const pathMain = !defaultMain.nameUrl ? mainService : defaultMain.nameUrl;
-  const pathSub =  subServiceNameUrl;
+  const pathSub = subServiceNameUrl;
 
   const newPath = `/${pathMain}/${pathSub}`;
 
@@ -93,8 +92,7 @@ console.log(getSubServices)
   const findMainInfoByNameUrlNew = (mainServices, nameUrl) =>
     mainServices.find((obj) => obj.nameUrl === mainService) || {};
   const defaultMainNew = findMainInfoByNameUrlNew(dataMain, selectedMain);
-console.log(subUrlFromSifaris)
-
+  // console.log(subUrlFromSifaris)
 
   return (
     <div>
@@ -102,7 +100,7 @@ console.log(subUrlFromSifaris)
         <title>Sifariş yarat</title>
       </Head>
       <div>
-      {/* {isFirstLoad ? "First Load or Refreshed!" : "Navigated from another page!"} */}
+        {/* {isFirstLoad ? "First Load or Refreshed!" : "Navigated from another page!"} */}
         <Sifaris
           getMainServices={dataMain}
           {...{ getSubServices }}

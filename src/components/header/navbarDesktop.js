@@ -28,16 +28,17 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
       className: "",
     },
     {
-      href: "/soyuducu-ustasi",
-      text: messages["usta-soyuducu"],
+      href: "/usta/",
+      text: "Usta xidmətləri",
       className: "",
     },
-    {
-      href: "/elektrik-ustasi",
-      text: messages["usta-elektrik"],
-      className: "",
-    },
-    { href: "/xidmetler", text: messages["other-services"], className: "" },
+    // {
+    //   href: "/usta/elektrik-ustasi",
+    //   text: messages["usta-elektrik"],
+    //   className: "",
+    // }
+    ,
+    { href: "/xidmetler", text: "Bütün xidmətlər", className: "" },
   ];
 
   const [searchIconIsClicked, setSearchIconIsClicked] = useState(false);
@@ -204,7 +205,7 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
             {/* 2nd navbar-1st part */}
             <ul
               className=" flex flex-row  
-           items-center font-semibold text-[10px] xl:text-[12px] 2xl:text-[14px] leading-[21px] text-gray500 space-x-[35px] lg:space-x-[40px] xl:space-x-[50px] 2xl:space-x-[70px]"
+           items-center font-semibold text-[10px] xl:text-[12px] 2xl:text-[14px] leading-[21px] text-gray500 space-x-[35px] lg:space-x-[45px] xl:space-x-[55px] 2xl:space-x-[85px]"
             >
               {linkInfos.map(({ index, href, text }) => (
                 // eslint-disable-next-line react/jsx-key

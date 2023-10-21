@@ -77,6 +77,7 @@ const Dropdown = ({
       ? defaultMain?.serviceNames?.[0].name
       : ""
   );
+
   const [subServiceName, setSubServiceName] = useState(
     defaultSub?.serviceNames?.[0].name
   );
@@ -87,6 +88,8 @@ const Dropdown = ({
     sub2ServiceName,
   ];
 
+  console.log(serviceNames);
+  console.log(getSub2Services);
   // Update subServiceName and sub2ServiceName when mainServiceName changes
   useEffect(() => {
     setSubServiceName("");
@@ -120,13 +123,20 @@ const Dropdown = ({
 
   //
   let tremBlingObject = {
-    0: { 0: false, 1: defaultMain ? false : true, 2: true },
-    1: { 0: false, 1: false, 2: true },
-    2: { 0: false, 1: false, 2: false },
+    0: false,
+    1: false,
+    2: true,
   };
 
   // which dropdown is trembling?
-  const [trembling, setTrembling] = useState({ ...tremBlingObject[0] });
+  // const trembling = tremBlingObject[index] && (typeof sub2ServiceName !=="undefined")
+
+  function isTrembling(index) {
+    return tremBlingObject[index] && sub2ServiceName?.length === 0;
+  }
+
+  // const trembling
+  // const [trembling, setTrembling] = useState({ ...tremBlingObject[0] });
   const handleOptionClick = (mainIndex, serviceName) => {
     if (mainIndex == 0) {
       setMainServiceName(serviceName);
@@ -142,7 +152,6 @@ const Dropdown = ({
     setIsOpen(false);
 
     onDataCallback(mainIndex);
-    setTrembling({ ...tremBlingObject[mainIndex] });
   };
 
   const isSub2ElementsExist = getSub2Services.length > 0;
@@ -156,13 +165,12 @@ const Dropdown = ({
     subServices.find((obj) => obj.serviceNames[0].name === serviceNames[1]) ||
     {};
   const subInfo = findSubInfoByName(getSubServices, serviceNames[1]);
-  console.log(mainInfo.nameUrl);
-  console.log(subInfo.nameUrl);
-  console.log(getSubServices);
 
   const pathMain = mainInfo.nameUrl;
   const pathSub = subInfo.nameUrl || getSubServices[0]?.nameUrl;
   const newPath = `/${pathMain}/${pathSub}`;
+
+  const { mainService, subService } = router.query;
 
   // if page redirects from different page, it useEffect is not applied.
   const isInitialMount = useRef(true);
@@ -170,20 +178,28 @@ const Dropdown = ({
     // If it's the initial mount, we'll check if we're being redirected
     if (isInitialMount.current) {
       if (router.asPath !== newPath) {
-        // router.replace(newPath);
+        router.replace(`/${mainService}/${subService}`);
       }
       isInitialMount.current = false;
     } else {
       // For subsequent updates, always navigate
       router.replace(newPath);
     }
-  }, [newPath]);
-  console.log(dropdownInfos);
+  }, [mainService, newPath, subService]);
+  console.log(serviceNames[0]);
+
   return (
     <div
       ref={myElementRef}
       className="grid lg:grid-cols-3 justify-items-stretch lg:gap-x-[40px] gap-y-[15px]"
     >
+      {/*  */}
+      {/* <button 
+        className="px-4 py-2 bg-blue-500 text-white hover:bg-blue-700 focus:outline-none animate-slide"
+      >
+        I'm Moving
+      </button> */}
+      {/*  */}
       {Object.keys(dropdownInfos).map((index) => {
         if (index === "2" && !isSub2ElementsExist) {
           return null; // Skip this iteration
@@ -218,12 +234,12 @@ const Dropdown = ({
                 >
                   {serviceNames[index] || ""}
                 </label>
+                {/* {typeof Number(mainIndex)} */}
                 <button
                   className={`dropdown-button relative flex items-center justify-between w-full px-[15px] py-[5px] lg:py-[10px] text-[10px] lg:text-[12px] leading-[15px] lg:leading-[12px] font-medium lg:font-semibold
          text-gray900  bg-white rounded-[10px] lg:rounded-[50px] focus:outline-none focus:border-cagiraz
          border-[1px] focus:border-[2px] border-solid border-gray900
-         ${trembling[index] ? "moveUpDown" : ""}       
-         `}
+         ${isTrembling(index) ? "animate-slide" : ""} `}
                   onClick={() => {
                     toggleDropdown(index);
                   }}

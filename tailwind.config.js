@@ -60,13 +60,14 @@ export const theme = {
     //   "2/3": "66.666667%",
     // },
     keyframes: {
-      moveUpDown: {
-        "0%, 100%": { transform: "translateY(0)" },
-        "50%": { transform: "translateY(-20px)" },
+      slide: {
+        '0%': { transform: 'translateX(0)' },
+        '50%': { transform: 'translateX(10px)' },
+        '100%': { transform: 'translateX(0)' },
       },
     },
     animation: {
-      wiggle: "wiggle 200ms ease-in-out",
+      slide: 'slide 0.4s infinite',
     },
   },
   screens: {

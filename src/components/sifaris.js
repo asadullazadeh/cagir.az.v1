@@ -60,6 +60,9 @@ function Sifaris({
       getSubServices[0]?.serviceNames?.[0]?.name
   );
 
+  // //first sub service of selected main service
+  // const firstElementSub getSubServices?.[0]?.serviceNames[0].name
+
   // Event handlers
   const handleMainSelect = setSelectedMain;
   const handleSubSelect = setSelectedSub;
@@ -81,13 +84,8 @@ function Sifaris({
 
   useEffect(() => {
     setSelectedMain(selectedMain);
-    setSelectedSub(subService?.serviceNames?.[0]?.name);
-  }, [defaultSub, getSubServices, selectedMain, subService?.serviceNames]);
-// console.log("subService?.serviceNames?.[0]?.nameUrl:",subService.nameUrl)
-// console.log("defaultSub?.nameUrl:",defaultSub?.nameUrl)
-
-// console.log("subService?.serviceNames?.[0]?.name:",subService?.serviceNames?.[0]?.name)
-
+    setSelectedSub(getSubServices?.[0]?.serviceNames[0].name);
+  }, [selectedMain, getSubServices]);
 
   /* ----------------------------------  sub2Services functionality ---------------------------------- */
   // State initialization
@@ -116,12 +114,7 @@ function Sifaris({
       .catch((error) => {
         console.error(error);
       });
-  }, [defaultSub?.id, chosenLang]);
-
-  useEffect(() => {
-    setSelectedSub2("");
-    setgetSub2Services([]);
-  }, [selectedMain, selectedSub]);
+  }, [defaultSub, chosenLang]);
 
   // Utility functions
   const findSub2InfoByName = (sub2Services, name) => {
@@ -238,41 +231,40 @@ function Sifaris({
 
   /* ---------------------------------- Text input functionality-FilterType=2 ---------------------------------- */
   // State initialization
-const [inputTextValue, setInputTextValue] = useState(0);
-const [inputTextId, setInputTextId] = useState("");
-const [inputTextObject, setInputTextObject] = useState({});
+  const [inputTextValue, setInputTextValue] = useState(0);
+  const [inputTextId, setInputTextId] = useState("");
+  const [inputTextObject, setInputTextObject] = useState({});
 
-// Event handlers
-const handleDataUpdateForInputText = (criteriaId, value) => {
+  // Event handlers
+  const handleDataUpdateForInputText = (criteriaId, value) => {
     setInputTextId(criteriaId);
     setInputTextValue(value);
-};
+  };
 
-// Effects
-useEffect(() => {
+  // Effects
+  useEffect(() => {
     if (!inputTextId) return;
 
     setInputTextObject({
       serviceCriteriaId: inputTextId,
       count: Number(inputTextValue),
     });
-}, [inputTextId, inputTextValue]);
-
+  }, [inputTextId, inputTextValue]);
 
   /* ---------------------------------- Radio button functionality-FilterType=4 ---------------------------------- */
   // State initialization
-const [selectedRadioName, setSelectedRadioName] = useState(null);
-const [selectedRadioId, setSelectedRadioId] = useState("");
-const [radioBtnObject, setRadioBtnObject] = useState({});
+  const [selectedRadioName, setSelectedRadioName] = useState(null);
+  const [selectedRadioId, setSelectedRadioId] = useState("");
+  const [radioBtnObject, setRadioBtnObject] = useState({});
 
-// Event handlers
-const handleChange = (value, criteriaId) => {
+  // Event handlers
+  const handleChange = (value, criteriaId) => {
     setSelectedRadioName(value);
     setSelectedRadioId(criteriaId);
-};
+  };
 
-// Effects
-useEffect(() => {
+  // Effects
+  useEffect(() => {
     setRadioBtnObject(
       selectedRadioId
         ? {
@@ -282,25 +274,24 @@ useEffect(() => {
           }
         : {}
     );
-}, [selectedRadioName, selectedRadioId]);
-
+  }, [selectedRadioName, selectedRadioId]);
 
   /* ---------------------------------- Checkbox functionality-FilterType=4 ---------------------------------- */
   // State initialization
-const [checkboxId, setCheckboxId] = useState(null);
-const [checkboxIsChecked, setCheckboxIsChecked] = useState(false);
-const [checkedCheckboxName, setCheckedCheckboxName] = useState("");
-const [checkedCheckboxArray, setCheckedCheckboxArray] = useState([]);
+  const [checkboxId, setCheckboxId] = useState(null);
+  const [checkboxIsChecked, setCheckboxIsChecked] = useState(false);
+  const [checkedCheckboxName, setCheckedCheckboxName] = useState("");
+  const [checkedCheckboxArray, setCheckedCheckboxArray] = useState([]);
 
-// Event handlers
-const handleDataFromChild = (name, criteriaId, isChecked) => {
+  // Event handlers
+  const handleDataFromChild = (name, criteriaId, isChecked) => {
     setCheckboxId(criteriaId);
     setCheckboxIsChecked(isChecked);
     setCheckedCheckboxName(name);
-};
+  };
 
-// Effects
-useEffect(() => {
+  // Effects
+  useEffect(() => {
     if (checkboxIsChecked && checkboxId) {
       const newObj = {
         name: checkedCheckboxName,
@@ -313,43 +304,42 @@ useEffect(() => {
         prevArray.filter((obj) => obj.serviceCriteriaId !== checkboxId)
       );
     }
-}, [checkedCheckboxName, checkboxIsChecked, checkboxId]);
-
+  }, [checkedCheckboxName, checkboxIsChecked, checkboxId]);
 
   /* ---------------------------------- Calculating Price of the Service ---------------------------------- */
   // State initialization
-const [priceBeforePromo, setPriceBeforePromo] = useState(0);
+  const [priceBeforePromo, setPriceBeforePromo] = useState(0);
 
-// Data processing
-const calculatePrice = [
+  // Data processing
+  const calculatePrice = [
     radioBtnObject,
     ...checkedCheckboxArray,
     ...multiNumberArray,
     ...plusMinusArray,
     inputTextObject,
-];
+  ];
 
-const filteredCalculatePrice = calculatePrice.filter(
+  const filteredCalculatePrice = calculatePrice.filter(
     (item) => Object.keys(item).length !== 0
-);
+  );
 
-// Effects
-useEffect(() => {
+  // Effects
+  useEffect(() => {
     axios
-        .post(
-            "https://api.cagir.az/api/serviceCriteria/calculate",
-            [...filteredCalculatePrice],
-            { headers: { "Accept-Language": "" } }
-        )
-        .then((response) => {
-            setPriceBeforePromo(response.data.result.amount);
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-}, [filteredCalculatePrice]);
+      .post(
+        "https://api.cagir.az/api/serviceCriteria/calculate",
+        [...filteredCalculatePrice],
+        { headers: { "Accept-Language": "" } }
+      )
+      .then((response) => {
+        setPriceBeforePromo(response.data.result.amount);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [filteredCalculatePrice]);
 
-useEffect(() => {
+  useEffect(() => {
     setgetServiceCriterias([]);
     setCheckedCheckboxArray([]);
     setMultiNumberArray([]);
@@ -357,36 +347,36 @@ useEffect(() => {
     setPlusMinusArray([]);
     setInputTextObject({});
     setPriceBeforePromo(0);
-}, [selectedMain, selectedSub, selectedSub2]);
-
+    setSelectedRadioName(null);
+  }, [selectedMain, selectedSub, selectedSub2]);
 
   /* ---------------------------------- Textarea functionality ---------------------------------- */
   // State Initialization
-const [showTextarea, setshowTextarea] = useState(false);
-const [receivedMessage, setReceivedMessage] = useState("");
-const [isOpen, setIsOpen] = useState(false);
-const [whichServiceCategory, setWhichServiceCategory] = useState(null);
+  const [showTextarea, setshowTextarea] = useState(false);
+  const [receivedMessage, setReceivedMessage] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [whichServiceCategory, setWhichServiceCategory] = useState(null);
 
-// Effects
-useEffect(() => {
+  // Effects
+  useEffect(() => {
     setshowTextarea(getServiceCriterias.length > 0);
-}, [getServiceCriterias]);
+  }, [getServiceCriterias]);
 
-// Callbacks & Handlers
-const handleMessage = (message) => {
+  // Callbacks & Handlers
+  const handleMessage = (message) => {
     setReceivedMessage(message);
-};
+  };
 
-const handleToggle = () => {
+  const handleToggle = () => {
     setIsOpen(!isOpen);
-};
+  };
 
-const handleCategoryLevelFromDropdown = (data) => {
+  const handleCategoryLevelFromDropdown = (data) => {
     setWhichServiceCategory(data);
-};
+  };
 
-// Props preparation
-const toggleProps = {
+  // Props preparation
+  const toggleProps = {
     selectedMain,
     descMain: defaultMain.serviceNames?.[0].text,
     selectedSub: selectedSub || selectedNamesArray[1],
@@ -396,9 +386,11 @@ const toggleProps = {
     selectedNamesArray,
     messages,
     chosenLang,
-};
+  };
+  // console.log("selectedSub", selectedSub);
+  // console.log(" selectedNamesArray[1]", selectedNamesArray[1]);
 
-const dropdownProps = {
+  const dropdownProps = {
     onSelectMainService: handleMainSelect,
     getMainServices,
     onSelectSubService: handleSubSelect,
@@ -409,72 +401,67 @@ const dropdownProps = {
     defaultSub,
     messages,
     chosenLang,
-};
-
+  };
 
   /* ---------------------------------- Creating order ---------------------------------- */
 
   // States Initialization
-const [childUploadImage, setChildUploadImage] = useState({
-  imageData: null,
-  imageBase64: "",
-});
-const [address, setAddress] = useState("");
-const [addNumber, setAddNumber] = useState("");
-const [isOrderPassed, setIsOrderPassed] = useState(false);
-const [orderPassed, setOrderPassed] = useState(null);
+  const [childUploadImage, setChildUploadImage] = useState({
+    imageData: null,
+    imageBase64: "",
+  });
+  const [address, setAddress] = useState("");
+  const [addNumber, setAddNumber] = useState("");
+  const [isOrderPassed, setIsOrderPassed] = useState(false);
+  const [orderPassed, setOrderPassed] = useState(null);
 
-// Callbacks & Handlers
-const handleChildImageUpload = useCallback((uploadImage) => {
-  setChildUploadImage(uploadImage);
-}, []);
+  // Callbacks & Handlers
+  const handleChildImageUpload = useCallback((uploadImage) => {
+    setChildUploadImage(uploadImage);
+  }, []);
 
-const handleAddressUpdate = (criteriaId, value) => {
-  setAddress(value);
-};
+  const handleAddressUpdate = (criteriaId, value) => {
+    setAddress(value);
+  };
 
-const handleDataInputNumber = (data) => {
-  setAddNumber(data);
-};
+  const handleDataInputNumber = (data) => {
+    setAddNumber(data);
+  };
 
-const handleDataFromChildBtn = (data) => {
-  setIsOrderPassed(data);
-};
+  const handleDataFromChildBtn = (data) => {
+    setIsOrderPassed(data);
+  };
 
-// Object Preparation
-const objectDetails = {
-  amount: priceBeforePromo,
-  payType: 2,
-  address: address,
-  note: receivedMessage,
-  phoneNumber: addNumber,
-  startDate: "2023-08-30T10:00:00",
-  orderDetails: [...filteredCalculatePrice],
-  orderImages: [
+  // Object Preparation
+  const objectDetails = {
+    amount: priceBeforePromo,
+    payType: 2,
+    address: address,
+    note: receivedMessage,
+    phoneNumber: addNumber,
+    startDate: "2023-08-30T10:00:00",
+    orderDetails: [...filteredCalculatePrice],
+    orderImages: [
       { imageBase64: childUploadImage.imageBase64 },
       { imageExtension: childUploadImage.imageData?.name },
-  ],
-};
+    ],
+  };
 
-// Order Creation
-if (isOrderPassed) {
-  axios
-      .post(
-          "https://api.cagir.az/api/order/v3/create",
-          objectDetails,
-          {
-              headers: {
-                  "Accept-Language": "az",
-              },
-          }
-      )
+  // Order Creation
+  if (isOrderPassed) {
+    axios
+      .post("https://api.cagir.az/api/order/v3/create", objectDetails, {
+        headers: {
+          "Accept-Language": "az",
+        },
+      })
       .then((response) => {
-          setOrderPassed(response.data.isSuccess);
+        setOrderPassed(response.data.isSuccess);
       })
       .catch((error) => {
-          console.error(error);
+        console.error(error);
       });
-}
+  }
 
   // Geri button
   const router = useRouter();
@@ -512,9 +499,11 @@ if (isOrderPassed) {
               <Qiymet {...{ priceBeforePromo, messages }} />
             </div>
             {/* Toggle part is only  desktop */}
-             {defaultMain.serviceNames?.[0].text && <div className="z-10 hidden lg:block sticky ">
+            {defaultMain.serviceNames?.[0].text && (
+              <div className="z-10 hidden lg:block sticky ">
                 <Toggle {...toggleProps} {...{ whichServiceCategory }} />
-              </div> }
+              </div>
+            )}
           </div>
 
           {/* Right side of first part in Sifaris */}

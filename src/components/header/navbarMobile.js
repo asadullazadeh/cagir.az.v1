@@ -44,18 +44,18 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
       index: 3,
     },
     {
-      href: "/soyuducu-ustasi",
-      text: messages["usta-soyuducu"],
+      href: "/usta",
+      text: "Usta xidmətləri",
       className: "",
       index: 4,
     },
-    {
-      href: "/elektrik-ustasi",
-      text: messages["usta-elektrik"],
-      className: "",
-      index: 5,
-    },
-    { href: "/xidmetler", text: messages["other-services"], className: "" },
+    // {
+    //   href: "/usta",
+    //   text: "Usta xidmətləri",
+    //   className: "",
+    //   index: 5,
+    // },
+    { href: "/xidmetler", text: "Bütün xidmətlər", className: "" },
     {
       href: "/",
       text: messages[""],

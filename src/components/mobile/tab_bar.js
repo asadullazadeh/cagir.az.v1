@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import phone from "@/icons/tab_bar/phone.svg";
 import whatsapp from "@/icons/tab_bar/whatsapp.svg";
 import jale from "@/public/jale.jpg";
@@ -70,15 +71,23 @@ const TabBar = ({ classNames, messages }) => {
   </noscript>;
 
   //
+  const router = useRouter();
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-    }, 4000); // This will hide the element after 3 seconds
+    let timer;
+
+    // Check if the path matches "/[mainService]/[subService]"
+    const regexPattern = /^\/[^/]+\/[^/]+$/;
+    if (!regexPattern.test(router.route)) {
+      timer = setTimeout(() => {
+        setIsVisible(false);
+      }, 4000); // This will hide the element after 4 seconds
+    }
 
     return () => clearTimeout(timer); // Clear timeout if the component is unmounted
-  }, []);
+  }, [router.route]); // You may want to add router.route to the dependency array to check if it changes
+  // /[mainService]/[subService]
 
   return (
     <div>
@@ -96,7 +105,7 @@ const TabBar = ({ classNames, messages }) => {
               Zəng
             </span>
           </Link>
-          
+
           {/* Whatsapp */}
           <Link
             href="https://wa.me/994703482606"
@@ -118,7 +127,7 @@ const TabBar = ({ classNames, messages }) => {
                 width={65}
                 height={65}
                 className="bubble z-50 rounded-full w-[22px] h-[22px] object-cover object-center"
-                onClick="LiveChatWidget.call('maximize')"
+                onclick="LiveChatWidget.call('maximize')"
                 src={jale}
               />
 

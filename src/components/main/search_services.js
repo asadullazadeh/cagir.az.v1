@@ -5,7 +5,6 @@ import SearchInputMd from "@/src/components/input/input_search_md";
 import arrow_right from "@/icons/arrow_right.svg";
 import close from "@/icons/header/close.svg";
 function SearchServices({ messages, chosenLang, onExit }) {
-
   /* ----------------- mainServices ----------------- */
   const [mainServices, setMainServices] = useState([]);
   useEffect(() => {
@@ -67,7 +66,7 @@ function SearchServices({ messages, chosenLang, onExit }) {
     };
 
     fetchSubServices();
-  }, [mainServices, chosenLang]);
+  }, [mainServices, chosenLang,]);
 
   /* ----------------- search functionality ----------------- */
   // ekranda gorunen updatedSubServiceObject.It updates in each search
@@ -77,9 +76,9 @@ function SearchServices({ messages, chosenLang, onExit }) {
   const [searchVal, setSearchVal] = useState("");
   useEffect(() => {
     const filteredArray = subServices.filter((obj) => {
-      return (
-        obj.serviceNames[0].name.toLowerCase().includes(searchVal.toLowerCase())
-      );
+      return obj.serviceNames[0].name
+        .toLowerCase()
+        .includes(searchVal.toLowerCase());
     });
 
     setUpdatedSubServiceObject(filteredArray);

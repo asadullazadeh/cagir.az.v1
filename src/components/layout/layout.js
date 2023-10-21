@@ -101,7 +101,7 @@ export default function Layout({ children }) {
 
       {/* Main Content */}
       <main
-        className={`flex flex-col px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full  ${
+        className={`overflow-y-clip flex flex-col px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full  ${
           isSearchVisible ? "hidden" : ""
         }`}
       >
