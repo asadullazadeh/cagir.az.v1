@@ -98,7 +98,17 @@ export default function Layout({ children }) {
   
   return (
     <div className="screen1700:max-w-[1512px] bg-white">
-      <Head>{/* <title>Cagir.az</title> */}</Head>
+      <Head>
+      <meta name="author" content="cagir.az" />
+      <meta
+          name="description"
+          content="Cagir.az-temizlik xidmeti,paltaryuyan ustasi,kondisioner ustasi,kombi ustasi,soyuducu ustasi, temizlik sirketi,komputer ustasi,masaj,xalca yuma,elektrik"
+        />
+        <meta
+          name="keywords"
+          content="temizlik, kondisioner, masaj, usta, temir"
+        />  
+      </Head>
 
       {/* Navigation */}
       <div className="sticky top-0 z-50">

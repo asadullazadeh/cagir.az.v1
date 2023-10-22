@@ -34,6 +34,10 @@ function MediaPost({ mediaId }) {
     <div>
       <Head>
         <title>Cagir.az - {title}</title>
+        <meta
+          name="description"
+          content={shortDescription}
+        />
       </Head>
       <div className="flex flex-col lg:flex-row lg:gap-x-[40px] xl:gap-x-[50px] 2xl:gap-x-[60px] pb-[60px] lg:pb-[90px] pt-[20px] lg:pt-[50px]">
         <div className="w-full lg:w-2/3 pb-[30px] lg:pb-0 drop-shadow-card lg:drop-shadow-none lg:hover:drop-shadow-card transition duration-300">

@@ -10,7 +10,7 @@ import TagsBlog from "@/src/components/blog/tagsBlog";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import ModalStandart from "@/src/components/modal/modal_stand";
 import InputBtnNbTransition from "@/src/components/input/input_btn_nb_transition";
-
+import DangerousHTMLComponent from '@/src/components/dangerouslySetInnerHTML';
 export async function getServerSideProps(context) {
   const { blogId } = context.query;
   let responseData = {};
@@ -52,13 +52,18 @@ function BlogPost({ initialData }) {
   const { description, shortDescription, postId, title } = postNames?.length
     ? postNames[0]
     : {};
-
+console.log(initialData)
   const subject = category?.categoryNames?.[0]?.name || "Default Value";
-console.log(postNames[0].title)
+
+
   return (
     <div>
       <Head>
         <title>{postNames[0].title}</title>
+        <meta
+          name="description"
+          content={shortDescription}
+        />
       </Head>
       <div className="flex flex-col lg:flex-row gap-x-[40px] xl:gap-x-[50px] 2xl:gap-x-[60px] pt-[25px] pb-[60px] lg:pb-[90px]">
         {/* Main Content */}

@@ -12,7 +12,7 @@ const Page = ({ mainServiceData, subServices, parentId }) => {
   const chosenLang = "az";
   const messages = az;
   const { serviceNames } = mainServiceData;
-  const { text: textService, metaTitle } = serviceNames?.[0] || {};
+  const { text: textService, metaTitle,metaDescription } = serviceNames?.[0] || {};
 console.log(subServices)
   const containerClass = `
     flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
@@ -25,6 +25,10 @@ console.log(subServices)
     <div>
       <Head>
         <title>{metaTitle}</title>
+        <meta
+          name="description"
+          content={metaDescription}
+        />
       </Head>
       <Badge {...{ chosenLang, messages }} />
       <SubServiceTrend

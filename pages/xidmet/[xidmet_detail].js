@@ -30,13 +30,19 @@ function XidmetDetail({ xidmetDetail }) {
     serviceInfoTags,
     titleUrl,
     viewCount,
+    metaDescription,
+    metaTitle
   } = responseData;
-
+console.log(responseData)
   const { description = "" } = serviceInfoNames?.[0] || {};
   return (
     <div>
       <Head>
-        <title>{responseData.metaTitle}</title>
+        <title>{metaTitle}</title>
+        <meta
+          name="description"
+          content={metaDescription}
+        />
       </Head>
       <div className="flex flex-col items-center py-[15px] lg:py-[30px]">
         <div className="flex flex-col w-full  gap-y-[30px] lg:gap-y-[60px]">
