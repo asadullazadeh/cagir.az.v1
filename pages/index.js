@@ -11,7 +11,7 @@ import Deyerler from "@/src/components/main/deyerler";
 import LastPostedBlogs from "@/src/components/blog/LastPostedBlogs";
 import Musteriler from "@/src/components/main/musteriler";
 import SearchServices from "@/src/components/main/search_services";
-
+import Reels from "@/src/components/main/reels"
 export async function getServerSideProps() {
   return {
     props: {},
@@ -66,7 +66,7 @@ export default function Home(props) {
             <Deyerler {...{ chosenLang, messages }} />
           </div>
 
-          {/* <Reels /> */}
+          <Reels />
 
           <LastPostedBlogs {...{ messages }} />
         </div>

@@ -12,6 +12,8 @@ import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 import client from "@/public/avatar.svg";
 import download from "@/icons/form/download.svg";
 import delete_icon from "@/icons/form/delete.svg";
+import placeholder from "@/public/placeholder.png"
+
 
 function Profil_settings() {
   const { locales } = useRouter();
@@ -107,8 +109,8 @@ function Profil_settings() {
         <div className="flex flex-col lg:flex-row justify-between w-full lg:3/4 xl:w-2/3 2xl:w-1/2">
           <div className="flex flex-col items-center w-full lg:w-2/5">
             <Image
-              src={client}
-              alt="client"
+              src={placeholder}
+              alt="placeholder"
               className="rounded-full object-cover object-center w-[80px] h-[80px] lg:w-[120px] lg:h-[120px]"
             />
             <h5 className="my-h5 pt-[5px] pb-[15px] lg:pt-[5px] lg:pb-[20px]">
@@ -117,12 +119,12 @@ function Profil_settings() {
             <div className="hidden lg:flex flex-col gap-y-[30px] lg:pb-[30px]">
               {/*  */}
               <div className="inline-flex flex-col w-full">
-        <label
+        {/* <label
           htmlFor="dropzone-file"
           className="flex flex-row justify-between items-center border-2 h-[40px] space-x-[16px] border-cagiraz border-dashed rounded-[10px] lg:rounded-full cursor-pointer px-[16px] "
         >
           <Image src={download} alt="download_icon" />
-          {/* {uploadImage?.imageData?.name ? (
+          {uploadImage?.imageData?.name ? (
             <p className="font-semibold text-[10px] leading-[15px] text-gray900">
               {uploadImage.imageData.name}
             </p>
@@ -133,7 +135,7 @@ function Profil_settings() {
               </p>
        
             </>
-          )} */}
+          )}
 
           <Image src={delete_icon} alt="delete_icon" className="" />
 
@@ -143,7 +145,7 @@ function Profil_settings() {
             className="hidden"
             // onChange={handleFileChange}
           />
-        </label>
+        </label> */}
       </div>
               {/*  */}
               <button
@@ -187,11 +189,11 @@ function Profil_settings() {
         </div>
 
         {/* Sifaris tarixcesi */}
-        <h4 className="font-semibold lg:font-bold text-[16px] lg:text-[20px] leading-[24px] lg:leading-[30px] pb-[55px] pt-[30px] lg:pb-[30px] border-t border-[#EAEAEA]">
+        {/* <h4 className="font-semibold lg:font-bold text-[16px] lg:text-[20px] leading-[24px] lg:leading-[30px] pb-[55px] pt-[30px] lg:pb-[30px] border-t border-[#EAEAEA]">
           {messages["order-history"]}
         </h4>
         <div className="flex flex-col w-full lg:3/4 xl:w-2/3 2xl:w-1/2 ">
-          {/* 1st */}
+          
           <div className="flex flex-row justify-between pb-[15px] lg:pb-[10px]">
             <div className="flex flex-col">
               <p className="font-semibold text-[14px] leading-[21px]">
@@ -205,7 +207,7 @@ function Profil_settings() {
               45 AZN
             </p>
           </div>
-          {/* 2nd */}
+      
           <div className="flex flex-row justify-between border-t border-[#EAEAEA] py-[15px] lg:py-[10px]">
             <div className="flex flex-col">
               <p className="font-semibold text-[14px] leading-[21px]">
@@ -219,7 +221,7 @@ function Profil_settings() {
               45 AZN
             </p>
           </div>
-          {/* 3rd */}
+     
           <div className="flex flex-row justify-between border-t border-[#EAEAEA] pt-[15px] lg:pt-[10px]">
             <div className="flex flex-col">
               <p className="font-semibold text-[14px] leading-[21px]">
@@ -233,7 +235,7 @@ function Profil_settings() {
               45 AZN
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

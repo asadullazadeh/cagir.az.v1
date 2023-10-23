@@ -33,6 +33,18 @@ const Dropdown = ({
 
   const router = useRouter();
 
+  // State to manage the indices of expanded dropdowns
+  const [expandedIndices, setExpandedIndices] = useState([]);
+
+  // Toggle expanded state for a dropdown
+  const toggleExpanded = (index) => {
+    if (expandedIndices.includes(index)) {
+      setExpandedIndices((prev) => prev.filter((i) => i !== index));
+    } else {
+      setExpandedIndices((prev) => [...prev, index]);
+    }
+  };
+
   // dropdown options are set to false(closed).
   const [isOpen, setIsOpen] = useState(false);
   const [clickedOutside, setClickedOutside] = useState(false);
@@ -94,6 +106,7 @@ const Dropdown = ({
   useEffect(() => {
     setSubServiceName("");
     setSub2ServiceName("");
+    setExpandedIndices([]);
   }, [mainServiceName]);
   // Update sub2ServiceName when subServiceName changes
   useEffect(() => {
@@ -211,6 +224,7 @@ const Dropdown = ({
         const onSelectService = dropdownInfos[index].onSelectService;
 
         const mainIndex = index;
+
         return (
           <div key={index}>
             <div className="flex flex-col gap-y-[10px] lg:gap-y-0 relative ">
@@ -270,22 +284,41 @@ const Dropdown = ({
                     } absolute z-10 w-full mt-[10px] rounded-[10px] border-[2px] border-solid border-cagiraz bg-white`}
                   >
                     {serviceInfos &&
-                      serviceInfos.map((item, index) => (
-                        <div
-                          key={index}
-                          onClick={() =>
-                            handleOptionClick(
-                              mainIndex,
-                              item.serviceNames[0].name
-                            )
-                          }
-                          className="w-full hover:bg-blue-500 hover:bg-opacity-[15%]"
-                        >
-                          <div className="px-[15px] py-[5px] font-medium lg:font-semibold text-[12px] leading-[18px] text-black lg:text-black500">
-                            {item.serviceNames[0].name}
+                      serviceInfos
+                        .slice(
+                          0,
+                          expandedIndices.includes(index)
+                            ? serviceInfos.length
+                            : 5
+                        )
+                        .map((item, sIndex) => (
+                          <div
+                            key={sIndex}
+                            onClick={() =>
+                              handleOptionClick(
+                                mainIndex,
+                                item.serviceNames[0].name
+                              )
+                            }
+                            className="w-full hover:bg-blue-500 hover:bg-opacity-[15%]"
+                          >
+                            <div className="px-[15px] py-[5px] font-medium lg:font-semibold text-[12px] leading-[18px] text-black lg:text-black500">
+                              {item.serviceNames[0].name}
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+
+                    {/* "See More" button */}
+                    {!expandedIndices.includes(index) &&
+                      serviceInfos &&
+                      serviceInfos.length > 5 && (
+                        <button
+                          onClick={() => toggleExpanded(index)}
+                          className="font-medium lg:font-semibold text-[14px] leading-[21px]  ml-[15px] text-blue-500 hover:underline"
+                        >
+                          {messages.more}
+                        </button>
+                      )}
                   </div>
                 )}
               </div>

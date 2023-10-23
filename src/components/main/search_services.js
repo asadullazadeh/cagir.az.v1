@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link"
 import SearchInputMd from "@/src/components/input/input_search_md";
 import arrow_right from "@/icons/arrow_right.svg";
 import close from "@/icons/header/close.svg";
@@ -116,6 +117,7 @@ function SearchServices({ messages, chosenLang, onExit }) {
     // Use the callback to inform the parent
     onExit(exitBtnClicked);
   };
+  console.log(trendServices)
 
   return (
     <div className="py-[15px] lg:py-[30px]">
@@ -148,11 +150,11 @@ function SearchServices({ messages, chosenLang, onExit }) {
         {trendServices.map((item, index) => (
           <div key={index}>
             <div className="border border-cagiraz rounded-lg">
-              <a className="" href={item.serviceNames[0].titleUrl}>
+              <Link className="" href={`/${item.nameUrl}`}>
                 <p className="font-semibold text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px]">
                   {item.serviceNames[0].name}
                 </p>
-              </a>
+              </Link>
             </div>
           </div>
         ))}

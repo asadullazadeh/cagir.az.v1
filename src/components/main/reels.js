@@ -8,32 +8,35 @@ import InstagramEmbed from "@/src/components/others/InstagramEmbed"
 import arrow from "@/icons/arrow.svg";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-// import reels1 from "@/public/reels/reels_1.png";
-// import reels2 from "@/public/reels/reels_2.png";
-// import reels3 from "@/public/reels/reels_3.png";
-// import reels4 from "@/public/reels/reels_4.png";
+import YoutubeEmbed from "@/src/components/youtubeEmbed"
 
 const responsive = {
   0: { items: 1 },
-  568: { items: 2 },
-  1024: { items: 4 },
+  // 568: { items: 2 },
+  // 1024: { items: 4 },
 };
 
 // const insta_logo = ``;
 
 const items = [
   {index:0,
-  link:"https://www.instagram.com/reel/Culwp0sAT2v/?utm_source=ig_embed&amp;utm_campaign=loading"},
-  {index:1,
-    link:"https://www.instagram.com/reel/Culwp0sAT2v/?utm_source=ig_embed&amp;utm_campaign=loading",},
-    {index:2,
-      link:"https://www.instagram.com/reel/Ct_EbvagcBM/?utm_source=ig_embed&amp;utm_campaign=loading"},
-      {index:3,
-        link:"https://www.instagram.com/reel/Culwp0sAT2v/?utm_source=ig_embed&amp;utm_campaign=loading"},
-        {index:4,
-          link:"https://www.instagram.com/reel/Culwp0sAT2v/?utm_source=ig_embed&amp;utm_campaign=loading"},
-          {index:5,
-            link:"https://www.instagram.com/reel/Culwp0sAT2v/?utm_source=ig_embed&amp;utm_campaign=loading",}
+  link:"JbIG0LqAdOU?si=b93Vf_MYSJwnD3mg"},
+  // {index:1,
+  //   link:"JbIG0LqAdOU?si=b93Vf_MYSJwnD3mg"},
+  //   {index:2,
+  //     link:"JbIG0LqAdOU?si=b93Vf_MYSJwnD3mg"},
+  //     {index:3,
+  //       link:"JbIG0LqAdOU?si=b93Vf_MYSJwnD3mg"},
+  // {index:1,
+  //   link:"https://www.instagram.com/reel/Culwp0sAT2v/?utm_source=ig_embed&amp;utm_campaign=loading",},
+  //   {index:2,
+  //     link:"https://www.instagram.com/reel/Ct_EbvagcBM/?utm_source=ig_embed&amp;utm_campaign=loading"},
+  //     {index:3,
+  //       link:"https://www.instagram.com/reel/Culwp0sAT2v/?utm_source=ig_embed&amp;utm_campaign=loading"},
+  //       {index:4,
+  //         link:"https://www.instagram.com/reel/Culwp0sAT2v/?utm_source=ig_embed&amp;utm_campaign=loading"},
+  //         {index:5,
+  //           link:"https://www.instagram.com/reel/Culwp0sAT2v/?utm_source=ig_embed&amp;utm_campaign=loading",}
 ];
 
 // const sliderCount =
@@ -50,16 +53,18 @@ function Reels() {
   return (
     <div>
       <h2 className="my-h2 pb-[15px] lg:pb-[30px] text-center">
-        Bizi Instagram-da izlə
+        Bizi YouTube-da izlə
       </h2>
       {/* Customized Carousel */}
-      {/* <div className="sk-ww-instagram-reels" data-embed-id="204293"></div>
-      <Script
-        src="https://widgets.sociablekit.com/instagram-reels/widget.js"
-        async
-        defer
-      /> */}
-            <AliceCarousel
+      {items.map(({link,index}) => {
+          return(
+            <div key={index} className="flex items-center justify-center" >
+              <YoutubeEmbed embedId={link} />
+              </div>
+          )
+        })}
+  
+            {/* <AliceCarousel
         animationDuration={1300}
         animationType="fadeout"
         controlsStrategy="responsive"
@@ -67,9 +72,8 @@ function Reels() {
         mouseTracking
         items={items.map(({link,index}) => {
           return(
-            <div key={index} className="flex space-x-4 overflow-x" >
-              <InstagramEmbed embedLink={link} />
-              {/* {link} */}
+            <div key={index} className="flex items-center justufy-center space-x-4 overflow-x" >
+              <YoutubeEmbed embedId={link} />
               </div>
           )
         })}
@@ -81,7 +85,7 @@ function Reels() {
         keyboardNavigation
         touchTracking={true}
         touchMoveDefaultEvents={false}
-      />
+      /> */}
     </div>
   );
 }

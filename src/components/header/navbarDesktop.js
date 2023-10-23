@@ -12,6 +12,7 @@ import wallet1 from "@/icons/header/wallet1.svg";
 import LangSection from "@/src/components/others/lang_section";
 import PrimarySmBtn from "@/src/components/buttons/primary_sm_btn";
 import avatar from "@/public/avatar.svg";
+import placeholder from "@/public/placeholder.png"
 
 export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
   const linkInfos = [
@@ -186,7 +187,7 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
                   className={token.length === 0 ? "hidden" : ""}
                 >
                   <Image
-                    src={avatar}
+                    src={placeholder}
                     alt="profile_pic"
                     className="w-[25px] h-[25px] rounded-full"
                   />

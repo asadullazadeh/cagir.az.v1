@@ -6,6 +6,7 @@ import SubServiceTrend from "@/src/components/service/subServicesTrend";
 import SubServiceNoTrend from "@/src/components/service/subServicesNoTrend";
 import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
+import Reels from "@/src/components/main/reels"
 import { useIntl } from "react-intl";
 
 const Page = ({ mainServiceData, subServices, chosenLang, parentId }) => {
@@ -38,6 +39,7 @@ const Page = ({ mainServiceData, subServices, chosenLang, parentId }) => {
         <SubServiceNoTrend
           {...{ mainServiceData, subServices, chosenLang, messages }}
         />
+        <Reels />
         <Reyler {...{ parentId, chosenLang, messages }} />
         <Icracilar {...{ parentId, chosenLang, messages }} />
         <div>

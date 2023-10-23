@@ -470,11 +470,22 @@ function Sifaris({
     router.back(); // Navigates back to the previous page
   };
 
-  // const sifirla = () => {
-  //   // router.replace("/temizlik-xidmeti/ev-temizliyi")
-  //   // router.reload()
-  //   // router.reload(window.location.pathname)
-  // }
+  const sifirla = () => {
+    // setgetServiceCriterias([]);
+    // setCheckedCheckboxArray([]);
+    // setMultiNumberArray([]);
+    // setRadioBtnObject([]);
+    // setPlusMinusArray([]);
+    // setInputTextObject({});
+    // setPriceBeforePromo(0);
+    // setSelectedRadioName(null);
+    // setSelectedSub2("")
+    // router.replace("/temizlik-xidmeti/ev-temizliyi")
+    // router.push("/temizlik-xidmeti/ev-temizliyi")
+
+    router.reload();
+    // router.reload(window.location.pathname)
+  };
 
   const [succesPage, setSuccesPage] = useState(false);
 
@@ -487,8 +498,7 @@ function Sifaris({
     }
   }, [isOrderPassed]);
 
-
-  const orderReadyToPass = priceBeforePromo > 0
+  const orderReadyToPass = priceBeforePromo > 0;
 
   return (
     <div>
@@ -654,15 +664,17 @@ function Sifaris({
                     btnName={messages["btn-back"]}
                     classNames="hidden lg:block"
                   />
-                  <Link
-                    // onClick={sifirla}
-                    href="/temizlik-xidmeti/ev-temizleme"
+                  <div
+                    onClick={sifirla}
+
+                    // href={`/temizlik-xidmeti/ev-temizleme`}
+                    // "/temizlik-xidmeti/ev-temizleme"
                   >
                     <PrimaryOutlineSmBtn
                       btnName={messages.reset}
                       classNames="hidden lg:block"
                     />
-                  </Link>
+                  </div>
 
                   <PrimarySmBtn
                     onClick={() => window.my_modal_10.showModal()}
