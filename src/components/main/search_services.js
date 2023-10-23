@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import Link from "next/link"
+import Link from "next/link";
 import SearchInputMd from "@/src/components/input/input_search_md";
 import arrow_right from "@/icons/arrow_right.svg";
 import close from "@/icons/header/close.svg";
@@ -67,7 +67,7 @@ function SearchServices({ messages, chosenLang, onExit }) {
     };
 
     fetchSubServices();
-  }, [mainServices, chosenLang,]);
+  }, [mainServices, chosenLang]);
 
   /* ----------------- search functionality ----------------- */
   // ekranda gorunen updatedSubServiceObject.It updates in each search
@@ -117,7 +117,7 @@ function SearchServices({ messages, chosenLang, onExit }) {
     // Use the callback to inform the parent
     onExit(exitBtnClicked);
   };
-  console.log(trendServices)
+  console.log(trendServices);
 
   return (
     <div className="py-[15px] lg:py-[30px]">

@@ -5,7 +5,7 @@ import Image from "next/image";
 import arrow from "@/icons/arrow.svg";
 import arrow_right from "@/icons/arrow_right.svg";
 
-const SubService = ({ mainServiceData, subServices, messages }) => {
+const SubServiceForReklam = ({ mainServiceData, subServices, messages }) => {
   const router = useRouter();
   const mainServiceNameUrl =
     router.asPath === "/master"
@@ -48,7 +48,7 @@ const SubService = ({ mainServiceData, subServices, messages }) => {
 
                     return (
                       <li className={cardClasses} key={id}>
-                        <Link
+                        <a
                           href={`/${mainServiceNameUrl}/${nameUrl}`}
                           className="flex flex-row sm:flex-col rounded-[10px] sm:rounded-[25px] p-[10px] sm:p-[15px] space-x-[15px] sm:space-x-0 group"
                         >
@@ -81,7 +81,7 @@ const SubService = ({ mainServiceData, subServices, messages }) => {
                               </div>
                             </div>
                           ))}
-                        </Link>
+                        </a>
                       </li>
                     );
                   }
@@ -95,4 +95,4 @@ const SubService = ({ mainServiceData, subServices, messages }) => {
   );
 };
 
-export default SubService;
+export default SubServiceForReklam;

@@ -2,10 +2,12 @@ import React from "react";
 import axios from "axios";
 import Head from "next/head";
 import Badge from "@/src/components/others/badge";
-import SubServiceTrend from "@/src/components/service/subServicesTrend";
-import SubServiceNoTrend from "@/src/components/service/subServicesNoTrend";
+import SubServiceForReklam from "@/src/components/service/subServicesTrendforReklam";
+import SubServiceNoTrendforReklam from "@/src/components/service/subServicesNoTrendforReklam";
+
 import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
+import Reels from "@/src/components/main/reels"
 import az from "@/data/az.json";
 
 const Page = ({ mainServiceData, subServices, parentId }) => {
@@ -31,13 +33,14 @@ const Page = ({ mainServiceData, subServices, parentId }) => {
         />
       </Head>
       <Badge {...{ chosenLang, messages }} />
-      <SubServiceTrend
+      <SubServiceForReklam
         {...{ mainServiceData, subServices, chosenLang, messages }}
       />
       <div className={containerClass}>
-        <SubServiceNoTrend
+        <SubServiceNoTrendforReklam
           {...{ mainServiceData, subServices, chosenLang, messages }}
         />
+         <Reels />
         <Reyler {...{ parentId, chosenLang, messages }} />
         <Icracilar {...{ parentId, chosenLang, messages }} />
         <div>
