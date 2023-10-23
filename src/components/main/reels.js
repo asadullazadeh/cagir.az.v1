@@ -3,12 +3,12 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
-import InstagramEmbed from "@/src/components/others/InstagramEmbed"
+import InstagramEmbed from "@/src/components/others/InstagramEmbed";
 
 import arrow from "@/icons/arrow.svg";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import YoutubeEmbed from "@/src/components/youtubeEmbed"
+import YoutubeEmbed from "@/src/components/youtubeEmbed";
 
 const responsive = {
   0: { items: 1 },
@@ -19,8 +19,7 @@ const responsive = {
 // const insta_logo = ``;
 
 const items = [
-  {index:0,
-  link:"JbIG0LqAdOU?si=b93Vf_MYSJwnD3mg"},
+  { index: 0, link: "JbIG0LqAdOU?si=b93Vf_MYSJwnD3mg" },
   // {index:1,
   //   link:"JbIG0LqAdOU?si=b93Vf_MYSJwnD3mg"},
   //   {index:2,
@@ -52,19 +51,17 @@ const items = [
 function Reels() {
   return (
     <div>
-      <h2 className="my-h2 pb-[15px] lg:pb-[30px] text-center">
-        Bizi YouTube-da izlə
-      </h2>
+      <h2 className="my-h2 pb-[15px] lg:pb-[30px] text-center">Əl işlərimiz</h2>
       {/* Customized Carousel */}
-      {items.map(({link,index}) => {
-          return(
-            <div key={index} className="flex items-center justify-center" >
-              <YoutubeEmbed embedId={link} />
-              </div>
-          )
-        })}
-  
-            {/* <AliceCarousel
+      {items.map(({ link, index }) => {
+        return (
+          <div key={index} className="flex items-center justify-center">
+            <YoutubeEmbed embedId={link} />
+          </div>
+        );
+      })}
+
+      {/* <AliceCarousel
         animationDuration={1300}
         animationType="fadeout"
         controlsStrategy="responsive"

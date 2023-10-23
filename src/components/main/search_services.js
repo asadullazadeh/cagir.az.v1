@@ -150,11 +150,11 @@ function SearchServices({ messages, chosenLang, onExit }) {
         {trendServices.map((item, index) => (
           <div key={index}>
             <div className="border border-cagiraz rounded-lg">
-              <Link className="" href={`/${item.nameUrl}`}>
+              <a className="" href={`/${item.nameUrl}`}>
                 <p className="font-semibold text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px]">
                   {item.serviceNames[0].name}
                 </p>
-              </Link>
+              </a>
             </div>
           </div>
         ))}
