@@ -3,7 +3,7 @@ import axios from "axios";
 import Head from "next/head";
 import Badge from "@/src/components/others/badge";
 import SubServiceForReklam from "@/src/components/service/subServicesTrendforReklam";
-import SubServiceNoTrendforReklam from "@/src/components/service/subServicesNoTrendforReklam";
+import SubServiceNoTrendforReklam from "@/src/components/service/subServicesNoTrendForReklam";
 import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
 import Reels from "@/src/components/main/reels"
