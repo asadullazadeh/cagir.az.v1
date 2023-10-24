@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import AliceCarousel from "react-alice-carousel";
+import dynamic from "next/dynamic";
+const AliceCarousel = dynamic(() => import("react-alice-carousel"), { ssr: false });
 import "react-alice-carousel/lib/alice-carousel.css";
 
 const responsive = {

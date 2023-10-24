@@ -7,7 +7,6 @@ import whatsapp from "@/icons/tab_bar/whatsapp.svg";
 import jale from "@/public/jale.jpg";
 import LiveChat from "@/src/components/others/livechat";
 
-
 const TabBar = ({ classNames, messages }) => {
   useEffect(() => {
     window.__lc = window.__lc || {};
