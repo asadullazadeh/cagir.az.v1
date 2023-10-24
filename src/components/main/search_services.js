@@ -117,7 +117,6 @@ function SearchServices({ messages, chosenLang, onExit }) {
     // Use the callback to inform the parent
     onExit(exitBtnClicked);
   };
-  console.log(trendServices);
 
   return (
     <div className="py-[15px] lg:py-[30px]">

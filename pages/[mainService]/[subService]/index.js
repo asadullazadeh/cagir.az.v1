@@ -2,16 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import dynamic from 'next/dynamic'
-// import Sifaris from "@/src/components/sifaris";
-
-// const Sifaris = dynamic(() => import('@/src/components/sifaris'), {
-//   loading: () => <p>Yüklənir...</p>,
-// })
-const Sifaris = dynamic(() => import('@/src/components/sifaris'), {
-  ssr: false,
-})
-
+import Sifaris from "@/src/components/sifaris";
 
 async function fetchSubServices(parentId, chosenLang) {
   try {

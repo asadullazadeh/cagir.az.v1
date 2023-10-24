@@ -6,7 +6,6 @@ import NavbarDesktop from "@/src/components/header/navbarDesktop";
 import NavbarMobile from "@/src/components/header/navbarMobile";
 import Footer from "@/src/components/main/footer";
 import TabBar from "@/src/components/mobile/tab_bar";
-import ModalStandart from "@/src/components/modal/modal_stand";
 import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 import CallIncmngWp from "@/src/components/buttons/call_incmng_wp";
 import SearchServices from "@/src/components/main/search_services";

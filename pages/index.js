@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
-// import Carousel1 from "@/src/components/main/carousel1";
+import Carousel1 from "@/src/components/main/carousel1";
 import MainServices from "@/src/components/service/mainServices";
 import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
@@ -11,12 +11,6 @@ import LastPostedBlogs from "@/src/components/blog/LastPostedBlogs";
 import Musteriler from "@/src/components/main/musteriler";
 import SearchServices from "@/src/components/main/search_services";
 import Reels from "@/src/components/main/reels";
-
-import dynamic from 'next/dynamic'
-const Carousel1 = dynamic(() => import('@/src/components/main/carousel1'), {
-  ssr: false,
-})
-
 
 export async function getServerSideProps() {
   return {

@@ -4,7 +4,9 @@ import Image from "next/image";
 import "react-alice-carousel/lib/alice-carousel.css";
 
 import dynamic from "next/dynamic";
-const AliceCarousel = dynamic(() => import("react-alice-carousel"), { ssr: false });
+const AliceCarousel = dynamic(() => import("react-alice-carousel"), {
+  ssr: false,
+});
 
 const responsive = {
   0: { items: 2 },
@@ -158,7 +160,7 @@ function Reyler({ parentId, messages }) {
             keyboardNavigation
             touchTracking={true}
             touchMoveDefaultEvents={false}
-          />  
+          />
         )}
       </div>
     </div>
