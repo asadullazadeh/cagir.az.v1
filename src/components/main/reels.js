@@ -1,8 +1,10 @@
 import React from "react";
-import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import dynamic from "next/dynamic";
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
+const AliceCarousel = dynamic(() => import("react-alice-carousel"), {
+  ssr: false,
+});
 
 const responsive = {
   0: { items: 1 },
