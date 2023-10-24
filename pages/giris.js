@@ -6,16 +6,9 @@ import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import InputCustomized from "@/src/components/input/input";
 import InputPassword from "@/src/components/input/input_password";
-import InputNumber from "@/src/components/input/input_number";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 
-import {
-  CheckBox,
-  PrimarySmBtn,
-  // PrimaryMdBtn,
-  PrimaryOutlineSmBtn,
-  LinkSmBtn,
-} from "@/src/components/buttons";
+import { LinkSmBtn } from "@/src/components/buttons";
 
 function SignIn() {
   const [email, setEmail] = useState("");

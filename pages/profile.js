@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
-import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
@@ -9,16 +8,11 @@ import InputCustomized from "@/src/components/input/input";
 import InputNumber from "@/src/components/input/input_number";
 import InputPassword from "@/src/components/input/input_password";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
-import client from "@/public/avatar.svg";
-import download from "@/icons/form/download.svg";
-import delete_icon from "@/icons/form/delete.svg";
 import placeholder from "@/public/placeholder.png"
 
 
 function Profil_settings() {
-  const { locales } = useRouter();
   const intl = useIntl();
-  const chosenLang = intl.locale;
   const messages = intl.messages;
   const router = useRouter();
 

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Image from "next/image";
+import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -9,9 +8,7 @@ import InputNumber from "@/src/components/input/input_number";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 
 function Payment() {
-  const { locales } = useRouter();
   const intl = useIntl();
-  const chosenLang = intl.locale;
   const messages = intl.messages;
   return (
     <div>

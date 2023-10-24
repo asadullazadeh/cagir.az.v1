@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import Image from "next/image";
 import Head from "next/head";
@@ -10,7 +10,7 @@ import TagsBlog from "@/src/components/blog/tagsBlog";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import ModalStandart from "@/src/components/modal/modal_stand";
 import InputBtnNbTransition from "@/src/components/input/input_btn_nb_transition";
-import DangerousHTMLComponent from '@/src/components/dangerouslySetInnerHTML';
+
 export async function getServerSideProps(context) {
   const { blogId } = context.query;
   let responseData = {};
@@ -52,37 +52,36 @@ function BlogPost({ initialData }) {
   const { description, shortDescription, postId, title } = postNames?.length
     ? postNames[0]
     : {};
-console.log(initialData)
+  console.log(initialData);
   const subject = category?.categoryNames?.[0]?.name || "Default Value";
-
 
   return (
     <div>
       <Head>
         <title>{postNames[0].title}</title>
-        <meta
-          name="description"
-          content={shortDescription}
-        />
+        <meta name="description" content={shortDescription} />
       </Head>
       <div className="flex flex-col lg:flex-row gap-x-[40px] xl:gap-x-[50px] 2xl:gap-x-[60px] pt-[25px] pb-[60px] lg:pb-[90px]">
         {/* Main Content */}
         <div className="w-full lg:w-2/3 pb-[30px] lg:pb-0">
           <div className="hidden lg:flex flex-row gap-x-[10px]">
-          <p className="font-semibold non-italic tracking-[0.02em] text-[14px] leading-[22px] text-black500">
-          {messages.share}: 
+            <p className="font-semibold non-italic tracking-[0.02em] text-[14px] leading-[22px] text-black500">
+              {messages.share}:
             </p>
-            
-          <SocialNetworks classNames="hidden lg:flex flex-row gap-x-[20px] pb-[30px]" isSharingEnabled={true} />
+
+            <SocialNetworks
+              classNames="hidden lg:flex flex-row gap-x-[20px] pb-[30px]"
+              isSharingEnabled={true}
+            />
           </div>
-          
+
           <Image
             src={`https://api.cagir.az${imageUrl}`}
             alt={title}
             width={900}
             height={900}
           />
-          
+
           <div className="flex justify-between pt-5 lg:pt-30 pb-15 lg:pb-30">
             <p className="text-gray900 font-medium lg:font-semibold text-8 lg:text-14 leading-12 lg:leading-21">
               {insertDate?.slice(0, 10)}
@@ -91,8 +90,10 @@ console.log(initialData)
               Baxış: {viewCount}
             </p>
           </div>
-          <h2 className="my-h2 pt-[5px] lg:pt-[10px] pb-[5px] lg:pb-[20px]">{postNames[0].title}</h2>
-          
+          <h2 className="my-h2 pt-[5px] lg:pt-[10px] pb-[5px] lg:pb-[20px]">
+            {postNames[0].title}
+          </h2>
+
           {/* style="background-color: transparent; color:#959595" */}
           {/* <p><span style='background-color: transparent;'>*/}
           <div
@@ -107,11 +108,13 @@ console.log(initialData)
             }}
           />
           <div className="flex flex-row items-center gap-x-[10px] pt-[10px] lg:pt-[30px]">
-          <p className="font-semibold non-italic tracking-[0.02em] text-[14px] leading-[22px] text-black500">
-          {messages.share}: 
+            <p className="font-semibold non-italic tracking-[0.02em] text-[14px] leading-[22px] text-black500">
+              {messages.share}:
             </p>
-            <SocialNetworks classNames="flex flex-row gap-x-[20px] " isSharingEnabled={true} />
-
+            <SocialNetworks
+              classNames="flex flex-row gap-x-[20px] "
+              isSharingEnabled={true}
+            />
           </div>
         </div>
         {/* Sidebar */}

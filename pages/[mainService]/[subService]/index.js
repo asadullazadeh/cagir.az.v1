@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { FormattedMessage, useIntl } from "react-intl";
-import Image from "next/image";
 import Sifaris from "@/src/components/sifaris";
 
 async function fetchSubServices(parentId, chosenLang) {

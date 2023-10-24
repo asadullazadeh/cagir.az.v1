@@ -1,6 +1,5 @@
 import Head from "next/head";
 import React, { useState } from "react";
-import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import Carousel1 from "@/src/components/main/carousel1";
 import MainServices from "@/src/components/service/mainServices";
@@ -11,7 +10,11 @@ import Deyerler from "@/src/components/main/deyerler";
 import LastPostedBlogs from "@/src/components/blog/LastPostedBlogs";
 import Musteriler from "@/src/components/main/musteriler";
 import SearchServices from "@/src/components/main/search_services";
-import Reels from "@/src/components/main/reels"
+import Reels from "@/src/components/main/reels";
+
+
+
+
 export async function getServerSideProps() {
   return {
     props: {},
@@ -19,7 +22,6 @@ export async function getServerSideProps() {
 }
 
 export default function Home(props) {
-  const { locales } = useRouter();
   const intl = useIntl();
   const chosenLang = intl.locale;
   const messages = intl.messages;

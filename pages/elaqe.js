@@ -1,52 +1,42 @@
-import React, { useState } from "react";
-import Image from "next/image";
+import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import Head from "next/head";
 import Contact_Part from "@/src/components/others/contact_part";
-import ContactTeamCard from "@/src/components/cards/contact_team_card";
 import TeamCard from "@/src/components/cards/team_card";
-import phone from "@/icons/phone.svg";
-import phone_black from "@/icons/phone_black.svg";
-import envelope from "@/icons/envelope.svg";
-import SocialNetworks from "@/src/components/others/social_ntwrks";
 
 const teamContactInfos = [
   {
     name: "Turqut Zeynalov",
     position: "Həmtəsisçi,İcraçı Direktor",
     image: "",
-    email:"turgut@cagir.az",
-    number:"+33786923768"
+    email: "turgut@cagir.az",
+    number: "+33786923768",
   },
   {
     name: "Orxan Abdulhəsənli",
     position: "Həmtəsisçi, İcraçı Direktor Müavini",
     image: "",
-    email:"orkhan@cagir.az",
-    number:"+994514920220"
-
+    email: "orkhan@cagir.az",
+    number: "+994514920220",
   },
   {
     name: "Ramin Nəbiyev",
     position: "Həmtəsisçi, Əməliyyatlar üzrə Direktor",
     image: "",
-    email:"email@email.com",
-    number:"+994514920220"
-  }
-  ,
+    email: "email@email.com",
+    number: "+994514920220",
+  },
   {
     name: "Tağı Əsədullazadə",
     position: "Baş Texniki Direktor",
     image: "",
-    email:"email@email.com",
-    number:"+994514920220"
-  }
+    email: "email@email.com",
+    number: "+994514920220",
+  },
 ];
 
 function Elaqe() {
-  const { locales } = useRouter();
   const intl = useIntl();
   const messages = intl.messages;
   return (
@@ -75,13 +65,15 @@ function Elaqe() {
           </p>
           {/* team part */}
           <div className="grid gap-x-[20px] gap-y-[20px] screen360:gap-x-[30px] screen428:gap-x-[40px] sm:gap-x-[20px] grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
-            {teamContactInfos.map(({index,name,position,email,number}) => {
-              return(
-                <div key={index}>
-                  <TeamCard {...{name,position,email,number}} />
-                </div>
-              )
-            })}
+            {teamContactInfos.map(
+              ({ index, name, position, email, number }) => {
+                return (
+                  <div key={index}>
+                    <TeamCard {...{ name, position, email, number }} />
+                  </div>
+                );
+              }
+            )}
           </div>
         </div>
       </div>

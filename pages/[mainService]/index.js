@@ -6,7 +6,7 @@ import SubServiceTrend from "@/src/components/service/subServicesTrend";
 import SubServiceNoTrend from "@/src/components/service/subServicesNoTrend";
 import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
-import Reels from "@/src/components/main/reels"
+import Reels from "@/src/components/main/reels";
 import { useIntl } from "react-intl";
 
 const Page = ({ mainServiceData, subServices, chosenLang, parentId }) => {

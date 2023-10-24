@@ -5,8 +5,8 @@ import { useRouter } from "next/router";
 import phone from "@/icons/tab_bar/phone.svg";
 import whatsapp from "@/icons/tab_bar/whatsapp.svg";
 import jale from "@/public/jale.jpg";
-
 import LiveChat from "@/src/components/others/livechat";
+
 
 const TabBar = ({ classNames, messages }) => {
   useEffect(() => {

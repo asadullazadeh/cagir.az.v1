@@ -7,14 +7,18 @@ import SubServiceNoTrendforReklam from "@/src/components/service/subServicesNoTr
 
 import Reyler from "@/src/components/main/reyler";
 import Icracilar from "@/src/components/main/icraci";
-import Reels from "@/src/components/main/reels"
+import Reels from "@/src/components/main/reels";
 import az from "@/data/az.json";
 
 const Page = ({ mainServiceData, subServices, parentId }) => {
   const chosenLang = "az";
   const messages = az;
   const { serviceNames } = mainServiceData;
-  const { text: textService, metaTitle,metaDescription } = serviceNames?.[0] || {};
+  const {
+    text: textService,
+    metaTitle,
+    metaDescription,
+  } = serviceNames?.[0] || {};
 
   const containerClass = `
     flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
@@ -27,10 +31,7 @@ const Page = ({ mainServiceData, subServices, parentId }) => {
     <div>
       <Head>
         <title>{metaTitle}</title>
-        <meta
-          name="description"
-          content={metaDescription}
-        />
+        <meta name="description" content={metaDescription} />
       </Head>
       <Badge {...{ chosenLang, messages }} />
       <SubServiceForReklam

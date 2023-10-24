@@ -5,7 +5,6 @@ import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
-import views from "@/icons/bloq/views.svg";
 import SearchInputMd from "@/src/components/input/input_search_md";
 
 function Xidmet() {
@@ -135,12 +134,6 @@ function Xidmet() {
                   </p>
                   <div className="flex justify-between mt-[5px] lg:mt-[15px] text-cagiraz">
                     <div className="flex flew-row justify-center items-center space-x-[5px]">
-                      {/* <Image
-                        className="w-[22px] h-[15px]"
-                        src={views}
-                        alt="views logo"
-                      /> */}
-                      
                       <div>
                         <p className="font-semibold text-[16px]	lg:text-[18px] leading-[24px] lg:leading-[27px]">
                         Sifariş sayı: {Math.round(viewCount/2)}

@@ -14,7 +14,6 @@ const Page = ({ mainServiceData, subServices, parentId }) => {
   const messages = az;
   const { serviceNames } = mainServiceData;
   const { text: textService, metaTitle,metaDescription } = serviceNames?.[0] || {};
-console.log(subServices)
   const containerClass = `
     flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px]
     lg:gap-y-[105px] xl:gap-y-[120px] 2xl:gap-y-[135px]

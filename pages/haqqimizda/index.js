@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import video from "@/public/video_about.jpg";
 import Musteriler from "@/src/components/main/musteriler";
@@ -92,10 +91,7 @@ export async function getServerSideProps() {
 }
 
 export default function Haqqimizda(props) {
-  const { musteriler } = props;
-  const { locales } = useRouter();
   const intl = useIntl();
-  const chosenLang = intl.locale;
   const messages = intl.messages;
 
   const { responseData } = props;
