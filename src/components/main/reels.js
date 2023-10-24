@@ -28,7 +28,7 @@ function Reels() {
         animationDuration={1300}
         animationType="fadeout"
         controlsStrategy="responsive"
-        infinite
+        // infinite
         mouseTracking
         items={items.map(({ link, index }) => {
           return (
