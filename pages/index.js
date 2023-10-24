@@ -58,6 +58,7 @@ export default function Home(props) {
           <MainServices {...{ chosenLang, messages }} />
           <Reyler {...{ chosenLang, messages }} parentId={1} />
           <Icracilar {...{ messages }} parentId={1} />
+          <Reels />
           <Musteriler {...{ messages }} />
           <div className="hidden lg:block">
             <Suallar {...{ chosenLang, messages }} />
@@ -65,9 +66,6 @@ export default function Home(props) {
           <div className="hidden lg:block">
             <Deyerler {...{ chosenLang, messages }} />
           </div>
-
-          <Reels />
-
           <LastPostedBlogs {...{ messages }} />
         </div>
         <div className={`${searchInptClicked ? "" : "hidden"}`}>

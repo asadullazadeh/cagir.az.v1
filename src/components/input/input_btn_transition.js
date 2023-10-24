@@ -62,7 +62,7 @@ const InputBtnTransition = ({ name, classNames }) => {
           <div className="flex items-center h-[46px]">
             <input
               className={`appearance-none bg-transparent border-none text-black focus:outline-none text-[14px] 
-                  pl-[10px] pr-[6px] leading-[21px] w-[181px] bg-white ${
+                  pl-[10px] pr-[6px] ml-[2px] leading-[21px] w-[181px] bg-white ${
                     !isValidEmail ? "border-red-500" : ""
                   }`}
               type="text"

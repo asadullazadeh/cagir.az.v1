@@ -85,9 +85,7 @@ const Dropdown = ({
 
   // mainServiceName is set to false as default.
   const [mainServiceName, setMainServiceName] = useState(
-    defaultMain?.serviceNames?.[0].name
-      ? defaultMain?.serviceNames?.[0].name
-      : ""
+    defaultMain?.serviceNames?.[0].name || ""
   );
 
   const [subServiceName, setSubServiceName] = useState(
@@ -179,9 +177,20 @@ const Dropdown = ({
     {};
   const subInfo = findSubInfoByName(getSubServices, serviceNames[1]);
 
+  // const {mainService:mainServiceUrl,subService:subServiceUrl} = router.query
+
+  //   const findSubInfoByNameUrl = (subServices, nameUrl) =>
+  //   subServices.find((obj) => obj.nameUrl === subServiceUrl) ||
+  //   {};
+  // const subInfo = findSubInfoByNameUrl(getSubServices, subServiceUrl);
+  console.log(subInfo.nameUrl)
+  console.log(router);
   const pathMain = mainInfo.nameUrl;
   const pathSub = subInfo.nameUrl || getSubServices[0]?.nameUrl;
   const newPath = `/${pathMain}/${pathSub}`;
+  console.log("mainInfo:",mainInfo)
+  console.log("pathSub:",pathSub)
+
 
   const { mainService, subService } = router.query;
 
@@ -191,7 +200,7 @@ const Dropdown = ({
     // If it's the initial mount, we'll check if we're being redirected
     if (isInitialMount.current) {
       if (router.asPath !== newPath) {
-        router.replace(`/${mainService}/${subService}`);
+        // router.replace(`/${mainService}/${subService}`);
       }
       isInitialMount.current = false;
     } else {
@@ -199,19 +208,12 @@ const Dropdown = ({
       router.replace(newPath);
     }
   }, [mainService, newPath, subService]);
-  console.log(serviceNames[0]);
 
   return (
     <div
       ref={myElementRef}
       className="grid lg:grid-cols-3 justify-items-stretch lg:gap-x-[40px] gap-y-[15px]"
     >
-      {/*  */}
-      {/* <button 
-        className="px-4 py-2 bg-blue-500 text-white hover:bg-blue-700 focus:outline-none animate-slide"
-      >
-        I'm Moving
-      </button> */}
       {/*  */}
       {Object.keys(dropdownInfos).map((index) => {
         if (index === "2" && !isSub2ElementsExist) {

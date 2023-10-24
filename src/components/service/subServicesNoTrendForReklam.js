@@ -36,8 +36,8 @@ const SubServiceNoTrendforReklam = ({
     <div>
       {isServiceTrends && (
         <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">
-          {messages["all-services"]}
-          {/* Bütün xidmətlər */}
+          {/* {messages["all-services"]} */}
+          Digərləri
         </h2>
       )}
 

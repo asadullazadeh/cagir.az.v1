@@ -11,6 +11,54 @@ import TeamCard from "@/src/components/cards/team_card";
 import Contact_Part from "@/src/components/others/contact_part";
 import arrow from "@/icons/arrow.svg";
 
+const teamInfos = [
+  {
+    name: "Turqut Zeynalov",
+    position: "Həmtəsisçi,İcraçı Direktor",
+    image: "",
+  },
+  {
+    name: "Orxan Abdulhəsənli",
+    position: "Həmtəsisçi, İcraçı Direktor Müavini",
+    image: "",
+  },
+  {
+    name: "Ramin Nəbiyev",
+    position: "Həmtəsisçi, Əməliyyatlar üzrə Direktor",
+    image: "",
+  },
+  {
+    name: "Tağı Əsədullazadə",
+    position: "Baş Texniki Direktor",
+    image: "",
+  },
+  {
+    name: "Əfsanə Əmmayeva",
+    position: "Böyümə üzrə Koordinator",
+    image: "",
+  },
+  {
+    name: "Təbriz Zeynalov ",
+    position: "Əməliyyatlar üzrə Koordinator",
+    image: "",
+  },
+  {
+    name: "Xanım Verdiyeva",
+    position: "Əməliyyatlar üzrə baş Mütəxəssis",
+    image: "",
+  },
+  {
+    name: "Səbuhi İsazadə",
+    position: "Front - end Developer",
+    image: "",
+  },
+  {
+    name: "Kənan Abdulhəsənli",
+    position: "Front - end Developer",
+    image: "",
+  },
+];
+
 const containerClasses =
   "flex flex-col gap-y-[60px] sm:gap-y-[75px] md:gap-y-[90px] lg:gap-y-[105px] xl:gap-y-[120px] 2xl:gap-y-[135px] pt-[30px] sm:pt-[36px] md:pt-[42px] lg:pt-[48px] xl:pt-[54px] 2xl:pt-[60px] pb-[60px] sm:pb-[75px] md:pb-[90px] lg:pb-[105px] xl:pb-[120px] 2xl:pb-[135px]";
 const listClasses =
@@ -158,16 +206,13 @@ Cagir.az - Peşəkar xidmət, sərfəli qiymət!  */}
               Komandamız
             </h4>
             <div className="grid gap-x-[20px] gap-y-[20px] screen360:gap-x-[30px] screen428:gap-x-[40px] sm:gap-x-[20px] grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
-              <TeamCard />
-              <TeamCard />
-              <TeamCard />
-              <TeamCard />
-              <TeamCard />
-              <TeamCard />
-              <TeamCard />
-              <TeamCard />
-              <TeamCard />
-              <TeamCard />
+              {teamInfos.map(({ index, name, position }) => {
+                return (
+                  <div key={index} className="">
+                    <TeamCard {...{name,position}} />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

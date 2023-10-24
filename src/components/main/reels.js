@@ -12,30 +12,14 @@ import YoutubeEmbed from "@/src/components/youtubeEmbed";
 
 const responsive = {
   0: { items: 1 },
-  // 568: { items: 2 },
-  // 1024: { items: 4 },
+  568: { items: 2 },
+  1024: { items: 4 },
 };
 
-// const insta_logo = ``;
-
 const items = [
-  { index: 0, link: "JbIG0LqAdOU?si=b93Vf_MYSJwnD3mg" },
-  // {index:1,
-  //   link:"JbIG0LqAdOU?si=b93Vf_MYSJwnD3mg"},
-  //   {index:2,
-  //     link:"JbIG0LqAdOU?si=b93Vf_MYSJwnD3mg"},
-  //     {index:3,
-  //       link:"JbIG0LqAdOU?si=b93Vf_MYSJwnD3mg"},
-  // {index:1,
-  //   link:"https://www.instagram.com/reel/Culwp0sAT2v/?utm_source=ig_embed&amp;utm_campaign=loading",},
-  //   {index:2,
-  //     link:"https://www.instagram.com/reel/Ct_EbvagcBM/?utm_source=ig_embed&amp;utm_campaign=loading"},
-  //     {index:3,
-  //       link:"https://www.instagram.com/reel/Culwp0sAT2v/?utm_source=ig_embed&amp;utm_campaign=loading"},
-  //       {index:4,
-  //         link:"https://www.instagram.com/reel/Culwp0sAT2v/?utm_source=ig_embed&amp;utm_campaign=loading"},
-  //         {index:5,
-  //           link:"https://www.instagram.com/reel/Culwp0sAT2v/?utm_source=ig_embed&amp;utm_campaign=loading",}
+  { index: 0, link: "JbIG0LqAdOU?si=ByXyfL6Ba5IMCZD1" },
+  { index: 1, link: "aDvHX3No9ec?si=Gi3D-pSQ0NEDo4l7" },
+  { index: 2, link: "reOplRv2QW4?si=Pu1-24khQQn_mETa" },
 ];
 
 // const sliderCount =
@@ -53,15 +37,15 @@ function Reels() {
     <div>
       <h2 className="my-h2 pb-[15px] lg:pb-[30px] text-center">Əl işlərimiz</h2>
       {/* Customized Carousel */}
-      {items.map(({ link, index }) => {
+      {/* {items.map(({ link, index }) => {
         return (
           <div key={index} className="flex items-center justify-center">
             <YoutubeEmbed embedId={link} />
           </div>
         );
-      })}
+      })} */}
 
-      {/* <AliceCarousel
+      <AliceCarousel
         animationDuration={1300}
         animationType="fadeout"
         controlsStrategy="responsive"
@@ -82,7 +66,7 @@ function Reels() {
         keyboardNavigation
         touchTracking={true}
         touchMoveDefaultEvents={false}
-      /> */}
+      />
     </div>
   );
 }

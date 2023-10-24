@@ -90,7 +90,7 @@ const InputNumber = ({ label }) => {
             className="hidden lg:block w-full font-semibold text-[10px] leading-[15px] text-black500 focus:outline-none p-0 bg-white"
             minLength="7"
             type="text"
-            // placeholder={!isInputFocused ? label : ""}
+            placeholder={!isInputFocused ? "(0xx)-xxx-xx-xx" : ""}
             aria-label="Phone Number"
             value={inputValue}
             onChange={handleInputChange}

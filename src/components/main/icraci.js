@@ -95,7 +95,7 @@ function Icraci({ parentId, messages, chosenLang }) {
         {messages.executives}
       </h2>
 
-      <div className="flex flex-row justify-between sm:justify-center sm:gap-x-[40px]">
+      <div className="flex flex-row justify-center sm:gap-x-[40px]">
         {data.length < 3 ? (
           childDataArray
         ) : (

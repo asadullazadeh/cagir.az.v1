@@ -85,18 +85,18 @@ export default function Carousel1({ onDataReceived, messages }) {
           <SocialNetworks classNames="flex flex-row space-x-[20px]" />
         </div>
       </div>
-
+      {/* 643.88x343.5 */}
       {/* carousel part */}
       <div className="w-full h-full">
         <div
           id="default-carousel"
-          className="relative overflow-hidden rounded-lg w-full aspect-[821/438]"
+          className="relative overflow-hidden rounded-lg w-full aspect-[821/438] lg:w-[643.88px] lg:h-[343.5px] xl:w-[821px] xl:h-[438px]"
           data-carousel="slide"
         >
           {carouselPhotos.map(({ index, imageUrl, orderIndex }) => (
             <div
               key={orderIndex}
-              className={`absolute w-full aspect-[821/438] ${
+              className={`absolute w-full aspect-[821/438] lg:w-[643.88px] lg:h-[343.5px] xl:w-[821px] xl:h-[438px] ${
                 orderIndex === currentSlide
                   ? "slide-enter-active"
                   : "slide-exit-active"
@@ -109,7 +109,7 @@ export default function Carousel1({ onDataReceived, messages }) {
                 height={438}
                 src={`https://api.cagir.az${imageUrl}`}
                 alt={imageUrl}
-                className="w-full aspect-[821/438]"
+                className="w-full aspect-[821/438] lg:w-[643.88px] lg:h-[343.5px] xl:w-[821px] xl:h-[438px]"
               />
             </div>
           ))}

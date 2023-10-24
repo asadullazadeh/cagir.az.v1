@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import Success_Page from "@/src/components/others/success_page";
-
+// import dangerouslySetInnerHTML from "@/src/components/DangerousHTMLComponent"
 import {
   CustomInput,
   Textarea,
@@ -152,6 +152,7 @@ function Sifaris({
       .then((response) => setgetServiceCriterias(response.data.result))
       .catch((error) => console.error(error));
   }, [isSub2ElementsExist, defaultSub?.id, selectedSub2Service.id, chosenLang]);
+  console.log(getServiceCriterias);
 
   /* ----------------------------------  Multinumber input functionality-FilterType=5 ---------------------------------- */
 
@@ -349,7 +350,7 @@ function Sifaris({
     setPriceBeforePromo(0);
     setSelectedRadioName(null);
   }, [selectedMain, selectedSub, selectedSub2]);
-
+console.log(priceBeforePromo)
   /* ---------------------------------- Textarea functionality ---------------------------------- */
   // State Initialization
   const [showTextarea, setshowTextarea] = useState(false);
@@ -545,6 +546,9 @@ function Sifaris({
                     <h5 className="font-semibold text-[12px] leading-[18px] text-black500">
                       {serviceCriteria.serviceCriteriaNames[0].name}
                     </h5>
+                    {/* where to add meyar descriptions */}
+                    {/* <div dangerouslySetInnerHTML={{ __html: serviceCriteria.serviceCriteriaNames[0].text }} /> */}
+
                     <div className="flex flex-wrap gap-[15px] py-0 lg:py-[5px]  lg:order-1">
                       {/*  */}
                       {serviceCriteries.length === 0 &&

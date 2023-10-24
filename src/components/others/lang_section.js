@@ -2,14 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { useIntl } from "react-intl";
 import icon_az from "@/icons/icon_az.svg";
 import icon_en from "@/icons/icon_en.svg";
 import icon_ru from "@/icons/icon_ru.svg";
 
 const LangSection = () => {
   const router = useRouter();
-  const [navbar, setNavbar] = useState(false);
 
+  const { locales } = useRouter();
+  const intl = useIntl();
+  const chosenLang = intl.locale;
+  const messages = intl.messages;
+
+  const [navbar, setNavbar] = useState(false);
+  console.log(router);
   const options = [
     {
       lang: "az",
@@ -35,6 +42,7 @@ const LangSection = () => {
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     setIsDropdownOpen(false);
+    // router.push(`/${chosenLang}/${router.asPath}`)
   };
 
   const [isHovered, setIsHovered] = useState(false);
@@ -60,12 +68,22 @@ const LangSection = () => {
 
     // If not excluded, then push the new locale to the router
     if (!shouldExclude) {
-      router.push(router.pathname, router.asPath, {
-        locale: selectedOption.lang,
-      });
+      if(router.pathname ==="/[mainService]/[subService]"){
+        router.push("/","/",{locale: selectedOption.lang})
+      }else{
+        router.push(router.pathname, router.asPath, {
+          locale: selectedOption.lang,
+        });
+      }
+
+
+      
+
+
     }
   }, [selectedOption.lang]);
-
+console.log(router.pathname)
+// /[mainService]/[subService]
   return (
     <div>
       <div

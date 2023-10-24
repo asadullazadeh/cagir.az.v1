@@ -39,9 +39,9 @@ console.log(subServices)
         <SubServiceNoTrendforReklam
           {...{ mainServiceData, subServices, chosenLang, messages }}
         />
-        <Reels />
         <Reyler {...{ parentId, chosenLang, messages }} />
         <Icracilar {...{ parentId, chosenLang, messages }} />
+        <Reels />
         <div>
           <h2 className="my-h2 mb-[15px] text-center ">
             {messages.description}

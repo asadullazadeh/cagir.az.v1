@@ -59,7 +59,13 @@ const socialElements = [
 
   return (
     <div className={classNames}>
-      {socialElements.map((element) => (
+      {socialElements.filter((element, index) => {
+        // If sharing is enabled, exclude the first element
+        if (isSharingEnabled && index === 0) {
+          return false;
+        }
+        return true;
+      }).map((element) => (
         <a
           key={element.id}
           href={getLink(element.baseLink, element.shareLink)}
@@ -73,6 +79,7 @@ const socialElements = [
         </a>
       ))}
     </div>
-  );
+);
+
   
 }

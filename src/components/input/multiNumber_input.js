@@ -54,7 +54,7 @@ const CustomInput = ({
           <Image src={minus} alt="minus_logo" className="self-center" />
         </button>
         <input
-          className="min-w-[8px] max-w-[30px] text-center mx-[5px] lg:mx-[8px] focus:outline-none bg-white"
+          className="min-w-[8px] max-w-[30px] text-center mx-[5px] lg:mx-[8px] focus:outline-none bg-white text-black"
           type=""
           value={value}
           onChange={(e) => setValue(e.target.value)}

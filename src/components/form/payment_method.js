@@ -17,20 +17,12 @@ const PaymentMethod = ({ messages }) => {
             </p>
           </div>
           <div className="flex gap-x-[10px] items-center">
-            <input
-              disabled
-              id="default-radio-2"
-              type="radio"
-              // value=""
-              name="default-radio-2"
-              className="w-[20px] h-[20px] text-cagiraz  border-cagiraz bg-white"
-            />
-            <label
-              htmlFor="default-radio-2"
-              className="font-semibold text-[12px] leading-[18px] text-[#959595]"
-            >
-              <p>Kart ilə ödəniş</p>
-            </label>
+            <div className="flex items-center justify-center w-[20px] h-[20px] border-2 border-[#959595] rounded-full">
+              {/* <div className="w-[12px] h-[12px] bg-[#959595] rounded-full"></div> */}
+            </div>
+            <p className="font-semibold text-[12px] leading-[18px] text-[#959595]">
+              Kart ilə ödəniş
+            </p>
           </div>
         </div>
       </div>
