@@ -5,12 +5,12 @@ import Link from "next/link";
 import SearchInputMd from "@/src/components/input/input_search_md";
 import arrow_right from "@/icons/arrow_right.svg";
 import close from "@/icons/header/close.svg";
-function SearchServices({ messages, chosenLang, onExit,searchInptClicked }) {
+function SearchServices({ messages, chosenLang, onExit, searchInptClicked }) {
   /* ----------------- mainServices ----------------- */
-  
+
   const [mainServices, setMainServices] = useState([]);
   useEffect(() => {
-    if (!searchInptClicked) return;
+    // if (!searchInptClicked) return;
     axios
       .get("https://api.cagir.az/api/service/getAllForFront", {
         headers: {
@@ -25,7 +25,7 @@ function SearchServices({ messages, chosenLang, onExit,searchInptClicked }) {
         // Handle any errors
         console.error(error);
       });
-  }, [searchInptClicked,chosenLang]);
+  }, [searchInptClicked, chosenLang]);
 
   // getting all mainService ids in an array.
   const mainServiceIds = mainServices.map((child) => child.id);
@@ -73,19 +73,20 @@ function SearchServices({ messages, chosenLang, onExit,searchInptClicked }) {
 
   /* ----------------- search functionality ----------------- */
   // ekranda gorunen updatedSubServiceObject.It updates in each search
-  const [updatedSubServiceObject, setUpdatedSubServiceObject] =
-    useState(subServices);
-  // the value that will search elements
+  const updatedSubServiceObject =  subServices
+  // const [updatedSubServiceObject, setUpdatedSubServiceObject] =
+  //   useState(subServices);
+  // // the value that will search elements
   const [searchVal, setSearchVal] = useState("");
-  useEffect(() => {
-    const filteredArray = subServices.filter((obj) => {
-      return obj.serviceNames[0].name
-        .toLowerCase()
-        .includes(searchVal.toLowerCase());
-    });
+  // useEffect(() => {
+  //   const filteredArray = subServices.filter((obj) => {
+  //     return obj.serviceNames[0].name
+  //       .toLowerCase()
+  //       .includes(searchVal.toLowerCase());
+  //   });
 
-    setUpdatedSubServiceObject(filteredArray);
-  }, [searchVal, subServices]); // Only run this effect when searchVal changes
+  //   setUpdatedSubServiceObject(filteredArray);
+  // }, [searchVal, subServices]); // Only run this effect when searchVal changes
 
   function handleInputChange(event) {
     // const inputValue = event.target.value;
@@ -120,9 +121,26 @@ function SearchServices({ messages, chosenLang, onExit,searchInptClicked }) {
     onExit(exitBtnClicked);
   };
 
-
-
-
+  const [searchServices, setsearchServices] = useState([]);
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.cagir.az/api/search/getServiceBySearch?searchString=${searchVal}`,
+        {
+          headers: {
+            "Accept-Language": chosenLang,
+          },
+        }
+      )
+      .then((response) => {
+        // Handle the response data
+        setsearchServices(response.data.result);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
+  }, [searchVal, chosenLang]);
 
   return (
     <div className="py-[15px] lg:py-[30px]">
@@ -142,7 +160,9 @@ function SearchServices({ messages, chosenLang, onExit,searchInptClicked }) {
           />
         </button>
       </div>
+      {/*  */}
 
+      {/*  */}
       <div className="flex justify-center mt-[15px] mb-[15px]">
         <SearchInputMd
           {...{ messages, chosenLang }}
@@ -151,19 +171,34 @@ function SearchServices({ messages, chosenLang, onExit,searchInptClicked }) {
           // sendDataToParent={receiveDataFromChild}
         />
       </div>
-      <div className="flex flex-row justify-center gap-x-[5px] lg:gap-x-[15px]">
-        {trendServices.map((item, index) => (
-          <div key={index}>
-            <div className="border border-cagiraz rounded-lg">
-              <a className="" href={`/${item.nameUrl}`}>
-                <p className="font-semibold text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px]">
-                  {item.serviceNames[0].name}
-                </p>
-              </a>
-            </div>
-          </div>
-        ))}
+      <div className="flex flex-col gap-y-[5px] items-center justify-center ">
+        {searchServices?.map(
+          ({ index, name, parentTitleUrl, serviceId, titleUrl }) => {
+            return (
+              <div key={index}>
+                <a href={`/${parentTitleUrl}/${titleUrl}`}>{name}</a>
+              </div>
+            );
+          }
+        )}
       </div>
+      {searchServices === null ? (
+        <div className="flex flex-row justify-center gap-x-[5px] lg:gap-x-[15px]">
+          {trendServices.map((item, index) => (
+            <div key={index}>
+              <div className="border border-cagiraz rounded-lg">
+                <a className="" href={`/${item.nameUrl}`}>
+                  <p className="font-semibold text-[10px] leading-[15px] text-cagiraz px-[10px] py-[4px]">
+                    {item.serviceNames[0].name}
+                  </p>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        ""
+      )}
 
       {/* all services */}
       <div
@@ -234,26 +269,4 @@ function SearchServices({ messages, chosenLang, onExit,searchInptClicked }) {
 
 export default SearchServices;
 
-
-
-
-
-  // const [searchServices, setsearchServices] = useState([]);
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://api.cagir.az/api/search/getServiceBySearch?searchString=${searchVal}`, {
-  //       headers: {
-  //         "Accept-Language": chosenLang,
-  //       },
-  //     })
-  //     .then((response) => {
-  //       // Handle the response data
-  //       setsearchServices(response.data.result);
-  //     })
-  //     .catch((error) => {
-  //       // Handle any errors
-  //       console.error(error);
-  //     });
-  // }, [searchVal,chosenLang]);
-  // console.log(searchServices)
-  // 
+//

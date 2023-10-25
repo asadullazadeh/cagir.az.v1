@@ -2,7 +2,7 @@ const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   i18n: {
     locales: ["az", "en", "ru"],
     defaultLocale: "az",

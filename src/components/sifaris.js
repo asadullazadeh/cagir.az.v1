@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import Success_Page from "@/src/components/others/success_page";
+import info_btn from "@/icons/form/info_btn.svg";
 // import dangerouslySetInnerHTML from "@/src/components/DangerousHTMLComponent"
 import {
   CustomInput,
@@ -153,6 +155,17 @@ function Sifaris({
       .catch((error) => console.error(error));
   }, [isSub2ElementsExist, defaultSub?.id, selectedSub2Service.id, chosenLang]);
   console.log(getServiceCriterias);
+
+  /* ----------------------------------  infoBtnFor Meyars ---------------------------------- */
+  const [infoBtn, setInfoBtn] = useState({});
+  const toggleDropdown = (index) => {
+    setInfoBtn((prevState) => ({
+      ...Object.fromEntries(
+        Object.entries(prevState).map(([key]) => [key, false])
+      ),
+      [index]: !prevState[index], // Toggle the dropdown's state
+    }));
+  };
 
   /* ----------------------------------  Multinumber input functionality-FilterType=5 ---------------------------------- */
 
@@ -349,8 +362,9 @@ function Sifaris({
     setInputTextObject({});
     setPriceBeforePromo(0);
     setSelectedRadioName(null);
+    setInfoBtn({});
   }, [selectedMain, selectedSub, selectedSub2]);
-console.log(priceBeforePromo)
+
   /* ---------------------------------- Textarea functionality ---------------------------------- */
   // State Initialization
   const [showTextarea, setshowTextarea] = useState(false);
@@ -540,14 +554,38 @@ console.log(priceBeforePromo)
             {/* criterias example */}
 
             <div className="flex flex-col pt-[30px] gap-y-[30px]">
-              {getServiceCriterias.map(
-                ({ serviceCriteria, serviceCriteries, index }) => (
+              {Object.values(getServiceCriterias).map(
+                ({ serviceCriteria, serviceCriteries }, index) => (
                   <div key={index}>
-                    <h5 className="font-semibold text-[12px] leading-[18px] text-black500">
-                      {serviceCriteria.serviceCriteriaNames[0].name}
-                    </h5>
+                    <div className="flex flex-row gap-x-[5px]">
+                      <h5 className="font-semibold text-[12px] leading-[18px] pb-[10px] lg:pb-[5px] text-black500">
+                        {serviceCriteria.serviceCriteriaNames[0].name}
+                      </h5>
+                      {serviceCriteria.serviceCriteriaNames[0]?.text?.length >
+                      0 ? (
+                        <Image
+                          onClick={() => {
+                            toggleDropdown(index);
+                          }}
+                          src={info_btn}
+                          alt="infobtn"
+                          className="w-[20px] h-[20px]"
+                        />
+                      ) : (
+                        ""
+                      )}
+                    </div>
+
                     {/* where to add meyar descriptions */}
-                    {/* <div dangerouslySetInnerHTML={{ __html: serviceCriteria.serviceCriteriaNames[0].text }} /> */}
+                    {infoBtn[index] ? (
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: serviceCriteria.serviceCriteriaNames[0].text,
+                        }}
+                      />
+                    ) : (
+                      ""
+                    )}
 
                     <div className="flex flex-wrap gap-[15px] py-0 lg:py-[5px]  lg:order-1">
                       {/*  */}
@@ -668,17 +706,14 @@ console.log(priceBeforePromo)
                     btnName={messages["btn-back"]}
                     classNames="hidden lg:block"
                   />
-                  <div
-                    onClick={sifirla}
-
-                    // href={`/temizlik-xidmeti/ev-temizleme`}
-                    // "/temizlik-xidmeti/ev-temizleme"
-                  >
+  
+  
                     <PrimaryOutlineSmBtn
+                    onClick={sifirla}
                       btnName={messages.reset}
                       classNames="hidden lg:block"
                     />
-                  </div>
+                 
 
                   <PrimarySmBtn
                     onClick={() => window.my_modal_10.showModal()}
