@@ -24,16 +24,16 @@ const teamContactInfos = [
     name: "Ramin Nəbiyev",
     position: "Həmtəsisçi, Əməliyyatlar üzrə Direktor",
     image: "",
-    email: "email@email.com",
-    number: "+994514920220",
+    email: "ramin@cagir.az",
+    number: "+994102156343",
   },
-  {
-    name: "Tağı Əsədullazadə",
-    position: "Baş Texniki Direktor",
-    image: "",
-    email: "email@email.com",
-    number: "+994514920220",
-  },
+  // {
+  //   name: "Tağı Əsədullazadə",
+  //   position: "Baş Texniki Direktor",
+  //   image: "",
+  //   email: "email@email.com",
+  //   number: "+994514920220",
+  // },
 ];
 
 function Elaqe() {
