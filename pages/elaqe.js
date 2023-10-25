@@ -64,7 +64,7 @@ function Elaqe() {
             bilərsiniz.
           </p>
           {/* team part */}
-          <div className="grid gap-x-[20px] gap-y-[20px] screen360:gap-x-[30px] screen428:gap-x-[40px] sm:gap-x-[20px] grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+          <div className="grid gap-x-[20px] gap-y-[20px] screen360:gap-x-[30px] screen428:gap-x-[40px] sm:gap-x-[20px] grid-cols-2 sm:grid-cols-3">
             {teamContactInfos.map(
               ({ index, name, position, email, number }) => {
                 return (

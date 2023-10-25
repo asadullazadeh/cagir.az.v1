@@ -22,7 +22,18 @@ function Contact_Part() {
             -7/24
           </p>
         </div>
-        <div className="flex flex-row justify-between items-center gap-x-0 lg:gap-x-[5px] w-full">
+        <div className="flex flex-row justify-center sm:justify-none bg-white items-center text-center py-[8px] sm:py-[3px] px-[15px] rounded-full w-full ">
+          <Link
+            href="mailto:info@cagir.az"
+            className="font-semibold text-[12px] sm:text-[14px] leading-[21px]"
+          >
+            info@cagir.az
+          </Link>
+          {/* <p className="text-[#959595] text-[12px] sm:text-[14px] leading-[21px]">
+            -7/24
+          </p> */}
+        </div>
+        {/* <div className="flex flex-row justify-between items-center gap-x-0 lg:gap-x-[5px] w-full">
           <Link href="tel:+994703482606" className="">
             <p className="font-semibold text-[12px] sm:text-[14px] leading-[21px] text-white">
               +994 70 348 26 06
@@ -32,7 +43,7 @@ function Contact_Part() {
             -Həftə içi, 10<sup class="text-[8px]">00</sup>-18
             <sup class="text-[8px]">00</sup>
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
