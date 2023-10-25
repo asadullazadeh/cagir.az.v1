@@ -56,3 +56,23 @@
 .my-h5 {
   @apply font-semibold lg:font-bold text-[12px] sm:text-[14px] md:text-[18px] lg:text-[20px] leading-[18px] sm:leading-[22px] md:leading-[26px] lg:leading-[30px];
 }
+
+
+
+
+/* loading stle */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 31.86px;
+  height: 31.86px;
+  border-radius: 50%;
+  border-left-color: #3598ea;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import "react-alice-carousel/lib/alice-carousel.css";
+import placeholder from "@/public/placeholder.png"
 
 import dynamic from "next/dynamic";
 const AliceCarousel = dynamic(() => import("react-alice-carousel"), {
@@ -35,7 +36,9 @@ function Reyler({ parentId, messages }) {
           name: result.providerName,
           star: result.star,
           description: result.description,
+          imageUrl:result.imageUrl
         }));
+        console.log(resultArrays)
 
         setData(formattedData);
       } catch (error) {
@@ -67,8 +70,11 @@ function Reyler({ parentId, messages }) {
               <Image
                 width={65}
                 height={65}
-                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                alt="Profile picture"
+                src={child.imageUrl !== null ? `https://api.cagir.az${child.imageUrl}` : placeholder}
+
+                // src={`https://api.cagir.az${child.imageUrl}`}
+                // src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                alt={child.name}
                 className="z-8 rounded-full w-[33px] lg:w-[65px] h-[33px] lg:h-[65px] ml-[3.5px] lg:ml-[7px] mt-[3.5px] lg:mt-[7px] object-cover object-center"
               />
               <div className="absolute z-[-5]">

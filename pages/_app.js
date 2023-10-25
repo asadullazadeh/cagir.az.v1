@@ -76,19 +76,19 @@ export default function MyApp({ Component, pageProps }) {
       <IntlProvider locale={locale} messages={messages[locale]}>
         <>
           {loading && (
-            <div
-              style={{
-                position: "fixed",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                background: "rgba(255, 255, 255, 1)",
-                zIndex: 9999,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
+            <div 
+                style={{
+                  position: "fixed",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  background: "rgba(255, 255, 255, 1)",
+                  zIndex: 9999,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
             >
               {/* Your spinner here */}
               <div className="spinner"></div>
@@ -106,25 +106,6 @@ export default function MyApp({ Component, pageProps }) {
               <Component {...pageProps} />
             </Layout>
           )}
-          <style jsx global>{`
-            /* Add your spinner styling here */
-            .spinner {
-              border: 4px solid rgba(0, 0, 0, 0.1);
-              width: 31.86px;
-              height: 31.86px;
-              border-radius: 50%;
-              border-left-color: #3598ea;
-              animation: spin 1s linear infinite;
-            }
-            @keyframes spin {
-              0% {
-                transform: rotate(0deg);
-              }
-              100% {
-                transform: rotate(360deg);
-              }
-            }
-          `}</style>
         </>
       </IntlProvider>
     </div>
