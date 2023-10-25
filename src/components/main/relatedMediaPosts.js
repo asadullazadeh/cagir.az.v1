@@ -11,9 +11,12 @@ const fetchRelatedMediaPosts = async () => {
       "Accept-Language": "az",
     },
   };
-  
+
   try {
-    const response = await axios.get("https://api.cagir.az/api/media/getRelatives", config);
+    const response = await axios.get(
+      "https://api.cagir.az/api/media/getRelatives",
+      config
+    );
     return response.data.result;
   } catch (error) {
     console.error(error);
@@ -22,8 +25,6 @@ const fetchRelatedMediaPosts = async () => {
 };
 
 function RelatedMediaPostItem({ id, imageUrl, insertDate, mediaNames }) {
-  
-
   return (
     <div className="flex flex-row gap-2 lg:gap-4 p-2 rounded-md">
       <Image
@@ -77,8 +78,7 @@ function RelatedMediaPosts() {
           href="/media"
           className="py-2 px-6 font-medium lg:font-extrabold text-cagiraz text-sm lg:text-base leading-4 lg:leading-5"
         >
-        {messages["see-more"]}
-
+          {messages["see-more"]}
         </Link>
       </div>
     </div>

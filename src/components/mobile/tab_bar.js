@@ -2,10 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import dynamic from 'next/dynamic'
+
 import phone from "@/icons/tab_bar/phone.svg";
 import whatsapp from "@/icons/tab_bar/whatsapp.svg";
 import jale from "@/public/jale.jpg";
-import LiveChat from "@/src/components/others/livechat";
+
+const LiveChat = dynamic(() => import('@/src/components/others/livechat'), {
+  ssr: false,
+})
+// import LiveChat from "@/src/components/others/livechat";
 
 const TabBar = ({ classNames, messages }) => {
   useEffect(() => {

@@ -5,10 +5,12 @@ import Link from "next/link";
 import SearchInputMd from "@/src/components/input/input_search_md";
 import arrow_right from "@/icons/arrow_right.svg";
 import close from "@/icons/header/close.svg";
-function SearchServices({ messages, chosenLang, onExit }) {
+function SearchServices({ messages, chosenLang, onExit,searchInptClicked }) {
   /* ----------------- mainServices ----------------- */
+  
   const [mainServices, setMainServices] = useState([]);
   useEffect(() => {
+    if (!searchInptClicked) return;
     axios
       .get("https://api.cagir.az/api/service/getAllForFront", {
         headers: {
@@ -23,7 +25,7 @@ function SearchServices({ messages, chosenLang, onExit }) {
         // Handle any errors
         console.error(error);
       });
-  }, [chosenLang]);
+  }, [searchInptClicked,chosenLang]);
 
   // getting all mainService ids in an array.
   const mainServiceIds = mainServices.map((child) => child.id);
@@ -117,6 +119,10 @@ function SearchServices({ messages, chosenLang, onExit }) {
     // Use the callback to inform the parent
     onExit(exitBtnClicked);
   };
+
+
+
+
 
   return (
     <div className="py-[15px] lg:py-[30px]">
@@ -227,3 +233,27 @@ function SearchServices({ messages, chosenLang, onExit }) {
 }
 
 export default SearchServices;
+
+
+
+
+
+  // const [searchServices, setsearchServices] = useState([]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://api.cagir.az/api/search/getServiceBySearch?searchString=${searchVal}`, {
+  //       headers: {
+  //         "Accept-Language": chosenLang,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       // Handle the response data
+  //       setsearchServices(response.data.result);
+  //     })
+  //     .catch((error) => {
+  //       // Handle any errors
+  //       console.error(error);
+  //     });
+  // }, [searchVal,chosenLang]);
+  // console.log(searchServices)
+  // 

@@ -1,7 +1,9 @@
 import React from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import dynamic from "next/dynamic";
-const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
+const ReactPlayer = dynamic(() => import("react-player"), {
+  ssr: false,
+});
 const AliceCarousel = dynamic(() => import("react-alice-carousel"), {
   ssr: false,
 });
@@ -34,7 +36,7 @@ function Reels() {
           return (
             <div
               key={index}
-              className="flex items-center justify-center space-x-4 overflow-x"
+              className="flex items-center justify-center space-x-4 overflow-x "
             >
               <ReactPlayer
                 url={link}
