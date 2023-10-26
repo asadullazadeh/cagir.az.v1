@@ -61,6 +61,7 @@ const ServiceItem = ({ id, imageUrl, nameUrl, serviceNames }) => (
 );
 
 const Xidmetler = ({ messages, chosenLang }) => {
+
   const [responseData, setResponseData] = useState([]);
 
   useEffect(() => {

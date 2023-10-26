@@ -5,7 +5,7 @@ import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import SearchInput from "@/src/components/input/input_search_sm";
 
-export default function Carousel1({ onDataReceived, messages }) {
+export default function Carousel1({onDataReceived,messages}) {
   const [carouselPhotos, setcarouselPhotos] = useState([]);
   useEffect(() => {
     axios
@@ -118,3 +118,37 @@ export default function Carousel1({ onDataReceived, messages }) {
     </div>
   );
 }
+
+
+
+
+
+
+
+// export async function getServerSideProps() {
+//   // Fetch your data here...
+//   const res = await axios.get(`https://api.cagir.az/api/adminDictionary/getAll?dictionaryType=6`, {
+//     headers: {
+//       "Accept-Language": "az",
+//     },
+//   });
+
+//   const carouselData = res.data.result;
+
+//   // Return the fetched data as props
+//   return {
+//     props: {
+//       carouselData,
+//     },
+//   };
+// }
+
+
+
+
+
+
+
+
+
+
