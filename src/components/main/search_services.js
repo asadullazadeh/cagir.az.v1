@@ -9,6 +9,7 @@ function SearchServices({ messages, chosenLang, onExit, searchInptClicked }) {
   /* ----------------- mainServices ----------------- */
 
   const [mainServices, setMainServices] = useState([]);
+  return null
   useEffect(() => {
     // if (!searchInptClicked) return;
     axios
@@ -44,6 +45,7 @@ function SearchServices({ messages, chosenLang, onExit, searchInptClicked }) {
   const [subServices, setSubServices] = useState([]);
 
   useEffect(() => {
+    return null
     const fetchSubServices = async () => {
       try {
         const subServicePromises = mainServiceIds.map((id) =>

@@ -1,11 +1,10 @@
 import React from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
-import YoutubeComponent from "@/src/components/youtube"
 
 import dynamic from "next/dynamic";
-// const ReactPlayer = dynamic(() => import("react-player/youtube"), {
-//   ssr: false,
-// });
+const ReactPlayer = dynamic(() => import("react-player/youtube"), {
+  ssr: false,
+});
 const AliceCarousel = dynamic(() => import("react-alice-carousel"), {
   ssr: false,
 });
@@ -16,16 +15,16 @@ const responsive = {
   1024: { items: 3 },
 };
 
-// const items = [
-//   { index: 0, link: "https://youtube.com/shorts/Ra1YcrcYLzw?si=DK07uNlVPLVbQEHP" },
-//   { index: 1, link: "https://youtube.com/shorts/Ra1YcrcYLzw?si=DK07uNlVPLVbQEHP" },
-//   { index: 2, link: "https://youtube.com/shorts/Ra1YcrcYLzw?si=DK07uNlVPLVbQEHP" },
-// ];
-
 const items = [
-  { index: 0, link: "2g811Eo7K8U" },
-  { index: 1, link: "2g811Eo7K8U" },
-  { index: 2, link: "2g811Eo7K8U" },
+  {
+    index: 0,
+    link: "https://youtube.com/shorts/Ra1YcrcYLzw?si=DK07uNlVPLVbQEHP",
+  },
+  { index: 1, link: "https://www.youtube.com/shorts/up1QUwjqmsw" },
+  {
+    index: 2,
+    link: "https://youtube.com/shorts/Ra1YcrcYLzw?si=DK07uNlVPLVbQEHP",
+  },
 ];
 
 function Reels() {
@@ -33,7 +32,7 @@ function Reels() {
     <div>
       <h2 className="my-h2 pb-[15px] lg:pb-[30px] text-center">Əl işlərimiz</h2>
       {/* Customized Carousel */}
-      
+
       <AliceCarousel
         animationDuration={1300}
         animationType="fadeout"
@@ -46,8 +45,7 @@ function Reels() {
               key={index}
               className="flex items-center justify-center space-x-4 overflow-x "
             >
-              <YoutubeComponent videoId={link} />
-              {/* <ReactPlayer
+              <ReactPlayer
                 url={link}
                 config={{
                   youtube: {
@@ -56,7 +54,7 @@ function Reels() {
                 }}
                 width={302}
                 height={537}
-              /> */}
+              />
             </div>
           );
         })}

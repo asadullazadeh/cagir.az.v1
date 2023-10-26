@@ -27,18 +27,18 @@ const nextConfig = {
       "bakcell.com",
     ],
   },
-  // webpack: (config, { isServer }) => {
-  //   if (!isServer) {
-  //     config.plugins.push(
-  //       new BundleAnalyzerPlugin({
-  //         analyzerMode: "server",
-  //         analyzerPort: 8888,
-  //       })
-  //     );
-  //   }
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.plugins.push(
+        new BundleAnalyzerPlugin({
+          analyzerMode: "server",
+          analyzerPort: 8888,
+        })
+      );
+    }
 
-  //   return config;
-  // },
+    return config;
+  },
 };
 
 module.exports = nextConfig;

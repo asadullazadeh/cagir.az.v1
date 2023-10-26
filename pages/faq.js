@@ -3,7 +3,6 @@ import { Transition } from "@headlessui/react";
 import axios from "axios";
 import Image from "next/image";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import icraciSvg from "@/icons/faq/icraci.svg";
 import icraciSvg_clicked from "@/icons/faq/icraci_clicked.svg";
@@ -15,7 +14,6 @@ import up from "@/icons/form/up.svg";
 import down from "@/icons/form/down.svg";
 
 function Faq() {
-  const { locales } = useRouter();
   const intl = useIntl();
   const chosenLang = intl.locale
   const messages = intl.messages
