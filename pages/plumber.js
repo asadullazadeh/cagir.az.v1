@@ -104,13 +104,11 @@ async function fetchSubServices(parentId, chosenLang) {
   }
 }
 
-export async function getServerSideProps(context) {
+
+export async function getStaticProps() {
   const mainServiceUrl = "santexnik-ustasi";
-  const chosenLang = context.locale || "az";
-  const mainServiceData = await fetchMainServiceData(
-    mainServiceUrl,
-    chosenLang
-  );
+  const chosenLang = "az"; // Change this if you have multiple locales
+  const mainServiceData = await fetchMainServiceData(mainServiceUrl, chosenLang);
 
   const subServices = await fetchSubServices(mainServiceData.id, chosenLang);
   return {
@@ -118,7 +116,27 @@ export async function getServerSideProps(context) {
       mainServiceData,
       subServices,
       chosenLang,
-      parentId: 2549,
+      parentId: 2549, // If this is dynamic, you may need to fetch or adjust this value
     },
+    revalidate: 3600, // This is an optional value in seconds after which the page will be regenerated. Here, it's set to 1 hour.
   };
 }
+
+// export async function getServerSideProps(context) {
+//   const mainServiceUrl = "santexnik-ustasi";
+//   const chosenLang = context.locale || "az";
+//   const mainServiceData = await fetchMainServiceData(
+//     mainServiceUrl,
+//     chosenLang
+//   );
+
+//   const subServices = await fetchSubServices(mainServiceData.id, chosenLang);
+//   return {
+//     props: {
+//       mainServiceData,
+//       subServices,
+//       chosenLang,
+//       parentId: 2549,
+//     },
+//   };
+// }
