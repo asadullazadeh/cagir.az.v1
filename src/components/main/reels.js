@@ -1,7 +1,7 @@
 import React from "react";
 import "react-alice-carousel/lib/alice-carousel.css";
 import dynamic from "next/dynamic";
-const ReactPlayer = dynamic(() => import("react-player"), {
+const ReactPlayer = dynamic(() => import("react-player/youtube"), {
   ssr: false,
 });
 const AliceCarousel = dynamic(() => import("react-alice-carousel"), {
