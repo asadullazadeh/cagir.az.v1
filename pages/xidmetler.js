@@ -8,21 +8,8 @@ import { useIntl } from "react-intl";
 import arrow from "@/icons/arrow.svg";
 import arrow_mobile from "@/icons/arrow_mobile.svg";
 
-function ButunXidmetler() {
-  const { locale } = useRouter();
+function ButunXidmetler({ services }) {
   const { messages } = useIntl();
-  const [responseData, setResponseData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://api.cagir.az/api/service/getAllForFront", {
-        headers: {
-          "Accept-Language": locale,
-        },
-      })
-      .then(({ data }) => setResponseData(data.result))
-      .catch((error) => console.error(error));
-  }, [locale]);
 
   return (
     <div>
@@ -34,7 +21,7 @@ function ButunXidmetler() {
           {messages.services}
         </h2>
         <ul className="grid grid-cols-2 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
-          {responseData.map(({ id, imageUrl, nameUrl, serviceNames }) => (
+          {services.map(({ id, imageUrl, nameUrl, serviceNames }) => (
             <li key={id}>
               <Link
                 href={nameUrl}
@@ -78,6 +65,30 @@ function ButunXidmetler() {
       </div>
     </div>
   );
+}
+
+export async function getStaticProps(context) {
+  const { locale } = context;
+  
+  try {
+    const response = await axios.get("https://api.cagir.az/api/service/getAllForFront", {
+      headers: {
+        "Accept-Language": locale,
+      },
+    });
+
+    return {
+      props: {
+        services: response.data.result
+      },
+      revalidate: 3600 // optional: set a revalidation time in seconds if you want to refresh the data periodically
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      notFound: true // This will return a 404 page if there's an error, but you can handle errors as you see fit.
+    };
+  }
 }
 
 export default ButunXidmetler;
