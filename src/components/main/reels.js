@@ -45,7 +45,7 @@ function Reels() {
               key={index}
               className="flex items-center justify-center space-x-4 overflow-x "
             >
-              <ReactPlayer
+              {/* <ReactPlayer
                 url={link}
                 config={{
                   youtube: {
@@ -54,7 +54,7 @@ function Reels() {
                 }}
                 width={302}
                 height={537}
-              />
+              /> */}
             </div>
           );
         })}
