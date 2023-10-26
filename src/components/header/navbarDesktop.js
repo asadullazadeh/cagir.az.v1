@@ -33,13 +33,14 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
       text: "Usta xidmətləri",
       className: "",
     },
-    // {
-    //   href: "/usta/elektrik-ustasi",
-    //   text: messages["usta-elektrik"],
-    //   className: "",
-    // }
-    ,
+   
+    
     { href: "/xidmetler", text: "Bütün xidmətlər", className: "" },
+     {
+      href: "/kooperativ",
+      text: "Kooperativ sorğular",
+      className: "",
+    }
   ];
 
   const [searchIconIsClicked, setSearchIconIsClicked] = useState(false);
@@ -71,6 +72,8 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
       setToken(storedToken);
     }
   }, [token]);
+
+  console.log(token.length)
 
   return (
     <>
@@ -206,7 +209,7 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
             {/* 2nd navbar-1st part */}
             <ul
               className=" flex flex-row  
-           items-center font-semibold text-[10px] xl:text-[12px] 2xl:text-[14px] leading-[21px] text-gray500 space-x-[35px] lg:space-x-[45px] xl:space-x-[55px] 2xl:space-x-[85px]"
+           items-center font-semibold text-[10px] xl:text-[12px] 2xl:text-[14px] leading-[21px] text-gray500 space-x-[35px] lg:space-x-[35px] xl:space-x-[55px] 2xl:space-x-[65px]"
             >
               {linkInfos.map(({ index, href, text }) => (
                 // eslint-disable-next-line react/jsx-key
@@ -221,11 +224,13 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
             </ul>
             {/* 2nd navbar-2nd part- Qeydiyyat button */}
             <Link
-              href="/qeydiyyat"
+              href={token.length > 0 ? "is-axtariram" : "/qeydiyyat"}
+              
               onClick={handleDeClickSearchIcon}
               className="py-[7px]"
             >
-              <PrimarySmBtn btnName={messages.register} />
+              <PrimarySmBtn btnName={token.length > 0 ? messages["work-with-us"] : messages.register} />
+
             </Link>
           </div>
         </nav>

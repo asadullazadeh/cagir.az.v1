@@ -68,33 +68,36 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
       className: "",
       index: 7,
     },
-    { href: "/blog", text: messages["blog"], className: "", index: 8 },
-    { href: "/haqqimizda", text: messages["about"], className: "", index: 9 },
-    { href: "/elaqe", text: messages["contact"], className: "", index: 10 },
-    { href: "/payment", text: messages["payment"], className: "", index: 11 },
+    { href: "/kooperativ", text: "Koorperativ sorğular", className: "", index: 8 },
+    { href: "/is-axtariram", text: messages["work-with-us"], className: "", index: 9 },
+    
+    { href: "/blog", text: messages["blog"], className: "", index: 10 },
+    { href: "/haqqimizda", text: messages["about"], className: "", index: 11 },
+    { href: "/elaqe", text: messages["contact"], className: "", index: 12 },
+    { href: "/payment", text: messages["payment"], className: "", index: 13 },
     {
       href: "/giris",
       text: messages["login"],
       className: `${token ? "hidden" : ""}`,
-      index: 12,
+      index: 14,
     },
     {
       href: "/qeydiyyat",
       text: messages["register"],
       className: `${token ? "hidden" : ""}`,
-      index: 13,
+      index: 15,
     },
     {
       href: "/profile",
       text: messages["profile"],
       className: ` ${token ? "" : "hidden"}`,
-      index: 14,
+      index: 16,
     },
     {
       href: "/",
       text: messages["logout"],
       className: `text-danger ${token ? "" : "hidden"}`,
-      index: 15,
+      index: 17,
     },
   ];
 
@@ -133,7 +136,7 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
 
   //when logout button is clicked
   function logout(index) {
-    if (index === 15) {
+    if (index === 17) {
       // Remove the token (or other authentication info) from storage
       localStorage.removeItem("token");
 

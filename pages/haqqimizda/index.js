@@ -48,12 +48,12 @@ const teamInfos = [
   },
   {
     name: "Səbuhi İsazadə",
-    position: "Front - end Developer",
+    position: "FrontEnd Developer",
     image: "",
   },
   {
     name: "Kənan Abdulhəsənli",
-    position: "Front - end Developer",
+    position: "BackEnd Developer",
     image: "",
   },
 ];
@@ -67,6 +67,7 @@ const linkClasses =
 
 export async function getServerSideProps() {
   let responseData = [];
+  
 
   try {
     const response = await axios.get(
@@ -83,9 +84,28 @@ export async function getServerSideProps() {
     console.error(error);
   }
 
+  // 
+  let musteriData = []
+  try {
+    const response = await axios.get(
+      "https://api.cagir.az/api/adminDictionary/getAll?dictionaryType=4",
+      {
+        headers: {
+          "Accept-Language": "az",
+        },
+      }
+    );
+
+    musteriData = response.data.result;
+  } catch (error) {
+    console.error(error);
+  }
+  // 
+
   return {
     props: {
       responseData,
+      musteriData
     },
   };
 }
@@ -94,14 +114,17 @@ export default function Haqqimizda(props) {
   const intl = useIntl();
   const messages = intl.messages;
 
-  const { responseData } = props;
-  console.log(responseData);
+  const { responseData,musteriData } = props;
+  console.log(musteriData);
   return (
     <div>
       <Head>
         <title>Cagir.az - Haqqımızda</title>
       </Head>
       <div className="flex flex-col  pb-[50px] pt-[30px] md:pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px]">
+      <h4 className="text-center my-h2 pb-[30px] lg:pb-[60px]">Haqqımızda</h4>
+      <div className="flex flex-col  pb-[50px] pt-[30px] md:pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px]">
+      
         <div className="flex flex-col items-center font-semibold  gap-y-[15px] pb-[30px] lg:pb-[90px] text-gray900">
           <p className="text-[12px] lg:text-[18px] leading-[22px] lg:leading-[34px] w-full lg:w-2/3 text-center">
             Cagir.az 2020-ci ildən fəaliyyətə başlamış və illik artan
@@ -126,7 +149,7 @@ Cagir.az - Peşəkar xidmət, sərfəli qiymət!  */}
 
         {/*  */}
         <div>
-          <h4 className="my-h4 py-[30px] lg:py-[60px] text-center">
+          <h4 className="my-h2 py-[30px] lg:py-[60px] text-center">
             Mövcud əsas xidmət sahələrimiz
           </h4>
           <div className="flex flex-row gap-x-[15px] items justify-between">
@@ -193,12 +216,37 @@ Cagir.az - Peşəkar xidmət, sərfəli qiymət!  */}
         <div className="flex flex-col items-center gap-y-[60px] ">
           {/* <Deyerler {...{ messages, chosenLang }} /> */}
           {/* lg:gap-x-[10px] 2xl:gap-x-[60px] */}
-          <div className="max-w-[300px] screen360:max-w-[340px] screen375:max-w-[355px] screen390:max-w-[370px] screen412:max-w-[392px] screen428:max-w-[408px] sm:max-w-[620px] md:max-w-[748px] lg:max-w-[964px] xl:max-w-[1220px] ">
+          {/* <div className="max-w-[300px] screen360:max-w-[340px] screen375:max-w-[355px] screen390:max-w-[370px] screen412:max-w-[392px] screen428:max-w-[408px] sm:max-w-[620px] md:max-w-[748px] lg:max-w-[964px] xl:max-w-[1220px] ">
             <Musteriler {...{ messages }} />
+          </div> */}
+          {/* musteri part */}
+          <div>
+          <h2 className="my-h2 mb-[15px] lg:mb-[60px] text-center">
+        {/* {messages["customers"]} */}
+        Korporativ müştərilər
+      </h2>
+          <div className="grid grid-cols-4 gap-4">
+          {musteriData?.map(({ id, imageUrl, title, url }) => (
+          <div key={id} className="">
+            {url && (
+              <Link href={url} target="_blank" className="">
+                <Image
+                  alt={title}
+                  src={`https://api.cagir.az/${imageUrl}`}
+                  width={300}
+                  height={150}
+                  className="px-[5px] md:px-[15px] drop-shadow-cardAlt py-[10px]"
+                />
+              </Link>
+            )}
           </div>
+        ))}
+        </div>
+        </div>
+          {/*  */}
 
           <div>
-            <h4 className="my-h4  text-center pb-[30px] lg:pb-[60px]">
+            <h4 className="my-h2 text-center pb-[30px] lg:pb-[60px]">
               Komandamız
             </h4>
             <div className="grid gap-x-[20px] gap-y-[20px] screen360:gap-x-[30px] screen428:gap-x-[40px] sm:gap-x-[20px] grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
@@ -212,6 +260,7 @@ Cagir.az - Peşəkar xidmət, sərfəli qiymət!  */}
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

@@ -1,37 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import axios from "axios";
 
 function SifarishBtn({ classNames, messages }) {
-  const router = useRouter();
-  const [responseData, setResponseData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://api.cagir.az/api/service/getAllForFront",
-          {
-            headers: { "Accept-Language": "az" },
-          }
-        );
-        setResponseData(response.data.result);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const mainServicesInfo = responseData.find(
-    (obj) => obj.nameUrl === router.query.mainService
-  );
-
-  const urlFromSifarisBtn = mainServicesInfo
-    ? `/sifaris-yarat/${mainServicesInfo.nameUrl}`
-    : "/temizlik-xidmeti/ev-temizleme";
 
   const btnClasses = `
     font-extraBold text-[14px] lg:text-[18px] leading-[22px] lg:leading-[27px]
@@ -42,9 +12,8 @@ function SifarishBtn({ classNames, messages }) {
 
   return (
     <div className={classNames}>
-      <Link href={urlFromSifarisBtn}>
+      <Link href="temizlik-xidmeti/ev-temizleme">
         <button className={btnClasses}>
-          {/* Sifarişi yarat */}
           {messages["order-create"]}
         </button>
       </Link>

@@ -11,29 +11,29 @@ const teamContactInfos = [
     position: "Həmtəsisçi,İcraçı Direktor",
     image: "",
     email: "turgut@cagir.az",
-    number: "+33786923768",
+    // number: "+33786923768",
   },
   {
     name: "Orxan Abdulhəsənli",
     position: "Həmtəsisçi, İcraçı Direktor Müavini",
     image: "",
     email: "orkhan@cagir.az",
-    number: "+994514920220",
+    // number: "+994514920220",
   },
   {
     name: "Ramin Nəbiyev",
     position: "Həmtəsisçi, Əməliyyatlar üzrə Direktor",
     image: "",
     email: "ramin@cagir.az",
-    number: "+994102156343",
+    // number: "+994102156343",
   },
-  // {
-  //   name: "Tağı Əsədullazadə",
-  //   position: "Baş Texniki Direktor",
-  //   image: "",
-  //   email: "email@email.com",
-  //   number: "+994514920220",
-  // },
+  {
+    name: "Tağı Əsədullazadə",
+    position: "Baş Texniki Direktor",
+    image: "",
+    email: "info@cagir.az",
+    // number: "+994514920220",
+  },
 ];
 
 function Elaqe() {
@@ -47,7 +47,7 @@ function Elaqe() {
       {/* flex flex-col items-center min-h-screen lg:justify-center pt-[50px] lg:pt-0 */}
       <div className="flex flex-col  pb-[50px] pt-[30px] md:pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px]">
         <div className="flex flex-col items-center w-full ">
-          <h4 className="my-h4 pb-[30px] lg:pb-[60px]">{messages.contact}</h4>
+          <h4 className="my-h2 pb-[30px] lg:pb-[60px]">{messages.contact}</h4>
           <div className="flex flex-col font-medium lg:font-semibold text-[12px] lg:text-[18px] leading-[18px] lg:leading-[34px] pb-[60px] lg:first-letter:w-[500px] text-[#959595]">
             <span className="mx-auto">{messages.anyproblem}</span>
             <Link className="mx-auto text-cagiraz" href="/faq">
@@ -64,7 +64,7 @@ function Elaqe() {
             bilərsiniz.
           </p>
           {/* team part */}
-          <div className="grid gap-x-[20px] gap-y-[20px] screen360:gap-x-[30px] screen428:gap-x-[40px] sm:gap-x-[20px] grid-cols-2 sm:grid-cols-3">
+          <div className="grid gap-x-[20px] gap-y-[20px] screen360:gap-x-[30px] screen428:gap-x-[40px] sm:gap-x-[20px] grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
             {teamContactInfos.map(
               ({ index, name, position, email, number }) => {
                 return (

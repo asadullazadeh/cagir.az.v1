@@ -15,9 +15,9 @@ const responsive = {
 };
 
 const items = [
-  { index: 0, link: "https://www.youtube.com/watch?v=reOplRv2QW4" },
-  { index: 1, link: "https://www.youtube.com/watch?v=aDvHX3No9ec" },
-  { index: 2, link: "https://www.youtube.com/watch?v=JbIG0LqAdOU" },
+  { index: 0, link: "https://youtube.com/shorts/Ra1YcrcYLzw?si=DK07uNlVPLVbQEHP" },
+  { index: 1, link: "https://youtube.com/shorts/Ra1YcrcYLzw?si=DK07uNlVPLVbQEHP" },
+  { index: 2, link: "https://youtube.com/shorts/Ra1YcrcYLzw?si=DK07uNlVPLVbQEHP" },
 ];
 
 function Reels() {
