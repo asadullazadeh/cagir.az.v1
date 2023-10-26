@@ -69,24 +69,27 @@ function ButunXidmetler({ services }) {
 
 export async function getStaticProps(context) {
   const { locale } = context;
-  
+
   try {
-    const response = await axios.get("https://api.cagir.az/api/service/getAllForFront", {
-      headers: {
-        "Accept-Language": locale,
-      },
-    });
+    const response = await axios.get(
+      "https://api.cagir.az/api/service/getAllForFront",
+      {
+        headers: {
+          "Accept-Language": locale,
+        },
+      }
+    );
 
     return {
       props: {
-        services: response.data.result
+        services: response.data.result,
       },
-      revalidate: 3600 // optional: set a revalidation time in seconds if you want to refresh the data periodically
+      revalidate: 3600, // optional: set a revalidation time in seconds if you want to refresh the data periodically
     };
   } catch (error) {
     console.error(error);
     return {
-      notFound: true // This will return a 404 page if there's an error, but you can handle errors as you see fit.
+      notFound: true, // This will return a 404 page if there's an error, but you can handle errors as you see fit.
     };
   }
 }

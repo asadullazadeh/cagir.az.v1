@@ -45,13 +45,17 @@ export default function Haqqimizda() {
         <title>Cagir.az - Kooperativ</title>
       </Head>
       <div className="flex flex-col  pb-[50px] pt-[30px] md:pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px]">
-      <h4 className="text-center my-h2 pb-[30px] lg:pb-[60px]">Korporativ Əməkdaşlıq</h4>
+        <h4 className="text-center my-h2 pb-[30px] lg:pb-[60px]">
+          Korporativ Əməkdaşlıq
+        </h4>
         <div className="flex flex-col items-center font-semibold  gap-y-[15px] pb-[30px] lg:pb-[50px] text-gray900">
           <p className="text-[12px] lg:text-[18px] leading-[22px] lg:leading-[34px] w-full lg:w-2/3 text-center">
-Cagir.az şirkəti sizi korporativ əməkdaşlığa dəvət edir! İstənilən növ usta xidmətində nasazlığı 
-aşkarlamaq üçün ofis və ya obyektlərə mütəmadi baxış keçirilməsi mümkündür. Eyni zamanda əməkdaşlıq 
-çərçivəsində aylıq və ya gündəlik xadimə xidməti göstərilir.
-Xidmətlərimiz barədə daha ətraflı məlumat əldə etmək üçün “Bütün xidmətlər” bölməsinə nəzər yetirə bilərsiniz.
+            Cagir.az şirkəti sizi korporativ əməkdaşlığa dəvət edir! İstənilən
+            növ usta xidmətində nasazlığı aşkarlamaq üçün ofis və ya obyektlərə
+            mütəmadi baxış keçirilməsi mümkündür. Eyni zamanda əməkdaşlıq
+            çərçivəsində aylıq və ya gündəlik xadimə xidməti göstərilir.
+            Xidmətlərimiz barədə daha ətraflı məlumat əldə etmək üçün “Bütün
+            xidmətlər” bölməsinə nəzər yetirə bilərsiniz.
           </p>
         </div>
 
@@ -125,11 +129,9 @@ Xidmətlərimiz barədə daha ətraflı məlumat əldə etmək üçün “Bütü
   );
 }
 
-
-
-export async function getServerSideProps() {
+export async function getStaticProps() {
   let responseData = [];
-  
+  let musteriData = [];
 
   try {
     const response = await axios.get(
@@ -140,14 +142,11 @@ export async function getServerSideProps() {
         },
       }
     );
-
     responseData = response.data.result;
   } catch (error) {
     console.error(error);
   }
 
-  // 
-  let musteriData = []
   try {
     const response = await axios.get(
       "https://api.cagir.az/api/adminDictionary/getAll?dictionaryType=4",
@@ -157,17 +156,16 @@ export async function getServerSideProps() {
         },
       }
     );
-
     musteriData = response.data.result;
   } catch (error) {
     console.error(error);
   }
-  // 
 
   return {
     props: {
       responseData,
-      musteriData
+      musteriData,
     },
+    revalidate: 3600, // Optionally, you can add this to re-fetch the data at a max interval of 60 seconds
   };
 }

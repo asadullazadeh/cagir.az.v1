@@ -7,25 +7,8 @@ import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import SearchInputMd from "@/src/components/input/input_search_md";
 
-function Xidmet() {
-  const [responseData, setResponseData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`https://api.cagir.az/api/serviceInfo/getAll`, {
-        headers: {
-          "Accept-Language": "az",
-        },
-      })
-      .then((response) => {
-        // Handle the response data
-        setResponseData(response.data.result);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
-  }, []);
+function Xidmet(props) {
+  const { responseData } = props;
 
   console.log(responseData);
   //
@@ -160,3 +143,29 @@ function Xidmet() {
 }
 
 export default Xidmet;
+
+
+
+
+export async function getStaticProps() {
+  try {
+    const response = await axios.get(`https://api.cagir.az/api/serviceInfo/getAll`, {
+      headers: {
+        "Accept-Language": "az",
+      },
+    });
+    return {
+      props: {
+        responseData: response.data.result
+      },
+      revalidate: 3600,
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return {
+      props: {
+        responseData: []  // You can return an empty array or handle it however you'd like.
+      }
+    };
+  }
+}

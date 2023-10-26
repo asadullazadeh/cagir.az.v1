@@ -65,7 +65,7 @@ const listClasses =
 const linkClasses =
   "flex items-center justify-between w-full aspect-[15/3] sm:aspect-[302/91] rounded-[20px] drop-shadow-cardAlt lg:drop-shadow-none lg:hover:drop-shadow-cardAlt transition duration-300 bg-white px-[15px] sm:px-[30px] py-[9.5px] sm:py-[15px] group";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   let responseData = [];
   
 

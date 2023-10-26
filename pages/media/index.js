@@ -5,25 +5,8 @@ import Link from "next/link";
 import Head from "next/head";
 import { useIntl } from "react-intl";
 
-function Media() {
-  const [responseData, setResponseData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`https://api.cagir.az/api/media/getAll`, {
-        headers: {
-          "Accept-Language": "az",
-        },
-      })
-      .then((response) => {
-        // Handle the response data
-        setResponseData(response.data.result);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
-  }, []);
+function Media(props) {
+  const { responseData } = props;
 
   const intl = useIntl();
   const messages = intl.messages;
@@ -91,3 +74,27 @@ function Media() {
 }
 
 export default Media;
+
+
+
+export async function getStaticProps() {
+  try {
+    const response = await axios.get(`https://api.cagir.az/api/media/getAll`, {
+      headers: {
+        "Accept-Language": "az",
+      },
+    });
+    return {
+      props: {
+        responseData: response.data.result
+      }
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return {
+      props: {
+        responseData: []  // You can return an empty array or handle it however you'd like.
+      }
+    };
+  }
+}

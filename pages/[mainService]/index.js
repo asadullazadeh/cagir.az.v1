@@ -103,36 +103,51 @@ async function fetchSubServices(parentId, chosenLang) {
   }
 }
 
-export async function getServerSideProps(context) {
-  const mainServiceUrl = context.query.mainService;
+export async function getStaticProps(context) {
+  const mainServiceUrl = context.params.mainService; // Changed from context.query to context.params
   const chosenLang = context.locale || "az";
-  // what is mainServiceUrl
-  const mainServiceData = await fetchMainServiceData(
-    mainServiceUrl,
-    chosenLang
-  );
 
-  // Check if mainServiceData is null or if it doesn't have the id property
+  const mainServiceData = await fetchMainServiceData(mainServiceUrl, chosenLang);
+
   if (!mainServiceData || !mainServiceData.id) {
     return {
-      redirect: {
-        destination: "/sehife-tapilmadi", // You can adjust this path if it's different
-        permanent: false,
-      },
+      notFound: true
     };
   }
 
-  // what mainServiceData
   const subServices = await fetchSubServices(mainServiceData.id, chosenLang);
+  
   return {
     props: {
       mainServiceData,
       subServices,
       chosenLang,
-      // what is parentId
       parentId: mainServiceData.id,
     },
+    revalidate: 3600, // Optionally re-fetch the data every 60 seconds
   };
+}
+
+export async function getStaticPaths() {
+  // Assuming you have a function that fetches all possible values of mainService. 
+  // This is just a placeholder and should be replaced with actual API call or logic.
+  const allPossibleMainServiceValues = await fetchAllMainServiceValues();
+
+  const paths = allPossibleMainServiceValues.map((service) => ({
+    params: { mainService: service },
+  }));
+
+  return {
+    paths,
+    fallback: 'blocking'
+  };
+}
+
+// Placeholder for fetchAllMainServiceValues (replace this with actual logic)
+async function fetchAllMainServiceValues() {
+  // Fetch all the possible values for mainService from your API or source of truth
+  // and return them as an array.
+  return [];
 }
 
 // import React from "react";
