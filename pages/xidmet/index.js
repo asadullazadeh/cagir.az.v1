@@ -10,8 +10,6 @@ import SearchInputMd from "@/src/components/input/input_search_md";
 function Xidmet(props) {
   const { responseData } = props;
 
-  console.log(responseData);
-  //
   const [deleteBtnIsClicked, setDeleteBtnIsClicked] = useState(false);
 
   // ekranda gorunen updatedXidmetList.It updates in each search
@@ -46,7 +44,6 @@ function Xidmet(props) {
     setSearchVal(inputValue);
   }
 
-  const { locales } = useRouter();
   const intl = useIntl();
   const chosenLang = intl.locale;
   const messages = intl.messages;
@@ -158,7 +155,7 @@ export async function getStaticProps() {
       props: {
         responseData: response.data.result
       },
-      revalidate: 3600,
+      revalidate: 120,
     };
   } catch (error) {
     console.error("Error fetching data:", error);

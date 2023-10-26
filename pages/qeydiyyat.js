@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-// import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
-import Link from "next/link";
 import Head from "next/head";
-import views from "@/icons/bloq/views.svg";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import InputCustomized from "@/src/components/input/input";
@@ -13,14 +9,10 @@ import InputNumber from "@/src/components/input/input_number";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 
 import {
-  CheckBox,
-  PrimarySmBtn,
-  PrimaryOutlineSmBtn,
   LinkSmBtn,
 } from "@/src/components/buttons";
 
 function Registration() {
-  //
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -46,7 +38,6 @@ function Registration() {
   const handlePasswordChange = (password) => {
     setMainPagePassword(password);
   };
-
 
   const router = useRouter();
 

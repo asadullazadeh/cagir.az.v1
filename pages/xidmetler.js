@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
@@ -86,9 +86,11 @@ export async function getStaticProps(context) {
       },
       revalidate: 3600, // optional: set a revalidation time in seconds if you want to refresh the data periodically
     };
-  } catch (error) {
+  } 
+  catch (error) {
     console.error(error);
     return {
+      
       notFound: true, // This will return a 404 page if there's an error, but you can handle errors as you see fit.
     };
   }

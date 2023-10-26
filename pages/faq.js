@@ -15,8 +15,8 @@ import down from "@/icons/form/down.svg";
 
 function Faq() {
   const intl = useIntl();
-  const chosenLang = intl.locale
-  const messages = intl.messages
+  const chosenLang = intl.locale;
+  const messages = intl.messages;
 
   const [categoryId, setCategoryId] = useState(0); // Initial categoryId is 0
   const [responseData, setResponseData] = useState([]);
@@ -40,7 +40,7 @@ function Faq() {
         // Handle any errors
         console.error(error);
       });
-  }, [categoryId,chosenLang]);
+  }, [categoryId, chosenLang]);
   const firstFaqNames = Object.values(responseData).map(
     (child) => child.faqNames[0]
   );

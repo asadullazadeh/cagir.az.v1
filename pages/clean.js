@@ -104,7 +104,6 @@ async function fetchSubServices(parentId, chosenLang) {
   }
 }
 
-// Replace getServerSideProps with this:
 
 export async function getStaticProps() {
   const mainServiceUrl = "temizlik-xidmeti";
@@ -119,26 +118,6 @@ export async function getStaticProps() {
       chosenLang,
       parentId: 1, // If this is dynamic, you may need to fetch or adjust this value
     },
-    revalidate: 3600, // This is an optional value in seconds after which the page will be regenerated. Here, it's set to 1 hour.
+    revalidate: 120, // This is an optional value in seconds after which the page will be regenerated. Here, it's set to 1 hour.
   };
 }
-
-
-// export async function getServerSideProps(context) {
-//   const mainServiceUrl = "temizlik-xidmeti";
-//   const chosenLang = context.locale || "az";
-//   const mainServiceData = await fetchMainServiceData(
-//     mainServiceUrl,
-//     chosenLang
-//   );
-
-//   const subServices = await fetchSubServices(mainServiceData.id, chosenLang);
-//   return {
-//     props: {
-//       mainServiceData,
-//       subServices,
-//       chosenLang,
-//       parentId: 1,
-//     },
-//   };
-// }

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import axios from "axios";
 import Head from "next/head";
 import InputCustomized from "@/src/components/input/input";

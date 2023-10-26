@@ -5,7 +5,6 @@ import Link from "next/link";
 import Head from "next/head";
 import { useIntl } from "react-intl";
 import video from "@/public/video_about.jpg";
-import Musteriler from "@/src/components/main/musteriler";
 import TeamCard from "@/src/components/cards/team_card";
 import Contact_Part from "@/src/components/others/contact_part";
 import arrow from "@/icons/arrow.svg";

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Image from "next/image";
+import React from "react";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
 import PrimaryOutlineSmBtn from "@/src/components/buttons/primary_outline_sm_btn";
 import Invoice_Card from "@/src/components/cards/invoice_card";
