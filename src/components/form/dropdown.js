@@ -210,7 +210,7 @@ const Dropdown = ({
 
   useEffect(() => {
     router.replace(newPath);
-  }, [mainService,subService,newPath]);
+  }, [newPath]);
   console.log(newPath);
   return (
     <div
