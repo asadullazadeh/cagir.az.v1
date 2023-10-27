@@ -53,7 +53,7 @@ export default function Home() {
           <MainServices {...{ chosenLang, messages }} />
           <Reyler {...{ chosenLang, messages }} parentId={1} />
           <Icracilar {...{ messages }} parentId={1} />
-          <Reels />
+          {/* <Reels /> */}
           <Musteriler {...{ messages }} />
           <div className="hidden lg:block">
             <Suallar {...{ chosenLang, messages }} />

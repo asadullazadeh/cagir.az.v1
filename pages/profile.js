@@ -80,7 +80,7 @@ function Profil_settings() {
     localStorage.removeItem("token");
 
     // Redirect to a public page or the login page
-    // window.location.href = "/";
+    window.location.href = "/";
   }
 
   // if no profile is logged in, redirect to login page

@@ -183,14 +183,13 @@ const Dropdown = ({
   //   subServices.find((obj) => obj.nameUrl === subServiceUrl) ||
   //   {};
   // const subInfo = findSubInfoByNameUrl(getSubServices, subServiceUrl);
-  console.log(subInfo.nameUrl)
+  console.log(subInfo.nameUrl);
   console.log(router);
   const pathMain = mainInfo.nameUrl;
   const pathSub = subInfo.nameUrl || getSubServices[0]?.nameUrl;
   const newPath = `/${pathMain}/${pathSub}`;
-  console.log("mainInfo:",mainInfo)
-  console.log("pathSub:",pathSub)
-
+  console.log("mainInfo:", mainInfo);
+  console.log("pathSub:", pathSub);
 
   const { mainService, subService } = router.query;
 
@@ -207,7 +206,7 @@ const Dropdown = ({
       // For subsequent updates, always navigate
       router.replace(newPath);
     }
-  }, [router.asPath,mainService, newPath, subService]);
+  }, [router.asPath, mainService, newPath, subService]);
 
   return (
     <div

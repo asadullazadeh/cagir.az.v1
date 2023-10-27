@@ -577,7 +577,12 @@ function Sifaris({
                       <div
                       className={`${infoBtn[index] ? "line-clamp-none" : "line-clamp-1"}`}
                         dangerouslySetInnerHTML={{
-                          __html: `${infoBtn[index] ? serviceCriteria.serviceCriteriaNames[0].text : serviceCriteria.serviceCriteriaNames[0].text}`,
+                          __html: serviceCriteria.serviceCriteriaNames[0].text?.replaceAll(
+                            "<ul>",
+                            '<ul class="list-disc list-inside py-[3px] mt-[3px] mb-[7px] ">'
+                          )
+                          .replaceAll("<p", '<p class="text-[14px] leading-[22px] "')
+                          .replaceAll("<span>", "<span>"),
                         }}
                       />
                       <p onClick={() => {
