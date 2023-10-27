@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
 import SearchInputMd from "@/src/components/input/input_search_md";
 import arrow_right from "@/icons/arrow_right.svg";
 import close from "@/icons/header/close.svg";
 function SearchComponents({onExit, searchInptClicked }) {
+  const router = useRouter();
   /* ----------------- mainServices ----------------- */
   const intl = useIntl();
   const chosenLang = intl.locale;
@@ -121,11 +123,13 @@ function SearchComponents({onExit, searchInptClicked }) {
   const [exitBtnClicked, setExitBtnClicked] = useState(false);
 
   const exitBtn = () => {
+    router.back();
+
     // Toggle the local state to indicate "exit"
-    setExitBtnClicked((prev) => !prev);
+    // setExitBtnClicked((prev) => !prev);
 
     // Use the callback to inform the parent
-    onExit(exitBtnClicked);
+    // onExit(exitBtnClicked);
   };
 
   const [searchServices, setsearchServices] = useState([]);
@@ -189,7 +193,8 @@ function SearchComponents({onExit, searchInptClicked }) {
             ({ index, name, parentTitleUrl, serviceId, titleUrl }) => {
               return (
                 <div key={index}>
-                  <a href={`/${parentTitleUrl}/${titleUrl}`}>{name}</a>
+                  {/* {`/${parentTitleUrl}/${titleUrl}`} */}
+                  <Link href={`/${parentTitleUrl}/${titleUrl}`}>{name}</Link>
                 </div>
               );
             }
@@ -251,7 +256,7 @@ function SearchComponents({onExit, searchInptClicked }) {
                   className="drop-shadow-cardAlt lg:drop-shadow-none lg:hover:drop-shadow-cardAlt transition duration-300 rounded-[10px] bg-white"
                   key={id}
                 >
-                  <a
+                  <Link
                     href={`/${mainServiceIdNameUrls[parentId]}/${nameUrl}`}
                     className=" 
                             flex flex-row sm:flex-col rounded-[10px] sm:rounded-[25px]
@@ -281,7 +286,7 @@ function SearchComponents({onExit, searchInptClicked }) {
                         </div>
                       </div>
                     ))}
-                  </a>
+                  </Link>
                 </li>
               );
             }

@@ -45,9 +45,9 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
 
   const [searchIconIsClicked, setSearchIconIsClicked] = useState(false);
 
-  const handleClick = () => {
-    setSearchIconIsClicked((prev) => !prev);
-  };
+  // const handleClick = () => {
+  //   setSearchIconIsClicked((prev) => !prev);
+  // };
 
   //set it to the false when other element is clicked
   // const handleDeClickSearchIcon = () => {
@@ -99,8 +99,10 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
             <ul className="flex flex-row justify-center items-center space-x-[30px] h-full z-10">
               {/* search icon */}
               <li key="search" className="">
-                <div className="group flex relative">
-                  <button onClick={handleClick}>
+                <Link href="/axtaris" className="group flex relative">
+                  <button
+                  //  onClick={handleClick}
+                   >
                     <div className="relative group ">
                       <Image
                         src={search}
@@ -121,7 +123,7 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
                   >
                     {messages.search}
                   </span>
-                </div>
+                </Link>
               </li>
 
               {/* wallet icon */}

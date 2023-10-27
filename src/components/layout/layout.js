@@ -85,16 +85,16 @@ export default function Layout({ children }) {
   return (
     <div className="screen1700:max-w-[1512px] bg-white">
       <Head>
-      <meta name="author" content="cagir.az" />
-      <meta
+        <meta name="author" content="cagir.az" />
+        <meta
           name="description"
           content="Cagir.az-temizlik xidmeti,paltaryuyan ustasi,kondisioner ustasi,kombi ustasi,soyuducu ustasi, temizlik sirketi,komputer ustasi,masaj,xalca yuma,elektrik"
         />
         <meta
           name="keywords"
           content="temizlik, kondisioner, masaj, usta, temir"
-        />  
-        </Head>
+        />
+      </Head>
 
       {/* Navigation */}
       <div className="sticky top-0 z-50">
@@ -110,15 +110,13 @@ export default function Layout({ children }) {
 
       {/* Main Content */}
       <main
-        className={`overflow-y-clip flex flex-col px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full  ${
-          isSearchVisible ? "hidden" : ""
-        }`}
+        className={`overflow-y-clip flex flex-col px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full`}
       >
         {children}
       </main>
 
       {/* Search Services */}
-      <div
+      {/* <div
         className={
           isSearchVisible
             ? "block px-[10px] lg:px-[60px] mt-[40px] lg:mt-0 min-h-screen w-full"
@@ -130,7 +128,7 @@ export default function Layout({ children }) {
           chosenLang={locale}
           onExit={handleExit}
         />
-      </div>
+      </div> */}
 
       {/* Buttons */}
       <div className={isElementVisible ? "flex justify-center" : "hidden"}>

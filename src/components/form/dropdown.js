@@ -195,18 +195,33 @@ const Dropdown = ({
 
   // if page redirects from different page, it useEffect is not applied.
   const isInitialMount = useRef(true);
-  useEffect(() => {
-    // If it's the initial mount, we'll check if we're being redirected
-    if (isInitialMount.current) {
-      if (router.asPath !== newPath) {
-        // router.replace(`/${mainService}/${subService}`);
-      }
-      isInitialMount.current = false;
-    } else {
-      // For subsequent updates, always navigate
-      router.replace(newPath);
-    }
-  }, [router.asPath, mainService, newPath, subService]);
+  // useEffect(() => {
+  //   // If it's the initial mount, we'll check if we're being redirected
+  //   if (isInitialMount.current) {
+  //     if (router.asPath !== newPath) {
+  //       router.replace(`/${mainService}/${subService}`);
+  //     }
+  //     isInitialMount.current = false;
+  //   } else {
+  //     // For subsequent updates, always navigate
+  //     // router.replace(newPath);
+  //   }
+  // }, [mainService, newPath, subService]);
+
+ useEffect(() => {
+  // router.replace(`/${mainService}/${subService}`);
+  router.replace(newPath);
+    // if (isInitialMount.current) {
+    //   if (router.asPath !== newPath) {
+    //     router.replace(`/${mainService}/${subService}`);
+    //   }
+    //   isInitialMount.current = false;
+    // } else {
+    //   // For subsequent updates, always navigate
+    //   // router.replace(newPath);
+    // }
+  }, [newPath]);
+
 
   return (
     <div

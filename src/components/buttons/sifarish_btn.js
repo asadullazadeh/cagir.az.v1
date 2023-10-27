@@ -12,7 +12,7 @@ function SifarishBtn({ classNames, messages }) {
 
   return (
     <div className={classNames}>
-      <Link href="temizlik-xidmeti/ev-temizleme">
+      <Link href="/temizlik-xidmeti/ev-temizleme">
         <button className={btnClasses}>
           {messages["order-create"]}
         </button>

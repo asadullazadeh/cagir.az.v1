@@ -119,10 +119,10 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
   // if search input is clicked
   const [searchIconIsClicked, setSearchIconIsClicked] = useState(false);
 
-  const handleSearchInput = () => {
-    setSearchIconIsClicked((prev) => !prev);
-    setNavbar(false);
-  };
+  // const handleSearchInput = () => {
+  //   setSearchIconIsClicked((prev) => !prev);
+  //   setNavbar(false);
+  // };
 
   const handleDeClickSearchIcon = async () => {
     setTimeout(() => {
@@ -170,13 +170,15 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
             {/* HAMBURGER BUTTON FOR MOBILE */}
             <div className="flex flex-row items-center">
               {/* search button */}
-              <button onClick={handleSearchInput}>
+              <Link href="/axtaris"
+              //  onClick={handleSearchInput}
+               >
                 <Image
                   src={search1}
                   alt="search_alt_1"
                   className="w-[20px] h-[20px]"
                 />
-              </button>
+              </Link>
               {/* language section */}
               <div className="pl-[15px]">
                 {" "}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import SearchInput from "@/src/components/input/input_search_sm";
@@ -8,6 +9,7 @@ import Carousel from "@/src/components/main/carousel";
 
 
 export default function Carousel1({onDataReceived,messages}) {
+  const router = useRouter();
   const [carouselPhotos, setcarouselPhotos] = useState([]);
   useEffect(() => {
     axios
@@ -37,7 +39,8 @@ export default function Carousel1({onDataReceived,messages}) {
 
   const [searchIsClicked, setsearchIsClicked] = useState(false);
   const handleSearchClicked = () => {
-    setsearchIsClicked(true);
+    router.push("/axtaris")
+    // setsearchIsClicked(true);
   };
 
   // passing data from carousel to the main page
