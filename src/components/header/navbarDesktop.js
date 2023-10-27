@@ -37,8 +37,8 @@ export default function NavbarDesktop({ ifSearchIconClicked, messages }) {
     
     { href: "/xidmetler", text: "Bütün xidmətlər", className: "" },
      {
-      href: "/kooperativ",
-      text: "Kooperativ sorğular",
+      href: "/korperativ ",
+      text: "Korperativ Əməkdaşlıq",
       className: "",
     }
   ];

@@ -68,7 +68,7 @@ export default function NavbarMobile({ ifSearchIconClicked, messages }) {
       className: "",
       index: 7,
     },
-    { href: "/kooperativ", text: "Koorperativ sorğular", className: "", index: 8 },
+    { href: "/korperativ", text: "Korperativ Əməkdaşlıq", className: "", index: 8 },
     { href: "/is-axtariram", text: messages["work-with-us"], className: "", index: 9 },
     
     { href: "/blog", text: messages["blog"], className: "", index: 10 },

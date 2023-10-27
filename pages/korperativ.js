@@ -20,7 +20,7 @@ export default function Haqqimizda(props) {
 
   const intl = useIntl();
   const messages = intl.messages;
-
+   
   return (
     <div>
       <Head>

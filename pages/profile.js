@@ -8,8 +8,7 @@ import InputCustomized from "@/src/components/input/input";
 import InputNumber from "@/src/components/input/input_number";
 import InputPassword from "@/src/components/input/input_password";
 import PrimaryMdBtn from "@/src/components/buttons/primary_md_btn";
-import placeholder from "@/public/placeholder.png"
-
+import placeholder from "@/public/placeholder.png";
 
 function Profil_settings() {
   const intl = useIntl();
@@ -113,7 +112,7 @@ function Profil_settings() {
             <div className="hidden lg:flex flex-col gap-y-[30px] lg:pb-[30px]">
               {/*  */}
               <div className="inline-flex flex-col w-full">
-        {/* <label
+                {/* <label
           htmlFor="dropzone-file"
           className="flex flex-row justify-between items-center border-2 h-[40px] space-x-[16px] border-cagiraz border-dashed rounded-[10px] lg:rounded-full cursor-pointer px-[16px] "
         >
@@ -140,7 +139,7 @@ function Profil_settings() {
             // onChange={handleFileChange}
           />
         </label> */}
-      </div>
+              </div>
               {/*  */}
               <button
                 onClick={() => {

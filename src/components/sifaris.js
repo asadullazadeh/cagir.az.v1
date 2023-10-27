@@ -575,6 +575,9 @@ function Sifaris({
                       
                       <div>
                       <div
+                      onClick={() => {
+                        toggleDropdown(index);
+                      }} 
                       className={`${infoBtn[index] ? "line-clamp-none" : "line-clamp-1"}`}
                         dangerouslySetInnerHTML={{
                           __html: serviceCriteria.serviceCriteriaNames[0].text?.replaceAll(
@@ -585,9 +588,11 @@ function Sifaris({
                           .replaceAll("<span>", "<span>"),
                         }}
                       />
-                      <p onClick={() => {
+                      <p 
+                      onClick={() => {
                             toggleDropdown(index);
-                          }} className={`text-cagiraz ${infoBtn[index] ? "hidden" : ""}`}>{messages.more}</p>
+                          }} 
+                          className={`text-cagiraz ${infoBtn[index] ? "hidden" : ""}`}>{messages.more}</p>
                       
                    </div>
                     </div>
