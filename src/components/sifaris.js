@@ -572,7 +572,7 @@ function Sifaris({
                         )}
                         {serviceCriteria.serviceCriteriaNames[0]?.text?.length >
                         0 ? (
-                          <div>
+                          <div className="flex flex-row items-center gap-x-[5px]">
                             <div
                               onClick={() => {
                                 toggleDropdown(index);
@@ -590,7 +590,7 @@ function Sifaris({
                                     : serviceCriteria.serviceCriteriaNames[0].text?.slice(
                                         0,
                                         40
-                                      ) + "..."
+                                      )
                                 }`
                                   ?.replaceAll(
                                     "<ul>",
@@ -602,6 +602,7 @@ function Sifaris({
                                   ),
                               }}
                             />
+                            
                             <p
                               onClick={() => {
                                 toggleDropdown(index);
@@ -609,10 +610,10 @@ function Sifaris({
                               className={`text-cagiraz ${
                                 infoBtn[index]
                                   ? "hidden"
-                                  : "text-[10px] lg:text-[12px] leading-[15px] font-semibold block text-cagiraz "
+                                  : "text-[12px] leading-[15px] font-semibold block text-cagiraz "
                               }`}
                             >
-                              {messages.more}
+                              ...{messages.more}
                             </p>
                           </div>
                         ) : (
