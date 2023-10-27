@@ -75,7 +75,7 @@ function SearchServices({ messages, chosenLang, onExit, searchInptClicked }) {
 
   /* ----------------- search functionality ----------------- */
   // ekranda gorunen updatedSubServiceObject.It updates in each search
-  const updatedSubServiceObject =  subServices
+  const updatedSubServiceObject = subServices;
   // const [updatedSubServiceObject, setUpdatedSubServiceObject] =
   //   useState(subServices);
   // // the value that will search elements
@@ -167,24 +167,29 @@ function SearchServices({ messages, chosenLang, onExit, searchInptClicked }) {
       {/*  */}
       <div className="flex flex-col gap-y-[5px] items-center justify-center mt-[15px] mb-[15px]">
         <SearchInputMd
-          {...{ messages, chosenLang,searchServices }}
+          {...{ messages, chosenLang, searchServices }}
           onChange={handleInputChange}
           value={searchVal}
-          
+
           // sendDataToParent={receiveDataFromChild}
         />
-        <div className={`${searchServices ? "flex flex-col justify-start border border-gray900 rounded-[20px] px-[10px] py-[5px]" : "hidden"}`}>
-        {searchServices?.map(
-          ({ index, name, parentTitleUrl, serviceId, titleUrl }) => {
-            return (
-              <div key={index}>
-                <a href={`/${parentTitleUrl}/${titleUrl}`}>{name}</a>
-              </div>
-            );
-          }
-        )}
+        <div
+          className={`${
+            searchServices
+              ? "flex flex-col justify-start border border-gray900 rounded-[20px] px-[10px] py-[5px]"
+              : "hidden"
+          }`}
+        >
+          {searchServices?.map(
+            ({ index, name, parentTitleUrl, serviceId, titleUrl }) => {
+              return (
+                <div key={index}>
+                  <a href={`/${parentTitleUrl}/${titleUrl}`}>{name}</a>
+                </div>
+              );
+            }
+          )}
         </div>
-        
       </div>
       {/* <div className="flex flex-col gap-y-[5px] items-center justify-center ">
         {searchServices?.map(

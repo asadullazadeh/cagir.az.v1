@@ -200,7 +200,7 @@ const Dropdown = ({
     // If it's the initial mount, we'll check if we're being redirected
     if (isInitialMount.current) {
       if (router.asPath !== newPath) {
-        router.replace(`/${mainService}/${subService}`);
+        // router.replace(`/${mainService}/${subService}`);
       }
       isInitialMount.current = false;
     } else {
