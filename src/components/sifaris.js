@@ -155,7 +155,6 @@ function Sifaris({
       .catch((error) => console.error(error));
   }, [isSub2ElementsExist, defaultSub?.id, selectedSub2Service.id, chosenLang]);
 
-
   /* ----------------------------------  infoBtnFor Meyars ---------------------------------- */
   const [infoBtn, setInfoBtn] = useState({});
   const toggleDropdown = (index) => {
@@ -333,30 +332,27 @@ function Sifaris({
     inputTextObject,
   ];
 
-  console.log(calculatePrice)
-
   const filteredCalculatePrice = calculatePrice.filter(
     (item) => Object.keys(item).length !== 0
   );
 
   // Effects
   useEffect(() => {
-    if(selectedSub2.length > 0){
+    if (getServiceCriterias.length > 0) {
       axios
-      .post(
-        "https://api.cagir.az/api/serviceCriteria/calculate",
-        [...filteredCalculatePrice],
-        { headers: { "Accept-Language": "" } }
-      )
-      .then((response) => {
-        setPriceBeforePromo(response.data.result.amount);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+        .post(
+          "https://api.cagir.az/api/serviceCriteria/calculate",
+          [...filteredCalculatePrice],
+          { headers: { "Accept-Language": "" } }
+        )
+        .then((response) => {
+          setPriceBeforePromo(response.data.result.amount);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
-
-  }, [selectedSub2.length,filteredCalculatePrice]);
+  }, [getServiceCriterias, filteredCalculatePrice]);
 
   useEffect(() => {
     setgetServiceCriterias([]);
@@ -407,7 +403,6 @@ function Sifaris({
     messages,
     chosenLang,
   };
-
 
   const dropdownProps = {
     onSelectMainService: handleMainSelect,
@@ -575,49 +570,54 @@ function Sifaris({
                         ) : (
                           ""
                         )}
-                        {serviceCriteria.serviceCriteriaNames[0]?.text?.length > 0 ? (<div>
-                          <div
-                            onClick={() => {
-                              toggleDropdown(index);
-                            }}
-                            className={`${
-                              infoBtn[index]
-                                ? "line-clamp-none"
-                                : "line-clamp-none"
-                            }`}
-                            dangerouslySetInnerHTML={{
-                              __html: `${
+                        {serviceCriteria.serviceCriteriaNames[0]?.text?.length >
+                        0 ? (
+                          <div>
+                            <div
+                              onClick={() => {
+                                toggleDropdown(index);
+                              }}
+                              className={`${
                                 infoBtn[index]
-                                  ? serviceCriteria.serviceCriteriaNames[0].text
-                                  : serviceCriteria.serviceCriteriaNames[0].text?.slice(
-                                      0,
-                                      40
-                                    ) + "..."
-                              }`
-                                ?.replaceAll(
-                                  "<ul>",
-                                  '<ul class="text-[12px] list-disc list-inside py-[3px] mt-[3px] mb-[7px] ">'
-                                )
-                                .replaceAll(
-                                  "<p",
-                                  '<p class="text-[12px] leading-[22px] "'
-                                ),
-                            }}
-                          />
-                          <p
-                            onClick={() => {
-                              toggleDropdown(index);
-                            }}
-                            className={`text-cagiraz ${
-                              infoBtn[index]
-                                ? "hidden"
-                                : "text-[10px] lg:text-[12px] leading-[15px] font-semibold block text-cagiraz "
-                            }`}
-                          >
-                            {messages.more}
-                          </p>
-                        </div>) : ""}
-                        
+                                  ? "line-clamp-none"
+                                  : "line-clamp-none"
+                              }`}
+                              dangerouslySetInnerHTML={{
+                                __html: `${
+                                  infoBtn[index]
+                                    ? serviceCriteria.serviceCriteriaNames[0]
+                                        .text
+                                    : serviceCriteria.serviceCriteriaNames[0].text?.slice(
+                                        0,
+                                        40
+                                      ) + "..."
+                                }`
+                                  ?.replaceAll(
+                                    "<ul>",
+                                    '<ul class="text-[12px] list-disc list-inside py-[3px] mt-[3px] mb-[7px] ">'
+                                  )
+                                  .replaceAll(
+                                    "<p",
+                                    '<p class="text-[12px] leading-[22px] "'
+                                  ),
+                              }}
+                            />
+                            <p
+                              onClick={() => {
+                                toggleDropdown(index);
+                              }}
+                              className={`text-cagiraz ${
+                                infoBtn[index]
+                                  ? "hidden"
+                                  : "text-[10px] lg:text-[12px] leading-[15px] font-semibold block text-cagiraz "
+                              }`}
+                            >
+                              {messages.more}
+                            </p>
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                     </div>
 
