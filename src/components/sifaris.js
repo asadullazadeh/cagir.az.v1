@@ -154,7 +154,7 @@ function Sifaris({
       .then((response) => setgetServiceCriterias(response.data.result))
       .catch((error) => console.error(error));
   }, [isSub2ElementsExist, defaultSub?.id, selectedSub2Service.id, chosenLang]);
-  console.log(getServiceCriterias);
+
 
   /* ----------------------------------  infoBtnFor Meyars ---------------------------------- */
   const [infoBtn, setInfoBtn] = useState({});
@@ -333,13 +333,16 @@ function Sifaris({
     inputTextObject,
   ];
 
+  console.log(calculatePrice)
+
   const filteredCalculatePrice = calculatePrice.filter(
     (item) => Object.keys(item).length !== 0
   );
 
   // Effects
   useEffect(() => {
-    axios
+    if(selectedSub2.length > 0){
+      axios
       .post(
         "https://api.cagir.az/api/serviceCriteria/calculate",
         [...filteredCalculatePrice],
@@ -351,7 +354,9 @@ function Sifaris({
       .catch((error) => {
         console.error(error);
       });
-  }, [filteredCalculatePrice]);
+    }
+
+  }, [selectedSub2.length,filteredCalculatePrice]);
 
   useEffect(() => {
     setgetServiceCriterias([]);
@@ -402,8 +407,7 @@ function Sifaris({
     messages,
     chosenLang,
   };
-  // console.log("selectedSub", selectedSub);
-  // console.log(" selectedNamesArray[1]", selectedNamesArray[1]);
+
 
   const dropdownProps = {
     onSelectMainService: handleMainSelect,
@@ -461,7 +465,6 @@ function Sifaris({
       { imageExtension: childUploadImage.imageData?.name },
     ],
   };
-  console.log(objectDetails["orderDetails"].length);
 
   // Order Creation
   if (isOrderPassed) {
@@ -572,8 +575,7 @@ function Sifaris({
                         ) : (
                           ""
                         )}
-
-                        <div>
+                        {serviceCriteria.serviceCriteriaNames[0]?.text?.length > 0 ? (<div>
                           <div
                             onClick={() => {
                               toggleDropdown(index);
@@ -614,7 +616,8 @@ function Sifaris({
                           >
                             {messages.more}
                           </p>
-                        </div>
+                        </div>) : ""}
+                        
                       </div>
                     </div>
 

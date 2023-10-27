@@ -98,8 +98,6 @@ const Dropdown = ({
     sub2ServiceName,
   ];
 
-  console.log(serviceNames);
-  console.log(getSub2Services);
   // Update subServiceName and sub2ServiceName when mainServiceName changes
   useEffect(() => {
     setSubServiceName("");
@@ -183,13 +181,11 @@ const Dropdown = ({
   //   subServices.find((obj) => obj.nameUrl === subServiceUrl) ||
   //   {};
   // const subInfo = findSubInfoByNameUrl(getSubServices, subServiceUrl);
-  console.log(subInfo.nameUrl);
-  console.log(router);
+
   const pathMain = mainInfo.nameUrl;
   const pathSub = subInfo.nameUrl || getSubServices[0]?.nameUrl;
   const newPath = `/${pathMain}/${pathSub}`;
-  console.log("mainInfo:", mainInfo);
-  console.log("pathSub:", pathSub);
+
 
   const { mainService, subService } = router.query;
 
@@ -211,7 +207,7 @@ const Dropdown = ({
   useEffect(() => {
     router.replace(newPath);
   }, [newPath]);
-  console.log(newPath);
+
   return (
     <div
       ref={myElementRef}

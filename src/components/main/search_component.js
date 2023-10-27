@@ -152,7 +152,7 @@ function SearchComponents({onExit, searchInptClicked }) {
         console.error(error);
       });
   }, [searchVal, chosenLang]);
-
+console.log(searchServices)
   return (
     <div className="py-[15px] lg:py-[30px]">
       <div className="relative flex flex-row justify-between sm:justify-center mb-[15px] lg:mb-[30px]">
@@ -298,5 +298,3 @@ function SearchComponents({onExit, searchInptClicked }) {
 }
 
 export default SearchComponents;
-
-//
