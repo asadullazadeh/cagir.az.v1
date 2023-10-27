@@ -514,7 +514,7 @@ function Sifaris({
   }, [isOrderPassed]);
 
   const orderReadyToPass = priceBeforePromo > 0;
-  
+
   return (
     <div>
       {!isOrderPassed && (
@@ -584,16 +584,22 @@ function Sifaris({
                                 : "line-clamp-none"
                             }`}
                             dangerouslySetInnerHTML={{
-                              __html:
-                              `${infoBtn[index] ?  serviceCriteria.serviceCriteriaNames[0].text : serviceCriteria.serviceCriteriaNames[0].text.slice(0,40) + "..." }`
-                                  ?.replaceAll(
-                                    "<ul>",
-                                    '<ul class="text-[12px] list-disc list-inside py-[3px] mt-[3px] mb-[7px] ">'
-                                  )
-                                  .replaceAll(
-                                    "<p",
-                                    '<p class="text-[12px] leading-[22px] "'
-                                  )
+                              __html: `${
+                                infoBtn[index]
+                                  ? serviceCriteria.serviceCriteriaNames[0].text
+                                  : serviceCriteria.serviceCriteriaNames[0].text?.slice(
+                                      0,
+                                      40
+                                    ) + "..."
+                              }`
+                                ?.replaceAll(
+                                  "<ul>",
+                                  '<ul class="text-[12px] list-disc list-inside py-[3px] mt-[3px] mb-[7px] ">'
+                                )
+                                .replaceAll(
+                                  "<p",
+                                  '<p class="text-[12px] leading-[22px] "'
+                                ),
                             }}
                           />
                           <p

@@ -210,8 +210,8 @@ const Dropdown = ({
 
   useEffect(() => {
     router.replace(newPath);
-  }, [newPath]);
-
+  }, [mainService,subService,newPath]);
+  console.log(newPath);
   return (
     <div
       ref={myElementRef}
