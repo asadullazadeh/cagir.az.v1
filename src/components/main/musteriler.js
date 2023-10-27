@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import dynamic from "next/dynamic";
-const AliceCarousel = dynamic(() => import("react-alice-carousel"), { ssr: false });
+const AliceCarousel = dynamic(() => import("react-alice-carousel"), {
+  ssr: false,
+});
 import "react-alice-carousel/lib/alice-carousel.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -36,7 +38,7 @@ function Musteriler({ messages }) {
     <div>
       <h2 className="my-h2 mb-0 lg:mb-[15px] text-center">
         {/* {messages["customers"]} */}
-        Korporativ müştərilər
+        Korperativ müştərilər
       </h2>
       <AliceCarousel
         animationDuration={1300}

@@ -514,7 +514,7 @@ function Sifaris({
   }, [isOrderPassed]);
 
   const orderReadyToPass = priceBeforePromo > 0;
-
+  
   return (
     <div>
       {!isOrderPassed && (
@@ -562,40 +562,54 @@ function Sifaris({
                         {serviceCriteria.serviceCriteriaNames[0].name}
                       </h5>
                       <div className="flex flex-row gap-x-[5px]">
-                      {serviceCriteria.serviceCriteriaNames[0]?.text?.length >
-                      0 ? (
-                        <Image
-                          src={info_btn}
-                          alt="infobtn"
-                          className="w-[20px] h-[20px]"
-                        />
-                      ) : (
-                        ""
-                      )}
-                      
-                      <div>
-                      <div
-                      onClick={() => {
-                        toggleDropdown(index);
-                      }} 
-                      className={`${infoBtn[index] ? "line-clamp-none" : "line-clamp-1"}`}
-                        dangerouslySetInnerHTML={{
-                          __html: serviceCriteria.serviceCriteriaNames[0].text?.replaceAll(
-                            "<ul>",
-                            '<ul class="list-disc list-inside py-[3px] mt-[3px] mb-[7px] ">'
-                          )
-                          .replaceAll("<p", '<p class="text-[14px] leading-[22px] "')
-                          .replaceAll("<span>", "<span>"),
-                        }}
-                      />
-                      <p 
-                      onClick={() => {
-                            toggleDropdown(index);
-                          }} 
-                          className={`text-cagiraz ${infoBtn[index] ? "hidden" : ""}`}>{messages.more}</p>
-                      
-                   </div>
-                    </div>
+                        {serviceCriteria.serviceCriteriaNames[0]?.text?.length >
+                        0 ? (
+                          <Image
+                            src={info_btn}
+                            alt="infobtn"
+                            className="w-[20px] h-[20px]"
+                          />
+                        ) : (
+                          ""
+                        )}
+
+                        <div>
+                          <div
+                            onClick={() => {
+                              toggleDropdown(index);
+                            }}
+                            className={`${
+                              infoBtn[index]
+                                ? "line-clamp-none"
+                                : "line-clamp-none"
+                            }`}
+                            dangerouslySetInnerHTML={{
+                              __html:
+                              `${infoBtn[index] ?  serviceCriteria.serviceCriteriaNames[0].text : serviceCriteria.serviceCriteriaNames[0].text.slice(0,40) + "..." }`
+                                  ?.replaceAll(
+                                    "<ul>",
+                                    '<ul class="text-[12px] list-disc list-inside py-[3px] mt-[3px] mb-[7px] ">'
+                                  )
+                                  .replaceAll(
+                                    "<p",
+                                    '<p class="text-[12px] leading-[22px] "'
+                                  )
+                            }}
+                          />
+                          <p
+                            onClick={() => {
+                              toggleDropdown(index);
+                            }}
+                            className={`text-cagiraz ${
+                              infoBtn[index]
+                                ? "hidden"
+                                : "text-[10px] lg:text-[12px] leading-[15px] font-semibold block text-cagiraz "
+                            }`}
+                          >
+                            {messages.more}
+                          </p>
+                        </div>
+                      </div>
                     </div>
 
                     {/* where to add meyar descriptions */}
@@ -728,14 +742,12 @@ function Sifaris({
                     btnName={messages["btn-back"]}
                     classNames="hidden lg:block"
                   />
-  
-  
-                    <PrimaryOutlineSmBtn
+
+                  <PrimaryOutlineSmBtn
                     onClick={sifirla}
-                      btnName={messages.reset}
-                      classNames="hidden lg:block"
-                    />
-                 
+                    btnName={messages.reset}
+                    classNames="hidden lg:block"
+                  />
 
                   <PrimarySmBtn
                     onClick={() => window.my_modal_10.showModal()}

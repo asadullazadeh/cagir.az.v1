@@ -208,20 +208,9 @@ const Dropdown = ({
   //   }
   // }, [mainService, newPath, subService]);
 
- useEffect(() => {
-  // router.replace(`/${mainService}/${subService}`);
-  router.replace(newPath);
-    // if (isInitialMount.current) {
-    //   if (router.asPath !== newPath) {
-    //     router.replace(`/${mainService}/${subService}`);
-    //   }
-    //   isInitialMount.current = false;
-    // } else {
-    //   // For subsequent updates, always navigate
-    //   // router.replace(newPath);
-    // }
+  useEffect(() => {
+    router.replace(newPath);
   }, [newPath]);
-
 
   return (
     <div
