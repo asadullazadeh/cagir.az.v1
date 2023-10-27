@@ -28,7 +28,7 @@ export default function Haqqimizda(props) {
       </Head>
       <div className="flex flex-col  pb-[50px] pt-[30px] md:pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px]">
         <h4 className="text-center my-h2 pb-[30px] lg:pb-[60px]">
-          Korporativ Əməkdaşlıq
+          Korperativ Əməkdaşlıq
         </h4>
         <div className="flex flex-col items-center font-semibold  gap-y-[15px] pb-[30px] lg:pb-[50px] text-gray900">
           <p className="text-[12px] lg:text-[18px] leading-[22px] lg:leading-[34px] w-full lg:w-2/3 text-center">
