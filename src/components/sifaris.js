@@ -557,16 +557,14 @@ function Sifaris({
               {Object.values(getServiceCriterias).map(
                 ({ serviceCriteria, serviceCriteries }, index) => (
                   <div key={index}>
-                    <div className="flex flex-row gap-x-[5px]">
+                    <div className="flex flex-col gap-x-[5px]">
                       <h5 className="font-semibold text-[12px] leading-[18px] pb-[10px] lg:pb-[5px] text-black500">
                         {serviceCriteria.serviceCriteriaNames[0].name}
                       </h5>
+                      <div className="flex flex-row gap-x-[5px]">
                       {serviceCriteria.serviceCriteriaNames[0]?.text?.length >
                       0 ? (
                         <Image
-                          onClick={() => {
-                            toggleDropdown(index);
-                          }}
                           src={info_btn}
                           alt="infobtn"
                           className="w-[20px] h-[20px]"
@@ -574,18 +572,32 @@ function Sifaris({
                       ) : (
                         ""
                       )}
+                      
+                      <div>
+                      <div
+                      className={`${infoBtn[index] ? "line-clamp-none" : "line-clamp-1"}`}
+                        dangerouslySetInnerHTML={{
+                          __html: `${infoBtn[index] ? serviceCriteria.serviceCriteriaNames[0].text : serviceCriteria.serviceCriteriaNames[0].text}`,
+                        }}
+                      />
+                      <p onClick={() => {
+                            toggleDropdown(index);
+                          }} className={`text-cagiraz ${infoBtn[index] ? "hidden" : ""}`}>{messages.more}</p>
+                      
+                   </div>
+                    </div>
                     </div>
 
                     {/* where to add meyar descriptions */}
-                    {infoBtn[index] ? (
+                    {/* {infoBtn[index] ? (
                       <div
                         dangerouslySetInnerHTML={{
-                          __html: serviceCriteria.serviceCriteriaNames[0].text,
+                          __html: serviceCriteria.serviceCriteriaNames[0].text.slice(0,70),
                         }}
                       />
                     ) : (
                       ""
-                    )}
+                    )} */}
 
                     <div className="flex flex-wrap gap-[15px] py-0 lg:py-[5px]  lg:order-1">
                       {/*  */}

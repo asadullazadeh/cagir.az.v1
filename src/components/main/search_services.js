@@ -9,7 +9,7 @@ function SearchServices({ messages, chosenLang, onExit, searchInptClicked }) {
   /* ----------------- mainServices ----------------- */
 
   const [mainServices, setMainServices] = useState([]);
-  return null
+  // return null
   useEffect(() => {
     // if (!searchInptClicked) return;
     axios
@@ -45,7 +45,7 @@ function SearchServices({ messages, chosenLang, onExit, searchInptClicked }) {
   const [subServices, setSubServices] = useState([]);
 
   useEffect(() => {
-    return null
+    // return null
     const fetchSubServices = async () => {
       try {
         const subServicePromises = mainServiceIds.map((id) =>
@@ -165,15 +165,15 @@ function SearchServices({ messages, chosenLang, onExit, searchInptClicked }) {
       {/*  */}
 
       {/*  */}
-      <div className="flex justify-center mt-[15px] mb-[15px]">
+      <div className="flex flex-col gap-y-[5px] items-center justify-center mt-[15px] mb-[15px]">
         <SearchInputMd
-          {...{ messages, chosenLang }}
+          {...{ messages, chosenLang,searchServices }}
           onChange={handleInputChange}
           value={searchVal}
+          
           // sendDataToParent={receiveDataFromChild}
         />
-      </div>
-      <div className="flex flex-col gap-y-[5px] items-center justify-center ">
+        <div className={`${searchServices ? "flex flex-col justify-start border border-gray900 rounded-[20px] px-[10px] py-[5px]" : "hidden"}`}>
         {searchServices?.map(
           ({ index, name, parentTitleUrl, serviceId, titleUrl }) => {
             return (
@@ -183,7 +183,20 @@ function SearchServices({ messages, chosenLang, onExit, searchInptClicked }) {
             );
           }
         )}
+        </div>
+        
       </div>
+      {/* <div className="flex flex-col gap-y-[5px] items-center justify-center ">
+        {searchServices?.map(
+          ({ index, name, parentTitleUrl, serviceId, titleUrl }) => {
+            return (
+              <div key={index}>
+                <a href={`/${parentTitleUrl}/${titleUrl}`}>{name}</a>
+              </div>
+            );
+          }
+        )}
+      </div> */}
       {searchServices === null ? (
         <div className="flex flex-row justify-center gap-x-[5px] lg:gap-x-[15px]">
           {trendServices.map((item, index) => (

@@ -14,25 +14,28 @@ const listClasses =
 const linkClasses =
   "flex items-center justify-between w-full aspect-[15/3] sm:aspect-[302/91] rounded-[20px] drop-shadow-cardAlt lg:drop-shadow-none lg:hover:drop-shadow-cardAlt transition duration-300 bg-white px-[15px] sm:px-[30px] py-[9.5px] sm:py-[15px] group";
 
-export default function Haqqimizda() {
-  const [responseData, setResponseData] = useState([]);
+export default function Haqqimizda(props) {
+  const {responseData, musteriData} = props
+  console.log(responseData)
+  // const responseData = props.responseData
+  // const [responseData, setResponseData] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`https://api.cagir.az/api/media/getAll`, {
-        headers: {
-          "Accept-Language": "az",
-        },
-      })
-      .then((response) => {
-        // Handle the response data
-        setResponseData(response.data.result);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://api.cagir.az/api/media/getAll`, {
+  //       headers: {
+  //         "Accept-Language": "az",
+  //       },
+  //     })
+  //     .then((response) => {
+  //       // Handle the response data
+  //       setResponseData(response.data.result);
+  //     })
+  //     .catch((error) => {
+  //       // Handle any errors
+  //       console.error(error);
+  //     });
+  // }, []);
 
   const intl = useIntl();
   const messages = intl.messages;
@@ -66,8 +69,29 @@ export default function Haqqimizda() {
               Bütün xidmətlər
             </Link>
           </div>
-
-          <Musteriler {...{ messages }} />
+          <div>
+          <h2 className="my-h2 mb-[15px] lg:mb-[60px] text-center">
+        {/* {messages["customers"]} */}
+        Korporativ müştərilər
+      </h2>
+          <div className="grid grid-cols-4 gap-4">
+          {musteriData?.map(({ id, imageUrl, title, url }) => (
+          <div key={id} className="">
+            {url && (
+              <Link href={url} target="_blank" className="">
+                <Image
+                  alt={title}
+                  src={`https://api.cagir.az/${imageUrl}`}
+                  width={300}
+                  height={150}
+                  className="px-[5px] md:px-[15px] drop-shadow-cardAlt py-[10px]"
+                />
+              </Link>
+            )}
+          </div>
+        ))}
+        </div>
+        </div>
           <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">
             Naliyyətlərimiz
           </h2>
@@ -133,7 +157,7 @@ export async function getStaticProps() {
 
   try {
     const response = await axios.get(
-      "https://api.cagir.az/api/service/getSubServicesByParentId?parentId=2",
+      "https://api.cagir.az/api/media/getAll",
       {
         headers: {
           "Accept-Language": "az",

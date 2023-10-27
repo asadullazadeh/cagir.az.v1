@@ -46,7 +46,7 @@ const ServiceItem = ({ id, imageUrl, nameUrl, serviceNames }) => (
               {name}
             </h5>
             <div className="lg:hidden group-hover:block transition duration-300">
-              <Image src={arrow} alt="arrow_icon" className="hidden lg:block" />
+              <Image src={arrow} alt="arrow_icon" className="hidden lg:block"  />
               <Image
                 src={arrow_mobile}
                 alt="arrow_mobile_icon"
