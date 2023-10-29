@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
-import axios from 'axios';
+import axios from "axios";
 import Carousel1 from "@/src/components/main/carousel1";
 import MainServices from "@/src/components/service/mainServices";
 import Reyler from "@/src/components/main/reyler";
@@ -13,10 +13,8 @@ import Musteriler from "@/src/components/main/musteriler";
 import SearchServices from "@/src/components/main/search_services";
 import Reels from "@/src/components/main/reels";
 
-
-
-export default function Home({getAllForFront,carouselPhotos}) {
-  console.log(carouselPhotos)
+export default function Home({ getAllForFront, carouselPhotos }) {
+  console.log(carouselPhotos);
   const intl = useIntl();
   const chosenLang = intl.locale;
   const messages = intl.messages;
@@ -49,10 +47,10 @@ export default function Home({getAllForFront,carouselPhotos}) {
       }`}
         >
           <Carousel1
-            {...{carouselPhotos, messages }}
+            {...{ carouselPhotos, messages }}
             onDataReceived={handleDataFromCarousel}
           />
-          <MainServices {...{getAllForFront, chosenLang, messages }} />
+          <MainServices {...{ getAllForFront, chosenLang, messages }} />
           <Reyler {...{ chosenLang, messages }} parentId={1} />
           <Icracilar {...{ messages }} parentId={1} />
           {/* <Reels /> */}
@@ -66,52 +64,52 @@ export default function Home({getAllForFront,carouselPhotos}) {
           <LastPostedBlogs {...{ messages }} />
         </div>
         <div className={`${searchInptClicked ? "" : "hidden"}`}>
-          <SearchServices {...{ messages, chosenLang,searchInptClicked }} />
+          <SearchServices {...{ messages, chosenLang, searchInptClicked }} />
         </div>
       </div>
     </div>
   );
 }
 
-
 export async function getStaticProps(context) {
-  const chosenLang = context.locale || 'az'; // Default to 'az' if no locale is set
-
+  const chosenLang = context.locale || "az"; // Default to 'az' if no locale is set
 
   // getAllForFront
   let getAllForFront = null;
   try {
-    const response = await axios.get('https://api.cagir.az/api/service/getAllForFront',
-    {
-      headers: {
-        "Accept-Language": chosenLang,
-      },
-    }
+    const response = await axios.get(
+      "https://api.cagir.az/api/service/getAllForFront",
+      {
+        headers: {
+          "Accept-Language": chosenLang,
+        },
+      }
     );
     getAllForFront = response.data.result;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error("Error fetching data:", error);
   }
 
-// carouselPhotos
+  // carouselPhotos
   let carouselPhotos = null;
   try {
-    const response = await axios.get('https://api.cagir.az/api/adminDictionary/getAll?dictionaryType=6',
-    {
-      headers: {
-        "Accept-Language": chosenLang,
-      },
-    }
+    const response = await axios.get(
+      "https://api.cagir.az/api/adminDictionary/getAll?dictionaryType=6",
+      {
+        headers: {
+          "Accept-Language": chosenLang,
+        },
+      }
     );
     carouselPhotos = response.data.result;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error("Error fetching data:", error);
   }
 
   return {
     props: {
       getAllForFront,
-      carouselPhotos
+      carouselPhotos,
     },
     revalidate: 120, // In seconds, you can change this value according to your needs
   };

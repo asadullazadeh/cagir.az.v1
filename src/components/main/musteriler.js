@@ -14,7 +14,8 @@ const responsive = {
   1024: { items: 4 },
 };
 
-function Musteriler({ messages }) {
+function Musteriler({ messages, getAllForFront }) {
+  console.log(getAllForFront);
   const [responseData, setResponseData] = useState([]);
 
   useEffect(() => {
@@ -75,3 +76,47 @@ function Musteriler({ messages }) {
 }
 
 export default Musteriler;
+
+export async function getStaticProps(context) {
+  const chosenLang = context.locale || "az"; // Default to 'az' if no locale is set
+
+  // getAllForFront
+  let getAllForFront = null;
+  try {
+    const response = await axios.get(
+      "https://api.cagir.az/api/service/getAllForFront",
+      {
+        headers: {
+          "Accept-Language": chosenLang,
+        },
+      }
+    );
+    getAllForFront = response.data.result;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+
+  // carouselPhotos
+  let carouselPhotos = null;
+  try {
+    const response = await axios.get(
+      "https://api.cagir.az/api/adminDictionary/getAll?dictionaryType=6",
+      {
+        headers: {
+          "Accept-Language": chosenLang,
+        },
+      }
+    );
+    carouselPhotos = response.data.result;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+
+  return {
+    props: {
+      getAllForFront,
+      carouselPhotos,
+    },
+    revalidate: 120, // In seconds, you can change this value according to your needs
+  };
+}

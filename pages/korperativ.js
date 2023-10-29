@@ -166,6 +166,6 @@ export async function getStaticProps() {
       responseData,
       musteriData,
     },
-    revalidate: 3600, // Optionally, you can add this to re-fetch the data at a max interval of 60 seconds
+    revalidate: 120, // Optionally, you can add this to re-fetch the data at a max interval of 60 seconds
   };
 }
