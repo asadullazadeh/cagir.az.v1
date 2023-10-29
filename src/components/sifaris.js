@@ -602,7 +602,7 @@ function Sifaris({
                                   ),
                               }}
                             />
-                            
+
                             <p
                               onClick={() => {
                                 toggleDropdown(index);

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
+import axios from 'axios';
 import Carousel1 from "@/src/components/main/carousel1";
 import MainServices from "@/src/components/service/mainServices";
 import Reyler from "@/src/components/main/reyler";
@@ -14,7 +15,8 @@ import Reels from "@/src/components/main/reels";
 
 
 
-export default function Home() {
+export default function Home({getAllForFront,carouselPhotos}) {
+  console.log(carouselPhotos)
   const intl = useIntl();
   const chosenLang = intl.locale;
   const messages = intl.messages;
@@ -47,10 +49,10 @@ export default function Home() {
       }`}
         >
           <Carousel1
-            {...{ messages }}
+            {...{carouselPhotos, messages }}
             onDataReceived={handleDataFromCarousel}
           />
-          <MainServices {...{ chosenLang, messages }} />
+          <MainServices {...{getAllForFront, chosenLang, messages }} />
           <Reyler {...{ chosenLang, messages }} parentId={1} />
           <Icracilar {...{ messages }} parentId={1} />
           {/* <Reels /> */}
@@ -69,4 +71,48 @@ export default function Home() {
       </div>
     </div>
   );
+}
+
+
+export async function getStaticProps(context) {
+  const chosenLang = context.locale || 'az'; // Default to 'az' if no locale is set
+
+
+  // getAllForFront
+  let getAllForFront = null;
+  try {
+    const response = await axios.get('https://api.cagir.az/api/service/getAllForFront',
+    {
+      headers: {
+        "Accept-Language": chosenLang,
+      },
+    }
+    );
+    getAllForFront = response.data.result;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+
+// carouselPhotos
+  let carouselPhotos = null;
+  try {
+    const response = await axios.get('https://api.cagir.az/api/adminDictionary/getAll?dictionaryType=6',
+    {
+      headers: {
+        "Accept-Language": chosenLang,
+      },
+    }
+    );
+    carouselPhotos = response.data.result;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+
+  return {
+    props: {
+      getAllForFront,
+      carouselPhotos
+    },
+    revalidate: 120, // In seconds, you can change this value according to your needs
+  };
 }

@@ -20,11 +20,11 @@ export default function Haqqimizda(props) {
 
   const intl = useIntl();
   const messages = intl.messages;
-   
+
   return (
     <div>
       <Head>
-        <title>Cagir.az - Kooperativ</title>
+        <title>Cagir.az - Korperativ</title>
       </Head>
       <div className="flex flex-col  pb-[50px] pt-[30px] md:pb-[60px] lg:pb-[70px] xl:pb-[80px] 2xl:pb-[90px]">
         <h4 className="text-center my-h2 pb-[30px] lg:pb-[60px]">
@@ -53,7 +53,7 @@ export default function Haqqimizda(props) {
           <div>
             <h2 className="my-h2 mb-[15px] lg:mb-[60px] text-center">
               {/* {messages["customers"]} */}
-              Korporativ müştərilər
+              Korperativ müştərilər
             </h2>
             <div className="grid grid-cols-4 gap-4">
               {musteriData?.map(({ id, imageUrl, title, url }) => (
@@ -139,7 +139,7 @@ export async function getStaticProps() {
   try {
     const response = await axios.get("https://api.cagir.az/api/media/getAll", {
       headers: {
-        "Accept-Language": "azd",
+        "Accept-Language": "az",
       },
     });
     responseData = response.data.result;

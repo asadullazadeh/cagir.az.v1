@@ -5,28 +5,10 @@ import { useRouter } from "next/router";
 import SifarishBtn from "@/src/components/buttons/sifarish_btn";
 import SocialNetworks from "@/src/components/others/social_ntwrks";
 import SearchInput from "@/src/components/input/input_search_sm";
-import Carousel from "@/src/components/main/carousel";
 
 
-export default function Carousel1({onDataReceived,messages}) {
+export default function Carousel1({onDataReceived,messages,carouselPhotos}) {
   const router = useRouter();
-  const [carouselPhotos, setcarouselPhotos] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`https://api.cagir.az/api/adminDictionary/getAll?dictionaryType=6`, {
-        headers: {
-          "Accept-Language": "az",
-        },
-      })
-      .then((response) => {
-        // Handle the response data
-        setcarouselPhotos(response.data.result);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
-  }, []);
 
   const [currentSlide, setCurrentSlide] = useState(1);
   useEffect(() => {
@@ -92,39 +74,37 @@ export default function Carousel1({onDataReceived,messages}) {
       </div>
       {/* 643.88x343.5 */}
       {/* carousel part */}
-      <Carousel />
+      <div className="w-full h-full">
+        <div
+          id="default-carousel"
+          className="relative overflow-hidden rounded-lg w-full aspect-[821/438] lg:w-[643.88px] lg:h-[343.5px] xl:w-[821px] xl:h-[438px]"
+          data-carousel="slide"
+        >
+          {carouselPhotos.map(({ index, imageUrl, orderIndex }) => (
+            <div
+              key={orderIndex}
+              className={`absolute w-full aspect-[821/438] lg:w-[643.88px] lg:h-[343.5px] xl:w-[821px] xl:h-[438px] ${
+                orderIndex === currentSlide
+                  ? "slide-enter-active"
+                  : "slide-exit-active"
+              }`}
+              // className="slide-enter-active"
+              style={{ height: "100%", width: "100%" }}
+            >
+              <Image
+                width={821}
+                height={438}
+                src={`https://api.cagir.az${imageUrl}`}
+                alt={imageUrl}
+                className="w-full aspect-[821/438] lg:w-[643.88px] lg:h-[343.5px] xl:w-[821px] xl:h-[438px]"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
-
-
-
-
-
-
-
-// export async function getServerSideProps() {
-//   // Fetch your data here...
-//   const res = await axios.get(`https://api.cagir.az/api/adminDictionary/getAll?dictionaryType=6`, {
-//     headers: {
-//       "Accept-Language": "az",
-//     },
-//   });
-
-//   const carouselData = res.data.result;
-
-//   // Return the fetched data as props
-//   return {
-//     props: {
-//       carouselData,
-//     },
-//   };
-// }
-
-
-
-
-
 
 
 

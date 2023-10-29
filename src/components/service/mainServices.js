@@ -5,25 +5,6 @@ import Link from "next/link";
 import arrow from "@/icons/arrow.svg";
 import arrow_mobile from "@/icons/arrow_mobile.svg";
 
-const fetchServices = async (chosenLang) => {
-  const config = {
-    headers: {
-      "Accept-Language": chosenLang,
-    },
-  };
-
-  try {
-    const { data } = await axios.get(
-      "https://api.cagir.az/api/service/getAllForFront",
-      config
-    );
-    return data.result;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-};
-
 const ServiceItem = ({ id, imageUrl, nameUrl, serviceNames }) => (
   <li key={id}>
     <Link href={`/${nameUrl}`} passHref>
@@ -60,20 +41,15 @@ const ServiceItem = ({ id, imageUrl, nameUrl, serviceNames }) => (
   </li>
 );
 
-const Xidmetler = ({ messages, chosenLang }) => {
+const Xidmetler = ({getAllForFront, messages, chosenLang }) => {
 
-  const [responseData, setResponseData] = useState([]);
-
-  useEffect(() => {
-    fetchServices(chosenLang).then(setResponseData);
-  }, [chosenLang]);
   return (
     <div>
       <h2 className="my-h2 mb-[15px] lg:mb-[30px] text-center">
         {messages.services}
       </h2>
       <ul className="grid grid-cols-2 lg:grid-cols-3 gap-[10px] lg:gap-[60px] px-[10px] justify-between">
-        {responseData.slice(0, 6).map(ServiceItem)}
+        {getAllForFront.slice(0, 6).map(ServiceItem)}
       </ul>
       <div className="flex items-center justify-center max-w-[155px] mx-auto rounded-[25px] mt-[15px] lg:mt-[30px]">
         <Link
