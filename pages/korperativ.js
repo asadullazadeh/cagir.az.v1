@@ -16,7 +16,6 @@ const linkClasses =
 
 export default function Haqqimizda(props) {
   const { responseData, musteriData } = props;
-  console.log(responseData);
 
   const intl = useIntl();
   const messages = intl.messages;

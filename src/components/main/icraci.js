@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-const AliceCarousel = dynamic(() => import("react-alice-carousel"), { ssr: false });
+const AliceCarousel = dynamic(() => import("react-alice-carousel"), {
+  ssr: false,
+});
 import "react-alice-carousel/lib/alice-carousel.css";
 
 const responsive = {
@@ -96,7 +98,7 @@ function Icraci({ parentId, messages, chosenLang }) {
         {messages.executives}
       </h2>
 
-      <div className="flex flex-row justify-center sm:gap-x-[40px]">
+      <div className="flex flex-row justify-center gap-x-[10px] sm:gap-x-[40px]">
         {data.length < 3 ? (
           childDataArray
         ) : (

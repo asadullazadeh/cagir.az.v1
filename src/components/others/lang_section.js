@@ -16,7 +16,6 @@ const LangSection = () => {
   const messages = intl.messages;
 
   const [navbar, setNavbar] = useState(false);
-  console.log(router);
   const options = [
     {
       lang: "az",
@@ -82,7 +81,7 @@ const LangSection = () => {
 
     }
   }, [selectedOption.lang]);
-console.log(router.pathname)
+
 // /[mainService]/[subService]
   return (
     <div>

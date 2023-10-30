@@ -32,7 +32,6 @@ function XidmetDetail({ xidmetDetail }) {
     metaDescription,
     metaTitle
   } = responseData;
-console.log(responseData)
   const { description = "" } = serviceInfoNames?.[0] || {};
   return (
     <div>

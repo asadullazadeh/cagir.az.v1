@@ -72,7 +72,6 @@ function Profil_settings() {
         });
     }
   }, [token]);
-  // console.log(userData);
 
   function handleSignOut() {
     // Remove the token (or other authentication info) from storage

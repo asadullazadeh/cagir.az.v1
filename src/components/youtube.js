@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import YouTube from 'react-youtube';
+import React, { useEffect } from "react";
+import YouTube from "react-youtube";
 
-const YoutubeComponent = ({videoId}) => {
+const YoutubeComponent = ({ videoId }) => {
   const opts = {
-    height: '195',
-    width: '320',
+    height: "195",
+    width: "320",
     // playerVars: {
     //   autoplay: 1,
     // },

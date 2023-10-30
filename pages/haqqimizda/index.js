@@ -114,7 +114,7 @@ export default function Haqqimizda(props) {
   const messages = intl.messages;
 
   const { responseData,musteriData } = props;
-  console.log(musteriData);
+  
   return (
     <div>
       <Head>

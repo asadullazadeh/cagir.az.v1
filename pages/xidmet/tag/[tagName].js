@@ -11,7 +11,6 @@ function XidmetTag() {
   const router = useRouter();
   const { query } = router;
   const { tagName } = query;
-  console.log(tagName);
   const { locales } = useRouter();
   const intl = useIntl();
   const chosenLang = intl.locale

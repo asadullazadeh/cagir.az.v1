@@ -187,11 +187,11 @@ const Dropdown = ({
   const newPath = `/${pathMain}/${pathSub}`;
 
   const { mainService, subService } = router.query;
-  console.log(router)
+
 
   // if page redirects from different page, it useEffect is not applied.
   const isInitialMount = useRef(true);
-  console.log(isInitialMount)
+
   useEffect(() => {
     // If it's the initial mount, we'll check if we're being redirected
     if (isInitialMount.current) {

@@ -38,7 +38,6 @@ function Reyler({ parentId, messages }) {
           description: result.description,
           imageUrl: result.imageUrl,
         }));
-        console.log(resultArrays);
 
         setData(formattedData);
       } catch (error) {

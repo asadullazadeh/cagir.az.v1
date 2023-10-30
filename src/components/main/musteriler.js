@@ -15,7 +15,7 @@ const responsive = {
 };
 
 function Musteriler({ messages, getAllForFront }) {
-  console.log(getAllForFront);
+
   const [responseData, setResponseData] = useState([]);
 
   useEffect(() => {

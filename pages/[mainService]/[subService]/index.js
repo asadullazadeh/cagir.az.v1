@@ -57,7 +57,6 @@ function Sub2Service({ dataMain, chosenLang }) {
       fetchSubServices(defaultMain.id, chosenLang).then(setGetSubServices);
     }
   }, [defaultMain.id, chosenLang]);
-  // console.log(getSubServices)
   const handleReceiveData = (data) => {
     setSubUrlFromSifaris(data);
   };
@@ -71,7 +70,6 @@ function Sub2Service({ dataMain, chosenLang }) {
     }
   }, [getSubServices, subUrlFromSifaris]);
 
-  // console.log(getSubServices[0].nameUrl)
 
   const findSubInfoByNameUrl = (subServices, nameUrl) =>
     subServices.find((obj) => obj.nameUrl === subService);

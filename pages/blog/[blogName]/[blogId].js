@@ -52,7 +52,6 @@ function BlogPost({ initialData }) {
   const { description, shortDescription, postId, title } = postNames?.length
     ? postNames[0]
     : {};
-  console.log(initialData);
   const subject = category?.categoryNames?.[0]?.name || "Default Value";
 
   return (

@@ -82,14 +82,12 @@ function BlogCategory() {
     } else {
       setseeMoreBtnIsVisible(true);
     }
-    console.log(filteredArray.length);
   }, [setseeMoreBtnIsVisible, deleteBtnIsClicked, searchVal, responseData]); // Only run this effect when searchVal changes
 
   function handleInputChange(event) {
     const inputValue = event.target.value;
     setSearchVal(inputValue);
   }
-  console.log(responseData);
   return (
     <div>
       <Head>
@@ -122,7 +120,7 @@ function BlogCategory() {
               categoryName,
               category,
             } = updatedBlogList[childObjectName];
-            // console.log(category);
+            
             return (
               <div key={index}>
                 <div className="drop-shadow-card lg:drop-shadow-none hover:drop-shadow-card transition duration-300 bg-white p-[15px] sm:p-[18px] md:p-[21px] lg:p-[24px] lx:p-[27px] 2xl:p-[30px] rounded-[20px] 2xl:rounded-[25px]">

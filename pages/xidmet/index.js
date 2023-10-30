@@ -34,9 +34,6 @@ function Xidmet(props) {
     } else {
       setUpdatedXidmetList(responseData);
     }
-    console.log(searchVal);
-
-    console.log(filteredArray.length);
   }, [deleteBtnIsClicked, searchVal, responseData]); // Only run this effect when searchVal changes
 
   function handleInputChange(event) {
@@ -60,7 +57,7 @@ function Xidmet(props) {
           <SearchInputMd
             onChange={handleInputChange}
             value={searchVal}
-            {...{messages,chosenLang}}
+            {...{ messages, chosenLang }}
             // sendDataToParent={receiveDataFromChild}
           />
         </div>
@@ -116,7 +113,7 @@ function Xidmet(props) {
                     <div className="flex flew-row justify-center items-center space-x-[5px]">
                       <div>
                         <p className="font-semibold text-[16px]	lg:text-[18px] leading-[24px] lg:leading-[27px]">
-                        Sifariş sayı: {Math.round(viewCount/2)}
+                          Sifariş sayı: {Math.round(viewCount / 2)}
                         </p>
                       </div>
                     </div>
@@ -141,19 +138,19 @@ function Xidmet(props) {
 
 export default Xidmet;
 
-
-
-
 export async function getStaticProps() {
   try {
-    const response = await axios.get(`https://api.cagir.az/api/serviceInfo/getAll`, {
-      headers: {
-        "Accept-Language": "az",
-      },
-    });
+    const response = await axios.get(
+      `https://api.cagir.az/api/serviceInfo/getAll`,
+      {
+        headers: {
+          "Accept-Language": "az",
+        },
+      }
+    );
     return {
       props: {
-        responseData: response.data.result
+        responseData: response.data.result,
       },
       revalidate: 120,
     };
@@ -161,8 +158,8 @@ export async function getStaticProps() {
     console.error("Error fetching data:", error);
     return {
       props: {
-        responseData: []  // You can return an empty array or handle it however you'd like.
-      }
+        responseData: [], // You can return an empty array or handle it however you'd like.
+      },
     };
   }
 }

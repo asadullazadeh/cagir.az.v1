@@ -14,7 +14,6 @@ import SearchServices from "@/src/components/main/search_services";
 import Reels from "@/src/components/main/reels";
 
 export default function Home({ getAllForFront, carouselPhotos }) {
-  console.log(carouselPhotos);
   const intl = useIntl();
   const chosenLang = intl.locale;
   const messages = intl.messages;
